@@ -1,0 +1,289 @@
+using System;
+using System.Collections.Generic;
+using Sirenix.OdinInspector;
+using UnityEngine;
+
+[RequireComponent(typeof(PathIllustrator))]
+public class Pathfinder : MonoBehaviour
+{
+    public static Pathfinder Instance { get; private set; }
+    PathIllustrator illustrator;
+    [SerializeField]
+    LayerMask tileMask;
+
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(this);
+
+    }
+
+    private void Start()
+    {
+        if (illustrator == null)
+            illustrator = GetComponent<PathIllustrator>();
+    }
+
+    /// <summary>
+    /// Main pathfinding function, marks tiles as being in frontier, while keeping a copy of the frontier
+    /// in "currentFrontier" for later clearing
+    /// </summary>
+    /// <param name="origin"></param>
+    /// <param name="destination"></param>
+    /// <param name="forAIPathfinding">this is for AI pathfinding bc without addng this ai cant get the destination since its occupied</param>
+    /// <returns></returns>
+    public Path FindPath(Tile origin, Tile destination, bool forAIPathfinding = false)
+    {
+        
+        List<Tile> openSet = new List<Tile>();
+        List<Tile> closedSet = new List<Tile>();
+        
+        openSet.Add(origin);
+        origin.costFromOrigin = 0;
+
+        float tileDistance = origin.GetComponent<MeshFilter>().sharedMesh.bounds.extents.z * 2;
+        
+        while (openSet.Count > 0)
+        {
+            openSet.Sort((x, y) => x.TotalCost.CompareTo(y.TotalCost));
+            Tile currentTile = openSet[0];
+
+            openSet.Remove(currentTile);
+            closedSet.Add(currentTile);
+            
+            //Destination reached
+            if (currentTile == destination)
+            {  
+                return PathBetween(destination, origin);
+            }
+
+            foreach (Tile neighbor in NeighborTiles(currentTile, forAIPathfinding))
+            {
+                if(closedSet.Contains(neighbor))
+                    continue;
+                
+                float costToNeighbor = currentTile.costFromOrigin + neighbor.terrainCost + tileDistance;
+                if (costToNeighbor < neighbor.costFromOrigin || !openSet.Contains(neighbor))
+                {
+                    neighbor.costFromOrigin = costToNeighbor;
+                    neighbor.costToDestination = Vector3.Distance(destination.transform.position, neighbor.transform.position);
+                    neighbor.parent = currentTile;
+
+                    if (!openSet.Contains(neighbor))
+                        openSet.Add(neighbor);
+                }
+            }
+        }
+
+        return null;
+        
+    }
+
+    /// <summary>
+    /// Returns a list of all neighboring hexagonal tiles and ladders
+    /// </summary>
+    /// <param name="origin"></param>
+    /// <param name="forAIPathfinding">this is for AI pathfinding bc without addng this ai cant get the destination since its occupied</param>
+    /// <returns></returns>
+    public List<Tile> NeighborTiles(Tile origin, bool forAIPathfinding = false)
+    {
+        const float HEXAGONAL_OFFSET = 1.75f;
+        List<Tile> tiles = new List<Tile>();
+        Vector3 direction = Vector3.forward * (origin.GetComponent<MeshFilter>().sharedMesh.bounds.extents.x * HEXAGONAL_OFFSET);
+        float rayLength = 4f;
+        float rayHeightOffset = 1f;
+
+        //Rotate a raycast in 60 degree steps and find all adjacent tiles
+        for (int i = 0; i < 6; i++)
+        {
+            direction = Quaternion.Euler(0f, 60f, 0f) * direction;
+
+            Vector3 aboveTilePos = (origin.transform.position + direction).With(y: origin.transform.position.y + rayHeightOffset);
+
+            if (Physics.Raycast(aboveTilePos, Vector3.down, out RaycastHit hit, rayLength, tileMask))
+            {
+                Tile hitTile = hit.transform.GetComponent<Tile>();
+                if (hitTile.Occupied == false)
+                {
+                    tiles.Add(hitTile);
+                }
+                else
+                {
+                    if (forAIPathfinding)
+                    {
+                        tiles.Add(hitTile);
+                    }
+                }
+                    
+            }
+
+            Debug.DrawRay(aboveTilePos, Vector3.down * rayLength, Color.blue);
+        }
+
+        //Additionally add connected tiles such as ladders
+        if (origin.connectedTile != null)
+            tiles.Add(origin.connectedTile);
+            
+
+        return tiles;
+    }
+
+    /// <summary>
+    /// Called by Interact.cs to create a path between two tiles on the grid 
+    /// </summary>
+    /// <param name="dest"></param>
+    /// <param name="source"></param>
+    /// <returns></returns>
+    public Path PathBetween(Tile dest, Tile source)
+    {
+        Path path = MakePath(dest, source);
+        illustrator.IllustratePath(path);
+        return path;
+    }
+
+    public void ClearIllustratedPath()
+    {
+        illustrator.ClearIllustratedPath();
+    }
+
+    public void EnableIllustratePath(bool value)
+    {
+        illustrator.EnableIllustratePath(value);
+    }
+
+    /// <summary>
+    /// Creates a path between two tiles
+    /// </summary>
+    /// <param name="destination"></param>
+    /// <param name="origin"></param>
+    /// <returns></returns>
+    private Path MakePath(Tile destination, Tile origin)
+    {
+        List<Tile> tiles = new List<Tile>();
+        Tile current = destination;
+
+        while (current != origin)
+        {
+            tiles.Add(current);
+            if (current.parent != null)
+                current = current.parent;
+            else
+                break;
+        }
+
+        tiles.Add(origin);
+        tiles.Reverse();
+
+        Path path = new Path();
+        path.tiles = tiles.ToArray();
+
+        return path;
+    }
+
+    /// <summary>
+    /// Returns a list of all tiles within range of a character
+    /// </summary>
+    /// <param name="selectedCharacterCharacterTile"></param>
+    /// <param name="selectedCharacterMoveRange"></param>
+    /// <param name="origin"></param>
+    /// <returns></returns>
+    public List<Tile> GetReachableTiles(Tile selectedCharacterCharacterTile, int selectedCharacterMoveRange/*, Tile origin*/)
+    {
+        
+        
+        /*List<Tile> tiles = NeighborTiles(selectedCharacterCharacterTile);
+       List<Tile> reachableTiles = new List<Tile>();
+       foreach (Tile tile in tiles)
+       {
+           Path path = FindPath(selectedCharacterCharacterTile, tile);
+           if (path != null && path.tiles.Length <= selectedCharacterMoveRange + 1)
+           {
+               reachableTiles.Add(tile);
+           }
+       }
+
+       return reachableTiles;*/
+        
+        List<Tile> tiles = new List<Tile>();
+        tiles.Add(selectedCharacterCharacterTile);
+        List<Tile> frontier = new List<Tile>();
+        frontier.Add(selectedCharacterCharacterTile);
+
+        int currentRange = 0;
+        while (currentRange < selectedCharacterMoveRange )
+        {
+            List<Tile> newFrontier = new List<Tile>();
+
+            foreach (Tile tile in frontier)
+            {
+                foreach (Tile neighbor in NeighborTiles(tile))
+                {
+                    if (neighbor.Occupied == false && !tiles.Contains(neighbor))
+                    {
+                        newFrontier.Add(neighbor);
+                        tiles.Add(neighbor);
+                    }
+                }
+            }
+
+            frontier = newFrontier;
+            currentRange++;
+        }
+
+        return tiles;
+        
+        /*const float HEXAGONAL_OFFSET = 1.75f;
+        List<Tile> tiles = new List<Tile>();
+        Vector3 direction = Vector3.forward * (origin.GetComponent<MeshFilter>().sharedMesh.bounds.extents.x * HEXAGONAL_OFFSET);
+        float rayLength = 4f;
+        float rayHeightOffset = 1f;
+
+        //Rotate a raycast in 60 degree steps and find all adjacent tiles
+        for (int i = 0; i < 6; i++)
+        {
+            direction = Quaternion.Euler(0f, 60f, 0f) * direction;
+
+            Vector3 aboveTilePos = (origin.transform.position + direction).With(y: origin.transform.position.y + rayHeightOffset);
+
+            if (Physics.Raycast(aboveTilePos, Vector3.down, out RaycastHit hit, rayLength * selectedCharacterMoveRange, tileMask))
+            {
+                Tile hitTile = hit.transform.GetComponent<Tile>();
+                if (hitTile.Occupied == false)
+                    tiles.Add(hitTile);
+            }
+
+            Debug.DrawRay(aboveTilePos, Vector3.down * rayLength * selectedCharacterMoveRange, Color.blue);
+        }
+
+        //Additionally add connected tiles such as ladders
+        if (origin.connectedTile != null)
+            tiles.Add(origin.connectedTile);
+
+        return tiles;*/
+        
+    }
+
+    [Button]
+    public List<Tile> GetTilesInBetween(Tile origin, Tile destination, bool forAIPathfinding = false)
+    {
+        //return the list of tiles between the two tiles
+        Path path = FindPath(origin, destination, forAIPathfinding);
+        //print(path);
+        List<Tile> tiles = new List<Tile>();
+        //print(tiles);
+        foreach (Tile tile in path.tiles)
+        {
+            if (tile != origin && tile != destination)
+            {
+                tiles.Add(tile);
+                //tile.Highlight(Color.white);
+            }
+            
+        }
+
+        return tiles;
+       
+    }
+}

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa17bff122660d49950f7c1b206c9fc, type: 3}
+  m_Name: ShootSkill01
+  m_EditorClassIdentifier: 
+  skillSprite: {fileID: 21300000, guid: 8c5e5033fe838ef40989eeb85a513b7f, type: 3}
+  skillName: ShootSkill01
+  skillID: 1
+  skillDamage: 58
+  skillRange: 3
+  skillType: 0
+  skillClass: 1
+  damageType: 0
+  skillTarget: 0
+  skillEffect: 0

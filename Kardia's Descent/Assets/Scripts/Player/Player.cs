@@ -1,0 +1,33 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using Sirenix.OdinInspector;
+using UnityEngine;
+
+public class Player : Character
+{
+    private void OnEnable()
+    {
+        TurnSystem.Instance.FriendlyTurn += base.StartTurn;
+    }
+
+    private void OnDisable()
+    {
+        TurnSystem.Instance.FriendlyTurn -= base.StartTurn;
+    }
+    private void Update()
+    {
+        if (characterState == CharacterState.Attacking)
+        {
+            //Rotate(transform.position, Interact.Instance.currentTile.transform.position);
+            StartCoroutine(RotateEnum(transform.position, Interact.Instance.currentTile.transform.position));
+        }
+    }
+
+    [Button]
+    public List<Tile> gettilesinbetween(Tile dest)
+    {
+        
+        return Pathfinder.Instance.GetTilesInBetween(characterTile, dest, true);
+    }
+}

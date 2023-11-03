@@ -1,0 +1,15 @@
+{
+    "name": "SGT_Transform",
+    "references": [
+        "GUID:19a56dd49d80bbb4fb1a8e62f1452e81"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

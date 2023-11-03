@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a428946ee7b01f24983cb015835c6ec7, type: 3}
+  m_Name: Rifle01_Grip
+  m_EditorClassIdentifier: 
+  PartPrefab: {fileID: -4036682030342043119, guid: 95a41bc43b41ef645b28d1e923a1fba7,
+    type: 3}
+  partName: Rifle01_Grip
+  partType: 0
+  partClass: 1
+  damageType: 0

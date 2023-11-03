@@ -1,0 +1,17 @@
+{
+    "name": "StudioGamebitTools_Editor",
+    "references": [
+        "GUID:a1e153b3bfe375c42a9ab86d485024a8"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
