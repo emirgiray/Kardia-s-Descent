@@ -40,7 +40,9 @@ public class TurnSystem : MonoBehaviour
     [FoldoutGroup("Events")] public UnityEvent OnPlayerTurn;
     [FoldoutGroup("Events")] public UnityEvent OnEnemyTurn;
     [FoldoutGroup("Events")] public UnityEvent<Player> OnPlayerDeath;
+    [FoldoutGroup("Events")] public UnityEvent<Player> OnPlayerAdd;
     [FoldoutGroup("Events")] public UnityEvent<Enemy> OnEnemyDeath;
+    [FoldoutGroup("Events")] public UnityEvent<Enemy> OnEnemyAdd;
 
 
     void Awake()
@@ -196,8 +198,9 @@ public class TurnSystem : MonoBehaviour
     [Button,GUIColor(0,0,1)][FoldoutGroup("DEBUG")]
     public void PlayerAdded(Player newPlayer)
     {
-       players.Add(newPlayer);
+       players.Add(newPlayer);//todo might need to change this to addrange
        allEntities.Add(newPlayer.gameObject);
+       OnPlayerAdd.Invoke(newPlayer);
     }
     
     [Button,GUIColor(0,0,1)][FoldoutGroup("DEBUG")]
@@ -205,6 +208,7 @@ public class TurnSystem : MonoBehaviour
     {
         enemies.Add(newEnemy);
         allEntities.Add(newEnemy.gameObject);
+        OnEnemyAdd.Invoke(newEnemy);
     }
 
     public void UpdateTurnText(TextMeshProUGUI turnText)

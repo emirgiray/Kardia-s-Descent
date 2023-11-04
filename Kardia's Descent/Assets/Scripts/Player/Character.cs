@@ -211,6 +211,7 @@ public class Character : MonoBehaviour
             if (TurnSystem.Instance.IsThisCharactersTurn(this))
             {
                 canMove = true;
+                canAttack = true;
                 characterState = CharacterState.WaitingTurn;//todo enemy turn does not change to waiting for turn
                 ResetMovePoints();
                 ResetActionPoints();
@@ -242,6 +243,11 @@ public class Character : MonoBehaviour
 
     public void EndTurn()
     {
+        characterState = CharacterState.WaitingNextRound;
+        if (this is Enemy)
+        {
+            GetComponent<StateController>().aiActive = false;
+        }
         TurnSystem.Instance.NextTurn();
     }
 
@@ -263,6 +269,11 @@ public class Character : MonoBehaviour
     {
         characterState = CharacterState.WaitingTurn;
         remainingActionPoints--;
+        if (remainingActionPoints <= 0)
+        {
+            canAttack = false;
+        }
+
         OnActionPointsChange?.Invoke(remainingActionPoints);
         OnActionPointsChangeEvent?.Invoke(remainingActionPoints);
         CheckIfEndTurn();

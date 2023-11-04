@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "MoveCloseAction", menuName = "ScriptableObjects/AI/Actions/MoveCloseAction", order = 0)]
+[CreateAssetMenu(fileName = "MoveCloseAction", menuName = "MyPluggableAI/Actions/MoveCloseAction", order = 0)]
 public class MoveCloseAction : ActionAI
 {
     public override void Act(StateController controller)
@@ -14,7 +14,7 @@ public class MoveCloseAction : ActionAI
     {
         
         
-        if (TurnSystem.Instance.turnState == TurnSystem.TurnState.Enemy && controller.enemy.canMove && controller.RandomWait())
+        if (TurnSystem.Instance.turnState == TurnSystem.TurnState.Enemy && controller.enemy.canMove && controller.RandomWait())//todo seems like adding delay fixes problems like stuttering and going back to first tile
         {
             if (controller.enemy.turnOrder == TurnSystem.Instance.currentEnemyTurnOrder)
             {
@@ -25,18 +25,18 @@ public class MoveCloseAction : ActionAI
         }
     }
 
-    List<Tile> reachableTiles = new List<Tile>();
-    List<Tile> attackableTiles = new List<Tile>();
-    List<Tile> tilesBetwen = new List<Tile>();
+    // List<Tile> reachableTiles = new List<Tile>();
+    // List<Tile> attackableTiles = new List<Tile>();
+    // List<Tile> tilesBetwen = new List<Tile>();
     
     private Path FindPathToTargetPlayer(StateController controller, Player targetPlayer)
     {
-        reachableTiles = Pathfinder.Instance.GetReachableTiles(controller.enemy.characterTile, controller.enemy.remainingMoveRange);
-        attackableTiles = Pathfinder.Instance.GetReachableTiles(controller.enemy.characterTile, controller.selectedSkill.skillRange);
-        tilesBetwen = Pathfinder.Instance.GetTilesInBetween(controller.enemy.characterTile, targetPlayer.characterTile, true);
+        // reachableTiles = Pathfinder.Instance.GetReachableTiles(controller.enemy.characterTile, controller.enemy.remainingMoveRange);
+        // attackableTiles = Pathfinder.Instance.GetReachableTiles(controller.enemy.characterTile, controller.selectedSkill.skillRange);
+        //tilesBetwen = Pathfinder.Instance.GetTilesInBetween(controller.enemy.characterTile, targetPlayer.characterTile, true);
         //move until target player is in skillRange
 
-        return Pathfinder.Instance.FindPath(controller.enemy.characterTile, tilesBetwen[controller.enemy.remainingMoveRange - 1]);
+        return Pathfinder.Instance.FindPath(controller.enemy.characterTile, Pathfinder.Instance.GetTilesInBetween(controller.enemy.characterTile, targetPlayer.characterTile, true)[controller.enemy.remainingMoveRange - 1]);
 
         
         /*foreach (var tile in attackableTiles)//maybe do this in a decision

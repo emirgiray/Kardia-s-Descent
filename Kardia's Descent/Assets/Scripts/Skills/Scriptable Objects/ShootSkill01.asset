@@ -15,10 +15,11 @@ MonoBehaviour:
   skillSprite: {fileID: 21300000, guid: 8c5e5033fe838ef40989eeb85a513b7f, type: 3}
   skillName: ShootSkill01
   skillID: 1
-  skillDamage: 58
+  skillDamage: 25
   skillRange: 3
   skillType: 0
   skillClass: 1
   damageType: 0
   skillTarget: 0
   skillEffect: 0
+  Bullet: {fileID: 442650134954007290, guid: a16f60c51d7bf874e8ee3d3db9504520, type: 3}

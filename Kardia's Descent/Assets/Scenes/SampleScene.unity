@@ -2162,8 +2162,8 @@ MonoBehaviour:
   allEntities: []
   turn: 1
   round: 2
-  totalTurnsInScene: 1
-  totalTurnsInGame: 1
+  totalTurnsInScene: 0
+  totalTurnsInGame: 3
   currentEnemyTurnOrder: 0
   turnState: 0
   OnTurnChange:
@@ -2190,7 +2190,13 @@ MonoBehaviour:
   OnPlayerDeath:
     m_PersistentCalls:
       m_Calls: []
+  OnPlayerAdd:
+    m_PersistentCalls:
+      m_Calls: []
   OnEnemyDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  OnEnemyAdd:
     m_PersistentCalls:
       m_Calls: []
 --- !u!4 &128588941
@@ -6477,14 +6483,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8594639745694862240, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
+      propertyPath: initiative
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8594639745694862240, guid: 89ab918d79ba6e74598771889c318cd0,
+        type: 3}
       propertyPath: actionPoints
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8594639745694862240, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
       propertyPath: GroundLayerMask.m_Bits
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: -6751961407145202659, guid: 89ab918d79ba6e74598771889c318cd0,
+        type: 3}
+      propertyPath: selectedSkill
+      value: 
+      objectReference: {fileID: 11400000, guid: 86483eb2a26720249b022fc666d4704d,
+        type: 2}
     - target: {fileID: 220303031585184930, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
       propertyPath: m_Name
@@ -6493,7 +6510,7 @@ PrefabInstance:
     - target: {fileID: 220303031585184934, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.68
+      value: -7.32
       objectReference: {fileID: 0}
     - target: {fileID: 220303031585184934, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
@@ -6503,7 +6520,7 @@ PrefabInstance:
     - target: {fileID: 220303031585184934, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.77
+      value: -9.39
       objectReference: {fileID: 0}
     - target: {fileID: 220303031585184934, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
@@ -6548,35 +6565,41 @@ PrefabInstance:
     - target: {fileID: 4307295650466193098, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
       propertyPath: aiActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4307295650466193098, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
       propertyPath: currentState
       value: 
-      objectReference: {fileID: 11400000, guid: 0d90d09836c58a74c876b949b3a01b26,
+      objectReference: {fileID: 11400000, guid: 8fde20d4419649443896a8c25a3696d4,
         type: 2}
-    - target: {fileID: 4307295650466193098, guid: 89ab918d79ba6e74598771889c318cd0,
-        type: 3}
-      propertyPath: targetPlayer
-      value: 
-      objectReference: {fileID: 1909914175}
     - target: {fileID: 4307295650466193098, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
       propertyPath: selectedSkill
       value: 
-      objectReference: {fileID: 11400000, guid: e127c785c7ca75d428b2de33af2357bb,
+      objectReference: {fileID: 11400000, guid: 86483eb2a26720249b022fc666d4704d,
         type: 2}
     - target: {fileID: 4307295650466193098, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
       propertyPath: RandomWaitTimer.x
-      value: 0.9254034
+      value: 1.5403228
       objectReference: {fileID: 0}
     - target: {fileID: 4307295650466193098, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
       propertyPath: RandomWaitTimer.y
-      value: 1.7016131
+      value: 2.3669355
       objectReference: {fileID: 0}
+    - target: {fileID: 6684565769014052981, guid: 89ab918d79ba6e74598771889c318cd0,
+        type: 3}
+      propertyPath: hand
+      value: 
+      objectReference: {fileID: 317814005}
+    - target: {fileID: 6684565769014052981, guid: 89ab918d79ba6e74598771889c318cd0,
+        type: 3}
+      propertyPath: testWeaponData
+      value: 
+      objectReference: {fileID: 11400000, guid: fffca42d279e4f849bfd318538a844c0,
+        type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -37493,13 +37516,19 @@ PrefabInstance:
     - target: {fileID: -8594639745694862240, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
       propertyPath: actionPoints
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8594639745694862240, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
       propertyPath: GroundLayerMask.m_Bits
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: -6751961407145202659, guid: 89ab918d79ba6e74598771889c318cd0,
+        type: 3}
+      propertyPath: selectedSkill
+      value: 
+      objectReference: {fileID: 11400000, guid: 86483eb2a26720249b022fc666d4704d,
+        type: 2}
     - target: {fileID: 220303031585184930, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
       propertyPath: m_Name
@@ -37563,19 +37592,14 @@ PrefabInstance:
     - target: {fileID: 4307295650466193098, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
       propertyPath: aiActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4307295650466193098, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
       propertyPath: currentState
       value: 
-      objectReference: {fileID: 11400000, guid: 0d90d09836c58a74c876b949b3a01b26,
+      objectReference: {fileID: 11400000, guid: 8fde20d4419649443896a8c25a3696d4,
         type: 2}
-    - target: {fileID: 4307295650466193098, guid: 89ab918d79ba6e74598771889c318cd0,
-        type: 3}
-      propertyPath: targetPlayer
-      value: 
-      objectReference: {fileID: 1909914175}
     - target: {fileID: 4307295650466193098, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
       propertyPath: selectedSkill
@@ -37585,13 +37609,24 @@ PrefabInstance:
     - target: {fileID: 4307295650466193098, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
       propertyPath: RandomWaitTimer.x
-      value: 0.6028228
+      value: 1.5604839
       objectReference: {fileID: 0}
     - target: {fileID: 4307295650466193098, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
       propertyPath: RandomWaitTimer.y
-      value: 1.6108872
+      value: 2.3669355
       objectReference: {fileID: 0}
+    - target: {fileID: 6684565769014052981, guid: 89ab918d79ba6e74598771889c318cd0,
+        type: 3}
+      propertyPath: hand
+      value: 
+      objectReference: {fileID: 1326690700}
+    - target: {fileID: 6684565769014052981, guid: 89ab918d79ba6e74598771889c318cd0,
+        type: 3}
+      propertyPath: testWeaponData
+      value: 
+      objectReference: {fileID: 11400000, guid: fffca42d279e4f849bfd318538a844c0,
+        type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -38866,18 +38901,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1142557685}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1909914175 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9065801569352980135, guid: 9e62eacb0b934924e996871848be7ecb,
-    type: 3}
-  m_PrefabInstance: {fileID: 1142557685}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40e1b56ff8194f9498d18383bf9980c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1911199020
 GameObject:
   m_ObjectHideFlags: 0

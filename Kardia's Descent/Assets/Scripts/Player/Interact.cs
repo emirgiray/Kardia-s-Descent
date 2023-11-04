@@ -542,7 +542,7 @@ public class Interact : MonoBehaviour
     public void HighlightAttackableTiles()
     { 
         ClearHighlightAttackableTiles();
-        attackableTiles = pathfinder.GetReachableTiles(selectedCharacter.characterTile, selectedCharacter.GetComponent<SkillContainer>().selectedSkill.skillRange/*, selectedCharacter.characterTile*/);
+        attackableTiles = pathfinder.GetAttackableTiles(selectedCharacter.characterTile, selectedCharacter.GetComponent<SkillContainer>().selectedSkill.skillRange/*, selectedCharacter.characterTile*/);
         foreach (Tile tile in attackableTiles)
         {
             tile.HighlightAttackable();

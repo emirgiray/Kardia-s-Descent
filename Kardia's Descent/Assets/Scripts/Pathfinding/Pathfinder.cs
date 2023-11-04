@@ -56,7 +56,7 @@ public class Pathfinder : MonoBehaviour
             //Destination reached
             if (currentTile == destination)
             {  
-                return PathBetween(destination, origin);
+                return PathBetween(destination, origin, forAIPathfinding);
             }
 
             foreach (Tile neighbor in NeighborTiles(currentTile, forAIPathfinding))
@@ -85,9 +85,10 @@ public class Pathfinder : MonoBehaviour
     /// Returns a list of all neighboring hexagonal tiles and ladders
     /// </summary>
     /// <param name="origin"></param>
-    /// <param name="forAIPathfinding">this is for AI pathfinding bc without addng this ai cant get the destination since its occupied</param>
+    /// <param name="forAIPathfinding">this is for AI pathfinding bc without adding this ai cant get the destination since its occupied</param>
+    /// <param name="forAttackRange">this is for attack range bc without addng this character cant get the destination since its occupied</param>
     /// <returns></returns>
-    public List<Tile> NeighborTiles(Tile origin, bool forAIPathfinding = false)
+    public List<Tile> NeighborTiles(Tile origin, bool forAIPathfinding = false, bool forAttackRange = false)
     {
         const float HEXAGONAL_OFFSET = 1.75f;
         List<Tile> tiles = new List<Tile>();
@@ -111,7 +112,7 @@ public class Pathfinder : MonoBehaviour
                 }
                 else
                 {
-                    if (forAIPathfinding)
+                    if (forAIPathfinding || forAttackRange)
                     {
                         tiles.Add(hitTile);
                     }
@@ -136,10 +137,15 @@ public class Pathfinder : MonoBehaviour
     /// <param name="dest"></param>
     /// <param name="source"></param>
     /// <returns></returns>
-    public Path PathBetween(Tile dest, Tile source)
+    public Path PathBetween(Tile dest, Tile source, bool forAIPathfinding = false)
     {
         Path path = MakePath(dest, source);
-        illustrator.IllustratePath(path);
+
+        if (forAIPathfinding == false)
+        {
+            illustrator.IllustratePath(path);
+        }
+        
         return path;
     }
 
@@ -265,6 +271,45 @@ public class Pathfinder : MonoBehaviour
         
     }
 
+      public List<Tile> GetAttackableTiles(Tile selectedCharacterCharacterTile, int selectedCharacterSkillRange)
+    {
+        
+        List<Tile> tiles = new List<Tile>();
+        tiles.Add(selectedCharacterCharacterTile);
+        List<Tile> frontier = new List<Tile>();
+        frontier.Add(selectedCharacterCharacterTile);
+
+        int currentRange = 0;
+        while (currentRange < selectedCharacterSkillRange )
+        {
+            List<Tile> newFrontier = new List<Tile>();
+
+            foreach (Tile tile in frontier)
+            {
+                foreach (Tile neighbor in NeighborTiles(tile, false, true))
+                {
+                    /*if (neighbor.Occupied == true)
+                    {
+
+                    }*/
+                    if (/*neighbor.Occupied == false && */!tiles.Contains(neighbor))
+                    {
+                        newFrontier.Add(neighbor);
+                        tiles.Add(neighbor);
+
+                        
+                    }
+                }
+            }
+
+            frontier = newFrontier;
+            currentRange++;
+        }
+
+        return tiles;
+        
+        
+    }
     [Button]
     public List<Tile> GetTilesInBetween(Tile origin, Tile destination, bool forAIPathfinding = false)
     {

@@ -132,6 +132,9 @@ GameObject:
   - component: {fileID: -646142018697577176}
   - component: {fileID: -8594639745694862240}
   - component: {fileID: 4307295650466193098}
+  - component: {fileID: -6751961407145202659}
+  - component: {fileID: 7224365364739156612}
+  - component: {fileID: 6684565769014052981}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -300,6 +303,7 @@ MonoBehaviour:
   ActionPointsExhausted:
     m_PersistentCalls:
       m_Calls: []
+  turnOrder: 0
   decideState: 0
 --- !u!114 &4307295650466193098
 MonoBehaviour:
@@ -314,10 +318,77 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: {fileID: 0}
-  enemy: {fileID: 0}
+  remainState: {fileID: 11400000, guid: 20a530a049e552949892a8e571154a9d, type: 2}
+  selectedSkill: {fileID: 0}
   enemyStats: {fileID: 0}
   pathfinder: {fileID: 0}
+  turnSystem: {fileID: 0}
+  enemy: {fileID: 0}
+  skillContainer: {fileID: 0}
+  targetPlayer: {fileID: 0}
   players: []
+  enemies: []
+  movableTiles: []
+  attackableTiles: []
+  RandomWaitTimer: {x: 0, y: 0}
+  aiActive: 0
+--- !u!114 &-6751961407145202659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220303031585184930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c781da93507b7847bf67f8a566d0250, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillsDataList: []
+  skillSelected: 0
+  selectedSkill: {fileID: 0}
+--- !u!114 &7224365364739156612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220303031585184930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f841e4ce24f3f514ba9b3583cb4c35ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hand: {fileID: 0}
+  weaponData: {fileID: 0}
+  currentWeapon: {fileID: 0}
+--- !u!114 &6684565769014052981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220303031585184930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6711af319eab0054290fe694ca85b822, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponsDataList: []
+  skillsDataList: []
+  skillsToAdd: []
+  weaponPartDataList: []
+  weaponContainer: {fileID: 7224365364739156612}
+  skillsContainer: {fileID: -6751961407145202659}
+  spawnedWeapon: {fileID: 0}
+  hand: {fileID: 0}
+  InventoryUI: {fileID: 0}
+  InventoryUISlot: {fileID: 0}
+  SpawnedInventoryUI: {fileID: 0}
+  SpawnedInventoryUIScript: {fileID: 0}
+  skillButtonPrefab: {fileID: 0}
+  spawnedSkillButtonPrefabs: []
+  testWeaponData: {fileID: 0}
 --- !u!1 &220303032207745227
 GameObject:
   m_ObjectHideFlags: 0

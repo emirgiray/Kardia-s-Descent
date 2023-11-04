@@ -22,3 +22,4 @@ MonoBehaviour:
   damageType: 0
   skillTarget: 0
   skillEffect: 0
+  Bullet: {fileID: 442650134954007290, guid: a16f60c51d7bf874e8ee3d3db9504520, type: 3}

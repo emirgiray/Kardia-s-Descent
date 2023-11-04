@@ -39,15 +39,20 @@ public class Inventory : MonoBehaviour
     {
         sgtHealth = GetComponent<SGT_Health>();
         player = GetComponent<Player>();
+
+        if (this.GetComponent<Character>() is Player)
+        {
+            SpawnInventoryUI();
+            PopulateHealthUI();
+            PopulatePointsUI();
+            // PopulateSkillsUI();
         
-        SpawnInventoryUI();
-        PopulateHealthUI();
-        PopulatePointsUI();
-        // PopulateSkillsUI();
+            SpawnedInventoryUIScript.SetPlayer(player);
+            SpawnedInventoryUIScript.SubscribeToPlayerEvents();
+            ShowSkillsUI(false);
+        }
         
-        SpawnedInventoryUIScript.SetPlayer(player);
-        SpawnedInventoryUIScript.SubscribeToPlayerEvents();
-        ShowSkillsUI(false);
+        
         
         SpawnTestWeapon();
         
@@ -113,7 +118,11 @@ public class Inventory : MonoBehaviour
         skillsDataList.AddRange(testWeaponData.SkillsDataList);
         skillsToAdd = testWeaponData.SkillsDataList;
         weaponsDataList.Add(testWeaponData);
-        PopulateSkillsUI();
+
+        if (this.GetComponent<Character>() is Player)
+        {
+            PopulateSkillsUI();
+        }
     }
 
     public void ShowSkillsUI(bool value)
