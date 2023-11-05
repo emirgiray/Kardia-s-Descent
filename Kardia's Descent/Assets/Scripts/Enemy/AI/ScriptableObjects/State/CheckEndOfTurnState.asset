@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 91dd342f79d40dd49b4eb64d48a09d70, type: 3}
-  m_Name: MoveCloseState
+  m_Name: CheckEndOfTurnState
   m_EditorClassIdentifier: 
-  actions:
-  - {fileID: 11400000, guid: dd49a496116b5e44f8886a39a16db8e0, type: 2}
+  actions: []
   transitions:
-  - decision: {fileID: 11400000, guid: 524a8445b5f347a4088d73b897c0a3fb, type: 2}
-    trueState: {fileID: 0}
-    falseState: {fileID: 11400000, guid: 65ed91b8d4165954fa5e2aa4c9078c00, type: 2}
-  sceneGizmoColor: {r: 0.06203568, g: 1, b: 0, a: 1}
+  - decision: {fileID: 0}
+    trueState: {fileID: 11400000, guid: e539571ab2593024ea164ccc69230ba9, type: 2}
+    falseState: {fileID: 0}
+  sceneGizmoColor: {r: 0, g: 1, b: 0.6638634, a: 1}

@@ -76,6 +76,14 @@ public class Tile : MonoBehaviour
     {
         GetComponent<MeshRenderer>().material.color = color;
     }
+
+    public void ResetOcupying()
+    {
+        occupyingCharacter = null;
+        occupyingPlayer = null;
+        occupyingEnemy = null;
+                
+    }
     
     /*public void DebugCostText()
     {

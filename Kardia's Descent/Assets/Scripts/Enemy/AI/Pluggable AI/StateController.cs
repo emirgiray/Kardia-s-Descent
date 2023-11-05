@@ -8,8 +8,11 @@ using Random = UnityEngine.Random;
 
 public class StateController : MonoBehaviour
 { 
+    [SerializeField] public bool aiActive;
+    
     public StateAI currentState;
     public StateAI remainState;
+    public StateAI defaultCombatStartState;
    // public SkillsData selectedSkill;
     public EnemyStatsData enemyStats;
     [HideInInspector] public Pathfinder pathfinder;
@@ -17,6 +20,9 @@ public class StateController : MonoBehaviour
     [HideInInspector] public Enemy enemy;
     [HideInInspector] public SkillContainer skillContainer;
     public Player targetPlayer;
+    
+    public Tile decidedMoveTile;
+    public SkillsData decidedAttackSkill;
     
     public List<Player> players = new List<Player>();
     public List<Enemy> enemies = new List<Enemy>();
@@ -27,7 +33,6 @@ public class StateController : MonoBehaviour
     [MinMaxSlider(0,3)]
     public Vector2 RandomWaitTimer;
     
-    [SerializeField] public bool aiActive;
 
     private void OnEnable()//todo might need to turn this into an action or delegate
     {
@@ -35,6 +40,7 @@ public class StateController : MonoBehaviour
         turnSystem.OnEnemyDeath.AddListener(EnemyDied);
         turnSystem.OnPlayerAdd.AddListener(PlayerAdded);
         turnSystem.OnEnemyAdd.AddListener(EnemyAdded);
+        enemy.OnTurnStart += ResetToDefaultCombatState;
     }
     private void OnDisable()
     {
@@ -42,6 +48,7 @@ public class StateController : MonoBehaviour
         turnSystem.OnEnemyDeath.RemoveListener(EnemyDied);
         turnSystem.OnPlayerAdd.RemoveListener(PlayerAdded);
         turnSystem.OnEnemyAdd.RemoveListener(EnemyAdded);
+        enemy.OnTurnStart -= ResetToDefaultCombatState;
     }
 
     private void Awake()
@@ -70,7 +77,10 @@ public class StateController : MonoBehaviour
         }
         else
         {
-            currentState.UpdateState(this);
+            if (TurnSystem.Instance.turnState == TurnSystem.TurnState.Enemy && enemy.turnOrder == TurnSystem.Instance.currentEnemyTurnOrder)
+            {
+                currentState.UpdateState(this);
+            }
         }
     }
     
@@ -94,6 +104,11 @@ public class StateController : MonoBehaviour
         return attackableTiles;
     }
 
+    public void ResetToDefaultCombatState()
+    {
+        currentState = defaultCombatStartState;
+    }
+    
     #region Add and Remove from lists
 
     public void PlayerDied(Player deadPlayer)
@@ -118,6 +133,7 @@ public class StateController : MonoBehaviour
 
     #endregion
 
+    
     private void OnDrawGizmos()
     {
         if (currentState != null)

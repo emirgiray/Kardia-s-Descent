@@ -9,7 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb05076944dad284da95c8ac4207045a, type: 3}
-  m_Name: MoveOrAttackDecision
+  m_Script: {fileID: 11500000, guid: 2f0a8aba0d7ce4d4798f7edb1fdcb7de, type: 3}
+  m_Name: CombatStartDecision
   m_EditorClassIdentifier: 
-  attackableTiles: []

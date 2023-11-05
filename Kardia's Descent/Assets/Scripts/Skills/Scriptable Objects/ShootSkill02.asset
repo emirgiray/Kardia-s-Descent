@@ -15,8 +15,8 @@ MonoBehaviour:
   skillSprite: {fileID: 21300000, guid: 3af7666693284e04eacc2fcd7c0f6c43, type: 3}
   skillName: ShootSkill02
   skillID: 1
-  skillDamage: 5
-  skillRange: 1
+  skillDamage: 10
+  skillRange: 3
   skillType: 1
   skillClass: 1
   damageType: 0

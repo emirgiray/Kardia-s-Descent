@@ -393,6 +393,10 @@ public class Interact : MonoBehaviour
                 ClearHighlightReachableTiles();
                // GetComponent<AudioSource>().PlayOneShot(click);
                 selectedCharacter.StartMove(newPath);
+                /*foreach (var VARIABLE in newPath.tiles)
+                {
+                    VARIABLE.Highlight(Color.white);
+                }*/
                 lastSelectedCharacter = selectedCharacter;
                 //selectedCharacter = null;
             }

@@ -33,6 +33,7 @@ public class Character : MonoBehaviour
     
     public Action<int> OnMovePointsChange;
     public Action<int> OnActionPointsChange;
+    public Action OnTurnStart;
     public Action<Character> OnCharacterDeath;
     
     [FoldoutGroup("Events")] public UnityEvent<int> OnMovePointsChangeEvent;
@@ -74,7 +75,7 @@ public class Character : MonoBehaviour
         Debug.Log("Unable to find a start position");
     }
 
-    IEnumerator MoveAlongPath(Path path)
+    IEnumerator MoveAlongPath(Path path, Action OnComplete = null)
     {
         const float MIN_DISTANCE = 0.05f;
         const float TERRAIN_PENALTY = 0.5f;
@@ -91,7 +92,7 @@ public class Character : MonoBehaviour
             Vector3 nextTilePosition = path.tiles[currentStep].transform.position;
 
             float movementTime = animationTime / (movedata.MoveSpeed + path.tiles[currentStep].terrainCost * TERRAIN_PENALTY);
-            MoveAndRotate(currentTile.transform.position, nextTilePosition, movementTime);
+            /*if(!path.tiles[currentStep].Occupied) */MoveAndRotate(currentTile.transform.position, nextTilePosition, movementTime);
             animationTime += Time.deltaTime;
 
             if (Vector3.Distance(transform.position, nextTilePosition) > MIN_DISTANCE)
@@ -114,15 +115,17 @@ public class Character : MonoBehaviour
                 }
             }
             //Min dist has been reached, look to next step in path
-            currentTile = path.tiles[currentStep];
+            /*if(!path.tiles[currentStep].Occupied)*/ currentTile = path.tiles[currentStep];
             currentStep++;
             animationTime = 0f;
         }
 
-        FinalizePosition(path.tiles[pathLength], false);
+        // FinalizePosition(path.tiles[pathLength], false);
+        FinalizePosition(currentTile, false);
+        OnComplete?.Invoke();
     }
 
-    public void StartMove(Path _path)
+    public void StartMove(Path _path, Action OnComplete = null)
     {
         if (canMove)
         {
@@ -130,7 +133,9 @@ public class Character : MonoBehaviour
             characterState = CharacterState.Moving;
             Moving = true;
             characterTile.Occupied = false;
-            StartCoroutine(MoveAlongPath(_path));
+            characterTile.ResetOcupying();
+            print("enemy move start");
+            StartCoroutine(MoveAlongPath(_path, OnComplete));
         }
     }
 
@@ -160,6 +165,7 @@ public class Character : MonoBehaviour
             
             if (gameObject.tag == "Enemy")//todo: this is a temporary fix for enemies not ending turn after moving, if we want different behaviour for enemies like move hit then flee, we need to change this
             {
+               
                 //remainingMoveRange = 0;
                 //canMove = false;
                 //EndofMovePoints();
@@ -215,6 +221,11 @@ public class Character : MonoBehaviour
                 characterState = CharacterState.WaitingTurn;//todo enemy turn does not change to waiting for turn
                 ResetMovePoints();
                 ResetActionPoints();
+
+                if (this is Enemy)
+                {
+                    OnTurnStart?.Invoke();
+                }
             }
             else
             {

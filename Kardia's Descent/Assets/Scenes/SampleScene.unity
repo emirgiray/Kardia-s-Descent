@@ -6489,7 +6489,7 @@ PrefabInstance:
     - target: {fileID: -8594639745694862240, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
       propertyPath: actionPoints
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8594639745694862240, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
@@ -6500,8 +6500,7 @@ PrefabInstance:
         type: 3}
       propertyPath: selectedSkill
       value: 
-      objectReference: {fileID: 11400000, guid: 86483eb2a26720249b022fc666d4704d,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 220303031585184930, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
       propertyPath: m_Name
@@ -6510,7 +6509,7 @@ PrefabInstance:
     - target: {fileID: 220303031585184934, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.32
+      value: -2.53
       objectReference: {fileID: 0}
     - target: {fileID: 220303031585184934, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
@@ -6520,7 +6519,7 @@ PrefabInstance:
     - target: {fileID: 220303031585184934, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.39
+      value: -10.27
       objectReference: {fileID: 0}
     - target: {fileID: 220303031585184934, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
@@ -6571,7 +6570,7 @@ PrefabInstance:
         type: 3}
       propertyPath: currentState
       value: 
-      objectReference: {fileID: 11400000, guid: 8fde20d4419649443896a8c25a3696d4,
+      objectReference: {fileID: 11400000, guid: 4a6a703b84570254a9f52f2787eef5a5,
         type: 2}
     - target: {fileID: 4307295650466193098, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
@@ -6582,13 +6581,19 @@ PrefabInstance:
     - target: {fileID: 4307295650466193098, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
       propertyPath: RandomWaitTimer.x
-      value: 1.5403228
+      value: 0.5947102
       objectReference: {fileID: 0}
     - target: {fileID: 4307295650466193098, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
       propertyPath: RandomWaitTimer.y
-      value: 2.3669355
+      value: 1.0596502
       objectReference: {fileID: 0}
+    - target: {fileID: 4307295650466193098, guid: 89ab918d79ba6e74598771889c318cd0,
+        type: 3}
+      propertyPath: defaultCombatStartState
+      value: 
+      objectReference: {fileID: 11400000, guid: 4a6a703b84570254a9f52f2787eef5a5,
+        type: 2}
     - target: {fileID: 6684565769014052981, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
       propertyPath: hand
@@ -37598,7 +37603,7 @@ PrefabInstance:
         type: 3}
       propertyPath: currentState
       value: 
-      objectReference: {fileID: 11400000, guid: 8fde20d4419649443896a8c25a3696d4,
+      objectReference: {fileID: 11400000, guid: 4a6a703b84570254a9f52f2787eef5a5,
         type: 2}
     - target: {fileID: 4307295650466193098, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
@@ -37609,13 +37614,19 @@ PrefabInstance:
     - target: {fileID: 4307295650466193098, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
       propertyPath: RandomWaitTimer.x
-      value: 1.5604839
+      value: 0.5947102
       objectReference: {fileID: 0}
     - target: {fileID: 4307295650466193098, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
       propertyPath: RandomWaitTimer.y
-      value: 2.3669355
+      value: 1.0596502
       objectReference: {fileID: 0}
+    - target: {fileID: 4307295650466193098, guid: 89ab918d79ba6e74598771889c318cd0,
+        type: 3}
+      propertyPath: defaultCombatStartState
+      value: 
+      objectReference: {fileID: 11400000, guid: 4a6a703b84570254a9f52f2787eef5a5,
+        type: 2}
     - target: {fileID: 6684565769014052981, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
       propertyPath: hand

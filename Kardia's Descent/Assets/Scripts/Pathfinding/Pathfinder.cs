@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -165,7 +166,7 @@ public class Pathfinder : MonoBehaviour
     /// <param name="destination"></param>
     /// <param name="origin"></param>
     /// <returns></returns>
-    private Path MakePath(Tile destination, Tile origin)
+    public Path MakePath(Tile destination, Tile origin)
     {
         List<Tile> tiles = new List<Tile>();
         Tile current = destination;
@@ -329,6 +330,30 @@ public class Pathfinder : MonoBehaviour
         }
 
         return tiles;
+       
+    }
+    [Button]
+    public Path GetPathBetween(Tile origin, Tile destination, bool forAIPathfinding = false)
+    {
+        //return the path between the two tiles
+        /*Path path = Pathfinder.Instance.FindPath(origin,
+            Pathfinder.Instance.GetTilesInBetween(origin,
+                destination, forAIPathfinding)[Pathfinder.Instance.GetTilesInBetween(origin,
+                destination, forAIPathfinding).Count - 1]);*/
+
+        Path path = Pathfinder.Instance.FindPath(origin, destination, forAIPathfinding); 
+        
+        // path.tiles = path.tiles.Skip(1).ToArray();
+        /*List<Tile> list = new List<Tile>(path.tiles);
+        list.RemoveAt(0);
+        path.tiles = list.ToArray();*/
+        
+        /*Path path = FindPath(origin, destination, forAIPathfinding);*/
+        /*foreach (var VARIABLE in path.tiles)
+        {
+            VARIABLE.Highlight(Color.white);
+        }*/
+        return path;
        
     }
 }

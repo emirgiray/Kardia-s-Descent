@@ -6,15 +6,30 @@ using UnityEngine;
 public class SkillContainer : MonoBehaviour
 {
     [SerializeField] public List<SkillsData> skillsDataList = new List<SkillsData>();
-    [SerializeField] public bool skillSelected = false;
+    [SerializeField] public List<Skills> skillsList = new List<Skills>();
     [SerializeField] public SkillsData selectedSkill;
+    [SerializeField] public Skills selectedSkillzzz;
+    [SerializeField] public bool skillSelected = false;
+    [SerializeField] public bool skillCanbeUsed = true;
     [SerializeField] public Character Character;
 
     private void Start()
     {
         Character = GetComponent<Character>();
+        //PopulateSkillsList();
     }
 
+    public void PopulateSkillsList()
+    {
+        skillsList.AddRange(skillsDataList.ConvertAll(skill => new Skills
+        {
+            skillData = skill,
+            skillDamage = skill.skillDamage,
+            skillRange = skill.skillRange,
+            skillCooldown = skill.skillCooldown
+        }));
+    }
+    
     public void SkillHighlighted(SkillsData highlightSkill)
     {
         Interact.Instance.SkillHighlighted?.Invoke();
@@ -53,7 +68,7 @@ public class SkillContainer : MonoBehaviour
             enemy.EndTurn();
             return;
         }
-        Debug.Log($"{this.name} Selected {selectSkill.name}");
+        if (Character is Enemy)Debug.Log($"{this.name} Selected {selectSkill.name}");
 
         selectedSkill = selectSkill;
         if (Character is Player)
@@ -70,7 +85,7 @@ public class SkillContainer : MonoBehaviour
 
     public void DeslectSkill(SkillsData deselectSkill, Enemy enemy = null)
     {
-        Debug.Log($"{this.name} Deselected {deselectSkill.name}");
+        if (Character is Enemy)Debug.Log($"{this.name} Deselected {deselectSkill.name}");
 
         skillSelected = false;
         selectedSkill = null;
@@ -95,7 +110,7 @@ public class SkillContainer : MonoBehaviour
             return;
         }
 
-        Debug.Log($"{this.name} Used {selectedSkill.name}");
+        if (Character is Enemy)Debug.Log($"{this.name} Used {selectedSkill.name}");
 
         selectedSkill.ActivateSkill(gameObject, selectedTile, () => DeslectSkill(selectedSkill, enemy));
 
@@ -115,4 +130,16 @@ public class SkillContainer : MonoBehaviour
     {
         skillsDataList.AddRange(skillsDataListIn);
     }
+    
+    [System.Serializable]
+    public class Skills
+    {
+        public SkillsData skillData;
+        public int skillDamage;
+        public int skillRange;
+        public int skillCooldown;
+        
+    }
+
+    
 }

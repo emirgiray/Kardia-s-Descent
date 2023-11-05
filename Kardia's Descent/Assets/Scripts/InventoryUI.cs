@@ -16,6 +16,7 @@ public class InventoryUI : MonoBehaviour
     [BoxGroup("Points")] [SerializeField] private GameObject PointsUI;
     [BoxGroup("Points")] [SerializeField] private TextMeshProUGUI moveText;
     [BoxGroup("Points")] [SerializeField] private TextMeshProUGUI actionText;
+    [BoxGroup("Points")] [SerializeField] private Button skipTurnButton;
     
     [BoxGroup("Health")] [SerializeField] private GameObject HealthUI;
     [BoxGroup("Health")] [SerializeField] private Image Bar01;
@@ -32,15 +33,18 @@ public class InventoryUI : MonoBehaviour
     {
         player.OnMovePointsChange += UpdateMovePoints;//actions dont work for some reason
         player.OnActionPointsChange += UpdateActionPoints;
-       
+        
         player.OnMovePointsChangeEvent.AddListener(UpdateMovePoints);
         player.OnActionPointsChangeEvent.AddListener(UpdateActionPoints);
+        
+        skipTurnButton.onClick.AddListener(player.EndTurn);
     }
 
     private void OnDisable()
     {
         player.OnMovePointsChange -= UpdateMovePoints;
         player.OnActionPointsChange -= UpdateActionPoints;
+        //skipTurnButton.onClick.RemoveListener(player.EndTurn);
     }
 
     private void UpdateActionPoints(int value)

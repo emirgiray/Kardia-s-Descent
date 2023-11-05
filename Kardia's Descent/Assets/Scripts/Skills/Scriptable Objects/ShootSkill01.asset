@@ -16,7 +16,7 @@ MonoBehaviour:
   skillName: ShootSkill01
   skillID: 1
   skillDamage: 25
-  skillRange: 3
+  skillRange: 1
   skillType: 0
   skillClass: 1
   damageType: 0

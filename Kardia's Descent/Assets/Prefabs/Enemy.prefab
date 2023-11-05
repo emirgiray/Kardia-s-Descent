@@ -319,7 +319,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: {fileID: 0}
   remainState: {fileID: 11400000, guid: 20a530a049e552949892a8e571154a9d, type: 2}
-  selectedSkill: {fileID: 0}
+  defaultCombatStartState: {fileID: 11400000, guid: 8fde20d4419649443896a8c25a3696d4,
+    type: 2}
   enemyStats: {fileID: 0}
   pathfinder: {fileID: 0}
   turnSystem: {fileID: 0}
@@ -347,6 +348,7 @@ MonoBehaviour:
   skillsDataList: []
   skillSelected: 0
   selectedSkill: {fileID: 0}
+  Character: {fileID: 0}
 --- !u!114 &7224365364739156612
 MonoBehaviour:
   m_ObjectHideFlags: 0
