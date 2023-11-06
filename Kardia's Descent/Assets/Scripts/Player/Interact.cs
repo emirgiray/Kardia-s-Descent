@@ -4,6 +4,7 @@ using Pathfinding;
 using Pathfinding.Examples;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(AudioSource))]
 public class Interact : MonoBehaviour
@@ -26,8 +27,9 @@ public class Interact : MonoBehaviour
     List<Tile> attackableTiles = new List<Tile>();
     [SerializeField]
     AudioClip click, pop;
-    [SerializeField]
-    LayerMask interactMask;
+    [SerializeField]LayerMask interactMask;
+    [SerializeField]LayerMask UILayerMask;
+    
 
     //Debug purposes only
     [SerializeField]
@@ -37,6 +39,7 @@ public class Interact : MonoBehaviour
     Pathfinder pathfinder;
     [Tooltip("This is a null check for selectedCharacter")]
     bool characterSelected = false;
+    [SerializeField] bool isMouseOverUI = false;
     
     Dictionary<int, Color> tileInspectColors = new Dictionary<int, Color>()
     {
@@ -97,7 +100,7 @@ public class Interact : MonoBehaviour
             {
                 if (selectedCharacter.GetComponent<SkillContainer>().skillSelected == true)
                 {
-                    selectedCharacter.canAttack = value;
+                    //selectedCharacter.canAttack = value;//todo dont change this value, instead block all interactions when player hovers over skills, tooltips etc
                     HighlightAttackableTiles();
                 }
             }
@@ -105,7 +108,7 @@ public class Interact : MonoBehaviour
             {
                 if (selectedCharacter.GetComponent<SkillContainer>().skillSelected == true)
                 {
-                    selectedCharacter.canAttack = value;
+                    //selectedCharacter.canAttack = value;
                     ClearHighlightAttackableTiles();
                 }
             }
@@ -137,29 +140,46 @@ public class Interact : MonoBehaviour
     {
         Clear();
         MouseUpdate();
+        CheckMouseOverUI();
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (selectedCharacter.GetComponent<SkillContainer>().skillSelected == false && characterSelected)//deselect character //todo skill selectedi variable olarak tut
+            if ( characterSelected)//deselect character //todo skill selectedi variable olarak tut
             {
-                selectedCharacter.GetComponent<Inventory>().ShowSkillsUI(false);
-                selectedCharacter = null;
-                characterSelected = false;
-                ClearHighlightReachableTiles();
-                pathfinder.EnableIllustratePath(false);
+                if (selectedCharacter.GetComponent<SkillContainer>().skillSelected == false)
+                {
+                    selectedCharacter.GetComponent<Inventory>().ShowSkillsUI(false);
+                    selectedCharacter = null;
+                    characterSelected = false;
+                    ClearHighlightReachableTiles();
+                    pathfinder.EnableIllustratePath(false);
+                }
+                else//deselect skill
+                {
+                    selectedCharacter.GetComponent<SkillContainer>().DeslectSkill(selectedCharacter.GetComponent<SkillContainer>().selectedSkill.skillData);
+                    EnableMovement(true);
+                }
             }
-            else//deselect skill
-            {
-                selectedCharacter.GetComponent<SkillContainer>().DeslectSkill(selectedCharacter.GetComponent<SkillContainer>().selectedSkill);
-                EnableMovement(true);
-            }
+            
         }
         
     }
 
+    public void CheckMouseOverUI()
+    {
+        //check if mouse is over ui
+        if (EventSystem.current.IsPointerOverGameObject())//is this expensive
+        {
+            isMouseOverUI = true;
+        }
+        else
+        {
+            isMouseOverUI = false;
+        }
+    }
     private void MouseUpdate()
     {
-        if (!Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 200f, interactMask))
+        if (!Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 200f, interactMask) || isMouseOverUI)
             return;
 
        // if(lastTile != null) lastTile.ClearHighlight();
@@ -240,7 +260,11 @@ public class Interact : MonoBehaviour
                 case Character.CharacterState.Attacking:
                     if (Input.GetMouseButtonDown(0) && selectedCharacter.canAttack)
                     {
-                        selectedCharacter.GetComponent<SkillContainer>().UseSkill(selectedCharacter.GetComponent<SkillContainer>().selectedSkill, currentTile);
+                        if (attackableTiles.Contains(currentTile))
+                        {
+                            selectedCharacter.GetComponent<SkillContainer>().UseSkill(selectedCharacter.GetComponent<SkillContainer>().selectedSkill.skillData, currentTile);
+                            
+                        }
                     }
                     break;
                
@@ -546,7 +570,7 @@ public class Interact : MonoBehaviour
     public void HighlightAttackableTiles()
     { 
         ClearHighlightAttackableTiles();
-        attackableTiles = pathfinder.GetAttackableTiles(selectedCharacter.characterTile, selectedCharacter.GetComponent<SkillContainer>().selectedSkill.skillRange/*, selectedCharacter.characterTile*/);
+        attackableTiles = pathfinder.GetAttackableTiles(selectedCharacter.characterTile, selectedCharacter.GetComponent<SkillContainer>().selectedSkill.skillData.skillRange/*, selectedCharacter.characterTile*/);
         foreach (Tile tile in attackableTiles)
         {
             tile.HighlightAttackable();

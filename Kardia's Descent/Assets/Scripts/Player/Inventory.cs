@@ -72,10 +72,15 @@ public class Inventory : MonoBehaviour
              spawnedSkillButtonPrefabs[i] = Instantiate(skillButtonPrefab, SpawnedInventoryUIScript.GetHorizontalLayoutGroup().transform);
              
              var i1 = i;
-             spawnedSkillButtonPrefabs[i].GetComponent<SkillButton>().InitButton(skillsToAdd[i] , ()=> skillsContainer.TrySelectSkill(skillsToAdd[i1]));
+             spawnedSkillButtonPrefabs[i].GetComponent<SkillButton>().InitButton(skillsToAdd[i] , ()=> skillsContainer.TrySelectSkill(skillsToAdd[i1]), skillsContainer);
              
+             skillsContainer.skillButtons.Add(null);
+             skillsContainer.skillButtons[i] = spawnedSkillButtonPrefabs[i].GetComponent<SkillButton>();
+             //spawnedSkillButtonPrefabs[i].GetComponent<SkillButton>().SetSkillContainer(skillsContainer);
          }
      }
+     
+     
 
      public void PopulateHealthUI()
      {

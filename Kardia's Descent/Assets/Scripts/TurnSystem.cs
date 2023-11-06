@@ -30,6 +30,7 @@ public class TurnSystem : MonoBehaviour
     public Action FriendlyTurn;
     public Action FriendlySelected;
     public Action EnemyTurn;
+    public Action RoundChanged;
     public Action<int> TurnChange;
     public Action<int> RoundChange;
     [FoldoutGroup("Events")] public UnityEvent OnTurnChange;
@@ -96,7 +97,7 @@ public class TurnSystem : MonoBehaviour
             OnEnemyTurn.Invoke();
             if(EnemyTurn != null) EnemyTurn();
         }
-        
+        RoundChanged?.Invoke();
         if (round == 0)//Combat has not started yet
         {
             turnState = TurnState.None;
@@ -177,6 +178,7 @@ public class TurnSystem : MonoBehaviour
         RoundChange?.Invoke(round);
         OnRoundChange.Invoke();
         DecideWhosTurn();
+        
     }
 
     [Button,GUIColor(1,1,1)][FoldoutGroup("DEBUG")]

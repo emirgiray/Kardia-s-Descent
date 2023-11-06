@@ -17,6 +17,7 @@ MonoBehaviour:
   skillID: 1
   skillDamage: 10
   skillRange: 3
+  skillCooldown: 2
   skillType: 1
   skillClass: 1
   damageType: 0

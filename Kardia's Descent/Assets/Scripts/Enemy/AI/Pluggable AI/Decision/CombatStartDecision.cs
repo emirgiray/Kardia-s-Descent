@@ -19,19 +19,19 @@ public class CombatStartDecision : DecisionAI
         
         if (result == false)
         {
-            foreach (var skill in controller.skillContainer.skillsDataList)//state 1
+            foreach (var skill in controller.skillContainer.skillsList)//state 1
             {
-                foreach (var attackTile in Pathfinder.Instance.GetAttackableTiles(controller.enemy.characterTile, skill.skillRange))
+                foreach (var attackTile in Pathfinder.Instance.GetAttackableTiles(controller.enemy.characterTile, skill.skillData.skillRange))
                 {
                     if (attackTile.occupyingPlayer != null) //todo null check can be too expensive
                     {
-                        tileScore = skill.skillDamage;
+                        tileScore = skill.skillData.skillDamage;
                         if (tileScore > prevTileScore)
                         {
                             /*controller.skillContainer.SelectSkill(skill, controller.enemy);
                             controller.enemy.StartMove(Pathfinder.Instance.FindPath(controller.enemy.characterTile, tile));*/
-                            controller.skillContainer.SelectSkill(skill, controller.enemy);// this can be added at the end
-                            controller.decidedAttackSkill = skill;
+                            controller.skillContainer.SelectSkill(skill.skillData, controller.enemy);// this can be added at the end
+                            controller.decidedAttackSkill = skill.skillData;
                             controller.decidedMoveTile = controller.enemy.characterTile;
                             controller.targetPlayer = attackTile.occupyingPlayer;
                         }
@@ -55,20 +55,20 @@ public class CombatStartDecision : DecisionAI
         
         foreach (var tile in controller.GetReachableTiles())//state 2
         {
-            foreach (var skill in controller.skillContainer.skillsDataList)
+            foreach (var skill in controller.skillContainer.skillsList)
             {
-                foreach (var attackTile in Pathfinder.Instance.GetAttackableTiles(tile, skill.skillRange))
+                foreach (var attackTile in Pathfinder.Instance.GetAttackableTiles(tile, skill.skillData.skillRange))
                 {
                     if (attackTile.occupyingPlayer != null)//todo null check can be too expensive
                     {
                         tileScore = Pathfinder.Instance.GetTilesInBetween(controller.enemy.characterTile, tile, true).Count
-                            + skill.skillDamage;
+                            + skill.skillData.skillDamage;
                         if ( tileScore > prevTileScore)
                         {
                             /*controller.skillContainer.SelectSkill(skill, controller.enemy);
                             controller.enemy.StartMove(Pathfinder.Instance.FindPath(controller.enemy.characterTile, tile));*/
-                            controller.skillContainer.SelectSkill(skill, controller.enemy);
-                            controller.decidedAttackSkill = skill;
+                            controller.skillContainer.SelectSkill(skill.skillData, controller.enemy);
+                            controller.decidedAttackSkill = skill.skillData;
                             controller.decidedMoveTile = tile;
                             controller.targetPlayer = attackTile.occupyingPlayer;
                             Debug.Log(tile + " cuurent score: " + tileScore + " prev score: " + prevTileScore);

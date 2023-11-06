@@ -7,7 +7,7 @@ public class UseAttackSkillAction : ActionAI
 {
     public override void Act(StateController controller)
     {
-        UseSkill(controller, controller.skillContainer.selectedSkill, controller.targetPlayer);
+        UseSkill(controller, controller.skillContainer.selectedSkill.skillData, controller.targetPlayer);
     }
 
     private void UseSkill(StateController controller, SkillsData controllerSelectedSkill, Player controllerTargetPlayer)

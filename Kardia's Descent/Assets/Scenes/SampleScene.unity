@@ -2161,8 +2161,8 @@ MonoBehaviour:
   enemies: []
   allEntities: []
   turn: 1
-  round: 2
-  totalTurnsInScene: 0
+  round: 1
+  totalTurnsInScene: 1
   totalTurnsInGame: 3
   currentEnemyTurnOrder: 0
   turnState: 0
@@ -6500,6 +6500,11 @@ PrefabInstance:
         type: 3}
       propertyPath: selectedSkill
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -6751961407145202659, guid: 89ab918d79ba6e74598771889c318cd0,
+        type: 3}
+      propertyPath: skillList.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 220303031585184930, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}

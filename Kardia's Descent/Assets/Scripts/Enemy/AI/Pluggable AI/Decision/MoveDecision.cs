@@ -16,7 +16,7 @@ public class MoveDecision : DecisionAI
     private bool Move(StateController controller)
     {
         //attackableTiles = Pathfinder.Instance.GetReachableTiles(controller.enemy.characterTile, controller.selectedSkill.skillRange);
-        foreach (var tile in Pathfinder.Instance.GetAttackableTiles(controller.enemy.characterTile, controller.skillContainer.selectedSkill.skillRange))
+        foreach (var tile in Pathfinder.Instance.GetAttackableTiles(controller.enemy.characterTile, controller.skillContainer.selectedSkill.skillData.skillRange))
         {
             if (tile == controller.targetPlayer.characterTile)//if character is already in range of the skill dont move
             {
