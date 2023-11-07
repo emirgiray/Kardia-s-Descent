@@ -18,6 +18,8 @@ MonoBehaviour:
   skillDamage: 25
   skillRange: 3
   skillCooldown: 1
+  actionPointUse: 1
+  accuracy: 70
   skillType: 0
   skillClass: 1
   damageType: 0

@@ -41,7 +41,7 @@ public class PatrolAction : ActionAI
     
     private Path FindRandomPath(StateController controller)
     {
-        reachableTiles = Pathfinder.Instance.GetReachableTiles(controller.enemy.characterTile, controller.enemy.remainingMoveRange);
+        reachableTiles = Pathfinder.Instance.GetReachableTiles(controller.enemy.characterTile, controller.enemy.remainingActionPoints);
         Tile randomTile = reachableTiles[Random.Range(0, reachableTiles.Count)];
         return Pathfinder.Instance.FindPath(controller.enemy.characterTile, randomTile);
     }

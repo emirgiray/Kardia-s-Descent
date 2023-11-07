@@ -12,9 +12,9 @@ public class InventoryUI : MonoBehaviour
     
     [BoxGroup("Skils")] [SerializeField] private GameObject SkillsUI;
     [BoxGroup("Skils")] [SerializeField] private GameObject HorizontalLayoutGroup;
+    [BoxGroup("Skils")] [SerializeField] private List<SkillButton> SkillButtons = new List<SkillButton>();
     
     [BoxGroup("Points")] [SerializeField] private GameObject PointsUI;
-    [BoxGroup("Points")] [SerializeField] private TextMeshProUGUI moveText;
     [BoxGroup("Points")] [SerializeField] private TextMeshProUGUI actionText;
     [BoxGroup("Points")] [SerializeField] private Button skipTurnButton;
     
@@ -31,18 +31,19 @@ public class InventoryUI : MonoBehaviour
     
     public void SubscribeToPlayerEvents()
     {
-        player.OnMovePointsChange += UpdateMovePoints;//actions dont work for some reason
-        player.OnActionPointsChange += UpdateActionPoints;
+
+        player.OnActionPointsChange += UpdateActionPoints;//actions doesnt work for some reason
         
-        player.OnMovePointsChangeEvent.AddListener(UpdateMovePoints);
+
         player.OnActionPointsChangeEvent.AddListener(UpdateActionPoints);
+        player.PlayerTurnStart.AddListener(() => SetSkipTurnButtonInteractable(true));
         
         skipTurnButton.onClick.AddListener(player.EndTurn);
     }
 
     private void OnDisable()
     {
-        player.OnMovePointsChange -= UpdateMovePoints;
+
         player.OnActionPointsChange -= UpdateActionPoints;
         //skipTurnButton.onClick.RemoveListener(player.EndTurn);
     }
@@ -52,20 +53,14 @@ public class InventoryUI : MonoBehaviour
         actionText.text = value.ToString();
     }
 
-    private void UpdateMovePoints(int value)
-    {
-        moveText.text = value.ToString();
-    }
+
     
     public GameObject GetHorizontalLayoutGroup()
     {
         return HorizontalLayoutGroup;
     }
 
-    public TextMeshProUGUI GetMoveText()
-    {
-        return moveText;
-    }
+
     public TextMeshProUGUI GetActionText()
     {
         return actionText;
@@ -85,6 +80,30 @@ public class InventoryUI : MonoBehaviour
         return nameText;
     }
 
+    public void SetSkillButtons(List<SkillButton> SkillButtonsIn)
+    {
+        SkillButtons = SkillButtonsIn;
+    }
 
+    public void SetSkipTurnButtonInteractable(bool value)
+    {
+        skipTurnButton.interactable = value;
+
+        for (int i = 0; i < SkillButtons.Count; i++)
+        {
+            if (value)
+            {
+                if (SkillButtons[i].skill.skillReadyToUse)
+                {
+                    SkillButtons[i].EnableDisableButton(value);
+                }
+            }
+            else
+            {
+                SkillButtons[i].EnableDisableButton(value);
+            }
+            
+        }
+    }
     
 }

@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "CheckEndOfTurnDecision", menuName = "MyPluggableAI/Decision/CheckEndOfTurnDecisions", order = 0)]
+[CreateAssetMenu(fileName = "CheckEndOfTurnDecision", menuName = "MyPluggableAI/Decisions/CheckEndOfTurnDecisions", order = 0)]
 public class CheckEndOfTurnDecision : DecisionAI
 {
     public override bool Decide(StateController controller)
     {
-        return controller.enemy.remainingMoveRange <= 0;
+        return controller.enemy.remainingActionPoints <= 0;
     }
 
     public bool CheckIfEndTurn(StateController controller)
@@ -17,7 +17,7 @@ public class CheckEndOfTurnDecision : DecisionAI
     
     public bool CheckIfEndofMovePoints(StateController controller)
     {
-        return controller.enemy.remainingMoveRange <= 0;
+        return controller.enemy.remainingActionPoints <= 0;
     }
     public bool CheckIfEndofActionPoints(StateController controller)
     {

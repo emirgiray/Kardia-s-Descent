@@ -14,6 +14,7 @@ using Image = UnityEngine.UI.Image;
 public class SkillButton : MonoBehaviour
 {
     [SerializeField] public SkillsData skillData;
+    [SerializeField] public SkillContainer.Skills skill;
     [SerializeField] private Button button;
     [SerializeField] public TextMeshProUGUI cooldownText;
     [SerializeField] public GameObject cooldownImage;
@@ -24,9 +25,10 @@ public class SkillButton : MonoBehaviour
         HighlightSkill();
     }
 
-    public void InitButton(SkillsData skillDataIn , UnityAction useSkill, SkillContainer skillContainerIn)
+    public void InitButton(SkillsData skillDataIn,SkillContainer.Skills skillIn , UnityAction useSkill, SkillContainer skillContainerIn)
     {
         skillData = skillDataIn;
+        skill = skillIn;
         GetComponent<Image>().sprite = skillData.skillSprite;
         button.onClick.AddListener(useSkill);
         GetComponentInChildren<TextMeshProUGUI>().text = skillData.skillName;
@@ -39,33 +41,11 @@ public class SkillButton : MonoBehaviour
         button.interactable = value;
     }
 
-    /*private void Update()
-    {
-        /*if (EventSystem.current.currentSelectedGameObject == gameObject)
-        {
-            print("selected");
-        }#1#
-        //HighlightSkill();
-    }*/
-
-    /*public void OnInit()//this fires when this is initiated from inventory 
-    {
-        skillContainer.skillNotReadyAction += () => EnableDisableButton(false);
-        skillContainer.skillReadyAction += () => EnableDisableButton(true);
-    }
-
-    private void OnDisable()
-    {
-        skillContainer.skillNotReadyAction -= () => EnableDisableButton(false);
-        skillContainer.skillReadyAction -= () => EnableDisableButton(true);
-    }*/
-
     public void SetSkillContainer(SkillContainer skillContainerIn)
     {
         skillContainer = skillContainerIn;
     }
-
-
+    
     public void HighlightSkill()
     {
         //pointer enter

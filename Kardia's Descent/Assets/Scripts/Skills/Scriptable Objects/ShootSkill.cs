@@ -16,8 +16,28 @@ public class ShootSkill : SkillsData
         {
             case SkillTarget.Enemy:
                 /*weaponContainer.currentWeapon.*/Shoot( weaponContainer);
-                if(selectedTile.occupyingEnemy != null) selectedTile.occupyingEnemy.GetComponent<SGT_Health>().HealthDecrease(skillDamage);
-                if(selectedTile.occupyingPlayer != null) selectedTile.occupyingPlayer.GetComponent<SGT_Health>().HealthDecrease(skillDamage);
+                
+                if (selectedTile.occupyingEnemy != null)
+                {
+                    if (accuracy < 100)//todo do this in a different way, maybe a method in a class
+                    {
+                        int random = UnityEngine.Random.Range(0, 101);
+                        if (random <= accuracy)
+                        {
+                            Debug.Log("Hit: " + random + " < " + accuracy);
+                            selectedTile.occupyingEnemy.GetComponent<SGT_Health>().HealthDecrease(skillDamage);
+                        }
+                        else
+                        {
+                            Debug.Log("Missed: " + random + " < " + accuracy);
+                        }
+                    }
+
+                }
+                if (selectedTile.occupyingPlayer != null)
+                {
+                    selectedTile.occupyingPlayer.GetComponent<SGT_Health>().HealthDecrease(skillDamage);
+                }
                 //add delay of 0.1f seconds here
                 OnComplete?.Invoke();
                 break;

@@ -18,6 +18,7 @@ public class SkillsData : ScriptableObject
     public int skillRange= 3;
     public int skillCooldown = 1;
     public int actionPointUse = 1;
+    public int accuracy = 80;
     public enum SkillType
     {
         Ranged, Melee, Magic

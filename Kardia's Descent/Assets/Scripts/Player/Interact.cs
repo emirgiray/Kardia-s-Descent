@@ -46,6 +46,7 @@ public class Interact : MonoBehaviour
         {0, new Color(0f, 0.38f, 1f, 0.3f) }, //Blue -- Default
         {1, new Color(0f, 1, 0, 0.3f) },//Green -- Player
         {2, new Color(1f, 0, 0, 0.3f) },//Red -- Enemy
+        {3, new Color(1f, 1, 0, 0.3f) },//Yellow -- Cover
 
     };
 
@@ -67,49 +68,55 @@ public class Interact : MonoBehaviour
 
     public void EnableMovement(bool value)
     {
-        if (characterSelected)
+        if (selectedCharacter.characterState == Character.CharacterState.WaitingTurn || selectedCharacter.characterState == Character.CharacterState.Idle)
         {
-            if (value == true)
+            if (characterSelected)
             {
-                if (selectedCharacter.GetComponent<SkillContainer>().skillSelected == false)
+                if (value == true)
                 {
-                    selectedCharacter.canMove = value;
-                    HighlightReachableTiles();
-                    pathfinder.EnableIllustratePath(value);
+                    if (selectedCharacter.GetComponent<SkillContainer>().skillSelected == false)
+                    {
+                        selectedCharacter.canMove = value;
+                        HighlightReachableTiles();
+                        pathfinder.EnableIllustratePath(value);
+                    }
                 }
-            }
-            else
-            {
-                if (selectedCharacter.GetComponent<SkillContainer>().skillSelected == false)
+                else
                 {
-                    selectedCharacter.canMove = value;
-                    Clear();
-                    ClearHighlightReachableTiles();
-                    pathfinder.EnableIllustratePath(value);
-                }
+                    if (selectedCharacter.GetComponent<SkillContainer>().skillSelected == false)
+                    {
+                        selectedCharacter.canMove = value;
+                        Clear();
+                        ClearHighlightReachableTiles();
+                        pathfinder.EnableIllustratePath(value);
+                    }
                 
+                }
             }
         }
     }
 
     public void EnableAttackableTiles(bool value)
     {
-        if (characterSelected)
+        if (selectedCharacter.characterState == Character.CharacterState.Attacking || selectedCharacter.characterState == Character.CharacterState.Idle)
         {
-            if (value)
+            if (characterSelected)
             {
-                if (selectedCharacter.GetComponent<SkillContainer>().skillSelected == true)
+                if (value)
                 {
-                    //selectedCharacter.canAttack = value;//todo dont change this value, instead block all interactions when player hovers over skills, tooltips etc
-                    HighlightAttackableTiles();
+                    if (selectedCharacter.GetComponent<SkillContainer>().skillSelected == true)
+                    {
+                        //selectedCharacter.canAttack = value;//todo dont change this value, instead block all interactions when player hovers over skills, tooltips etc
+                        HighlightAttackableTiles();
+                    }
                 }
-            }
-            else
-            {
-                if (selectedCharacter.GetComponent<SkillContainer>().skillSelected == true)
+                else
                 {
-                    //selectedCharacter.canAttack = value;
-                    ClearHighlightAttackableTiles();
+                    if (selectedCharacter.GetComponent<SkillContainer>().skillSelected == true)
+                    {
+                        //selectedCharacter.canAttack = value;
+                        ClearHighlightAttackableTiles();
+                    }
                 }
             }
         }
@@ -156,7 +163,7 @@ public class Interact : MonoBehaviour
                 }
                 else//deselect skill
                 {
-                    selectedCharacter.GetComponent<SkillContainer>().DeslectSkill(selectedCharacter.GetComponent<SkillContainer>().selectedSkill.skillData);
+                    selectedCharacter.GetComponent<SkillContainer>().DeslectSkill(selectedCharacter.GetComponent<SkillContainer>().selectedSkill);
                     EnableMovement(true);
                 }
             }
@@ -199,6 +206,12 @@ public class Interact : MonoBehaviour
         InspectTileGO.transform.position = currentTile.transform.position;
         if (currentTile.Occupied)
         {
+            if (currentTile.OccupiedByCoverPoint)
+            {
+                inspectTileMeshRenderer.material.color = tileInspectColors[3];
+                return;
+            }
+            
             if (characterUnderMouse.gameObject.tag == "Player")
             {
                 inspectTileMeshRenderer.material.color = tileInspectColors[1];
@@ -262,7 +275,7 @@ public class Interact : MonoBehaviour
                     {
                         if (attackableTiles.Contains(currentTile))
                         {
-                            selectedCharacter.GetComponent<SkillContainer>().UseSkill(selectedCharacter.GetComponent<SkillContainer>().selectedSkill.skillData, currentTile);
+                            selectedCharacter.GetComponent<SkillContainer>().UseSkill(selectedCharacter.GetComponent<SkillContainer>().selectedSkill, currentTile);
                             
                         }
                     }
@@ -320,6 +333,8 @@ public class Interact : MonoBehaviour
 
     public void InspectSomeone()
     {
+        if (currentTile.OccupiedByCoverPoint)return;
+        
         if (currentTile.occupyingCharacter.gameObject.tag == "Player")
         {
             InspectCharacter();
@@ -366,6 +381,7 @@ public class Interact : MonoBehaviour
                 
                 case Character.CharacterState.WaitingNextRound:
                     lastSelectedCharacter.GetComponent<Inventory>().ShowSkillsUI(false); //close skills ui
+                    //lastSelectedCharacter.GetComponent<InventoryUI>().SetSkipTurnButtonInteractable(false); //disable skip turn button
                     SelectPlayer();
                     break;
            
@@ -384,11 +400,14 @@ public class Interact : MonoBehaviour
     {
         selectedCharacter = currentTile.occupyingCharacter; //select character
         lastSelectedCharacter = selectedCharacter;
-        if (selectedCharacter.remainingMoveRange > 0)
+        if (selectedCharacter.characterState == Character.CharacterState.WaitingTurn || selectedCharacter.characterState == Character.CharacterState.Idle)
         {
-            EnableMovement(true);
+            if (selectedCharacter.remainingActionPoints > 0)
+            {
+                EnableMovement(true);
+            }
+            HighlightReachableTiles(); //highlight tiles within range
         }
-        HighlightReachableTiles(); //highlight tiles within range
         selectedCharacter.GetComponent<Inventory>().ShowSkillsUI(true); //show skills ui
     }
     
@@ -429,77 +448,11 @@ public class Interact : MonoBehaviour
 
     bool RetrievePath(out Path path)
     {
-        //If a character is selected, only tiles within range can be selected
-        /*if (selectedCharacter != null)
-        {
-            path = pathfinder.FindPath(selectedCharacter.characterTile, currentTile);
-            if (path == null || path == Lastpath)
-                return false;
-
-            //If the path is too long, do not allow it
-            if (path.tiles.Length < selectedCharacter.moveRange)
-            {
-                path = null; 
-                return false;
-            }
-            else
-            {
-                path = pathfinder.FindPath(selectedCharacter.characterTile, currentTile);
-                return true;
-            }
-                
-            
-
-            /#1#/If the path is too short, do not allow it
-            if (path.tiles.Length < 2)
-                return false;#1#
-
-            //If the path is obstructed, do not allow it
-            foreach (Tile tile in path.tiles)
-            {
-                if (tile.Occupied)
-                    path = null;
-                    return false;
-            }
-        }
-        else
-        {
-            path = pathfinder.FindPath(selectedCharacter.characterTile, currentTile);
-        
-            if (path == null || path == Lastpath)
-                return false;
-
-            //Debug only
-            if (debug)
-            {
-                ClearLastPath();
-                DebugNewPath(path);
-                Lastpath = path;
-            }
-            return true;
-        }*/
-        /*if(selectedCharacter != null) //If a character is selected, only tiles within range can be selected
-        {
-            if (selectedCharacter.moveRange + 2 <= Vector3.Distance(selectedCharacter.transform.position, currentTile.transform.position))
-            {
-                path = null;
-                
-                return false;
-            }
-            else
-            {
-                
-                lastSelectedTile = currentTile;
-                currentTile = lastSelectedTile;
-                
-                path = pathfinder.FindPath(selectedCharacter.characterTile, currentTile);
-            }
-        }*/
-
+      
 
         if (selectedCharacter != null)
         {
-            if (pathfinder.GetReachableTiles(selectedCharacter.characterTile, selectedCharacter.remainingMoveRange/*, selectedCharacter.characterTile*/).Contains(currentTile))
+            if (pathfinder.GetReachableTiles(selectedCharacter.characterTile, selectedCharacter.remainingActionPoints/*, selectedCharacter.characterTile*/).Contains(currentTile))
             {
                 path = pathfinder.FindPath(selectedCharacter.characterTile, currentTile);
                 return true;
@@ -520,19 +473,7 @@ public class Interact : MonoBehaviour
             return false;
         }
             
-        /*path = pathfinder.FindPath(selectedCharacter.characterTile, currentTile);
-        
-        if (path == null || path == Lastpath)
-            return false;
-
-        //Debug only
-        if (debug)
-        {
-            ClearLastPath();
-            DebugNewPath(path);
-            Lastpath = path;
-        }
-        return true;*/
+   
     }
     private void Clear()
     {
@@ -556,7 +497,7 @@ public class Interact : MonoBehaviour
     private void HighlightReachableTiles()
     { 
         ClearHighlightReachableTiles();
-        reachableTiles = pathfinder.GetReachableTiles(selectedCharacter.characterTile, selectedCharacter.remainingMoveRange/*, selectedCharacter.characterTile*/);
+        reachableTiles = pathfinder.GetReachableTiles(selectedCharacter.characterTile, selectedCharacter.remainingActionPoints/*, selectedCharacter.characterTile*/);
         foreach (Tile tile in reachableTiles)
         {
             tile.HighlightMoveable();

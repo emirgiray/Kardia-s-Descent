@@ -63,6 +63,7 @@ public class Inventory : MonoBehaviour
      {
          SpawnedInventoryUI = Instantiate(InventoryUI, InventoryUISlot.transform);
          SpawnedInventoryUIScript = SpawnedInventoryUI.GetComponent<InventoryUI>();
+         
      }
      public void PopulateSkillsUI()
      {
@@ -72,12 +73,13 @@ public class Inventory : MonoBehaviour
              spawnedSkillButtonPrefabs[i] = Instantiate(skillButtonPrefab, SpawnedInventoryUIScript.GetHorizontalLayoutGroup().transform);
              
              var i1 = i;
-             spawnedSkillButtonPrefabs[i].GetComponent<SkillButton>().InitButton(skillsToAdd[i] , ()=> skillsContainer.TrySelectSkill(skillsToAdd[i1]), skillsContainer);
+             //spawnedSkillButtonPrefabs[i].GetComponent<SkillButton>().InitButton(skillsToAdd[i] , ()=> skillsContainer.TrySelectSkill(skillsToAdd[i1]), skillsContainer);
              
              skillsContainer.skillButtons.Add(null);
              skillsContainer.skillButtons[i] = spawnedSkillButtonPrefabs[i].GetComponent<SkillButton>();
              //spawnedSkillButtonPrefabs[i].GetComponent<SkillButton>().SetSkillContainer(skillsContainer);
          }
+         SpawnedInventoryUIScript.SetSkillButtons(skillsContainer.skillButtons);
      }
      
      
@@ -90,7 +92,6 @@ public class Inventory : MonoBehaviour
 
      public void PopulatePointsUI()
      {
-         SpawnedInventoryUIScript.GetMoveText().text = player.remainingMoveRange.ToString();
          SpawnedInventoryUIScript.GetActionText().text = player.remainingActionPoints.ToString();
      }
     public void AddWeapon(WeaponData weaponData)

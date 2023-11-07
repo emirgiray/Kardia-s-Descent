@@ -11,7 +11,12 @@ public class Pathfinder : MonoBehaviour
     PathIllustrator illustrator;
     [SerializeField]
     LayerMask tileMask;
+    [SerializeField]
+    LayerMask coverPointMask;
 
+    [SerializeField] private float coverPointRayLenght = 0.3f;
+    [SerializeField] private float characterYOffset = 0.5f;
+    
     private void Awake()
     {
         if (Instance == null)
@@ -26,6 +31,11 @@ public class Pathfinder : MonoBehaviour
         if (illustrator == null)
             illustrator = GetComponent<PathIllustrator>();
     }
+
+    /*private void Update()
+    {
+        CheckCoverPoint(GameObject.Find("Enemy").GetComponent<Character>(), GameObject.Find("Player").GetComponent<Character>());
+    }*/
 
     /// <summary>
     /// Main pathfinding function, marks tiles as being in frontier, while keeping a copy of the frontier
@@ -89,7 +99,7 @@ public class Pathfinder : MonoBehaviour
     /// <param name="forAIPathfinding">this is for AI pathfinding bc without adding this ai cant get the destination since its occupied</param>
     /// <param name="forAttackRange">this is for attack range bc without addng this character cant get the destination since its occupied</param>
     /// <returns></returns>
-    public List<Tile> NeighborTiles(Tile origin, bool forAIPathfinding = false, bool forAttackRange = false)
+    public List<Tile> NeighborTiles(Tile origin, bool ignoreOccupied = false)
     {
         const float HEXAGONAL_OFFSET = 1.75f;
         List<Tile> tiles = new List<Tile>();
@@ -113,7 +123,7 @@ public class Pathfinder : MonoBehaviour
                 }
                 else
                 {
-                    if (forAIPathfinding || forAttackRange)
+                    if (ignoreOccupied)
                     {
                         tiles.Add(hitTile);
                     }
@@ -287,7 +297,7 @@ public class Pathfinder : MonoBehaviour
 
             foreach (Tile tile in frontier)
             {
-                foreach (Tile neighbor in NeighborTiles(tile, false, true))
+                foreach (Tile neighbor in NeighborTiles(tile, true))
                 {
                     /*if (neighbor.Occupied == true)
                     {
@@ -355,5 +365,26 @@ public class Pathfinder : MonoBehaviour
         }*/
         return path;
        
+    }
+
+    [Button]
+    public bool CheckCoverPoint(Character attacking, Character defending)
+    {
+        //Debug.DrawRay(defending.transform.position, (attacking.transform.position-defending.transform.position).normalized * coverPointRayLenght,  Color.red);
+       //check if the defending character is in cover
+       Vector3 attackingPos = new Vector3(attacking.transform.position.x, attacking.transform.position.y + characterYOffset, attacking.transform.position.z);
+       Vector3 defendingPos = new Vector3(defending.transform.position.x, defending.transform.position.y + characterYOffset, defending.transform.position.z);
+       
+       if (Physics.Raycast(defendingPos, 
+               (attackingPos - defendingPos).normalized, 
+               out RaycastHit hit, 
+                coverPointRayLenght,
+               coverPointMask))
+       {
+           Debug.Log("defender is in cover");
+           return true;
+       }
+       Debug.Log("defender is NOT in cover");
+       return false;
     }
 }

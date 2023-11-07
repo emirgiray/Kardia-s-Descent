@@ -94,7 +94,7 @@ public class StateController : MonoBehaviour
 
     public List<Tile> GetReachableTiles()
     {
-        movableTiles = pathfinder.GetReachableTiles(enemy.characterTile, enemy.remainingMoveRange);
+        movableTiles = pathfinder.GetReachableTiles(enemy.characterTile, enemy.remainingActionPoints);
         return movableTiles;
     }
     

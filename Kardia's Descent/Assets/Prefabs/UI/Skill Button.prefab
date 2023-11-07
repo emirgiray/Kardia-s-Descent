@@ -525,7 +525,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.49056602, g: 0.49056602, b: 0.49056602, a: 1}
     m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
     m_SelectedColor: {r: 0.745283, g: 0.745283, b: 0.745283, a: 0.76862746}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.11320752, g: 0.11320752, b: 0.11320752, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -557,6 +557,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillData: {fileID: 0}
+  skill:
+    skillData: {fileID: 0}
+    damage: 0
+    range: 0
+    skillCooldown: 0
+    remainingSkillCooldown: 0
+    actionPointUse: 0
+    accuracy: 0
+    skillReadyToUse: 1
+    skillButton: {fileID: 0}
   button: {fileID: 3559731180422350550}
   cooldownText: {fileID: 9170667670688581449}
   cooldownImage: {fileID: 704295264677857386}

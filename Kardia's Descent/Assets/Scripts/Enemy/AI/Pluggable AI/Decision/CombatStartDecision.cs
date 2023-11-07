@@ -30,7 +30,7 @@ public class CombatStartDecision : DecisionAI
                         {
                             /*controller.skillContainer.SelectSkill(skill, controller.enemy);
                             controller.enemy.StartMove(Pathfinder.Instance.FindPath(controller.enemy.characterTile, tile));*/
-                            controller.skillContainer.SelectSkill(skill.skillData, controller.enemy);// this can be added at the end
+                            controller.skillContainer.SelectSkill(skill, controller.enemy);// this can be added at the end
                             controller.decidedAttackSkill = skill.skillData;
                             controller.decidedMoveTile = controller.enemy.characterTile;
                             controller.targetPlayer = attackTile.occupyingPlayer;
@@ -67,7 +67,7 @@ public class CombatStartDecision : DecisionAI
                         {
                             /*controller.skillContainer.SelectSkill(skill, controller.enemy);
                             controller.enemy.StartMove(Pathfinder.Instance.FindPath(controller.enemy.characterTile, tile));*/
-                            controller.skillContainer.SelectSkill(skill.skillData, controller.enemy);
+                            controller.skillContainer.SelectSkill(skill, controller.enemy);
                             controller.decidedAttackSkill = skill.skillData;
                             controller.decidedMoveTile = tile;
                             controller.targetPlayer = attackTile.occupyingPlayer;

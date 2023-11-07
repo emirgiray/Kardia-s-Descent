@@ -13,7 +13,7 @@ public class SelectRandomSkillAction : ActionAI
     public void SelectRandomSkill(StateController controller)
     {
         int random = Random.Range(0, controller.skillContainer.skillsList.Count);
-        controller.skillContainer.SelectSkill(controller.skillContainer.skillsList[random].skillData ,controller.enemy); 
+        controller.skillContainer.SelectSkill(controller.skillContainer.skillsList[random] ,controller.enemy); 
         //controller.skillContainer.skillSelected = true;
     }
 }

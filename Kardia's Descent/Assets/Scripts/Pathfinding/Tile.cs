@@ -10,12 +10,14 @@ public class Tile : MonoBehaviour
     public Character occupyingCharacter;
     public Player occupyingPlayer;
     public Enemy occupyingEnemy;
+    public CoverPoint occupyingCoverPoint;
 
     public float costFromOrigin = 0;
     public float costToDestination = 0;
     public int terrainCost = 0;
     public float TotalCost { get { return costFromOrigin + costToDestination + terrainCost; } }
     public bool Occupied { get; set; } = false;
+    public bool OccupiedByCoverPoint { get; set; } = false;
     
     Dictionary<int, Color> costMap = new Dictionary<int, Color>()
     {

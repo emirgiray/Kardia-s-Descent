@@ -9,8 +9,9 @@ public class Character : MonoBehaviour
 {
     [SerializeField] public int actionPoints = 3;
     [SerializeField] public int remainingActionPoints;
-    [SerializeField] public int moveRange = 3;
-    [SerializeField] public int remainingMoveRange;
+    [SerializeField] public int maxActionPoints = 10;
+    /*[SerializeField] public int moveRange = 3;
+    [SerializeField] public int remainingMoveRange;*/
     [SerializeField] public int initiative = 1;
     [SerializeField] public bool canMove = true;
     [SerializeField] public bool canAttack = true;
@@ -31,7 +32,7 @@ public class Character : MonoBehaviour
 
     public CharacterState characterState;
     
-    public Action<int> OnMovePointsChange;
+
     public Action<int> OnActionPointsChange;
     public Action OnTurnStart;
     public Action<Character> OnCharacterDeath;
@@ -39,6 +40,7 @@ public class Character : MonoBehaviour
     [FoldoutGroup("Events")] public UnityEvent<int> OnMovePointsChangeEvent;
     [FoldoutGroup("Events")] public UnityEvent<int> OnActionPointsChangeEvent;
     
+    [FoldoutGroup("Events")] public UnityEvent PlayerTurnStart;
     [FoldoutGroup("Events")] public UnityEvent MoveStart;
     [FoldoutGroup("Events")] public UnityEvent MoveEnd;
     [FoldoutGroup("Events")] public UnityEvent MovePointsExhausted;
@@ -48,7 +50,7 @@ public class Character : MonoBehaviour
     private void Awake()
     {
         characterState = CharacterState.Idle;
-        ResetMovePoints();
+        // ResetMovePoints();
         ResetActionPoints();
         FindTileAtStart();
     }
@@ -85,7 +87,7 @@ public class Character : MonoBehaviour
         Tile currentTile = path.tiles[0];
         float animationTime = 0f;
 
-        while (currentStep <= pathLength && remainingMoveRange  > 0)
+        while (currentStep <= pathLength && remainingActionPoints  > 0)
         {
             yield return null;
             //Move towards the next step in the path until we are closer than MIN_DIST
@@ -102,17 +104,13 @@ public class Character : MonoBehaviour
             {
                 if (inCombat)
                 {
-                    remainingMoveRange-- ;
-                    OnMovePointsChange?.Invoke(remainingMoveRange);
-                    OnMovePointsChangeEvent?.Invoke(remainingMoveRange);
+                    remainingActionPoints-- ;
+                    OnActionPointsChange?.Invoke(remainingActionPoints);
+                    OnActionPointsChangeEvent?.Invoke(remainingActionPoints);
                    // print(OnMovePointsChangeEvent);
                 }
                 
-                if (remainingMoveRange <= 0)
-                {
-                    canMove = false;
-                    EndofMovePoints();
-                }
+                CheckIfEndTurn();
             }
             //Min dist has been reached, look to next step in path
             /*if(!path.tiles[currentStep].Occupied)*/ currentTile = path.tiles[currentStep];
@@ -200,8 +198,8 @@ public class Character : MonoBehaviour
 
     public void ResetMovePoints()
     {
-        remainingMoveRange = moveRange;
-        OnMovePointsChangeEvent?.Invoke(remainingMoveRange);
+        remainingActionPoints = actionPoints;
+        OnMovePointsChangeEvent?.Invoke(remainingActionPoints);
     }
         
     public void ResetActionPoints()
@@ -210,21 +208,45 @@ public class Character : MonoBehaviour
         OnActionPointsChangeEvent?.Invoke(remainingActionPoints);
     }
 
+    public void AddActionPoints()
+    {
+        remainingActionPoints += actionPoints;
+        if (remainingActionPoints > maxActionPoints)
+        {
+            remainingActionPoints = maxActionPoints;
+        }
+        
+    }
+    
+    bool doOnce = true;
     public void StartTurn()
     {
         if (inCombat)
         {
             if (TurnSystem.Instance.IsThisCharactersTurn(this))
             {
+                
                 canMove = true;
                 canAttack = true;
                 characterState = CharacterState.WaitingTurn;//todo enemy turn does not change to waiting for turn
-                ResetMovePoints();
-                ResetActionPoints();
+                // ResetActionPoints();
+
+                if (!doOnce)
+                {
+                    AddActionPoints();
+                    OnActionPointsChangeEvent?.Invoke(remainingActionPoints);
+                }
+                doOnce = false;
+                
 
                 if (this is Enemy)
                 {
                     OnTurnStart?.Invoke();
+                }
+
+                if (this is Player)
+                {
+                    if(PlayerTurnStart != null) PlayerTurnStart.Invoke();
                 }
             }
             else
@@ -245,8 +267,10 @@ public class Character : MonoBehaviour
 
     public void CheckIfEndTurn()
     {
-        if (remainingMoveRange <= 0 && remainingActionPoints <= 0)
+        if (remainingActionPoints <= 0)//todo maybe dont force the player to end turn if they have action points left
         {
+            canMove = false;
+            canAttack = false;
             characterState = CharacterState.WaitingNextRound;
             EndTurn();
         }
@@ -259,6 +283,13 @@ public class Character : MonoBehaviour
         {
             GetComponent<StateController>().aiActive = false;
         }
+
+        if (this is Player)
+        {
+            Interact.Instance.ClearHighlightAttackableTiles();
+            Interact.Instance.ClearHighlightReachableTiles();
+        }
+        
         TurnSystem.Instance.NextTurn();
     }
 
@@ -276,14 +307,10 @@ public class Character : MonoBehaviour
         
     }
 
-    public void AttackEnd()
+    public void AttackEnd(SkillContainer.Skills skill)
     {
         characterState = CharacterState.WaitingTurn;
-        remainingActionPoints--;
-        if (remainingActionPoints <= 0)
-        {
-            canAttack = false;
-        }
+        remainingActionPoints -= skill.actionPointUse;//maybe add a - or + variable to skill use
 
         OnActionPointsChange?.Invoke(remainingActionPoints);
         OnActionPointsChangeEvent?.Invoke(remainingActionPoints);

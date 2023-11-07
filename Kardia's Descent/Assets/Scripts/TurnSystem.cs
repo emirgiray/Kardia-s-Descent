@@ -80,6 +80,18 @@ public class TurnSystem : MonoBehaviour
         DecideWhosTurn();
     }
 
+    private void Update()//todo delete this, its for debug only
+    {
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            NextTurn();
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            NextRound();
+        }
+    }
+
 
     public void DecideWhosTurn()//todo bu isimlendirme yanlış, decideWhosRound olmalı
     {
@@ -148,7 +160,7 @@ public class TurnSystem : MonoBehaviour
         }*/
     }
 
-    public void DecideEnemyTurnOrder()//this will work according to enemy initiative
+    public void DecideEnemyTurnOrder()//this will work according to enemy initiative //todo this is reversed!!!!
     {
         List<Tuple<Enemy, int>> enemyList = new List<Tuple<Enemy, int>>();
         foreach (Enemy enemy in enemies)
