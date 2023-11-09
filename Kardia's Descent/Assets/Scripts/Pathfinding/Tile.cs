@@ -8,9 +8,12 @@ public class Tile : MonoBehaviour
     public Tile parent;
     public Tile connectedTile;
     public Character occupyingCharacter;
+    public bool occupiedByPlayer = false;
+    public bool occupiedByEnemy = false;
     public Player occupyingPlayer;
     public Enemy occupyingEnemy;
     public CoverPoint occupyingCoverPoint;
+    public bool isCoveredByCoverPoint = false;
 
     public float costFromOrigin = 0;
     public float costToDestination = 0;
@@ -84,7 +87,7 @@ public class Tile : MonoBehaviour
         occupyingCharacter = null;
         occupyingPlayer = null;
         occupyingEnemy = null;
-                
+        
     }
     
     /*public void DebugCostText()

@@ -7,7 +7,7 @@ using UnityEngine;
 public class ShootSkill : SkillsData
 {
     public GameObject Bullet;
-    public override void ActivateSkill(GameObject parent, Tile selectedTile, Action OnComplete = null)//skill logic goes here
+    public override void ActivateSkill(SkillContainer.Skills Skill ,GameObject parent, Tile selectedTile, Action OnComplete = null)//skill logic goes here
     {
         //base.ActivateSkill();
         WeaponContainer weaponContainer = parent.GetComponentInChildren<WeaponContainer>();
@@ -16,28 +16,29 @@ public class ShootSkill : SkillsData
         {
             case SkillTarget.Enemy:
                 /*weaponContainer.currentWeapon.*/Shoot( weaponContainer);
-                
-                if (selectedTile.occupyingEnemy != null)
+
+
+                if (accuracy < 100) //todo do this in a different way, maybe a method in a class
                 {
-                    if (accuracy < 100)//todo do this in a different way, maybe a method in a class
+                    int random = UnityEngine.Random.Range(0, 101);
+                    if (random <= Skill.accuracy)
                     {
-                        int random = UnityEngine.Random.Range(0, 101);
-                        if (random <= accuracy)
+                        Debug.Log("Hit: " + random + " < " + Skill.accuracy);
+                        if (selectedTile.occupyingEnemy != null)
                         {
-                            Debug.Log("Hit: " + random + " < " + accuracy);
-                            selectedTile.occupyingEnemy.GetComponent<SGT_Health>().HealthDecrease(skillDamage);
+                            selectedTile.occupyingEnemy.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
                         }
-                        else
+                        if (selectedTile.occupyingPlayer != null)
                         {
-                            Debug.Log("Missed: " + random + " < " + accuracy);
+                            selectedTile.occupyingPlayer.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
                         }
                     }
-
+                    else
+                    {
+                        Debug.Log("Missed: " + random + " < " + Skill.accuracy);
+                    }
                 }
-                if (selectedTile.occupyingPlayer != null)
-                {
-                    selectedTile.occupyingPlayer.GetComponent<SGT_Health>().HealthDecrease(skillDamage);
-                }
+ 
                 //add delay of 0.1f seconds here
                 OnComplete?.Invoke();
                 break;

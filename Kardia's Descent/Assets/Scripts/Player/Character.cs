@@ -132,6 +132,15 @@ public class Character : MonoBehaviour
             Moving = true;
             characterTile.Occupied = false;
             characterTile.ResetOcupying();
+            if (this is Player)
+            {
+                characterTile.occupiedByPlayer = false;
+            }
+
+            if (this is Enemy)
+            {
+                characterTile.occupiedByEnemy = false;
+            }
             print("enemy move start");
             StartCoroutine(MoveAlongPath(_path, OnComplete));
         }
@@ -143,14 +152,17 @@ public class Character : MonoBehaviour
         characterTile = tile;
         Moving = false;
         tile.Occupied = true;
+        
         tile.occupyingCharacter = this;
         if (this is Player)
         {
             tile.occupyingPlayer = this.GetComponent<Player>();
+            tile.occupiedByPlayer = true;
         }
         else if (this is Enemy)
         {
             tile.occupyingEnemy = this.GetComponent<Enemy>();
+            tile.occupiedByEnemy = true;
         }
 
 

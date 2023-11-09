@@ -20,7 +20,10 @@ public class Player : Character
         if (characterState == CharacterState.Attacking)
         {
             //Rotate(transform.position, Interact.Instance.currentTile.transform.position);
-            StartCoroutine(RotateEnum(transform.position, Interact.Instance.currentTile.transform.position));
+            if (Interact.Instance.isMouseOverUI == false)
+            {
+                StartCoroutine(RotateEnum(transform.position, Interact.Instance.currentTile.transform.position));
+            }
         }
     }
 

@@ -11,18 +11,18 @@ public class StateController : MonoBehaviour
     [SerializeField] public bool aiActive;
     
     public StateAI currentState;
-    public StateAI remainState;
     public StateAI defaultCombatStartState;
+    public StateAI remainState;
    // public SkillsData selectedSkill;
     public EnemyStatsData enemyStats;
     [HideInInspector] public Pathfinder pathfinder;
     [HideInInspector] public TurnSystem turnSystem;
     [HideInInspector] public Enemy enemy;
     [HideInInspector] public SkillContainer skillContainer;
-    public Player targetPlayer;
     
+    public Player targetPlayer;
     public Tile decidedMoveTile;
-    public SkillsData decidedAttackSkill;
+    public SkillContainer.Skills decidedAttackSkill;
     
     public List<Player> players = new List<Player>();
     public List<Enemy> enemies = new List<Enemy>();

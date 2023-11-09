@@ -7,7 +7,8 @@ public class CoverPoint : MonoBehaviour
     [SerializeField] private Tile objectTile;
     [SerializeField] private LayerMask GroundLayerMask;
     [SerializeField] private float yOffset = 1f;
-
+    [SerializeField] private List<Tile> coveringTiles = new List<Tile>();
+    
 
     void Start()
     {
@@ -36,10 +37,21 @@ public class CoverPoint : MonoBehaviour
         tile.Occupied = true;
         tile.OccupiedByCoverPoint = true;
         tile.occupyingCoverPoint = this;
+        coveringTiles = Pathfinder.Instance.NeighborTiles(tile, true);
+        for (int i = 0; i < coveringTiles.Count; i++)
+        {
+            coveringTiles[i].isCoveredByCoverPoint = true;
+        }
+        
     }
 
     public void OnCoverDestroyed()
     {
+        for (int i = 0; i < coveringTiles.Count; i++)
+        {
+            coveringTiles[i].isCoveredByCoverPoint = false;
+        }
+        coveringTiles.Clear();
         objectTile.Occupied = false;
         objectTile.OccupiedByCoverPoint = false;
         objectTile.occupyingCoverPoint = null;

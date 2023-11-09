@@ -35,7 +35,8 @@ public class Pathfinder : MonoBehaviour
     /*private void Update()
     {
         CheckCoverPoint(GameObject.Find("Enemy").GetComponent<Character>(), GameObject.Find("Player").GetComponent<Character>());
-    }*/
+    }
+    */
 
     /// <summary>
     /// Main pathfinding function, marks tiles as being in frontier, while keeping a copy of the frontier
@@ -125,9 +126,19 @@ public class Pathfinder : MonoBehaviour
                 {
                     if (ignoreOccupied)
                     {
-                        tiles.Add(hitTile);
+                        if (hitTile.occupyingCoverPoint == null)
+                        {
+                            tiles.Add(hitTile);
+                        }
+
                     }
                 }
+
+                /*foreach (var tile in tiles)
+                {
+                    tile.Highlight(Color.white);
+                }*/
+                
                     
             }
 

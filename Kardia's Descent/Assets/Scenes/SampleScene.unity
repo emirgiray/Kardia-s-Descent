@@ -279,9 +279,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -515,9 +518,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -727,9 +733,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -1022,9 +1031,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -1151,9 +1163,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -1446,9 +1461,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -1929,9 +1947,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -2058,9 +2079,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -2356,9 +2380,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -2568,9 +2595,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -2697,9 +2727,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -3241,9 +3274,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -3370,9 +3406,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -3499,9 +3538,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -4201,9 +4243,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -4330,9 +4375,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -4542,9 +4590,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -4707,9 +4758,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 2
@@ -4836,9 +4890,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -4965,9 +5022,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -5343,9 +5403,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -5555,9 +5618,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -5684,9 +5750,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -5896,9 +5965,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -6025,9 +6097,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -6154,9 +6229,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -6283,9 +6361,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -6412,9 +6493,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 2
@@ -6542,7 +6626,7 @@ PrefabInstance:
     - target: {fileID: 220303031585184934, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.53
+      value: 0.57
       objectReference: {fileID: 0}
     - target: {fileID: 220303031585184934, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
@@ -6552,7 +6636,7 @@ PrefabInstance:
     - target: {fileID: 220303031585184934, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10.27
+      value: -10.52
       objectReference: {fileID: 0}
     - target: {fileID: 220303031585184934, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
@@ -6694,9 +6778,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -7351,6 +7438,156 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 331542899}
   m_Mesh: {fileID: 2534964839176971238, guid: 948a519f03ae84f45b675ac716135b39, type: 3}
+--- !u!1 &351039580
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 351039586}
+  - component: {fileID: 351039585}
+  - component: {fileID: 351039584}
+  - component: {fileID: 351039583}
+  - component: {fileID: 351039582}
+  - component: {fileID: 351039581}
+  m_Layer: 6
+  m_Name: Cover Tile (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &351039581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 351039580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10a9ad3dd7f045b4899301dc183b432b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectTile: {fileID: 0}
+  GroundLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  yOffset: 1
+  coveringTiles: []
+--- !u!114 &351039582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 351039580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e756be36c92cff47bb1f4e8017253b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 0}
+  connectedTile: {fileID: 0}
+  occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
+  occupyingPlayer: {fileID: 0}
+  occupyingEnemy: {fileID: 0}
+  occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
+  costFromOrigin: 0
+  costToDestination: 0
+  terrainCost: 0
+--- !u!64 &351039583
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 351039580}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2534964839176971238, guid: 948a519f03ae84f45b675ac716135b39, type: 3}
+--- !u!23 &351039584
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 351039580}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: c83db60afdb29a04288e58b5a6059477, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &351039585
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 351039580}
+  m_Mesh: {fileID: 2534964839176971238, guid: 948a519f03ae84f45b675ac716135b39, type: 3}
+--- !u!4 &351039586
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 351039580}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.35, y: 0.83, z: -7.39}
+  m_LocalScale: {x: 1, y: 4.5077, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &351708972
 GameObject:
   m_ObjectHideFlags: 0
@@ -7485,9 +7722,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 2
@@ -7971,9 +8211,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -8100,9 +8343,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -8229,9 +8475,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -8559,9 +8808,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 2
@@ -8771,9 +9023,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -8900,9 +9155,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 2
@@ -9035,9 +9293,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 2
@@ -9247,9 +9508,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -9376,9 +9640,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -9822,9 +10089,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -10576,9 +10846,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -10788,9 +11061,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -10917,9 +11193,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -11046,9 +11325,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -11424,9 +11706,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -11636,9 +11921,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -11931,9 +12219,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -12354,9 +12645,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -13059,9 +13353,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -13354,9 +13651,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -13649,9 +13949,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -13778,9 +14081,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -13907,9 +14213,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -14036,9 +14345,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -14248,9 +14560,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -14460,9 +14775,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -14672,9 +14990,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -15050,9 +15371,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -15179,9 +15503,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -15391,9 +15718,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -15686,9 +16016,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -15815,9 +16148,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -15944,9 +16280,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -16073,9 +16412,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -16202,9 +16544,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -16463,9 +16808,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -16592,9 +16940,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -16721,9 +17072,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -16850,9 +17204,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -16979,9 +17336,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -17114,9 +17474,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -17409,9 +17772,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -17860,9 +18226,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -17989,9 +18358,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 2
@@ -18201,9 +18573,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -18365,9 +18740,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -18443,6 +18821,156 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 948380997}
   m_Mesh: {fileID: 2534964839176971238, guid: 948a519f03ae84f45b675ac716135b39, type: 3}
+--- !u!1 &950933734
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 950933740}
+  - component: {fileID: 950933739}
+  - component: {fileID: 950933738}
+  - component: {fileID: 950933737}
+  - component: {fileID: 950933736}
+  - component: {fileID: 950933735}
+  m_Layer: 6
+  m_Name: Cover Tile (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &950933735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950933734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10a9ad3dd7f045b4899301dc183b432b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectTile: {fileID: 0}
+  GroundLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  yOffset: 1
+  coveringTiles: []
+--- !u!114 &950933736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950933734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e756be36c92cff47bb1f4e8017253b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 0}
+  connectedTile: {fileID: 0}
+  occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
+  occupyingPlayer: {fileID: 0}
+  occupyingEnemy: {fileID: 0}
+  occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
+  costFromOrigin: 0
+  costToDestination: 0
+  terrainCost: 0
+--- !u!64 &950933737
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950933734}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2534964839176971238, guid: 948a519f03ae84f45b675ac716135b39, type: 3}
+--- !u!23 &950933738
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950933734}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: c83db60afdb29a04288e58b5a6059477, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &950933739
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950933734}
+  m_Mesh: {fileID: 2534964839176971238, guid: 948a519f03ae84f45b675ac716135b39, type: 3}
+--- !u!4 &950933740
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950933734}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.35, y: 0.83, z: -9.33}
+  m_LocalScale: {x: 1, y: 4.5077, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &955066850
 GameObject:
   m_ObjectHideFlags: 0
@@ -18494,9 +19022,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -18706,9 +19237,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -18918,9 +19452,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -19047,9 +19584,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -19342,9 +19882,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 2
@@ -19471,9 +20014,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -19683,9 +20229,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -19812,9 +20361,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -20024,9 +20576,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -20153,9 +20708,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -20531,9 +21089,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -20666,9 +21227,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -21036,9 +21600,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -21331,9 +21898,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -21460,9 +22030,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -21838,9 +22411,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -21967,9 +22543,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -22179,9 +22758,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 2
@@ -22474,9 +23056,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -22686,9 +23271,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -22815,9 +23403,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -22944,9 +23535,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -23156,9 +23750,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -23356,9 +23953,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -23801,9 +24401,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -24013,9 +24616,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -24225,9 +24831,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -24459,9 +25068,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 2
@@ -24588,9 +25200,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -24883,9 +25498,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -25012,9 +25630,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -25425,9 +26046,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -25637,9 +26261,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 2
@@ -25766,9 +26393,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -25978,9 +26608,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 2
@@ -26190,9 +26823,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -26402,9 +27038,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -26531,9 +27170,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -26874,9 +27516,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -27003,9 +27648,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -27132,9 +27780,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -27261,9 +27912,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -27390,9 +28044,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -27726,9 +28383,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -28089,9 +28749,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -28199,6 +28862,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   yOffset: 1
+  coveringTiles: []
 --- !u!1 &1348015650
 GameObject:
   m_ObjectHideFlags: 0
@@ -28499,9 +29163,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -28628,9 +29295,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -28923,9 +29593,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -29223,9 +29896,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -29352,9 +30028,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -29616,9 +30295,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 2
@@ -29745,9 +30427,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -30311,9 +30996,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -30440,9 +31128,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -30652,9 +31343,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -30947,9 +31641,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -31325,9 +32022,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -31559,9 +32259,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -31688,9 +32391,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -31817,9 +32523,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 2
@@ -31946,9 +32655,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -32075,9 +32787,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -32561,9 +33276,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 2
@@ -32690,9 +33408,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -32819,9 +33540,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -33324,9 +34048,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -33536,9 +34263,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -33754,9 +34484,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -34039,9 +34772,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -34334,9 +35070,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -34463,9 +35202,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -34592,9 +35334,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -34721,9 +35466,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -34933,9 +35681,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 2
@@ -35145,9 +35896,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -35462,9 +36216,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 2
@@ -35591,9 +36348,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -36064,9 +36824,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 2
@@ -36193,9 +36956,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -36488,9 +37254,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 2
@@ -36700,9 +37469,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -36893,9 +37665,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -37022,9 +37797,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -37151,9 +37929,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -37747,9 +38528,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -37867,7 +38651,7 @@ PrefabInstance:
     - target: {fileID: 220303031585184934, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.45
+      value: 0.84
       objectReference: {fileID: 0}
     - target: {fileID: 220303031585184934, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
@@ -37877,7 +38661,7 @@ PrefabInstance:
     - target: {fileID: 220303031585184934, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.19
+      value: -8.64
       objectReference: {fileID: 0}
     - target: {fileID: 220303031585184934, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
@@ -38019,9 +38803,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -38397,9 +39184,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -38526,9 +39316,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -38655,9 +39448,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -38902,9 +39698,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -39031,9 +39830,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -39160,9 +39962,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -39710,9 +40515,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -39922,9 +40730,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -40051,9 +40862,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -40805,9 +41619,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -40934,9 +41751,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -41318,9 +42138,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 2
@@ -41678,9 +42501,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -42123,9 +42949,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -42252,9 +43081,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -42381,9 +43213,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -42593,9 +43428,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -42722,9 +43560,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -42940,9 +43781,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -43055,7 +43899,8 @@ MonoBehaviour:
   coverPointMask:
     serializedVersion: 2
     m_Bits: 64
-  coverPointRayLenght: 0.3
+  coverPointRayLenght: 1
+  characterYOffset: 0.5
 --- !u!114 &2124771804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43238,9 +44083,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -43367,9 +44215,12 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupiedByPlayer: 0
+  occupiedByEnemy: 0
   occupyingPlayer: {fileID: 0}
   occupyingEnemy: {fileID: 0}
   occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -43941,3 +44792,5 @@ SceneRoots:
   - {fileID: 1286036783}
   - {fileID: 629048418}
   - {fileID: 1345861906}
+  - {fileID: 351039586}
+  - {fileID: 950933740}

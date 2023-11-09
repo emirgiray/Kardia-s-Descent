@@ -19,6 +19,7 @@ public class SkillsData : ScriptableObject
     public int skillCooldown = 1;
     public int actionPointUse = 1;
     public int accuracy = 80;
+    public int coverAccuracyDebuff = 20;
     public enum SkillType
     {
         Ranged, Melee, Magic
@@ -45,7 +46,7 @@ public class SkillsData : ScriptableObject
     }
     public SkillEffect skillEffect;
 
-    public virtual void ActivateSkill(GameObject parent, Tile selectedTile, Action OnComplete = null)
+    public virtual void ActivateSkill(SkillContainer.Skills Skill, GameObject parent, Tile selectedTile, Action OnComplete = null)
     {
         
     }

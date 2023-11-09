@@ -92,6 +92,7 @@ public class SkillContainer : MonoBehaviour
             range = skill.skillRange,
             skillCooldown = skill.skillCooldown,
             accuracy = skill.accuracy,
+            coverAccuracyDebuff = skill.coverAccuracyDebuff,
             actionPointUse = skill.actionPointUse,
             remainingSkillCooldown = skill.skillCooldown,
             skillButton = this.skillButtons.Find(x => x.skillData == skill)//this doesnt work???
@@ -170,6 +171,7 @@ public class SkillContainer : MonoBehaviour
             Interact.Instance.SkillSelected?.Invoke();
             Interact.Instance.HighlightAttackableTiles();
             Interact.Instance.selectedCharacter.GetComponent<Character>().AttackStart();
+            
         }
         else if (Character is Enemy)
         {
@@ -211,20 +213,23 @@ public class SkillContainer : MonoBehaviour
 
         if (Character is Enemy)Debug.Log($"{this.name} Used {selectedSkill.skillData.name}");
 
-        this.selectedSkill.remainingSkillCooldown = 0;
-            // this.selectedSkill.skillButton.GetComponent<SkillButton>().SetSkillButtonCooldownText(this.selectedSkill.remainingSkillCooldown);
-        //if (this.selectedSkill.remainingSkillCooldown <= 0)
+        if (this.selectedSkill.skillCooldown != 0)
         {
+            this.selectedSkill.remainingSkillCooldown = 0;
             this.selectedSkill.skillReadyToUse = false;
             skillNotReadyAction?.Invoke();
             if (Character is Player)
             {
                 this.selectedSkill.skillButton.EnableDisableButton(false);
                 this.selectedSkill.skillButton.cooldownImage.gameObject.SetActive(true);
-                this.selectedSkill.skillButton.cooldownText.text = (this.selectedSkill.skillCooldown).ToString(); 
+                this.selectedSkill.skillButton.cooldownText.text = (this.selectedSkill.skillCooldown).ToString();
             }
         }
-        selectedSkill.skillData.ActivateSkill(gameObject, selectedTile, () => DeslectSkill(selectedSkill, enemy));
+        
+        
+        
+        
+        selectedSkill.skillData.ActivateSkill(selectedSkill, gameObject, selectedTile, () => DeslectSkill(selectedSkill, enemy));
         
         if (Character is Player)
         {
@@ -241,6 +246,16 @@ public class SkillContainer : MonoBehaviour
     {
         skillsDataSOList.AddRange(skillsDataListIn);
     }
+
+    public void CoverAccuracyDebuff()
+    {
+        selectedSkill.accuracy -= selectedSkill.coverAccuracyDebuff;
+    }
+
+    public void CoverResetAccruacyDebuff()
+    {
+        selectedSkill.accuracy = selectedSkill.skillData.accuracy;
+    }
     
     [System.Serializable]
     public class Skills
@@ -252,6 +267,7 @@ public class SkillContainer : MonoBehaviour
         public int remainingSkillCooldown;
         public int actionPointUse;
         public int accuracy;
+        public int coverAccuracyDebuff;
         public bool skillReadyToUse = true;
         public SkillButton skillButton;
 

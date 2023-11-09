@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Pathfinding;
 using Pathfinding.Examples;
 using Sirenix.OdinInspector;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -29,7 +30,7 @@ public class Interact : MonoBehaviour
     AudioClip click, pop;
     [SerializeField]LayerMask interactMask;
     [SerializeField]LayerMask UILayerMask;
-    
+    public Action<Tile> CurrentTileChangedAction;
 
     //Debug purposes only
     [SerializeField]
@@ -39,7 +40,7 @@ public class Interact : MonoBehaviour
     Pathfinder pathfinder;
     [Tooltip("This is a null check for selectedCharacter")]
     bool characterSelected = false;
-    [SerializeField] bool isMouseOverUI = false;
+    [SerializeField] public bool isMouseOverUI = false;
     
     Dictionary<int, Color> tileInspectColors = new Dictionary<int, Color>()
     {
@@ -56,6 +57,7 @@ public class Interact : MonoBehaviour
         SkillSelected += ClearHighlightReachableTiles;
         SkillSelected += () => EnableMovement(false);
         SkillDeselected += () => EnableMovement(true);
+        CurrentTileChangedAction += CurrentTileChangedFunc;
     }
 
     private void OnDisable()
@@ -64,8 +66,11 @@ public class Interact : MonoBehaviour
         SkillSelected -= ClearHighlightReachableTiles;
         SkillSelected -= () => EnableMovement(false);
         SkillDeselected -= () => EnableMovement(true);
+        CurrentTileChangedAction += CurrentTileChangedFunc;
     }
 
+  
+    
     public void EnableMovement(bool value)
     {
         if (selectedCharacter.characterState == Character.CharacterState.WaitingTurn || selectedCharacter.characterState == Character.CharacterState.Idle)
@@ -191,6 +196,7 @@ public class Interact : MonoBehaviour
 
        // if(lastTile != null) lastTile.ClearHighlight();
         currentTile = hit.transform.GetComponent<Tile>();
+        if(lastTile != currentTile) CurrentTileChangedAction?.Invoke(currentTile);//check if the currentTile value has changed
         lastTile = currentTile;
         characterUnderMouse = currentTile.occupyingCharacter;
         InspectTileHighlight();
@@ -202,8 +208,16 @@ public class Interact : MonoBehaviour
         //make the this method work every 15 frames
         if (Time.frameCount % 15 != 0)
             return;
-
+        
+        /*if (InspectTileGO.transform.position != currentTile.transform.position)
+        {
+            CurrentTileChangedAction?.Invoke();
+        }*/
+        
+        
+        
         InspectTileGO.transform.position = currentTile.transform.position;
+        
         if (currentTile.Occupied)
         {
             if (currentTile.OccupiedByCoverPoint)
@@ -271,6 +285,15 @@ public class Interact : MonoBehaviour
                     break;
                 //TODO do it in a better way; get the selected tile then do the logic there (range, accuracy damage)
                 case Character.CharacterState.Attacking:
+
+                    /*if (currentTile.occupiedByEnemy)
+                    {
+                        if (Pathfinder.Instance.CheckCoverPoint(selectedCharacter, currentTile.occupyingCharacter))
+                        {
+                            
+                        }
+                    }*/
+                    
                     if (Input.GetMouseButtonDown(0) && selectedCharacter.canAttack)
                     {
                         if (attackableTiles.Contains(currentTile))
@@ -280,54 +303,8 @@ public class Interact : MonoBehaviour
                         }
                     }
                     break;
-               
             }
         }
-        
-        
-        /*
-        if (currentTile.Occupied)
-        {
-            if (currentTile.occupyingCharacter.gameObject.tag == "Player")
-            {
-                InspectCharacter();
-            }
-            else if (currentTile.occupyingCharacter.gameObject.tag == "Enemy")
-            {
-                InspectEnemy();
-            }
-
-            //if (selectedCharacter.characterState )
-            {
-                
-            }
-        }
-        else
-        {
-            //currentTile.Highlight(new Color(0,0,1,0.5f));
-            if (characterSelected)
-            {
-                switch (selectedCharacter.GetComponent<Character>().characterState)
-                {
-                    case Character.CharacterState.Idle:
-                        break;
-           
-                    case Character.CharacterState.WaitingTurn:
-                        NavigateToTile();
-                        break;
- 
-                    case Character.CharacterState.Attacking:
-                        if (Input.GetMouseButtonDown(0))
-                        {
-                            selectedCharacter.GetComponent<SkillContainer>().UseSkill(selectedCharacter.GetComponent<SkillContainer>().selectedSkill, currentTile);
-                        }
-                        break;
-               
-                }
-            }
-            
-        }
-        */
             
     }
 
@@ -530,6 +507,31 @@ public class Interact : MonoBehaviour
         }
     }
 
+    public void CurrentTileChangedFunc(Tile newTile)
+    {
+        //print(newTile);
+        if (characterSelected && selectedCharacter.characterState == Character.CharacterState.Attacking)
+        {
+            selectedCharacter.GetComponent<SkillContainer>().CoverResetAccruacyDebuff();
+            if (newTile.occupiedByEnemy)
+            {
+                if (Pathfinder.Instance.CheckCoverPoint(selectedCharacter, newTile.occupyingCharacter))
+                {
+                    selectedCharacter.GetComponent<SkillContainer>().CoverAccuracyDebuff();
+                }
+                else
+                {
+                    //selectedCharacter.GetComponent<SkillContainer>().ResetAccruacyDebuff();
+                }
+            }
+            else
+            {
+                selectedCharacter.GetComponent<SkillContainer>().CoverResetAccruacyDebuff();
+            }
+            
+        }
+    }
+    
     /*//Debug only
     void ClearLastPath()
     {
