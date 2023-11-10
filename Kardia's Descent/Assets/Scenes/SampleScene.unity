@@ -6687,7 +6687,7 @@ PrefabInstance:
         type: 3}
       propertyPath: currentState
       value: 
-      objectReference: {fileID: 11400000, guid: 4a6a703b84570254a9f52f2787eef5a5,
+      objectReference: {fileID: 11400000, guid: e496630f22336574c9bc1cdfab5680cb,
         type: 2}
     - target: {fileID: 4307295650466193098, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
@@ -6695,6 +6695,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 86483eb2a26720249b022fc666d4704d,
         type: 2}
+    - target: {fileID: 4307295650466193098, guid: 89ab918d79ba6e74598771889c318cd0,
+        type: 3}
+      propertyPath: decidedMoveTile
+      value: 
+      objectReference: {fileID: 186480834}
     - target: {fileID: 4307295650466193098, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
       propertyPath: RandomWaitTimer.x
@@ -6709,7 +6714,7 @@ PrefabInstance:
         type: 3}
       propertyPath: defaultCombatStartState
       value: 
-      objectReference: {fileID: 11400000, guid: 4a6a703b84570254a9f52f2787eef5a5,
+      objectReference: {fileID: 11400000, guid: e496630f22336574c9bc1cdfab5680cb,
         type: 2}
     - target: {fileID: 6684565769014052981, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}

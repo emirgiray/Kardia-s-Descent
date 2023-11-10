@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,9 +11,11 @@ public class MoveCloseAction : ActionAI
         Move(controller);
     }
  bool doonce = true;
-    private void Move(StateController controller)
+    private void Move(StateController controller)//this INCLUDES the player tile
     {
-        
+         
+       // Debug.Log($"doOnce = {doonce}");
+
         
         if (TurnSystem.Instance.turnState == TurnSystem.TurnState.Enemy && controller.enemy.canMove/* && controller.RandomWait()*/)//todo seems like adding delay fixes problems like stuttering and going back to first tile
         {
@@ -20,6 +23,7 @@ public class MoveCloseAction : ActionAI
             {
                // controller.enemy.StartMove(Pathfinder.Instance.GetPathBetween(controller.enemy.characterTile, controller.targetPlayer.characterTile, true));// 1
                  controller.enemy.StartMove(FindPathToTargetPlayer(controller, controller.targetPlayer), () => doonce = true);
+                 //Debug.Log($"path: {FindPathToTargetPlayer(controller, controller.targetPlayer)}");
                  doonce = false;
                // controller.enemy.canMove = false;
                 //controller.enemy.remainingMoveRange = 0;
@@ -27,6 +31,10 @@ public class MoveCloseAction : ActionAI
         }
     }
 
+    private void OnDisable()
+    {
+        doonce = true;
+    }
     // List<Tile> reachableTiles = new List<Tile>();
     // List<Tile> attackableTiles = new List<Tile>();
     // List<Tile> tilesBetwen = new List<Tile>();

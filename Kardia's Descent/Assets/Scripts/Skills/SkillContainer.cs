@@ -106,7 +106,7 @@ public class SkillContainer : MonoBehaviour
 
     public void TrySelectSkill(Skills selectSkill)
     {
-        if (Character.characterState == Character.CharacterState.WaitingTurn || Character.characterState == Character.CharacterState.Idle)
+        if (Character.characterState == Character.CharacterState.WaitingTurn || Character.characterState == Character.CharacterState.Idle || Character.characterState == Character.CharacterState.Attacking)
         {
             if (skillSelected == false) //if no skill is selected select that sakill
             {
@@ -247,6 +247,17 @@ public class SkillContainer : MonoBehaviour
         skillsDataSOList.AddRange(skillsDataListIn);
     }
 
+    public int CalculateCoverAccuracyDebuff(Character defender)
+    {
+        if (Pathfinder.Instance.CheckCoverPoint(Character.characterTile, defender.characterTile))
+        {
+            
+            return selectedSkill.coverAccuracyDebuff;
+        }
+
+        return 0;
+    }
+    
     public void CoverAccuracyDebuff()
     {
         selectedSkill.accuracy -= selectedSkill.coverAccuracyDebuff;

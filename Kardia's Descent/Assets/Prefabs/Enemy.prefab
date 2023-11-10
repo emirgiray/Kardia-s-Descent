@@ -271,8 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionPoints: 3
   remainingActionPoints: 0
-  moveRange: 3
-  remainingMoveRange: 0
+  maxActionPoints: 10
   initiative: 1
   canMove: 1
   canAttack: 1
@@ -289,6 +288,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnActionPointsChangeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  PlayerTurnStart:
     m_PersistentCalls:
       m_Calls: []
   MoveStart:
@@ -317,22 +319,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f599340377c6b845a7859ad7cd1899a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aiActive: 0
   currentState: {fileID: 0}
+  defaultCombatStartState: {fileID: 0}
   remainState: {fileID: 11400000, guid: 20a530a049e552949892a8e571154a9d, type: 2}
-  defaultCombatStartState: {fileID: 11400000, guid: 8fde20d4419649443896a8c25a3696d4,
-    type: 2}
   enemyStats: {fileID: 0}
   pathfinder: {fileID: 0}
   turnSystem: {fileID: 0}
   enemy: {fileID: 0}
   skillContainer: {fileID: 0}
   targetPlayer: {fileID: 0}
+  decidedMoveTile: {fileID: 0}
+  decidedAttackSkill:
+    skillData: {fileID: 0}
+    damage: 0
+    range: 0
+    skillCooldown: 0
+    remainingSkillCooldown: 0
+    actionPointUse: 0
+    accuracy: 0
+    coverAccuracyDebuff: 0
+    skillReadyToUse: 1
+    skillButton: {fileID: 0}
   players: []
   enemies: []
   movableTiles: []
   attackableTiles: []
   RandomWaitTimer: {x: 0, y: 0}
-  aiActive: 0
 --- !u!114 &-6751961407145202659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,10 +358,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c781da93507b7847bf67f8a566d0250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillsDataList: []
+  skillsDataSOList: []
+  skillsList: []
+  selectedSkill:
+    skillData: {fileID: 0}
+    damage: 0
+    range: 0
+    skillCooldown: 0
+    remainingSkillCooldown: 0
+    actionPointUse: 0
+    accuracy: 0
+    coverAccuracyDebuff: 0
+    skillReadyToUse: 1
+    skillButton: {fileID: 0}
   skillSelected: 0
-  selectedSkill: {fileID: 0}
+  skillCanbeUsed: 1
   Character: {fileID: 0}
+  Inventory: {fileID: 0}
+  skillButtons: []
 --- !u!114 &7224365364739156612
 MonoBehaviour:
   m_ObjectHideFlags: 0

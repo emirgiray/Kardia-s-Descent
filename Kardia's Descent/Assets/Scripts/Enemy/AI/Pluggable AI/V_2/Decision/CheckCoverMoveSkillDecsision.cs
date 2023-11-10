@@ -13,34 +13,83 @@ public class CheckCoverMoveSkillDecsision : DecisionAI
 
     private bool CheckCoverMoveSkill(StateController controller)
     {
+        int tilesChecked = 0;
+        bool result = false;
         int tileScore = 0;
         int prevTileScore = 0;
-        bool result = false;
+        int tilesWithoutCover = 0;
+        int tilesWithNoActionPointLeftAfterMove = 0;
 
         foreach (var tile in controller.GetReachableTiles())
         {
-            if (tile.isCoveredByCoverPoint)
+            int reaminingActionPointsAfterMove = controller.enemy.remainingActionPoints;
+            reaminingActionPointsAfterMove -= Pathfinder.Instance.GetTilesInBetween(controller.enemy.characterTile, tile).Count;
+            tilesChecked++;
+            //if (/*tile.isCoveredByCoverPoint*/ Pathfinder.Instance.CheckCoverPoint())
             {
                 foreach (var skill in controller.skillContainer.skillsList)
                 {
-                    foreach (var attackTile in Pathfinder.Instance.GetAttackableTiles(tile, skill.skillData.skillRange))
+                    if (skill.skillReadyToUse && reaminingActionPointsAfterMove >= skill.actionPointUse)
                     {
-                        if (attackTile.occupiedByPlayer)
+                        //Debug.Log($"{skill.skillData}");
+                        //Debug.Log($"skill ready to use and enough action points after move");
+                        foreach (var attackTile in Pathfinder.Instance.GetAttackableTiles(tile, skill.skillData.skillRange))
                         {
-                            /*if (Pathfinder.Instance.CheckCoverPoint(controller.enemy, attackTile.occupyingPlayer))
+                            if (attackTile.occupiedByPlayer)
                             {
+                                if (Pathfinder.Instance.CheckCoverPoint(attackTile, tile ))
+                                {
+                                    Debug.Log($"enemy is in cover");
+                                    tileScore = skill.damage - controller.skillContainer.CalculateCoverAccuracyDebuff(attackTile.occupyingPlayer);
+                                    Debug.Log($"tile: {tile}, curent score: {tileScore}, prev score: {prevTileScore} skill: {skill.skillData}, tiles checked: {tilesChecked} / {controller.GetReachableTiles().Count}");
+
+                                    if ( tileScore > prevTileScore)
+                                    {
+                                        /*controller.skillContainer.SelectSkill(skill, controller.enemy);
+                                        controller.enemy.StartMove(Pathfinder.Instance.FindPath(controller.enemy.characterTile, tile));*/
+                                        //controller.skillContainer.SelectSkill(skill, controller.enemy);
+                                        controller.decidedAttackSkill = skill;
+                                        controller.decidedMoveTile = tile;
+                                        controller.targetPlayer = attackTile.occupyingPlayer;
+                                        Debug.Log($"BIGGER THAN PREVIOUS, tile: {tile}, curent score: {tileScore}, prev score: {prevTileScore} skill: {skill.skillData}, tiles checked: {tilesChecked} / {controller.GetReachableTiles().Count}");
+                                        result = true; //this means cover found 
+                                    }
+                                    prevTileScore = tileScore;
+                                    
+                                    if (tilesChecked >= controller.GetReachableTiles().Count)
+                                    {
+                                        Debug.Log($"cover= {result} tiles checked: {tilesChecked} / {controller.GetReachableTiles().Count}");
+                                        return result;
+                                    }
+                                }
+                                else
+                                {
+                                    tilesWithoutCover++;
+                                    if (tilesWithoutCover >= controller.GetReachableTiles().Count)
+                                    {
+                                        Debug.Log("cover = "+ result + " no cover found, proceeding to move close");
+                                        return false;
+                                    }
+                                }
                                 
-                            }*/
+                                
+                            }
                         }
                     }
                 }
             }
-            else
+            /*else
             {
-                return false;
-            }
+                tilesWithoutCover++;
+                if (tilesWithoutCover >= controller.GetReachableTiles().Count)
+                {
+                    return false;
+                }
+            }*/
         }
         
-        return false;
+        
+        Debug.Log($"RETURNED AT THE END, cover : {result},  tiles checked: {tilesChecked} / {controller.GetReachableTiles().Count}");
+        return result;
     }
 }

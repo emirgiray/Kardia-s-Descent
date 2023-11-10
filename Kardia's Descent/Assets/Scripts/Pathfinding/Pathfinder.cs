@@ -100,7 +100,7 @@ public class Pathfinder : MonoBehaviour
     /// <param name="forAIPathfinding">this is for AI pathfinding bc without adding this ai cant get the destination since its occupied</param>
     /// <param name="forAttackRange">this is for attack range bc without addng this character cant get the destination since its occupied</param>
     /// <returns></returns>
-    public List<Tile> NeighborTiles(Tile origin, bool ignoreOccupied = false)
+    public List<Tile> NeighborTiles(Tile origin, bool ignoreOccupied = false, bool forAttackTiles = false)
     {
         const float HEXAGONAL_OFFSET = 1.75f;
         List<Tile> tiles = new List<Tile>();
@@ -127,6 +127,11 @@ public class Pathfinder : MonoBehaviour
                     if (ignoreOccupied)
                     {
                         if (hitTile.occupyingCoverPoint == null)
+                        {
+                            tiles.Add(hitTile);
+                        }
+
+                        if (forAttackTiles)
                         {
                             tiles.Add(hitTile);
                         }
@@ -308,7 +313,7 @@ public class Pathfinder : MonoBehaviour
 
             foreach (Tile tile in frontier)
             {
-                foreach (Tile neighbor in NeighborTiles(tile, true))
+                foreach (Tile neighbor in NeighborTiles(tile, true, true))
                 {
                     /*if (neighbor.Occupied == true)
                     {
@@ -370,16 +375,16 @@ public class Pathfinder : MonoBehaviour
         path.tiles = list.ToArray();*/
         
         /*Path path = FindPath(origin, destination, forAIPathfinding);*/
-        /*foreach (var VARIABLE in path.tiles)
+        foreach (var VARIABLE in path.tiles)
         {
             VARIABLE.Highlight(Color.white);
-        }*/
+        }
         return path;
        
     }
 
     [Button]
-    public bool CheckCoverPoint(Character attacking, Character defending)
+    public bool CheckCoverPoint(Tile attacking, Tile defending)
     {
         //Debug.DrawRay(defending.transform.position, (attacking.transform.position-defending.transform.position).normalized * coverPointRayLenght,  Color.red);
        //check if the defending character is in cover
@@ -392,10 +397,10 @@ public class Pathfinder : MonoBehaviour
                 coverPointRayLenght,
                coverPointMask))
        {
-           Debug.Log("defender is in cover");
+           //Debug.Log($"defender {defending} is in cover");
            return true;
        }
-       Debug.Log("defender is NOT in cover");
+      // Debug.Log($"defender {defending}  is NOT in cover");
        return false;
     }
 }

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillSprite: {fileID: 21300000, guid: 3af7666693284e04eacc2fcd7c0f6c43, type: 3}
   skillName: ShootSkill02
-  skillID: 1
+  skillID: 2
   skillDamage: 25
   skillRange: 2
   skillCooldown: 2

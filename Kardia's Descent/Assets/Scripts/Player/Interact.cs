@@ -515,7 +515,7 @@ public class Interact : MonoBehaviour
             selectedCharacter.GetComponent<SkillContainer>().CoverResetAccruacyDebuff();
             if (newTile.occupiedByEnemy)
             {
-                if (Pathfinder.Instance.CheckCoverPoint(selectedCharacter, newTile.occupyingCharacter))
+                if (Pathfinder.Instance.CheckCoverPoint(selectedCharacter.characterTile, newTile))
                 {
                     selectedCharacter.GetComponent<SkillContainer>().CoverAccuracyDebuff();
                 }
