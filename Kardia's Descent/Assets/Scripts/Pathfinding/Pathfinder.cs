@@ -34,9 +34,8 @@ public class Pathfinder : MonoBehaviour
 
     /*private void Update()
     {
-        CheckCoverPoint(GameObject.Find("Enemy").GetComponent<Character>(), GameObject.Find("Player").GetComponent<Character>());
-    }
-    */
+        CheckCoverPoint(GameObject.Find("Enemy").GetComponent<Character>().characterTile, GameObject.Find("Player").GetComponent<Character>().characterTile);
+    }*/
 
     /// <summary>
     /// Main pathfinding function, marks tiles as being in frontier, while keeping a copy of the frontier
@@ -386,11 +385,11 @@ public class Pathfinder : MonoBehaviour
     [Button]
     public bool CheckCoverPoint(Tile attacking, Tile defending)
     {
-        //Debug.DrawRay(defending.transform.position, (attacking.transform.position-defending.transform.position).normalized * coverPointRayLenght,  Color.red);
        //check if the defending character is in cover
        Vector3 attackingPos = new Vector3(attacking.transform.position.x, attacking.transform.position.y + characterYOffset, attacking.transform.position.z);
        Vector3 defendingPos = new Vector3(defending.transform.position.x, defending.transform.position.y + characterYOffset, defending.transform.position.z);
        
+       // Debug.DrawRay(defendingPos, (attackingPos - defendingPos).normalized * coverPointRayLenght,  Color.red);
        if (Physics.Raycast(defendingPos, 
                (attackingPos - defendingPos).normalized, 
                out RaycastHit hit, 
@@ -400,7 +399,7 @@ public class Pathfinder : MonoBehaviour
            //Debug.Log($"defender {defending} is in cover");
            return true;
        }
-      // Debug.Log($"defender {defending}  is NOT in cover");
+       //Debug.Log($"defender {defending}  is NOT in cover");
        return false;
     }
 }

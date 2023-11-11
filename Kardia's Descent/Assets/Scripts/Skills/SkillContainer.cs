@@ -247,14 +247,14 @@ public class SkillContainer : MonoBehaviour
         skillsDataSOList.AddRange(skillsDataListIn);
     }
 
-    public int CalculateCoverAccuracyDebuff(Character defender)
+    public int CalculateCoverAccuracyDebuff(Tile attacker, Tile defender, Skills selectSkill)
     {
-        if (Pathfinder.Instance.CheckCoverPoint(Character.characterTile, defender.characterTile))
+        if (Pathfinder.Instance.CheckCoverPoint(attacker, defender))
         {
-            
-            return selectedSkill.coverAccuracyDebuff;
+            Debug.Log($"accuracy debuff: {selectSkill.coverAccuracyDebuff}");
+            return selectSkill.coverAccuracyDebuff;
         }
-
+        Debug.Log($"accuracy debuff returned default: 0");
         return 0;
     }
     
