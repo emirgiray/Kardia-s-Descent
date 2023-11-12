@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91dd342f79d40dd49b4eb64d48a09d70, type: 3}
+  m_Name: 6_CheckMoveToCoverDecisionState
+  m_EditorClassIdentifier: 
+  actions: []
+  actionsOnce: []
+  transitions:
+  - decision: {fileID: 11400000, guid: aba4b0b90ae0e26479f8ec4ebb51f61c, type: 2}
+    trueState: {fileID: 11400000, guid: e51cc5c8b39b4d94ebeecf0f806e1534, type: 2}
+    falseState: {fileID: 11400000, guid: e51cc5c8b39b4d94ebeecf0f806e1534, type: 2}
+  sceneGizmoColor: {r: 0.91410303, g: 0, b: 1, a: 1}

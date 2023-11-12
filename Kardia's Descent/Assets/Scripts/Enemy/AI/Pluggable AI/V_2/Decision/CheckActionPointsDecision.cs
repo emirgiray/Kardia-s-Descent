@@ -12,7 +12,7 @@ public class CheckActionPointsDecision : DecisionAI
 
     private bool CheckActionPoints(StateController controller)
     {
-        if (controller.enemy.actionPoints > 0)
+        if (controller.enemy.remainingActionPoints > 0)
         {
             return true;
         }

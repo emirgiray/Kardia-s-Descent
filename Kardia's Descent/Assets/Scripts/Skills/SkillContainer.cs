@@ -150,11 +150,11 @@ public class SkillContainer : MonoBehaviour
 
     public void SelectSkill(Skills selectSkill, Enemy enemy = null)
     {
-        if (Character is Enemy && !enemy.canAttack)
+        /*if (Character is Enemy && !enemy.canAttack)
         {
             enemy.EndTurn();
             return;
-        }
+        }*/
         if (Character is Enemy)Debug.Log($"{this.name} Selected {selectSkill.skillData.name}");
         
         /*selectedSkill = skillsList.Find(x => x.skillData == selectSkill);

@@ -66,6 +66,7 @@ public class StateController : MonoBehaviour
         enemies.AddRange(turnSystem.enemies);
     }
 
+    private bool runOnce;
     private void Update()
     {
         aiActive = (enemy.turnOrder == TurnSystem.Instance.currentEnemyTurnOrder);//todo do this with events in turn system
@@ -80,6 +81,11 @@ public class StateController : MonoBehaviour
             if (TurnSystem.Instance.turnState == TurnSystem.TurnState.Enemy && enemy.turnOrder == TurnSystem.Instance.currentEnemyTurnOrder)
             {
                 currentState.UpdateState(this);
+                if (!runOnce)
+                {
+                    currentState.DoActionsOnce(this);
+                    runOnce = true;
+                }
             }
         }
     }
@@ -89,7 +95,27 @@ public class StateController : MonoBehaviour
         if (nextState != remainState)
         {
             currentState = nextState;
+            OnExitState();
         }
+    }
+    
+    private void OnExitState()
+    {
+        // stateTimeElapsed = 0;
+        // OneTimeAnim = false; //Animasyon onetime'ını resetliyor.
+        runOnce = false; //ActionOnce'ı sıfırlıyorum.
+        // AnimOver = false;
+        // if (Anim!=null)
+        // {
+        //     if (previousAnim!="")
+        //     {
+        //         Anim.ResetTrigger(previousAnim);
+        //     }
+        //         
+        // }
+        
+        // WaitTimer = Random.Range(RandomWaitTimer.x, RandomWaitTimer.y);
+        
     }
 
     public List<Tile> GetReachableTiles()

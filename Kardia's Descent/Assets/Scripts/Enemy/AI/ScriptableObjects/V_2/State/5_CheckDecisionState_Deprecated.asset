@@ -10,9 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 91dd342f79d40dd49b4eb64d48a09d70, type: 3}
-  m_Name: EndTurnState_2
+  m_Name: 5_CheckDecisionState_Deprecated
   m_EditorClassIdentifier: 
-  actions:
-  - {fileID: 11400000, guid: d9c56d50e6f8d87408f0ef6ae4f1ba1c, type: 2}
-  transitions: []
-  sceneGizmoColor: {r: 1, g: 1, b: 1, a: 1}
+  actions: []
+  actionsOnce: []
+  transitions:
+  - decision: {fileID: 11400000, guid: e94ef23adc207a94cb786d6acda65cf5, type: 2}
+    trueState: {fileID: 0}
+    falseState: {fileID: 0}
+  sceneGizmoColor: {r: 0, g: 1, b: 0.873976, a: 1}

@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 91dd342f79d40dd49b4eb64d48a09d70, type: 3}
-  m_Name: CheckCoverMoveSkillDecsisionState
+  m_Name: 20_EndTurnState_2
   m_EditorClassIdentifier: 
   actions: []
-  transitions:
-  - decision: {fileID: 11400000, guid: d73787a65ab317b4e91973f52d2aab7d, type: 2}
-    trueState: {fileID: 0}
-    falseState: {fileID: 0}
-  sceneGizmoColor: {r: 0.34950158, g: 0.990566, b: 0.46000963, a: 1}
+  actionsOnce:
+  - {fileID: 11400000, guid: 215b6a894cffbd34192082bae9bf6e5a, type: 2}
+  transitions: []
+  sceneGizmoColor: {r: 1, g: 1, b: 1, a: 1}

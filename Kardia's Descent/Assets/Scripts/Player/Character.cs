@@ -284,12 +284,14 @@ public class Character : MonoBehaviour
             canMove = false;
             canAttack = false;
             characterState = CharacterState.WaitingNextRound;
-            EndTurn();
+           // EndTurn();
         }
     }
 
     public void EndTurn()
     {
+        canMove = false;
+        canAttack = false;
         characterState = CharacterState.WaitingNextRound;
         if (this is Enemy)
         {

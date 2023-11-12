@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 91dd342f79d40dd49b4eb64d48a09d70, type: 3}
-  m_Name: TurnStartState
+  m_Name: 2_CheckCoverMoveSkillDecsisionState
   m_EditorClassIdentifier: 
   actions: []
+  actionsOnce: []
   transitions:
-  - decision: {fileID: 11400000, guid: 2d5ab7365141807489f37bd94dc50f53, type: 2}
-    trueState: {fileID: 11400000, guid: 78ffbf4779812bd41afd893466559030, type: 2}
-    falseState: {fileID: 11400000, guid: bd2a3a42c6458594dbe315790a3957c2, type: 2}
-  sceneGizmoColor: {r: 0.8649915, g: 0.8679245, b: 0.48636523, a: 1}
+  - decision: {fileID: 11400000, guid: d73787a65ab317b4e91973f52d2aab7d, type: 2}
+    trueState: {fileID: 11400000, guid: 28750fa740b6010438b43a854a71a7c2, type: 2}
+    falseState: {fileID: 11400000, guid: e7aace167e4aec840a8d0e21961c3f8b, type: 2}
+  sceneGizmoColor: {r: 0.34950158, g: 0.990566, b: 0.46000963, a: 1}

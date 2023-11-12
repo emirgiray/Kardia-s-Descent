@@ -374,10 +374,10 @@ public class Pathfinder : MonoBehaviour
         path.tiles = list.ToArray();*/
         
         /*Path path = FindPath(origin, destination, forAIPathfinding);*/
-        foreach (var VARIABLE in path.tiles)
+        /*foreach (var VARIABLE in path.tiles)
         {
             VARIABLE.Highlight(Color.white);
-        }
+        }*/
         return path;
        
     }

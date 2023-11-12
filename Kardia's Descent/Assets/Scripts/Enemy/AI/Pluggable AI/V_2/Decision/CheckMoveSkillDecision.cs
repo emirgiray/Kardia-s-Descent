@@ -2,16 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "CheckCoverMoveSkillDecsision",
-    menuName = "MyPluggableAI_V2/Decisions/CheckCoverMoveSkillDecsision", order = 1)]
-public class CheckCoverMoveSkillDecsision : DecisionAI
+[CreateAssetMenu(fileName = "CheckMoveSkillDecision", menuName = "MyPluggableAI_V2/Decisions/CheckMoveSkillDecision", order = 3)]
+public class CheckMoveSkillDecision : DecisionAI
 {
     public override bool Decide(StateController controller)
     {
-        return CheckCoverMoveSkill(controller);
+        return CheckMoveSkill(controller);
     }
 
-    private bool CheckCoverMoveSkill(StateController controller)
+    private bool CheckMoveSkill(StateController controller)
     {
         int tilesChecked = 0;
         bool result = false;
@@ -20,13 +19,13 @@ public class CheckCoverMoveSkillDecsision : DecisionAI
         int tilesWithoutCover = 0;
         int tilesWithNoActionPointLeftAfterMove = 0;
 
-        List<Tile> reachableTiles = controller.GetReachableTiles();//this already includes the current tile
+        List<Tile> reachableTiles = controller.GetReachableTiles();
         //reachableTiles.Add(controller.enemy.characterTile);//include current tile
         
         foreach (var tile in /*controller.GetReachableTiles()*/ reachableTiles)
         {
             int reaminingActionPointsAfterMove = controller.enemy.remainingActionPoints;
-            reaminingActionPointsAfterMove -= Pathfinder.Instance.GetTilesInBetween(controller.enemy.characterTile, tile).Count + 1;//this is the cost of moving to the tile
+            reaminingActionPointsAfterMove -= Pathfinder.Instance.GetTilesInBetween(controller.enemy.characterTile, tile).Count + 1;
             tilesChecked++;
             //if (/*tile.isCoveredByCoverPoint*/ Pathfinder.Instance.CheckCoverPoint())
             {
@@ -40,11 +39,15 @@ public class CheckCoverMoveSkillDecsision : DecisionAI
                         {
                             if (attackTile.occupiedByPlayer)
                             {
-                                if (Pathfinder.Instance.CheckCoverPoint(attackTile, tile ))
+                                //if (Pathfinder.Instance.CheckCoverPoint(attackTile, tile ))
                                 {
-                                    Debug.Log($"enemy is in cover");
-                                    tileScore = 50 + skill.damage - controller.skillContainer.CalculateCoverAccuracyDebuff(tile, attackTile, skill);
-                                    Debug.Log($"tile: {tile}, curent score: {tileScore}, prev score: {prevTileScore} skill: {skill.skillData}, tiles checked: {tilesChecked} / {/*controller.GetReachableTiles().Count*/ reachableTiles.Count}");
+                                    //Debug.Log($"enemy is in cover");
+                                    tileScore = 50 + skill.damage - controller.skillContainer.CalculateCoverAccuracyDebuff(tile, attackTile, skill)
+                                        + Pathfinder.Instance.GetTilesInBetween(tile, attackTile, true).Count * 10;
+
+                                    Debug.Log($"remaining ap after move: {reaminingActionPointsAfterMove}");
+                                    Debug.Log($"tile: {tile}, curent score: {tileScore}, prev score: {prevTileScore} skill: {skill.skillData}, " +
+                                              $"tiles between {Pathfinder.Instance.GetTilesInBetween(tile, attackTile, true).Count}, tiles checked: {tilesChecked} / {/*controller.GetReachableTiles().Count*/ reachableTiles.Count}");
 
                                     if ( tileScore > prevTileScore)
                                     {
@@ -55,25 +58,26 @@ public class CheckCoverMoveSkillDecsision : DecisionAI
                                         controller.decidedMoveTile = tile;
                                         controller.targetPlayer = attackTile.occupyingPlayer;
                                         Debug.Log($"BIGGER THAN PREVIOUS, tile: {tile}, curent score: {tileScore}, prev score: {prevTileScore} skill: {skill.skillData}, tiles checked: {tilesChecked} / {/*controller.GetReachableTiles().Count*/ reachableTiles.Count}");
-                                        result = true; //this means cover found 
+                                        result = true; //this means move found 
+                                        
                                         prevTileScore = tileScore;
                                     }
                                     
                                     if (tilesChecked >= /*controller.GetReachableTiles().Count*/ reachableTiles.Count)
                                     {
-                                        Debug.Log($"cover= {result} tiles checked: {tilesChecked} / {/*controller.GetReachableTiles().Count*/ reachableTiles.Count}");
+                                        Debug.Log($"move= {result} tiles checked: {tilesChecked} / {/*controller.GetReachableTiles().Count*/ reachableTiles.Count}");
                                         return result;
                                     }
                                 }
-                                else
+                                /*else
                                 {
                                     tilesWithoutCover++;
-                                    if (tilesWithoutCover >= /*controller.GetReachableTiles().Count*/ reachableTiles.Count)
+                                    if (tilesWithoutCover >= /*controller.GetReachableTiles().Count#1# reachableTiles.Count)
                                     {
                                         Debug.Log("cover = "+ result + " no cover found, proceeding to move close");
                                         return false;
                                     }
-                                }
+                                }*/
                                 
                                 
                             }
@@ -92,7 +96,8 @@ public class CheckCoverMoveSkillDecsision : DecisionAI
         }
         
         
-        Debug.Log($"RETURNED AT THE END, cover : {result},  tiles checked: {tilesChecked} / {/*controller.GetReachableTiles().Count*/ reachableTiles.Count}");
+        Debug.Log($"RETURNED AT THE END, move : {result},  tiles checked: {tilesChecked} / {/*controller.GetReachableTiles().Count*/ reachableTiles.Count}");
         return result;
     }
 }
+
