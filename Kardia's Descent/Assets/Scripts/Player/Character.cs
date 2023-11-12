@@ -200,13 +200,16 @@ public class Character : MonoBehaviour
     {
         // transform.rotation = Quaternion.LookRotation(origin.DirectionTo(destination).Flat(), Vector3.up);
         transform.DOLookAt(destination, 0.75f, AxisConstraint.Y, Vector3.up).SetEase(Ease.OutBack);
+        //StartCoroutine(RotateEnum(origin, destination));
     }
 
     public IEnumerator RotateEnum(Vector3 origin, Vector3 destination)
     {
         yield return null;
-        Rotate(origin, destination);
+        // Rotate(origin, destination);
+        transform.DOLookAt(destination, 0.75f, AxisConstraint.Y, Vector3.up).SetEase(Ease.OutBack);
     }
+    
 
     public void ResetMovePoints()
     {

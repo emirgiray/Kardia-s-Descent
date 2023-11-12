@@ -507,17 +507,17 @@ public class Interact : MonoBehaviour
         }
     }
 
-    public void CurrentTileChangedFunc(Tile newTile)
+    public void CurrentTileChangedFunc(Tile newTile)//this calculates the accuracy before shooting
     {
         //print(newTile);
         if (characterSelected && selectedCharacter.characterState == Character.CharacterState.Attacking)
         {
-            selectedCharacter.GetComponent<SkillContainer>().CoverResetAccruacyDebuff();
+            selectedCharacter.GetComponent<SkillContainer>().ResetCoverAccruacyDebuff();
             if (newTile.occupiedByEnemy)
             {
                 if (Pathfinder.Instance.CheckCoverPoint(selectedCharacter.characterTile, newTile))
                 {
-                    selectedCharacter.GetComponent<SkillContainer>().CoverAccuracyDebuff();
+                    selectedCharacter.GetComponent<SkillContainer>().ApplyCoverAccuracyDebuff();
                 }
                 else
                 {
@@ -526,7 +526,7 @@ public class Interact : MonoBehaviour
             }
             else
             {
-                selectedCharacter.GetComponent<SkillContainer>().CoverResetAccruacyDebuff();
+                selectedCharacter.GetComponent<SkillContainer>().ApplyCoverAccuracyDebuff();
             }
             
         }

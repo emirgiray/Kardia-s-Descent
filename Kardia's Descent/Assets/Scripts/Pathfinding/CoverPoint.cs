@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class CoverPoint : MonoBehaviour
@@ -56,6 +57,13 @@ public class CoverPoint : MonoBehaviour
         objectTile.OccupiedByCoverPoint = false;
         objectTile.occupyingCoverPoint = null;
         objectTile = null;
+
+        StartCoroutine(DeathDelay());
     }
-    
+
+    public IEnumerator DeathDelay()
+    {
+        yield return new WaitForSecondsRealtime(1);
+        gameObject.transform.DOMoveY(gameObject.transform.position.y - 1.5f, 0.5f);
+    }
 }

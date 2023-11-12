@@ -1,26 +1,30 @@
 using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 
 public class Tile : MonoBehaviour
 {
-    public Tile parent;
-    public Tile connectedTile;
-    public Character occupyingCharacter;
-    public bool occupiedByPlayer = false;
-    public bool occupiedByEnemy = false;
-    public Player occupyingPlayer;
-    public Enemy occupyingEnemy;
-    public CoverPoint occupyingCoverPoint;
-    public bool isCoveredByCoverPoint = false;
+    [BoxGroup("Tile")] public Tile parent;
+    [BoxGroup("Tile")] public Tile connectedTile;
+    [BoxGroup("Tile")] public bool Occupied { get; set; } = false;
+    [BoxGroup("Tile")] public Character occupyingCharacter;
+    
+    [BoxGroup("Player")] public bool occupiedByPlayer = false;
+    [BoxGroup("Player")] public Player occupyingPlayer;
+    
+    [BoxGroup("Enemy")] public bool occupiedByEnemy = false;
+    [BoxGroup("Enemy")] public Enemy occupyingEnemy;
+    
+    [BoxGroup("Cover Point")] public bool OccupiedByCoverPoint = false;
+    [BoxGroup("Cover Point")] public CoverPoint occupyingCoverPoint;
+    [BoxGroup("Cover Point")] public bool isCoveredByCoverPoint = false;
 
-    public float costFromOrigin = 0;
-    public float costToDestination = 0;
-    public int terrainCost = 0;
-    public float TotalCost { get { return costFromOrigin + costToDestination + terrainCost; } }
-    public bool Occupied { get; set; } = false;
-    public bool OccupiedByCoverPoint { get; set; } = false;
+    [BoxGroup("Tile")] public float costFromOrigin = 0;
+    [BoxGroup("Tile")]  public float costToDestination = 0;
+    [BoxGroup("Tile")] public int terrainCost = 0;
+    [BoxGroup("Tile")] public float TotalCost { get { return costFromOrigin + costToDestination + terrainCost; } }
     
     Dictionary<int, Color> costMap = new Dictionary<int, Color>()
     {

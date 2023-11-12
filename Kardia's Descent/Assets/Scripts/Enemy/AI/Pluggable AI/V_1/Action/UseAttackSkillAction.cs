@@ -7,6 +7,9 @@ public class UseAttackSkillAction : ActionAI
 {
     public override void Act(StateController controller)
     {
+        controller.skillContainer.selectedSkill.accuracy -= controller.skillContainer.CalculateCoverAccuracyDebuff(
+            controller.decidedMoveTile, controller.targetPlayer.characterTile, controller.skillContainer.selectedSkill);//reduce accuracy if target player in cover
+        
         UseSkill(controller, controller.skillContainer.selectedSkill, controller.targetPlayer);
     }
 
@@ -25,6 +28,7 @@ public class UseAttackSkillAction : ActionAI
         });*/
         
         controller.skillContainer.UseSkill(controllerSelectedSkill, controllerTargetPlayer.characterTile, controller.enemy);
+
     }
 }
 

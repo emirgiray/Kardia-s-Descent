@@ -226,10 +226,11 @@ public class SkillContainer : MonoBehaviour
             }
         }
         
-        
-        
-        
-        selectedSkill.skillData.ActivateSkill(selectedSkill, gameObject, selectedTile, () => DeslectSkill(selectedSkill, enemy));
+        selectedSkill.skillData.ActivateSkill(selectedSkill, Character, selectedTile, gameObject,  () =>
+        {
+            ResetCoverAccruacyDebuff();
+            DeslectSkill(selectedSkill, enemy);
+        });
         
         if (Character is Player)
         {
@@ -258,12 +259,12 @@ public class SkillContainer : MonoBehaviour
         return 0;
     }
     
-    public void CoverAccuracyDebuff()
+    public void ApplyCoverAccuracyDebuff()
     {
         selectedSkill.accuracy -= selectedSkill.coverAccuracyDebuff;
     }
 
-    public void CoverResetAccruacyDebuff()
+    public void ResetCoverAccruacyDebuff()//todo !!!!!!this doesnt calculate buffs/debuffs before cover check
     {
         selectedSkill.accuracy = selectedSkill.skillData.accuracy;
     }

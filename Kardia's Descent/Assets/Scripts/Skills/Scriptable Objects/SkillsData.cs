@@ -22,7 +22,7 @@ public class SkillsData : ScriptableObject
     public int coverAccuracyDebuff = 20;
     public enum SkillType
     {
-        Ranged, Melee, Magic
+        Ranged, Melee
     }
     public SkillType skillType;
     public enum SkillClass
@@ -37,16 +37,23 @@ public class SkillsData : ScriptableObject
     public DamageType damageType;
     public enum SkillTarget
     {
-         Enemy, Self, Ally, AllEnemies, AllAllies, All
+         Enemy, Ally, Self, AllEnemies, AllAllies, All
     }
     public SkillTarget skillTarget;
+    
+    public enum SkillHitType
+    {
+        Single, Area, Line, Cone
+    }
+    public SkillHitType skillHitType;
+    
     public enum SkillEffect
     {
         None, Bleed, Burn, Freeze, Poison, Shock, Stun, Slow, Blind, Confuse, Sleep, Charm, Fear, Taunt, Silence, Curse, Buff, Debuff, Heal, Revive, Shield, Summon
     }
     public SkillEffect skillEffect;
 
-    public virtual void ActivateSkill(SkillContainer.Skills Skill, GameObject parent, Tile selectedTile, Action OnComplete = null)
+    public virtual void ActivateSkill(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, GameObject parent,  Action OnComplete = null)
     {
         
     }
