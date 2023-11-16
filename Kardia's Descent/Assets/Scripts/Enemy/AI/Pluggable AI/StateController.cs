@@ -9,6 +9,7 @@ using Random = UnityEngine.Random;
 public class StateController : MonoBehaviour
 { 
     [SerializeField] public bool aiActive;
+    [SerializeField] public bool canExitState = true;
     
     public StateAI currentState;
     public StateAI defaultCombatStartState;
@@ -78,7 +79,7 @@ public class StateController : MonoBehaviour
         }
         else
         {
-            if (TurnSystem.Instance.turnState == TurnSystem.TurnState.Enemy && enemy.turnOrder == TurnSystem.Instance.currentEnemyTurnOrder)
+            if (TurnSystem.Instance.turnState == TurnSystem.TurnState.Enemy && enemy.turnOrder == TurnSystem.Instance.currentEnemyTurnOrder && canExitState)
             {
                 currentState.UpdateState(this);
                 if (!runOnce)

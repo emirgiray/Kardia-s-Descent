@@ -140,8 +140,8 @@ public class Character : MonoBehaviour
             if (this is Enemy)
             {
                 characterTile.occupiedByEnemy = false;
+                print("enemy move start");
             }
-            print("enemy move start");
             StartCoroutine(MoveAlongPath(_path, OnComplete));
         }
     }
@@ -193,22 +193,26 @@ public class Character : MonoBehaviour
     void MoveAndRotate(Vector3 origin, Vector3 destination, float duration)
     {
         transform.position = Vector3.Lerp(origin, destination, duration);
-        transform.rotation = Quaternion.LookRotation(origin.DirectionTo(destination).Flat(), Vector3.up);
+        if (origin.DirectionTo(destination).Flat() != Vector3.zero)
+        {
+            transform.rotation = Quaternion.LookRotation(origin.DirectionTo(destination).Flat(), Vector3.up);
+        }
     }
 
-    public void Rotate(Vector3 origin, Vector3 destination)
+    public void Rotate(Vector3 destination)
     {
         // transform.rotation = Quaternion.LookRotation(origin.DirectionTo(destination).Flat(), Vector3.up);
         transform.DOLookAt(destination, 0.75f, AxisConstraint.Y, Vector3.up).SetEase(Ease.OutBack);
+ 
         //StartCoroutine(RotateEnum(origin, destination));
     }
 
-    public IEnumerator RotateEnum(Vector3 origin, Vector3 destination)
+    /*public IEnumerator RotateEnum(Vector3 origin, Vector3 destination)
     {
         yield return null;
         // Rotate(origin, destination);
         transform.DOLookAt(destination, 0.75f, AxisConstraint.Y, Vector3.up).SetEase(Ease.OutBack);
-    }
+    }*/
     
 
     public void ResetMovePoints()

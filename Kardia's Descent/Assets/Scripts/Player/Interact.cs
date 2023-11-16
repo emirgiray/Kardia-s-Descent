@@ -507,12 +507,17 @@ public class Interact : MonoBehaviour
         }
     }
 
-    public void CurrentTileChangedFunc(Tile newTile)//this calculates the accuracy before shooting
+    public void CurrentTileChangedFunc(Tile newTile)//this calculates the accuracy before shooting, adds rotation to player
     {
         //print(newTile);
-        if (characterSelected && selectedCharacter.characterState == Character.CharacterState.Attacking)
+        if (characterSelected && selectedCharacter.characterState == Character.CharacterState.Attacking)//todo add or idle
         {
             selectedCharacter.GetComponent<SkillContainer>().ResetCoverAccruacyDebuff();
+            if (isMouseOverUI == false)
+            {
+                selectedCharacter.Rotate(currentTile.transform.position);
+            }
+            
             if (newTile.occupiedByEnemy)
             {
                 if (Pathfinder.Instance.CheckCoverPoint(selectedCharacter.characterTile, newTile))

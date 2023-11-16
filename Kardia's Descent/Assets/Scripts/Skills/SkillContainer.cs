@@ -175,7 +175,7 @@ public class SkillContainer : MonoBehaviour
         }
         else if (Character is Enemy)
         {
-            // enemy.AttackStart();
+            Character.AttackStart();
         }
     }
 

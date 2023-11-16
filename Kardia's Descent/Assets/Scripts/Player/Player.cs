@@ -15,7 +15,7 @@ public class Player : Character
     {
         TurnSystem.Instance.FriendlyTurn -= base.StartTurn;
     }
-    private void Update()
+    /*private void Update()
     {
         if (characterState == CharacterState.Attacking)
         {
@@ -26,7 +26,7 @@ public class Player : Character
                 Rotate(transform.position, Interact.Instance.currentTile.transform.position);
             }
         }
-    }
+    }*/
 
     [Button]
     public List<Tile> gettilesinbetween(Tile dest)
