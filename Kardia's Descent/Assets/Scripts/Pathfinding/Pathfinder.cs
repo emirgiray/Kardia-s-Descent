@@ -16,6 +16,7 @@ public class Pathfinder : MonoBehaviour
 
     [SerializeField] private float coverPointRayLenght = 0.3f;
     [SerializeField] private float characterYOffset = 0.5f;
+    [SerializeField] private float tileVerticalityLenght = 2f;
     
     private void Awake()
     {
@@ -299,7 +300,6 @@ public class Pathfinder : MonoBehaviour
 
       public List<Tile> GetAttackableTiles(Tile selectedCharacterCharacterTile, int selectedCharacterSkillRange)
     {
-        
         List<Tile> tiles = new List<Tile>();
         tiles.Add(selectedCharacterCharacterTile);
         List<Tile> frontier = new List<Tile>();
@@ -312,26 +312,56 @@ public class Pathfinder : MonoBehaviour
 
             foreach (Tile tile in frontier)
             {
+                
                 foreach (Tile neighbor in NeighborTiles(tile, true, true))
                 {
                     /*if (neighbor.Occupied == true)
                     {
 
                     }*/
+                    
                     if (/*neighbor.Occupied == false && */!tiles.Contains(neighbor))
                     {
                         newFrontier.Add(neighbor);
                         tiles.Add(neighbor);
-
                         
+                        //also add verticle tiles with raycasting up
+                        //Debug.DrawRay(neighbor.transform.position, Vector3.up * tileVerticalityLenght, Color.yellow);
+                        if (Physics.Raycast(neighbor.transform.position, Vector3.up, out RaycastHit hit, tileVerticalityLenght, tileMask))
+                        {
+                            newFrontier.Add(hit.transform.GetComponent<Tile>());
+                            tiles.Add(hit.transform.GetComponent<Tile>());
+                        }
+                       
                     }
                 }
             }
-
+            
             frontier = newFrontier;
             currentRange++;
         }
+        
+        //remove the ones directly below
+        List<Tile> tilesToRemove = new List<Tile>();
+        
+        foreach (var tile in tiles)
+        {
+            if (Physics.Raycast(tile.transform.position, Vector3.down, out RaycastHit hit, tileVerticalityLenght +1 , tileMask))
+            {
+                /*Debug.Log($"tile: {selectedCharacterCharacterTile.name} = {selectedCharacterCharacterTile.transform.position.y}" +
+                          $"tile: {hit.transform.GetComponent<Tile>().name} =  {hit.transform.GetComponent<Tile>().transform.position.y}");*/
+                if (selectedCharacterCharacterTile.transform.position.y != hit.transform.GetComponent<Tile>().transform.position.y)
+                {
+                    tilesToRemove.Add(hit.transform.GetComponent<Tile>());
+                }
+                
+            }
+        }
 
+        foreach (var tile in tilesToRemove)
+        {
+            tiles.Remove(tile);
+        }
         return tiles;
         
         

@@ -49,12 +49,12 @@ public class Tile : MonoBehaviour
 
     public void HighlightMoveable()
     {
-        SetColor(new Color(0, 1, 0, 0.1f));
+        SetColor(new Color(0.3f, 0.8f, 0.3f, 1));
     }
 
     public void HighlightAttackable()
     {
-        SetColor(new Color(1, 1, 0, 0.1f));
+        SetColor(new Color(1, 0.5f, 0.1f, 1));
     }
     public void ClearHighlight()
     {

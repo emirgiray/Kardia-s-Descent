@@ -305,6 +305,7 @@ MonoBehaviour:
   ActionPointsExhausted:
     m_PersistentCalls:
       m_Calls: []
+  stateController: {fileID: 0}
   turnOrder: 0
   decideState: 0
 --- !u!114 &4307295650466193098
@@ -320,6 +321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aiActive: 0
+  canExitState: 1
   currentState: {fileID: 0}
   defaultCombatStartState: {fileID: 0}
   remainState: {fileID: 11400000, guid: 20a530a049e552949892a8e571154a9d, type: 2}
@@ -548,12 +550,12 @@ PrefabInstance:
     - target: {fileID: 7008288973743981631, guid: ac3393e7e0bd79f4eb348e5d544d370f,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1920
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 7008288973743981631, guid: ac3393e7e0bd79f4eb348e5d544d370f,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 1080
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 7008288973743981631, guid: ac3393e7e0bd79f4eb348e5d544d370f,
         type: 3}
@@ -614,11 +616,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7902527277031576670, guid: ac3393e7e0bd79f4eb348e5d544d370f,
-        type: 3}
-      propertyPath: m_PresetInfoIsWorld
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
