@@ -433,6 +433,7 @@ GameObject:
   - component: {fileID: 3559731180422350550}
   - component: {fileID: 2285055112904080939}
   - component: {fileID: 5346473511071419419}
+  - component: {fileID: 7653892111301965843}
   m_Layer: 5
   m_Name: Skill Button
   m_TagString: Untagged
@@ -565,12 +566,14 @@ MonoBehaviour:
     remainingSkillCooldown: 0
     actionPointUse: 0
     accuracy: 0
+    coverAccuracyDebuff: 0
     skillReadyToUse: 1
     skillButton: {fileID: 0}
   button: {fileID: 3559731180422350550}
   cooldownText: {fileID: 9170667670688581449}
   cooldownImage: {fileID: 704295264677857386}
   skillContainer: {fileID: 0}
+  tooltipTrigger: {fileID: 7653892111301965843}
 --- !u!114 &5346473511071419419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -592,3 +595,17 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls: []
+--- !u!114 &7653892111301965843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7211178580545273016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6741100710ecdd479f18449e01fef31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  content: 
+  header: 

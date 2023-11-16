@@ -13,6 +13,7 @@ public class SkillsData : ScriptableObject
     public Sprite skillSprite;
     [Space]
     public string skillName = "";
+    [Multiline] public string skillDescription = "";
     public string skillID = "";
     public int skillDamage = 1;
     public int skillRange= 3;

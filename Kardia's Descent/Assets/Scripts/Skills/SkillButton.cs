@@ -19,6 +19,7 @@ public class SkillButton : MonoBehaviour
     [SerializeField] public TextMeshProUGUI cooldownText;
     [SerializeField] public GameObject cooldownImage;
     [SerializeField] private SkillContainer skillContainer;
+    [SerializeField] private TooltipTrigger tooltipTrigger;
 
     private void Awake()
     {
@@ -33,6 +34,8 @@ public class SkillButton : MonoBehaviour
         button.onClick.AddListener(useSkill);
         GetComponentInChildren<TextMeshProUGUI>().text = skillData.skillName;
         skillContainer = skillContainerIn;
+        tooltipTrigger.SetHeader(skillDataIn.skillName);
+        tooltipTrigger.SetContent(skillDataIn.skillDescription);
         //OnInit();
     }
 
