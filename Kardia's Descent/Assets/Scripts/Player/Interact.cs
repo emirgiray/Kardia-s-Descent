@@ -43,11 +43,13 @@ public class Interact : MonoBehaviour
     bool characterSelected = false;
     [SerializeField] public bool isMouseOverUI = false;
     
+   /*
    public Dictionary<int, Color> bulkHighlightColorsMap = new Dictionary<int, Color>()
     {
         {0, new Color(0.3f, 0.8f, 0.3f, 1) }, //Moveable
         {1, new Color(1, 0.5f, 0.1f, 1) },//Attackable
     };
+    */
     
     Dictionary<int, Color> tileInspectColors = new Dictionary<int, Color>()
     {

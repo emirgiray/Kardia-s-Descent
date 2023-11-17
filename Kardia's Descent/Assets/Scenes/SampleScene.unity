@@ -7019,6 +7019,10 @@ MonoBehaviour:
   contentText: {fileID: 565893596}
   layoutElement: {fileID: 280279529}
   characterWrapLimit: 80
+  rectTransform: {fileID: 0}
+  fadeTime: 0.5
+  fadeInEase: 0
+  fadeOutEase: 0
 --- !u!1 &283027741
 GameObject:
   m_ObjectHideFlags: 0
@@ -7255,7 +7259,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c83db60afdb29a04288e58b5a6059477, type: 2}
+  - {fileID: 2100000, guid: 66b1a1167ea253644aed1c8cfc34dd7b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
