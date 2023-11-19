@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "CombatStartDecision", menuName = "MyPluggableAI/Decisions/CombatStartDecision", order = 0)]
 public class CombatStartDecision : DecisionAI
 {
+    [Multiline] [SerializeField] public string DeveloperDescription = "CANT BE USED!!!!!";
+
     public override bool Decide(StateController controller)
     {
         return DecideBestTileAndSkill(controller);
@@ -21,7 +23,7 @@ public class CombatStartDecision : DecisionAI
         {
             foreach (var skill in controller.skillContainer.skillsList)//state 1
             {
-                foreach (var attackTile in Pathfinder.Instance.GetAttackableTiles(controller.enemy.characterTile, skill.skillData.skillRange))
+                foreach (var attackTile in Pathfinder.Instance.GetAttackableTiles(controller.enemy.characterTile, skill))
                 {
                     if (attackTile.occupyingPlayer != null) //todo null check can be too expensive
                     {
@@ -57,7 +59,7 @@ public class CombatStartDecision : DecisionAI
         {
             foreach (var skill in controller.skillContainer.skillsList)
             {
-                foreach (var attackTile in Pathfinder.Instance.GetAttackableTiles(tile, skill.skillData.skillRange))
+                foreach (var attackTile in Pathfinder.Instance.GetAttackableTiles(tile, skill))
                 {
                     if (attackTile.occupyingPlayer != null)//todo null check can be too expensive
                     {

@@ -1,9 +1,11 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Pathfinding;
 using Pathfinding.Examples;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -24,6 +26,9 @@ public class Interact : MonoBehaviour
     [BoxGroup("Objects")][SerializeField] public Character selectedCharacter;
     [BoxGroup("Objects")][SerializeField] public Character lastSelectedCharacter;
     [BoxGroup("Objects")][SerializeField] public Character selectedEnemy;
+    
+    [BoxGroup("UI")][SerializeField] public GameObject HitChanceUIGameObject;
+    [BoxGroup("UI")][SerializeField] public TextMeshProUGUI HitChanceText;
     
     List<Tile> reachableTiles = new List<Tile>();
     List<Tile> attackableTiles = new List<Tile>();
@@ -497,7 +502,7 @@ public class Interact : MonoBehaviour
     public void HighlightAttackableTiles()
     { 
         ClearHighlightAttackableTiles();
-        attackableTiles = pathfinder.GetAttackableTiles(selectedCharacter.characterTile, selectedCharacter.GetComponent<SkillContainer>().selectedSkill.skillData.skillRange/*, selectedCharacter.characterTile*/);
+        attackableTiles = pathfinder.GetAttackableTiles(selectedCharacter.characterTile, selectedCharacter.GetComponent<SkillContainer>().selectedSkill/*, selectedCharacter.characterTile*/);
         foreach (Tile tile in attackableTiles)
         {
             tile.HighlightAttackable();
@@ -532,18 +537,34 @@ public class Interact : MonoBehaviour
                 if (Pathfinder.Instance.CheckCoverPoint(selectedCharacter.characterTile, newTile))
                 {
                     selectedCharacter.GetComponent<SkillContainer>().ApplyCoverAccuracyDebuff();
+                    HitChanceUIGameObject.SetActive(true);
+                    StartCoroutine(HitChanceUIToMousePos());  
+                    HitChanceText.text = selectedCharacter.GetComponent<SkillContainer>().selectedSkill.accuracy.ToString() + "%";
+                    //newTile.occupyingEnemy.GetComponent<TooltipTrigger>().AddToContent(selectedCharacter.GetComponent<SkillContainer>().selectedSkill.accuracy.ToString());
                 }
                 else
                 {
-                    //selectedCharacter.GetComponent<SkillContainer>().ResetAccruacyDebuff();
+                    selectedCharacter.GetComponent<SkillContainer>().ResetCoverAccruacyDebuff();
+                    HitChanceUIGameObject.SetActive(true);
+                    StartCoroutine(HitChanceUIToMousePos());  
+                    HitChanceText.text = selectedCharacter.GetComponent<SkillContainer>().selectedSkill.accuracy.ToString() + "%";
                 }
             }
             else
             {
-                selectedCharacter.GetComponent<SkillContainer>().ApplyCoverAccuracyDebuff();
+                selectedCharacter.GetComponent<SkillContainer>().ResetCoverAccruacyDebuff();
+                StopCoroutine(HitChanceUIToMousePos());  
+                HitChanceUIGameObject.SetActive(false);
+                //lastTile.occupyingEnemy.GetComponent<TooltipTrigger>().AddToContent(selectedCharacter.GetComponent<SkillContainer>().selectedSkill.accuracy.ToString());
             }
             
         }
+    }
+
+    public IEnumerator HitChanceUIToMousePos()
+    {
+        yield return null;
+        HitChanceUIGameObject.transform.position = Input.mousePosition;
     }
     
     /*//Debug only

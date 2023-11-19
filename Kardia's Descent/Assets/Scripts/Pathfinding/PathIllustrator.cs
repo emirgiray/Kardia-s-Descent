@@ -17,9 +17,9 @@ public class PathIllustrator : MonoBehaviour
     {
         if (canIllustratePath)
         {
-            line.positionCount = path.tiles.Length;
+            line.positionCount = path.tiles.Count;
 
-            for (int i = 0; i < path.tiles.Length; i++)
+            for (int i = 0; i < path.tiles.Count; i++)
             {
                 Transform tileTransform = path.tiles[i].transform;
                 line.SetPosition(i, tileTransform.position.With(y: tileTransform.position.y + LineHeightOffset));

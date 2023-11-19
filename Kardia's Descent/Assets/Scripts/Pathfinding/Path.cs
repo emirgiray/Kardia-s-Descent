@@ -1,5 +1,7 @@
+using System.Collections.Generic;
+
 [System.Serializable]
 public class Path
 {
-    public Tile[] tiles;
+    public List<Tile> tiles;
 }

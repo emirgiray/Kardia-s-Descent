@@ -77,13 +77,13 @@ public class Character : MonoBehaviour
         Debug.Log("Unable to find a start position");
     }
 
-    IEnumerator MoveAlongPath(Path path, Action OnComplete = null)
+    IEnumerator MoveAlongPath(Path path, Action OnComplete = null, bool spendActionPoints = true)
     {
         const float MIN_DISTANCE = 0.05f;
         const float TERRAIN_PENALTY = 0.5f;
 
         int currentStep = 0;
-        int pathLength = path.tiles.Length-1;
+        int pathLength = path.tiles.Count-1;
         Tile currentTile = path.tiles[0];
         float animationTime = 0f;
 
@@ -102,7 +102,7 @@ public class Character : MonoBehaviour
             //decrease remainingMoveSteps if the value of currentTile is changed
             if (currentTile != path.tiles[currentStep])
             {
-                if (inCombat)
+                if (inCombat && spendActionPoints)
                 {
                     remainingActionPoints-- ;
                     OnActionPointsChange?.Invoke(remainingActionPoints);
@@ -123,7 +123,7 @@ public class Character : MonoBehaviour
         OnComplete?.Invoke();
     }
 
-    public void StartMove(Path _path, Action OnComplete = null)
+    public void StartMove(Path _path, Action OnComplete = null, bool spendActionPoints = true)
     {
         if (canMove)
         {
@@ -142,7 +142,7 @@ public class Character : MonoBehaviour
                 characterTile.occupiedByEnemy = false;
                 print("enemy move start");
             }
-            StartCoroutine(MoveAlongPath(_path, OnComplete));
+            StartCoroutine(MoveAlongPath(_path, OnComplete, spendActionPoints));
         }
     }
 
@@ -154,6 +154,7 @@ public class Character : MonoBehaviour
         tile.Occupied = true;
         
         tile.occupyingCharacter = this;
+        tile.occupyingGO = this.gameObject;
         if (this is Player)
         {
             tile.occupyingPlayer = this.GetComponent<Player>();

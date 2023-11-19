@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f30463883ca2f6459049e5182f68fce, type: 3}
+  m_Name: ShieldCharge
+  m_EditorClassIdentifier: 
+  skillSprite: {fileID: 21300000, guid: cc23a5e877180c940bfa40d8cf492d26, type: 3}
+  skillName: Shield Charge
+  skillDescription: Moves forward 2 hexes, hits using the shield, low dmg, stuns
+    for 1 turn.
+  skillID: 3
+  skillDamage: 10
+  skillRange: 3
+  skillCooldown: 0
+  actionPointUse: 1
+  accuracy: 100
+  coverAccuracyDebuff: 20
+  skillType: 1
+  skillClass: 6
+  damageType: 0
+  skillTarget: 0
+  skillHitType: 0
+  skillEffect: 6

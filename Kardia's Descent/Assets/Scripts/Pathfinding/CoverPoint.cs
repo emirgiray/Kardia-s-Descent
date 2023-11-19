@@ -38,6 +38,7 @@ public class CoverPoint : MonoBehaviour
         tile.Occupied = true;
         tile.OccupiedByCoverPoint = true;
         tile.occupyingCoverPoint = this;
+        tile.occupyingGO = this.gameObject;
         coveringTiles = Pathfinder.Instance.NeighborTiles(tile, true);
         for (int i = 0; i < coveringTiles.Count; i++)
         {
@@ -56,6 +57,7 @@ public class CoverPoint : MonoBehaviour
         objectTile.Occupied = false;
         objectTile.OccupiedByCoverPoint = false;
         objectTile.occupyingCoverPoint = null;
+        objectTile.occupyingGO = null;
         objectTile = null;
 
         StartCoroutine(DeathDelay());

@@ -127,7 +127,7 @@ public class StateController : MonoBehaviour
     
     public List<Tile> GetAttackableTiles()
     {
-        attackableTiles = pathfinder.GetAttackableTiles(enemy.characterTile, skillContainer.selectedSkill.skillData.skillRange);
+        attackableTiles = pathfinder.GetAttackableTiles(enemy.characterTile, skillContainer.selectedSkill);
         return attackableTiles;
     }
 

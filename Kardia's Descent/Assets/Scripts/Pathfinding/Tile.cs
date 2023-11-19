@@ -10,6 +10,8 @@ public class Tile : MonoBehaviour
     [BoxGroup("Tile")] public Tile connectedTile;
     [BoxGroup("Tile")] public bool Occupied { get; set; } = false;
     [BoxGroup("Tile")] public Character occupyingCharacter;
+    [BoxGroup("Tile")] public GameObject occupyingGO;
+    [BoxGroup("Tile")] public bool selectable = true;
     
     [BoxGroup("Player")] public bool occupiedByPlayer = false;
     [BoxGroup("Player")] public Player occupyingPlayer;
@@ -21,10 +23,10 @@ public class Tile : MonoBehaviour
     [BoxGroup("Cover Point")] public CoverPoint occupyingCoverPoint;
     [BoxGroup("Cover Point")] public bool isCoveredByCoverPoint = false;
 
-    [BoxGroup("Tile")] public float costFromOrigin = 0;
-    [BoxGroup("Tile")]  public float costToDestination = 0;
-    [BoxGroup("Tile")] public int terrainCost = 0;
-    [BoxGroup("Tile")] public float TotalCost { get { return costFromOrigin + costToDestination + terrainCost; } }
+    [HideInInspector] [BoxGroup("Tile")] public float costFromOrigin = 0;
+    [HideInInspector] [BoxGroup("Tile")]  public float costToDestination = 0;
+    [HideInInspector] [BoxGroup("Tile")] public int terrainCost = 0;
+    [HideInInspector] [BoxGroup("Tile")] public float TotalCost { get { return costFromOrigin + costToDestination + terrainCost; } }
     
     Dictionary<int, Color> costMap = new Dictionary<int, Color>()
     {
@@ -91,7 +93,7 @@ public class Tile : MonoBehaviour
         occupyingCharacter = null;
         occupyingPlayer = null;
         occupyingEnemy = null;
-        
+        occupyingGO = null;
     }
     
     /*public void DebugCostText()

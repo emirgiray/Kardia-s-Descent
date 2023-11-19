@@ -7,6 +7,8 @@ using UnityEngine;
 public class MoveDecision : DecisionAI
 {
     //[SerializeField] private List<Tile> attackableTiles;
+    [Multiline] [SerializeField] public string DeveloperDescription = "CANT BE USED!!!!!";
+
 
     public  override bool Decide(StateController controller)
     {
@@ -16,7 +18,7 @@ public class MoveDecision : DecisionAI
     private bool Move(StateController controller)
     {
         //attackableTiles = Pathfinder.Instance.GetReachableTiles(controller.enemy.characterTile, controller.selectedSkill.skillRange);
-        foreach (var tile in Pathfinder.Instance.GetAttackableTiles(controller.enemy.characterTile, controller.skillContainer.selectedSkill.skillData.skillRange))
+        /*foreach (var tile in Pathfinder.Instance.GetAttackableTiles(controller.enemy.characterTile, controller.skillContainer.selectedSkill.skillData.skillRange))
         {
             if (tile == controller.targetPlayer.characterTile)//if character is already in range of the skill dont move
             {
@@ -25,7 +27,7 @@ public class MoveDecision : DecisionAI
             }
 
         }
-        Debug.Log("player NOT in range of skill");
+        Debug.Log("player NOT in range of skill");*/
         return true;
     }
 }

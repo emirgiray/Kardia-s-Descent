@@ -17,11 +17,8 @@ public class ShootSkill : SkillsData
             case SkillTarget.Enemy:
                 /*weaponContainer.currentWeapon.*/Shoot( weaponContainer);
 
-
-                if (accuracy < 100) //todo do this in a different way, maybe a method in a class
-                {
                     int random = UnityEngine.Random.Range(1, 101);
-                    if (random <= Skill.accuracy)
+                    if (random <= Skill.accuracy || Skill.accuracy == 100) //todo do this in a different way, maybe a method in a class
                     {
                         
                         if (ActivaterCharacter is Player)
@@ -48,14 +45,11 @@ public class ShootSkill : SkillsData
                             }
                         }
                         
-                        
-                        
                     }
                     else
                     {
                         Debug.Log($"MISSED: {random} > {Skill.accuracy}");
                     }
-                }
  
                 //add delay of 0.1f seconds here
                 OnComplete?.Invoke();

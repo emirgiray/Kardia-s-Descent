@@ -36,7 +36,7 @@ public class CheckCoverMoveSkillDecsision : DecisionAI
                     {
                         //Debug.Log($"{skill.skillData}");
                         //Debug.Log($"skill ready to use and enough action points after move");
-                        foreach (var attackTile in Pathfinder.Instance.GetAttackableTiles(tile, skill.skillData.skillRange))
+                        foreach (var attackTile in Pathfinder.Instance.GetAttackableTiles(tile, skill))
                         {
                             if (attackTile.occupiedByPlayer && !attackTile.occupyingPlayer.isDead)
                             {

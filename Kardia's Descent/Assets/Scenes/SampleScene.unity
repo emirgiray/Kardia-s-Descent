@@ -279,6 +279,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -497,7 +499,7 @@ Transform:
   m_GameObject: {fileID: 13983898}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.304577, y: 3, z: 2.7241564}
+  m_LocalPosition: {x: 9.304577, y: 3, z: 6.7241564}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -519,6 +521,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -652,6 +656,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -868,6 +874,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -1346,6 +1354,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 280279528}
+  - {fileID: 1873471542}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1417,6 +1426,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -1550,6 +1561,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -1983,6 +1996,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -2470,6 +2485,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -2603,6 +2620,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -2800,7 +2819,7 @@ Transform:
   m_GameObject: {fileID: 130087442}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.85534, y: 3, z: 5.4483128}
+  m_LocalPosition: {x: 10.85534, y: 3, z: 9.448313}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2822,6 +2841,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -3038,6 +3059,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -3254,6 +3277,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -3387,6 +3412,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -3935,6 +3962,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -4068,6 +4097,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -4201,6 +4232,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -4895,7 +4928,7 @@ Transform:
   m_GameObject: {fileID: 212081460}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.406103, y: 3, z: 2.7241564}
+  m_LocalPosition: {x: 12.406103, y: 3, z: 6.7241564}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4917,6 +4950,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -5050,6 +5085,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -5183,6 +5220,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -5399,6 +5438,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -5568,6 +5609,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -5701,6 +5744,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -5834,6 +5879,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -6216,6 +6263,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -6432,6 +6481,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -6565,6 +6616,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -6781,6 +6834,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -7075,6 +7130,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -7186,7 +7243,7 @@ Transform:
   m_GameObject: {fileID: 287687738}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.85534, y: 3, z: 1.8161039}
+  m_LocalPosition: {x: 10.85534, y: 3, z: 5.816104}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7208,6 +7265,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -7424,6 +7483,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -7557,6 +7618,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -7690,6 +7753,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -7824,7 +7889,7 @@ PrefabInstance:
     - target: {fileID: 220303031585184934, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.33
+      value: -2.16
       objectReference: {fileID: 0}
     - target: {fileID: 220303031585184934, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
@@ -7834,7 +7899,7 @@ PrefabInstance:
     - target: {fileID: 220303031585184934, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -11.14
+      value: -8.92
       objectReference: {fileID: 0}
     - target: {fileID: 220303031585184934, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
@@ -7914,6 +7979,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: e496630f22336574c9bc1cdfab5680cb,
         type: 2}
+    - target: {fileID: 4740016529328993010, guid: 89ab918d79ba6e74598771889c318cd0,
+        type: 3}
+      propertyPath: delayTime
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6684565769014052981, guid: 89ab918d79ba6e74598771889c318cd0,
         type: 3}
       propertyPath: hand
@@ -7981,6 +8051,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -8440,6 +8512,8 @@ MonoBehaviour:
   selectedCharacter: {fileID: 0}
   lastSelectedCharacter: {fileID: 0}
   selectedEnemy: {fileID: 0}
+  HitChanceUIGameObject: {fileID: 1873471541}
+  HitChanceText: {fileID: 1271824562}
   click: {fileID: 8300000, guid: 25350a8760f27e34b8c1f9c8021a6939, type: 3}
   pop: {fileID: 8300000, guid: 7f008dd872a9eb846a42844aa3550416, type: 3}
   interactMask:
@@ -8781,6 +8855,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -9272,6 +9348,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -9405,6 +9483,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -9538,6 +9618,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -9872,6 +9954,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -10088,6 +10172,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -10221,6 +10307,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -10360,6 +10448,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -10576,6 +10666,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -10709,6 +10801,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -11159,6 +11253,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -12051,6 +12147,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -12245,7 +12343,7 @@ Transform:
   m_GameObject: {fileID: 552175426}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.406103, y: 3, z: 6.3563647}
+  m_LocalPosition: {x: 12.406103, y: 3, z: 4.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12267,6 +12365,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -12400,6 +12500,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -12533,6 +12635,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -12666,6 +12770,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -13265,6 +13371,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -13481,6 +13589,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -13780,6 +13890,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -14279,6 +14391,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -15071,6 +15185,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -15370,6 +15486,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -15669,6 +15787,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -15802,6 +15922,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -15935,6 +16057,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -16068,6 +16192,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -16284,6 +16410,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -16500,6 +16628,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -16716,6 +16846,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -17181,6 +17313,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -17314,6 +17448,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -17530,6 +17666,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -17829,6 +17967,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -17962,6 +18102,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -18095,6 +18237,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -18228,6 +18372,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -18361,6 +18507,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -18626,6 +18774,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -18759,6 +18909,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -18892,6 +19044,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -19025,6 +19179,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -19136,7 +19292,7 @@ Transform:
   m_GameObject: {fileID: 860435747}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.85534, y: 3, z: 3.6322079}
+  m_LocalPosition: {x: 10.85534, y: 3, z: 7.632208}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -19158,6 +19314,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -19291,6 +19449,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -19430,6 +19590,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -19624,7 +19786,7 @@ Transform:
   m_GameObject: {fileID: 889566483}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.406103, y: 3, z: 4.54026}
+  m_LocalPosition: {x: 12.406103, y: 3, z: 8.54026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -19646,6 +19808,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -19862,6 +20026,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -20317,6 +20483,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -20450,6 +20618,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -20666,6 +20836,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -20834,6 +21006,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -20967,6 +21141,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -21183,6 +21359,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -21399,6 +21577,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -21532,6 +21712,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -21831,6 +22013,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -21964,6 +22148,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -22180,6 +22366,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -22313,6 +22501,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -22529,6 +22719,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -22662,6 +22854,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -23044,6 +23238,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -23183,6 +23379,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -23557,6 +23755,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -23856,6 +24056,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -23989,6 +24191,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -24371,6 +24575,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -24504,6 +24710,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -24720,6 +24928,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -25019,6 +25229,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -25235,6 +25447,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -25368,6 +25582,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -25501,6 +25717,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -25717,6 +25935,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -25921,6 +26141,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -26129,7 +26351,7 @@ PrefabInstance:
     - target: {fileID: 220303031585184934, guid: 9e62eacb0b934924e996871848be7ecb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.81
+      value: -5.67
       objectReference: {fileID: 0}
     - target: {fileID: 220303031585184934, guid: 9e62eacb0b934924e996871848be7ecb,
         type: 3}
@@ -26139,7 +26361,7 @@ PrefabInstance:
     - target: {fileID: 220303031585184934, guid: 9e62eacb0b934924e996871848be7ecb,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -11.34
+      value: -10.37
       objectReference: {fileID: 0}
     - target: {fileID: 220303031585184934, guid: 9e62eacb0b934924e996871848be7ecb,
         type: 3}
@@ -26370,6 +26592,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -26586,6 +26810,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -26802,6 +27028,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -27040,6 +27268,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -27173,6 +27403,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -27472,6 +27704,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -27644,6 +27878,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -28144,6 +28380,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -28360,6 +28598,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -28493,6 +28733,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -28709,6 +28951,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -28925,6 +29169,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -29036,7 +29282,7 @@ Transform:
   m_GameObject: {fileID: 1259361039}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.304577, y: 3, z: 6.3563647}
+  m_LocalPosition: {x: 9.304577, y: 3, z: 10.356365}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -29058,6 +29304,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -29274,6 +29522,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -29407,6 +29657,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -29489,6 +29741,140 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1266676717}
   m_Mesh: {fileID: 2534964839176971238, guid: 948a519f03ae84f45b675ac716135b39, type: 3}
+--- !u!1 &1271824560
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1271824561}
+  - component: {fileID: 1271824563}
+  - component: {fileID: 1271824562}
+  m_Layer: 5
+  m_Name: Hit Chance Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1271824561
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1271824560}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1873471542}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1271824562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1271824560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 100%
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1271824563
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1271824560}
+  m_CullTransparentMesh: 1
 --- !u!1 &1282502366
 GameObject:
   m_ObjectHideFlags: 0
@@ -29754,6 +30140,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -29887,6 +30275,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -30020,6 +30410,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -30153,6 +30545,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -30286,6 +30680,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -30626,6 +31022,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -31257,6 +31655,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -31390,6 +31790,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -31689,6 +32091,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -31993,6 +32397,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -32126,6 +32532,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -32394,6 +32802,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -32527,6 +32937,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -33097,6 +33509,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -33313,6 +33727,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -33529,6 +33945,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -33828,6 +34246,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -34293,6 +34713,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -34697,6 +35119,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -34830,6 +35254,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -34963,6 +35389,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -35096,6 +35524,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -35229,6 +35659,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -35719,6 +36151,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -35852,6 +36286,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -35985,6 +36421,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -36494,6 +36932,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -36710,6 +37150,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -36932,6 +37374,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -37304,6 +37748,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -37603,6 +38049,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -37736,6 +38184,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -37869,6 +38319,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -38002,6 +38454,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -38218,6 +38672,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -38434,6 +38890,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -38755,6 +39213,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -39022,6 +39482,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -39499,6 +39961,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -39632,6 +40096,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -39743,7 +40209,7 @@ Transform:
   m_GameObject: {fileID: 1744629050}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.304577, y: 3, z: 4.54026}
+  m_LocalPosition: {x: 9.304577, y: 3, z: 8.54026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -39765,6 +40231,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -40064,6 +40532,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -40280,6 +40750,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -40477,6 +40949,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -40610,6 +41084,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -40743,6 +41219,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -40876,6 +41354,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -41476,6 +41956,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -41757,6 +42239,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -42139,6 +42623,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -42221,6 +42707,82 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1872740986}
   m_Mesh: {fileID: 2534964839176971238, guid: 948a519f03ae84f45b675ac716135b39, type: 3}
+--- !u!1 &1873471541
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1873471542}
+  - component: {fileID: 1873471544}
+  - component: {fileID: 1873471543}
+  m_Layer: 5
+  m_Name: Hit Chance
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1873471542
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1873471541}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1271824561}
+  m_Father: {fileID: 55453670}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 91.28992, y: 54.82245}
+  m_SizeDelta: {x: 124.3813, y: 57.682}
+  m_Pivot: {x: 1.233952, y: 1.450426}
+--- !u!114 &1873471543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1873471541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: fa35a77503f6a45eea6c469775ee446e, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1873471544
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1873471541}
+  m_CullTransparentMesh: 1
 --- !u!1 &1874622426
 GameObject:
   m_ObjectHideFlags: 0
@@ -42272,6 +42834,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -42405,6 +42969,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -42656,6 +43222,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -42789,6 +43357,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -42922,6 +43492,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -43476,6 +44048,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -43692,6 +44266,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -43825,6 +44401,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -44666,6 +45244,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -44799,6 +45379,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -45187,6 +45769,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -45626,6 +46210,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -46075,6 +46661,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -46208,6 +46796,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -46341,6 +46931,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -46557,6 +47149,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -46690,6 +47284,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -46912,6 +47508,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -47216,6 +47814,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -47349,6 +47949,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0

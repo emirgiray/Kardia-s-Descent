@@ -210,7 +210,7 @@ public class Pathfinder : MonoBehaviour
         tiles.Reverse();
 
         Path path = new Path();
-        path.tiles = tiles.ToArray();
+        path.tiles = tiles;
 
         return path;
     }
@@ -298,7 +298,7 @@ public class Pathfinder : MonoBehaviour
         
     }
 
-      public List<Tile> GetAttackableTiles(Tile selectedCharacterCharacterTile, int selectedCharacterSkillRange)
+      public List<Tile> GetAttackableTiles(Tile selectedCharacterCharacterTile, SkillContainer.Skills skill)
     {
         List<Tile> tiles = new List<Tile>();
         tiles.Add(selectedCharacterCharacterTile);
@@ -306,7 +306,7 @@ public class Pathfinder : MonoBehaviour
         frontier.Add(selectedCharacterCharacterTile);
 
         int currentRange = 0;
-        while (currentRange < selectedCharacterSkillRange )
+        while (currentRange < skill.range )
         {
             List<Tile> newFrontier = new List<Tile>();
 
@@ -319,21 +319,35 @@ public class Pathfinder : MonoBehaviour
                     {
 
                     }*/
-                    
-                    if (/*neighbor.Occupied == false && */!tiles.Contains(neighbor))
+
+                    if (skill.skillData.skillType == SkillsData.SkillType.Ranged)
                     {
-                        newFrontier.Add(neighbor);
-                        tiles.Add(neighbor);
-                        
-                        //also add verticle tiles with raycasting up
-                        //Debug.DrawRay(neighbor.transform.position, Vector3.up * tileVerticalityLenght, Color.yellow);
-                        if (Physics.Raycast(neighbor.transform.position, Vector3.up, out RaycastHit hit, tileVerticalityLenght, tileMask))
+                        if (/*neighbor.Occupied == false && */!tiles.Contains(neighbor))
                         {
-                            newFrontier.Add(hit.transform.GetComponent<Tile>());
-                            tiles.Add(hit.transform.GetComponent<Tile>());
-                        }
+                            newFrontier.Add(neighbor);
+                            tiles.Add(neighbor);
+                        
+                            //also add verticle tiles with raycasting up
+                            //Debug.DrawRay(neighbor.transform.position, Vector3.up * tileVerticalityLenght, Color.yellow);
+                            if (Physics.Raycast(neighbor.transform.position, Vector3.up, out RaycastHit hit, tileVerticalityLenght, tileMask))
+                            {
+                                newFrontier.Add(hit.transform.GetComponent<Tile>());
+                                tiles.Add(hit.transform.GetComponent<Tile>());
+                            }
                        
+                        }
                     }
+                    else //if the skill is melee
+                    {
+                        if (neighbor.Occupied == false )
+                        {
+                            newFrontier.Add(neighbor);
+                            tiles.Add(neighbor);
+                       
+                        }
+                    }
+                    
+                    
                 }
             }
             
