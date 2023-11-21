@@ -26356,7 +26356,7 @@ PrefabInstance:
     - target: {fileID: 220303031585184934, guid: 9e62eacb0b934924e996871848be7ecb,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.63
+      value: -0.692
       objectReference: {fileID: 0}
     - target: {fileID: 220303031585184934, guid: 9e62eacb0b934924e996871848be7ecb,
         type: 3}
@@ -26448,6 +26448,16 @@ PrefabInstance:
       propertyPath: spawnedSkillButtonPrefabs.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6652503420653103220, guid: 9e62eacb0b934924e996871848be7ecb,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9065801569352980135, guid: 9e62eacb0b934924e996871848be7ecb,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1142557686}
     - target: {fileID: 9065801569352980135, guid: 9e62eacb0b934924e996871848be7ecb,
         type: 3}
       propertyPath: actionPoints
@@ -26458,6 +26468,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e62eacb0b934924e996871848be7ecb, type: 3}
+--- !u!95 &1142557686 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6652503420653103220, guid: 9e62eacb0b934924e996871848be7ecb,
+    type: 3}
+  m_PrefabInstance: {fileID: 1142557685}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1144160243
 GameObject:
   m_ObjectHideFlags: 0

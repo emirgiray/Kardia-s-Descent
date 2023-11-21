@@ -7,6 +7,8 @@ using UnityEngine.Events;
 
 public class Character : MonoBehaviour
 {
+    [SerializeField] private Animator animator;
+    
     [SerializeField] public int actionPoints = 3;
     [SerializeField] public int remainingActionPoints;
     [SerializeField] public int maxActionPoints = 10;
@@ -132,6 +134,9 @@ public class Character : MonoBehaviour
             Moving = true;
             characterTile.Occupied = false;
             characterTile.ResetOcupying();
+            
+            animator.SetBool("Walk", true);
+            
             if (this is Player)
             {
                 characterTile.occupiedByPlayer = false;
@@ -183,6 +188,7 @@ public class Character : MonoBehaviour
                 //TurnSystem.Instance.currentEnemyTurnOrder++;
             }
             
+            animator.SetBool("Walk", false);
             MoveEnd.Invoke();
         }
         else
