@@ -42,7 +42,7 @@ public class Character : MonoBehaviour
     public Action<Character> OnCharacterDeath;
     
     [FoldoutGroup("Events")] public UnityEvent<int> OnMovePointsChangeEvent;
-    [FoldoutGroup("Events")] public UnityEvent<int> OnActionPointsChangeEvent;
+    [FoldoutGroup("Events")] public UnityEvent<int, string> OnActionPointsChangeEvent;
     
     [FoldoutGroup("Events")] public UnityEvent PlayerTurnStart;
     [FoldoutGroup("Events")] public UnityEvent MoveStart;
@@ -110,7 +110,7 @@ public class Character : MonoBehaviour
                 {
                     remainingActionPoints-- ;
                     OnActionPointsChange?.Invoke(remainingActionPoints);
-                    OnActionPointsChangeEvent?.Invoke(remainingActionPoints);
+                    OnActionPointsChangeEvent?.Invoke(remainingActionPoints, "-");
                    // print(OnMovePointsChangeEvent);
                 }
                 
@@ -233,7 +233,7 @@ public class Character : MonoBehaviour
     public void ResetActionPoints()
     {
         remainingActionPoints = actionPoints;
-        OnActionPointsChangeEvent?.Invoke(remainingActionPoints);
+        OnActionPointsChangeEvent?.Invoke(remainingActionPoints, "+");
     }
 
     public void AddActionPoints()
@@ -262,7 +262,7 @@ public class Character : MonoBehaviour
                 if (!doOnce)
                 {
                     AddActionPoints();
-                    OnActionPointsChangeEvent?.Invoke(remainingActionPoints);
+                    OnActionPointsChangeEvent?.Invoke(remainingActionPoints, "+");
                 }
                 doOnce = false;
                 
@@ -347,7 +347,7 @@ public class Character : MonoBehaviour
         remainingActionPoints -= skill.actionPointUse;//maybe add a - or + variable to skill use
         
         OnActionPointsChange?.Invoke(remainingActionPoints);
-        OnActionPointsChangeEvent?.Invoke(remainingActionPoints);
+        OnActionPointsChangeEvent?.Invoke(remainingActionPoints, "-");
         CheckIfEndTurn();
     }
 

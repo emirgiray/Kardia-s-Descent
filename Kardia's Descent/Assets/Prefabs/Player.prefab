@@ -310,14 +310,12 @@ MonoBehaviour:
     skillReadyToUse: 1
     skillButton: {fileID: 0}
     skillAnimOverrideIndex: 0
+    animatorOverrideController: {fileID: 0}
   skillSelected: 0
   skillCanbeUsed: 1
   Character: {fileID: 0}
   Inventory: {fileID: 0}
   skillButtons: []
-  overrideControllers:
-  - {fileID: 22100000, guid: 21d0ca836db6d7d489d8e8d19f188d7c, type: 2}
-  - {fileID: 22100000, guid: 43da974f8ebaab7419bd2a1abc3c3b14, type: 2}
 --- !u!114 &4125173777995684360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -353,12 +351,12 @@ MonoBehaviour:
   skillsContainer: {fileID: 7771580355192471846}
   spawnedWeapon: {fileID: 0}
   hand: {fileID: 2625209584396992662}
-  InventoryUI: {fileID: 1629417628893343736, guid: cc34f0bee3e46e44b82a17e6a1af18ae,
+  InventoryUI: {fileID: 7765871200327313157, guid: dd6ae5ce01b488646afa3f82b2e534f4,
     type: 3}
   InventoryUISlot: {fileID: 0}
   SpawnedInventoryUI: {fileID: 0}
   SpawnedInventoryUIScript: {fileID: 0}
-  skillButtonPrefab: {fileID: 7211178580545273016, guid: fa381cd3fdd7c32408cbd8c2b89cf73a,
+  skillButtonPrefab: {fileID: 8633694538762580221, guid: 1c2712a8373e40744b9f50a80e5cb1a9,
     type: 3}
   spawnedSkillButtonPrefabs:
   - {fileID: 0}

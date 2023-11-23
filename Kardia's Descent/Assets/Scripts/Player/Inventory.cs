@@ -92,7 +92,8 @@ public class Inventory : MonoBehaviour
 
      public void PopulatePointsUI()
      {
-         SpawnedInventoryUIScript.GetActionText().text = player.remainingActionPoints.ToString();
+         //SpawnedInventoryUIScript.GetActionText().text = player.remainingActionPoints.ToString();
+         SpawnedInventoryUIScript.UpdateActionPoints(player.remainingActionPoints, "+");
      }
     public void AddWeapon(WeaponData weaponData)
     {

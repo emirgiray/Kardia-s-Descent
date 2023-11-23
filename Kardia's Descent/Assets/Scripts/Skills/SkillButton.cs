@@ -32,7 +32,7 @@ public class SkillButton : MonoBehaviour
         skill = skillIn;
         GetComponent<Image>().sprite = skillData.skillSprite;
         button.onClick.AddListener(useSkill);
-        GetComponentInChildren<TextMeshProUGUI>().text = skillData.skillName;
+        //GetComponentInChildren<TextMeshProUGUI>().text = skillData.skillName;
         skillContainer = skillContainerIn;
         tooltipTrigger.SetHeader(skillDataIn.skillName);
         tooltipTrigger.SetContent(skillDataIn.skillDescription);

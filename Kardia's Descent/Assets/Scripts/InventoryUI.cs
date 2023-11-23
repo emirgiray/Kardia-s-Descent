@@ -10,15 +10,13 @@ public class InventoryUI : MonoBehaviour
 {
     [SerializeField] private Player player;
     
-    [BoxGroup("Skils")] [SerializeField] private GameObject SkillsUI;
     [BoxGroup("Skils")] [SerializeField] private GameObject HorizontalLayoutGroup;
     [BoxGroup("Skils")] [SerializeField] private List<SkillButton> SkillButtons = new List<SkillButton>();
     
-    [BoxGroup("Points")] [SerializeField] private GameObject PointsUI;
     [BoxGroup("Points")] [SerializeField] private TextMeshProUGUI actionText;
+    [BoxGroup("Points")] [SerializeField] private List<GameObject> actionPointsPips = new List<GameObject>();
     [BoxGroup("Points")] [SerializeField] private Button skipTurnButton;
     
-    [BoxGroup("Health")] [SerializeField] private GameObject HealthUI;
     [BoxGroup("Health")] [SerializeField] private Image Bar01;
     [BoxGroup("Health")] [SerializeField] private Image Bar02;
     [BoxGroup("Health")] [SerializeField] private TextMeshProUGUI nameText;
@@ -32,7 +30,7 @@ public class InventoryUI : MonoBehaviour
     public void SubscribeToPlayerEvents()
     {
 
-        player.OnActionPointsChange += UpdateActionPoints;//actions doesnt work for some reason
+        //player.OnActionPointsChange += UpdateActionPoints;//actions doesnt work for some reason
         
 
         player.OnActionPointsChangeEvent.AddListener(UpdateActionPoints);
@@ -44,13 +42,43 @@ public class InventoryUI : MonoBehaviour
     private void OnDisable()
     {
 
-        player.OnActionPointsChange -= UpdateActionPoints;
+        //player.OnActionPointsChange -= UpdateActionPoints;
         //skipTurnButton.onClick.RemoveListener(player.EndTurn);
     }
 
-    private void UpdateActionPoints(int value)
+    public void UpdateActionPoints(int value, string type)
     {
         actionText.text = value.ToString();
+
+        for (int i = 0; i < actionPointsPips.Count; i++)
+        {
+            if (type == "+")
+            {
+                if (i < value)
+                {
+                    actionPointsPips[i].SetActive(true);
+                }
+                
+            }
+            else if (type == "-")
+            {
+                if (i >= value)
+                {
+                    actionPointsPips[i].SetActive(false);
+                }
+                
+            }
+        }
+        
+        /*if (type == "+")
+        {
+            actionPointsPips[value - 1].SetActive(true);
+        }
+        else if (type == "-")
+        {
+            actionPointsPips[value].SetActive(false);
+        }*/
+        //actionPointsPips.ForEach(x => x.SetActive(false));
     }
 
 
