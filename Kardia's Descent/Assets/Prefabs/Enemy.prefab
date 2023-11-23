@@ -285,6 +285,7 @@ MonoBehaviour:
   GroundLayerMask:
     serializedVersion: 2
     m_Bits: 0
+  animator: {fileID: 6537016338957646930}
   characterState: 0
   OnMovePointsChangeEvent:
     m_PersistentCalls:
@@ -380,6 +381,7 @@ MonoBehaviour:
   Character: {fileID: 0}
   Inventory: {fileID: 0}
   skillButtons: []
+  overrideControllers: []
 --- !u!114 &7224365364739156612
 MonoBehaviour:
   m_ObjectHideFlags: 0

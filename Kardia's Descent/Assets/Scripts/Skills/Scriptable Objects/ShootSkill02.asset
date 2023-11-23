@@ -22,6 +22,9 @@ MonoBehaviour:
   actionPointUse: 1
   accuracy: 80
   coverAccuracyDebuff: 20
+  skillAnimOverrideIndex: 1
+  animatorOverrideController: {fileID: 22100000, guid: 43da974f8ebaab7419bd2a1abc3c3b14,
+    type: 2}
   skillType: 1
   skillClass: 1
   damageType: 0

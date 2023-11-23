@@ -247,7 +247,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40e1b56ff8194f9498d18383bf9980c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
   actionPoints: 3
   remainingActionPoints: 0
   maxActionPoints: 10
@@ -262,6 +261,7 @@ MonoBehaviour:
   GroundLayerMask:
     serializedVersion: 2
     m_Bits: 8
+  animator: {fileID: 6652503420653103220}
   characterState: 0
   OnMovePointsChangeEvent:
     m_PersistentCalls:
@@ -309,11 +309,15 @@ MonoBehaviour:
     coverAccuracyDebuff: 0
     skillReadyToUse: 1
     skillButton: {fileID: 0}
+    skillAnimOverrideIndex: 0
   skillSelected: 0
   skillCanbeUsed: 1
   Character: {fileID: 0}
   Inventory: {fileID: 0}
   skillButtons: []
+  overrideControllers:
+  - {fileID: 22100000, guid: 21d0ca836db6d7d489d8e8d19f188d7c, type: 2}
+  - {fileID: 22100000, guid: 43da974f8ebaab7419bd2a1abc3c3b14, type: 2}
 --- !u!114 &4125173777995684360
 MonoBehaviour:
   m_ObjectHideFlags: 0

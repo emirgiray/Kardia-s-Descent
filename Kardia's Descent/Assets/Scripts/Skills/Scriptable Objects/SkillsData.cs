@@ -21,6 +21,8 @@ public class SkillsData : ScriptableObject
     public int actionPointUse = 1;
     public int accuracy = 80;
     public int coverAccuracyDebuff = 20;
+    public int skillAnimOverrideIndex = 0;
+    public AnimatorOverrideController animatorOverrideController;
     public enum SkillType
     {
         Ranged, Melee

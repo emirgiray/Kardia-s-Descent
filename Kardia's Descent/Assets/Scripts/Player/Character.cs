@@ -7,7 +7,7 @@ using UnityEngine.Events;
 
 public class Character : MonoBehaviour
 {
-    [SerializeField] private Animator animator;
+    
     
     [SerializeField] public int actionPoints = 3;
     [SerializeField] public int remainingActionPoints;
@@ -25,6 +25,8 @@ public class Character : MonoBehaviour
     public CharacterMoveData movedata;
     public Tile characterTile;
     [SerializeField] LayerMask GroundLayerMask;
+    
+    [BoxGroup("Animation")] [SerializeField] public Animator animator;//todo make every character have the same animator and change the values with anim override, this may need a character stats script or SO
     
     
     public enum CharacterState
@@ -324,22 +326,26 @@ public class Character : MonoBehaviour
     public void AttackStart()
     {
         characterState = CharacterState.Attacking;
+        
+        animator.SetTrigger("AttackStart");
     }
     public void AttackCancel()
     {
         characterState = CharacterState.WaitingTurn;
+        
+        animator.SetTrigger("AttackCancel");
     }
 
     public void Attack()
     {
-        
+        animator.SetTrigger("Attack");
     }
 
     public void AttackEnd(SkillContainer.Skills skill)
     {
         characterState = CharacterState.WaitingTurn;
         remainingActionPoints -= skill.actionPointUse;//maybe add a - or + variable to skill use
-
+        
         OnActionPointsChange?.Invoke(remainingActionPoints);
         OnActionPointsChangeEvent?.Invoke(remainingActionPoints);
         CheckIfEndTurn();
@@ -347,6 +353,7 @@ public class Character : MonoBehaviour
 
     public void OnCharacterDeathFunc()
     {
+        animator.SetBool("Dead", true);
         isDead = true;
         characterState = CharacterState.Dead;
         gameObject.transform.DOMoveY(gameObject.transform.position.y - 0.5f, 0.5f);
@@ -355,4 +362,10 @@ public class Character : MonoBehaviour
         if(GetComponent<Enemy>() != null) TurnSystem.Instance.EnemyDied(GetComponent<Enemy>());
         
     }
+
+    public void SetAnimations(AnimatorOverrideController overrideController)
+    {
+        animator.runtimeAnimatorController = overrideController;
+    }
+
 }

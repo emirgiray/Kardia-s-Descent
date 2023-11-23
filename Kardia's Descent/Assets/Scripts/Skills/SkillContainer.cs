@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -15,8 +16,9 @@ public class SkillContainer : MonoBehaviour
     [SerializeField] public Character Character;
     [SerializeField] public Inventory Inventory;
     [SerializeField] public List<SkillButton> skillButtons = new List<SkillButton>();
-
-    public Action skillNotReadyAction;
+    
+    private static LTDescr delay;
+    // public Action skillNotReadyAction;
     //public Action skillReadyAction;
 
     private void OnEnable()
@@ -95,7 +97,9 @@ public class SkillContainer : MonoBehaviour
             coverAccuracyDebuff = skill.coverAccuracyDebuff,
             actionPointUse = skill.actionPointUse,
             remainingSkillCooldown = skill.skillCooldown,
-            skillButton = this.skillButtons.Find(x => x.skillData == skill)//this doesnt work???
+            skillButton = this.skillButtons.Find(x => x.skillData == skill),//this doesnt work???
+            skillAnimOverrideIndex = skill.skillAnimOverrideIndex,
+            animatorOverrideController = skill.animatorOverrideController
         }));
     }
     
@@ -148,6 +152,13 @@ public class SkillContainer : MonoBehaviour
         }
     }
 
+    public void SetAnimAtorOverrides(AnimatorOverrideController animatorOverrideController)
+    {
+        Character.SetAnimations(animatorOverrideController);
+    }
+
+
+    
     public void SelectSkill(Skills selectSkill, Enemy enemy = null)
     {
         /*if (Character is Enemy && !enemy.canAttack)
@@ -165,6 +176,7 @@ public class SkillContainer : MonoBehaviour
         selectedSkill.skillButton = skillsList.Find(x => x.skillData == selectedSkill.skillData).skillButton;*/
         
         selectedSkill = selectSkill;
+        SetAnimAtorOverrides(selectedSkill.animatorOverrideController);
         
         if (Character is Player)
         {
@@ -217,7 +229,7 @@ public class SkillContainer : MonoBehaviour
         {
             this.selectedSkill.remainingSkillCooldown = 0;
             this.selectedSkill.skillReadyToUse = false;
-            skillNotReadyAction?.Invoke();
+            // skillNotReadyAction?.Invoke();
             if (Character is Player)
             {
                 this.selectedSkill.skillButton.EnableDisableButton(false);
@@ -225,11 +237,26 @@ public class SkillContainer : MonoBehaviour
                 this.selectedSkill.skillButton.cooldownText.text = (this.selectedSkill.skillCooldown).ToString();
             }
         }
+
         
+
+        // write the sequence of anim clips 
+        /*for (int i = 0; i < Character.animator.runtimeAnimatorController.animationClips.Length;  i++)
+        {
+            Debug.Log($"index: {i}, name: {Character.animator.runtimeAnimatorController.animationClips[i].name} Length: {Character.animator.runtimeAnimatorController.animationClips[i].length} ");
+        }*/
+        
+        Character.Attack();
+        //Debug.Log($"skill lenght: {overrides[3].Key.length}");
         selectedSkill.skillData.ActivateSkill(selectedSkill, Character, selectedTile, gameObject,  () =>
         {
-            ResetCoverAccruacyDebuff();
-            DeslectSkill(selectedSkill, enemy);
+            //animationClips[3] is the useSkill animation
+            delay = LeanTween.delayedCall(Character.animator.runtimeAnimatorController.animationClips[3].length, () =>
+            {
+                ResetCoverAccruacyDebuff();
+                DeslectSkill(selectedSkill, enemy);
+            });
+            
         });
         
         if (Character is Player)
@@ -282,6 +309,8 @@ public class SkillContainer : MonoBehaviour
         public int coverAccuracyDebuff;
         public bool skillReadyToUse = true;
         public SkillButton skillButton;
+        public int skillAnimOverrideIndex;
+        public AnimatorOverrideController animatorOverrideController;
 
     }
 
