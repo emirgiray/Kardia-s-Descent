@@ -26346,7 +26346,7 @@ PrefabInstance:
     - target: {fileID: 220303031585184930, guid: 9e62eacb0b934924e996871848be7ecb,
         type: 3}
       propertyPath: m_Name
-      value: Player
+      value: Mattone
       objectReference: {fileID: 0}
     - target: {fileID: 220303031585184934, guid: 9e62eacb0b934924e996871848be7ecb,
         type: 3}

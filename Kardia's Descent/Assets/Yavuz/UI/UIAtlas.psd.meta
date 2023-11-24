@@ -1,0 +1,300 @@
+fileFormatVersion: 2
+guid: d3765c54f513e404c92c96ee1cfe1570
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: UIAtlas_11
+      rect:
+        serializedVersion: 2
+        x: 3148
+        y: 3690
+        width: 880
+        height: 294
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ac88931531ad0d429580aaa0ae83df1
+      internalID: 1148769747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIAtlas_58
+      rect:
+        serializedVersion: 2
+        x: 3526
+        y: 2938
+        width: 500
+        height: 700
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4b46283de67c254bb74f4f290204e25
+      internalID: 620319879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIAtlas_Rectangle
+      rect:
+        serializedVersion: 2
+        x: 3530
+        y: 2860
+        width: 487
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e96208200558814bb595d919805510f
+      internalID: -801374826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIAtlas_Border
+      rect:
+        serializedVersion: 2
+        x: 3515
+        y: 2762
+        width: 512
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 22, y: 22, z: 22, w: 22}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6afa2ec5dd15b6e42b1ee2965f73b4dd
+      internalID: 735183764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIAtlas_67
+      rect:
+        serializedVersion: 2
+        x: 3834
+        y: 2409
+        width: 188
+        height: 332
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdb661c4af275b945a607b47546500f3
+      internalID: 787209841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 87428db5e26d62e4a9726d82d90b0b3f
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      UIAtlas_0: 1405615623
+      UIAtlas_1: 1248505690
+      UIAtlas_10: -98534810
+      UIAtlas_11: 1148769747
+      UIAtlas_12: 365433305
+      UIAtlas_13: 600251772
+      UIAtlas_14: -1005485681
+      UIAtlas_15: 1145645218
+      UIAtlas_16: -1978672087
+      UIAtlas_17: 794645086
+      UIAtlas_18: 1826150379
+      UIAtlas_19: 409935665
+      UIAtlas_2: -1850758726
+      UIAtlas_20: 210173825
+      UIAtlas_21: -1658782343
+      UIAtlas_22: 144826975
+      UIAtlas_23: -113275530
+      UIAtlas_24: -1498146096
+      UIAtlas_25: 579321590
+      UIAtlas_26: -1397833475
+      UIAtlas_27: 617315907
+      UIAtlas_28: -1196622548
+      UIAtlas_29: 154542631
+      UIAtlas_3: -576659040
+      UIAtlas_30: -1324876785
+      UIAtlas_31: 1484934814
+      UIAtlas_32: -224147693
+      UIAtlas_33: 304768841
+      UIAtlas_34: 1187386210
+      UIAtlas_35: 371526154
+      UIAtlas_36: -2027532107
+      UIAtlas_37: 1873380432
+      UIAtlas_38: 934384389
+      UIAtlas_39: -1186922114
+      UIAtlas_4: -1985427692
+      UIAtlas_40: 1450552588
+      UIAtlas_41: 889270464
+      UIAtlas_42: 1133341719
+      UIAtlas_43: -1589297748
+      UIAtlas_44: 528446406
+      UIAtlas_45: -1648181282
+      UIAtlas_46: 1595424486
+      UIAtlas_47: 175692823
+      UIAtlas_48: -1131219977
+      UIAtlas_49: 119536090
+      UIAtlas_5: 1379604959
+      UIAtlas_50: -57482127
+      UIAtlas_51: 1258215869
+      UIAtlas_52: -1976052138
+      UIAtlas_53: -1810052222
+      UIAtlas_54: 574581931
+      UIAtlas_55: 752914194
+      UIAtlas_56: 660696552
+      UIAtlas_57: 349451574
+      UIAtlas_58: 620319879
+      UIAtlas_59: -656982636
+      UIAtlas_6: 4125240
+      UIAtlas_60: -1578631983
+      UIAtlas_61: 1111796825
+      UIAtlas_62: -1231996489
+      UIAtlas_63: 1146871464
+      UIAtlas_64: -1274424372
+      UIAtlas_67: 787209841
+      UIAtlas_7: 581350173
+      UIAtlas_8: -1204410940
+      UIAtlas_9: 807429788
+      UIAtlas_Border: 735183764
+      UIAtlas_Rectangle: -801374826
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
