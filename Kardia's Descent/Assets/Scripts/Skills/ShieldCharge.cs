@@ -8,6 +8,9 @@ using UnityEngine.Rendering;
 [CreateAssetMenu(fileName = "SkillsData", menuName = "ScriptableObjects/Skills/ShieldCharge", order = 2)]
 public class ShieldCharge : SkillsData
 {
+    //[SerializeField] private int stunDuration = 1 ;
+    
+    
     public override void ActivateSkill(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, GameObject parent, Action OnComplete = null)
     {
         switch (base.skillTarget)
@@ -21,6 +24,8 @@ public class ShieldCharge : SkillsData
                 ActivaterCharacter.StartMove(path, () =>
                 {
                     ActivaterCharacter.Rotate(selectedTile.transform.position);
+
+                    //base.TryHit(Skill, ActivaterCharacter, selectedTile, parent, OnComplete = null);
                     
                     int random = UnityEngine.Random.Range(1, 101);
                     if (random <= Skill.accuracy || Skill.accuracy == 100)
@@ -30,7 +35,9 @@ public class ShieldCharge : SkillsData
                             if (selectedTile.occupiedByEnemy)
                             {
                                 selectedTile.occupyingEnemy.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
+                                selectedTile.occupyingEnemy.Stun(true, skillEffectDuration);
                                 Debug.Log($"HIT: {random} < {Skill.accuracy}");
+                                //base.OnHit();
                             }
 
                             if (selectedTile.OccupiedByCoverPoint)
@@ -45,7 +52,9 @@ public class ShieldCharge : SkillsData
                             if (selectedTile.occupiedByPlayer)
                             {
                                 selectedTile.occupyingPlayer.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
+                                selectedTile.occupyingPlayer.Stun(true, skillEffectDuration);
                                 Debug.Log($"HIT: {random} < {Skill.accuracy}");
+                                //base.OnHit();
                             }
                             
                             if (selectedTile.OccupiedByCoverPoint)

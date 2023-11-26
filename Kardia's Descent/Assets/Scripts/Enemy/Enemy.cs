@@ -18,11 +18,13 @@ public class Enemy : Character
         TurnSystem.Instance.EnemyTurn += base.StartTurn;
         base.canMove = false; //todo denemek için yaptım belki değiştirilebilir
         stateController = GetComponent<StateController>();
+        TurnSystem.Instance.OnEnemyTurnEvent += CheckRemoveStun;
     }
 
     private void OnDisable()
     {
         TurnSystem.Instance.EnemyTurn -= base.StartTurn;
+        TurnSystem.Instance.OnEnemyTurnEvent -= CheckRemoveStun;
     }
 
     /*private void Update()

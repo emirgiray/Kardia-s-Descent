@@ -46,6 +46,11 @@ public class InventoryUI : MonoBehaviour
         //skipTurnButton.onClick.RemoveListener(player.EndTurn);
     }
 
+    /// <summary>
+    /// Only send the LAST value of AP, not the change amount
+    /// </summary>
+    /// <param name="value"></param>
+    /// <param name="type"></param>
     public void UpdateActionPoints(int value, string type)
     {
         actionText.text = value.ToString();

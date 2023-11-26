@@ -225,7 +225,6 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      UIAtlas_0: 1405615623
       UIAtlas_1: 1248505690
       UIAtlas_10: -98534810
       UIAtlas_11: 1148769747
@@ -292,6 +291,7 @@ TextureImporter:
       UIAtlas_8: -1204410940
       UIAtlas_9: 807429788
       UIAtlas_Border: 735183764
+      UIAtlas_BottomBar: 1405615623
       UIAtlas_Rectangle: -801374826
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0

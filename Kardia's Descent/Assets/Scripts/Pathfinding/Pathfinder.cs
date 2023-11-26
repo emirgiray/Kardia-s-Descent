@@ -339,7 +339,7 @@ public class Pathfinder : MonoBehaviour
                     }
                     else //if the skill is melee
                     {
-                        if (neighbor.Occupied == false )
+                        if (!tiles.Contains(neighbor))
                         {
                             newFrontier.Add(neighbor);
                             tiles.Add(neighbor);

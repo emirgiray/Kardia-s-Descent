@@ -95,10 +95,11 @@ public class SkillContainer : MonoBehaviour
             skillCooldown = skill.skillCooldown,
             accuracy = skill.accuracy,
             coverAccuracyDebuff = skill.coverAccuracyDebuff,
+            skillEffectDuration = skill.skillEffectDuration,
+            skillBuffDebuffAmount = skill.skillBuffDebuffAmount,
             actionPointUse = skill.actionPointUse,
             remainingSkillCooldown = skill.skillCooldown,
             skillButton = this.skillButtons.Find(x => x.skillData == skill),//this doesnt work???
-            skillAnimOverrideIndex = skill.skillAnimOverrideIndex,
             animatorOverrideController = skill.animatorOverrideController
         }));
     }
@@ -305,11 +306,12 @@ public class SkillContainer : MonoBehaviour
         public int skillCooldown;
         public int remainingSkillCooldown;
         public int actionPointUse;
+        public int skillEffectDuration;
+        public int skillBuffDebuffAmount;
         public int accuracy;
         public int coverAccuracyDebuff;
         public bool skillReadyToUse = true;
         public SkillButton skillButton;
-        public int skillAnimOverrideIndex;
         public AnimatorOverrideController animatorOverrideController;
 
     }

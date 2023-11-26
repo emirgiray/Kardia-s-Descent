@@ -14,12 +14,15 @@ public class Character : MonoBehaviour
     [SerializeField] public int maxActionPoints = 10;
     /*[SerializeField] public int moveRange = 3;
     [SerializeField] public int remainingMoveRange;*/
-    [SerializeField] public int initiative = 1;
+    [SerializeField] public int initiative = 1;//todo: this works in reverse!!!
     [SerializeField] public bool canMove = true;
     [SerializeField] public bool canAttack = true;
     [SerializeField] public bool inCombat = true;
     [SerializeField] public bool isDead = false;
     [SerializeField] int totalSteps = 0;
+    [SerializeField] public bool isStunned = false;
+    [SerializeField] private int remainingStunTurns = 0;
+    
     public bool Moving { get; private set; } = false;
     
     public CharacterMoveData movedata;
@@ -253,10 +256,14 @@ public class Character : MonoBehaviour
         {
             if (TurnSystem.Instance.IsThisCharactersTurn(this))
             {
+
+                if (!isStunned)
+                {
+                    canMove = true;
+                    canAttack = true;
+                    characterState = CharacterState.WaitingTurn;//todo enemy turn does not change to waiting for turn
+                }
                 
-                canMove = true;
-                canAttack = true;
-                characterState = CharacterState.WaitingTurn;//todo enemy turn does not change to waiting for turn
                 // ResetActionPoints();
 
                 if (!doOnce)
@@ -266,12 +273,16 @@ public class Character : MonoBehaviour
                 }
                 doOnce = false;
                 
+                if (isStunned)
+                {
+                    remainingActionPoints = 0;
+                }
 
                 if (this is Enemy)
                 {
                     OnTurnStart?.Invoke();
                 }
-
+                
                 if (this is Player)
                 {
                     if(PlayerTurnStart != null) PlayerTurnStart.Invoke();
@@ -356,7 +367,7 @@ public class Character : MonoBehaviour
         animator.SetBool("Dead", true);
         isDead = true;
         characterState = CharacterState.Dead;
-        gameObject.transform.DOMoveY(gameObject.transform.position.y - 0.5f, 0.5f);
+        //gameObject.transform.DOMoveY(gameObject.transform.position.y - 0.5f, 0.5f);
         OnCharacterDeath?.Invoke(this);
         if(GetComponent<Player>() != null) TurnSystem.Instance.PlayerDied(GetComponent<Player>());
         if(GetComponent<Enemy>() != null) TurnSystem.Instance.EnemyDied(GetComponent<Enemy>());
@@ -367,5 +378,30 @@ public class Character : MonoBehaviour
     {
         animator.runtimeAnimatorController = overrideController;
     }
+    
+  
+
+    public void Stun(bool value, int turns)
+    {
+        canMove = !value;
+        canAttack = !value;
+        
+        isStunned = value;
+        remainingStunTurns = turns;
+    }
+
+    public void CheckRemoveStun()
+    {
+        if (isStunned)
+        {
+            remainingStunTurns--;
+
+            if (remainingStunTurns == 0)
+            {
+                Stun(false, 0);
+            }
+        }
+    }
+
 
 }

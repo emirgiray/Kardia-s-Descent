@@ -193,15 +193,8 @@ public class Interact : MonoBehaviour
 
     public void CheckMouseOverUI()
     {
-        //check if mouse is over ui
-        if (EventSystem.current.IsPointerOverGameObject())//is this expensive
-        {
-            isMouseOverUI = true;
-        }
-        else
-        {
-            isMouseOverUI = false;
-        }
+        //check if mouse is over ui but exclude some game objects
+        isMouseOverUI = EventSystem.current.IsPointerOverGameObject(); //is this expensive
     }
     private void MouseUpdate()
     {
@@ -220,8 +213,8 @@ public class Interact : MonoBehaviour
     public void InspectTileHighlight()
     {
         //make the this method work every 15 frames
-        if (Time.frameCount % 15 != 0)
-            return;
+        /*if (Time.frameCount % 15 != 0)
+            return;*/
         
         /*if (InspectTileGO.transform.position != currentTile.transform.position)
         {

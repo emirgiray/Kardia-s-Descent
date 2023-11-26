@@ -9,6 +9,9 @@ public class Inventory : MonoBehaviour
 {
     // public delegate void SelectSkill();
     // public SelectSkill selectSkillDelegate;
+
+    [SerializeField] private Player player;
+    
     
     public List<WeaponData> weaponsDataList = new List<WeaponData>();
     public List<SkillsData> skillsDataList = new List<SkillsData>();
@@ -33,7 +36,7 @@ public class Inventory : MonoBehaviour
     [BoxGroup("DEBUG")] [SerializeField] private WeaponData testWeaponData;
     
     SGT_Health sgtHealth;
-    Player player;
+    
     
      void Start()
     {
@@ -43,11 +46,11 @@ public class Inventory : MonoBehaviour
         if (this.GetComponent<Character>() is Player)
         {
             SpawnInventoryUI();
+            SpawnedInventoryUIScript.SetPlayer(player);
             PopulateHealthUI();
             PopulatePointsUI();
             // PopulateSkillsUI();
         
-            SpawnedInventoryUIScript.SetPlayer(player);
             SpawnedInventoryUIScript.SubscribeToPlayerEvents();
             ShowSkillsUI(false);
         }

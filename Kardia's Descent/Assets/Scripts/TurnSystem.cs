@@ -31,6 +31,8 @@ public class TurnSystem : MonoBehaviour
     public Action FriendlySelected;
     public Action EnemyTurn;
     public Action RoundChanged;
+    public Action OnPlayerTurnEvent;
+    public Action OnEnemyTurnEvent;
     public Action<int> TurnChange;
     public Action<int> RoundChange;
     [FoldoutGroup("Events")] public UnityEvent OnTurnChange;
@@ -96,20 +98,22 @@ public class TurnSystem : MonoBehaviour
     public void DecideWhosTurn()//todo bu isimlendirme yanlış, decideWhosRound olmalı
     {
        
+        RoundChanged?.Invoke();
         
         if (round % 2 == 1)
         {
             turnState = TurnState.Friendly;
             OnPlayerTurn.Invoke();
+            OnEnemyTurnEvent?.Invoke();
             if(FriendlyTurn != null) FriendlyTurn();
         }
         if (round % 2 == 0)
         {
             turnState = TurnState.Enemy;
             OnEnemyTurn.Invoke();
+            OnPlayerTurnEvent?.Invoke();
             if(EnemyTurn != null) EnemyTurn();
         }
-        RoundChanged?.Invoke();
         if (round == 0)//Combat has not started yet
         {
             turnState = TurnState.None;

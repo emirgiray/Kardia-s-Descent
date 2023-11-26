@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(LineRenderer))]
 public class PathIllustrator : MonoBehaviour
 {
-    private const float LineHeightOffset = 0.33f;
+    [SerializeField] private /*const*/ float LineHeightOffset = 0.33f;
     LineRenderer line;
     private bool canIllustratePath = true;
 
