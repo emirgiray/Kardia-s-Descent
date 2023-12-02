@@ -27,6 +27,9 @@ public class TurnSystem : MonoBehaviour
     }
     public TurnState turnState;
     
+    [SerializeField] private GameObject RoundInfo;
+    [SerializeField] private GameObject CharacterCardPrefab;
+    
     public Action FriendlyTurn;
     public Action FriendlySelected;
     public Action EnemyTurn;
@@ -71,6 +74,15 @@ public class TurnSystem : MonoBehaviour
         for (int i = 0; i < enemies.Count; i++)
         {
             allEntities.Add(enemies[i].gameObject);
+        }
+
+        for (int i = 0; i < allEntities.Count; i++)//set character cards, todo: also add these to character add/remove
+        {
+            GameObject newCard = Instantiate(CharacterCardPrefab, RoundInfo.transform);
+            newCard.GetComponent<CharacterRoundCard>().Init(allEntities[i].GetComponent<Character>(), RoundInfo.GetComponent<RoundInfo>());
+            allEntities[i].GetComponent<Character>().SetCharacterCard(newCard);
+            RoundInfo.GetComponent<RoundInfo>().AddObject(newCard);
+            //newCard.GetComponent<CustomEvent3>().CustomEvents3.AddListener(RoundInfo.GetComponent<RoundInfo>().Rearrange);
         }
         
     }

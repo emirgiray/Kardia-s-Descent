@@ -22,6 +22,7 @@ public class Character : MonoBehaviour
     [SerializeField] int totalSteps = 0;
     [SerializeField] public bool isStunned = false;
     [SerializeField] private int remainingStunTurns = 0;
+    [SerializeField] private GameObject characterCard;
     
     public bool Moving { get; private set; } = false;
     
@@ -314,12 +315,20 @@ public class Character : MonoBehaviour
            // EndTurn();
         }
     }
-
+    private static LTDescr delay;
     public void EndTurn()
     {
         canMove = false;
         canAttack = false;
         characterState = CharacterState.WaitingNextRound;
+        
+        characterCard.GetComponent<CustomEvent2>().CustomEmitterFunc2();
+        
+        /*delay = LeanTween.delayedCall(1, () =>
+        {
+            characterCard.GetComponent<CustomEvent3>().CustomEmitterFunc3();
+        });*/
+        
         if (this is Enemy)
         {
             GetComponent<StateController>().aiActive = false;
@@ -402,6 +411,11 @@ public class Character : MonoBehaviour
                 Stun(false, 0);
             }
         }
+    }
+
+    public void SetCharacterCard(GameObject card)
+    {
+        characterCard = card;
     }
 
 
