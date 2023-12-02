@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class Player : Character
 {
+    [FoldoutGroup("Stats For Quests")] [SerializeField] private int killsInTurn = 0;
+    
     private void OnEnable()
     {
         TurnSystem.Instance.FriendlyTurn += base.StartTurn;

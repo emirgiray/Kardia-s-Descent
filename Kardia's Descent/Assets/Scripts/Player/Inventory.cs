@@ -57,7 +57,7 @@ public class Inventory : MonoBehaviour
         
         
         
-        SpawnTestWeapon();
+        if(testWeaponData != null) SpawnTestWeapon();
         
         
     }
@@ -122,7 +122,7 @@ public class Inventory : MonoBehaviour
     [Button]
     public void SpawnTestWeapon()
     {
-        spawnedWeapon = Instantiate(testWeaponData.WeaponPrefab, hand);
+        spawnedWeapon = /*Instantiate(*/testWeaponData.WeaponPrefab/*, hand)*/;
         weaponContainer.AddWeapon(testWeaponData,spawnedWeapon.GetComponent<Weapon>());
         skillsContainer.AddSkills(testWeaponData.SkillsDataList);
         skillsDataList.AddRange(testWeaponData.SkillsDataList);

@@ -62,6 +62,8 @@ public class BuffSkill : SkillsData
             }
         }
         
+        OnComplete?.Invoke();
+        
         /*switch (base.skillTarget)
         {
             case SkillTarget.MultipleAllies:

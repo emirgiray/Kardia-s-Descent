@@ -151,7 +151,7 @@ public class TurnSystem : MonoBehaviour
             if (turn > enemies.Count)
             {
                 NextRound();
-                TurnSystem.Instance.currentEnemyTurnOrder = 0;
+                //TurnSystem.Instance.currentEnemyTurnOrder = 0;
             }
         }
         /*else if (turnState == TurnState.None
@@ -194,7 +194,7 @@ public class TurnSystem : MonoBehaviour
         RoundChange?.Invoke(round);
         OnRoundChange.Invoke();
         DecideWhosTurn();
-        
+        TurnSystem.Instance.currentEnemyTurnOrder = 0;
     }
 
     [Button,GUIColor(1,1,1)][FoldoutGroup("DEBUG")]
