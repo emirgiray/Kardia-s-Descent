@@ -17,6 +17,7 @@ public class Pathfinder : MonoBehaviour
     [SerializeField] private float coverPointRayLenght = 0.3f;
     [SerializeField] private float characterYOffset = 0.5f;
     [SerializeField] private float tileVerticalityLenght = 2f;
+    [SerializeField] private const float HEXAGONAL_OFFSET = 1.75f;
     
     private void Awake()
     {
@@ -54,6 +55,11 @@ public class Pathfinder : MonoBehaviour
         
         openSet.Add(origin);
         origin.costFromOrigin = 0;
+        
+        /*foreach (Tile tile in openSet)
+        {
+            tile.Highlight(Color.red);
+        }*/
 
         float tileDistance = origin.GetComponent<MeshFilter>().sharedMesh.bounds.extents.z * 2;
         
@@ -70,9 +76,20 @@ public class Pathfinder : MonoBehaviour
             {  
                 return PathBetween(destination, origin, forAIPathfinding);
             }
+            else
+            {
+                if (destination.Occupied && Vector3.Distance(currentTile.transform.position, destination.transform.position) <= (origin.GetComponent<MeshFilter>().sharedMesh.bounds.extents.x * HEXAGONAL_OFFSET))
+                {
+                    return PathBetween(currentTile, origin, forAIPathfinding);
+                }
+            }
+
+            
 
             foreach (Tile neighbor in NeighborTiles(currentTile, forAIPathfinding))
             {
+                /*neighbor.Highlight(Color.yellow);*/
+                
                 if(closedSet.Contains(neighbor))
                     continue;
                 
@@ -102,7 +119,7 @@ public class Pathfinder : MonoBehaviour
     /// <returns></returns>
     public List<Tile> NeighborTiles(Tile origin, bool ignoreOccupied = false, bool forAttackTiles = false)
     {
-        const float HEXAGONAL_OFFSET = 1.75f;
+        
         List<Tile> tiles = new List<Tile>();
         Vector3 direction = Vector3.forward * (origin.GetComponent<MeshFilter>().sharedMesh.bounds.extents.x * HEXAGONAL_OFFSET);
         float rayLength = 4f;
@@ -153,7 +170,11 @@ public class Pathfinder : MonoBehaviour
         //Additionally add connected tiles such as ladders
         if (origin.connectedTile != null)
             tiles.Add(origin.connectedTile);
-            
+
+        /*foreach (var tile in tiles)
+        {
+            tile.Highlight(Color.blue);
+        }*/
 
         return tiles;
     }
@@ -445,5 +466,45 @@ public class Pathfinder : MonoBehaviour
        }
        //Debug.Log($"defender {defending}  is NOT in cover");
        return false;
+    }
+
+    [SerializeField] private Tile origin;
+    [SerializeField] private Tile target1;
+    [SerializeField] private Tile target2;
+
+    [SerializeField] private Path tempPath;
+    [Button]
+    public Path Findpath1()
+    {
+        foreach (var VARIABLE in tempPath.tiles)
+        {
+            VARIABLE.ClearHighlight();
+        }
+        
+        
+         tempPath = GetPathBetween(origin, target1);
+        foreach (var VARIABLE in tempPath.tiles)
+        {
+            VARIABLE.Highlight(Color.white);
+        }
+        return tempPath;
+    }
+    
+    [Button]
+    public Path Findpath2()
+    { 
+        
+        foreach (var VARIABLE in tempPath.tiles)
+        {
+            VARIABLE.ClearHighlight();
+        }
+
+        tempPath = GetPathBetween(origin, target2);
+        
+        foreach (var VARIABLE in tempPath.tiles)
+        {
+            VARIABLE.Highlight(Color.white);
+        }
+        return tempPath;
     }
 }

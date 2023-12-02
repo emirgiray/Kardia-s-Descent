@@ -82,7 +82,8 @@ public class StateController : MonoBehaviour
             if (TurnSystem.Instance.turnState == TurnSystem.TurnState.Enemy && enemy.turnOrder == TurnSystem.Instance.currentEnemyTurnOrder && canExitState)
             {
                 currentState.UpdateState(this);
-                if (!runOnce)
+                //Debug.Log($"STATE: {currentState}");
+                if (!runOnce && RandomWait())
                 {
                     currentState.DoActionsOnce(this);
                     runOnce = true;

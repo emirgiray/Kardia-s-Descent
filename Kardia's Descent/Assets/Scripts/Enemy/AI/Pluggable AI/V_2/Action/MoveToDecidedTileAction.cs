@@ -11,12 +11,25 @@ public class MoveToDecidedTileAction : ActionAI
  // bool doonce = true;
     private void Move(StateController controller)//this INCLUDES the player tile
     {
+        
+        
         controller.canExitState = false;
         if (TurnSystem.Instance.turnState == TurnSystem.TurnState.Enemy && controller.enemy.canMove)
         {
             if (controller.enemy.turnOrder == TurnSystem.Instance.currentEnemyTurnOrder /*&& doonce*/)
             {
-                 controller.enemy.StartMove(FindPathToTargetPlayer(controller), () => controller.canExitState = true);
+                if (controller.enemy.characterTile == controller.decidedMoveTile)
+                {
+                    Debug.Log($"DECIDEDI MOVE TILE IS SAME AS ENEMY TILE");
+                    controller.canExitState = true;
+                    return;
+                }
+                else
+                {
+                    controller.enemy.StartMove(FindPathToTargetPlayer(controller), () => controller.canExitState = true);
+                }
+                
+                 
                  // doonce = false;
 
             }
@@ -30,6 +43,17 @@ public class MoveToDecidedTileAction : ActionAI
     
     private Path FindPathToTargetPlayer(StateController controller)
     {
-      return Pathfinder.Instance. GetPathBetween(controller.enemy.characterTile, controller.decidedMoveTile, true);
+        Path path = Pathfinder.Instance.GetPathBetween(controller.enemy.characterTile, controller.decidedMoveTile/*, true*/);
+
+        if (path.tiles[path.tiles.Count - 1].Occupied)
+        {
+            path.tiles.RemoveAt(path.tiles.Count - 1);
+            return path;
+        }
+        else
+        {
+            return path;
+        }
+        
     }
 }

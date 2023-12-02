@@ -42,9 +42,16 @@ public class CheckCoverMoveSkillDecsision : DecisionAI
                             {
                                 if (Pathfinder.Instance.CheckCoverPoint(attackTile, tile ))
                                 {
-
-                                    Debug.Log($"enemy is in cover");
-                                    tileScore = 50 + skill.damage - controller.skillContainer.CalculateCoverAccuracyDebuff(tile, attackTile, skill);
+                                    if (skill.skillData.skillType == SkillsData.SkillType.Melee)
+                                    {
+                                        tileScore = 50 + skill.damage;
+                                    }
+                                    else
+                                    {
+                                        Debug.Log($"enemy is in cover");
+                                        tileScore = 50 + skill.damage - controller.skillContainer.CalculateCoverAccuracyDebuff(tile, attackTile, skill);
+                                    }
+                                    
                                     Debug.Log($"tile: {tile}, curent score: {tileScore}, prev score: {prevTileScore} skill: {skill.skillData}, tiles checked: {tilesChecked} / {/*controller.GetReachableTiles().Count*/ reachableTiles.Count}");
 
                                     if ( tileScore > prevTileScore)

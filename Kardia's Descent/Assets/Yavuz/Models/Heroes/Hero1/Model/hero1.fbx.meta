@@ -62,7 +62,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: hero1_rig|attack1
+      name: hero1_rig|attack1 UseSkill
       takeName: hero1_rig|attack1
       internalID: 5165798704303647849
       firstFrame: 0
@@ -91,7 +91,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: hero1_rig|attack2
+      name: hero1_rig|attack2 UseSkill
       takeName: hero1_rig|attack2
       internalID: -1344131860881166987
       firstFrame: 0

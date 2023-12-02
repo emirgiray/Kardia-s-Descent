@@ -7,8 +7,9 @@ public class SelectDecidedSkillAction : ActionAI
 {
     public override void Act(StateController controller)
     {
+        controller.canExitState = false;
         controller.skillContainer.SelectSkill(controller.decidedAttackSkill);
-        controller.enemy.Rotate(controller.targetPlayer.transform.position);
+        controller.enemy.Rotate(controller.targetPlayer.transform.position, () => controller.canExitState = true);
     }
 }
 

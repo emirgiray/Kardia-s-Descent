@@ -72,7 +72,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: attack
+      name: attack  UseSkill
       takeName: Armature|attack
       internalID: -251351218608039746
       firstFrame: 0

@@ -216,7 +216,7 @@ public class SkillContainer : MonoBehaviour
     }
     
 
-    public void UseSkill(Skills selectedSkill, Tile selectedTile, Enemy enemy = null)
+    public void UseSkill(Skills selectedSkill, Tile selectedTile, Enemy enemy = null, Action OnComplete = null)
     {
         /*if (Character is Enemy && !enemy.canAttack)
         {
@@ -246,17 +246,33 @@ public class SkillContainer : MonoBehaviour
         {
             Debug.Log($"index: {i}, name: {Character.animator.runtimeAnimatorController.animationClips[i].name} Length: {Character.animator.runtimeAnimatorController.animationClips[i].length} ");
         }*/
+        float attackAnimLength = 0;
+        
+        for (int i = 0; i < Character.animator.runtimeAnimatorController.animationClips.Length;  i++)
+        {
+            if (Character.animator.runtimeAnimatorController.animationClips[i].name.Contains("UseSkill"))
+            {
+                attackAnimLength = Character.animator.runtimeAnimatorController.animationClips[i].length; 
+            }
+           
+        }
+        
         
         Character.Attack();
+        Debug.Log($"anim length: {attackAnimLength}");
+        
         //Debug.Log($"skill lenght: {overrides[3].Key.length}");
         selectedSkill.skillData.ActivateSkill(selectedSkill, Character, selectedTile, gameObject,  () =>
         {
             //animationClips[3] is the useSkill animation
-            delay = LeanTween.delayedCall(Character.animator.runtimeAnimatorController.animationClips[3].length, () =>
+            delay = LeanTween.delayedCall(attackAnimLength/*Character.animator.runtimeAnimatorController.animationClips[3].length*/, () =>
             {
-                ResetCoverAccruacyDebuff();
                 DeslectSkill(selectedSkill, enemy);
+                ResetCoverAccruacyDebuff();
+                OnComplete?.Invoke();
             });
+            
+           
             
         });
         
@@ -294,6 +310,11 @@ public class SkillContainer : MonoBehaviour
 
     public void ResetCoverAccruacyDebuff()//todo !!!!!!this doesnt calculate buffs/debuffs before cover check
     {
+        if (selectedSkill == null)
+        {
+            return;
+        }
+        
         selectedSkill.accuracy = selectedSkill.skillData.accuracy;
     }
     

@@ -211,10 +211,10 @@ public class Character : MonoBehaviour
         }
     }
 
-    public void Rotate(Vector3 destination)
+    public void Rotate(Vector3 destination, Action OnComplete = null)
     {
         // transform.rotation = Quaternion.LookRotation(origin.DirectionTo(destination).Flat(), Vector3.up);
-        transform.DOLookAt(destination, 0.75f, AxisConstraint.Y, Vector3.up).SetEase(Ease.OutBack);
+        transform.DOLookAt(destination, 0.75f, AxisConstraint.Y, Vector3.up).SetEase(Ease.OutBack).OnComplete(()=> OnComplete?.Invoke());
  
         //StartCoroutine(RotateEnum(origin, destination));
     }
@@ -343,12 +343,13 @@ public class Character : MonoBehaviour
     public void AttackCancel()
     {
         characterState = CharacterState.WaitingTurn;
-        
+        animator.ResetTrigger("Attack");
         animator.SetTrigger("AttackCancel");
     }
 
     public void Attack()
     {
+        animator.ResetTrigger("AttackCancel");
         animator.SetTrigger("Attack");
     }
 
