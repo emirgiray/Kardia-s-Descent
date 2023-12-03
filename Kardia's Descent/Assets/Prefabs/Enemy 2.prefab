@@ -127,7 +127,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4734741589226270973}
-  - component: {fileID: 7047188410972837277}
   - component: {fileID: 5037259011019583096}
   - component: {fileID: 5591592080525316748}
   - component: {fileID: 5910916265570023888}
@@ -136,6 +135,7 @@ GameObject:
   - component: {fileID: 1867473025810631915}
   - component: {fileID: 7518923746578952189}
   - component: {fileID: 7107576462567875069}
+  - component: {fileID: 7747916521502636296}
   m_Layer: 0
   m_Name: Enemy 2
   m_TagString: Enemy
@@ -161,27 +161,6 @@ Transform:
   - {fileID: 1606612689226753158}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &7047188410972837277
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4844862896958561493}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5037259011019583096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -458,6 +437,36 @@ MonoBehaviour:
   delayTime: 2
   header: Enemy
   content: Basic melee enemy.
+  OnPointerEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7261121607125088842}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  OnPointerExitEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7261121607125088842}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7107576462567875069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -476,6 +485,29 @@ MonoBehaviour:
   healthThreshold: 10
   damageModifier: 1.5
   overrideController: {fileID: 22100000, guid: b645302d6c622f340bc74119fd7ab4a4, type: 2}
+--- !u!136 &7747916521502636296
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4844862896958561493}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Height: 3.01
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.36, z: 0}
 --- !u!1 &8835040039260611422
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,6 +680,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealthBar Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1426809487291341555, guid: ac3393e7e0bd79f4eb348e5d544d370f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7008288973743981631, guid: ac3393e7e0bd79f4eb348e5d544d370f,
         type: 3}
       propertyPath: m_Pivot.x
@@ -783,3 +820,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &7261121607125088842 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1426809487291341555, guid: ac3393e7e0bd79f4eb348e5d544d370f,
+    type: 3}
+  m_PrefabInstance: {fileID: 8577567328759374009}
+  m_PrefabAsset: {fileID: 0}

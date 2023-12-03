@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
@@ -12,26 +13,33 @@ public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     [SerializeField] private string header;
     [SerializeField] [Multiline] private string content;
     
+    public UnityEvent OnPointerEnterEvent;
+    public UnityEvent OnPointerExitEvent;
+    
     
     public void OnPointerEnter(PointerEventData eventData)
     {
+        OnPointerEnterEvent?.Invoke();
         delay = LeanTween.delayedCall(delayTime, () => { TooltipSystem.Show(content, header); });
         // TooltipSystem.Show(content, header);
     }
 
     private void OnMouseEnter()
     {
+        OnPointerEnterEvent?.Invoke();
         delay = LeanTween.delayedCall(delayTime, () => { TooltipSystem.Show(content, header); });
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        OnPointerExitEvent?.Invoke();
         LeanTween.cancel(delay.uniqueId);
         TooltipSystem.Hide();
     }
 
     private void OnMouseExit()
     {
+        OnPointerExitEvent?.Invoke();
         LeanTween.cancel(delay.uniqueId);
         TooltipSystem.Hide();
     }

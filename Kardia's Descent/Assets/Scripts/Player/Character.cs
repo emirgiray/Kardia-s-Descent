@@ -25,6 +25,8 @@ public class Character : MonoBehaviour
     [SerializeField] public bool isStunned = false;
     [SerializeField] private int remainingStunTurns = 0;
     [SerializeField] private GameObject characterCard;
+    [SerializeField] private float passingMoveTime = 0;
+    
     
     public bool Moving { get; private set; } = false;
     
@@ -126,6 +128,7 @@ public class Character : MonoBehaviour
             //Min dist has been reached, look to next step in path
             /*if(!path.tiles[currentStep].Occupied)*/ currentTile = path.tiles[currentStep];
             currentStep++;
+            //passingMoveTime = animationTime;
             animationTime = 0f;
         }
 

@@ -418,7 +418,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3570462}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.06960771, y: -0.000000026077029, z: 0.0000000020954756, w: 0.99757445}
+  m_LocalRotation: {x: 0.0696077, y: -0.0000000037252899, z: 2.3283062e-10, w: 0.99757445}
   m_LocalPosition: {x: 0, y: 2.37, z: -16.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -583,6 +583,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -825,6 +826,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -960,6 +962,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -1178,6 +1181,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -1730,6 +1734,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -1865,6 +1870,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -2300,6 +2306,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -2789,6 +2796,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -2924,6 +2932,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -3148,6 +3157,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -3366,6 +3376,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -3584,6 +3595,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -3719,6 +3731,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -4269,6 +4282,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -4404,6 +4418,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -4539,6 +4554,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -5257,6 +5273,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -5392,6 +5409,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -5527,6 +5545,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -5745,6 +5764,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -5916,6 +5936,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -6051,6 +6072,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -6186,6 +6208,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -6570,6 +6593,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -6788,6 +6812,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -6923,6 +6948,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -7141,6 +7167,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -7437,6 +7464,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -7572,6 +7600,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -7790,6 +7819,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -7925,6 +7955,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -8060,6 +8091,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -8351,6 +8383,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -9228,6 +9261,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -9726,6 +9760,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -9861,6 +9896,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -9996,6 +10032,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -10332,6 +10369,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -10550,6 +10588,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -10685,6 +10724,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -10826,6 +10866,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -11044,6 +11085,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -11179,6 +11221,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -11631,6 +11674,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -12525,6 +12569,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -12777,6 +12822,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 552175430}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -12912,6 +12958,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -13047,6 +13094,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -13182,6 +13230,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -13529,9 +13578,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BindingMode: 1
   m_FollowOffset: {x: 0, y: 2.37, z: -16.9}
-  m_XDamping: 0
-  m_YDamping: 0
-  m_ZDamping: 0
+  m_XDamping: 1
+  m_YDamping: 1
+  m_ZDamping: 1
   m_AngularDampingMode: 0
   m_PitchDamping: 0
   m_YawDamping: 0
@@ -13878,6 +13927,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -14096,6 +14146,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -14397,6 +14448,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -14781,6 +14833,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -15575,6 +15628,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -15876,6 +15930,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -16177,6 +16232,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -16312,6 +16368,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -16447,6 +16504,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -16582,6 +16640,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -16800,6 +16859,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -17018,6 +17078,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -17236,6 +17297,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -17703,6 +17765,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -17838,6 +17901,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -18056,6 +18120,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -18357,6 +18422,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -18492,6 +18558,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -18627,6 +18694,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -18762,6 +18830,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -18897,6 +18966,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -19164,6 +19234,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -19299,6 +19370,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -19434,6 +19506,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -19569,6 +19642,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -19704,6 +19778,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -19839,6 +19914,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -19980,6 +20056,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -20198,6 +20275,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -20416,6 +20494,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -20873,6 +20952,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -21008,6 +21088,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -21226,6 +21307,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -21396,6 +21478,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -21531,6 +21614,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -21749,6 +21833,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -21967,6 +22052,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -22102,6 +22188,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -22403,6 +22490,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -22538,6 +22626,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -22756,6 +22845,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -22891,6 +22981,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -23109,6 +23200,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -23244,6 +23336,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -23628,6 +23721,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -23774,7 +23868,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1036665508}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.06960771, y: -0.000000026077029, z: 0.0000000020954756, w: 0.99757445}
+  m_LocalRotation: {x: 0.0696077, y: -0.0000000037252899, z: 2.3283062e-10, w: 0.99757445}
   m_LocalPosition: {x: 0, y: 2.37, z: -16.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -23841,6 +23935,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -24217,6 +24312,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -24518,6 +24614,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -24653,6 +24750,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -25037,6 +25135,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -25172,6 +25271,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -25390,6 +25490,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -25691,6 +25792,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -25909,6 +26011,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -26044,6 +26147,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -26179,6 +26283,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -26397,6 +26502,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -26603,6 +26709,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -27060,6 +27167,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -27278,6 +27386,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -27496,6 +27605,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -27736,6 +27846,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -27871,6 +27982,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -28172,6 +28284,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -28346,6 +28459,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -28848,6 +28962,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -29066,6 +29181,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -29201,6 +29317,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -29419,6 +29536,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -29637,6 +29755,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -29772,6 +29891,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -29990,6 +30110,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -30125,6 +30246,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -30608,6 +30730,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -30743,6 +30866,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -30878,6 +31002,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -31013,6 +31138,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -31148,6 +31274,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -31490,6 +31617,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -32123,6 +32251,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -32258,6 +32387,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -32559,6 +32689,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -32875,6 +33006,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -33010,6 +33142,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -33280,6 +33413,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -33415,6 +33549,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -33987,6 +34122,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -34205,6 +34341,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -34416,9 +34553,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cinemachineVirtualCamera: {fileID: 1036665509}
   moveSpeed: 10
+  zoomSpeed: 1
+  dragMoveSpeed: 0.5
   rotateSpeed: 50
   rotateMinMax: {x: -20, y: 20}
-  dragMoveSpeed: 0.5
   useEdgeScrolling: 0
   useDragPan: 1
   followOffsetYMinMax: {x: 5, y: 15}
@@ -34477,6 +34615,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -34778,6 +34917,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -35245,6 +35385,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -35651,6 +35792,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -35786,6 +35928,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -35921,6 +36064,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -36056,6 +36200,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -36191,6 +36336,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -36683,6 +36829,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -36818,6 +36965,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -36953,6 +37101,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -37464,6 +37613,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -37682,6 +37832,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -37906,6 +38057,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -38280,6 +38432,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -38581,6 +38734,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -38716,6 +38870,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -38851,6 +39006,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -38986,6 +39142,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -39204,6 +39361,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -39422,6 +39580,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -39745,6 +39904,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -40014,6 +40174,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -40493,6 +40654,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -40628,6 +40790,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -40763,6 +40926,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -41064,6 +41228,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -41282,6 +41447,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -41481,6 +41647,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -41616,6 +41783,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -41751,6 +41919,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -41886,6 +42055,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -42488,6 +42658,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -42771,6 +42942,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -43155,6 +43327,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -43366,6 +43539,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -43501,6 +43675,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -43756,6 +43931,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -43891,6 +44067,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -44026,6 +44203,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -44582,6 +44760,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -44800,6 +44979,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -44935,6 +45115,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -45778,6 +45959,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -45913,6 +46095,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -46303,6 +46486,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -46744,6 +46928,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -47195,6 +47380,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -47330,6 +47516,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -47465,6 +47652,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -47683,6 +47871,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -47818,6 +48007,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -48042,6 +48232,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -48354,6 +48545,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -48489,6 +48681,7 @@ MonoBehaviour:
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
   selectable: 1
+  meshRenderer: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0

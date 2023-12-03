@@ -53,14 +53,15 @@ Material:
     m_Ints: []
     m_Floats:
     - _ACTIVATE: 1
+    - _BOOLEAN: 0
     - _ENUM: 0
     - _Float: -35.4
     - _Normal_Strength: 1
     - _Offset: 3.43
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Range: 0.62
-    - _Range_Offset: 3.14
+    - _Range: 0.2
+    - _Range_Offset: 12.38
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Musgrave_Offset: {r: 0, g: 0, b: 0, a: 0}

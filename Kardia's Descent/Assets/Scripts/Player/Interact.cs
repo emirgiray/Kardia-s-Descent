@@ -250,11 +250,11 @@ public class Interact : MonoBehaviour
     private void InspectTile()
     {
         //Alter cost by right clicking
-        if (Input.GetMouseButtonUp(1))
+        /*if (Input.GetMouseButtonUp(1))
         {
             currentTile.ModifyCost();
             return;
-        }
+        }*/
 
         if (characterSelected == false)
         {

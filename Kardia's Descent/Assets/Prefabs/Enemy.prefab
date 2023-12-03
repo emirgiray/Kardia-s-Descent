@@ -127,7 +127,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 220303031585184934}
-  - component: {fileID: 220303031585184952}
   - component: {fileID: -646142018697577176}
   - component: {fileID: -8594639745694862240}
   - component: {fileID: 4307295650466193098}
@@ -135,6 +134,7 @@ GameObject:
   - component: {fileID: 7224365364739156612}
   - component: {fileID: 6684565769014052981}
   - component: {fileID: 4740016529328993010}
+  - component: {fileID: 5450284551644840940}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -160,27 +160,6 @@ Transform:
   - {fileID: 1485624529027452948}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &220303031585184952
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 220303031585184930}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &-646142018697577176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,6 +180,8 @@ MonoBehaviour:
   ResetOnStart: 1
   Bar01: {fileID: 880182006504284154}
   Bar02: {fileID: 4597193297912559309}
+  Bar01_2: {fileID: 0}
+  Bar02_2: {fileID: 0}
   BarAnimSpeed: 10
   Bar02Delay: 0.4
   Dead:
@@ -253,6 +234,7 @@ MonoBehaviour:
   remainingActionPoints: 0
   maxActionPoints: 10
   initiative: 1
+  health: {fileID: 0}
   canMove: 1
   canAttack: 1
   inCombat: 1
@@ -260,6 +242,7 @@ MonoBehaviour:
   totalSteps: 0
   isStunned: 0
   remainingStunTurns: 0
+  characterCard: {fileID: 0}
   movedata: {fileID: 11400000, guid: dd6f1c9025f1ba945b2082ff9cda2f56, type: 2}
   characterTile: {fileID: 0}
   GroundLayerMask:
@@ -271,6 +254,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnActionPointsChangeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHealthChangeEvent:
     m_PersistentCalls:
       m_Calls: []
   PlayerTurnStart:
@@ -426,6 +412,59 @@ MonoBehaviour:
   delayTime: 0.5
   header: Enemy
   content: Basic ranged enemy.
+  OnPointerEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7355088169809579736}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  OnPointerExitEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7355088169809579736}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!136 &5450284551644840940
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220303031585184930}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Height: 3.01
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.36, z: 0}
 --- !u!1 &220303032207745227
 GameObject:
   m_ObjectHideFlags: 0
@@ -653,6 +692,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealthBar Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1426809487291341555, guid: ac3393e7e0bd79f4eb348e5d544d370f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7008288973743981631, guid: ac3393e7e0bd79f4eb348e5d544d370f,
         type: 3}
       propertyPath: m_Pivot.x
@@ -788,3 +832,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &7355088169809579736 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1426809487291341555, guid: ac3393e7e0bd79f4eb348e5d544d370f,
+    type: 3}
+  m_PrefabInstance: {fileID: 8493663638677476395}
+  m_PrefabAsset: {fileID: 0}

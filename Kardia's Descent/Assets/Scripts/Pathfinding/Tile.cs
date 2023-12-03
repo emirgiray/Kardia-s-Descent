@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
@@ -35,6 +36,15 @@ public class Tile : MonoBehaviour
         {1, new Color(0.45f, 0.23f, 0.15f) },//Red
         {2, new Color(0.3f, 0.1f, 0f) } //Dark red
     };
+
+    /*private void Update()
+    {
+        if (meshRenderer != null)
+        {
+            Debug.Log($"meshRenderer.material.color.a: {meshRenderer.material.GetFloat("_Alpha")}");
+        }
+        
+    }*/
 
     /// <summary>
     /// Changes color of the tile by activating child-objects of different colors

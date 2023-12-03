@@ -211,6 +211,8 @@ public class SkillContainer : MonoBehaviour
             Interact.Instance.ClearHighlightAttackableTiles();
             Interact.Instance.SkillDeselected?.Invoke();
             Interact.Instance.selectedCharacter.GetComponent<Character>().AttackCancel();
+            StopCoroutine(Interact.Instance.HitChanceUIToMousePos());  
+            Interact.Instance.HitChanceUIGameObject.SetActive(false);
         }
         else if (Character is Enemy)
         {
