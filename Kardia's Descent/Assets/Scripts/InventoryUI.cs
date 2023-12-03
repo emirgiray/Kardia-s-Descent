@@ -8,7 +8,9 @@ using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
 {
-    [SerializeField] private Player player;
+    [BoxGroup("Player")][SerializeField] private Player player;
+    [BoxGroup("Player")] [SerializeField] private TextMeshProUGUI nameText;
+    [BoxGroup("Player")] [SerializeField] private RawImage playerPortrait;
     
     [BoxGroup("Skils")] [SerializeField] private GameObject HorizontalLayoutGroup;
     [BoxGroup("Skils")] [SerializeField] private List<SkillButton> SkillButtons = new List<SkillButton>();
@@ -20,7 +22,6 @@ public class InventoryUI : MonoBehaviour
     [BoxGroup("Health")] [SerializeField] private TextMeshProUGUI healthText;
     [BoxGroup("Health")] [SerializeField] private Image Bar01;
     [BoxGroup("Health")] [SerializeField] private Image Bar02;
-    [BoxGroup("Health")] [SerializeField] private TextMeshProUGUI nameText;
 
     public void SetPlayer(Player playerIn)
     {
@@ -145,5 +146,11 @@ public class InventoryUI : MonoBehaviour
             
         }
     }
+
+    public void SetPlayerPortrait(RenderTexture renderTexture)
+    {
+        playerPortrait.texture = renderTexture;
+    }
+
     
 }

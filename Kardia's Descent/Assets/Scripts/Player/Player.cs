@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class Player : Character
 {
+    [SerializeField] private RenderTexture playerPortrait;
+    
     [FoldoutGroup("Stats For Quests")] [SerializeField] private int killsInTurn = 0;
     
     private void OnEnable()
@@ -30,6 +32,11 @@ public class Player : Character
             }
         }
     }*/
+
+    public RenderTexture GetPlayerPortrait()
+    {
+        return playerPortrait;
+    }
 
     [Button]
     public List<Tile> gettilesinbetween(Tile dest)

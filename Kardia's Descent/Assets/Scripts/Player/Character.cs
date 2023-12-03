@@ -32,7 +32,7 @@ public class Character : MonoBehaviour
     public Tile characterTile;
     [SerializeField] LayerMask GroundLayerMask;
     
-    [BoxGroup("Animation")] [SerializeField] public Animator animator;//todo make every character have the same animator and change the values with anim override, this may need a character stats script or SO
+    [SerializeField] public Animator animator;//todo make every character have the same animator and change the values with anim override, this may need a character stats script or SO
     
     
     public enum CharacterState

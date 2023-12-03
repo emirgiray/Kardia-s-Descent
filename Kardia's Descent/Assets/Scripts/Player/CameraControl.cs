@@ -35,7 +35,7 @@ public class CameraControl : MonoBehaviour
         
         Vector3 input = InputValues(out int yRotation).normalized;
         
-        cam.fieldOfView = Mathf.Clamp(cam.fieldOfView + input.y * 2, zoomMinMax.x, zoomMinMax.y);
+        // cam.fieldOfView = Mathf.Clamp(cam.fieldOfView + input.y * 2, zoomMinMax.x, zoomMinMax.y);
         // transform.parent.DOMoveY(transform.parent.position.y + input.y * speed * 30  * Time.deltaTime, 0.0f);
         
         transform.parent.Translate(input.Flat() * speed  * multipliar * Time.deltaTime);

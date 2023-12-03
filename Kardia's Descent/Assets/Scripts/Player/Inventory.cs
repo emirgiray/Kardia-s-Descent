@@ -47,6 +47,7 @@ public class Inventory : MonoBehaviour
         {
             SpawnInventoryUI();
             SpawnedInventoryUIScript.SetPlayer(player);
+            SpawnedInventoryUIScript.SetPlayerPortrait(player.GetPlayerPortrait());
             PopulateHealthUI();
             PopulatePointsUI();
             // PopulateSkillsUI();
