@@ -220,7 +220,19 @@ MonoBehaviour:
       m_Calls: []
   TakeDamageWithValue:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9065801569352980135}
+        m_TargetAssemblyTypeName: Character, Assembly-CSharp
+        m_MethodName: OnCharacterRecieveDamageFunc
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   HealthDecreaseValue:
     m_PersistentCalls:
       m_Calls: []
@@ -233,7 +245,7 @@ MonoBehaviour:
   GetCurrentHealthNormalized:
     m_PersistentCalls:
       m_Calls: []
-  _Health: 0
+  _Health: 100
 --- !u!114 &9065801569352980135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,6 +262,7 @@ MonoBehaviour:
   remainingActionPoints: 0
   maxActionPoints: 10
   initiative: 1
+  health: {fileID: 4901249241879926067}
   canMove: 1
   canAttack: 1
   inCombat: 1
@@ -257,6 +270,7 @@ MonoBehaviour:
   totalSteps: 0
   isStunned: 0
   remainingStunTurns: 0
+  characterCard: {fileID: 0}
   movedata: {fileID: 11400000, guid: dd6f1c9025f1ba945b2082ff9cda2f56, type: 2}
   characterTile: {fileID: 0}
   GroundLayerMask:
@@ -268,6 +282,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnActionPointsChangeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHealthChangeEvent:
     m_PersistentCalls:
       m_Calls: []
   PlayerTurnStart:
@@ -285,6 +302,7 @@ MonoBehaviour:
   ActionPointsExhausted:
     m_PersistentCalls:
       m_Calls: []
+  killsInTurn: 0
 --- !u!114 &7771580355192471846
 MonoBehaviour:
   m_ObjectHideFlags: 0

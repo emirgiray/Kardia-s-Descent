@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 4267442628719346040}
   - component: {fileID: 1867473025810631915}
   - component: {fileID: 7518923746578952189}
+  - component: {fileID: 7107576462567875069}
   m_Layer: 0
   m_Name: Enemy 2
   m_TagString: Enemy
@@ -220,7 +221,19 @@ MonoBehaviour:
         m_CallState: 2
   TakeDamage:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7107576462567875069}
+        m_TargetAssemblyTypeName: EnemyModifier, Assembly-CSharp
+        m_MethodName: TryIncreaseDamage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   TakeDamageWithValue:
     m_PersistentCalls:
       m_Calls: []
@@ -253,6 +266,7 @@ MonoBehaviour:
   remainingActionPoints: 0
   maxActionPoints: 10
   initiative: 1
+  health: {fileID: 0}
   canMove: 1
   canAttack: 1
   inCombat: 1
@@ -260,6 +274,7 @@ MonoBehaviour:
   totalSteps: 0
   isStunned: 0
   remainingStunTurns: 0
+  characterCard: {fileID: 0}
   movedata: {fileID: 11400000, guid: dd6f1c9025f1ba945b2082ff9cda2f56, type: 2}
   characterTile: {fileID: 0}
   GroundLayerMask:
@@ -271,6 +286,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnActionPointsChangeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHealthChangeEvent:
     m_PersistentCalls:
       m_Calls: []
   PlayerTurnStart:
@@ -426,6 +444,24 @@ MonoBehaviour:
   delayTime: 2
   header: Enemy
   content: Basic melee enemy.
+--- !u!114 &7107576462567875069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4844862896958561493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22f5a1a829ae5c04eba11d15dbf959a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character: {fileID: 5591592080525316748}
+  skillContainer: {fileID: 3847630338873011834}
+  health: {fileID: 5037259011019583096}
+  healthThreshold: 10
+  damageModifier: 1.5
+  overrideController: {fileID: 22100000, guid: b645302d6c622f340bc74119fd7ab4a4, type: 2}
 --- !u!1 &8835040039260611422
 GameObject:
   m_ObjectHideFlags: 0

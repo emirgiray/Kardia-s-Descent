@@ -15,6 +15,8 @@ public class Character : MonoBehaviour
     /*[SerializeField] public int moveRange = 3;
     [SerializeField] public int remainingMoveRange;*/
     [SerializeField] public int initiative = 1;//todo: this works in reverse!!!
+    [SerializeField] public SGT_Health health;
+    
     [SerializeField] public bool canMove = true;
     [SerializeField] public bool canAttack = true;
     [SerializeField] public bool inCombat = true;
@@ -44,10 +46,11 @@ public class Character : MonoBehaviour
     public Action<int> OnActionPointsChange;
     public Action OnTurnStart;
     public Action<Character> OnCharacterDeath;
+    public Action OnCharacterRecieveDamageAction;
     
     [FoldoutGroup("Events")] public UnityEvent<int> OnMovePointsChangeEvent;
     [FoldoutGroup("Events")] public UnityEvent<int, string> OnActionPointsChangeEvent;
-    
+    [FoldoutGroup("Events")] public UnityEvent OnHealthChangeEvent;
     [FoldoutGroup("Events")] public UnityEvent PlayerTurnStart;
     [FoldoutGroup("Events")] public UnityEvent MoveStart;
     [FoldoutGroup("Events")] public UnityEvent MoveEnd;
@@ -382,6 +385,12 @@ public class Character : MonoBehaviour
         if(GetComponent<Player>() != null) TurnSystem.Instance.PlayerDied(GetComponent<Player>());
         if(GetComponent<Enemy>() != null) TurnSystem.Instance.EnemyDied(GetComponent<Enemy>());
         
+    }
+
+    public void OnCharacterRecieveDamageFunc()
+    {
+        OnCharacterRecieveDamageAction?.Invoke();
+        OnHealthChangeEvent?.Invoke();
     }
 
     public void SetAnimations(AnimatorOverrideController overrideController)

@@ -17,6 +17,7 @@ public class InventoryUI : MonoBehaviour
     [BoxGroup("Points")] [SerializeField] private List<GameObject> actionPointsPips = new List<GameObject>();
     [BoxGroup("Points")] [SerializeField] private Button skipTurnButton;
     
+    [BoxGroup("Health")] [SerializeField] private TextMeshProUGUI healthText;
     [BoxGroup("Health")] [SerializeField] private Image Bar01;
     [BoxGroup("Health")] [SerializeField] private Image Bar02;
     [BoxGroup("Health")] [SerializeField] private TextMeshProUGUI nameText;
@@ -31,9 +32,11 @@ public class InventoryUI : MonoBehaviour
     {
 
         //player.OnActionPointsChange += UpdateActionPoints;//actions doesnt work for some reason
+        // player.OnCharacterRecieveDamageAction += UpdateHealth;
         
-
+        healthText.text = player.health._Health.ToString();
         player.OnActionPointsChangeEvent.AddListener(UpdateActionPoints);
+        player.OnHealthChangeEvent.AddListener(UpdateHealth);
         player.PlayerTurnStart.AddListener(() => SetSkipTurnButtonInteractable(true));
         
         skipTurnButton.onClick.AddListener(player.EndTurn);
@@ -41,7 +44,7 @@ public class InventoryUI : MonoBehaviour
 
     private void OnDisable()
     {
-
+        // player.OnCharacterRecieveDamageAction -= UpdateHealth;
         //player.OnActionPointsChange -= UpdateActionPoints;
         //skipTurnButton.onClick.RemoveListener(player.EndTurn);
     }
@@ -86,6 +89,10 @@ public class InventoryUI : MonoBehaviour
         //actionPointsPips.ForEach(x => x.SetActive(false));
     }
 
+    public void UpdateHealth()
+    {
+        healthText.text = player.health._Health.ToString();
+    }
 
     
     public GameObject GetHorizontalLayoutGroup()

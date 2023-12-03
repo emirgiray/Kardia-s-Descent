@@ -177,7 +177,10 @@ public class SkillContainer : MonoBehaviour
         selectedSkill.skillButton = skillsList.Find(x => x.skillData == selectedSkill.skillData).skillButton;*/
         
         selectedSkill = selectSkill;
-        SetAnimAtorOverrides(selectedSkill.animatorOverrideController);
+        if (selectedSkill.animatorOverrideController != null)
+        {
+            SetAnimAtorOverrides(selectedSkill.animatorOverrideController);
+        }
         
         if (Character is Player)
         {
