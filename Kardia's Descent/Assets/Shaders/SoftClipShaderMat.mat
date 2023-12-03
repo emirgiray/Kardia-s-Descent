@@ -31,7 +31,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Main_Texture:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 3d3388c4de46bfc46b63915c4bf9b351, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normal:
+        m_Texture: {fileID: 2800000, guid: 55d91435ff163bf47a14a93a43e01b04, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -51,13 +55,14 @@ Material:
     - _ACTIVATE: 1
     - _ENUM: 0
     - _Float: -35.4
+    - _Normal_Strength: 1
     - _Offset: 3.43
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Range: 0.62
     - _Range_Offset: 3.14
     m_Colors:
-    - _Color: {r: 0.42352942, g: 0.38039216, b: 0.38431373, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Musgrave_Offset: {r: 0, g: 0, b: 0, a: 0}
     - _Musgrave_Tiling: {r: 1, g: 1, b: 0, a: 0}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}

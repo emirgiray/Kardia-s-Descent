@@ -29,6 +29,11 @@ public class SGT_Health : MonoBehaviour {
     public Image Bar01;
     [FoldoutGroup("AnimBars")]
     public Image Bar02;
+    
+    [FoldoutGroup("AnimBars")]
+    public Image Bar01_2;
+    [FoldoutGroup("AnimBars")]
+    public Image Bar02_2;
 
     [FoldoutGroup("AnimBars")]
     public float BarAnimSpeed = 10;
@@ -75,6 +80,7 @@ public class SGT_Health : MonoBehaviour {
     public int _Health;
 
     private SGT_HealthAnim _HealthAnim;
+    private SGT_HealthAnim _HealthAnim_2;
 
     public int HealthAi
     {
@@ -113,6 +119,23 @@ public class SGT_Health : MonoBehaviour {
             }
             
         }
+
+        if (Bar01_2 != null) 
+        {
+            if (gameObject.transform.GetChild(0).GetComponent<SGT_HealthAnim>() == null)
+            {
+                _HealthAnim_2 = gameObject.transform.GetChild(0).gameObject.AddComponent<SGT_HealthAnim>();
+            }
+            if (_HealthAnim_2 != null)
+            {
+                _HealthAnim_2.Bar01 = Bar01_2;
+                _HealthAnim_2.Bar02 = Bar02_2;
+                _HealthAnim_2.BarSpeed = BarAnimSpeed;
+                _HealthAnim_2.BarDelay = Bar02Delay;
+            }
+
+        }
+
         
     }
 
@@ -154,6 +177,19 @@ public class SGT_Health : MonoBehaviour {
                 if (_HealthAnim!=null)
                 {
                     _HealthAnim.DelayBar();
+                }
+               
+               
+            }
+            if (Bar01_2!=null)
+            {
+                Bar01_2.fillAmount = SGT_Math.Remap(HealthAi, Min, Max, 0, 1);
+            }
+            if (Bar02_2!=null)
+            {
+                if (_HealthAnim_2!=null)
+                {
+                    _HealthAnim_2.DelayBar();
                 }
                
                
@@ -219,9 +255,19 @@ public class SGT_Health : MonoBehaviour {
             {
                 _HealthAnim.DelayBar();
             }
-               
-               
         }
+        if (Bar01_2!=null)
+        {
+            Bar01_2.fillAmount = SGT_Math.Remap(HealthAi, Min, Max, 0, 1);
+        }
+        if (Bar02_2!=null)
+        {
+            if (_HealthAnim_2!=null)
+            {
+                _HealthAnim_2.DelayBar();
+            }
+        }
+        
     }
 
 

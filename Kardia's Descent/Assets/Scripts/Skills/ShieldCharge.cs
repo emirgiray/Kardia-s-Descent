@@ -18,7 +18,7 @@ public class ShieldCharge : SkillsData
             case SkillTarget.Enemy:
                 
                 Path path = Pathfinder.Instance.GetPathBetween(ActivaterCharacter.characterTile, selectedTile, true);
-                path.tiles.RemoveAt(path.tiles.Count - 1);
+                // path.tiles.RemoveAt(path.tiles.Count - 1);
                 
                 ActivaterCharacter.canMove = true;
                 ActivaterCharacter.StartMove(path, () =>

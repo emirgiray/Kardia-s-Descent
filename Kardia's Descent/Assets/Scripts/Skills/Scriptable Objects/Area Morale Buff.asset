@@ -21,9 +21,10 @@ MonoBehaviour:
   skillCooldown: 1
   actionPointUse: 1
   skillEffectDuration: 1
+  skillBuffDebuffAmount: 1
   accuracy: 80
   coverAccuracyDebuff: 20
-  animatorOverrideController: {fileID: 22100000, guid: 21d0ca836db6d7d489d8e8d19f188d7c,
+  animatorOverrideController: {fileID: 22100000, guid: a6564b79e07616541858205ca0f288fd,
     type: 2}
   skillType: 0
   skillClass: 11

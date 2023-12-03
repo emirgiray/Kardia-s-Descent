@@ -202,6 +202,8 @@ MonoBehaviour:
   ResetOnStart: 1
   Bar01: {fileID: 1072176423341910888}
   Bar02: {fileID: 4403017314444067423}
+  Bar01_2: {fileID: 0}
+  Bar02_2: {fileID: 0}
   BarAnimSpeed: 10
   Bar02Delay: 0.4
   Dead:
@@ -222,6 +224,18 @@ MonoBehaviour:
   TakeDamage:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 5591592080525316748}
+        m_TargetAssemblyTypeName: Character, Assembly-CSharp
+        m_MethodName: OnCharacterRecieveDamageFunc
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 7107576462567875069}
         m_TargetAssemblyTypeName: EnemyModifier, Assembly-CSharp
         m_MethodName: TryIncreaseDamage
@@ -266,7 +280,7 @@ MonoBehaviour:
   remainingActionPoints: 0
   maxActionPoints: 10
   initiative: 1
-  health: {fileID: 0}
+  health: {fileID: 5037259011019583096}
   canMove: 1
   canAttack: 1
   inCombat: 1
@@ -563,11 +577,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6082981099545649588, guid: a5edbbad0f6230543a42ee6c912cc294,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.11
       objectReference: {fileID: 0}
     - target: {fileID: 6082981099545649588, guid: a5edbbad0f6230543a42ee6c912cc294,
         type: 3}

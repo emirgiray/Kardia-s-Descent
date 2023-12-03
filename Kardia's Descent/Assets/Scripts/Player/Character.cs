@@ -389,6 +389,7 @@ public class Character : MonoBehaviour
 
     public void OnCharacterRecieveDamageFunc()
     {
+        animator.SetTrigger("Hit");
         OnCharacterRecieveDamageAction?.Invoke();
         OnHealthChangeEvent?.Invoke();
     }

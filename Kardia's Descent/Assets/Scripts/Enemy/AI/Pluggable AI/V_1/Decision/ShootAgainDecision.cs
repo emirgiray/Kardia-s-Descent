@@ -12,16 +12,16 @@ public class ShootAgainDecision : DecisionAI
 
     private bool ShootAgain(StateController controller)
     {
-        int random = Random.Range(0, 1);
-        Debug.Log($"50/50 returned {random}");
+        int random = Random.Range(0, 2);
+        //Debug.Log($"50/50 returned {random}");
         if (random == 0)
         {
-            Debug.Log($"50/50 returned true");
+            //Debug.Log($"50/50 returned true");
             return true;
         }
         else
         {
-            Debug.Log($"50/50 returned false");
+           // Debug.Log($"50/50 returned false");
             return false;
         }
 

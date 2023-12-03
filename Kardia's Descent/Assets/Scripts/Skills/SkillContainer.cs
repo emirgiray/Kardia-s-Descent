@@ -241,9 +241,7 @@ public class SkillContainer : MonoBehaviour
                 this.selectedSkill.skillButton.cooldownText.text = (this.selectedSkill.skillCooldown).ToString();
             }
         }
-
         
-
         // write the sequence of anim clips 
         /*for (int i = 0; i < Character.animator.runtimeAnimatorController.animationClips.Length;  i++)
         {
@@ -253,13 +251,12 @@ public class SkillContainer : MonoBehaviour
         
         for (int i = 0; i < Character.animator.runtimeAnimatorController.animationClips.Length;  i++)
         {
-            if (Character.animator.runtimeAnimatorController.animationClips[i].name.Contains("UseSkill"))
+            if (Character.animator.runtimeAnimatorController.animationClips[i].name.Contains("attack"))
             {
                 attackAnimLength = Character.animator.runtimeAnimatorController.animationClips[i].length; 
             }
            
         }
-        
         
         Character.Attack();
         Debug.Log($"anim length: {attackAnimLength}");

@@ -79,6 +79,7 @@ public class TurnSystem : MonoBehaviour
         for (int i = 0; i < allEntities.Count; i++)//set character cards, todo: also add these to character add/remove
         {
             GameObject newCard = Instantiate(CharacterCardPrefab, RoundInfo.transform);
+            newCard.name = allEntities[i].name + " Card";
             newCard.GetComponent<CharacterRoundCard>().Init(allEntities[i].GetComponent<Character>(), RoundInfo.GetComponent<RoundInfo>());
             allEntities[i].GetComponent<Character>().SetCharacterCard(newCard);
             RoundInfo.GetComponent<RoundInfo>().AddObject(newCard);
