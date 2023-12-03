@@ -418,12 +418,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3570462}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.31770548, y: -0.030528547, z: 0.010234962, w: 0.9476426}
-  m_LocalPosition: {x: 5.4211655, y: 19.58, z: -20.593008}
+  m_LocalRotation: {x: 0.06960771, y: -0.000000026077029, z: 0.0000000020954756, w: 0.99757445}
+  m_LocalPosition: {x: 0, y: 2.37, z: -16.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 541018408}
   m_LocalEulerAnglesHint: {x: -6.5650005, y: 191.36299, z: -0.066}
 --- !u!1 &9632142
 GameObject:
@@ -12607,6 +12607,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 512823448}
   m_Mesh: {fileID: 2534964839176971238, guid: 948a519f03ae84f45b675ac716135b39, type: 3}
+--- !u!1 &541018407
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 541018408}
+  m_Layer: 0
+  m_Name: Camera Holder V2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &541018408
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 541018407}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.032198533, z: -0, w: 0.99948156}
+  m_LocalPosition: {x: 4.8, y: 0.6, z: -10.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1476570541}
+  - {fileID: 1036665510}
+  - {fileID: 3570469}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &550653316
 GameObject:
   m_ObjectHideFlags: 0
@@ -13494,7 +13528,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 38.98, z: -51.6}
+  m_FollowOffset: {x: 0, y: 2.37, z: -16.9}
   m_XDamping: 0
   m_YDamping: 0
   m_ZDamping: 0
@@ -14611,123 +14645,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 624761229}
   m_Mesh: {fileID: 2534964839176971238, guid: 948a519f03ae84f45b675ac716135b39, type: 3}
---- !u!1 &629048416
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 629048418}
-  - component: {fileID: 629048417}
-  m_Layer: 0
-  m_Name: RainbowHierarchyRuleset
-  m_TagString: EditorOnly
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &629048417
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 629048416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 366663908, guid: ebe26e22332665d4c8332b2a624e5e8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Rules:
-  - Type: 0
-    Name: 
-    GameObject: {fileID: 2124771802}
-    Ordinal: 0
-    Priority: 0
-    IconType: 2380
-    IconTexture: {fileID: 0}
-    IsIconRecursive: 0
-    BackgroundType: 90
-    BackgroundTexture: {fileID: 0}
-    IsBackgroundRecursive: 0
-    IsHidden: 0
-  - Type: 0
-    Name: 
-    GameObject: {fileID: 1896075673}
-    Ordinal: 1
-    Priority: 0
-    IconType: 2640
-    IconTexture: {fileID: 0}
-    IsIconRecursive: 0
-    BackgroundType: 210
-    BackgroundTexture: {fileID: 0}
-    IsBackgroundRecursive: 0
-    IsHidden: 0
-  - Type: 0
-    Name: 
-    GameObject: {fileID: 362388997}
-    Ordinal: 2
-    Priority: 0
-    IconType: 3250
-    IconTexture: {fileID: 0}
-    IsIconRecursive: 0
-    BackgroundType: 180
-    BackgroundTexture: {fileID: 0}
-    IsBackgroundRecursive: 0
-    IsHidden: 0
-  - Type: 0
-    Name: 
-    GameObject: {fileID: 128588939}
-    Ordinal: 3
-    Priority: 0
-    IconType: 1120
-    IconTexture: {fileID: 0}
-    IsIconRecursive: 0
-    BackgroundType: 30
-    BackgroundTexture: {fileID: 0}
-    IsBackgroundRecursive: 0
-    IsHidden: 0
-  - Type: 0
-    Name: 
-    GameObject: {fileID: 2045856835}
-    Ordinal: 4
-    Priority: 0
-    IconType: 3410
-    IconTexture: {fileID: 0}
-    IsIconRecursive: 0
-    BackgroundType: 130
-    BackgroundTexture: {fileID: 0}
-    IsBackgroundRecursive: 0
-    IsHidden: 0
-  - Type: 0
-    Name: 
-    GameObject: {fileID: 55453666}
-    Ordinal: 5
-    Priority: 0
-    IconType: 3210
-    IconTexture: {fileID: 0}
-    IsIconRecursive: 0
-    BackgroundType: 200
-    BackgroundTexture: {fileID: 0}
-    IsBackgroundRecursive: 0
-    IsHidden: 0
---- !u!4 &629048418
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 629048416}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &633730181
 GameObject:
   m_ObjectHideFlags: 0
@@ -23857,13 +23774,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1036665508}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.31770548, y: -0.030528547, z: 0.010234962, w: 0.9476426}
-  m_LocalPosition: {x: 5.4211655, y: 19.58, z: -20.593008}
+  m_LocalRotation: {x: 0.06960771, y: -0.000000026077029, z: 0.0000000020954756, w: 0.99757445}
+  m_LocalPosition: {x: 0, y: 2.37, z: -16.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 570225111}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 541018408}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1038225388 stripped
 Transform:
@@ -34478,12 +34395,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1476570540}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.032198533, z: -0, w: 0.99948156}
-  m_LocalPosition: {x: 2.1, y: -19.4, z: 30.9}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 541018408}
   m_LocalEulerAnglesHint: {x: 0, y: -3.69, z: 0}
 --- !u!114 &1476570542
 MonoBehaviour:
@@ -34499,14 +34416,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cinemachineVirtualCamera: {fileID: 1036665509}
   moveSpeed: 10
+  rotateSpeed: 50
+  rotateMinMax: {x: -20, y: 20}
+  dragMoveSpeed: 0.5
   useEdgeScrolling: 0
   useDragPan: 1
-  fieldOfViewMax: 50
-  fieldOfViewMin: 10
-  followOffsetMin: 5
-  followOffsetMax: 50
-  followOffsetMinY: 22
-  followOffsetMaxY: 30
+  followOffsetYMinMax: {x: 5, y: 15}
+  followOffsetMinMax: {x: 10, y: 20}
+  fieldOfViewMinMax: {x: 10, y: 50}
 --- !u!1 &1489705399
 GameObject:
   m_ObjectHideFlags: 0
@@ -49014,6 +48931,23 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5018797149798283906}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &500732760431556432
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6759205758612634642}
+  - component: {fileID: 8758763912876010929}
+  m_Layer: 0
+  m_Name: RainbowHierarchyRuleset
+  m_TagString: EditorOnly
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &909246945987186640 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6871507071108887528, guid: cd39f4a3cd3574b49b0b007f1c1e3d77,
@@ -50059,6 +49993,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &6759205758612634642
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500732760431556432}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6936882867925356333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50560,6 +50509,115 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb88844e890648949ac051e1aff2c91f, type: 3}
+--- !u!114 &8758763912876010929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500732760431556432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 366663908, guid: ebe26e22332665d4c8332b2a624e5e8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Rules:
+  - Type: 0
+    Name: 
+    GameObject: {fileID: 2124771802}
+    Ordinal: 0
+    Priority: 0
+    IconType: 2380
+    IconTexture: {fileID: 0}
+    IsIconRecursive: 0
+    BackgroundType: 90
+    BackgroundTexture: {fileID: 0}
+    IsBackgroundRecursive: 0
+    IsHidden: 0
+  - Type: 0
+    Name: 
+    GameObject: {fileID: 1896075673}
+    Ordinal: 1
+    Priority: 0
+    IconType: 2640
+    IconTexture: {fileID: 0}
+    IsIconRecursive: 0
+    BackgroundType: 210
+    BackgroundTexture: {fileID: 0}
+    IsBackgroundRecursive: 0
+    IsHidden: 0
+  - Type: 0
+    Name: 
+    GameObject: {fileID: 362388997}
+    Ordinal: 2
+    Priority: 0
+    IconType: 3250
+    IconTexture: {fileID: 0}
+    IsIconRecursive: 0
+    BackgroundType: 180
+    BackgroundTexture: {fileID: 0}
+    IsBackgroundRecursive: 0
+    IsHidden: 0
+  - Type: 0
+    Name: 
+    GameObject: {fileID: 128588939}
+    Ordinal: 3
+    Priority: 0
+    IconType: 1120
+    IconTexture: {fileID: 0}
+    IsIconRecursive: 0
+    BackgroundType: 30
+    BackgroundTexture: {fileID: 0}
+    IsBackgroundRecursive: 0
+    IsHidden: 0
+  - Type: 0
+    Name: 
+    GameObject: {fileID: 541018407}
+    Ordinal: 4
+    Priority: 0
+    IconType: 3410
+    IconTexture: {fileID: 0}
+    IsIconRecursive: 0
+    BackgroundType: 130
+    BackgroundTexture: {fileID: 0}
+    IsBackgroundRecursive: 0
+    IsHidden: 0
+  - Type: 0
+    Name: 
+    GameObject: {fileID: 55453666}
+    Ordinal: 5
+    Priority: 0
+    IconType: 3210
+    IconTexture: {fileID: 0}
+    IsIconRecursive: 0
+    BackgroundType: 200
+    BackgroundTexture: {fileID: 0}
+    IsBackgroundRecursive: 0
+    IsHidden: 0
+  - Type: 0
+    Name: 
+    GameObject: {fileID: 496008858}
+    Ordinal: 6
+    Priority: 0
+    IconType: 3100
+    IconTexture: {fileID: 0}
+    IsIconRecursive: 0
+    BackgroundType: 10
+    BackgroundTexture: {fileID: 0}
+    IsBackgroundRecursive: 0
+    IsHidden: 0
+  - Type: 0
+    Name: 
+    GameObject: {fileID: 1286036781}
+    Ordinal: 7
+    Priority: 0
+    IconType: 3320
+    IconTexture: {fileID: 0}
+    IsIconRecursive: 0
+    BackgroundType: 20
+    BackgroundTexture: {fileID: 0}
+    IsBackgroundRecursive: 0
+    IsHidden: 0
 --- !u!224 &8887443939832096663 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8481360066245184626, guid: dd6ae5ce01b488646afa3f82b2e534f4,
@@ -50578,23 +50636,21 @@ CanvasRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 629048418}
-  - {fileID: 1476570541}
-  - {fileID: 1036665510}
-  - {fileID: 3570469}
-  - {fileID: 2045856836}
+  - {fileID: 6759205758612634642}
+  - {fileID: 541018408}
   - {fileID: 496008859}
-  - {fileID: 410087041}
-  - {fileID: 832575519}
   - {fileID: 2124771806}
   - {fileID: 1896075674}
-  - {fileID: 937290024}
-  - {fileID: 1583850356}
   - {fileID: 362389001}
   - {fileID: 55453670}
-  - {fileID: 464437406}
   - {fileID: 128588941}
   - {fileID: 1286036783}
+  - {fileID: 464437406}
+  - {fileID: 410087041}
+  - {fileID: 832575519}
+  - {fileID: 2045856836}
+  - {fileID: 937290024}
+  - {fileID: 1583850356}
   - {fileID: 1215719073}
   - {fileID: 8569680724002074398}
   - {fileID: 1494097850}

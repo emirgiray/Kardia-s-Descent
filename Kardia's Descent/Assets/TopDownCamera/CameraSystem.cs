@@ -9,14 +9,24 @@ namespace CodeMonkey.CameraSystem {
 
         [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
         [SerializeField] private float moveSpeed = 50f;
+        [SerializeField] float rotateSpeed = 100f;
+        [SerializeField] Vector2 rotateMinMax;
+        [SerializeField] float dragMoveSpeed = 50f;
         [SerializeField] private bool useEdgeScrolling = false;
         [SerializeField] private bool useDragPan = false;
-        [SerializeField] private float fieldOfViewMax = 50;
-        [SerializeField] private float fieldOfViewMin = 10;
+        
+        [Tooltip("Best values (5, 15)")]
+        [SerializeField] Vector2 followOffsetYMinMax = new Vector2(10f, 50f);
+        [Tooltip("Best values (10, 20)")]
+        [SerializeField] Vector2 followOffsetMinMax = new Vector2(5f, 50f);
+        [SerializeField] Vector2 fieldOfViewMinMax = new Vector2(10, 50f);
+        
+        /*[SerializeField] private float followOffsetMinY = 10f;
+        [SerializeField] private float followOffsetMaxY = 50f;
         [SerializeField] private float followOffsetMin = 5f;
         [SerializeField] private float followOffsetMax = 50f;
-        [SerializeField] private float followOffsetMinY = 10f;
-        [SerializeField] private float followOffsetMaxY = 50f;
+        [SerializeField] private float fieldOfViewMin = 10;
+        [SerializeField] private float fieldOfViewMax = 50;*/
 
         private bool dragPanMoveActive;
         private Vector2 lastMousePosition;
@@ -42,7 +52,7 @@ namespace CodeMonkey.CameraSystem {
             HandleCameraRotation();
 
             //HandleCameraZoom_FieldOfView();
-            //HandleCameraZoom_MoveForward();
+            HandleCameraZoom_MoveForward();
             HandleCameraZoom_LowerY();
         }
 
@@ -79,7 +89,7 @@ namespace CodeMonkey.CameraSystem {
 
             Vector3 moveDir = transform.forward * inputDir.z + transform.right * inputDir.x;
 
-            float moveSpeed = 50f;
+            // float moveSpeed = 50f;
             transform.position += moveDir * moveSpeed * Time.deltaTime;
         }
 
@@ -106,17 +116,32 @@ namespace CodeMonkey.CameraSystem {
 
             Vector3 moveDir = transform.forward * inputDir.z + transform.right * inputDir.x;
 
-            float moveSpeed = 50f;
-            transform.position += moveDir * moveSpeed * Time.deltaTime;
+            
+            transform.position += moveDir * dragMoveSpeed * Time.deltaTime;
         }
 
         private void HandleCameraRotation() {
             float rotateDir = 0f;
-            if (Input.GetKey(KeyCode.Q)) rotateDir = +1f;
-            if (Input.GetKey(KeyCode.E)) rotateDir = -1f;
+            if (Input.GetKey(KeyCode.Q)) rotateDir = -1f;
+            if (Input.GetKey(KeyCode.E)) rotateDir =  1f;
+            //transform.eulerAngles += new Vector3(0,rotateDir * rotateSpeed * Time.deltaTime , 0);
 
-            float rotateSpeed = 100f;
-            transform.eulerAngles += new Vector3(0, rotateDir * rotateSpeed * Time.deltaTime, 0);
+            // Correct for deltaTime so your behaviour is framerate independent.
+            // (You may need to increase your speed as it's now measured in degrees per second, not per frame)
+            float angularIncrement = rotateSpeed * rotateDir * Time.deltaTime;
+
+            // Get the current rotation angles.
+            Vector3 eulerAngles = transform.localEulerAngles;
+
+            // Returned angles are in the range 0...360. Map that back to -180...180 for convenience.
+            if (eulerAngles.y > 180f)
+                eulerAngles.y -= 360f;
+
+            // Increment the pitch angle, respecting the clamped range.
+            eulerAngles.y = Mathf.Clamp(eulerAngles.y - angularIncrement, rotateMinMax.x, rotateMinMax.y);
+
+            // Orient to match the new angles.
+            transform.localEulerAngles = eulerAngles;
         }
 
         private void HandleCameraZoom_FieldOfView() {
@@ -127,7 +152,7 @@ namespace CodeMonkey.CameraSystem {
                 targetFieldOfView += 5;
             }
 
-            targetFieldOfView = Mathf.Clamp(targetFieldOfView, fieldOfViewMin, fieldOfViewMax);
+            targetFieldOfView = Mathf.Clamp(targetFieldOfView, fieldOfViewMinMax.x, fieldOfViewMinMax.y);
 
             float zoomSpeed = 10f;
             cinemachineVirtualCamera.m_Lens.FieldOfView =
@@ -145,12 +170,12 @@ namespace CodeMonkey.CameraSystem {
                 followOffset += zoomDir * zoomAmount;
             }
 
-            if (followOffset.magnitude < followOffsetMin) {
-                followOffset = zoomDir * followOffsetMin;
+            if (followOffset.magnitude < followOffsetMinMax.x) {
+                followOffset = zoomDir * followOffsetMinMax.x;
             }
 
-            if (followOffset.magnitude > followOffsetMax) {
-                followOffset = zoomDir * followOffsetMax;
+            if (followOffset.magnitude > followOffsetMinMax.y) {
+                followOffset = zoomDir * followOffsetMinMax.y;
             }
 
             float zoomSpeed = 10f;
@@ -167,7 +192,7 @@ namespace CodeMonkey.CameraSystem {
                 followOffset.y += zoomAmount;
             }
 
-            followOffset.y = Mathf.Clamp(followOffset.y, followOffsetMinY, followOffsetMaxY);
+            followOffset.y = Mathf.Clamp(followOffset.y, followOffsetYMinMax.x, followOffsetYMinMax.y);
 
             float zoomSpeed = 10f;
             cinemachineVirtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset =

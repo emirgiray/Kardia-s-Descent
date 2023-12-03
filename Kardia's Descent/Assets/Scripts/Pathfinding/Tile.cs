@@ -12,6 +12,7 @@ public class Tile : MonoBehaviour
     [BoxGroup("Tile")] public Character occupyingCharacter;
     [BoxGroup("Tile")] public GameObject occupyingGO;
     [BoxGroup("Tile")] public bool selectable = true;
+    [BoxGroup("Tile")] public MeshRenderer meshRenderer;
     
     [BoxGroup("Player")] public bool occupiedByPlayer = false;
     [BoxGroup("Player")] public Player occupyingPlayer;
