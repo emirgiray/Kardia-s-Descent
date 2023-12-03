@@ -155,6 +155,7 @@ MonoBehaviour:
   isStunned: 0
   remainingStunTurns: 0
   characterCard: {fileID: 0}
+  passingMoveTime: 0
   movedata: {fileID: 11400000, guid: dd6f1c9025f1ba945b2082ff9cda2f56, type: 2}
   characterTile: {fileID: 0}
   GroundLayerMask:
@@ -339,7 +340,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 0.5
+  orthographic size: 0.75
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2

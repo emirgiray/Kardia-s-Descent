@@ -101,15 +101,28 @@ namespace CodeMonkey.CameraSystem {
             // transform.DOMove(transform.position += moveDir * moveSpeed * Time.deltaTime, 0.5f).SetEase(Ease.InBack);
 
         }
+        
+        Vector3 prevDampingValues =  new Vector3();
 
         private void HandleCameraMovementDragPan() {
             Vector3 inputDir = new Vector3(0, 0, 0);
 
-            if (Input.GetMouseButtonDown(1)) {
+            if (Input.GetMouseButtonDown(2)) 
+            { 
+                prevDampingValues =  new Vector3(cinemachineVirtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_XDamping, cinemachineVirtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_YDamping, cinemachineVirtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_ZDamping);
+                cinemachineVirtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_XDamping = 0.1f;
+                cinemachineVirtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_YDamping = 0.1f;
+                cinemachineVirtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_ZDamping = 0.1f;
+                
                 dragPanMoveActive = true;
                 lastMousePosition = Input.mousePosition;
             }
-            if (Input.GetMouseButtonUp(1)) {
+            if (Input.GetMouseButtonUp(2)) 
+            {
+                cinemachineVirtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_XDamping = prevDampingValues.x;
+                cinemachineVirtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_YDamping = prevDampingValues.y;
+                cinemachineVirtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_ZDamping = prevDampingValues.z;
+                
                 dragPanMoveActive = false;
             }
 
