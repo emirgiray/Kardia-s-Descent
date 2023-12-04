@@ -18,7 +18,7 @@ public class EnemyModifier : MonoBehaviour
     private bool doOnce = true; 
     public void TryIncreaseDamage()
     {
-        if (health._Health <= healthThreshold)
+        if (health._Health <= healthThreshold && health._Health > 0)
         {
             if (doOnce)
             {

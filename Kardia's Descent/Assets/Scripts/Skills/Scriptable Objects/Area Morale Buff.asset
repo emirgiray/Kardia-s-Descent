@@ -26,6 +26,7 @@ MonoBehaviour:
   coverAccuracyDebuff: 20
   animatorOverrideController: {fileID: 22100000, guid: a6564b79e07616541858205ca0f288fd,
     type: 2}
+  skillVFX: {fileID: 11400000, guid: 237c0dabba02e51489b196796b9fe4f4, type: 2}
   skillType: 0
   skillClass: 11
   damageType: 7

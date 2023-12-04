@@ -28,6 +28,7 @@ public class BuffSkill : SkillsData
                                     if (tile.occupiedByPlayer)
                                     {
                                         ChangeAP(tile.occupyingPlayer, isBuff, Skill.skillBuffDebuffAmount);
+                                        skillVFX.SpawnVFX(tile.occupyingPlayer.transform);
                                     }
                                 });
                             break;
