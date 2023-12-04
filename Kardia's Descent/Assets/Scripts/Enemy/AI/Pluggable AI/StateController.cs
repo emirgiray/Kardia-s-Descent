@@ -70,7 +70,7 @@ public class StateController : MonoBehaviour
     private bool runOnce;
     private void Update()
     {
-        aiActive = (enemy.turnOrder == TurnSystem.Instance.currentEnemyTurnOrder);//todo do this with events in turn system
+        aiActive = (enemy.turnOrder == TurnSystem.Instance.currentEnemyTurnOrder && !enemy.isDead);//todo do this with events in turn system
         
         
         if (!aiActive)

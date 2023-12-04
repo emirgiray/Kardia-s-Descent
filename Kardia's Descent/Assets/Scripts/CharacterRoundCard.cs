@@ -42,7 +42,7 @@ public class CharacterRoundCard : MonoBehaviour
 
     public void Rearrange()
     {
-        roundInfo.Rearrange();
+        roundInfo.Rearrange(this.gameObject);
     }
     
 }

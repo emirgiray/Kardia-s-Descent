@@ -292,7 +292,7 @@ MonoBehaviour:
   SpawnedInventoryUIScript: {fileID: 0}
   skillButtonPrefab: {fileID: 0}
   spawnedSkillButtonPrefabs: []
-  testWeaponData: {fileID: 11400000, guid: fffca42d279e4f849bfd318538a844c0, type: 2}
+  testWeaponData: {fileID: 11400000, guid: 5f648099aa9d4ef40979b543a77708fd, type: 2}
 --- !u!114 &5789014126072821151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -382,6 +382,11 @@ MonoBehaviour:
   onHealthThresholdReached:
     m_PersistentCalls:
       m_Calls: []
+  objectToBeMoved: {fileID: 4941520734785401055}
+  directionToMoveTo: {x: 0, y: -5, z: 0}
+  moveTime: 4
+  delay: 1.5
+  ease: 9
 --- !u!1001 &3579682752430526148
 PrefabInstance:
   m_ObjectHideFlags: 0

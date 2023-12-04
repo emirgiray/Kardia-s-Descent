@@ -6,13 +6,13 @@ public class RoundInfo : MonoBehaviour
 {
     [SerializeField] private List<GameObject> objects = new List<GameObject>();
     
-    public void Rearrange()
+    public void Rearrange(GameObject obj)
     {
         //set the first child of this gameobject to the last child
-        objects[0].transform.SetAsLastSibling();
+        obj.transform.SetAsLastSibling();
         //also move the first element to last
-        objects.Add(objects[0]);
-        objects.RemoveAt(0);//todo çalışmıyo alo
+        /*objects.Add(obj);
+        objects.Remove(obj);*/
     }
     
     public void AddObject(GameObject obj)

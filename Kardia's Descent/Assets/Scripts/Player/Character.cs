@@ -388,10 +388,24 @@ public class Character : MonoBehaviour
         animator.SetBool("Dead", true);
         isDead = true;
         characterState = CharacterState.Dead;
+        characterCard.SetActive(false);
         //gameObject.transform.DOMoveY(gameObject.transform.position.y - 0.5f, 0.5f);
         OnCharacterDeath?.Invoke(this);
-        if(GetComponent<Player>() != null) TurnSystem.Instance.PlayerDied(GetComponent<Player>());
-        if(GetComponent<Enemy>() != null) TurnSystem.Instance.EnemyDied(GetComponent<Enemy>());
+        if (this is Player)
+        {
+            characterTile.occupiedByPlayer = false;
+            characterTile.occupyingPlayer = null;
+            TurnSystem.Instance.PlayerDied(GetComponent<Player>());
+        }
+        if (this is Enemy)
+        {
+            characterTile.occupiedByEnemy = false;
+            characterTile.occupyingEnemy = null;
+            TurnSystem.Instance.EnemyDied(GetComponent<Enemy>());
+        }
+        characterTile.occupyingGO = null;
+        characterTile.Occupied = false;
+        //characterTile = null;
         
     }
 

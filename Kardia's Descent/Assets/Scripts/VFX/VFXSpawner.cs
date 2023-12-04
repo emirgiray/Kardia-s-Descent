@@ -10,11 +10,13 @@ public class VFXSpawner : ScriptableObject
     public float VFXDuration;
     public Transform spawnPosition;
     public Vector3 spawnOffset;
+    public Vector3 scale = Vector3.one;
     
     
     public void SpawnVFX(Transform spawnPosition/*, Vector3 spawnOffset, float VFXDuration*/)
     {
         GameObject vfx = Instantiate(VFXPrefab, spawnPosition.position + spawnOffset, Quaternion.identity);
+        vfx.transform.localScale = scale;
         Destroy(vfx, VFXDuration);
         //spawnOffset = Vector3.zero;
     }
