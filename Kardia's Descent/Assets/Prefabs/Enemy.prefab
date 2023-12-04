@@ -243,6 +243,7 @@ MonoBehaviour:
   isStunned: 0
   remainingStunTurns: 0
   characterCard: {fileID: 0}
+  passingMoveTime: 0
   movedata: {fileID: 11400000, guid: dd6f1c9025f1ba945b2082ff9cda2f56, type: 2}
   characterTile: {fileID: 0}
   GroundLayerMask:
@@ -645,6 +646,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 6537016338957646930}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b9784524c6ca27d48af6443cddedea93,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2631982764374844718}
   m_SourcePrefab: {fileID: 100100000, guid: b9784524c6ca27d48af6443cddedea93, type: 3}
 --- !u!1 &5774962711299344080 stripped
 GameObject:
@@ -673,6 +678,33 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2631982764374844718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5774962711299344080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2e3c909e0ff9b349b348253352be184, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CustomEvents2:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -6751961407145202659}
+        m_TargetAssemblyTypeName: SkillContainer, Assembly-CSharp
+        m_MethodName: SetImpact
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!4 &6588512618714995818 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b9784524c6ca27d48af6443cddedea93,

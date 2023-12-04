@@ -268,6 +268,7 @@ MonoBehaviour:
   isStunned: 0
   remainingStunTurns: 0
   characterCard: {fileID: 0}
+  passingMoveTime: 0
   movedata: {fileID: 11400000, guid: dd6f1c9025f1ba945b2082ff9cda2f56, type: 2}
   characterTile: {fileID: 0}
   GroundLayerMask:
@@ -485,6 +486,21 @@ MonoBehaviour:
   healthThreshold: 10
   damageModifier: 1.5
   overrideController: {fileID: 22100000, guid: b645302d6c622f340bc74119fd7ab4a4, type: 2}
+  onHealthThresholdReached:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: d786a5359e002cb4da3f2243d20a86d9, type: 2}
+        m_TargetAssemblyTypeName: VFXSpawner, Assembly-CSharp
+        m_MethodName: SpawnVFX
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 4734741589226270973}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!136 &7747916521502636296
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -600,6 +616,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4734741589226270973}
     m_Modifications:
+    - target: {fileID: 3455090331828462233, guid: a5edbbad0f6230543a42ee6c912cc294,
+        type: 3}
+      propertyPath: CustomEvents2.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3847630338873011834}
     - target: {fileID: 4933739244037394111, guid: a5edbbad0f6230543a42ee6c912cc294,
         type: 3}
       propertyPath: m_Name

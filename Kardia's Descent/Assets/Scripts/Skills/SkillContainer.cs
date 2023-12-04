@@ -220,9 +220,10 @@ public class SkillContainer : MonoBehaviour
         }
     }
     
-
+bool impact = false;
     public void UseSkill(Skills selectedSkill, Tile selectedTile, Enemy enemy = null, Action OnComplete = null)
     {
+        SetImpact(false);
         /*if (Character is Enemy && !enemy.canAttack)
         {
             enemy.EndTurn();
@@ -261,9 +262,10 @@ public class SkillContainer : MonoBehaviour
         }
         
         Character.Attack();
-        Debug.Log($"anim length: {attackAnimLength}");
+        //Debug.Log($"anim length: {attackAnimLength}");
         
         //Debug.Log($"skill lenght: {overrides[3].Key.length}");
+        
         selectedSkill.skillData.ActivateSkill(selectedSkill, Character, selectedTile, gameObject,  () =>
         {
             //animationClips[3] is the useSkill animation
@@ -288,7 +290,16 @@ public class SkillContainer : MonoBehaviour
         }
     }
 
+    public void SetImpact(bool value)
+    {
+        impact = value;
+    }
 
+    public bool GetImpact()
+    {
+        return impact;
+    }
+    
     public void AddSkills(List<SkillsData> skillsDataListIn)
     {
         skillsDataSOList.AddRange(skillsDataListIn);

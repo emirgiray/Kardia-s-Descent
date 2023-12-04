@@ -64,6 +64,12 @@ public class Interact : MonoBehaviour
         {3, new Color(1f, 1, 0, 0.3f) },//Yellow -- Cover
 
     };
+    
+   public Dictionary<int, Color> tileHighligthColors = new Dictionary<int, Color>()
+    {
+        {0, new Color(0.3f, 0.8f, 0.3f, 0.4f) },//Green -- Movable
+        {1, new Color(1, 0.5f, 0.1f, 0.4f) },//Orange -- Attackable
+    };
 
     private void OnEnable()
     {

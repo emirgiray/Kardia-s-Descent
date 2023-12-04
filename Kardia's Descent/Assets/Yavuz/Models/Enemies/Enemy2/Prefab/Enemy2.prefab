@@ -1640,6 +1640,7 @@ GameObject:
   - component: {fileID: 6082981099545649588}
   - component: {fileID: 4063920376178669193}
   - component: {fileID: 9027056546064403140}
+  - component: {fileID: 3455090331828462233}
   m_Layer: 0
   m_Name: Enemy2
   m_TagString: Untagged
@@ -1717,6 +1718,33 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3455090331828462233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4933739244037394111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2e3c909e0ff9b349b348253352be184, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CustomEvents2:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: SkillContainer, Assembly-CSharp
+        m_MethodName: SetImpact
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &5027437521530122214
 GameObject:
   m_ObjectHideFlags: 0

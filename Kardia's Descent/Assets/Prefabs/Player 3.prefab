@@ -596,7 +596,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5567843456906182522, guid: 8f4a0ceba62af4145b67e40edcc51274,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9205804649470572714}
   m_SourcePrefab: {fileID: 100100000, guid: 8f4a0ceba62af4145b67e40edcc51274, type: 3}
 --- !u!95 &1239265960329476181 stripped
 Animator:
@@ -604,6 +608,39 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 9201031878995859826}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3671653748330456584 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5567843456906182522, guid: 8f4a0ceba62af4145b67e40edcc51274,
+    type: 3}
+  m_PrefabInstance: {fileID: 9201031878995859826}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9205804649470572714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3671653748330456584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2e3c909e0ff9b349b348253352be184, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CustomEvents2:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2406082058096991265}
+        m_TargetAssemblyTypeName: SkillContainer, Assembly-CSharp
+        m_MethodName: SetImpact
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!4 &4161190875449769138 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5048294059854030272, guid: 8f4a0ceba62af4145b67e40edcc51274,

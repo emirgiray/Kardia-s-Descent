@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyModifier : MonoBehaviour
 {
@@ -13,20 +14,29 @@ public class EnemyModifier : MonoBehaviour
     [SerializeField] private float damageModifier = 2;
     [SerializeField] private AnimatorOverrideController overrideController;
     
-
+    public UnityEvent onHealthThresholdReached;
+    private bool doOnce = true; 
     public void TryIncreaseDamage()
     {
         if (health._Health <= healthThreshold)
         {
-            skillContainer.SetAnimAtorOverrides(overrideController);
-            for (int i = 0; i < skillContainer.skillsList.Count; i++)
+            if (doOnce)
             {
-                /*if (skillContainer.skillsList[i].skillData.skillClass)*/
+                doOnce = false;
+                skillContainer.SetAnimAtorOverrides(overrideController);
+                onHealthThresholdReached.Invoke();
+            
+                for (int i = 0; i < skillContainer.skillsList.Count; i++)
                 {
-                    float damage = skillContainer.skillsList[i].damage;
-                    damage *= damageModifier;
-                    skillContainer.skillsList[i].damage = Mathf.CeilToInt(damage);
+                    /*if (skillContainer.skillsList[i].skillData.skillClass)*/
+                    {
+                        float damage = skillContainer.skillsList[i].damage;
+                        damage *= damageModifier;
+                        skillContainer.skillsList[i].damage = Mathf.CeilToInt(damage);
+                    }
                 }
+                
+                
             }
         }
 

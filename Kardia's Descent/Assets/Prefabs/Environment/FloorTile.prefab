@@ -32,7 +32,8 @@ Transform:
   m_LocalPosition: {x: 3.7385647, y: 0, z: -4.569561}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5234526172403202310}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &370266791562111308
@@ -122,8 +123,109 @@ MonoBehaviour:
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  selectable: 1
+  meshRenderer: {fileID: 0}
+  TileHighlightGO: {fileID: 2910908981186622558}
+  TileHighlightMeshRenderer: {fileID: 1883696041043539685}
+  occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
+  occupiedByEnemy: 0
   occupyingEnemy: {fileID: 0}
+  OccupiedByCoverPoint: 0
+  occupyingCoverPoint: {fileID: 0}
+  isCoveredByCoverPoint: 0
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
+--- !u!1001 &4740206255922662226
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3642471166253328105}
+    m_Modifications:
+    - target: {fileID: 679020621837447764, guid: 4d6ec1792faae4a49a978c5dddd24cb3,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 679020621837447764, guid: 4d6ec1792faae4a49a978c5dddd24cb3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 679020621837447764, guid: 4d6ec1792faae4a49a978c5dddd24cb3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 679020621837447764, guid: 4d6ec1792faae4a49a978c5dddd24cb3,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 679020621837447764, guid: 4d6ec1792faae4a49a978c5dddd24cb3,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 679020621837447764, guid: 4d6ec1792faae4a49a978c5dddd24cb3,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 679020621837447764, guid: 4d6ec1792faae4a49a978c5dddd24cb3,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 679020621837447764, guid: 4d6ec1792faae4a49a978c5dddd24cb3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 679020621837447764, guid: 4d6ec1792faae4a49a978c5dddd24cb3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 679020621837447764, guid: 4d6ec1792faae4a49a978c5dddd24cb3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7614804333078888204, guid: 4d6ec1792faae4a49a978c5dddd24cb3,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile Highlight Parent
+      objectReference: {fileID: 0}
+    - target: {fileID: 7614804333078888204, guid: 4d6ec1792faae4a49a978c5dddd24cb3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4d6ec1792faae4a49a978c5dddd24cb3, type: 3}
+--- !u!23 &1883696041043539685 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6623849369612287415, guid: 4d6ec1792faae4a49a978c5dddd24cb3,
+    type: 3}
+  m_PrefabInstance: {fileID: 4740206255922662226}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2910908981186622558 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7614804333078888204, guid: 4d6ec1792faae4a49a978c5dddd24cb3,
+    type: 3}
+  m_PrefabInstance: {fileID: 4740206255922662226}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5234526172403202310 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 679020621837447764, guid: 4d6ec1792faae4a49a978c5dddd24cb3,
+    type: 3}
+  m_PrefabInstance: {fileID: 4740206255922662226}
+  m_PrefabAsset: {fileID: 0}

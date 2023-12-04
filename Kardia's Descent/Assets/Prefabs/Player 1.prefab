@@ -886,6 +886,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 6652503420653103220}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a33e02c5e9843b14899803d47dda757b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5771310673215391639}
   m_SourcePrefab: {fileID: 100100000, guid: a33e02c5e9843b14899803d47dda757b, type: 3}
 --- !u!4 &5803552189989882039 stripped
 Transform:
@@ -920,6 +924,33 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5771310673215391639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8353557619913016409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2e3c909e0ff9b349b348253352be184, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CustomEvents2:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7771580355192471846}
+        m_TargetAssemblyTypeName: SkillContainer, Assembly-CSharp
+        m_MethodName: SetImpact
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!4 &8693667784243814115 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a33e02c5e9843b14899803d47dda757b,

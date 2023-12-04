@@ -14,6 +14,8 @@ public class Tile : MonoBehaviour
     [BoxGroup("Tile")] public GameObject occupyingGO;
     [BoxGroup("Tile")] public bool selectable = true;
     [BoxGroup("Tile")] public MeshRenderer meshRenderer;
+    [BoxGroup("Tile")] public GameObject TileHighlightGO;
+    [BoxGroup("Tile")] public MeshRenderer TileHighlightMeshRenderer;
     
     [BoxGroup("Player")] public bool occupiedByPlayer = false;
     [BoxGroup("Player")] public Player occupyingPlayer;
@@ -36,6 +38,16 @@ public class Tile : MonoBehaviour
         {1, new Color(0.45f, 0.23f, 0.15f) },//Red
         {2, new Color(0.3f, 0.1f, 0f) } //Dark red
     };
+
+    
+    
+    /*private void Start()
+    {
+        if (TileHighlightGO != null)
+        {
+            TileHighlightMeshRenderer = TileHighlightGO.GetComponent<MeshRenderer>();
+        }
+    }*/
 
     /*private void Update()
     {
@@ -62,16 +74,42 @@ public class Tile : MonoBehaviour
 
     public void HighlightMoveable()
     {
-        SetColor(new Color(0.3f, 0.8f, 0.3f, 1));
+        if (TileHighlightGO != null)
+        {
+            TileHighlightGO.SetActive(true);
+            TileHighlightMeshRenderer.material.color = Interact.Instance.tileHighligthColors[0];
+        }
+        else
+        {
+            SetColor(new Color(0.3f, 0.8f, 0.3f, 1));
+        }
+        
     }
 
     public void HighlightAttackable()
     {
-        SetColor(new Color(1, 0.5f, 0.1f, 1));
+        if (TileHighlightGO != null)
+        {
+            TileHighlightGO.SetActive(true);
+            TileHighlightMeshRenderer.material.color = Interact.Instance.tileHighligthColors[1];
+        }
+        else
+        {
+            SetColor(new Color(1, 0.5f, 0.1f, 1));
+        }
+        
     }
     public void ClearHighlight()
     {
-        SetColor(costMap[terrainCost]);
+        if (TileHighlightGO != null)
+        {
+            TileHighlightGO.SetActive(false);
+        }
+        else
+        {
+            SetColor(costMap[terrainCost]);
+        }
+        
     }
 
     /// <summary>
