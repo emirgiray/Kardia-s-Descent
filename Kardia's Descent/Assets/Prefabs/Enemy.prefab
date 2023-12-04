@@ -201,7 +201,19 @@ MonoBehaviour:
         m_CallState: 2
   TakeDamage:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -8594639745694862240}
+        m_TargetAssemblyTypeName: Character, Assembly-CSharp
+        m_MethodName: OnCharacterRecieveDamageFunc
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   TakeDamageWithValue:
     m_PersistentCalls:
       m_Calls: []
@@ -231,11 +243,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterSprite: {fileID: 276419777, guid: f050367bbcaea674495c2d5e36fc140b, type: 3}
-  actionPoints: 3
+  actionPoints: 6
   remainingActionPoints: 0
   maxActionPoints: 10
-  initiative: 1
-  health: {fileID: 0}
+  initiative: 0
+  health: {fileID: -646142018697577176}
   canMove: 1
   canAttack: 1
   inCombat: 1
@@ -249,7 +261,7 @@ MonoBehaviour:
   characterTile: {fileID: 0}
   GroundLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   animator: {fileID: 6537016338957646930}
   characterState: 0
   OnMovePointsChangeEvent:
@@ -391,14 +403,14 @@ MonoBehaviour:
   weaponContainer: {fileID: 7224365364739156612}
   skillsContainer: {fileID: -6751961407145202659}
   spawnedWeapon: {fileID: 0}
-  hand: {fileID: 0}
+  hand: {fileID: 220303031585184934}
   InventoryUI: {fileID: 0}
   InventoryUISlot: {fileID: 0}
   SpawnedInventoryUI: {fileID: 0}
   SpawnedInventoryUIScript: {fileID: 0}
   skillButtonPrefab: {fileID: 0}
   spawnedSkillButtonPrefabs: []
-  testWeaponData: {fileID: 0}
+  testWeaponData: {fileID: 11400000, guid: fffca42d279e4f849bfd318538a844c0, type: 2}
 --- !u!114 &4740016529328993010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -411,9 +423,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6741100710ecdd479f18449e01fef31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayTime: 0.5
+  delayTime: 2
   header: Enemy
-  content: Basic ranged enemy.
+  content: Basic melee enemy.
   OnPointerEnterEvent:
     m_PersistentCalls:
       m_Calls:
