@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Kardia_UIAtlas_0
+      name: Kardia_UIAtlas_E1
       rect:
         serializedVersion: 2
         x: 6
@@ -236,7 +236,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kardia_UIAtlas_7
+      name: Kardia_UIAtlas_P1
       rect:
         serializedVersion: 2
         x: 6
@@ -278,7 +278,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kardia_UIAtlas_9
+      name: Kardia_UIAtlas_P3
       rect:
         serializedVersion: 2
         x: 6
@@ -299,7 +299,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kardia_UIAtlas_10
+      name: Kardia_UIAtlas_P3_S1
       rect:
         serializedVersion: 2
         x: 460
@@ -320,7 +320,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kardia_UIAtlas_11
+      name: Kardia_UIAtlas_P3_S3
       rect:
         serializedVersion: 2
         x: 658
@@ -341,7 +341,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kardia_UIAtlas_12
+      name: Kardia_UIAtlas_P3_S2
       rect:
         serializedVersion: 2
         x: 457
@@ -362,7 +362,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kardia_UIAtlas_13
+      name: Kardia_UIAtlas_P3_S4
       rect:
         serializedVersion: 2
         x: 661
@@ -383,7 +383,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kardia_UIAtlas_14
+      name: Kardia_UIAtlas_E2
       rect:
         serializedVersion: 2
         x: 6
@@ -414,21 +414,20 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Kardia_UIAtlas_0: 276419777
-      Kardia_UIAtlas_1: 2073274007
-      Kardia_UIAtlas_10: -571955808
-      Kardia_UIAtlas_11: -110413828
-      Kardia_UIAtlas_12: -1431885180
-      Kardia_UIAtlas_13: 861851198
-      Kardia_UIAtlas_14: -671121250
       Kardia_UIAtlas_2: 816221303
       Kardia_UIAtlas_3: 858309278
       Kardia_UIAtlas_4: 749771949
       Kardia_UIAtlas_5: -1282025756
       Kardia_UIAtlas_6: 1815163699
-      Kardia_UIAtlas_7: -11266308
       Kardia_UIAtlas_8: 432443997
-      Kardia_UIAtlas_9: 439456557
+      Kardia_UIAtlas_E1: 276419777
+      Kardia_UIAtlas_E2: -671121250
+      Kardia_UIAtlas_P1: -11266308
+      Kardia_UIAtlas_P3: 439456557
+      Kardia_UIAtlas_P3_S1: -571955808
+      Kardia_UIAtlas_P3_S2: -1431885180
+      Kardia_UIAtlas_P3_S3: -110413828
+      Kardia_UIAtlas_P3_S4: 861851198
   mipmapLimitGroupName: 
   pSDRemoveMatte: 1
   userData: 

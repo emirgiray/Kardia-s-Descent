@@ -3,12 +3,14 @@ using System.Collections;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Events;
 
 public class Character : MonoBehaviour
 {
     
     
+    [SerializeField] public Sprite characterSprite;
     [SerializeField] public int actionPoints = 3;
     [SerializeField] public int remainingActionPoints;
     [SerializeField] public int maxActionPoints = 10;
@@ -100,36 +102,39 @@ public class Character : MonoBehaviour
         Tile currentTile = path.tiles[0];
         float animationTime = 0f;
 
-        while (currentStep <= pathLength && remainingActionPoints  > 0)
+        while (currentStep <= pathLength )
         {
-            yield return null;
-            //Move towards the next step in the path until we are closer than MIN_DIST
-            Vector3 nextTilePosition = path.tiles[currentStep].transform.position;
-
-            float movementTime = animationTime / (movedata.MoveSpeed + path.tiles[currentStep].terrainCost * TERRAIN_PENALTY);
-            /*if(!path.tiles[currentStep].Occupied) */MoveAndRotate(currentTile.transform.position, nextTilePosition, movementTime);
-            animationTime += Time.deltaTime;
-
-            if (Vector3.Distance(transform.position, nextTilePosition) > MIN_DISTANCE)
-                continue;
-            //decrease remainingMoveSteps if the value of currentTile is changed
-            if (currentTile != path.tiles[currentStep])
+            if (remainingActionPoints  > 0 || !spendActionPoints)
             {
-                if (inCombat && spendActionPoints)
+                yield return null;
+                //Move towards the next step in the path until we are closer than MIN_DIST
+                Vector3 nextTilePosition = path.tiles[currentStep].transform.position;
+
+                float movementTime = animationTime / (movedata.MoveSpeed + path.tiles[currentStep].terrainCost * TERRAIN_PENALTY);
+                /*if(!path.tiles[currentStep].Occupied) */MoveAndRotate(currentTile.transform.position, nextTilePosition, movementTime);
+                animationTime += Time.deltaTime;
+
+                if (Vector3.Distance(transform.position, nextTilePosition) > MIN_DISTANCE)
+                    continue;
+                //decrease remainingMoveSteps if the value of currentTile is changed
+                if (currentTile != path.tiles[currentStep])
                 {
-                    remainingActionPoints-- ;
-                    OnActionPointsChange?.Invoke(remainingActionPoints);
-                    OnActionPointsChangeEvent?.Invoke(remainingActionPoints, "-");
-                   // print(OnMovePointsChangeEvent);
-                }
+                    if (inCombat && spendActionPoints)
+                    {
+                        remainingActionPoints-- ;
+                        OnActionPointsChange?.Invoke(remainingActionPoints);
+                        OnActionPointsChangeEvent?.Invoke(remainingActionPoints, "-");
+                        // print(OnMovePointsChangeEvent);
+                    }
                 
-                CheckIfEndTurn();
+                    CheckIfEndTurn();
+                }
+                //Min dist has been reached, look to next step in path
+                /*if(!path.tiles[currentStep].Occupied)*/ currentTile = path.tiles[currentStep];
+                currentStep++;
+                //passingMoveTime = animationTime;
+                animationTime = 0f;
             }
-            //Min dist has been reached, look to next step in path
-            /*if(!path.tiles[currentStep].Occupied)*/ currentTile = path.tiles[currentStep];
-            currentStep++;
-            //passingMoveTime = animationTime;
-            animationTime = 0f;
         }
 
         // FinalizePosition(path.tiles[pathLength], false);

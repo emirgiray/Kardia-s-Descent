@@ -302,7 +302,7 @@ GameObject:
   - component: {fileID: 7634455813275086659}
   - component: {fileID: 7888471398946502703}
   m_Layer: 5
-  m_Name: Skill Button
+  m_Name: Skill Button (Old)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

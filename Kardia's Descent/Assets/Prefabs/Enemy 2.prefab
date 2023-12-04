@@ -255,6 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 667da47194b0296408fa733dbcc78dd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterSprite: {fileID: -671121250, guid: f050367bbcaea674495c2d5e36fc140b, type: 3}
   actionPoints: 3
   remainingActionPoints: 0
   maxActionPoints: 10

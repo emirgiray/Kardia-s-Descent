@@ -85,6 +85,7 @@ public class SkillContainer : MonoBehaviour
         
     }
 
+
     public void PopulateSkillsList()
     {
         skillsList.AddRange(skillsDataSOList.ConvertAll(skill => new Skills
@@ -133,7 +134,7 @@ public class SkillContainer : MonoBehaviour
             {
                 if (selectSkill == selectedSkill) //if the skill is already selected deselect it
                 {
-                    DeslectSkill(selectSkill);
+                    DeselectSkill(selectSkill);
                 }
                 else //if a skill is already selected and a new skill is selected, deselect the old skill and select the new one
                 {
@@ -195,7 +196,7 @@ public class SkillContainer : MonoBehaviour
         }
     }
 
-    public void DeslectSkill(Skills deselectSkill, Enemy enemy = null)
+    public void DeselectSkill(Skills deselectSkill, Enemy enemy = null)
     {
         if (Character is Enemy)Debug.Log($"{this.name} Deselected {deselectSkill.skillData.name}");
 
@@ -271,7 +272,7 @@ bool impact = false;
             //animationClips[3] is the useSkill animation
             delay = LeanTween.delayedCall(attackAnimLength/*Character.animator.runtimeAnimatorController.animationClips[3].length*/, () =>
             {
-                DeslectSkill(selectedSkill, enemy);
+                DeselectSkill(selectedSkill, enemy);
                 ResetCoverAccruacyDebuff();
                 OnComplete?.Invoke();
             });

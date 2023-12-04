@@ -46,6 +46,7 @@ public class Interact : MonoBehaviour
     Pathfinder pathfinder;
     [Tooltip("This is a null check for selectedCharacter")]
     bool characterSelected = false;
+    SkillContainer selectedCharacterSkillContainer;
     [SerializeField] public bool isMouseOverUI = false;
     
    /*
@@ -176,9 +177,9 @@ public class Interact : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if ( characterSelected)//deselect character //todo skill selectedi variable olarak tut
+            if ( characterSelected)//eselect character //todo skill selectedi variable olarak tut
             {
-                if (selectedCharacter.GetComponent<SkillContainer>().skillSelected == false)
+                if (selectedCharacterSkillContainer.skillSelected == false)
                 {
                     selectedCharacter.GetComponent<Inventory>().ShowSkillsUI(false);
                     selectedCharacter = null;
@@ -188,11 +189,27 @@ public class Interact : MonoBehaviour
                 }
                 else//deselect skill
                 {
-                    selectedCharacter.GetComponent<SkillContainer>().DeslectSkill(selectedCharacter.GetComponent<SkillContainer>().selectedSkill);
+                    selectedCharacterSkillContainer.DeselectSkill(selectedCharacterSkillContainer.selectedSkill);
                     EnableMovement(true);
                 }
             }
             
+        }
+        
+        if (characterSelected)
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            { 
+                selectedCharacterSkillContainer.TrySelectSkill(selectedCharacterSkillContainer.skillsList[0]);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                selectedCharacterSkillContainer.TrySelectSkill(selectedCharacterSkillContainer.skillsList[1]);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                selectedCharacterSkillContainer.TrySelectSkill(selectedCharacterSkillContainer.skillsList[2]);
+            }
         }
         
     }
@@ -356,6 +373,7 @@ public class Interact : MonoBehaviour
         {
             SelectPlayer();
             characterSelected = true;
+            selectedCharacterSkillContainer = selectedCharacter.GetComponent<SkillContainer>();
         }
         else
         {
@@ -472,7 +490,7 @@ public class Interact : MonoBehaviour
             return;
 
         //currentTile.ModifyCost(currentTile.terrainCost-1);//Reverses to previous cost and color after being highlighted
-        currentTile.ClearHighlight();
+        //currentTile.ClearHighlight();
         currentTile = null;
     }
     

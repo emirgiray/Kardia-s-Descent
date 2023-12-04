@@ -435,7 +435,7 @@ GameObject:
   - component: {fileID: 5346473511071419419}
   - component: {fileID: 7653892111301965843}
   m_Layer: 5
-  m_Name: Skill Button (Old)
+  m_Name: Skill Button (Really Old)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

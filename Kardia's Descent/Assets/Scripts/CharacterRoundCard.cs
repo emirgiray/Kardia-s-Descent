@@ -27,7 +27,7 @@ public class CharacterRoundCard : MonoBehaviour
         character.health.Bar01_2 = Bar01_2;
        // Debug.Log($"character bar {character.health.Bar01_2} bar01_2: {Bar01_2} ");
         character.health.Bar02_2 = Bar02_2;
-        //image.sprite = character.characterSprite;
+        image.sprite = character.characterSprite;
 
         if (characterIn is Player)
         {

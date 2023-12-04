@@ -22,7 +22,7 @@ public class UseAttackSkillAction : ActionAI
             controller.enemy.AttackEnd();
             /*if (controllerSelectedSkill != null)
             {
-                controller.skillContainer.DeslectSkill(controllerSelectedSkill);
+                controller.skillContainer.DeselectSkill(controllerSelectedSkill);
             }#1#
 
             

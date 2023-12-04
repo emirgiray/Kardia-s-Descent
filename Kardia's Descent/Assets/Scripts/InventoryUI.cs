@@ -14,6 +14,7 @@ public class InventoryUI : MonoBehaviour
     
     [BoxGroup("Skils")] [SerializeField] private GameObject HorizontalLayoutGroup;
     [BoxGroup("Skils")] [SerializeField] private List<SkillButton> SkillButtons = new List<SkillButton>();
+    [BoxGroup("Skils")] [SerializeField] private List<GameObject> SkillKeymaps = new List<GameObject>();
     
     [BoxGroup("Points")] [SerializeField] private TextMeshProUGUI actionText;
     [BoxGroup("Points")] [SerializeField] private List<GameObject> actionPointsPips = new List<GameObject>();
@@ -124,6 +125,15 @@ public class InventoryUI : MonoBehaviour
     public void SetSkillButtons(List<SkillButton> SkillButtonsIn)
     {
         SkillButtons = SkillButtonsIn;
+
+        for (int i = 0; i < SkillButtons.Count; i++)
+        {
+            if (i < 3)
+            {
+                SkillKeymaps[i].SetActive(true);
+            }
+            
+        }
     }
 
     public void SetSkipTurnButtonInteractable(bool value)

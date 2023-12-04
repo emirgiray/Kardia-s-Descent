@@ -988,7 +988,7 @@ GameObject:
   - component: {fileID: 1057892076576257924}
   - component: {fileID: 6379750533283457572}
   m_Layer: 5
-  m_Name: Player Round Card
+  m_Name: Character Round Card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1298,8 +1298,8 @@ RectTransform:
   m_GameObject: {fileID: 5533984548436301765}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 1.1609149, y: 1.0051711, z: 1.1326}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8163147950621902259}
   - {fileID: 3151432686089385756}
@@ -3263,7 +3263,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 04684f004ba414f409740f9c5f134f41, type: 3}
+  m_Sprite: {fileID: -11266308, guid: f050367bbcaea674495c2d5e36fc140b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

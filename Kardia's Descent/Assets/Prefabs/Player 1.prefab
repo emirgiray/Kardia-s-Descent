@@ -142,7 +142,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40e1b56ff8194f9498d18383bf9980c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionPoints: 3
+  characterSprite: {fileID: -11266308, guid: f050367bbcaea674495c2d5e36fc140b, type: 3}
+  actionPoints: 6
   remainingActionPoints: 0
   maxActionPoints: 10
   initiative: 1
@@ -258,12 +259,12 @@ MonoBehaviour:
   skillsContainer: {fileID: 7771580355192471846}
   spawnedWeapon: {fileID: 0}
   hand: {fileID: 2625209584396992662}
-  InventoryUI: {fileID: 7765871200327313157, guid: dd6ae5ce01b488646afa3f82b2e534f4,
+  InventoryUI: {fileID: 7765871200327313157, guid: ea7f2ec68f2af7346b3d21132d18a18f,
     type: 3}
   InventoryUISlot: {fileID: 0}
   SpawnedInventoryUI: {fileID: 0}
   SpawnedInventoryUIScript: {fileID: 0}
-  skillButtonPrefab: {fileID: 8633694538762580221, guid: 1c2712a8373e40744b9f50a80e5cb1a9,
+  skillButtonPrefab: {fileID: 8633694538762580221, guid: 9a05d135c14b5ca408863ca00901bf22,
     type: 3}
   spawnedSkillButtonPrefabs:
   - {fileID: 0}

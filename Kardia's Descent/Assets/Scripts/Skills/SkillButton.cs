@@ -17,6 +17,7 @@ public class SkillButton : MonoBehaviour
     [SerializeField] public SkillContainer.Skills skill;
     [SerializeField] private Button button;
     [SerializeField] public TextMeshProUGUI cooldownText;
+    [SerializeField] public TextMeshProUGUI apCostText;
     [SerializeField] public GameObject cooldownImage;
     [SerializeField] private SkillContainer skillContainer;
     [SerializeField] private TooltipTrigger tooltipTrigger;
@@ -26,7 +27,7 @@ public class SkillButton : MonoBehaviour
         HighlightSkill();
     }
 
-    public void InitButton(SkillsData skillDataIn,SkillContainer.Skills skillIn , UnityAction useSkill, SkillContainer skillContainerIn)
+    public void InitButton(SkillsData skillDataIn, SkillContainer.Skills skillIn , UnityAction useSkill, SkillContainer skillContainerIn)
     {
         skillData = skillDataIn;
         skill = skillIn;
@@ -36,6 +37,7 @@ public class SkillButton : MonoBehaviour
         skillContainer = skillContainerIn;
         tooltipTrigger.SetHeader(skillDataIn.skillName);
         tooltipTrigger.SetContent(skillDataIn.skillDescription);
+        apCostText.text = $"AP: {skillDataIn.actionPointUse}";
         //OnInit();
     }
 
