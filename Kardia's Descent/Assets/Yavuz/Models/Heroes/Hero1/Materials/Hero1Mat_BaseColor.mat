@@ -172,7 +172,7 @@ Material:
     - _OcclusionStrength: 1
     - _OutlineEnabled: 1
     - _OutlineMode: 0
-    - _OutlineWidth: 12
+    - _OutlineWidth: 7.43
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
