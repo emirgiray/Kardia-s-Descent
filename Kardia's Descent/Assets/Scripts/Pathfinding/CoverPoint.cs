@@ -7,7 +7,7 @@ public class CoverPoint : MonoBehaviour
 {
     [SerializeField] private Tile objectTile;
     [SerializeField] private LayerMask GroundLayerMask;
-    [SerializeField] private float yOffset = 1f;
+    [SerializeField] private float yOffset = 0.18f;
     [SerializeField] private List<Tile> coveringTiles = new List<Tile>();
     
 
@@ -29,6 +29,8 @@ public class CoverPoint : MonoBehaviour
             FinalizePosition(hit.transform.GetComponent<Tile>());
             return;
         }
+        
+        Debug.Log("No tile found for cover point: " + gameObject.name + " at position: " + transform.position + "");
     }
 
     public void FinalizePosition(Tile tile)

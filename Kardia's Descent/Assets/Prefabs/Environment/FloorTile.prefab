@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c83db60afdb29a04288e58b5a6059477, type: 2}
+  - {fileID: 2100000, guid: d46210187024b684dbb0e227c20070c9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -120,11 +120,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e756be36c92cff47bb1f4e8017253b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectable: 1
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
   occupyingGO: {fileID: 0}
-  selectable: 1
   meshRenderer: {fileID: 0}
   TileHighlightGO: {fileID: 2910908981186622558}
   TileHighlightMeshRenderer: {fileID: 1883696041043539685}
@@ -196,6 +196,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6623849369612287415, guid: 4d6ec1792faae4a49a978c5dddd24cb3,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d46210187024b684dbb0e227c20070c9, type: 2}
     - target: {fileID: 7614804333078888204, guid: 4d6ec1792faae4a49a978c5dddd24cb3,
         type: 3}
       propertyPath: m_Name

@@ -136,24 +136,27 @@ public class Pathfinder : MonoBehaviour
             if (Physics.Raycast(aboveTilePos, Vector3.down, out RaycastHit hit, rayLength, tileMask))
             {
                 Tile hitTile = hit.transform.GetComponent<Tile>();
-                if (hitTile.Occupied == false)
+                if (hitTile.selectable)
                 {
-                    tiles.Add(hitTile);
-                }
-                else
-                {
-                    if (ignoreOccupied)
+                    if (hitTile.Occupied == false)
                     {
-                        if (hitTile.occupyingCoverPoint == null)
+                        tiles.Add(hitTile);
+                    }
+                    else
+                    {
+                        if (ignoreOccupied)
                         {
-                            tiles.Add(hitTile);
-                        }
+                            if (hitTile.occupyingCoverPoint == null)
+                            {
+                                tiles.Add(hitTile);
+                            }
 
-                        if (forAttackTiles)
-                        {
-                            tiles.Add(hitTile);
-                        }
+                            if (forAttackTiles)
+                            {
+                                tiles.Add(hitTile);
+                            }
 
+                        }
                     }
                 }
 

@@ -14,13 +14,43 @@ public class LevelVariables : MonoBehaviour
     {
         foreach (var character in levelCharacters)
         {
-            if(character.weaponDataStart != null) character.Character.GetComponent<Inventory>().SpawnWeapon(character.weaponDataStart);
-            if(character.characterSpriteStart != null) character.Character.characterSprite = character.characterSpriteStart;
-            if(character.healthStart != 0) character.Character.GetComponent<SGT_Health>().Max = character.healthStart;
-            if(character.actionPointsStart != 0) character.Character.actionPoints = character.actionPointsStart;
-            if(character.maxActionPointsStart != 0) character.Character.maxActionPoints = character.maxActionPointsStart;
-            if(character.initiativeStart != 0) character.Character.initiative = character.initiativeStart;
+            int overrideCount = 0;
             
+            if(character.weaponDataStart != null)
+            {
+                character.Character.GetComponent<Inventory>().SpawnWeapon(character.weaponDataStart);
+                overrideCount++;
+            }            
+            if(character.characterSpriteStart != null)
+            {
+                character.Character.characterSprite = character.characterSpriteStart;
+                overrideCount++;
+            }            
+            if(character.healthStart != 0)
+            {
+                character.Character.GetComponent<SGT_Health>().Max = character.healthStart;
+                overrideCount++;
+            }            
+            if(character.actionPointsStart != 0)
+            {
+                character.Character.actionPoints = character.actionPointsStart;
+                overrideCount++;
+            }            
+            if(character.maxActionPointsStart != 0)
+            {
+                character.Character.maxActionPoints = character.maxActionPointsStart;
+                overrideCount++;
+            }           
+            if(character.initiativeStart != 0)
+            {
+                character.Character.initiative = character.initiativeStart;
+                overrideCount++;
+            }
+
+            if (overrideCount > 0)
+            {
+                Debug.Log($"Overrided {overrideCount} variables for {character.Character.name}");
+            }
         }
     }
     
