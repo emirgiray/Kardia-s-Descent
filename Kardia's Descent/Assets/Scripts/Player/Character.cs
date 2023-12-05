@@ -117,7 +117,11 @@ public class Character : MonoBehaviour
                 Vector3 nextTilePosition = path.tiles[currentStep].transform.position;
 
                 float movementTime = animationTime / (movedata.MoveTime + path.tiles[currentStep].terrainCost * TERRAIN_PENALTY);
-                /*if(!path.tiles[currentStep].Occupied) */MoveAndRotate(currentTile.transform.position, nextTilePosition, movementTime);
+                /*if(!path.tiles[currentStep].Occupied) */
+                
+                
+                MoveAndRotate(currentTile, path.tiles[currentStep] /*nextTilePosition*/, movementTime , currentStep, pathLength);
+                
                 animationTime += Time.deltaTime;
 
                 if (Vector3.Distance(transform.position, nextTilePosition) > MIN_DISTANCE)
@@ -144,6 +148,7 @@ public class Character : MonoBehaviour
         }
 
         // FinalizePosition(path.tiles[pathLength], false);
+        
         FinalizePosition(currentTile, false);
         OnComplete?.Invoke();
     }
@@ -170,6 +175,7 @@ public class Character : MonoBehaviour
                 characterTile.occupiedByEnemy = false;
                 print("enemy move start");
             }
+            //lastTransform.position = _path.tiles[_path.tiles.Count -1 ].transform.position - _path.tiles[0].transform.position ;
             StartCoroutine(MoveAlongPath(_path, OnComplete, spendActionPoints));
         }
     }
@@ -220,12 +226,16 @@ public class Character : MonoBehaviour
         }
     }
 
-    void MoveAndRotate(Vector3 origin, Vector3 destination, float duration)
+float movementThreshold = 0.1f;
+
+    void MoveAndRotate(Tile origin, Tile destination, float duration, float currentStep, float pathLength)
     {
-        transform.position = Vector3.Lerp(origin, destination, duration);
-        if (origin.DirectionTo(destination).Flat() != Vector3.zero)
+        
+        transform.position = Vector3.Lerp(origin.transform.position, destination.transform.position, duration); 
+        if (Vector3.Distance(transform.position, destination.transform.position) > movementThreshold)
         {
-            transform.rotation = Quaternion.LookRotation(origin.DirectionTo(destination).Flat(), Vector3.up);
+            transform.DOLookAt(destination.transform.position, 0.75f, AxisConstraint.Y, Vector3.up)
+                .SetEase(Ease.OutBack);
         }
     }
 

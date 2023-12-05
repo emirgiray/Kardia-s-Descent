@@ -106,7 +106,7 @@ public class SkillContainer : MonoBehaviour
                     if (/*TurnSystem.Instance.turnState == TurnSystem.TurnState.Friendly &&*/ Character is Player)
                     {
                         skillsList[i].remainingSkillCooldown++;
-                        skillsList[i].skillButton.cooldownText.text = (skillsList[i].remainingSkillCooldown).ToString(); 
+                        skillsList[i].skillButton.cooldownText.text = (skillsList[i].skillCooldown - skillsList[i].remainingSkillCooldown).ToString(); 
                         skillsList[i].skillButton.cooldownImage.GetComponent<Image>().DOFillAmount(1 -(float)skillsList[i].remainingSkillCooldown / skillsList[i].skillCooldown , 2f).OnComplete((
                             () =>
                             {
@@ -115,7 +115,7 @@ public class SkillContainer : MonoBehaviour
                                 {
                                     skillsList[i].skillButton.EnableDisableButton(true);//todo maybe also check the skip button interactable
                                     skillsList[i].skillButton.cooldownImage.SetActive(false);
-                                    skillsList[i].skillButton.cooldownText.text = "";
+                                    skillsList[i].skillButton.cooldownText.text = "";//todo doesnt work??
                                 }
                             }));
                         // skillsList[i].skillButton.cooldownImage.GetComponent<Image>().fillAmount = (float)skillsList[i].remainingSkillCooldown / skillsList[i].skillCooldown;
@@ -133,8 +133,8 @@ public class SkillContainer : MonoBehaviour
                     if (Character is Player)
                     {
                         skillsList[i].skillButton.EnableDisableButton(true);//todo maybe also check the skip button interactable
-                        /*skillsList[i].skillButton.cooldownImage.SetActive(false);
-                        skillsList[i].skillButton.cooldownText.text = "";*/
+                        // skillsList[i].skillButton.cooldownImage.SetActive(false);
+                        skillsList[i].skillButton.cooldownText.text = "";
                     }
                  
                 }

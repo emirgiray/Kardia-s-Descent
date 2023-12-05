@@ -77,7 +77,8 @@ public class Tile : MonoBehaviour
         if (TileHighlightGO != null)
         {
             TileHighlightGO.SetActive(true);
-            TileHighlightMeshRenderer.material.color = Interact.Instance.tileHighligthColors[0];
+            // TileHighlightMeshRenderer.material.color = Interact.Instance.tileHighligthColors[0];
+            TileHighlightMeshRenderer.material.SetColor("_RimColor", Interact.Instance.tileHighligthColors[0]);
         }
         else
         {
@@ -91,7 +92,8 @@ public class Tile : MonoBehaviour
         if (TileHighlightGO != null)
         {
             TileHighlightGO.SetActive(true);
-            TileHighlightMeshRenderer.material.color = Interact.Instance.tileHighligthColors[1];
+            // TileHighlightMeshRenderer.material.color = Interact.Instance.tileHighligthColors[1];
+            TileHighlightMeshRenderer.material.SetColor("_RimColor", Interact.Instance.tileHighligthColors[1]);
         }
         else
         {

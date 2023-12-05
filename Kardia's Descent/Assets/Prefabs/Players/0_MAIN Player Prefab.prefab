@@ -35,8 +35,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 64256330013287305}
   - {fileID: 1678476469108849140}
+  - {fileID: 64256330013287305}
   - {fileID: 8914007514588292463}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -62,8 +62,8 @@ MonoBehaviour:
   Bar02: {fileID: 0}
   Bar01_2: {fileID: 0}
   Bar02_2: {fileID: 0}
-  BarAnimSpeed: 10
-  Bar02Delay: 0.4
+  BarAnimSpeed: 5
+  Bar02Delay: 1
   Dead:
     m_PersistentCalls:
       m_Calls:

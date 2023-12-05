@@ -36,7 +36,7 @@ ModelImporter:
       name: hero1_rig|impact
       takeName: hero1_rig|impact
       internalID: 5694614884980091407
-      firstFrame: 0
+      firstFrame: 30
       lastFrame: 89
       wrapMode: 0
       orientationOffsetY: 0
