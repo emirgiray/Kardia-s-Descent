@@ -26,7 +26,7 @@ public class CheckCoverMoveSkillDecsision : DecisionAI
         foreach (var tile in /*controller.GetReachableTiles()*/ reachableTiles)
         {
             int reaminingActionPointsAfterMove = controller.enemy.remainingActionPoints;
-            reaminingActionPointsAfterMove -= Pathfinder.Instance.GetTilesInBetween(controller.enemy.characterTile, tile).Count + 1;//this is the cost of moving to the tile
+            reaminingActionPointsAfterMove -= Pathfinder.Instance.GetTilesInBetween(controller.enemy, controller.enemy.characterTile, tile).Count + 1;//this is the cost of moving to the tile
             tilesChecked++;
             //if (/*tile.isCoveredByCoverPoint*/ Pathfinder.Instance.CheckCoverPoint())
             {

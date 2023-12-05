@@ -335,7 +335,7 @@ public class Interact : MonoBehaviour
                     }
                     else
                     {
-                        NavigateToTile();
+                        NavigateToTile(selectedCharacter);
                     }
                     break;
                 case Character.CharacterState.WaitingNextRound:
@@ -467,12 +467,12 @@ public class Interact : MonoBehaviour
  
     }
 
-    private void NavigateToTile()
+    private void NavigateToTile(Character activator )
     {
         if (selectedCharacter == null || selectedCharacter.Moving == true)
             return;
 
-        if (RetrievePath(out Path newPath))
+        if (RetrievePath(activator, out Path newPath))
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -489,7 +489,7 @@ public class Interact : MonoBehaviour
         }
     }
 
-    bool RetrievePath(out Path path)
+    bool RetrievePath(Character activator, out Path path)
     {
       
 
@@ -497,7 +497,7 @@ public class Interact : MonoBehaviour
         {
             if (pathfinder.GetReachableTiles(selectedCharacter.characterTile, selectedCharacter.remainingActionPoints/*, selectedCharacter.characterTile*/).Contains(currentTile))
             {
-                path = pathfinder.FindPath(selectedCharacter.characterTile, currentTile);
+                path = pathfinder.FindPath(activator, selectedCharacter.characterTile, currentTile);
                 return true;
             }
             else

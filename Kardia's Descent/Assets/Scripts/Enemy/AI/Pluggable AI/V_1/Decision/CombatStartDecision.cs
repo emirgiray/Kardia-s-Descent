@@ -63,7 +63,7 @@ public class CombatStartDecision : DecisionAI
                 {
                     if (attackTile.occupyingPlayer != null)//todo null check can be too expensive
                     {
-                        tileScore = Pathfinder.Instance.GetTilesInBetween(controller.enemy.characterTile, tile, true).Count
+                        tileScore = Pathfinder.Instance.GetTilesInBetween(controller.enemy, controller.enemy.characterTile, tile, true).Count
                             + skill.skillData.skillDamage;
                         if ( tileScore > prevTileScore)
                         {

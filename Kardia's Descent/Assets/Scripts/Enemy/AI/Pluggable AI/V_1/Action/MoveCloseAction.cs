@@ -64,7 +64,7 @@ public class MoveCloseAction : ActionAI
               targetPlayer.characterTile, true).Count - 1]);*///this gets the tiles between, then gets the last tile in the list, which is the tile that is closest to the player
         
       
-      return Pathfinder.Instance. GetPathBetween(controller.enemy.characterTile, 
+      return Pathfinder.Instance. GetPathBetween(controller.enemy, controller.enemy.characterTile, 
           controller.decidedMoveTile, true);
         /*foreach (var tile in attackableTiles)//maybe do this in a decision
         {

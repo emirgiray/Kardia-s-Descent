@@ -308,14 +308,16 @@ bool impact = false;
         }
         
         Character.Attack();
-        //Debug.Log($"anim length: {attackAnimLength}");
-        
+        // Debug.Log($"anim length: {attackAnimLength}");
         //Debug.Log($"skill lenght: {overrides[3].Key.length}");
         
-        selectedSkill.skillData.ActivateSkill(selectedSkill, Character, selectedTile, gameObject,  () =>
+        StartCoroutine(AttackCancelDelay(attackAnimLength, selectedSkill, selectedTile, enemy, OnComplete));
+        
+        
+        /*selectedSkill.skillData.ActivateSkill(selectedSkill, Character, selectedTile, gameObject,  () =>
         {
             //animationClips[3] is the useSkill animation
-            delay = LeanTween.delayedCall(attackAnimLength/*Character.animator.runtimeAnimatorController.animationClips[3].length*/, () =>
+            delay = LeanTween.delayedCall(attackAnimLength/*Character.animator.runtimeAnimatorController.animationClips[3].length#1#, () =>
             {
                 DeselectSkill(selectedSkill, enemy);
                 ResetCoverAccruacyDebuff();
@@ -324,6 +326,27 @@ bool impact = false;
             
            
             
+        });
+        
+        if (Character is Player)
+        {
+            Interact.Instance.selectedCharacter.GetComponent<Character>().AttackEnd(selectedSkill);
+        }
+        else if (Character is Enemy)
+        {
+            enemy.AttackEnd(selectedSkill);
+        }*/
+    }
+
+    public IEnumerator AttackCancelDelay(float attackAnimLength, Skills selectedSkill, Tile selectedTile, Enemy enemy = null, Action OnComplete = null)
+    {
+        yield return new WaitForSecondsRealtime(attackAnimLength);
+        selectedSkill.skillData.ActivateSkill(selectedSkill, Character, selectedTile, gameObject,  () =>
+        {
+
+                DeselectSkill(selectedSkill, enemy);
+                ResetCoverAccruacyDebuff();
+                OnComplete?.Invoke(); 
         });
         
         if (Character is Player)

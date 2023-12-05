@@ -43,7 +43,7 @@ public class MoveToDecidedTileAction : ActionAI
     
     private Path FindPathToTargetPlayer(StateController controller)
     {
-        Path path = Pathfinder.Instance.GetPathBetween(controller.enemy.characterTile, controller.decidedMoveTile/*, true*/);
+        Path path = Pathfinder.Instance.GetPathBetween(controller.enemy, controller.enemy.characterTile, controller.decidedMoveTile/*, true*/);
 
         if (path.tiles[path.tiles.Count - 1].Occupied)
         {

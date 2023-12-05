@@ -66,6 +66,6 @@ public class Player : Character
     public List<Tile> gettilesinbetween(Tile dest)
     {
         
-        return Pathfinder.Instance.GetTilesInBetween(characterTile, dest, true);
+        return Pathfinder.Instance.GetTilesInBetween(this, characterTile, dest, true);
     }
 }

@@ -25,7 +25,7 @@ public class CheckMoveSkillDecision : DecisionAI
         foreach (var tile in /*controller.GetReachableTiles()*/ reachableTiles)
         {
             int reaminingActionPointsAfterMove = controller.enemy.remainingActionPoints;
-            reaminingActionPointsAfterMove -= Pathfinder.Instance.GetTilesInBetween(controller.enemy.characterTile, tile).Count + 1;
+            reaminingActionPointsAfterMove -= Pathfinder.Instance.GetTilesInBetween(controller.enemy, controller.enemy.characterTile, tile).Count + 1;
             tilesChecked++;
             //if (/*tile.isCoveredByCoverPoint*/ Pathfinder.Instance.CheckCoverPoint())
             {
@@ -43,11 +43,11 @@ public class CheckMoveSkillDecision : DecisionAI
                                 {
                                     //Debug.Log($"enemy is in cover");
                                     tileScore = 50 + skill.damage - controller.skillContainer.CalculateCoverAccuracyDebuff(tile, attackTile, skill)
-                                        + Pathfinder.Instance.GetTilesInBetween(tile, attackTile, true).Count * 10;
+                                        + Pathfinder.Instance.GetTilesInBetween(controller.enemy, tile, attackTile, true).Count * 10;
 
                                     Debug.Log($"remaining ap after move: {reaminingActionPointsAfterMove}");
                                     Debug.Log($"tile: {tile}, curent score: {tileScore}, prev score: {prevTileScore} skill: {skill.skillData}, " +
-                                              $"tiles between {Pathfinder.Instance.GetTilesInBetween(tile, attackTile, true).Count}, tiles checked: {tilesChecked} / {/*controller.GetReachableTiles().Count*/ reachableTiles.Count}");
+                                              $"tiles between {Pathfinder.Instance.GetTilesInBetween(controller.enemy, tile, attackTile, true).Count}, tiles checked: {tilesChecked} / {/*controller.GetReachableTiles().Count*/ reachableTiles.Count}");
 
                                     if ( tileScore >= prevTileScore)
                                     {

@@ -48,7 +48,7 @@ public class Pathfinder : MonoBehaviour
     /// <param name="destination"></param>
     /// <param name="forAIPathfinding">this is for AI pathfinding bc without addng this ai cant get the destination since its occupied</param>
     /// <returns></returns>
-    public Path FindPath(Tile origin, Tile destination, bool forAIPathfinding = false)
+    public Path FindPath(Character activator, Tile origin, Tile destination, bool forAIPathfinding = false)
     {
         
         List<Tile> openSet = new List<Tile>();
@@ -75,13 +75,13 @@ public class Pathfinder : MonoBehaviour
             //Destination reached
             if (currentTile == destination)
             {  
-                return PathBetween(destination, origin, forAIPathfinding);
+                return PathBetween(activator, destination, origin, forAIPathfinding);
             }
             else
             {
                 if (destination.Occupied && Vector3.Distance(currentTile.transform.position, destination.transform.position) <= (origin.GetComponent<MeshFilter>().sharedMesh.bounds.extents.x * HEXAGONAL_OFFSET))
                 {
-                    return PathBetween(currentTile, origin, forAIPathfinding);
+                    return PathBetween(activator, currentTile, origin, forAIPathfinding);
                 }
             }
 
@@ -189,11 +189,11 @@ public class Pathfinder : MonoBehaviour
     /// <param name="dest"></param>
     /// <param name="source"></param>
     /// <returns></returns>
-    public Path PathBetween(Tile dest, Tile source, bool forAIPathfinding = false)
+    public Path PathBetween(Character activator, Tile dest, Tile source, bool forAIPathfinding = false)
     {
         Path path = MakePath(dest, source);
 
-        if (forAIPathfinding == false)
+        if (activator is Player)
         {
             illustrator.IllustratePath(path);
         }
@@ -406,10 +406,10 @@ public class Pathfinder : MonoBehaviour
         
     }
     [Button]
-    public List<Tile> GetTilesInBetween(Tile origin, Tile destination, bool forAIPathfinding = false)
+    public List<Tile> GetTilesInBetween(Character activator,  Tile origin, Tile destination, bool forAIPathfinding = false)
     {
         //return the list of tiles between the two tiles
-        Path path = FindPath(origin, destination, forAIPathfinding);
+        Path path = FindPath(activator, origin, destination, forAIPathfinding);
         //print(path);
         List<Tile> tiles = new List<Tile>();
         //print(tiles);
@@ -427,7 +427,7 @@ public class Pathfinder : MonoBehaviour
        
     }
     [Button]
-    public Path GetPathBetween(Tile origin, Tile destination, bool forAIPathfinding = false)
+    public Path GetPathBetween(Character activator, Tile origin, Tile destination, bool forAIPathfinding = false)
     {
         //return the path between the two tiles
         /*Path path = Pathfinder.Instance.FindPath(origin,
@@ -435,7 +435,7 @@ public class Pathfinder : MonoBehaviour
                 destination, forAIPathfinding)[Pathfinder.Instance.GetTilesInBetween(origin,
                 destination, forAIPathfinding).Count - 1]);*/
 
-        Path path = Pathfinder.Instance.FindPath(origin, destination, forAIPathfinding); 
+        Path path = Pathfinder.Instance.FindPath(activator, origin, destination, forAIPathfinding); 
         
         // path.tiles = path.tiles.Skip(1).ToArray();
         /*List<Tile> list = new List<Tile>(path.tiles);
