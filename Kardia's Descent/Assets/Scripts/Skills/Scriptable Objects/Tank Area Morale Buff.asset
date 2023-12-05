@@ -22,7 +22,7 @@ MonoBehaviour:
   actionPointUse: 1
   skillEffectDuration: 1
   skillBuffDebuffAmount: 1
-  accuracy: 80
+  accuracy: 100
   coverAccuracyDebuff: 20
   animatorOverrideController: {fileID: 22100000, guid: a6564b79e07616541858205ca0f288fd,
     type: 2}

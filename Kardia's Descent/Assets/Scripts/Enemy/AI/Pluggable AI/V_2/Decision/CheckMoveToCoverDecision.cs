@@ -46,6 +46,13 @@ public class CheckMoveToCoverDecision : DecisionAI
                     }*/
 
                 }
+                else
+                {
+                    if (controller.enemy.characterClass == Character.CharacterClass.Melee)
+                    {
+                        inCover++;
+                    }
+                }
                 
                 tileScore = 100 + (inCover * 10 ) - Pathfinder.Instance.GetTilesInBetween(tile, player.characterTile, true).Count * 2;
                 if (inCover == 0)

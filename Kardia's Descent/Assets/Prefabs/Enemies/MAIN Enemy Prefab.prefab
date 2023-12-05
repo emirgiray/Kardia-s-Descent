@@ -139,6 +139,7 @@ MonoBehaviour:
   remainingStunTurns: 0
   characterCard: {fileID: 0}
   passingMoveTime: 0
+  characterClass: 0
   movedata: {fileID: 11400000, guid: dd6f1c9025f1ba945b2082ff9cda2f56, type: 2}
   characterTile: {fileID: 0}
   GroundLayerMask:
@@ -187,6 +188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aiActive: 0
   canExitState: 1
+  currentStateSeconds: 0
   currentState: {fileID: 11400000, guid: e496630f22336574c9bc1cdfab5680cb, type: 2}
   defaultCombatStartState: {fileID: 11400000, guid: e496630f22336574c9bc1cdfab5680cb,
     type: 2}
@@ -292,6 +294,7 @@ MonoBehaviour:
   SpawnedInventoryUIScript: {fileID: 0}
   skillButtonPrefab: {fileID: 0}
   spawnedSkillButtonPrefabs: []
+  spawnTestWeapon: 1
   testWeaponData: {fileID: 11400000, guid: 5f648099aa9d4ef40979b543a77708fd, type: 2}
 --- !u!114 &5789014126072821151
 MonoBehaviour:
@@ -305,7 +308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6741100710ecdd479f18449e01fef31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayTime: 2
+  delayTime: 0.5
   header: Enemy
   content: Basic melee enemy.
   OnPointerEnterEvent:

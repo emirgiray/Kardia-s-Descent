@@ -558,29 +558,32 @@ public class Interact : MonoBehaviour
                 selectedCharacter.Rotate(currentTile.transform.position);
             }
             
-            if (newTile.occupiedByEnemy)
+            if (newTile.occupiedByEnemy && attackableTiles.Contains(newTile))
             {
                 if (Pathfinder.Instance.CheckCoverPoint(selectedCharacter.characterTile, newTile))
                 {
                     selectedCharacter.GetComponent<SkillContainer>().ApplyCoverAccuracyDebuff();
-                    HitChanceUIGameObject.SetActive(true);
+                    EnableDisableHitChanceUI(true);
+                    /*HitChanceUIGameObject.SetActive(true);
                     StartCoroutine(HitChanceUIToMousePos());  
-                    HitChanceText.text = selectedCharacter.GetComponent<SkillContainer>().selectedSkill.accuracy.ToString() + "%";
+                    HitChanceText.text = selectedCharacter.GetComponent<SkillContainer>().selectedSkill.accuracy.ToString() + "%";*/
                     //newTile.occupyingEnemy.GetComponent<TooltipTrigger>().AddToContent(selectedCharacter.GetComponent<SkillContainer>().selectedSkill.accuracy.ToString());
                 }
                 else
                 {
                     selectedCharacter.GetComponent<SkillContainer>().ResetCoverAccruacyDebuff();
-                    HitChanceUIGameObject.SetActive(true);
-                    StartCoroutine(HitChanceUIToMousePos());  
-                    HitChanceText.text = selectedCharacter.GetComponent<SkillContainer>().selectedSkill.accuracy.ToString() + "%";
+                    EnableDisableHitChanceUI(true);
+                    /*HitChanceUIGameObject.SetActive(true);
+                    StartCoroutine(HitChanceUIToMousePos());
+                    HitChanceText.text = selectedCharacter.GetComponent<SkillContainer>().selectedSkill.accuracy.ToString() + "%";*/
                 }
             }
             else
             {
                 selectedCharacter.GetComponent<SkillContainer>().ResetCoverAccruacyDebuff();
-                StopCoroutine(HitChanceUIToMousePos());  
-                HitChanceUIGameObject.SetActive(false);
+                EnableDisableHitChanceUI(false);
+                /*StopCoroutine(HitChanceUIToMousePos());
+                HitChanceUIGameObject.SetActive(false);*/
                 //lastTile.occupyingEnemy.GetComponent<TooltipTrigger>().AddToContent(selectedCharacter.GetComponent<SkillContainer>().selectedSkill.accuracy.ToString());
             }
             
@@ -589,8 +592,26 @@ public class Interact : MonoBehaviour
 
     public IEnumerator HitChanceUIToMousePos()
     {
-        yield return null;
-        HitChanceUIGameObject.transform.position = Input.mousePosition;
+        while (true)
+        {
+            yield return new WaitForSeconds(0.05f);
+            HitChanceUIGameObject.transform.position = Input.mousePosition;
+        }
+    }
+
+    public void EnableDisableHitChanceUI(bool value)
+    {
+
+        if (value)
+        {
+            StartCoroutine(HitChanceUIToMousePos()); 
+            HitChanceText.text = selectedCharacter.GetComponent<SkillContainer>().selectedSkill.accuracy.ToString() + "%";
+        }
+        else
+        {
+            StopCoroutine(HitChanceUIToMousePos()); 
+        }
+        HitChanceUIGameObject.SetActive(value);
     }
     
     /*//Debug only

@@ -37,6 +37,26 @@ public class SkillButton : MonoBehaviour
         //GetComponentInChildren<TextMeshProUGUI>().text = skillData.skillName;
         tooltipTrigger.SetHeader(skillDataIn.skillName);
         tooltipTrigger.SetContent(skillDataIn.skillDescription);
+        tooltipTrigger.AddToContent("");
+
+        if (skillDataIn.passiveOrActive == SkillsData.PassiveOrActive.Active)
+        {
+            if (skillDataIn.skillClass != SkillsData.SkillClass.Buff)
+            {
+                tooltipTrigger.AddToContent($"Damage: {skillDataIn.skillDamage}");
+                tooltipTrigger.AddToContent($"Accuracy: {skillDataIn.accuracy}");
+            }
+            
+            tooltipTrigger.AddToContent($"Range: {skillDataIn.skillRange}");
+            tooltipTrigger.AddToContent($"AP Use: {skillDataIn.actionPointUse}");
+            tooltipTrigger.AddToContent($"CD: {skillDataIn.skillCooldown}");
+                
+            
+            
+            
+        }
+        
+        
 
         if (skillDataIn.passiveOrActive == SkillsData.PassiveOrActive.Active)
         {

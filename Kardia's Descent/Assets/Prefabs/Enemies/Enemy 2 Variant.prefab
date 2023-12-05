@@ -180,6 +180,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4807473279575106974, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
         type: 3}
+      propertyPath: objectToBeMoved
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4807473279575106974, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
+        type: 3}
       propertyPath: overrideController
       value: 
       objectReference: {fileID: 22100000, guid: b645302d6c622f340bc74119fd7ab4a4,
@@ -194,6 +199,11 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 1133070937865020706}
+    - target: {fileID: 8148688877583324293, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
+        type: 3}
+      propertyPath: characterClass
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8148688877583324293, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
         type: 3}
       propertyPath: characterSprite

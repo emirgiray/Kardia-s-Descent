@@ -17,16 +17,31 @@ public class ShieldCharge : SkillsData
         // path.tiles.RemoveAt(path.tiles.Count - 1);
 
         ActivaterCharacter.canMove = true;
-        ActivaterCharacter.StartMove(path, () =>
+
+        if (path.tiles[path.tiles.Count - 1] == ActivaterCharacter.characterTile) //if the destination tile is the character tile
         {
             ActivaterCharacter.Rotate(selectedTile.transform.position);
             
             Interact.Instance.GetComponent<MonoBehaviour>()
                 .StartCoroutine(WaitUntilEnum(Skill, ActivaterCharacter, selectedTile, parent, OnComplete));
             //base.TryHit(Skill, ActivaterCharacter, selectedTile, parent, OnComplete = null);
+        }
+        else
+        {
+            ActivaterCharacter.StartMove(path, () =>
+            {
+                ActivaterCharacter.Rotate(selectedTile.transform.position);
+            
+                Interact.Instance.GetComponent<MonoBehaviour>()
+                    .StartCoroutine(WaitUntilEnum(Skill, ActivaterCharacter, selectedTile, parent, OnComplete));
+                //base.TryHit(Skill, ActivaterCharacter, selectedTile, parent, OnComplete = null);
 
 
-        }, false);
+            }, false);
+        }
+
+        
+        
 
 
         /*if (accuracy <= 100)

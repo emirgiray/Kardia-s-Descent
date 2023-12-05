@@ -435,8 +435,8 @@ GameObject:
   - component: {fileID: 8524459328679894990}
   - component: {fileID: 3298448601605920929}
   - component: {fileID: 7634455813275086659}
-  - component: {fileID: 7888471398946502703}
   - component: {fileID: 5304626303342405749}
+  - component: {fileID: 7845399136261106049}
   m_Layer: 5
   m_Name: Skill Button NEW
   m_TagString: Untagged
@@ -604,7 +604,7 @@ MonoBehaviour:
   apCostText: {fileID: 1358104468079382792}
   cooldownImage: {fileID: 6669332826003065589}
   skillContainer: {fileID: 0}
-  tooltipTrigger: {fileID: 7888471398946502703}
+  tooltipTrigger: {fileID: 7845399136261106049}
 --- !u!114 &7634455813275086659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -626,27 +626,6 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls: []
---- !u!114 &7888471398946502703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8633694538762580221}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6741100710ecdd479f18449e01fef31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delayTime: 0.5
-  header: 
-  content: 
-  OnPointerEnterEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  OnPointerExitEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &5304626303342405749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -662,3 +641,24 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
+--- !u!114 &7845399136261106049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8633694538762580221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71a230a1cef71174b9f2d96c3e56b808, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delayTime: 0.5
+  header: 
+  content: 
+  OnPointerEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPointerExitEvent:
+    m_PersistentCalls:
+      m_Calls: []

@@ -30,7 +30,7 @@ public class Character : MonoBehaviour
     [SerializeField] private float passingMoveTime = 0;
     public enum CharacterClass
     {
-        None, Tank, Rogue, Sniper, Bombardier, TheRegular, Medic, Support
+        None, Tank, Rogue, Sniper, Bombardier, TheRegular, Medic, Support, Melee, Ranged
     }
 
     public CharacterClass characterClass;
@@ -116,7 +116,7 @@ public class Character : MonoBehaviour
                 //Move towards the next step in the path until we are closer than MIN_DIST
                 Vector3 nextTilePosition = path.tiles[currentStep].transform.position;
 
-                float movementTime = animationTime / (movedata.MoveSpeed + path.tiles[currentStep].terrainCost * TERRAIN_PENALTY);
+                float movementTime = animationTime / (movedata.MoveTime + path.tiles[currentStep].terrainCost * TERRAIN_PENALTY);
                 /*if(!path.tiles[currentStep].Occupied) */MoveAndRotate(currentTile.transform.position, nextTilePosition, movementTime);
                 animationTime += Time.deltaTime;
 
@@ -369,18 +369,31 @@ public class Character : MonoBehaviour
     public void AttackCancel()
     {
         characterState = CharacterState.WaitingTurn;
+
+        if (this is Player)
+        {
+            Interact.Instance.EnableDisableHitChanceUI(false);
+        }
+        
         //animator.ResetTrigger("Attack");
        // animator.SetTrigger("AttackCancel");
     }
 
     public void Attack()
     {
+        if (this is Player)
+        {
+            Interact.Instance.EnableDisableHitChanceUI(false);
+        }
+        
         animator.ResetTrigger("AttackCancel");
         animator.SetTrigger("Attack");
     }
 
     public void AttackEnd(SkillContainer.Skills skill)
     {
+        
+        
         characterState = CharacterState.WaitingTurn;
         remainingActionPoints -= skill.actionPointUse;//maybe add a - or + variable to skill use
         
