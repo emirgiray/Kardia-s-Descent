@@ -98,6 +98,7 @@ public class SkillContainer : MonoBehaviour
     {
         if (TurnSystem.Instance.IsThisCharactersTurn(Character))
         {
+            //Debug.Log($"Character {Character.name} {TurnSystem.Instance.turnState} turn started, resetting skill cooldowns");
             for (int i = 0; i < skillsList.Count; i++)
             {
                 if (skillsList[i].remainingSkillCooldown < skillsList[i].skillCooldown)
@@ -106,7 +107,17 @@ public class SkillContainer : MonoBehaviour
                     {
                         skillsList[i].remainingSkillCooldown++;
                         skillsList[i].skillButton.cooldownText.text = (skillsList[i].remainingSkillCooldown).ToString(); 
-                        skillsList[i].skillButton.cooldownImage.GetComponent<Image>().DOFillAmount(1 -(float)skillsList[i].remainingSkillCooldown / skillsList[i].skillCooldown , 2f);
+                        skillsList[i].skillButton.cooldownImage.GetComponent<Image>().DOFillAmount(1 -(float)skillsList[i].remainingSkillCooldown / skillsList[i].skillCooldown , 2f).OnComplete((
+                            () =>
+                            {
+                                // skillsList[i].skillReadyToUse = true;
+                                if (Character is Player)
+                                {
+                                    skillsList[i].skillButton.EnableDisableButton(true);//todo maybe also check the skip button interactable
+                                    skillsList[i].skillButton.cooldownImage.SetActive(false);
+                                    skillsList[i].skillButton.cooldownText.text = "";
+                                }
+                            }));
                         // skillsList[i].skillButton.cooldownImage.GetComponent<Image>().fillAmount = (float)skillsList[i].remainingSkillCooldown / skillsList[i].skillCooldown;
                     }
                     if (/*TurnSystem.Instance.turnState == TurnSystem.TurnState.Enemy && */Character is Enemy)
@@ -122,8 +133,8 @@ public class SkillContainer : MonoBehaviour
                     if (Character is Player)
                     {
                         skillsList[i].skillButton.EnableDisableButton(true);//todo maybe also check the skip button interactable
-                        skillsList[i].skillButton.cooldownImage.SetActive(false);
-                        skillsList[i].skillButton.cooldownText.text = "";
+                        /*skillsList[i].skillButton.cooldownImage.SetActive(false);
+                        skillsList[i].skillButton.cooldownText.text = "";*/
                     }
                  
                 }
@@ -304,12 +315,12 @@ bool impact = false;
         selectedSkill.skillData.ActivateSkill(selectedSkill, Character, selectedTile, gameObject,  () =>
         {
             //animationClips[3] is the useSkill animation
-            //delay = LeanTween.delayedCall(attackAnimLength/*Character.animator.runtimeAnimatorController.animationClips[3].length*/, () =>
+            delay = LeanTween.delayedCall(attackAnimLength/*Character.animator.runtimeAnimatorController.animationClips[3].length*/, () =>
             {
                 DeselectSkill(selectedSkill, enemy);
                 ResetCoverAccruacyDebuff();
                 OnComplete?.Invoke();
-            }/*)*/;
+            });
             
            
             

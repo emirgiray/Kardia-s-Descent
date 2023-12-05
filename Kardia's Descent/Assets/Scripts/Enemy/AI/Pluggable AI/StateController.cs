@@ -10,6 +10,7 @@ public class StateController : MonoBehaviour
 { 
     [SerializeField] public bool aiActive;
     [SerializeField] public bool canExitState = true;
+    [SerializeField] public float currentStateSeconds = 0;
     
     public StateAI currentState;
     public StateAI defaultCombatStartState;
@@ -79,16 +80,31 @@ public class StateController : MonoBehaviour
         }
         else
         {
-            if (TurnSystem.Instance.turnState == TurnSystem.TurnState.Enemy && enemy.turnOrder == TurnSystem.Instance.currentEnemyTurnOrder && canExitState)
+            if (TurnSystem.Instance.turnState == TurnSystem.TurnState.Enemy && enemy.turnOrder == TurnSystem.Instance.currentEnemyTurnOrder)
             {
-                currentState.UpdateState(this);
-                //Debug.Log($"STATE: {currentState}");
-                if (!runOnce && RandomWait())
+                if (canExitState)
                 {
-                    currentState.DoActionsOnce(this);
-                    runOnce = true;
+                    currentStateSeconds = 0;
+                    currentState.UpdateState(this);
+                    currentStateSeconds += Time.deltaTime;
+                    //Debug.Log($"STATE: {currentState}");
+                    if (!runOnce && RandomWait())
+                    {
+                        currentState.DoActionsOnce(this);
+                        runOnce = true;
+                    }
+                }
+                else
+                {
+                    if (currentStateSeconds >= 4) //state overtime
+                    {
+                        canExitState = true;
+                        Debug.Log($"State changed due to overtime");
+                    }
                 }
             }
+            
+            
         }
     }
     

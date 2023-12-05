@@ -110,9 +110,6 @@ public class TurnSystem : MonoBehaviour
 
     public void DecideWhosTurn()//todo bu isimlendirme yanlış, decideWhosRound olmalı
     {
-       
-        RoundChanged?.Invoke();
-        
         if (round % 2 == 1)
         {
             turnState = TurnState.Friendly;
@@ -133,6 +130,7 @@ public class TurnSystem : MonoBehaviour
             return;
             /*FriendlyTurn();*/
         }
+        RoundChanged?.Invoke();
     }
 
     [Button,GUIColor(0,1,0)][FoldoutGroup("DEBUG")]

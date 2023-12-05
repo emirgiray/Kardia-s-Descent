@@ -48,7 +48,7 @@ public class BasicMelee : SkillsData
         }*/
 
         //add delay of 0.1f seconds here
-        OnComplete?.Invoke();
+        // OnComplete?.Invoke();
     }
 
     public IEnumerator WaitUntilEnum(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile,
@@ -64,8 +64,8 @@ public class BasicMelee : SkillsData
             {
                 if (selectedTile.occupiedByEnemy)
                 {
-                    selectedTile.occupyingEnemy.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
                     skillVFX.SpawnVFX(selectedTile.occupyingEnemy.transform);
+                    selectedTile.occupyingEnemy.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
 
                     Debug.Log($"HIT: {random} < {Skill.accuracy}");
                     //base.OnHit();
@@ -73,8 +73,8 @@ public class BasicMelee : SkillsData
 
                 if (selectedTile.OccupiedByCoverPoint)
                 {
-                    selectedTile.occupyingCoverPoint.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
                     skillVFX.SpawnVFX(selectedTile.occupyingCoverPoint.transform);
+                    selectedTile.occupyingCoverPoint.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
                     Debug.Log($"HIT: {random} < {Skill.accuracy}");
                 }
             }
@@ -83,16 +83,16 @@ public class BasicMelee : SkillsData
             {
                 if (selectedTile.occupiedByPlayer)
                 {
-                    selectedTile.occupyingPlayer.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
                     skillVFX.SpawnVFX(selectedTile.occupyingPlayer.transform);
+                    selectedTile.occupyingPlayer.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
                     Debug.Log($"HIT: {random} < {Skill.accuracy}");
                     //base.OnHit();
                 }
 
                 if (selectedTile.OccupiedByCoverPoint)
                 {
-                    selectedTile.occupyingCoverPoint.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
                     skillVFX.SpawnVFX(selectedTile.occupyingCoverPoint.transform);
+                    selectedTile.occupyingCoverPoint.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
                     Debug.Log($"HIT: {random} < {Skill.accuracy}");
                 }
             }
@@ -101,5 +101,7 @@ public class BasicMelee : SkillsData
         {
             Debug.Log($"MISSED: {random} > {Skill.accuracy}");
         }
+        
+        OnComplete?.Invoke();
     }
 }
