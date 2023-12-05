@@ -16,7 +16,8 @@ public class Pathfinder : MonoBehaviour
     [SerializeField] private float coverPointRayLenght = 0.3f;
     [SerializeField] private float characterYOffset = 0.5f;
     [SerializeField] private float tileVerticalityLenght = 2f;
-    [SerializeField] private const float HEXAGONAL_OFFSET = 1.75f;
+    [Tooltip("This is the offset of the hexagonal tiles, it is used to calculate the distance between tiles, default is 1.75f for hex scale (1, 1, 1) )")]
+    [SerializeField] private /*const*/ float HEXAGONAL_OFFSET = 1.75f;
     
     private void Awake()
     {
