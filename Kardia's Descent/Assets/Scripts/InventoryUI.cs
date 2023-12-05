@@ -21,6 +21,7 @@ public class InventoryUI : MonoBehaviour
     [BoxGroup("Points")] [SerializeField] private Button skipTurnButton;
     
     [BoxGroup("Health")] [SerializeField] private TextMeshProUGUI healthText;
+    // [BoxGroup("Health")] [SerializeField] private TextMeshProUGUI healthMaxText;
     [BoxGroup("Health")] [SerializeField] private Image Bar01;
     [BoxGroup("Health")] [SerializeField] private Image Bar02;
 
@@ -36,7 +37,8 @@ public class InventoryUI : MonoBehaviour
         //player.OnActionPointsChange += UpdateActionPoints;//actions doesnt work for some reason
         // player.OnCharacterRecieveDamageAction += UpdateHealth;
         
-        healthText.text = player.health._Health.ToString();
+        healthText.text = $"{player.health.Max} / {player.health.Max}";
+        //healthMaxText.text = player.health.Max.ToString();
         player.OnActionPointsChangeEvent.AddListener(UpdateActionPoints);
         player.OnHealthChangeEvent.AddListener(UpdateHealth);
         player.PlayerTurnStart.AddListener(() => SetSkipTurnButtonInteractable(true));
@@ -58,8 +60,9 @@ public class InventoryUI : MonoBehaviour
     /// <param name="type"></param>
     public void UpdateActionPoints(int value, string type)
     {
-        actionText.text = value.ToString();
-
+        // actionText.text = value.ToString();
+        actionText.text = $"{value} / {player.maxActionPoints}";
+        
         for (int i = 0; i < actionPointsPips.Count; i++)
         {
             if (type == "+")
@@ -93,7 +96,8 @@ public class InventoryUI : MonoBehaviour
 
     public void UpdateHealth()
     {
-        healthText.text = player.health._Health.ToString();
+        // healthText.text = player.health._Health.ToString();
+        healthText.text = $"{player.health._Health} / {player.health.Max}";
     }
 
     

@@ -34,6 +34,7 @@ public class Inventory : MonoBehaviour
     [BoxGroup("UI")] [SerializeField] private GameObject skillButtonPrefab;
     [BoxGroup("UI")] [SerializeField] private List<GameObject> spawnedSkillButtonPrefabs = new List<GameObject>();
     
+    [BoxGroup("DEBUG")] [SerializeField] private bool spawnTestWeapon = true;
     [BoxGroup("DEBUG")] [SerializeField] private WeaponData testWeaponData;
     
     SGT_Health sgtHealth;
@@ -59,7 +60,7 @@ public class Inventory : MonoBehaviour
         
         
         
-        if(testWeaponData != null) SpawnTestWeapon();
+        if(testWeaponData != null && spawnTestWeapon ) SpawnTestWeapon();
         
         
     }
@@ -113,12 +114,17 @@ public class Inventory : MonoBehaviour
     
     public void SpawnWeapon(WeaponData weaponData/*, Transform hand*/)
     {
-        spawnedWeapon = Instantiate(weaponData.WeaponPrefab, hand);
+        spawnedWeapon = /*Instantiate(*/weaponData.WeaponPrefab/*, hand)*/;
         weaponContainer.AddWeapon(weaponData,spawnedWeapon.GetComponent<Weapon>());
         skillsContainer.AddSkills(weaponData.SkillsDataList);
         skillsDataList.AddRange(weaponData.SkillsDataList);
+        skillsToAdd = weaponData.SkillsDataList;
         weaponsDataList.Add(weaponData);
-        PopulateSkillsUI();
+        
+        if (GetComponent<Character>() is Player)
+        {
+            PopulateSkillsUI();
+        }
     }
         
     [Button]
@@ -131,7 +137,7 @@ public class Inventory : MonoBehaviour
         skillsToAdd = testWeaponData.SkillsDataList;
         weaponsDataList.Add(testWeaponData);
 
-        if (this.GetComponent<Character>() is Player)
+        if (GetComponent<Character>() is Player)
         {
             PopulateSkillsUI();
         }
