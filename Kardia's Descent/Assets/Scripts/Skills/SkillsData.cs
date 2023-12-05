@@ -24,7 +24,8 @@ public class SkillsData : ScriptableObject
     public int accuracy = 80;
     public int coverAccuracyDebuff = 20;
     public AnimatorOverrideController animatorOverrideController;
-    public VFXSpawner skillVFX;
+    public VFXSpawner[] skillHitVFX;
+    public VFXSpawner skillMissVFX;
     public enum SkillType
     {
         Ranged, Melee

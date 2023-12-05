@@ -95,17 +95,32 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1086629163380962625, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
         type: 3}
+      propertyPath: Dead.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1086629163380962625, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
+        type: 3}
       propertyPath: TakeDamage.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1086629163380962625, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
         type: 3}
       propertyPath: TakeDamage.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1086629163380962625, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
+        type: 3}
+      propertyPath: TakeDamage.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1086629163380962625, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
         type: 3}
       propertyPath: TakeDamage.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 8335306693783725903}
+    - target: {fileID: 1086629163380962625, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
+        type: 3}
+      propertyPath: TakeDamage.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 3577321532564896162}
     - target: {fileID: 1086629163380962625, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
@@ -115,17 +130,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1086629163380962625, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
         type: 3}
+      propertyPath: TakeDamage.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1086629163380962625, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
+        type: 3}
       propertyPath: TakeDamage.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 1086629163380962625, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
+        type: 3}
+      propertyPath: TakeDamage.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
       value: TryIncreaseDamage
       objectReference: {fileID: 0}
     - target: {fileID: 1086629163380962625, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
         type: 3}
       propertyPath: TakeDamage.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1086629163380962625, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
+        type: 3}
+      propertyPath: TakeDamage.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
       value: EnemyModifier, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1086629163380962625, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
         type: 3}
       propertyPath: TakeDamage.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1086629163380962625, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
+        type: 3}
+      propertyPath: TakeDamage.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2394410552398270842, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
@@ -272,6 +307,12 @@ MonoBehaviour:
 --- !u!4 &5919988543027285318 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2394410552398270842, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
+    type: 3}
+  m_PrefabInstance: {fileID: 8291867439157959740}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8335306693783725903 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 53573456621042547, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
     type: 3}
   m_PrefabInstance: {fileID: 8291867439157959740}
   m_PrefabAsset: {fileID: 0}

@@ -20,14 +20,14 @@ public class BasicMelee : SkillsData
                 if (selectedTile.occupiedByEnemy)
                 {
                     selectedTile.occupyingEnemy.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
-                    skillVFX.SpawnVFX(selectedTile.occupyingEnemy.transform);
+                    skillHitVFX.SpawnVFX(selectedTile.occupyingEnemy.transform);
                     Debug.Log($"HIT: {random} < {Skill.accuracy}");
                 }
 
                 if (selectedTile.OccupiedByCoverPoint)
                 {
                     selectedTile.occupyingCoverPoint.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
-                    skillVFX.SpawnVFX(selectedTile.occupyingCoverPoint.transform);
+                    skillHitVFX.SpawnVFX(selectedTile.occupyingCoverPoint.transform);
                     Debug.Log($"HIT: {random} < {Skill.accuracy}");
                 }
             }
@@ -37,7 +37,7 @@ public class BasicMelee : SkillsData
                 if (selectedTile.occupiedByPlayer)
                 {
                     selectedTile.occupyingPlayer.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
-                    skillVFX.SpawnVFX(selectedTile.occupyingPlayer.transform);
+                    skillHitVFX.SpawnVFX(selectedTile.occupyingPlayer.transform);
                     Debug.Log($"HIT: {random} < {Skill.accuracy}");
                 }
             }
@@ -64,7 +64,10 @@ public class BasicMelee : SkillsData
             {
                 if (selectedTile.occupiedByEnemy)
                 {
-                    skillVFX.SpawnVFX(selectedTile.occupyingEnemy.transform);
+                    foreach (var fx in skillHitVFX)
+                    {
+                        fx.SpawnVFX(selectedTile.occupyingEnemy.transform);
+                    }
                     selectedTile.occupyingEnemy.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
 
                     Debug.Log($"HIT: {random} < {Skill.accuracy}");
@@ -73,7 +76,10 @@ public class BasicMelee : SkillsData
 
                 if (selectedTile.OccupiedByCoverPoint)
                 {
-                    skillVFX.SpawnVFX(selectedTile.occupyingCoverPoint.transform);
+                    foreach (var fx in skillHitVFX)
+                    {
+                        fx.SpawnVFX(selectedTile.occupyingCoverPoint.transform);
+                    }
                     selectedTile.occupyingCoverPoint.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
                     Debug.Log($"HIT: {random} < {Skill.accuracy}");
                 }
@@ -83,7 +89,11 @@ public class BasicMelee : SkillsData
             {
                 if (selectedTile.occupiedByPlayer)
                 {
-                    skillVFX.SpawnVFX(selectedTile.occupyingPlayer.transform);
+                    foreach (var fx in skillHitVFX)
+                    {
+                        fx.SpawnVFX(selectedTile.occupyingPlayer.transform);
+                    }
+
                     selectedTile.occupyingPlayer.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
                     Debug.Log($"HIT: {random} < {Skill.accuracy}");
                     //base.OnHit();
@@ -91,7 +101,10 @@ public class BasicMelee : SkillsData
 
                 if (selectedTile.OccupiedByCoverPoint)
                 {
-                    skillVFX.SpawnVFX(selectedTile.occupyingCoverPoint.transform);
+                    foreach (var fx in skillHitVFX)
+                    {
+                        fx.SpawnVFX(selectedTile.occupyingCoverPoint.transform);
+                    }
                     selectedTile.occupyingCoverPoint.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
                     Debug.Log($"HIT: {random} < {Skill.accuracy}");
                 }
@@ -99,6 +112,16 @@ public class BasicMelee : SkillsData
         }
         else
         {
+            if (selectedTile.occupiedByEnemy)
+            {
+                skillMissVFX.SpawnVFX(selectedTile.occupyingEnemy.transform);
+                selectedTile.occupyingEnemy.GetComponent<SGT_Health>().Miss();
+            }
+            if (selectedTile.occupiedByPlayer)
+            {
+                skillMissVFX.SpawnVFX(selectedTile.occupyingPlayer.transform);
+                selectedTile.occupyingPlayer.GetComponent<SGT_Health>().Miss();
+            }
             Debug.Log($"MISSED: {random} > {Skill.accuracy}");
         }
         

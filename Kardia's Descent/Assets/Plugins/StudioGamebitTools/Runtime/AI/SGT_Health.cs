@@ -56,6 +56,10 @@ public class SGT_Health : MonoBehaviour {
     [DrawWithUnity]
     [FoldoutGroup("Events")]
     [PropertyOrder(2)]
+    public SGTEventString TakeDamageWithString = null;
+    [DrawWithUnity]
+    [FoldoutGroup("Events")]
+    [PropertyOrder(2)]
     public SGTEventInt HealthDecreaseValue = null;
     [DrawWithUnity]
     [FoldoutGroup("Events")]
@@ -64,12 +68,19 @@ public class SGT_Health : MonoBehaviour {
     [DrawWithUnity]
     [FoldoutGroup("Events")]
     [PropertyOrder(2)]
+    public SGTEventString HealthAddedWithString = null;
+    [DrawWithUnity]
+    [FoldoutGroup("Events")]
+    [PropertyOrder(2)]
     public SGTEventInt GetCurrentHealth = null;
     [DrawWithUnity]
     [FoldoutGroup("Events")]
     [PropertyOrder(2)]
     public SGTEventFloat GetCurrentHealthNormalized = null;
-
+    [DrawWithUnity]
+    [FoldoutGroup("Events")]
+    [PropertyOrder(2)]
+    public SGTEventString MissEvent = null;
 
 
     //Eğer düşmanın health'i belirlenen limiti geçtiyse limit koymak için eklendi.
@@ -166,6 +177,7 @@ public class SGT_Health : MonoBehaviour {
             HealthDecreaseValue.Invoke(value);
             TakeDamage.Invoke();
             TakeDamageWithValue.Invoke(HealthAi);
+            TakeDamageWithString.Invoke(value.ToString());
             GetCurrentHealth.Invoke(HealthAi);
             GetCurrentHealthNormalized.Invoke(SGT_Math.Remap(HealthAi, Min, Max,0,1));
             if (Bar01!=null)
@@ -213,6 +225,7 @@ public class SGT_Health : MonoBehaviour {
         HealthAi += addHealth;
         HealthAdded.Invoke(addHealth);
         GetCurrentHealth.Invoke(HealthAi);
+        HealthAddedWithString.Invoke(addHealth.ToString());
         GetCurrentHealthNormalized.Invoke(SGT_Math.Remap(HealthAi, Min, Max, 0, 1));
         CheckDeadOrNot();
     }
@@ -316,5 +329,9 @@ public class SGT_Health : MonoBehaviour {
 
     }
 
+    public void Miss()
+    {
+        MissEvent.Invoke("MISS");
+    }
    
 }

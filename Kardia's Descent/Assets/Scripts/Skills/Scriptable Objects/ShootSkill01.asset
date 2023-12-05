@@ -21,11 +21,16 @@ MonoBehaviour:
   skillCooldown: 0
   actionPointUse: 1
   skillEffectDuration: 1
+  skillBuffDebuffAmount: 1
   accuracy: 70
   coverAccuracyDebuff: 20
   animatorOverrideController: {fileID: 22100000, guid: 21d0ca836db6d7d489d8e8d19f188d7c,
     type: 2}
+  skillHitVFX:
+  - {fileID: 11400000, guid: 2d7ba90a2d4cad44ea904346e7ce5f75, type: 2}
+  skillMissVFX: {fileID: 11400000, guid: f95dd6b5fb3dc4f4c9158365d41b4807, type: 2}
   skillType: 0
+  passiveOrActive: 0
   skillClass: 1
   damageType: 0
   skillTarget: 0
