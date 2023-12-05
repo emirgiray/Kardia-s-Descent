@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Image = UnityEngine.UI.Image;
 
 public class SkillContainer : MonoBehaviour
 {
@@ -23,56 +25,43 @@ public class SkillContainer : MonoBehaviour
 
     private void OnEnable()
     {
+        Character = GetComponent<Character>();
+        Inventory = GetComponent<Inventory>();
+        if (Character is Player)
+        {
+            Character.OnActionPointsChange += CheckIfEnoughAPForSkill;
+            
+        }
+        
         TurnSystem.Instance.RoundChanged += ResetSkillCooldowns;
+        
     }
 
     private void OnDisable()
     {
+        if (Character is Player)
+        {
+            Character.OnActionPointsChange -= CheckIfEnoughAPForSkill;
+        }
+        
+        
         TurnSystem.Instance.RoundChanged -= ResetSkillCooldowns;
     }
 
-    public void ResetSkillCooldowns()
+    public void CheckIfEnoughAPForSkill(int ap)
     {
-        if (TurnSystem.Instance.IsThisCharactersTurn(Character))
+        
+        foreach (var skill in skillsList)
         {
-            for (int i = 0; i < skillsList.Count; i++)
-            {
-                if (skillsList[i].remainingSkillCooldown < skillsList[i].skillCooldown)
-                {
-                    if (/*TurnSystem.Instance.turnState == TurnSystem.TurnState.Friendly &&*/ Character is Player)
-                    {
-                        skillsList[i].remainingSkillCooldown++;
-                        skillsList[i].skillButton.cooldownText.text = (skillsList[i].remainingSkillCooldown).ToString(); 
-                    }
-                    if (/*TurnSystem.Instance.turnState == TurnSystem.TurnState.Enemy && */Character is Enemy)
-                    {
-                        skillsList[i].remainingSkillCooldown++;
-                    }
-                
-                }
-
-                if (skillsList[i].remainingSkillCooldown == skillsList[i].skillCooldown)
-                {
-                    skillsList[i].skillReadyToUse = true;
-                    if (Character is Player)
-                    {
-                        skillsList[i].skillButton.EnableDisableButton(true);
-                        skillsList[i].skillButton.cooldownImage.SetActive(false);
-                        skillsList[i].skillButton.cooldownText.text = "";
-                    }
-                 
-                }
-                // skillsList[i].remainingSkillCooldown = skillsList[i].skillCooldown;
-            
-            }
+            skill.skillButton.EnableDisableButton(Character.remainingActionPoints >= skill.actionPointUse);
+            //Debug.Log($"skill: {skill.skillData.name} skill ap use: {skill.actionPointUse} ap: {Character.actionPoints}, can use skill: {Character.actionPoints >= skill.actionPointUse}");
         }
-        //skillReadyAction?.Invoke();
+
     }
 
     private void Start()
     {
-        Character = GetComponent<Character>();
-        Inventory = GetComponent<Inventory>();
+        
         PopulateSkillsList();
         for (int i = 0; i < skillButtons.Count; i++)
         {
@@ -105,6 +94,46 @@ public class SkillContainer : MonoBehaviour
         }));
     }
     
+    public void ResetSkillCooldowns()
+    {
+        if (TurnSystem.Instance.IsThisCharactersTurn(Character))
+        {
+            for (int i = 0; i < skillsList.Count; i++)
+            {
+                if (skillsList[i].remainingSkillCooldown < skillsList[i].skillCooldown)
+                {
+                    if (/*TurnSystem.Instance.turnState == TurnSystem.TurnState.Friendly &&*/ Character is Player)
+                    {
+                        skillsList[i].remainingSkillCooldown++;
+                        skillsList[i].skillButton.cooldownText.text = (skillsList[i].remainingSkillCooldown).ToString(); 
+                        skillsList[i].skillButton.cooldownImage.GetComponent<Image>().DOFillAmount(1 -(float)skillsList[i].remainingSkillCooldown / skillsList[i].skillCooldown , 2f);
+                        // skillsList[i].skillButton.cooldownImage.GetComponent<Image>().fillAmount = (float)skillsList[i].remainingSkillCooldown / skillsList[i].skillCooldown;
+                    }
+                    if (/*TurnSystem.Instance.turnState == TurnSystem.TurnState.Enemy && */Character is Enemy)
+                    {
+                        skillsList[i].remainingSkillCooldown++;
+                    }
+                
+                }
+
+                if (skillsList[i].remainingSkillCooldown == skillsList[i].skillCooldown)
+                {
+                    skillsList[i].skillReadyToUse = true;
+                    if (Character is Player)
+                    {
+                        skillsList[i].skillButton.EnableDisableButton(true);//todo maybe also check the skip button interactable
+                        skillsList[i].skillButton.cooldownImage.SetActive(false);
+                        skillsList[i].skillButton.cooldownText.text = "";
+                    }
+                 
+                }
+                // skillsList[i].remainingSkillCooldown = skillsList[i].skillCooldown;
+            
+            }
+        }
+        //skillReadyAction?.Invoke();
+    }
+    
     public void SkillHighlighted(SkillsData highlightSkill)
     {
         Interact.Instance.SkillHighlighted?.Invoke();
@@ -114,9 +143,14 @@ public class SkillContainer : MonoBehaviour
     {
         if (Character.characterState == Character.CharacterState.WaitingTurn || Character.characterState == Character.CharacterState.Idle || Character.characterState == Character.CharacterState.Attacking)
         {
+            if (Character.actionPoints < selectSkill.actionPointUse)
+            {
+                Debug.Log("Not enough AP");
+                return;
+            }
+            
             if (skillSelected == false) //if no skill is selected select that sakill
             {
-            
                 if (Character.canAttack )
                 {
                     // if (selectedSkill.skillReadyToUse)
@@ -270,12 +304,12 @@ bool impact = false;
         selectedSkill.skillData.ActivateSkill(selectedSkill, Character, selectedTile, gameObject,  () =>
         {
             //animationClips[3] is the useSkill animation
-            delay = LeanTween.delayedCall(attackAnimLength/*Character.animator.runtimeAnimatorController.animationClips[3].length*/, () =>
+            //delay = LeanTween.delayedCall(attackAnimLength/*Character.animator.runtimeAnimatorController.animationClips[3].length*/, () =>
             {
                 DeselectSkill(selectedSkill, enemy);
                 ResetCoverAccruacyDebuff();
                 OnComplete?.Invoke();
-            });
+            }/*)*/;
             
            
             

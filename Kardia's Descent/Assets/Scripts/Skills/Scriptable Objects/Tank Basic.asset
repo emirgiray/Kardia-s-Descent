@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Tank Basic
   m_EditorClassIdentifier: 
   skillSprite: {fileID: -571955808, guid: f050367bbcaea674495c2d5e36fc140b, type: 3}
-  skillName: BasicMelee
-  skillDescription: 
+  skillName: Basic
+  skillDescription: Basic attack.
   skillID: 1
   skillDamage: 10
   skillRange: 3
@@ -28,6 +28,7 @@ MonoBehaviour:
     type: 2}
   skillVFX: {fileID: 11400000, guid: 2d7ba90a2d4cad44ea904346e7ce5f75, type: 2}
   skillType: 0
+  passiveOrActive: 0
   skillClass: 0
   damageType: 0
   skillTarget: 0

@@ -144,14 +144,17 @@ public class InventoryUI : MonoBehaviour
         {
             if (value)
             {
-                if (SkillButtons[i].skill.skillReadyToUse)
+                if (SkillButtons[i].skill.skillReadyToUse || SkillButtons[i].skill.skillData.passiveOrActive == SkillsData.PassiveOrActive.Passive)
                 {
                     SkillButtons[i].EnableDisableButton(value);
                 }
             }
             else
             {
-                SkillButtons[i].EnableDisableButton(value);
+                if (SkillButtons[i].skill.skillData.passiveOrActive == SkillsData.PassiveOrActive.Active)
+                {
+                    SkillButtons[i].EnableDisableButton(value);
+                }
             }
             
         }
@@ -162,5 +165,9 @@ public class InventoryUI : MonoBehaviour
         playerPortrait.texture = renderTexture;
     }
 
+    public Button GetSkipButton()
+    {
+        return skipTurnButton;
+    }
     
 }

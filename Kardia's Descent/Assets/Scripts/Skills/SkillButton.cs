@@ -31,14 +31,27 @@ public class SkillButton : MonoBehaviour
     {
         skillData = skillDataIn;
         skill = skillIn;
-        GetComponent<Image>().sprite = skillData.skillSprite;
-        button.onClick.AddListener(useSkill);
-        //GetComponentInChildren<TextMeshProUGUI>().text = skillData.skillName;
         skillContainer = skillContainerIn;
+        
+        GetComponent<Image>().sprite = skillData.skillSprite;
+        //GetComponentInChildren<TextMeshProUGUI>().text = skillData.skillName;
         tooltipTrigger.SetHeader(skillDataIn.skillName);
         tooltipTrigger.SetContent(skillDataIn.skillDescription);
-        apCostText.text = $"AP: {skillDataIn.actionPointUse}";
-        //OnInit();
+
+        if (skillDataIn.passiveOrActive == SkillsData.PassiveOrActive.Active)
+        {
+            button.onClick.AddListener(useSkill);
+            apCostText.text = $"AP: {skillDataIn.actionPointUse}";
+            //OnInit();
+        }
+        else
+        {
+            button.enabled = false;
+        }
+
+        
+        
+        
     }
 
     public void EnableDisableButton(bool value)

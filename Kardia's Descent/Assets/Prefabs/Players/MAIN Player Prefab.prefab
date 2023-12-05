@@ -9,12 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3066464748635369359}
-  - component: {fileID: 2309916463847800548}
   - component: {fileID: 5225323832543321503}
   - component: {fileID: 7510704565162782655}
   - component: {fileID: 6566286917398397367}
   - component: {fileID: 6326383597764647500}
   - component: {fileID: 5475755088311690444}
+  - component: {fileID: 1586229326536261514}
   m_Layer: 0
   m_Name: MAIN Player Prefab
   m_TagString: Player
@@ -39,27 +39,6 @@ Transform:
   - {fileID: 8914007514588292463}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!65 &2309916463847800548
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3045574018136022521}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5225323832543321503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,6 +136,7 @@ MonoBehaviour:
   remainingStunTurns: 0
   characterCard: {fileID: 0}
   passingMoveTime: 0
+  characterClass: 0
   movedata: {fileID: 11400000, guid: dd6f1c9025f1ba945b2082ff9cda2f56, type: 2}
   characterTile: {fileID: 0}
   GroundLayerMask:
@@ -268,6 +248,29 @@ MonoBehaviour:
     type: 3}
   spawnedSkillButtonPrefabs: []
   testWeaponData: {fileID: 11400000, guid: 5f648099aa9d4ef40979b543a77708fd, type: 2}
+--- !u!136 &1586229326536261514
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3045574018136022521}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Height: 3
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.36, z: 0}
 --- !u!1 &5090733536535404942
 GameObject:
   m_ObjectHideFlags: 0

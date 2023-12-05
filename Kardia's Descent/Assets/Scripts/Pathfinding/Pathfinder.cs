@@ -9,10 +9,9 @@ public class Pathfinder : MonoBehaviour
 {
     public static Pathfinder Instance { get; private set; }
     PathIllustrator illustrator;
-    [SerializeField]
-    LayerMask tileMask;
-    [SerializeField]
-    LayerMask coverPointMask;
+    [SerializeField] LayerMask tileMask;
+    [SerializeField] LayerMask coverPointMask;
+    [SerializeField] LayerMask tankCoverPointMask;
 
     [SerializeField] private float coverPointRayLenght = 0.3f;
     [SerializeField] private float characterYOffset = 0.5f;
@@ -36,7 +35,8 @@ public class Pathfinder : MonoBehaviour
 
     /*private void Update()
     {
-        CheckCoverPoint(GameObject.Find("Enemy").GetComponent<Character>().characterTile, GameObject.Find("Player").GetComponent<Character>().characterTile);
+        // CheckCoverPoint(GameObject.Find("Enemy").GetComponent<Character>().characterTile, GameObject.Find("Player").GetComponent<Character>().characterTile);
+        CheckCoverPoint(GameObject.Find("Enemy 1").GetComponent<Character>().characterTile, GameObject.Find("Mattone").GetComponent<Character>().characterTile);
     }*/
 
     /// <summary>
@@ -454,21 +454,28 @@ public class Pathfinder : MonoBehaviour
        Vector3 attackingPos = new Vector3(attacking.transform.position.x, attacking.transform.position.y + characterYOffset, attacking.transform.position.z);
        Vector3 defendingPos = new Vector3(defending.transform.position.x, defending.transform.position.y + characterYOffset, defending.transform.position.z);
        
-       // Debug.DrawRay(defendingPos, (attackingPos - defendingPos).normalized * coverPointRayLenght,  Color.red);
-       if (Physics.Raycast(defendingPos, 
-               (attackingPos - defendingPos).normalized, 
-               out RaycastHit hit, 
-                coverPointRayLenght,
-               coverPointMask))
+       //Debug.DrawRay(defendingPos, (attackingPos - defendingPos).normalized * coverPointRayLenght,  Color.red);
+       if (Physics.Raycast(defendingPos, (attackingPos - defendingPos).normalized, out RaycastHit hit, coverPointRayLenght, coverPointMask))
        {
            //Debug.Log($"defender {defending} is in cover");
            return true;
        }
+       
+       if (defending.occupiedByPlayer)
+       {
+           if (Physics.Raycast(defendingPos, (attackingPos - defendingPos).normalized, out RaycastHit hit2, coverPointRayLenght, tankCoverPointMask))
+           {
+               //Debug.Log($"defender {defending} is in tank cover");
+               return true;
+           }
+       }
+       
+       
        //Debug.Log($"defender {defending}  is NOT in cover");
        return false;
     }
 
-    [SerializeField] private Tile origin;
+    /*[SerializeField] private Tile origin;
     [SerializeField] private Tile target1;
     [SerializeField] private Tile target2;
 
@@ -506,5 +513,5 @@ public class Pathfinder : MonoBehaviour
             VARIABLE.Highlight(Color.white);
         }
         return tempPath;
-    }
+    }*/
 }

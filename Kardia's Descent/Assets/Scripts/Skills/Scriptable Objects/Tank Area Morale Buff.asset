@@ -18,7 +18,7 @@ MonoBehaviour:
   skillID: 3
   skillDamage: 0
   skillRange: 3
-  skillCooldown: 1
+  skillCooldown: 2
   actionPointUse: 1
   skillEffectDuration: 1
   skillBuffDebuffAmount: 1
@@ -28,6 +28,7 @@ MonoBehaviour:
     type: 2}
   skillVFX: {fileID: 11400000, guid: 237c0dabba02e51489b196796b9fe4f4, type: 2}
   skillType: 0
+  passiveOrActive: 0
   skillClass: 11
   damageType: 7
   skillTarget: 4

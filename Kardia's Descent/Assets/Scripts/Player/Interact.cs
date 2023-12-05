@@ -174,10 +174,10 @@ public class Interact : MonoBehaviour
         Clear();
         MouseUpdate();
         CheckMouseOverUI();
-
-        if (Input.GetKeyDown(KeyCode.Escape))
+        
+        if (characterSelected) //eselect character //todo skill selectedi variable olarak tut
         {
-            if ( characterSelected)//eselect character //todo skill selectedi variable olarak tut
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
                 if (selectedCharacterSkillContainer.skillSelected == false)
                 {
@@ -187,30 +187,39 @@ public class Interact : MonoBehaviour
                     ClearHighlightReachableTiles();
                     pathfinder.EnableIllustratePath(false);
                 }
-                else//deselect skill
+                else //deselect skill
                 {
                     selectedCharacterSkillContainer.DeselectSkill(selectedCharacterSkillContainer.selectedSkill);
                     EnableMovement(true);
                 }
             }
-            
-        }
-        
-        if (characterSelected)
-        {
+
             if (Input.GetKeyDown(KeyCode.Alpha1))
-            { 
+            {
                 selectedCharacterSkillContainer.TrySelectSkill(selectedCharacterSkillContainer.skillsList[0]);
             }
+
             if (Input.GetKeyDown(KeyCode.Alpha2))
             {
                 selectedCharacterSkillContainer.TrySelectSkill(selectedCharacterSkillContainer.skillsList[1]);
             }
+
             if (Input.GetKeyDown(KeyCode.Alpha3))
             {
                 selectedCharacterSkillContainer.TrySelectSkill(selectedCharacterSkillContainer.skillsList[2]);
             }
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                if (selectedCharacter.GetComponent<Inventory>().GetSpawnedInventoryUIScript().GetSkipButton().interactable)
+                {
+                    selectedCharacter.GetComponent<Inventory>().GetSpawnedInventoryUIScript().GetSkipButton().onClick.Invoke();
+                }
+                
+            }
         }
+            
+        
         
     }
 

@@ -92170,14 +92170,12 @@ MonoBehaviour:
   coverPointMask:
     serializedVersion: 2
     m_Bits: 64
+  tankCoverPointMask:
+    serializedVersion: 2
+    m_Bits: 256
   coverPointRayLenght: 1
   characterYOffset: 0.5
   tileVerticalityLenght: 3
-  origin: {fileID: 1790740661}
-  target1: {fileID: 1514696292}
-  target2: {fileID: 264721834}
-  tempPath:
-    tiles: []
 --- !u!114 &2124771804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93440,10 +93438,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tank
       objectReference: {fileID: 0}
+    - target: {fileID: 883855727420601889, guid: d398bbf6cce345f4ea47a677310a9a90,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 904763955868222551, guid: d398bbf6cce345f4ea47a677310a9a90,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.58
+      value: -5.08
       objectReference: {fileID: 0}
     - target: {fileID: 904763955868222551, guid: d398bbf6cce345f4ea47a677310a9a90,
         type: 3}
@@ -93453,7 +93456,7 @@ PrefabInstance:
     - target: {fileID: 904763955868222551, guid: d398bbf6cce345f4ea47a677310a9a90,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12.42
+      value: -10.71
       objectReference: {fileID: 0}
     - target: {fileID: 904763955868222551, guid: d398bbf6cce345f4ea47a677310a9a90,
         type: 3}
@@ -93489,6 +93492,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5637232902721750119, guid: d398bbf6cce345f4ea47a677310a9a90,
+        type: 3}
+      propertyPath: actionPoints
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7925721037858819860, guid: d398bbf6cce345f4ea47a677310a9a90,
         type: 3}
@@ -94751,7 +94759,7 @@ PrefabInstance:
     - target: {fileID: 3192985337203590846, guid: f2891199ad7459148abfc14b3a406b37,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.82
+      value: -4.09
       objectReference: {fileID: 0}
     - target: {fileID: 3192985337203590846, guid: f2891199ad7459148abfc14b3a406b37,
         type: 3}
@@ -94761,7 +94769,7 @@ PrefabInstance:
     - target: {fileID: 3192985337203590846, guid: f2891199ad7459148abfc14b3a406b37,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.61
+      value: -11.49
       objectReference: {fileID: 0}
     - target: {fileID: 3192985337203590846, guid: f2891199ad7459148abfc14b3a406b37,
         type: 3}
@@ -95340,7 +95348,7 @@ PrefabInstance:
     - target: {fileID: 849986411691709275, guid: cb88844e890648949ac051e1aff2c91f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.56
+      value: -0.73
       objectReference: {fileID: 0}
     - target: {fileID: 849986411691709275, guid: cb88844e890648949ac051e1aff2c91f,
         type: 3}
@@ -95350,7 +95358,7 @@ PrefabInstance:
     - target: {fileID: 849986411691709275, guid: cb88844e890648949ac051e1aff2c91f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10.46
+      value: -5.51
       objectReference: {fileID: 0}
     - target: {fileID: 849986411691709275, guid: cb88844e890648949ac051e1aff2c91f,
         type: 3}

@@ -14,16 +14,16 @@ AnimatorStateMachine:
     m_Position: {x: 30, y: 320, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 9134554469061319305}
-    m_Position: {x: 360, y: 320, z: 0}
+    m_Position: {x: 30, y: 440, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -1388860877727524160}
     m_Position: {x: -280, y: 320, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7567976337542760539}
-    m_Position: {x: 270, y: 420, z: 0}
+    m_Position: {x: 350, y: 320, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7540140118296491065}
-    m_Position: {x: 30, y: 420, z: 0}
+    m_Position: {x: 190, y: 210, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -205,37 +205,37 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Dead
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Attack
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: AttackStart
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: AttackCancel
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Hit
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -256,10 +256,7 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: AttackCancel
-    m_EventTreshold: 0
+  m_Conditions: []
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -4067770606632978168}
   m_Solo: 0
@@ -269,7 +266,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
   m_ExitTime: 0.91928184
-  m_HasExitTime: 0
+  m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1

@@ -7,7 +7,6 @@ using UnityEngine;
 public class Player : Character
 {
     [SerializeField] private RenderTexture playerPortrait;
-    
     [FoldoutGroup("Stats For Quests")] [SerializeField] private int killsInTurn = 0;
     
     private void OnEnable()
@@ -30,6 +29,31 @@ public class Player : Character
                 // StartCoroutine(RotateEnum(transform.position, Interact.Instance.currentTile.transform.position));
                 Rotate(transform.position, Interact.Instance.currentTile.transform.position);
             }
+        }
+    }*/
+
+    /*private void Start()
+    {
+        switch (characterClass)
+        {
+            case CharacterClass.None:
+                break;
+            case CharacterClass.Tank:
+                break;
+            case CharacterClass.Rogue:
+                break;
+            case CharacterClass.Sniper:
+                break;
+            case CharacterClass.Bombardier:
+                break;
+            case CharacterClass.TheRegular:
+                break;
+            case CharacterClass.Medic:
+                break;
+            case CharacterClass.Support:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
     }*/
 

@@ -30,6 +30,14 @@ public class SkillsData : ScriptableObject
         Ranged, Melee
     }
     public SkillType skillType;
+    
+    [EnumPaging]
+    public enum PassiveOrActive
+    {
+        Active, Passive 
+    }
+
+    public PassiveOrActive passiveOrActive;
     public enum SkillClass
     {
         Pistol, Rifle, Shotgun, Sniper, SMG, LMG, Axe, Sword, Dagger, Active, Passive, Buff

@@ -26,6 +26,7 @@ public class Inventory : MonoBehaviour
     
     [BoxGroup("UI")] [SerializeField] private GameObject InventoryUI;
     [BoxGroup("UI")] [SerializeField] private GameObject InventoryUISlot;
+
     [BoxGroup("UI")] [SerializeField] [ReadOnly] private GameObject SpawnedInventoryUI;
     [BoxGroup("UI")] [SerializeField] [ReadOnly] private InventoryUI SpawnedInventoryUIScript;
     //[BoxGroup("UI")] [SerializeField] private GameObject skillsUI;
@@ -139,8 +140,11 @@ public class Inventory : MonoBehaviour
     public void ShowSkillsUI(bool value)
     {
         SpawnedInventoryUI.SetActive(value);
-        
-        
+    }
+
+    public InventoryUI GetSpawnedInventoryUIScript()
+    {
+        return SpawnedInventoryUIScript;
     }
 
 }

@@ -28,7 +28,12 @@ public class Character : MonoBehaviour
     [SerializeField] private int remainingStunTurns = 0;
     [SerializeField] private GameObject characterCard;
     [SerializeField] private float passingMoveTime = 0;
-    
+    public enum CharacterClass
+    {
+        None, Tank, Rogue, Sniper, Bombardier, TheRegular, Medic, Support
+    }
+
+    public CharacterClass characterClass;
     
     public bool Moving { get; private set; } = false;
     
@@ -47,6 +52,7 @@ public class Character : MonoBehaviour
     public CharacterState characterState;
     
 
+    
     public Action<int> OnActionPointsChange;
     public Action OnTurnStart;
     public Action<Character> OnCharacterDeath;
@@ -363,8 +369,8 @@ public class Character : MonoBehaviour
     public void AttackCancel()
     {
         characterState = CharacterState.WaitingTurn;
-        animator.ResetTrigger("Attack");
-        animator.SetTrigger("AttackCancel");
+        //animator.ResetTrigger("Attack");
+       // animator.SetTrigger("AttackCancel");
     }
 
     public void Attack()
