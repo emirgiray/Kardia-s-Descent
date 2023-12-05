@@ -7,12 +7,12 @@ using Sirenix.Serialization;
 
 public class Tile : MonoBehaviour
 {
+    [BoxGroup("Tile")] public bool selectable = true;
     [BoxGroup("Tile")] public Tile parent;
     [BoxGroup("Tile")] public Tile connectedTile;
     [BoxGroup("Tile")] public bool Occupied { get; set; } = false;
     [BoxGroup("Tile")] public Character occupyingCharacter;
     [BoxGroup("Tile")] public GameObject occupyingGO;
-    [BoxGroup("Tile")] public bool selectable = true;
     [BoxGroup("Tile")] public MeshRenderer meshRenderer;
     [BoxGroup("Tile")] public GameObject TileHighlightGO;
     [BoxGroup("Tile")] public MeshRenderer TileHighlightMeshRenderer;
