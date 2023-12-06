@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillSprite: {fileID: -110413828, guid: f050367bbcaea674495c2d5e36fc140b, type: 3}
   skillName: Area Morale Buff
-  skillDescription: Increase AP by 1 for allies in range.
+  skillDescription: Increase AP by 2 for allies in range.
   skillID: 3
   skillDamage: 0
   skillRange: 3

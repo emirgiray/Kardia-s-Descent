@@ -46,7 +46,7 @@ public class Interact : MonoBehaviour
     Pathfinder pathfinder;
     [Tooltip("This is a null check for selectedCharacter")]
     public bool characterSelected = false;
-    SkillContainer selectedCharacterSkillContainer;
+    public SkillContainer selectedCharacterSkillContainer;
     [SerializeField] public bool isMouseOverUI = false;
     
    /*
@@ -537,7 +537,7 @@ public class Interact : MonoBehaviour
             tile.ClearHighlight();
         }
     }
-    private void HighlightReachableTiles()
+    public void HighlightReachableTiles()
     { 
         ClearHighlightReachableTiles();
         reachableTiles = pathfinder.GetReachableTiles(selectedCharacter.characterTile, selectedCharacter.remainingActionPoints/*, selectedCharacter.characterTile*/);

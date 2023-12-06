@@ -44,5 +44,24 @@ public class CharacterRoundCard : MonoBehaviour
     {
         roundInfo.Rearrange(this.gameObject);
     }
+
+    public void SelectCharacter()
+    {
+        if (character is Player)
+        {
+            Interact.Instance.selectedCharacter = character; //select character
+            Interact.Instance.lastSelectedCharacter = Interact.Instance.selectedCharacter;
+            if (Interact.Instance.selectedCharacter.characterState == Character.CharacterState.WaitingTurn || Interact.Instance.selectedCharacter.characterState == Character.CharacterState.Idle)
+            {
+                if (Interact.Instance.selectedCharacter.remainingActionPoints > 0)
+                {
+                    Interact.Instance. EnableMovement(true);
+                }
+                Interact.Instance.HighlightReachableTiles(); //highlight tiles within range
+            }
+            Interact.Instance.selectedCharacter.GetComponent<Inventory>().ShowSkillsUI(true); //show skills ui
+        }
+        
+    }
     
 }

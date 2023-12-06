@@ -653,7 +653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71a230a1cef71174b9f2d96c3e56b808, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayTime: 0.5
+  delayTime: 1
   header: 
   content: 
   OnPointerEnterEvent:

@@ -19481,16 +19481,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1812027279259089864, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: testWeaponData
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1812027279259089864, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: spawnTestWeapon
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
         type: 3}
       propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.size
@@ -41424,16 +41414,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7440606550819156016, guid: f2891199ad7459148abfc14b3a406b37,
-        type: 3}
-      propertyPath: testWeaponData
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7440606550819156016, guid: f2891199ad7459148abfc14b3a406b37,
-        type: 3}
-      propertyPath: spawnTestWeapon
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -63702,6 +63682,7 @@ MonoBehaviour:
     m_Bits: 32
   debug: 0
   characterSelected: 0
+  selectedCharacterSkillContainer: {fileID: 0}
   isMouseOverUI: 0
 --- !u!82 &1691251603
 AudioSource:

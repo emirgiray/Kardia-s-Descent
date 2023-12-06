@@ -216,8 +216,9 @@ MonoBehaviour:
   canAttack: 1
   inCombat: 1
   isDead: 0
-  totalSteps: 0
+  Hand: {fileID: 0}
   isStunned: 0
+  totalSteps: 0
   remainingStunTurns: 0
   characterCard: {fileID: 0}
   passingMoveTime: 0
@@ -233,6 +234,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnActionPointsChangeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnActionPointsChangeEvent2:
     m_PersistentCalls:
       m_Calls: []
   OnHealthChangeEvent:
@@ -390,7 +394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6741100710ecdd479f18449e01fef31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayTime: 0.5
+  delayTime: 1.5
   header: Enemy
   content: Basic melee enemy.
   OnPointerEnterEvent:
