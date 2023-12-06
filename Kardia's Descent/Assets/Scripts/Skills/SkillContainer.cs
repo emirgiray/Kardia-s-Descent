@@ -302,14 +302,14 @@ bool impact = false;
         {
             if (Character.animator.runtimeAnimatorController.animationClips[i].name.Contains("attack"))
             {
-                attackAnimLength = Character.animator.runtimeAnimatorController.animationClips[i].length; 
+                attackAnimLength = Character.animator.runtimeAnimatorController.animationClips[i].length + 0.8666667f; //+ exit blend length
             }
            
         }
         
         StartCoroutine(AttackCancelDelay(attackAnimLength, selectedSkill, selectedTile, enemy, OnComplete));
         Character.Attack();
-        // Debug.Log($"anim length: {attackAnimLength}");
+        Debug.Log($"anim length: {attackAnimLength}");
         //Debug.Log($"skill lenght: {overrides[3].Key.length}");
         
         

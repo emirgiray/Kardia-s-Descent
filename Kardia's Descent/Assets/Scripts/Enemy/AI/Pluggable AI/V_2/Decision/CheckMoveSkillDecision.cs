@@ -49,7 +49,7 @@ public class CheckMoveSkillDecision : DecisionAI
                                     Debug.Log($"tile: {tile}, curent score: {tileScore}, prev score: {prevTileScore} skill: {skill.skillData}, " +
                                               $"tiles between {Pathfinder.Instance.GetTilesInBetween(controller.enemy, tile, attackTile, true).Count}, tiles checked: {tilesChecked} / {/*controller.GetReachableTiles().Count*/ reachableTiles.Count}");
 
-                                    if ( tileScore >= prevTileScore)
+                                    if ( tileScore > prevTileScore)
                                     {
                                         /*controller.skillContainer.SelectSkill(skill, controller.enemy);
                                         controller.enemy.StartMove(Pathfinder.Instance.FindPath(controller.enemy.characterTile, tile));*/

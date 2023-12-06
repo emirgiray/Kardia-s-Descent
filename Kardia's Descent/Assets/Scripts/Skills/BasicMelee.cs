@@ -125,6 +125,15 @@ public class BasicMelee : SkillsData
             Debug.Log($"MISSED: {random} > {Skill.accuracy}");
         }
         
+        //if the current anim name contains idle, then invoke oncomplete
+        
+        
+        
+        yield return new WaitUntil(() => ActivaterCharacter.animator.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("idle"));
+        
+        /*yield return new WaitUntil(() => ActivaterCharacter.animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"));
+        yield return new WaitUntil(() => ActivaterCharacter.animator.runtimeAnimatorController);*/
+        Debug.Log($"\"Idle\"");
         OnComplete?.Invoke();
     }
 }

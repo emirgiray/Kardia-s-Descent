@@ -59,7 +59,7 @@ public class CheckMoveToCoverDecision : DecisionAI
                 {
                     tileScore = -1000;
                 }
-                if ( tileScore >= prevTileScore)
+                if ( tileScore > prevTileScore)
                 {
                     result = true; //this means cover found    
                     Debug.Log($"BIGGER THAN PREVIOUS, tile: {tile}, curent score: {tileScore}, prev score: {prevTileScore}");
