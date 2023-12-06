@@ -17,7 +17,7 @@ MonoBehaviour:
   skillDescription: 
   skillID: 0
   skillDamage: 10
-  skillRange: 2
+  skillRange: 1
   skillCooldown: 0
   actionPointUse: 2
   skillEffectDuration: 1

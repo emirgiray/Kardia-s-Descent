@@ -340,7 +340,7 @@ bool impact = false;
 
     public IEnumerator AttackCancelDelay(float attackAnimLength, Skills selectedSkill, Tile selectedTile, Enemy enemy = null, Action OnComplete = null)
     {
-        yield return new WaitForSecondsRealtime(attackAnimLength);
+        // yield return new WaitForSecondsRealtime(attackAnimLength);
         selectedSkill.skillData.ActivateSkill(selectedSkill, Character, selectedTile, gameObject,  () =>
         {
 
@@ -357,6 +357,8 @@ bool impact = false;
         {
             enemy.AttackEnd(selectedSkill);
         }
+        
+        yield return null;
     }
 
     public void SetImpact(bool value)

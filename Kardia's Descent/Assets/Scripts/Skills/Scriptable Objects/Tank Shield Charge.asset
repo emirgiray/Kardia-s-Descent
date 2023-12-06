@@ -19,7 +19,7 @@ MonoBehaviour:
   skillID: 2
   skillDamage: 10
   skillRange: 3
-  skillCooldown: 5
+  skillCooldown: 0
   actionPointUse: 2
   skillEffectDuration: 1
   skillBuffDebuffAmount: 1
