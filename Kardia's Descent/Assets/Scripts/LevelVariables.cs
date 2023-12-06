@@ -12,7 +12,7 @@ public class LevelVariables : MonoBehaviour
     
     void Awake()
     {
-        foreach (var character in levelCharacters)
+        /*foreach (var character in levelCharacters)
         {
             int overrideCount = 0;
             
@@ -51,7 +51,7 @@ public class LevelVariables : MonoBehaviour
             {
                 Debug.Log($"Overrided {overrideCount} variables for {character.Character.name}");
             }
-        }
+        }*/
     }
     
     [System.Serializable]

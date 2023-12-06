@@ -134,7 +134,13 @@ public class Inventory : MonoBehaviour
         weaponContainer.AddWeapon(testWeaponData,spawnedWeapon.GetComponent<Weapon>());
         skillsContainer.AddSkills(testWeaponData.SkillsDataList);
         skillsDataList.AddRange(testWeaponData.SkillsDataList);
+        Debug.Log($"Test SkillsDataList count {testWeaponData.SkillsDataList.Count}");
+        Debug.Log($"skillsDataList count {skillsDataList.Count}");
         skillsToAdd = testWeaponData.SkillsDataList;
+        foreach (var var in skillsToAdd)
+        {
+            Debug.Log(var.name);
+        }
         weaponsDataList.Add(testWeaponData);
 
         if (GetComponent<Character>() is Player)
