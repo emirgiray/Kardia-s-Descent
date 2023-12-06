@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
@@ -17,6 +18,7 @@ public class InventoryUI : MonoBehaviour
     [BoxGroup("Skils")] [SerializeField] private List<GameObject> SkillKeymaps = new List<GameObject>();
     
     [BoxGroup("Points")] [SerializeField] private TextMeshProUGUI actionText;
+    [BoxGroup("Points")] [SerializeField] private Image APBar01;
     [BoxGroup("Points")] [SerializeField] private List<GameObject> actionPointsPips = new List<GameObject>();
     [BoxGroup("Points")] [SerializeField] private Button skipTurnButton;
     
@@ -40,6 +42,7 @@ public class InventoryUI : MonoBehaviour
         healthText.text = $"{player.health.Max} / {player.health.Max}";
         //healthMaxText.text = player.health.Max.ToString();
         player.OnActionPointsChangeEvent.AddListener(UpdateActionPoints);
+        //player.OnActionPointsChangeEvent2.AddListener();
         player.OnHealthChangeEvent.AddListener(UpdateHealth);
         player.PlayerTurnStart.AddListener(() => SetSkipTurnButtonInteractable(true));
         
@@ -63,8 +66,12 @@ public class InventoryUI : MonoBehaviour
         // actionText.text = value.ToString();
         actionText.text = $"{value} / {player.maxActionPoints}";
         
+        APBar01.DOFillAmount((float)value / player.maxActionPoints, 2);
+        
         for (int i = 0; i < actionPointsPips.Count; i++)
         {
+            
+            
             if (type == "+")
             {
                 if (i < value)
@@ -98,6 +105,11 @@ public class InventoryUI : MonoBehaviour
     {
         // healthText.text = player.health._Health.ToString();
         healthText.text = $"{player.health._Health} / {player.health.Max}";
+    }
+
+    public void UpdateAP()
+    {
+        
     }
 
     

@@ -61,6 +61,7 @@ public class Character : MonoBehaviour
     
     [FoldoutGroup("Events")] public UnityEvent<int> OnMovePointsChangeEvent;
     [FoldoutGroup("Events")] public UnityEvent<int, string> OnActionPointsChangeEvent;
+    [FoldoutGroup("Events")] public UnityEvent<int> OnActionPointsChangeEvent2;
     [FoldoutGroup("Events")] public UnityEvent OnHealthChangeEvent;
     [FoldoutGroup("Events")] public UnityEvent PlayerTurnStart;
     [FoldoutGroup("Events")] public UnityEvent MoveStart;
