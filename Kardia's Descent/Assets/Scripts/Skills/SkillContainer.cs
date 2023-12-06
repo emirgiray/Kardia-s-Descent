@@ -307,11 +307,11 @@ bool impact = false;
            
         }
         
+        StartCoroutine(AttackCancelDelay(attackAnimLength, selectedSkill, selectedTile, enemy, OnComplete));
         Character.Attack();
         // Debug.Log($"anim length: {attackAnimLength}");
         //Debug.Log($"skill lenght: {overrides[3].Key.length}");
         
-        StartCoroutine(AttackCancelDelay(attackAnimLength, selectedSkill, selectedTile, enemy, OnComplete));
         
         
         /*selectedSkill.skillData.ActivateSkill(selectedSkill, Character, selectedTile, gameObject,  () =>

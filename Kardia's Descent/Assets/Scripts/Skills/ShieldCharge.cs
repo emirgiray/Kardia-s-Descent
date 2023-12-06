@@ -151,8 +151,8 @@ public class ShieldCharge : SkillsData
                         {
                             fx.SpawnVFX(selectedTile.occupyingEnemy.transform);
                         }
-                        selectedTile.occupyingEnemy.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
                         selectedTile.occupyingEnemy.Stun(true, skillEffectDuration);
+                        selectedTile.occupyingEnemy.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
 
                         Debug.Log($"HIT: {random} < {Skill.accuracy}");
                         //base.OnHit();
@@ -179,8 +179,8 @@ public class ShieldCharge : SkillsData
                             fx.SpawnVFX(selectedTile.occupyingPlayer.transform);
                         }
 
-                        selectedTile.occupyingPlayer.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
                         selectedTile.occupyingPlayer.Stun(true, skillEffectDuration);
+                        selectedTile.occupyingPlayer.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
                         Debug.Log($"HIT: {random} < {Skill.accuracy}");
                         //base.OnHit();
                     }

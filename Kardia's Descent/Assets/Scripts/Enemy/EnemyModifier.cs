@@ -35,6 +35,14 @@ public class EnemyModifier : MonoBehaviour
                 skillContainer.SetAnimAtorOverrides(overrideController);
                 onHealthThresholdReached.Invoke();
             
+                /*GetComponentInChildren<SkinnedMeshRenderer>().material.SetFloat("_RimEnabled", 1);
+                GetComponentInChildren<SkinnedMeshRenderer>().material.SetColor("_RimColor", Color.red);*/
+                
+                Color current = GetComponentInChildren<SkinnedMeshRenderer>().material.GetColor("_RimColor");
+                
+                GetComponentInChildren<SkinnedMeshRenderer>().material.SetColor("_RimColor",  new Color(current.r, current.g, current.b, Mathf.Lerp(current.a, 0.5f, 0.5f)));
+                
+                
                 for (int i = 0; i < skillContainer.skillsList.Count; i++)
                 {
                     /*if (skillContainer.skillsList[i].skillData.skillClass)*/
