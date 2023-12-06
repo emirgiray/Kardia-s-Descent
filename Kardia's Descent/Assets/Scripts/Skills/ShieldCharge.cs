@@ -139,6 +139,7 @@ public class ShieldCharge : SkillsData
     {
         Debug.Log($"wait started    ");
         yield return new WaitUntil(() => ActivaterCharacter.GetComponent<SkillContainer>().GetImpact() == true);
+        if (skillAudioEvent != null) skillAudioEvent.Play(ActivaterCharacter.transform);
         Debug.Log($"Waitfinished");
                     int random = UnityEngine.Random.Range(1, 101);
             if (random <= Skill.accuracy || Skill.accuracy == 100)

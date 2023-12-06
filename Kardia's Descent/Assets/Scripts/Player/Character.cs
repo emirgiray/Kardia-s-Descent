@@ -23,8 +23,9 @@ public class Character : MonoBehaviour
     [SerializeField] public bool canAttack = true;
     [SerializeField] public bool inCombat = true;
     [SerializeField] public bool isDead = false;
-    [SerializeField] int totalSteps = 0;
+    [SerializeField] public Transform Hand;
     [SerializeField] public bool isStunned = false;
+    [SerializeField] int totalSteps = 0;
     [SerializeField] private int remainingStunTurns = 0;
     [SerializeField] private GameObject characterCard;
     [SerializeField] private float passingMoveTime = 0;

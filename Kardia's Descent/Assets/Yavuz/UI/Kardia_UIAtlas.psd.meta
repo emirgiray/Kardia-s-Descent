@@ -445,6 +445,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Kardia_UIAtlas_Logo
+      rect:
+        serializedVersion: 2
+        x: 2419
+        y: 73
+        width: 1807
+        height: 1214
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 282ff19c267250c46aab4b5857e3cebc
+      internalID: 1458395219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -466,6 +487,7 @@ TextureImporter:
       Kardia_UIAtlas_8: 432443997
       Kardia_UIAtlas_E1: 276419777
       Kardia_UIAtlas_E2: -671121250
+      Kardia_UIAtlas_Logo: 1458395219
       Kardia_UIAtlas_P1: -11266308
       Kardia_UIAtlas_P3: 439456557
       Kardia_UIAtlas_P3_S1: -571955808

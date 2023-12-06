@@ -17,9 +17,9 @@ MonoBehaviour:
   skillDescription: Moves forward 2 hexes, hits using the shield, low dmg, stuns
     for 1 turn.
   skillID: 2
-  skillDamage: 10
+  skillDamage: 5
   skillRange: 3
-  skillCooldown: 0
+  skillCooldown: 2
   actionPointUse: 2
   skillEffectDuration: 1
   skillBuffDebuffAmount: 1
@@ -27,9 +27,11 @@ MonoBehaviour:
   coverAccuracyDebuff: 20
   animatorOverrideController: {fileID: 22100000, guid: 36869fff4fd0c71418a963566a5b56d5,
     type: 2}
+  skillStartVFX: {fileID: 0}
   skillHitVFX:
   - {fileID: 11400000, guid: 2d7ba90a2d4cad44ea904346e7ce5f75, type: 2}
   skillMissVFX: {fileID: 11400000, guid: f95dd6b5fb3dc4f4c9158365d41b4807, type: 2}
+  skillAudioEvent: {fileID: 11400000, guid: 51fcbee42fed2d743af064c20de9a716, type: 2}
   skillType: 1
   passiveOrActive: 0
   skillClass: 6

@@ -81,7 +81,19 @@ MonoBehaviour:
         m_CallState: 2
   TakeDamage:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 98b1a83a636c9c04a81d156801ef8267, type: 2}
+        m_TargetAssemblyTypeName: SGT_Tools.Audio.SimpleAudioEvent, SGT_Audio
+        m_MethodName: Play
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 3066464748635369359}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   TakeDamageWithValue:
     m_PersistentCalls:
       m_Calls:
@@ -161,6 +173,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 671989f9215157f41973655f4211fc24, type: 2}
+        m_TargetAssemblyTypeName: SGT_Tools.Audio.SimpleAudioEvent, SGT_Audio
+        m_MethodName: Play
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 3066464748635369359}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

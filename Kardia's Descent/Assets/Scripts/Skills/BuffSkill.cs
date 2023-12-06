@@ -32,6 +32,7 @@ public class BuffSkill : SkillsData
                                         {
                                            // fx.SpawnVFX(selectedTile.occupyingEnemy.transform);
                                             fx.SpawnVFX(tile.occupyingPlayer.transform);
+                                            if (skillAudioEvent != null) skillAudioEvent.Play(ActivaterCharacter.transform);
                                         }
                                     }
                                 });

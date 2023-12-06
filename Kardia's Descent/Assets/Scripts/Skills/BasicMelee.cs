@@ -57,6 +57,11 @@ public class BasicMelee : SkillsData
         Debug.Log($"wait started    ");
         yield return new WaitUntil(() => ActivaterCharacter.GetComponent<SkillContainer>().GetImpact() == true);
         Debug.Log($"Waitfinished");
+        
+        if (skillAudioEvent != null) skillAudioEvent.Play(ActivaterCharacter.transform);
+        if (skillStartVFX != null) skillStartVFX.SpawnVFX(ActivaterCharacter.Hand);
+        
+        
         int random = UnityEngine.Random.Range(1, 101);
         if (random <= Skill.accuracy || Skill.accuracy == 100)
         {
