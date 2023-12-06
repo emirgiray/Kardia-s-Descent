@@ -99,7 +99,7 @@ public class SkillContainer : MonoBehaviour
 
         for (int i = 0; i < skillsDataSOList.Count; i++)
         {
-            skillsList[i].skillButton = Inventory.spawnedSkillButtonPrefabs[i].GetComponent<SkillButton>();
+          if(Character is Player)  skillsList[i].skillButton = Inventory.spawnedSkillButtonPrefabs[i].GetComponent<SkillButton>();
             // Debug.Log($"i: {i}, skillsList[i] {skillsList[i].skillButton.name}");
             
             
