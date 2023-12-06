@@ -32,7 +32,7 @@ public class Inventory : MonoBehaviour
     //[BoxGroup("UI")] [SerializeField] private GameObject skillsUI;
     //[BoxGroup("UI")] [SerializeField] private GameObject horizontalLayoutGroup;
     [BoxGroup("UI")] [SerializeField] private GameObject skillButtonPrefab;
-    [BoxGroup("UI")] [SerializeField] private List<GameObject> spawnedSkillButtonPrefabs = new List<GameObject>();
+    [BoxGroup("UI")] [SerializeField] public List<GameObject> spawnedSkillButtonPrefabs = new List<GameObject>();
     
     [BoxGroup("DEBUG")] [SerializeField] private bool spawnTestWeapon = true;
     [BoxGroup("DEBUG")] [SerializeField] private WeaponData testWeaponData;
@@ -71,18 +71,43 @@ public class Inventory : MonoBehaviour
          SpawnedInventoryUIScript = SpawnedInventoryUI.GetComponent<InventoryUI>();
          
      }
-     public void PopulateSkillsUI()
+
+     public void BeforePopulateSkillsUI()
      {
          for (int i = 0; i < skillsToAdd.Count; i++)
          {
              spawnedSkillButtonPrefabs.Add(null);
+             skillsContainer.skillButtons.Add(null);
              spawnedSkillButtonPrefabs[i] = Instantiate(skillButtonPrefab, SpawnedInventoryUIScript.GetHorizontalLayoutGroup().transform);
+             skillsContainer.skillButtons[i] = spawnedSkillButtonPrefabs[i].GetComponent<SkillButton>();
+             //skillsContainer.skillsList[i].skillButton = spawnedSkillButtonPrefabs[i].GetComponent<SkillButton>();//bu onemli
+             
+             // var i1 = i;
+             // //spawnedSkillButtonPrefabs[i].GetComponent<SkillButton>().InitButton(skillsToAdd[i] , ()=> skillsContainer.TrySelectSkill(skillsToAdd[i1]), skillsContainer);
+             //
+             // skillsContainer.skillButtons.Add(null);
+             // skillsContainer.skillButtons[i] = spawnedSkillButtonPrefabs[i].GetComponent<SkillButton>();
+             //
+             //
+             // //spawnedSkillButtonPrefabs[i].GetComponent<SkillButton>().SetSkillContainer(skillsContainer);
+         }
+     }
+     
+     public void PopulateSkillsUI()
+     {
+         for (int i = 0; i < skillsToAdd.Count; i++)
+         {
+             // spawnedSkillButtonPrefabs.Add(null);
+             // spawnedSkillButtonPrefabs[i] = Instantiate(skillButtonPrefab, SpawnedInventoryUIScript.GetHorizontalLayoutGroup().transform);
+             // skillsContainer.skillsList[i].skillButton = spawnedSkillButtonPrefabs[i].GetComponent<SkillButton>();//bu onemli
              
              var i1 = i;
              //spawnedSkillButtonPrefabs[i].GetComponent<SkillButton>().InitButton(skillsToAdd[i] , ()=> skillsContainer.TrySelectSkill(skillsToAdd[i1]), skillsContainer);
              
-             skillsContainer.skillButtons.Add(null);
+             // skillsContainer.skillButtons.Add(null);
              skillsContainer.skillButtons[i] = spawnedSkillButtonPrefabs[i].GetComponent<SkillButton>();
+
+             
              //spawnedSkillButtonPrefabs[i].GetComponent<SkillButton>().SetSkillContainer(skillsContainer);
          }
          SpawnedInventoryUIScript.SetSkillButtons(skillsContainer.skillButtons);
@@ -132,21 +157,20 @@ public class Inventory : MonoBehaviour
     {
         spawnedWeapon = /*Instantiate(*/testWeaponData.WeaponPrefab/*, hand)*/;
         weaponContainer.AddWeapon(testWeaponData,spawnedWeapon.GetComponent<Weapon>());
+        skillsToAdd = testWeaponData.SkillsDataList;
+        if (GetComponent<Character>() is Player)
+        {
+            BeforePopulateSkillsUI();
+        }
+
         skillsContainer.AddSkills(testWeaponData.SkillsDataList);
         skillsDataList.AddRange(testWeaponData.SkillsDataList);
-        Debug.Log($"Test SkillsDataList count {testWeaponData.SkillsDataList.Count}");
-        Debug.Log($"skillsDataList count {skillsDataList.Count}");
-        skillsToAdd = testWeaponData.SkillsDataList;
-        foreach (var var in skillsToAdd)
-        {
-            Debug.Log(var.name);
-        }
         weaponsDataList.Add(testWeaponData);
-
         if (GetComponent<Character>() is Player)
         {
             PopulateSkillsUI();
         }
+
     }
 
     public void ShowSkillsUI(bool value)

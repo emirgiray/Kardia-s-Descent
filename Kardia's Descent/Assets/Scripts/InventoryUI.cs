@@ -130,6 +130,12 @@ public class InventoryUI : MonoBehaviour
     {
         SkillButtons = SkillButtonsIn;
 
+        /*foreach (var var in SkillButtonsIn)
+        {
+            Debug.Log($"skill data: {var.skillData.name}, skill {var.skill}");
+        }
+        */
+        
         for (int i = 0; i < SkillButtons.Count; i++)
         {
             if (i < 3)

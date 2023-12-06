@@ -59,6 +59,7 @@ public class SkillContainer : MonoBehaviour
 
     }
 
+    /*
     private void Start()
     {
         
@@ -73,10 +74,13 @@ public class SkillContainer : MonoBehaviour
 
         
     }
+    */
 
 
     public void PopulateSkillsList()
     {
+        // Debug.Log($"Converted {skillsDataSOList.Count} skills to skills list");
+        // Debug.Log($"skillButtons {skillButtons.Count} count");
         skillsList.AddRange(skillsDataSOList.ConvertAll(skill => new Skills
         {
             skillData = skill,
@@ -92,6 +96,29 @@ public class SkillContainer : MonoBehaviour
             skillButton = this.skillButtons.Find(x => x.skillData == skill),//this doesnt work???
             animatorOverrideController = skill.animatorOverrideController
         }));
+
+        for (int i = 0; i < skillsDataSOList.Count; i++)
+        {
+            skillsList[i].skillButton = Inventory.spawnedSkillButtonPrefabs[i].GetComponent<SkillButton>();
+            // Debug.Log($"i: {i}, skillsList[i] {skillsList[i].skillButton.name}");
+            
+            
+        }
+        
+        
+        // Debug.Log($"skillButtons2 {skillButtons.Count} count");
+        for (int i = 0; i < skillButtons.Count; i++)
+        {
+            int i1 = i;
+
+            // Debug.Log($"i: {i}, skillsList[i] {skillsList[i].skillData.name}");
+            // Debug.Log($"i: {i}, skillButtons[i] {skillButtons[i].GetComponent<SkillButton>().skillData.name}");
+            
+            
+            skillButtons[i].InitButton(skillsDataSOList[i], skillsList[i] , ()=> TrySelectSkill(skillsList[i1]), this);
+            // Debug.Log($"i: {i}, skill, skill button: {skillButtons[i].GetComponent<SkillButton>().skillData.name}");
+            skillsList[i].skillButton = skillButtons[i];
+        }
     }
     
     public void ResetSkillCooldowns()
@@ -374,6 +401,7 @@ bool impact = false;
     public void AddSkills(List<SkillsData> skillsDataListIn)
     {
         skillsDataSOList.AddRange(skillsDataListIn);
+        PopulateSkillsList();
     }
 
     public int CalculateCoverAccuracyDebuff(Tile attacker, Tile defender, Skills selectSkill)
