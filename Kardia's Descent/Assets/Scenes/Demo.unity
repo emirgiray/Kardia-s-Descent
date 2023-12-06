@@ -14127,7 +14127,7 @@ MonoBehaviour:
   tankCoverPointMask:
     serializedVersion: 2
     m_Bits: 256
-  coverPointRayLenght: 1
+  coverPointRayLenght: 2.5
   characterYOffset: 0.5
   tileVerticalityLenght: 3
   HEXAGONAL_OFFSET: 2.625
