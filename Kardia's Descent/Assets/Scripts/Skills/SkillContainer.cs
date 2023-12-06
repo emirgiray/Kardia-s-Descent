@@ -427,7 +427,7 @@ bool impact = false;
             return;
         }
         
-        selectedSkill.accuracy = selectedSkill.skillData.accuracy;
+        if(Interact.Instance.characterSelected) selectedSkill.accuracy = selectedSkill.skillData.accuracy;
     }
     
     [System.Serializable]

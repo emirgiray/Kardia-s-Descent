@@ -63701,6 +63701,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 32
   debug: 0
+  characterSelected: 0
   isMouseOverUI: 0
 --- !u!82 &1691251603
 AudioSource:
@@ -65867,7 +65868,7 @@ PrefabInstance:
     - target: {fileID: 883855727420601889, guid: d398bbf6cce345f4ea47a677310a9a90,
         type: 3}
       propertyPath: m_Name
-      value: Tank
+      value: Salvatore
       objectReference: {fileID: 0}
     - target: {fileID: 883855727420601889, guid: d398bbf6cce345f4ea47a677310a9a90,
         type: 3}

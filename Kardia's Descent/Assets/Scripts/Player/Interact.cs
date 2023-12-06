@@ -45,7 +45,7 @@ public class Interact : MonoBehaviour
     Path Lastpath;
     Pathfinder pathfinder;
     [Tooltip("This is a null check for selectedCharacter")]
-    bool characterSelected = false;
+    public bool characterSelected = false;
     SkillContainer selectedCharacterSkillContainer;
     [SerializeField] public bool isMouseOverUI = false;
     
