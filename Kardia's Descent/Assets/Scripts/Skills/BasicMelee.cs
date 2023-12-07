@@ -138,7 +138,7 @@ public class BasicMelee : SkillsData
         
         /*yield return new WaitUntil(() => ActivaterCharacter.animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"));
         yield return new WaitUntil(() => ActivaterCharacter.animator.runtimeAnimatorController);*/
-        Debug.Log($"\"Idle\"");
+        
         OnComplete?.Invoke();
     }
 }

@@ -49,20 +49,7 @@ public class CharacterRoundCard : MonoBehaviour
     {
         if (character is Player)
         {
-            Interact.Instance.characterSelected = true;
-            
-            Interact.Instance.selectedCharacter = character; //select character
-            Interact.Instance.selectedCharacterSkillContainer = Interact.Instance.selectedCharacter.GetComponent<SkillContainer>();
-            Interact.Instance.lastSelectedCharacter = Interact.Instance.selectedCharacter;
-            if (Interact.Instance.selectedCharacter.characterState == Character.CharacterState.WaitingTurn || Interact.Instance.selectedCharacter.characterState == Character.CharacterState.Idle)
-            {
-                if (Interact.Instance.selectedCharacter.remainingActionPoints > 0)
-                {
-                    Interact.Instance. EnableMovement(true);
-                }
-                Interact.Instance.HighlightReachableTiles(); //highlight tiles within range
-            }
-            Interact.Instance.selectedCharacter.GetComponent<Inventory>().ShowSkillsUI(true); //show skills ui
+            Interact.Instance.TrySelectPlayer(character);
         }
         
     }

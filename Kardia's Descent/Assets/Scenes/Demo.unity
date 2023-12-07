@@ -27383,8 +27383,8 @@ MonoBehaviour:
   rotateMinMax: {x: -360, y: 360}
   useEdgeScrolling: 0
   useDragPan: 1
-  followOffsetYMinMax: {x: 5, y: 15}
-  followOffsetMinMax: {x: 10, y: 20}
+  followOffsetYMinMax: {x: 10, y: 20}
+  followOffsetMinMax: {x: 15, y: 25}
   fieldOfViewMinMax: {x: 10, y: 50}
 --- !u!1 &733146289
 GameObject:

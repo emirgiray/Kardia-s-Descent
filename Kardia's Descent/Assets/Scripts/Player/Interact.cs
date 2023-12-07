@@ -206,6 +206,8 @@ public class Interact : MonoBehaviour
                     characterSelected = false;
                     ClearHighlightReachableTiles();
                     pathfinder.EnableIllustratePath(false);
+                    selectedCharacterSkillContainer.skillSelected = false;
+                    selectedCharacterSkillContainer = null;
                 }
                 else //deselect skill
                 {
@@ -218,17 +220,14 @@ public class Interact : MonoBehaviour
             {
                 selectedCharacterSkillContainer.TrySelectSkill(selectedCharacterSkillContainer.skillsList[0]);
             }
-
             if (Input.GetKeyDown(KeyCode.Alpha2))
             {
                 selectedCharacterSkillContainer.TrySelectSkill(selectedCharacterSkillContainer.skillsList[1]);
             }
-
             if (Input.GetKeyDown(KeyCode.Alpha3))
             {
                 selectedCharacterSkillContainer.TrySelectSkill(selectedCharacterSkillContainer.skillsList[2]);
             }
-
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 if (selectedCharacter.GetComponent<Inventory>().GetSpawnedInventoryUIScript().GetSkipButton().interactable)
@@ -238,8 +237,6 @@ public class Interact : MonoBehaviour
                 
             }
         }
-            
-        
         
     }
 
@@ -396,17 +393,17 @@ public class Interact : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            TrySelectPlayer();
+            TrySelectPlayer(currentTile.occupyingCharacter);
         }
             
     }
     
    
-    private void TrySelectPlayer()
+    public void TrySelectPlayer(Character chaaracter)
     {
         if (characterSelected == false)
         {
-            SelectPlayer();
+            SelectPlayer(chaaracter);
             characterSelected = true;
             selectedCharacterSkillContainer = selectedCharacter.GetComponent<SkillContainer>();
         }
@@ -419,13 +416,15 @@ public class Interact : MonoBehaviour
            
                 case Character.CharacterState.WaitingTurn:
                     lastSelectedCharacter.GetComponent<Inventory>().ShowSkillsUI(false); //close skills ui
-                    SelectPlayer();
+                    SelectPlayer(chaaracter);
+                    selectedCharacterSkillContainer = selectedCharacter.GetComponent<SkillContainer>();
                     break;
                 
                 case Character.CharacterState.WaitingNextRound:
                     lastSelectedCharacter.GetComponent<Inventory>().ShowSkillsUI(false); //close skills ui
                     //lastSelectedCharacter.GetComponent<InventoryUI>().SetSkipTurnButtonInteractable(false); //disable skip turn button
-                    SelectPlayer();
+                    SelectPlayer(chaaracter);
+                    selectedCharacterSkillContainer = selectedCharacter.GetComponent<SkillContainer>();
                     break;
            
                 case Character.CharacterState.Attacking:
@@ -439,9 +438,9 @@ public class Interact : MonoBehaviour
         
     }
 
-    public void SelectPlayer()
+    public void SelectPlayer(Character character)
     {
-        selectedCharacter = currentTile.occupyingCharacter; //select character
+        selectedCharacter = character; //select character
         lastSelectedCharacter = selectedCharacter;
         if (selectedCharacter.characterState == Character.CharacterState.WaitingTurn || selectedCharacter.characterState == Character.CharacterState.Idle)
         {
