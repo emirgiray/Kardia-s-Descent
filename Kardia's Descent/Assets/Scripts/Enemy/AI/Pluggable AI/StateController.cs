@@ -80,13 +80,15 @@ public class StateController : MonoBehaviour
         }
         else
         {
+            
             if (TurnSystem.Instance.turnState == TurnSystem.TurnState.Enemy && enemy.turnOrder == TurnSystem.Instance.currentEnemyTurnOrder)
             {
+                currentStateSeconds += Time.deltaTime;
                 if (canExitState)
                 {
                     currentStateSeconds = 0;
                     currentState.UpdateState(this);
-                    currentStateSeconds += Time.deltaTime;
+                    
                     //Debug.Log($"STATE: {currentState}");
                     if (!runOnce && RandomWait())
                     {
@@ -96,7 +98,7 @@ public class StateController : MonoBehaviour
                 }
                 else
                 {
-                    if (currentStateSeconds >= 4) //state overtime
+                    if (currentStateSeconds >= 20) //state overtime
                     {
                         canExitState = true;
                         Debug.Log($"State changed due to overtime");

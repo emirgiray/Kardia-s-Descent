@@ -54,7 +54,7 @@ public class Character : MonoBehaviour
     
 
     
-    public Action<int> OnActionPointsChange;
+    public static Action<int> OnActionPointsChange;
     public Action OnTurnStart;
     public Action<Character> OnCharacterDeath;
     public Action OnCharacterRecieveDamageAction;
@@ -134,7 +134,8 @@ public class Character : MonoBehaviour
                     if (inCombat && spendActionPoints)
                     {
                         remainingActionPoints-- ;
-                        OnActionPointsChange?.Invoke(remainingActionPoints);
+                       // OnActionPointsChange?.Invoke(remainingActionPoints);
+                        OnActionPointsChange(remainingActionPoints);
                         OnActionPointsChangeEvent?.Invoke(remainingActionPoints, "-");
                         // print(OnMovePointsChangeEvent);
                     }
@@ -175,7 +176,7 @@ public class Character : MonoBehaviour
             if (this is Enemy)
             {
                 characterTile.occupiedByEnemy = false;
-                print("enemy move start");
+              //  print("enemy move start");
             }
             //lastTransform.position = _path.tiles[_path.tiles.Count -1 ].transform.position - _path.tiles[0].transform.position ;
             StartCoroutine(MoveAlongPath(_path, OnComplete, spendActionPoints));

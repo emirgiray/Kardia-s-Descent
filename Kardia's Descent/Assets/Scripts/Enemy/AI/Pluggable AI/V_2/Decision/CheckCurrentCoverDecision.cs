@@ -20,13 +20,13 @@ public class CheckCurrentCoverDecision : DecisionAI
             {
                 playersChecked++;
                 inCover++;
-                Debug.Log($"players checked: {playersChecked}, in cover: {inCover}");
+                //Debug.Log($"players checked: {playersChecked}, in cover: {inCover}");
                 
                 if (playersChecked >= controller.players.Count)
                 {
                     if (inCover >= controller.players.Count / 2)
                     {
-                        Debug.Log($"in cover: true");
+                       // Debug.Log($"in cover: true");
                         return true;
                     }
                 }
@@ -34,7 +34,7 @@ public class CheckCurrentCoverDecision : DecisionAI
             }
 
         }
-        Debug.Log($"in cover: false");
+        //Debug.Log($"in cover: false");
         return false;
 
     }

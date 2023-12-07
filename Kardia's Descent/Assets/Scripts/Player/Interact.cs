@@ -37,7 +37,7 @@ public class Interact : MonoBehaviour
     [SerializeField]LayerMask interactMask;
     [SerializeField]LayerMask UILayerMask;
     public Action<Tile> CurrentTileChangedAction;
-
+    public Action<Tile> CharacterSelectedAction;
     //Debug purposes only
     [SerializeField]
     bool debug;
@@ -401,6 +401,7 @@ public class Interact : MonoBehaviour
    
     public void TrySelectPlayer(Character chaaracter)
     {
+        //CharacterSelectedAction?.Invoke(chaaracter.characterTile);
         if (characterSelected == false)
         {
             SelectPlayer(chaaracter);
@@ -463,7 +464,7 @@ public class Interact : MonoBehaviour
     private void SelectEnemy()
     {
         selectedEnemy = currentTile.occupyingCharacter;
- 
+       // CharacterSelectedAction?.Invoke(selectedEnemy.characterTile);
     }
 
     private void NavigateToTile(Character activator )
@@ -488,7 +489,7 @@ public class Interact : MonoBehaviour
         }
     }
 
-    bool RetrievePath(Character activator, out Path path)
+   public bool RetrievePath(Character activator, out Path path)
     {
       
 

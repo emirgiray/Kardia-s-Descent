@@ -45,9 +45,9 @@ public class CheckMoveSkillDecision : DecisionAI
                                     tileScore = 50 + skill.damage - controller.skillContainer.CalculateCoverAccuracyDebuff(tile, attackTile, skill)
                                         + Pathfinder.Instance.GetTilesInBetween(controller.enemy, tile, attackTile, true).Count * 10;
 
-                                    Debug.Log($"remaining ap after move: {reaminingActionPointsAfterMove}");
-                                    Debug.Log($"tile: {tile}, curent score: {tileScore}, prev score: {prevTileScore} skill: {skill.skillData}, " +
-                                              $"tiles between {Pathfinder.Instance.GetTilesInBetween(controller.enemy, tile, attackTile, true).Count}, tiles checked: {tilesChecked} / {/*controller.GetReachableTiles().Count*/ reachableTiles.Count}");
+                                   // Debug.Log($"remaining ap after move: {reaminingActionPointsAfterMove}");
+                                   // Debug.Log($"tile: {tile}, curent score: {tileScore}, prev score: {prevTileScore} skill: {skill.skillData}, " +
+                                    //          $"tiles between {Pathfinder.Instance.GetTilesInBetween(controller.enemy, tile, attackTile, true).Count}, tiles checked: {tilesChecked} / {/*controller.GetReachableTiles().Count*/ reachableTiles.Count}");
 
                                     if ( tileScore > prevTileScore)
                                     {
@@ -57,7 +57,7 @@ public class CheckMoveSkillDecision : DecisionAI
                                         controller.decidedAttackSkill = skill;
                                         controller.decidedMoveTile = tile;
                                         controller.targetPlayer = attackTile.occupyingPlayer;
-                                        Debug.Log($"BIGGER THAN PREVIOUS, tile: {tile}, curent score: {tileScore}, prev score: {prevTileScore} skill: {skill.skillData}, tiles checked: {tilesChecked} / {/*controller.GetReachableTiles().Count*/ reachableTiles.Count}");
+                                      //  Debug.Log($"BIGGER THAN PREVIOUS, tile: {tile}, curent score: {tileScore}, prev score: {prevTileScore} skill: {skill.skillData}, tiles checked: {tilesChecked} / {/*controller.GetReachableTiles().Count*/ reachableTiles.Count}");
                                         result = true; //this means move found 
                                         
                                         prevTileScore = tileScore;
@@ -65,7 +65,7 @@ public class CheckMoveSkillDecision : DecisionAI
                                     
                                     if (tilesChecked >= /*controller.GetReachableTiles().Count*/ reachableTiles.Count)
                                     {
-                                        Debug.Log($"move= {result} tiles checked: {tilesChecked} / {/*controller.GetReachableTiles().Count*/ reachableTiles.Count}");
+                                       // Debug.Log($"move= {result} tiles checked: {tilesChecked} / {/*controller.GetReachableTiles().Count*/ reachableTiles.Count}");
                                         return result;
                                     }
                                 }
@@ -96,7 +96,7 @@ public class CheckMoveSkillDecision : DecisionAI
         }
         
         
-        Debug.Log($"RETURNED AT THE END, move : {result},  tiles checked: {tilesChecked} / {/*controller.GetReachableTiles().Count*/ reachableTiles.Count}");
+     //   Debug.Log($"RETURNED AT THE END, move : {result},  tiles checked: {tilesChecked} / {/*controller.GetReachableTiles().Count*/ reachableTiles.Count}");
         return result;
     }
 }

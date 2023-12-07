@@ -46,7 +46,7 @@ public class CombatStartDecision : DecisionAI
                     if (attackTile.occupyingPlayer != null)
                     {
                         result = false;
-                        Debug.Log( "move = "+ result + " player in range of skill");
+                     //   Debug.Log( "move = "+ result + " player in range of skill");
                         return result;
                     }
                     
@@ -73,7 +73,7 @@ public class CombatStartDecision : DecisionAI
                             controller.decidedAttackSkill = skill;
                             controller.decidedMoveTile = tile;
                             controller.targetPlayer = attackTile.occupyingPlayer;
-                            Debug.Log(tile + " cuurent score: " + tileScore + " prev score: " + prevTileScore);
+                   //         Debug.Log(tile + " cuurent score: " + tileScore + " prev score: " + prevTileScore);
                             result = true; //this means move 
                         }
                         prevTileScore = tileScore;
@@ -108,7 +108,7 @@ public class CombatStartDecision : DecisionAI
 
         
         
-        Debug.Log("move = "+ result + " player NOT in range of skill, proceeding to move");
+    //    Debug.Log("move = "+ result + " player NOT in range of skill, proceeding to move");
         return result;
     }
 }

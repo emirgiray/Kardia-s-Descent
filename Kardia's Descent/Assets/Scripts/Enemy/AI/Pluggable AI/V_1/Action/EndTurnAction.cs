@@ -7,7 +7,7 @@ public class EndTurnAction : ActionAI
 {
     public override void Act(StateController controller)
     {
-        Debug.Log($"{this.name} Ended Turn");
+        //Debug.Log($"{this.name} Ended Turn");
         controller.EndTurn();
     }
 }

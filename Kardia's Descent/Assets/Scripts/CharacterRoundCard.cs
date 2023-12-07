@@ -44,14 +44,48 @@ public class CharacterRoundCard : MonoBehaviour
     {
         roundInfo.Rearrange(this.gameObject);
     }
-
+    int click = 0;
     public void SelectCharacter()
     {
-        if (character is Player)
+        click ++;
+        StartCoroutine(Timer());
+        
+        
+        if (click % 2 == 0)
         {
-            Interact.Instance.TrySelectPlayer(character);
+            Interact.Instance.CharacterSelectedAction?.Invoke(character.characterTile);
+
+            if (character is Player)
+            {
+                Interact.Instance.TrySelectPlayer(character); 
+            }
+            
+            return;
         }
         
+        
+        /*if (character is Player)
+        {
+            
+            
+            
+        }
+
+        if (character is Enemy)
+        {
+            if (click % 2 == 0)
+            {
+                Interact.Instance.CharacterSelectedAction?.Invoke(character.characterTile);
+                return;
+            }
+        }*/
+        
+    }
+
+    private IEnumerator Timer()
+    {
+        yield return new WaitForSecondsRealtime(0.5f);
+        click = 0;
     }
     
 }

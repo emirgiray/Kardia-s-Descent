@@ -62,7 +62,7 @@ public class CheckMoveToCoverDecision : DecisionAI
                 if ( tileScore > prevTileScore)
                 {
                     result = true; //this means cover found    
-                    Debug.Log($"BIGGER THAN PREVIOUS, tile: {tile}, curent score: {tileScore}, prev score: {prevTileScore}");
+                   // Debug.Log($"BIGGER THAN PREVIOUS, tile: {tile}, curent score: {tileScore}, prev score: {prevTileScore}");
                     controller.decidedMoveTile = tile;
                     prevTileScore = tileScore;
                 }
@@ -90,7 +90,7 @@ public class CheckMoveToCoverDecision : DecisionAI
         }
 
 
-        Debug.Log($"result: {result} tiles checked: {tilesChecked} / {reachableTiles.Count}");
+        //Debug.Log($"result: {result} tiles checked: {tilesChecked} / {reachableTiles.Count}");
         return result;
 
     }

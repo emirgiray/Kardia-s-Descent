@@ -36,7 +36,7 @@ public class InventoryUI : MonoBehaviour
     public void SubscribeToPlayerEvents()
     {
 
-        //player.OnActionPointsChange += UpdateActionPoints;//actions doesnt work for some reason
+       // Character.OnActionPointsChange += UpdateActionPoints2;//actions doesnt work for some reason
         // player.OnCharacterRecieveDamageAction += UpdateHealth;
         
         healthText.text = $"{player.health.Max} / {player.health.Max}";
@@ -52,8 +52,13 @@ public class InventoryUI : MonoBehaviour
     private void OnDisable()
     {
         // player.OnCharacterRecieveDamageAction -= UpdateHealth;
-        //player.OnActionPointsChange -= UpdateActionPoints;
+        //Character.OnActionPointsChange -= UpdateActionPoints2;
         //skipTurnButton.onClick.RemoveListener(player.EndTurn);
+    }
+
+    public void UpdateActionPoints2(int ap)
+    {
+        Debug.Log($"çalışstı");
     }
 
     /// <summary>

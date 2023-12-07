@@ -80,6 +80,7 @@ public class Inventory : MonoBehaviour
              skillsContainer.skillButtons.Add(null);
              spawnedSkillButtonPrefabs[i] = Instantiate(skillButtonPrefab, SpawnedInventoryUIScript.GetHorizontalLayoutGroup().transform);
              skillsContainer.skillButtons[i] = spawnedSkillButtonPrefabs[i].GetComponent<SkillButton>();
+             SpawnedInventoryUIScript.SetSkillButtons(skillsContainer.skillButtons);
              //skillsContainer.skillsList[i].skillButton = spawnedSkillButtonPrefabs[i].GetComponent<SkillButton>();//bu onemli
              
              // var i1 = i;
@@ -105,12 +106,12 @@ public class Inventory : MonoBehaviour
              //spawnedSkillButtonPrefabs[i].GetComponent<SkillButton>().InitButton(skillsToAdd[i] , ()=> skillsContainer.TrySelectSkill(skillsToAdd[i1]), skillsContainer);
              
              // skillsContainer.skillButtons.Add(null);
-             skillsContainer.skillButtons[i] = spawnedSkillButtonPrefabs[i].GetComponent<SkillButton>();
+             // skillsContainer.skillButtons[i] = spawnedSkillButtonPrefabs[i].GetComponent<SkillButton>();
 
              
              //spawnedSkillButtonPrefabs[i].GetComponent<SkillButton>().SetSkillContainer(skillsContainer);
          }
-         SpawnedInventoryUIScript.SetSkillButtons(skillsContainer.skillButtons);
+         // SpawnedInventoryUIScript.SetSkillButtons(skillsContainer.skillButtons);
      }
      
      

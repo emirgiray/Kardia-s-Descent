@@ -48,11 +48,11 @@ public class CheckCoverMoveSkillDecsision : DecisionAI
                                     }
                                     else
                                     {
-                                        Debug.Log($"enemy is in cover");
+                                  //      Debug.Log($"enemy is in cover");
                                         tileScore = 50 + skill.damage - controller.skillContainer.CalculateCoverAccuracyDebuff(tile, attackTile, skill);
                                     }
                                     
-                                    Debug.Log($"tile: {tile}, curent score: {tileScore}, prev score: {prevTileScore} skill: {skill.skillData}, tiles checked: {tilesChecked} / {/*controller.GetReachableTiles().Count*/ reachableTiles.Count}");
+                              //      Debug.Log($"tile: {tile}, curent score: {tileScore}, prev score: {prevTileScore} skill: {skill.skillData}, tiles checked: {tilesChecked} / {/*controller.GetReachableTiles().Count*/ reachableTiles.Count}");
 
                                     if ( tileScore > prevTileScore)
                                     {
@@ -62,14 +62,14 @@ public class CheckCoverMoveSkillDecsision : DecisionAI
                                         controller.decidedAttackSkill = skill;
                                         controller.decidedMoveTile = tile;
                                         controller.targetPlayer = attackTile.occupyingPlayer;
-                                        Debug.Log($"BIGGER THAN PREVIOUS, tile: {tile}, curent score: {tileScore}, prev score: {prevTileScore} skill: {skill.skillData}, tiles checked: {tilesChecked} / {/*controller.GetReachableTiles().Count*/ reachableTiles.Count}");
+                           //             Debug.Log($"BIGGER THAN PREVIOUS, tile: {tile}, curent score: {tileScore}, prev score: {prevTileScore} skill: {skill.skillData}, tiles checked: {tilesChecked} / {/*controller.GetReachableTiles().Count*/ reachableTiles.Count}");
                                         result = true; //this means cover found 
                                         prevTileScore = tileScore;
                                     }
                                     
                                     if (tilesChecked >= /*controller.GetReachableTiles().Count*/ reachableTiles.Count)
                                     {
-                                        Debug.Log($"cover= {result} tiles checked: {tilesChecked} / {/*controller.GetReachableTiles().Count*/ reachableTiles.Count}");
+                                        //Debug.Log($"cover= {result} tiles checked: {tilesChecked} / {/*controller.GetReachableTiles().Count*/ reachableTiles.Count}");
                                         return result;
                                     }
                                 }
@@ -78,7 +78,7 @@ public class CheckCoverMoveSkillDecsision : DecisionAI
                                     tilesWithoutCover++;
                                     if (tilesWithoutCover >= /*controller.GetReachableTiles().Count*/ reachableTiles.Count)
                                     {
-                                        Debug.Log("cover = "+ result + " no cover found, proceeding to move close");
+                                       // Debug.Log("cover = "+ result + " no cover found, proceeding to move close");
                                         return false;
                                     }
                                 }
@@ -100,7 +100,7 @@ public class CheckCoverMoveSkillDecsision : DecisionAI
         }
         
         
-        Debug.Log($"RETURNED AT THE END, cover : {result},  tiles checked: {tilesChecked} / {/*controller.GetReachableTiles().Count*/ reachableTiles.Count}");
+       // Debug.Log($"RETURNED AT THE END, cover : {result},  tiles checked: {tilesChecked} / {/*controller.GetReachableTiles().Count*/ reachableTiles.Count}");
         return result;
     }
 }
