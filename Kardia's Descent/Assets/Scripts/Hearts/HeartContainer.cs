@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class HeartContainer : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public HeartData heartData;
+    public bool isPowerUnlocked = false;
+    public bool isEquipped = false;
 
-    // Update is called once per frame
-    void Update()
+    public void EquipHeart(HeartData heartDataIn)
     {
-        
+        isEquipped = true;
+        this.heartData = heartDataIn;
+        if (heartDataIn.isPowerUnlocked)
+        {
+            isPowerUnlocked = true;
+        }
     }
 }

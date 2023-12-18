@@ -14,6 +14,7 @@ public class StateController : MonoBehaviour
     
     public StateAI currentState;
     public StateAI defaultCombatStartState;
+    public StateAI defaultNotCombatStartState;
     public StateAI remainState;
    // public SkillsData selectedSkill;
     public EnemyStatsData enemyStats;

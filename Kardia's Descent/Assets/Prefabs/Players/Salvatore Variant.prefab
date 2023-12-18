@@ -167,10 +167,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2808189248250398436, guid: 04563854e99a65a4c8a042dc7f750368,
+        type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 1515562305685836531}
     - target: {fileID: 3045574018136022521, guid: 04563854e99a65a4c8a042dc7f750368,
         type: 3}
       propertyPath: m_Name
-      value: Tank Variant
+      value: Salvatore Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 3045574018136022521, guid: 04563854e99a65a4c8a042dc7f750368,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3066464748635369359, guid: 04563854e99a65a4c8a042dc7f750368,
         type: 3}
@@ -253,6 +263,11 @@ PrefabInstance:
       propertyPath: spawnedSkillButtonPrefabs.Array.size
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 5706041887416553655, guid: 04563854e99a65a4c8a042dc7f750368,
+        type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 1515562305685836531}
     - target: {fileID: 6326383597764647500, guid: 04563854e99a65a4c8a042dc7f750368,
         type: 3}
       propertyPath: hand
@@ -296,11 +311,11 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3066464748635369359, guid: 04563854e99a65a4c8a042dc7f750368,
         type: 3}
-      insertIndex: -1
+      insertIndex: 1
       addedObject: {fileID: 4432983759214351892}
     - targetCorrespondingSourceObject: {fileID: 3066464748635369359, guid: 04563854e99a65a4c8a042dc7f750368,
         type: 3}
-      insertIndex: -1
+      insertIndex: 2
       addedObject: {fileID: 8501445389240237468}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04563854e99a65a4c8a042dc7f750368, type: 3}

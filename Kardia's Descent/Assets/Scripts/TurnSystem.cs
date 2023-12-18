@@ -23,7 +23,7 @@ public class TurnSystem : MonoBehaviour
     
     public enum TurnState
     {
-        None, Friendly, Enemy
+        FreeRoamTurn, Friendly, Enemy
     }
     public TurnState turnState;
     
@@ -126,7 +126,7 @@ public class TurnSystem : MonoBehaviour
         }
         if (round == 0)//Combat has not started yet
         {
-            turnState = TurnState.None;
+            turnState = TurnState.FreeRoamTurn;
             return;
             /*FriendlyTurn();*/
         }
@@ -265,6 +265,13 @@ public class TurnSystem : MonoBehaviour
             if (character is Enemy)
             {
                 DecideEnemyTurnOrder();
+                return true;
+            }
+        }
+        else// freeroam
+        {
+            if (character is Player)
+            {
                 return true;
             }
         }

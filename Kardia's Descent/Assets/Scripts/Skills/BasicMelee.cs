@@ -73,7 +73,8 @@ public class BasicMelee : SkillsData
                     {
                         fx.SpawnVFX(selectedTile.occupyingEnemy.transform);
                     }
-                    selectedTile.occupyingEnemy.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
+                    //selectedTile.occupyingEnemy.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
+                    selectedTile.occupyingEnemy.GetComponent<DamageHandler>().TakeDamage(Skill.damage, ActivaterCharacter);
 
                     Debug.Log($"HIT: {random} < {Skill.accuracy}");
                     //base.OnHit();
@@ -99,7 +100,8 @@ public class BasicMelee : SkillsData
                         fx.SpawnVFX(selectedTile.occupyingPlayer.transform);
                     }
 
-                    selectedTile.occupyingPlayer.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
+                    //selectedTile.occupyingPlayer.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
+                    selectedTile.occupyingPlayer.GetComponent<DamageHandler>().TakeDamage(Skill.damage, ActivaterCharacter);
                     Debug.Log($"HIT: {random} < {Skill.accuracy}");
                     //base.OnHit();
                 }

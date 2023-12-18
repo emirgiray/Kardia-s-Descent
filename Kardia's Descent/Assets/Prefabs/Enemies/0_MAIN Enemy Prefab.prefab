@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2394410552398270842}
   - component: {fileID: 1086629163380962625}
+  - component: {fileID: 964982723527092187}
   - component: {fileID: 8148688877583324293}
   - component: {fileID: 7053993269744270337}
   - component: {fileID: 971612226134414077}
@@ -18,7 +19,7 @@ GameObject:
   - component: {fileID: 5789014126072821151}
   - component: {fileID: 5460808850040777981}
   - component: {fileID: 4807473279575106974}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: 0_MAIN Enemy Prefab
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -194,6 +195,20 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _Health: 0
+--- !u!114 &964982723527092187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7741204839853584163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12d6f2b05e6486444915e4c396b7a999, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sgtHealth: {fileID: 1086629163380962625}
+  character: {fileID: 8148688877583324293}
 --- !u!114 &8148688877583324293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,6 +293,7 @@ MonoBehaviour:
   currentState: {fileID: 11400000, guid: e496630f22336574c9bc1cdfab5680cb, type: 2}
   defaultCombatStartState: {fileID: 11400000, guid: e496630f22336574c9bc1cdfab5680cb,
     type: 2}
+  defaultNotCombatStartState: {fileID: 0}
   remainState: {fileID: 11400000, guid: 20a530a049e552949892a8e571154a9d, type: 2}
   enemyStats: {fileID: 0}
   pathfinder: {fileID: 0}

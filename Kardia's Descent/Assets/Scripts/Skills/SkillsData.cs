@@ -87,7 +87,7 @@ public class SkillsData : ScriptableObject
 
     //tried to move the skill activation to the base class, but it might get too complicated
     
-    public bool TryHit(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, GameObject parent,  Action OnComplete = null)
+    public virtual bool TryHit(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, GameObject parent,  Action OnComplete = null)
     {
         int random = UnityEngine.Random.Range(1, 101);
         if (random <= Skill.accuracy || Skill.accuracy == 100) //hit
@@ -99,23 +99,33 @@ public class SkillsData : ScriptableObject
         else
         {
             Debug.Log($"MISSED: {random} > {Skill.accuracy}");
-            OnMiss();
+            OnMiss(Skill, ActivaterCharacter, selectedTile, parent, OnComplete);
             return false;
         }
     }
 
-    public void OnHit(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, GameObject parent,  Action OnComplete = null)
+    public virtual void OnHit(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, GameObject parent,  Action OnComplete = null)
     {
         if (ActivaterCharacter is Player)
         {
             if (selectedTile.occupiedByEnemy)
             {
+                foreach (var fx in skillHitVFX)
+                {
+                    fx.SpawnVFX(selectedTile.occupyingEnemy.transform);
+                }
+                
                 selectedTile.occupyingEnemy.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
-                selectedTile.occupyingEnemy.Stun(true, skillEffectDuration);
+                //selectedTile.occupyingEnemy.Stun(true, skillEffectDuration);
             }
 
             if (selectedTile.OccupiedByCoverPoint)
             {
+                foreach (var fx in skillHitVFX)
+                {
+                    fx.SpawnVFX(selectedTile.occupyingCoverPoint.transform);
+                }
+                
                 selectedTile.occupyingCoverPoint.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
             }
         }
@@ -124,25 +134,55 @@ public class SkillsData : ScriptableObject
         {
             if (selectedTile.occupiedByPlayer)
             {
+                foreach (var fx in skillHitVFX)
+                {
+                    fx.SpawnVFX(selectedTile.occupyingPlayer.transform);
+                }
+                
                 selectedTile.occupyingPlayer.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
-                selectedTile.occupyingPlayer.Stun(true, skillEffectDuration);
+                //selectedTile.occupyingPlayer.Stun(true, skillEffectDuration);
             }
 
             if (selectedTile.OccupiedByCoverPoint)
             {
+                foreach (var fx in skillHitVFX)
+                {
+                    fx.SpawnVFX(selectedTile.occupyingCoverPoint.transform);
+                }
+                
                 selectedTile.occupyingCoverPoint.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
             }
         }
     }
     
-    public void OnMiss()
+    public void OnMiss(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, GameObject parent,  Action OnComplete = null)
     {
+        if (selectedTile.occupiedByEnemy)
+        {
+            skillMissVFX.SpawnVFX(selectedTile.occupyingEnemy.transform);
+            selectedTile.occupyingEnemy.GetComponent<SGT_Health>().Miss();
+        }
+        if (selectedTile.occupiedByPlayer)
+        {
+            skillMissVFX.SpawnVFX(selectedTile.occupyingPlayer.transform);
+            selectedTile.occupyingPlayer.GetComponent<SGT_Health>().Miss();
+        }
+        
         //Debug.Log($"on hit 2");
     }
 
-    public void DoDamage()
+    public virtual void DoSomething(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, GameObject parent,  Action OnComplete = null)
     {
         
+    }
+    
+    public void DoDamage(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, GameObject parent,  Action OnComplete = null)
+    {
+        
+    }
+    public void DoStun(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, GameObject parent,  Action OnComplete = null)
+    {
+        selectedTile.occupyingPlayer.Stun(true, skillEffectDuration);
     }
     
 }

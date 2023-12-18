@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Pathfinding;
 using Pathfinding.Examples;
 using Sirenix.OdinInspector;
@@ -29,6 +30,12 @@ public class Interact : MonoBehaviour
     
     [BoxGroup("UI")][SerializeField] public GameObject HitChanceUIGameObject;
     [BoxGroup("UI")][SerializeField] public TextMeshProUGUI HitChanceText;
+    
+    [BoxGroup("Free Roam")][SerializeField]
+    public LayerMask freeRoamMask;
+    [BoxGroup("Free Roam")][SerializeField]
+    public Transform freeRoamTarget;
+    IAstarAI[] ais;
     
     List<Tile> reachableTiles = new List<Tile>();
     List<Tile> attackableTiles = new List<Tile>();
@@ -187,6 +194,8 @@ public class Interact : MonoBehaviour
         inspectTileMeshRenderer = InspectTileGO.GetComponentInChildren<MeshRenderer>();
         if (pathfinder == null)
             pathfinder = Pathfinder.Instance;
+        
+        ais = FindObjectsOfType<MonoBehaviour>().OfType<IAstarAI>().ToArray();
     }
 
     private void Update()
@@ -194,7 +203,35 @@ public class Interact : MonoBehaviour
         Clear();
         MouseUpdate();
         CheckMouseOverUI();
+        CheckCharacterInputs();
+        UpdateFreeRoamTargetPosition();
         
+    }
+
+    public void UpdateFreeRoamTargetPosition()
+    {
+        if (TurnSystem.Instance.turnState == TurnSystem.TurnState.FreeRoamTurn && characterSelected && Input.GetMouseButtonDown(0))
+        {
+            Vector3 newPosition = Vector3.zero;
+            bool positionFound = false;
+        
+            // Fire a ray through the scene at the mouse position and place the target where it hits
+            RaycastHit hit;
+            if (Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity, freeRoamMask))
+            {
+                newPosition = hit.point;
+                positionFound = true;
+            }
+            
+            if (positionFound && newPosition != freeRoamTarget.position)
+            {
+                freeRoamTarget.position = newPosition;
+            }
+        }
+    }
+
+    public void CheckCharacterInputs()
+    {
         if (characterSelected) //eselect character //todo skill selectedi variable olarak tut
         {
             if (Input.GetKeyDown(KeyCode.Escape))
@@ -237,9 +274,8 @@ public class Interact : MonoBehaviour
                 
             }
         }
-        
     }
-
+    
     public void CheckMouseOverUI()
     {
         //check if mouse is over ui but exclude some game objects
@@ -323,6 +359,14 @@ public class Interact : MonoBehaviour
             switch (selectedCharacter.GetComponent<Character>().characterState)
             {
                 case Character.CharacterState.Idle:
+                    if (currentTile.Occupied)
+                    {
+                        InspectSomeone();
+                    }
+                    else
+                    {
+                        NavigateToTile(selectedCharacter);
+                    }
                     break;
            
                 case Character.CharacterState.WaitingTurn:
@@ -443,7 +487,7 @@ public class Interact : MonoBehaviour
     {
         selectedCharacter = character; //select character
         lastSelectedCharacter = selectedCharacter;
-        if (selectedCharacter.characterState == Character.CharacterState.WaitingTurn || selectedCharacter.characterState == Character.CharacterState.Idle)
+        if (selectedCharacter.characterState == Character.CharacterState.WaitingTurn)
         {
             if (selectedCharacter.remainingActionPoints > 0)
             {
@@ -576,7 +620,7 @@ public class Interact : MonoBehaviour
     public void CurrentTileChangedFunc(Tile newTile)//this calculates the accuracy before shooting, adds rotation to player
     {
         //print(newTile);
-        if (characterSelected && selectedCharacter.characterState == Character.CharacterState.Attacking)//todo add or idle
+        if (characterSelected && selectedCharacter.characterState == Character.CharacterState.Attacking)//todo add or FreeRoam
         {
             selectedCharacter.GetComponent<SkillContainer>().ResetCoverAccruacyDebuff();
             if (isMouseOverUI == false)

@@ -7,17 +7,59 @@ using UnityEngine;
 public class Player : Character
 {
     [SerializeField] private RenderTexture playerPortrait;
-    [FoldoutGroup("Stats For Quests")] [SerializeField] private int killsInTurn = 0;
+
+    [FoldoutGroup("Stats For Quests")] [SerializeField]
+    private HeartContainer heartContainer;
+    [FoldoutGroup("Stats For Quests")] [SerializeField]
+    private int killsInTurn = 0;
     
+    public delegate void QuestDelegate();
+    public static event QuestDelegate JackTheRipperQuestCompleted;
     private void OnEnable()
     {
         TurnSystem.Instance.FriendlyTurn += base.StartTurn;
         TurnSystem.Instance.OnPlayerTurnEvent += CheckRemoveStun;
+        TurnSystem.Instance.OnPlayerTurnEvent += ResetKillsInTurn;
     }
     private void OnDisable()
     {
         TurnSystem.Instance.FriendlyTurn -= base.StartTurn;
         TurnSystem.Instance.OnPlayerTurnEvent -= CheckRemoveStun;
+        TurnSystem.Instance.OnPlayerTurnEvent -= ResetKillsInTurn;
+    }
+
+    public void CheckeHeartQuest()
+    {
+        if(heartContainer.heartData == null) return;
+
+        if (heartContainer.heartData.heartIndex == 0) //jack the ripper
+        {
+            if (killsInTurn >= 3)
+            {
+                heartContainer.isPowerUnlocked = true;
+                JackTheRipperQuestCompleted?.Invoke();
+            }
+        }
+    }
+  
+    public void IncreaseKills()
+    {
+        killsInTurn++;
+    }
+
+    private void ResetKillsInTurn()
+    {
+        killsInTurn = 0;
+    }
+      public RenderTexture GetPlayerPortrait()
+        {
+            return playerPortrait;
+        }
+
+    [Button]
+    public List<Tile> gettilesinbetween(Tile dest)
+    {
+        return Pathfinder.Instance.GetTilesInBetween(this, characterTile, dest, true);
     }
     /*private void Update()
     {
@@ -57,15 +99,5 @@ public class Player : Character
         }
     }*/
 
-    public RenderTexture GetPlayerPortrait()
-    {
-        return playerPortrait;
-    }
-
-    [Button]
-    public List<Tile> gettilesinbetween(Tile dest)
-    {
-        
-        return Pathfinder.Instance.GetTilesInBetween(this, characterTile, dest, true);
-    }
+   
 }

@@ -47,7 +47,7 @@ public class Character : MonoBehaviour
     
     public enum CharacterState
     {
-         Idle, Moving, Attacking, Dead, WaitingTurn, WaitingNextRound
+        Idle, Moving, Attacking, Dead, WaitingTurn, WaitingNextRound
     }
 
     public CharacterState characterState;
@@ -112,7 +112,7 @@ public class Character : MonoBehaviour
 
         while (currentStep <= pathLength )
         {
-            if (remainingActionPoints  > 0 || !spendActionPoints)
+            if (remainingActionPoints  > 0 || !spendActionPoints || TurnSystem.Instance.turnState == TurnSystem.TurnState.FreeRoamTurn)
             {
                 yield return null;
                 //Move towards the next step in the path until we are closer than MIN_DIST
@@ -131,7 +131,7 @@ public class Character : MonoBehaviour
                 //decrease remainingMoveSteps if the value of currentTile is changed
                 if (currentTile != path.tiles[currentStep])
                 {
-                    if (inCombat && spendActionPoints)
+                    if (/*inCombat &&*/ spendActionPoints && TurnSystem.Instance.turnState != TurnSystem.TurnState.FreeRoamTurn)
                     {
                         remainingActionPoints-- ;
                        // OnActionPointsChange?.Invoke(remainingActionPoints);
@@ -283,7 +283,7 @@ float movementThreshold = 0.1f;
     bool doOnce = true;
     public void StartTurn()
     {
-        if (inCombat)
+        if (TurnSystem.Instance.turnState != TurnSystem.TurnState.FreeRoamTurn)
         {
             if (TurnSystem.Instance.IsThisCharactersTurn(this))
             {
