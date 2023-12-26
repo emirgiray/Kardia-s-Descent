@@ -404,27 +404,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kardia_UIAtlas_0
-      rect:
-        serializedVersion: 2
-        x: 907
-        y: 4240
-        width: 6
-        height: 5
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6b8046ce6ed7d574eb5d3f51947610be
-      internalID: 1573853127
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Kardia_UIAtlas_SkipButton
       rect:
         serializedVersion: 2
@@ -445,6 +424,111 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: P3_S1
+      rect:
+        serializedVersion: 2
+        x: 899
+        y: 3029
+        width: 222
+        height: 244
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3fa96137af7aea47b5a9de4e6f06d04
+      internalID: 6691833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: P3_S2
+      rect:
+        serializedVersion: 2
+        x: 1170
+        y: 3029
+        width: 241
+        height: 244
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58772050e6369da4d95e94b06ce0e87c
+      internalID: 434477216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: P3_S3
+      rect:
+        serializedVersion: 2
+        x: 1451
+        y: 3029
+        width: 261
+        height: 244
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e471545dc8caa2f4a85390cc425f4709
+      internalID: 374684540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: P3_S4
+      rect:
+        serializedVersion: 2
+        x: 1764
+        y: 3029
+        width: 219
+        height: 244
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5645aa8127496364fa89db890e3bec4c
+      internalID: -1155649192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hexagon_Top
+      rect:
+        serializedVersion: 2
+        x: 2450
+        y: 3902
+        width: 329
+        height: 222
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ead0a9af40a81f4896a48cdcdf9cc45
+      internalID: -62228848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -457,12 +541,16 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Kardia_UIAtlas_0: 1573853127
+      Kardia_UIAtlas_11: -2126607450
+      Kardia_UIAtlas_12: -1616148948
       Kardia_UIAtlas_2: 816221303
       Kardia_UIAtlas_3: 858309278
       Kardia_UIAtlas_4: 749771949
       Kardia_UIAtlas_5: -1282025756
       Kardia_UIAtlas_6: 1815163699
+      Kardia_UIAtlas_7: -1871624062
       Kardia_UIAtlas_8: 432443997
+      Kardia_UIAtlas_9: 632324815
       Kardia_UIAtlas_E1: 276419777
       Kardia_UIAtlas_E2: -671121250
       Kardia_UIAtlas_Logo: 1458395219
@@ -473,6 +561,11 @@ TextureImporter:
       Kardia_UIAtlas_P3_S3: -110413828
       Kardia_UIAtlas_P3_S4: 861851198
       Kardia_UIAtlas_SkipButton: 923261104
+      P3_S1: 6691833
+      P3_S2: 434477216
+      P3_S3: 374684540
+      P3_S4: -1155649192
+      hexagon_Top: -62228848
   mipmapLimitGroupName: 
   pSDRemoveMatte: 1
   userData: 
