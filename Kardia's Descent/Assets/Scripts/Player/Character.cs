@@ -100,6 +100,33 @@ public class Character : MonoBehaviour
         Debug.Log("Unable to find a start position");
     }
 
+    public void StartMove(Path _path, Action OnComplete = null, bool spendActionPoints = true)
+    {
+        if (canMove)
+        {
+            MoveStart.Invoke();
+            characterState = CharacterState.Moving;
+            Moving = true;
+            characterTile.Occupied = false;
+            characterTile.ResetOcupying();
+            
+            animator.SetBool("Walk", true);
+            
+            if (this is Player)
+            {
+                characterTile.occupiedByPlayer = false;
+            }
+
+            if (this is Enemy)
+            {
+                characterTile.occupiedByEnemy = false;
+                //  print("enemy move start");
+            }
+            //lastTransform.position = _path.tiles[_path.tiles.Count -1 ].transform.position - _path.tiles[0].transform.position ;
+            StartCoroutine(MoveAlongPath(_path, OnComplete, spendActionPoints));
+        }
+    }
+    
     IEnumerator MoveAlongPath(Path path, Action OnComplete = null, bool spendActionPoints = true)
     {
         const float MIN_DISTANCE = 0.05f;
@@ -156,32 +183,7 @@ public class Character : MonoBehaviour
         OnComplete?.Invoke();
     }
 
-    public void StartMove(Path _path, Action OnComplete = null, bool spendActionPoints = true)
-    {
-        if (canMove)
-        {
-            MoveStart.Invoke();
-            characterState = CharacterState.Moving;
-            Moving = true;
-            characterTile.Occupied = false;
-            characterTile.ResetOcupying();
-            
-            animator.SetBool("Walk", true);
-            
-            if (this is Player)
-            {
-                characterTile.occupiedByPlayer = false;
-            }
-
-            if (this is Enemy)
-            {
-                characterTile.occupiedByEnemy = false;
-              //  print("enemy move start");
-            }
-            //lastTransform.position = _path.tiles[_path.tiles.Count -1 ].transform.position - _path.tiles[0].transform.position ;
-            StartCoroutine(MoveAlongPath(_path, OnComplete, spendActionPoints));
-        }
-    }
+    
 
     void FinalizePosition(Tile tile, bool findTileAtStart)
     {

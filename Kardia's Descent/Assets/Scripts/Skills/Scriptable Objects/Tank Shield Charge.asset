@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f30463883ca2f6459049e5182f68fce, type: 3}
   m_Name: Tank Shield Charge
   m_EditorClassIdentifier: 
-  skillSprite: {fileID: -1431885180, guid: f050367bbcaea674495c2d5e36fc140b, type: 3}
+  skillSprite: {fileID: 6691833, guid: f050367bbcaea674495c2d5e36fc140b, type: 3}
   skillName: Shield Charge
   skillDescription: Moves forward 2 hexes, hits using the shield, low dmg, stuns
     for 1 turn.

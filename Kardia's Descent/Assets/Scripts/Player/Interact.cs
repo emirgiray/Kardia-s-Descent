@@ -81,7 +81,7 @@ public class Interact : MonoBehaviour
         {0, new Color(0.000f * intensity, 6.334f * intensity, 12.996f * intensity, 0.719f) }, //Blue -- Default
         {1, new Color(0f, 12.99604f, 0.9965293f, 0.7176471f) },//Green -- Player
         {2, new Color(12.99604f, 0.3817299f, 0, 0.7176471f) },//Red -- Enemy
-        {3, new Color(1f, 1, 0, 0.3f) },//Yellow -- Cover
+        {3, new Color(12.99604f, 12.99604f, 0, 0.7176471f) },//Yellow -- Cover
 
     };
     
@@ -335,6 +335,11 @@ public class Interact : MonoBehaviour
         {
             // inspectTileMeshRenderer.material.color = tileInspectColors[0];
              inspectTileMeshRenderer.material.SetColor("_RimColor",tileInspectColors[0]);
+
+             if (currentTile.isCoveredByCoverPoint)
+             {
+                 inspectTileMeshRenderer.material.SetColor("_RimColor",tileInspectColors[3]);
+             }
             // Debug.Log(inspectTileMeshRenderer.material.GetColor("_RimColor"));
         }
     }

@@ -3492,6 +3492,11 @@ PrefabInstance:
       propertyPath: uniqueID
       value: 9109671447025278281
       objectReference: {fileID: 0}
+    - target: {fileID: 8954960125577630233, guid: c48e683056dac934481de488aded34b3,
+        type: 3}
+      propertyPath: characterState
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 9192990019255765204, guid: c48e683056dac934481de488aded34b3,
         type: 3}
       propertyPath: m_IsActive
@@ -4137,10 +4142,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -19733,7 +19738,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &530312128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29000,11 +29005,11 @@ MonoBehaviour:
   enemies: []
   allEntities: []
   turn: 1
-  round: 0
+  round: 1
   totalTurnsInScene: 1
   totalTurnsInGame: 3
   currentEnemyTurnOrder: 0
-  turnState: 0
+  turnState: 1
   RoundInfo: {fileID: 1915368774}
   CharacterCardPrefab: {fileID: 4817859511953182997, guid: 163875383e3051c4295f7a099d7c47b5,
     type: 3}
@@ -32352,7 +32357,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 846182774}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.20780629, y: -0.0000015199184, z: 0.00000032782555, w: 0.97817004}
+  m_LocalRotation: {x: 0.20780626, y: -0.0000015497208, z: 0.00000033527613, w: 0.97817004}
   m_LocalPosition: {x: -0.55078506, y: 7.52, z: -12.693269}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -41463,7 +41468,7 @@ PrefabInstance:
     - target: {fileID: 3192985337203590846, guid: f2891199ad7459148abfc14b3a406b37,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.9
+      value: -4.78
       objectReference: {fileID: 0}
     - target: {fileID: 3192985337203590846, guid: f2891199ad7459148abfc14b3a406b37,
         type: 3}
@@ -41473,7 +41478,7 @@ PrefabInstance:
     - target: {fileID: 3192985337203590846, guid: f2891199ad7459148abfc14b3a406b37,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.02
+      value: -13.86
       objectReference: {fileID: 0}
     - target: {fileID: 3192985337203590846, guid: f2891199ad7459148abfc14b3a406b37,
         type: 3}
@@ -43824,7 +43829,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &1122323662
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -63856,7 +63861,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1691251600}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.20780629, y: -0.0000015199184, z: 0.00000032782555, w: 0.97817004}
+  m_LocalRotation: {x: 0.20780626, y: -0.0000015497208, z: 0.00000033527613, w: 0.97817004}
   m_LocalPosition: {x: -0.55078506, y: 7.52, z: -12.693269}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -66076,7 +66081,7 @@ PrefabInstance:
     - target: {fileID: 904763955868222551, guid: d398bbf6cce345f4ea47a677310a9a90,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -20.33
+      value: -12.18
       objectReference: {fileID: 0}
     - target: {fileID: 904763955868222551, guid: d398bbf6cce345f4ea47a677310a9a90,
         type: 3}
@@ -66086,7 +66091,7 @@ PrefabInstance:
     - target: {fileID: 904763955868222551, guid: d398bbf6cce345f4ea47a677310a9a90,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -17.69
+      value: -17.68
       objectReference: {fileID: 0}
     - target: {fileID: 904763955868222551, guid: d398bbf6cce345f4ea47a677310a9a90,
         type: 3}
@@ -66127,6 +66132,11 @@ PrefabInstance:
         type: 3}
       propertyPath: actionPoints
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5637232902721750119, guid: d398bbf6cce345f4ea47a677310a9a90,
+        type: 3}
+      propertyPath: characterState
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5637232902721750119, guid: d398bbf6cce345f4ea47a677310a9a90,
         type: 3}
@@ -80916,6 +80926,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bot
+      objectReference: {fileID: 0}
+    - target: {fileID: 4337228445548062592, guid: cf4625add24253c42b8dee3304a8525c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5095492171983653472, guid: cf4625add24253c42b8dee3304a8525c,
         type: 3}

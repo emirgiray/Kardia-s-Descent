@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f30463883ca2f6459049e5182f68fce, type: 3}
   m_Name: Tank Shield Wall
   m_EditorClassIdentifier: 
-  skillSprite: {fileID: 861851198, guid: f050367bbcaea674495c2d5e36fc140b, type: 3}
+  skillSprite: {fileID: 434477216, guid: f050367bbcaea674495c2d5e36fc140b, type: 3}
   skillName: Shield Wall
   skillDescription: Passive, erves as a full cover.
   skillID: 4
@@ -26,7 +26,10 @@ MonoBehaviour:
   coverAccuracyDebuff: 20
   animatorOverrideController: {fileID: 22100000, guid: 36869fff4fd0c71418a963566a5b56d5,
     type: 2}
-  skillVFX: {fileID: 11400000, guid: 2d7ba90a2d4cad44ea904346e7ce5f75, type: 2}
+  skillStartVFX: {fileID: 0}
+  skillHitVFX: []
+  skillMissVFX: {fileID: 0}
+  skillAudioEvent: {fileID: 0}
   skillType: 1
   passiveOrActive: 1
   skillClass: 6

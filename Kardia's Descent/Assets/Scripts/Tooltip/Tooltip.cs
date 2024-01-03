@@ -77,7 +77,7 @@ public class Tooltip : MonoBehaviour
         float pivotX = position.x / Screen.width;
         float pivotY = position.y / Screen.height;
         
-        rectTransform.pivot = new Vector2(pivotX, pivotY - 1);
+        rectTransform.pivot = new Vector2(pivotX, pivotY - 0.5f);
         transform.position = position;
     }
 }
