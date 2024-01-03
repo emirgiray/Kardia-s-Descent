@@ -295,6 +295,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7510704565162782655, guid: 04563854e99a65a4c8a042dc7f750368,
         type: 3}
+      propertyPath: characterStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 71602cdb49e64a94ab900d9aeb64b9b9,
+        type: 2}
+    - target: {fileID: 7510704565162782655, guid: 04563854e99a65a4c8a042dc7f750368,
+        type: 3}
       propertyPath: playerPortrait
       value: 
       objectReference: {fileID: 8400000, guid: 54cb95db6fb0a7a4181bd215d7ede231, type: 2}
@@ -311,11 +317,11 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3066464748635369359, guid: 04563854e99a65a4c8a042dc7f750368,
         type: 3}
-      insertIndex: 1
+      insertIndex: -1
       addedObject: {fileID: 4432983759214351892}
     - targetCorrespondingSourceObject: {fileID: 3066464748635369359, guid: 04563854e99a65a4c8a042dc7f750368,
         type: 3}
-      insertIndex: 2
+      insertIndex: -1
       addedObject: {fileID: 8501445389240237468}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04563854e99a65a4c8a042dc7f750368, type: 3}

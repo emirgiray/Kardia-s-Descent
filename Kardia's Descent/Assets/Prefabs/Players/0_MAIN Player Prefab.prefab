@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 6326383597764647500}
   - component: {fileID: 5475755088311690444}
   - component: {fileID: 7800979912286807391}
+  - component: {fileID: 2592495783906154403}
   m_Layer: 9
   m_Name: 0_MAIN Player Prefab
   m_TagString: Player
@@ -366,6 +367,24 @@ MonoBehaviour:
   heartData: {fileID: 0}
   isPowerUnlocked: 0
   isEquipped: 0
+--- !u!114 &2592495783906154403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3045574018136022521}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0, g: 1, b: 0, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &5090733536535404942
 GameObject:
   m_ObjectHideFlags: 0

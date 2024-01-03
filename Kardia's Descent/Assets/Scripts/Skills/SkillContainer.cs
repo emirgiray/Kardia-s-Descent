@@ -368,12 +368,37 @@ bool impact = false;
     public IEnumerator AttackCancelDelay(float attackAnimLength, Skills selectedSkill, Tile selectedTile, Enemy enemy = null, Action OnComplete = null)
     {
         // yield return new WaitForSecondsRealtime(attackAnimLength);
+        
+        //todo apply accuracy and damage bonuses from stats here the reset after complete
+
+        if (selectedSkill.skillData.skillType == SkillsData.SkillType.Melee)
+        {
+            selectedSkill.accuracy += Character.extraRangedAccuracy;
+        }
+        else if (selectedSkill.skillData.skillType == SkillsData.SkillType.Ranged)
+        {
+            selectedSkill.damage += Character.extraMeleeDamage;
+        }
+        
+        selectedSkill.accuracy += Character.extraRangedAccuracy;
+        
         selectedSkill.skillData.ActivateSkill(selectedSkill, Character, selectedTile, gameObject,  () =>
         {
 
                 DeselectSkill(selectedSkill, enemy);
                 ResetCoverAccruacyDebuff();
+                
+                if (selectedSkill.skillData.skillType == SkillsData.SkillType.Melee)
+                {
+                    selectedSkill.accuracy -= Character.extraRangedAccuracy;
+                }
+                else if (selectedSkill.skillData.skillType == SkillsData.SkillType.Ranged)
+                {
+                    selectedSkill.damage -= Character.extraMeleeDamage;
+                }
+                
                 OnComplete?.Invoke(); 
+                
         });
         
         if (Character is Player)
@@ -404,6 +429,8 @@ bool impact = false;
         PopulateSkillsList();
     }
 
+    
+    //todo delete this and calcuale for half damage on cover
     public int CalculateCoverAccuracyDebuff(Tile attacker, Tile defender, Skills selectSkill)
     {
         if (Pathfinder.Instance.CheckCoverPoint(attacker, defender))

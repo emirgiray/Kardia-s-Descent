@@ -20,11 +20,17 @@ public class PathIllustrator : MonoBehaviour
             Character character = Interact.Instance.selectedCharacter;
             
             line.positionCount = path.tiles.Count;
-            
-            var gradient = new Gradient();
+
+            for (int i = 0; i < path.tiles.Count; i++)
+            {
+                Transform tileTransform = path.tiles[i].transform;
+                line.SetPosition(i, tileTransform.position.With(y: tileTransform.position.y + LineHeightOffset));
+            }
+
+            /*var gradient = new Gradient();
             var colors = new GradientColorKey[path.tiles.Count];
             var alphas = new GradientAlphaKey[path.tiles.Count];
-            Debug.Log($"{path.tiles.Count}");
+            //Debug.Log($"{path.tiles.Count}");
             for (int i = 0; i < path.tiles.Count; i++)
             {
                 Transform tileTransform = path.tiles[i].transform;
@@ -32,13 +38,13 @@ public class PathIllustrator : MonoBehaviour
                 alphas[i] = new GradientAlphaKey(1.0f, 0.0f);
 
                 //Debug.Log($"i: {i} remainingActionPoints: {character.remainingActionPoints - i}");
-                
+
                  /*if (character.remainingActionPoints - i == 0)
                 {
                     colors[i] = new GradientColorKey(Color.red, i / line.positionCount);
                     line.colorGradient = gradient;
-                } 
-                else if (character.remainingActionPoints - i > character.remainingActionPoints / 2 /*&& character.remainingActionPoints - i <= character.remainingActionPoints#1#)
+                }
+                else if (character.remainingActionPoints - i > character.remainingActionPoints / 2 /*&& character.remainingActionPoints - i <= character.remainingActionPoints#2#)
                 {
                     colors[i] = new GradientColorKey(Color.yellow, i / line.positionCount);
                     line.colorGradient = gradient;
@@ -47,7 +53,7 @@ public class PathIllustrator : MonoBehaviour
                 {
                     colors[i] = new GradientColorKey(Color.green, i / line.positionCount);
                     line.colorGradient = gradient;
-                }*/
+                }#1#
 
                  if (i == 3)
                  {
@@ -60,13 +66,13 @@ public class PathIllustrator : MonoBehaviour
                      colors[i] = new GradientColorKey(Color.blue, i / line.positionCount);
                      line.colorGradient = gradient;
                  }
-                 
+
                  if (i == 0)
                  {
                      colors[i] = new GradientColorKey(Color.red, i / line.positionCount);
                      line.colorGradient = gradient;
                  }
-                 
+
                  if (i == 1)
                  {
                      colors[i] = new GradientColorKey(Color.yellow, i / line.positionCount);
@@ -77,11 +83,11 @@ public class PathIllustrator : MonoBehaviour
                 {
                     colors[i] = new GradientColorKey(Color.yellow, 0.0f);
                     line.colorGradient = gradient;
-                } */
-                
+                } #1#
+
                 gradient.SetKeys(colors, alphas);
                 //line.colorGradient = MakeColors();
-            }
+            }*/
         }
     }
 

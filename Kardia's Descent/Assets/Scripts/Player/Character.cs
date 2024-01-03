@@ -11,6 +11,7 @@ public class Character : MonoBehaviour
     
     
     [SerializeField] public Sprite characterSprite;
+    [SerializeField] public CharacterStats characterStats;
     [SerializeField] public int actionPoints = 3;
     [SerializeField] public int remainingActionPoints;
     [SerializeField] public int maxActionPoints = 10;
@@ -68,17 +69,29 @@ public class Character : MonoBehaviour
     [FoldoutGroup("Events")] public UnityEvent MoveEnd;
     [FoldoutGroup("Events")] public UnityEvent MovePointsExhausted;
     [FoldoutGroup("Events")] public UnityEvent ActionPointsExhausted;
-    
+
+    [HideInInspector] public int extraMeleeDamage = 0;
+    [HideInInspector] public int extraRangedAccuracy = 0;
  
     private void Awake()
     {
-        characterState = CharacterState.Idle;
+        //characterState = CharacterState.Idle;
         // ResetMovePoints();
+        AssignSkillValues();
         ResetActionPoints();
         FindTileAtStart();
     }
 
-    
+    public void AssignSkillValues()
+    {
+        if (characterStats != null)
+        {
+            extraMeleeDamage = characterStats.Strength * 5;
+            actionPoints = characterStats.Dexterity;
+            GetComponent<SGT_Health>().Max = 100 + characterStats.Constitution * 10;
+            extraRangedAccuracy = characterStats.Dexterity * 5;
+        }
+    }
 
     /// <summary>
     /// If no starting tile has been manually assigned, we find one beneath us

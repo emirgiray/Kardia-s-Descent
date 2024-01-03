@@ -239,6 +239,7 @@ public class Interact : MonoBehaviour
                 if (selectedCharacterSkillContainer.skillSelected == false)
                 {
                     selectedCharacter.GetComponent<Inventory>().ShowSkillsUI(false);
+                    selectedCharacter.GetComponent<QuickOutline>().enabled = false;
                     selectedCharacter = null;
                     characterSelected = false;
                     ClearHighlightReachableTiles();
@@ -490,7 +491,12 @@ public class Interact : MonoBehaviour
 
     public void SelectPlayer(Character character)
     {
+        if (lastSelectedCharacter != null) lastSelectedCharacter.GetComponent<QuickOutline>().enabled = false;
+        
         selectedCharacter = character; //select character
+        
+        selectedCharacter.GetComponent<QuickOutline>().enabled = true;
+        
         lastSelectedCharacter = selectedCharacter;
         if (selectedCharacter.characterState == Character.CharacterState.WaitingTurn)
         {

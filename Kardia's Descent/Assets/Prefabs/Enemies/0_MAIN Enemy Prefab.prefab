@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 5789014126072821151}
   - component: {fileID: 5460808850040777981}
   - component: {fileID: 4807473279575106974}
+  - component: {fileID: 5727996985727501561}
   m_Layer: 9
   m_Name: 0_MAIN Enemy Prefab
   m_TagString: Enemy
@@ -492,6 +493,21 @@ MonoBehaviour:
   moveTime: 4
   delay: 1.5
   ease: 9
+--- !u!114 &5727996985727501561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7741204839853584163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 985add12ee4836e40b7241671b1d892c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fogWar: {fileID: 0}
+  visibility: 0
+  additionalRadius: 0
 --- !u!1001 &3579682752430526148
 PrefabInstance:
   m_ObjectHideFlags: 0
