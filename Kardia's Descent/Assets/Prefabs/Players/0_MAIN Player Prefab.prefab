@@ -230,7 +230,7 @@ MonoBehaviour:
   health: {fileID: 5225323832543321503}
   canMove: 1
   canAttack: 1
-  inCombat: 1
+  inCombat: 0
   isDead: 0
   Head: {fileID: 3811572432631322745}
   Hand: {fileID: 4568728419604377504}

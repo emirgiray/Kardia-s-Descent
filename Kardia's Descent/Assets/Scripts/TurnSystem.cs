@@ -11,9 +11,9 @@ using UnityEngine.Events;
 public class TurnSystem : MonoBehaviour
 {
     public static TurnSystem Instance { get; private set; }
-    [SerializeField] public List<Player> players = new List<Player>();
-    [SerializeField] public List<Enemy> enemies = new List<Enemy>();
-    [SerializeField] public List<GameObject> allEntities = new List<GameObject>();
+    [SerializeField] public List<Player> playersInCombat = new List<Player>();
+    [SerializeField] public List<Enemy> enemiesInCombat = new List<Enemy>();
+    [SerializeField] public List<Character> allEntitiesInCombat = new List<Character>();
     public GameObject combatStartedImage;
 
     public int turn = 0;
@@ -65,7 +65,7 @@ public class TurnSystem : MonoBehaviour
             Destroy(gameObject);
         }
         
-        players.AddRange(GameObject.FindObjectsOfType<Player>());
+        /*players.AddRange(GameObject.FindObjectsOfType<Player>());
         enemies.AddRange(GameObject.FindObjectsOfType<Enemy>());
 
         for (int i = 0; i < players.Count; i++)
@@ -76,9 +76,9 @@ public class TurnSystem : MonoBehaviour
         for (int i = 0; i < enemies.Count; i++)
         {
             allEntities.Add(enemies[i].gameObject);
-        }
+        }*/
 
-        for (int i = 0; i < allEntities.Count; i++)//set character cards, todo: also add these to character add/remove
+        /*for (int i = 0; i < allEntities.Count; i++)//set character cards,
         {
             GameObject newCard = Instantiate(CharacterCardPrefab, RoundInfo.transform);
             newCard.name = allEntities[i].name + " Card";
@@ -86,7 +86,7 @@ public class TurnSystem : MonoBehaviour
             allEntities[i].GetComponent<Character>().SetCharacterCard(newCard);
             RoundInfo.GetComponent<RoundInfo>().AddObject(newCard);
             //newCard.GetComponent<CustomEvent3>().CustomEvents3.AddListener(RoundInfo.GetComponent<RoundInfo>().Rearrange);
-        }
+        }*/
         
     }
 
@@ -118,14 +118,16 @@ public class TurnSystem : MonoBehaviour
         {
             turnState = TurnState.Friendly;
             OnPlayerTurn.Invoke();
-            OnEnemyTurnEvent?.Invoke();
+            OnPlayerTurnEvent?.Invoke();
+            // OnEnemyTurnEvent?.Invoke();
             if(FriendlyTurn != null) FriendlyTurn();
         }
         if (round % 2 == 0)
         {
             turnState = TurnState.Enemy;
             OnEnemyTurn.Invoke();
-            OnPlayerTurnEvent?.Invoke();
+            // OnPlayerTurnEvent?.Invoke();
+            OnEnemyTurnEvent?.Invoke();
             if(EnemyTurn != null) EnemyTurn();
         }
         if (round == 0)//Combat has not started yet
@@ -162,7 +164,7 @@ public class TurnSystem : MonoBehaviour
         OnTurnChange.Invoke();
         if (turnState == TurnState.Friendly)
         {
-            if (turn > players.Count)
+            if (turn > playersInCombat.Count)
             {
                 NextRound();
             }
@@ -170,7 +172,7 @@ public class TurnSystem : MonoBehaviour
         else if (turnState == TurnState.Enemy)
         {
             TurnSystem.Instance.currentEnemyTurnOrder++;
-            if (turn > enemies.Count)
+            if (turn > enemiesInCombat.Count)
             {
                 NextRound();
                 //TurnSystem.Instance.currentEnemyTurnOrder = 0;
@@ -189,7 +191,7 @@ public class TurnSystem : MonoBehaviour
     public void DecideEnemyTurnOrder()//this will work according to enemy initiative //todo this is reversed!!!!
     {
         List<Tuple<Enemy, int>> enemyList = new List<Tuple<Enemy, int>>();
-        foreach (Enemy enemy in enemies)
+        foreach (Enemy enemy in enemiesInCombat)
         {
             Enemy enemyScript = enemy.GetComponent<Enemy>();
             if (enemyScript!= null)
@@ -222,36 +224,60 @@ public class TurnSystem : MonoBehaviour
     [Button,GUIColor(1,1,1)][FoldoutGroup("DEBUG")]
     public void PlayerDied(Player deadPlayer)
     {
-        players.RemoveRange(players.IndexOf(deadPlayer), 1);
-        allEntities.RemoveRange(allEntities.IndexOf(deadPlayer.gameObject), 1);
+        playersInCombat.RemoveRange(playersInCombat.IndexOf(deadPlayer), 1);
+        allEntitiesInCombat.RemoveRange(allEntitiesInCombat.IndexOf(deadPlayer), 1);
         OnPlayerDeath.Invoke(deadPlayer);
+        RemoveCard(deadPlayer);
     }
 
     [Button,GUIColor(1,1,1)][FoldoutGroup("DEBUG")]
     public void EnemyDied(Enemy deadEnemy)
     {
-        enemies.RemoveRange(enemies.IndexOf(deadEnemy), 1);
-        allEntities.RemoveRange(allEntities.IndexOf(deadEnemy.gameObject), 1);
+        enemiesInCombat.RemoveRange(enemiesInCombat.IndexOf(deadEnemy), 1);
+        allEntitiesInCombat.RemoveRange(allEntitiesInCombat.IndexOf(deadEnemy), 1);
         OnEnemyDeath.Invoke(deadEnemy);
+        RemoveCard(deadEnemy);
     }
     
     [Button,GUIColor(0,0,1)][FoldoutGroup("DEBUG")]
-    public void PlayerAdded(Player newPlayer)
+    public void AddPlayer(Player newPlayer)
     {
-       players.Add(newPlayer);//todo might need to change this to addrange
-       allEntities.Add(newPlayer.gameObject);
+       playersInCombat.Add(newPlayer);//todo might need to change this to addrange
+       allEntitiesInCombat.Add(newPlayer);
+       AddCard(newPlayer);
        OnPlayerAdd.Invoke(newPlayer);
-       OnPlayerAddTransform.Invoke(newPlayer.transform);
+       OnPlayerAddTransform.Invoke(newPlayer.transform); //this adds the new player to fog of war
     }
     
     [Button,GUIColor(0,0,1)][FoldoutGroup("DEBUG")]
-    public void EnemyAdded(Enemy newEnemy)
+    public void AddEnemy(Enemy newEnemy)
     {
-        enemies.Add(newEnemy);
-        allEntities.Add(newEnemy.gameObject);
+        enemiesInCombat.Add(newEnemy);
+        allEntitiesInCombat.Add(newEnemy);
+
+        AddCard(newEnemy);
         OnEnemyAdd.Invoke(newEnemy);
+        
     }
 
+    public void AddCard(Character character)
+    {
+        //for (int i = 0; i < allEntities.Count; i++)//set character cards,
+        {
+            GameObject newCard = Instantiate(CharacterCardPrefab, RoundInfo.transform);
+            newCard.name = character.name + " Card";
+            newCard.GetComponent<CharacterRoundCard>().Init(character, RoundInfo.GetComponent<RoundInfo>());
+            character.SetCharacterCard(newCard);
+            RoundInfo.GetComponent<RoundInfo>().AddObject(newCard);
+            //newCard.GetComponent<CustomEvent3>().CustomEvents3.AddListener(RoundInfo.GetComponent<RoundInfo>().Rearrange);
+        }
+    }
+
+    public void RemoveCard(Character character)
+    {
+        Destroy(character.GetCharacterCard());
+    }
+    
     public void UpdateTurnText(TextMeshProUGUI turnText)
     {
         // turnText.text = "Turn: " + turn;

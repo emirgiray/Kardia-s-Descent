@@ -13,36 +13,23 @@ public class PatrolAction : ActionAI
     private void Patrol(StateController controller)
     {
         
-        
-        if (TurnSystem.Instance.turnState == TurnSystem.TurnState.Enemy && controller.enemy.canMove && controller.RandomWait())
+        if (controller.enemy.canMove && controller.RandomWait2())
         {
-            if (controller.enemy.turnOrder == TurnSystem.Instance.currentEnemyTurnOrder)
-            {
-                controller.enemy.StartMove(FindRandomPath(controller), true,  null, false);
-                controller.enemy.canMove = false;
-                //controller.enemy.remainingMoveRange = 0;
-            }
+            controller.canExitState = false;
+            //controller.enemy.StartMove(FindRandomPath(controller), true, ()=>  controller.canExitState = true, false);
+            
         }
-        
-         
-        
-        
-        
-        /*controller.navMeshAgent.destination = controller.wayPointList[controller.nextWayPoint].position;
-        controller.navMeshAgent.isStopped = false;
-
-        if (controller.navMeshAgent.remainingDistance <= controller.navMeshAgent.stoppingDistance && !controller.navMeshAgent.pathPending)
-        {
-            controller.nextWayPoint = (controller.nextWayPoint + 1) % controller.wayPointList.Count;
-        }*/
     }
-
-    List<Tile> reachableTiles = new List<Tile>();
     
     private Path FindRandomPath(StateController controller)
     {
-        reachableTiles = Pathfinder.Instance.GetReachableTiles(controller.enemy.characterTile, controller.enemy.remainingActionPoints);
+        List<Tile>  reachableTiles = Pathfinder.Instance.GetReachableTiles(controller.enemy.characterTile, controller.enemy.remainingActionPoints);
         Tile randomTile = reachableTiles[Random.Range(0, reachableTiles.Count)];
         return Pathfinder.Instance.FindPath(controller.enemy, controller.enemy.characterTile, randomTile);
+    }
+
+    public void FindPathBetweenWaypoints(StateController controller)
+    {
+        
     }
 }

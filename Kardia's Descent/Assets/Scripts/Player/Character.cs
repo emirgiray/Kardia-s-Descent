@@ -23,7 +23,7 @@ public class Character : MonoBehaviour
     
     [SerializeField] public bool canMove = true;
     [SerializeField] public bool canAttack = true;
-    [SerializeField] public bool inCombat = true;
+    [SerializeField] public bool inCombat = false;
     [SerializeField] public bool isDead = false;
     [SerializeField] public Transform Head;
     [SerializeField] public Transform Hand;
@@ -55,8 +55,6 @@ public class Character : MonoBehaviour
     }
 
     public CharacterState characterState;
-    
-
     
     public static Action<int> OnActionPointsChange;
     public Action OnTurnStart;
@@ -95,6 +93,8 @@ public class Character : MonoBehaviour
             extraRangedAccuracy = characterStats.Dexterity * 5;
         }
     }
+
+    #region Movement
 
     /// <summary>
     /// If no starting tile has been manually assigned, we find one beneath us
@@ -196,10 +196,10 @@ public class Character : MonoBehaviour
                 //decrease remainingMoveSteps if the value of currentTile is changed
                 if (currentTile != path.tiles[currentStep])
                 {
-                    if (/*inCombat &&*/ spendActionPoints && TurnSystem.Instance.turnState != TurnSystem.TurnState.FreeRoamTurn)
+                    if (inCombat && spendActionPoints && TurnSystem.Instance.turnState != TurnSystem.TurnState.FreeRoamTurn)
                     {
                         remainingActionPoints-- ;
-                       // OnActionPointsChange?.Invoke(remainingActionPoints);
+                        // OnActionPointsChange?.Invoke(remainingActionPoints);
                         OnActionPointsChange(remainingActionPoints);
                         OnActionPointsChangeEvent?.Invoke(remainingActionPoints, "-");
                         // print(OnMovePointsChangeEvent);
@@ -220,9 +220,7 @@ public class Character : MonoBehaviour
         FinalizePosition(currentTile, false);
         OnComplete?.Invoke();
     }
-
     
-
     void FinalizePosition(Tile tile, bool findTileAtStart)
     {
         transform.position = tile.transform.position;
@@ -273,7 +271,7 @@ public class Character : MonoBehaviour
         
     }
 
-float movementThreshold = 0.1f;
+    float movementThreshold = 0.1f;
 
     void MoveAndRotate(Tile origin, Tile destination, float duration, float currentStep, float pathLength, bool rotate)
     {
@@ -295,63 +293,16 @@ float movementThreshold = 0.1f;
  
         //StartCoroutine(RotateEnum(origin, destination));
     }
-
-    /*public IEnumerator RotateEnum(Vector3 origin, Vector3 destination)
-    {
-        yield return null;
-        // Rotate(origin, destination);
-        transform.DOLookAt(destination, 0.75f, AxisConstraint.Y, Vector3.up).SetEase(Ease.OutBack);
-    }*/
-
-    [Button]
-    public void CheckToStartCombat()
-    {
-        if (this is Player && TurnSystem.Instance.turnState == TurnSystem.TurnState.FreeRoamTurn)
-        {
-            for (int i = 0; i < TurnSystem.Instance.enemies.Count; i++)
-            {
-                if (Pathfinder.Instance.GetTilesInBetween(this, characterTile, TurnSystem.Instance.enemies[i].characterTile, true).Count <= 3)
-                {
-                    if (!Physics.Linecast(this.transform.position, TurnSystem.Instance.enemies[i].transform.position, detectionLayerMask))
-                    {
-                        TurnSystem.Instance.CombatStarted();
-                        //Debug.Log($"Combat started by {TurnSystem.Instance.enemies[i].name}");
-                        return;
-                    }
-                }
-                
-                
-
-            }
-        }
-    }
     
-    public void ResetMovePoints()
-    {
-        remainingActionPoints = actionPoints;
-        OnMovePointsChangeEvent?.Invoke(remainingActionPoints);
-    }
-        
-    public void ResetActionPoints()
-    {
-        remainingActionPoints = actionPoints;
-        OnActionPointsChangeEvent?.Invoke(remainingActionPoints, "+");
-    }
 
-    public void AddActionPoints()
-    {
-        remainingActionPoints += actionPoints;
-        if (remainingActionPoints > maxActionPoints)
-        {
-            remainingActionPoints = maxActionPoints;
-        }
-        
-    }
+    #endregion
     
+    #region Turn System
+
     bool doOnce = true;
     public void StartTurn()
     {
-        if (TurnSystem.Instance.turnState != TurnSystem.TurnState.FreeRoamTurn)
+        if (TurnSystem.Instance.turnState != TurnSystem.TurnState.FreeRoamTurn && inCombat)
         {
             if (TurnSystem.Instance.IsThisCharactersTurn(this))
             {
@@ -410,7 +361,7 @@ float movementThreshold = 0.1f;
             canMove = false;
             canAttack = false;
             characterState = CharacterState.WaitingNextRound;
-           // EndTurn();
+            // EndTurn();
         }
     }
     private static LTDescr delay;
@@ -441,6 +392,70 @@ float movementThreshold = 0.1f;
         TurnSystem.Instance.NextTurn();
     }
 
+    [Button]
+    public void CheckToStartCombat()
+    {
+        if (this is Player)
+        {
+            for (int i = 0; i < GameManager.Instance.enemies.Count; i++)
+            {
+                if (Pathfinder.Instance.GetTilesInBetween(this, characterTile, GameManager.Instance.enemies[i].characterTile, true).Count <= 3)
+                {
+                    if (!Physics.Linecast(this.transform.position, GameManager.Instance.enemies[i].transform.position, detectionLayerMask))
+                    {
+                        if (TurnSystem.Instance.turnState == TurnSystem.TurnState.FreeRoamTurn)
+                        {
+                            TurnSystem.Instance.CombatStarted();
+                            
+                            StartCombat();
+                            GameManager.Instance.enemies[i].StartCombat();
+                        }
+                        //Debug.Log($"Combat started by {TurnSystem.Instance.enemies[i].name}");
+                    }
+                }
+                
+                
+
+            }
+        }
+    }
+    #endregion
+
+    #region Combat
+
+    public void StartCombat()
+    {
+        inCombat = true;
+
+        if (this is Enemy)
+        {
+            GetComponent<StateController>().StartCombat();
+        }
+    }
+    
+    public void ResetMovePoints()
+    {
+        remainingActionPoints = actionPoints;
+        OnMovePointsChangeEvent?.Invoke(remainingActionPoints);
+    }
+        
+    public void ResetActionPoints()
+    {
+        remainingActionPoints = actionPoints;
+        OnActionPointsChangeEvent?.Invoke(remainingActionPoints, "+");
+    }
+
+    public void AddActionPoints()
+    {
+        remainingActionPoints += actionPoints;
+        if (remainingActionPoints > maxActionPoints)
+        {
+            remainingActionPoints = maxActionPoints;
+        }
+        
+    }
+
+
     public void AttackStart()
     {
         characterState = CharacterState.Attacking;
@@ -457,7 +472,7 @@ float movementThreshold = 0.1f;
         }
         
         //animator.ResetTrigger("Attack");
-       // animator.SetTrigger("AttackCancel");
+        // animator.SetTrigger("AttackCancel");
     }
 
     public void Attack()
@@ -517,12 +532,6 @@ float movementThreshold = 0.1f;
         OnHealthChangeEvent?.Invoke();
     }
 
-    public void SetAnimations(AnimatorOverrideController overrideController)
-    {
-        animator.runtimeAnimatorController = overrideController;
-    }
-    
-  
     GameObject stunVFX = null;
     public void Stun(bool value, int turns)
     {
@@ -565,10 +574,21 @@ float movementThreshold = 0.1f;
         }
     }
 
+    #endregion
+    
+    public void SetAnimations(AnimatorOverrideController overrideController)
+    {
+        animator.runtimeAnimatorController = overrideController;
+    }
+    
     public void SetCharacterCard(GameObject card)
     {
         characterCard = card;
     }
 
+    public GameObject GetCharacterCard()
+    {
+        return characterCard;
+    }
 
 }

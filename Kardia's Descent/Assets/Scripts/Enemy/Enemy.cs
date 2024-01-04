@@ -16,7 +16,7 @@ public class Enemy : Character
     private void OnEnable()
     {
         TurnSystem.Instance.EnemyTurn += base.StartTurn;
-        base.canMove = false; //todo denemek için yaptım belki değiştirilebilir
+        //base.canMove = false; //todo denemek için yaptım belki değiştirilebilir
         stateController = GetComponent<StateController>();
         TurnSystem.Instance.OnEnemyTurnEvent += CheckRemoveStun;
     }

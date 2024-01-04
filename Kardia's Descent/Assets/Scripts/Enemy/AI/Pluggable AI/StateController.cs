@@ -14,7 +14,7 @@ public class StateController : MonoBehaviour
     
     public StateAI currentState;
     public StateAI defaultCombatStartState;
-    public StateAI defaultNotCombatStartState;
+    public StateAI defaultNonCombatState;
     public StateAI remainState;
    // public SkillsData selectedSkill;
     public EnemyStatsData enemyStats;
@@ -35,7 +35,8 @@ public class StateController : MonoBehaviour
     
     [MinMaxSlider(0,3)]
     public Vector2 RandomWaitTimer;
-    
+    [MinMaxSlider(0,3)]
+    public Vector2 RandomWaitTimer2;
 
     private void OnEnable()//todo might need to turn this into an action or delegate
     {
@@ -43,7 +44,9 @@ public class StateController : MonoBehaviour
         turnSystem.OnEnemyDeath.AddListener(EnemyDied);
         turnSystem.OnPlayerAdd.AddListener(PlayerAdded);
         turnSystem.OnEnemyAdd.AddListener(EnemyAdded);
+        
         enemy.OnTurnStart += ResetToDefaultCombatState;
+        enemy.OnTurnStart += TryActivateAI;
     }
     private void OnDisable()
     {
@@ -51,7 +54,9 @@ public class StateController : MonoBehaviour
         turnSystem.OnEnemyDeath.RemoveListener(EnemyDied);
         turnSystem.OnPlayerAdd.RemoveListener(PlayerAdded);
         turnSystem.OnEnemyAdd.RemoveListener(EnemyAdded);
+        
         enemy.OnTurnStart -= ResetToDefaultCombatState;
+        enemy.OnTurnStart -= TryActivateAI;
     }
 
     private void Awake()
@@ -61,19 +66,32 @@ public class StateController : MonoBehaviour
         pathfinder = Pathfinder.Instance;
         turnSystem = TurnSystem.Instance;
         RandomWaitAssigner();
+        RandomWaitAssigner2();
+
+        if (!enemy.inCombat)
+        {
+            currentState = defaultNonCombatState;
+        }
+        else
+        {
+            currentState = defaultCombatStartState;
+        }
+ 
     }
 
     private void Start()
     {
-        players.AddRange(turnSystem.players);
-        enemies.AddRange(turnSystem.enemies);
+        /*players.AddRange(turnSystem.players);
+        enemies.AddRange(turnSystem.enemies);*/
     }
 
     private bool runOnce;
     private void Update()
     {
-        aiActive = (enemy.turnOrder == TurnSystem.Instance.currentEnemyTurnOrder && !enemy.isDead);//todo do this with events in turn system
-        
+        /*if (!enemy.inCombat && !enemy.isDead)
+        {
+            aiActive = true;
+        }*/
         
         if (!aiActive)
         {
@@ -82,7 +100,7 @@ public class StateController : MonoBehaviour
         else
         {
             
-            if (TurnSystem.Instance.turnState == TurnSystem.TurnState.Enemy && enemy.turnOrder == TurnSystem.Instance.currentEnemyTurnOrder)
+            if ((TurnSystem.Instance.turnState == TurnSystem.TurnState.Enemy && enemy.turnOrder == TurnSystem.Instance.currentEnemyTurnOrder) || !enemy.inCombat)
             {
                 currentStateSeconds += Time.deltaTime;
                 if (canExitState)
@@ -102,13 +120,23 @@ public class StateController : MonoBehaviour
                     if (currentStateSeconds >= 20) //state overtime
                     {
                         canExitState = true;
-                        Debug.Log($"State changed due to overtime");
+                        Debug.Log($"State changed due to overtime"); //doesnt work??
                     }
                 }
             }
             
             
         }
+    }
+
+    public void StartCombat()
+    {
+        ResetToDefaultCombatState();
+    }
+
+    public void TryActivateAI()
+    {
+        aiActive = (enemy.turnOrder == TurnSystem.Instance.currentEnemyTurnOrder && !enemy.isDead); //todo do this with events in turn system
     }
     
     public void TransitionToState(StateAI nextState)
@@ -136,7 +164,7 @@ public class StateController : MonoBehaviour
         // }
         
         // WaitTimer = Random.Range(RandomWaitTimer.x, RandomWaitTimer.y);
-        
+        RandomWaitAssigner2();
     }
 
     public List<Tile> GetReachableTiles()
@@ -191,11 +219,18 @@ public class StateController : MonoBehaviour
     }
     
     private float RandomTimer;
+    private float RandomTimer2;
 
     private float WaitTimer;
+    private float WaitTimer2;
     public void RandomWaitAssigner()
     {
         WaitTimer = Random.Range(RandomWaitTimer.x, RandomWaitTimer.y);
+        
+    }
+    public void RandomWaitAssigner2()
+    {
+        WaitTimer2 = Random.Range(RandomWaitTimer2.x, RandomWaitTimer2.y);
     }
     
     public bool RandomWait()
@@ -213,6 +248,21 @@ public class StateController : MonoBehaviour
         
     }
 
+    public bool RandomWait2()
+    {
+        if (RandomTimer2 >= WaitTimer2)
+        {
+            RandomTimer2 = 0;
+            return true;
+        }
+        else
+        {
+            RandomTimer2 += Time.deltaTime;
+            return false;
+        }
+        
+    }
+    
     public void EndTurn()
     {
         enemy.EndTurn();

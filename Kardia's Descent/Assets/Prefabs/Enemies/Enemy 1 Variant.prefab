@@ -137,7 +137,7 @@ PrefabInstance:
     - target: {fileID: 8148688877583324293, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
         type: 3}
       propertyPath: characterClass
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8148688877583324293, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
         type: 3}
