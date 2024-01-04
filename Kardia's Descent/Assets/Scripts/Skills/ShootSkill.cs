@@ -7,15 +7,15 @@ using UnityEngine;
 public class ShootSkill : SkillsData
 {
     public GameObject Bullet;
-    public override void ActivateSkill(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, GameObject parent,  Action OnComplete = null)//skill logic goes here
+    public override void ActivateSkill(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, Action OnComplete = null)//skill logic goes here
     {
         //base.ActivateSkill();
-        WeaponContainer weaponContainer = parent.GetComponentInChildren<WeaponContainer>();
+      //  WeaponContainer weaponContainer = GetComponentInChildren<WeaponContainer>();
 
         switch (base.skillTarget)
         {
             case SkillTarget.Enemy:
-                /*weaponContainer.currentWeapon.*/Shoot( weaponContainer);
+               // /*weaponContainer.currentWeapon.*/Shoot( weaponContainer);
 
                     int random = UnityEngine.Random.Range(1, 101);
                     if (random <= Skill.accuracy || Skill.accuracy == 100) //todo do this in a different way, maybe a method in a class

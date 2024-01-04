@@ -10,8 +10,7 @@ public class ShieldCharge : SkillsData
 {
     //[SerializeField] private int stunDuration = 1 ;
     
-    public override void ActivateSkill(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile,
-        GameObject parent, Action OnComplete = null)
+    public override void ActivateSkill(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, Action OnComplete = null)
     {
         Path path = Pathfinder.Instance.GetPathBetween(ActivaterCharacter, ActivaterCharacter.characterTile, selectedTile /*, true*/);
         // path.tiles.RemoveAt(path.tiles.Count - 1);
@@ -23,7 +22,7 @@ public class ShieldCharge : SkillsData
             ActivaterCharacter.Rotate(selectedTile.transform.position);
             
             Interact.Instance.GetComponent<MonoBehaviour>()
-                .StartCoroutine(WaitUntilEnum(Skill, ActivaterCharacter, selectedTile, parent, OnComplete));
+                .StartCoroutine(WaitUntilEnum(Skill, ActivaterCharacter, selectedTile, OnComplete));
             //base.TryHit(Skill, ActivaterCharacter, selectedTile, parent, OnComplete = null);
         }
         else
@@ -33,7 +32,7 @@ public class ShieldCharge : SkillsData
                 ActivaterCharacter.Rotate(selectedTile.transform.position);
             
                 Interact.Instance.GetComponent<MonoBehaviour>()
-                    .StartCoroutine(WaitUntilEnum(Skill, ActivaterCharacter, selectedTile, parent, OnComplete));
+                    .StartCoroutine(WaitUntilEnum(Skill, ActivaterCharacter, selectedTile, OnComplete));
                 //base.TryHit(Skill, ActivaterCharacter, selectedTile, parent, OnComplete = null);
 
 
@@ -134,14 +133,24 @@ public class ShieldCharge : SkillsData
         //add delay of 0.1f seconds here
         // OnComplete?.Invoke();
     }
-    public IEnumerator WaitUntilEnum(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile,
-        GameObject parent, Action OnComplete = null)
+    public IEnumerator WaitUntilEnum(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, Action OnComplete = null)
     {
         //Debug.Log($"wait started    ");
         yield return new WaitUntil(() => ActivaterCharacter.GetComponent<SkillContainer>().GetImpact() == true);
         if (skillAudioEvent != null) skillAudioEvent.Play(ActivaterCharacter.transform);
         //Debug.Log($"Waitfinished");
-                    int random = UnityEngine.Random.Range(1, 101);
+
+        if (base.TryHit(Skill, ActivaterCharacter, selectedTile, OnComplete))
+        {
+            base.DoDamage(Skill, ActivaterCharacter, selectedTile, OnComplete);
+            base.DoStun(Skill, ActivaterCharacter, selectedTile, OnComplete);
+        }
+        else
+        {
+            base.OnMiss(Skill, ActivaterCharacter, selectedTile, OnComplete);
+        }
+        
+            /*int random = UnityEngine.Random.Range(1, 101);
             if (random <= Skill.accuracy || Skill.accuracy == 100)
             {
                 if (ActivaterCharacter is Player)
@@ -199,6 +208,8 @@ public class ShieldCharge : SkillsData
                         //Debug.Log($"HIT: {random} < {Skill.accuracy}");
                     }
                 }
+                
+                
             }
             else
             {
@@ -213,7 +224,9 @@ public class ShieldCharge : SkillsData
                     skillMissVFX.SpawnVFX(selectedTile.occupyingPlayer.transform);
                     selectedTile.occupyingPlayer.GetComponent<SGT_Health>().Miss();
                 }
-            }
+                
+                
+            }*/
             OnComplete?.Invoke();
     }
 }

@@ -85,31 +85,31 @@ public class SkillsData : ScriptableObject
    // [PropertySpace(SpaceAfter = 500)]
     
 
-    public virtual void ActivateSkill(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, GameObject parent,  Action OnComplete = null)
+    public virtual void ActivateSkill(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile,  Action OnComplete = null)
     {
         
     }
 
     //tried to move the skill activation to the base class, but it might get too complicated
     
-    public virtual bool TryHit(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, GameObject parent,  Action OnComplete = null)
+    public virtual bool TryHit(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile,  Action OnComplete = null)
     {
         int random = UnityEngine.Random.Range(1, 101);
         if (random <= Skill.accuracy || Skill.accuracy == 100) //hit
         {
             Debug.Log($"HIT: {random} < {Skill.accuracy}");
-            OnHit(Skill, ActivaterCharacter, selectedTile, parent, OnComplete);
+            //OnHit(Skill, ActivaterCharacter, selectedTile, OnComplete);
             return true;
         }
         else
         {
             Debug.Log($"MISSED: {random} > {Skill.accuracy}");
-            OnMiss(Skill, ActivaterCharacter, selectedTile, parent, OnComplete);
+            //OnMiss(Skill, ActivaterCharacter, selectedTile, OnComplete);
             return false;
         }
     }
 
-    public virtual void OnHit(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, GameObject parent,  Action OnComplete = null)
+    public virtual void OnHit(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile,  Action OnComplete = null)
     {
         if (ActivaterCharacter is Player)
         {
@@ -160,14 +160,14 @@ public class SkillsData : ScriptableObject
         }
     }
     
-    public void OnMiss(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, GameObject parent,  Action OnComplete = null)
+    public void OnMiss(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile,  Action OnComplete = null)
     {
-        if (selectedTile.occupiedByEnemy)
+        if (ActivaterCharacter is Player && selectedTile.occupiedByEnemy)
         {
             skillMissVFX.SpawnVFX(selectedTile.occupyingEnemy.transform);
             selectedTile.occupyingEnemy.GetComponent<SGT_Health>().Miss();
         }
-        if (selectedTile.occupiedByPlayer)
+        if (ActivaterCharacter is Enemy && selectedTile.occupiedByPlayer)
         {
             skillMissVFX.SpawnVFX(selectedTile.occupyingPlayer.transform);
             selectedTile.occupyingPlayer.GetComponent<SGT_Health>().Miss();
@@ -176,18 +176,59 @@ public class SkillsData : ScriptableObject
         //Debug.Log($"on hit 2");
     }
 
-    public virtual void DoSomething(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, GameObject parent,  Action OnComplete = null)
+    public virtual void DoSomething(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile,  Action OnComplete = null)
     {
         
     }
-    
-    public void DoDamage(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, GameObject parent,  Action OnComplete = null)
+
+    public virtual void DoDamage(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, Action OnComplete = null)
+    {
+        if (ActivaterCharacter is Player && selectedTile.occupiedByEnemy)
+        {
+            foreach (var fx in skillHitVFX)
+            {
+                fx.SpawnVFX(selectedTile.occupyingEnemy.transform);
+            }
+
+            selectedTile.occupyingEnemy.GetComponent<DamageHandler>().TakeDamage(Skill.damage, ActivaterCharacter);
+            
+        }
+        if (ActivaterCharacter is Enemy && selectedTile.occupiedByPlayer)
+        {
+            foreach (var fx in skillHitVFX)
+            {
+                fx.SpawnVFX(selectedTile.occupyingPlayer.transform);
+            }
+
+            selectedTile.occupyingPlayer.GetComponent<DamageHandler>().TakeDamage(Skill.damage, ActivaterCharacter);
+        }
+        
+        if (selectedTile.OccupiedByCoverPoint)
+        {
+            foreach (var fx in skillHitVFX)
+            {
+                fx.SpawnVFX(selectedTile.occupyingCoverPoint.transform);
+            }
+
+            if (selectedTile.occupyingCoverPoint.GetComponent<SGT_Health>() != null) selectedTile.occupyingCoverPoint.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
+        }
+    }
+    public void DoStun(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile,  Action OnComplete = null)
+    {
+        if (ActivaterCharacter is Player && selectedTile.occupiedByEnemy)
+        {
+            selectedTile.occupyingEnemy.Stun(true, skillEffectDuration);
+        }
+        if (ActivaterCharacter is Enemy && selectedTile.occupiedByPlayer)
+        {
+            selectedTile.occupyingPlayer.Stun(true, skillEffectDuration);
+        }
+
+    }
+
+    public void DoKnockBack(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile,  Action OnComplete = null)
     {
         
-    }
-    public void DoStun(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, GameObject parent,  Action OnComplete = null)
-    {
-        selectedTile.occupyingPlayer.Stun(true, skillEffectDuration);
     }
     
 }

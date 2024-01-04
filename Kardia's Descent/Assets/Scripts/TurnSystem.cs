@@ -14,6 +14,7 @@ public class TurnSystem : MonoBehaviour
     [SerializeField] public List<Player> players = new List<Player>();
     [SerializeField] public List<Enemy> enemies = new List<Enemy>();
     [SerializeField] public List<GameObject> allEntities = new List<GameObject>();
+    public GameObject combatStartedImage;
 
     public int turn = 0;
     public int round = 1;
@@ -97,6 +98,7 @@ public class TurnSystem : MonoBehaviour
 
     private void Update()//todo delete this, its for debug only
     {
+#if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.T))
         {
             NextTurn();
@@ -105,6 +107,7 @@ public class TurnSystem : MonoBehaviour
         {
             NextRound();
         }
+#endif
     }
 
 
@@ -136,8 +139,15 @@ public class TurnSystem : MonoBehaviour
     [Button,GUIColor(0,1,0)][FoldoutGroup("DEBUG")]
     public void CombatStarted()
     {
+        combatStartedImage.SetActive(true);
         turn = 1;
+        round = 1;
+        TurnChange?.Invoke(turn);
+        OnTurnChange.Invoke();
         OnCombatStart.Invoke();
+        RoundChange?.Invoke(round);
+        OnRoundChange.Invoke();
+        DecideWhosTurn();
     }
     
     [Button,GUIColor(0,1,0)][FoldoutGroup("DEBUG")]

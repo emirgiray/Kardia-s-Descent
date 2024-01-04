@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillSprite: {fileID: 434477216, guid: f050367bbcaea674495c2d5e36fc140b, type: 3}
   skillName: Shield Wall
-  skillDescription: Passive, erves as a full cover.
+  skillDescription: Passive, serves as a full cover.
   skillID: 4
   skillDamage: 0
   skillRange: 0

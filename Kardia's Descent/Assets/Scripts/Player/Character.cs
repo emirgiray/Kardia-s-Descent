@@ -42,6 +42,7 @@ public class Character : MonoBehaviour
     public CharacterMoveData movedata;
     public Tile characterTile;
     [SerializeField] LayerMask GroundLayerMask;
+    [SerializeField] LayerMask detectionLayerMask;
     
     [SerializeField] public Animator animator;//todo make every character have the same animator and change the values with anim override, this may need a character stats script or SO
     
@@ -237,11 +238,15 @@ public class Character : MonoBehaviour
             
             animator.SetBool("Walk", false);
             MoveEnd.Invoke();
+            
+            CheckToStartCombat();
         }
         else
         {
             
         }
+        
+        
     }
 
 float movementThreshold = 0.1f;
@@ -271,8 +276,30 @@ float movementThreshold = 0.1f;
         // Rotate(origin, destination);
         transform.DOLookAt(destination, 0.75f, AxisConstraint.Y, Vector3.up).SetEase(Ease.OutBack);
     }*/
-    
 
+    [Button]
+    public void CheckToStartCombat()
+    {
+        if (this is Player && TurnSystem.Instance.turnState == TurnSystem.TurnState.FreeRoamTurn)
+        {
+            for (int i = 0; i < TurnSystem.Instance.enemies.Count; i++)
+            {
+                if (Pathfinder.Instance.GetTilesInBetween(this, characterTile, TurnSystem.Instance.enemies[i].characterTile, true).Count <= 3)
+                {
+                    if (!Physics.Linecast(this.transform.position, TurnSystem.Instance.enemies[i].transform.position, detectionLayerMask))
+                    {
+                        TurnSystem.Instance.CombatStarted();
+                        //Debug.Log($"Combat started by {TurnSystem.Instance.enemies[i].name}");
+                        return;
+                    }
+                }
+                
+                
+
+            }
+        }
+    }
+    
     public void ResetMovePoints()
     {
         remainingActionPoints = actionPoints;

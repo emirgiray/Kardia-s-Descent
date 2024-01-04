@@ -220,6 +220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterSprite: {fileID: -11266308, guid: f050367bbcaea674495c2d5e36fc140b, type: 3}
+  characterStats: {fileID: 0}
   actionPoints: 6
   remainingActionPoints: 0
   maxActionPoints: 10
@@ -241,6 +242,9 @@ MonoBehaviour:
   GroundLayerMask:
     serializedVersion: 2
     m_Bits: 8
+  detectionLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
   animator: {fileID: 8171963017244894837}
   characterState: 0
   OnMovePointsChangeEvent:
@@ -270,6 +274,8 @@ MonoBehaviour:
   ActionPointsExhausted:
     m_PersistentCalls:
       m_Calls: []
+  extraMeleeDamage: 0
+  extraRangedAccuracy: 0
   playerPortrait: {fileID: 8400000, guid: 8d4fd00542bae0b43957e359329b47a2, type: 2}
   heartContainer: {fileID: 0}
   killsInTurn: 0
@@ -306,6 +312,8 @@ MonoBehaviour:
   Character: {fileID: 0}
   Inventory: {fileID: 0}
   skillButtons: []
+  damageBeforeCoverDebuff: 0
+  accuracyBeforeCoverDebuff: 0
 --- !u!114 &6326383597764647500
 MonoBehaviour:
   m_ObjectHideFlags: 0
