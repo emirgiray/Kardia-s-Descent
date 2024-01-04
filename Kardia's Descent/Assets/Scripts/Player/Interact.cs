@@ -634,6 +634,7 @@ public class Interact : MonoBehaviour
         if (characterSelected && selectedCharacter.characterState == Character.CharacterState.Attacking)//todo add or FreeRoam
         {
             selectedCharacter.GetComponent<SkillContainer>().ResetCoverAccruacyDebuff();
+            selectedCharacter.GetComponent<SkillContainer>().ResetCoverdamageDebuff();
             if (isMouseOverUI == false)
             {
                 selectedCharacter.Rotate(currentTile.transform.position);
@@ -641,9 +642,10 @@ public class Interact : MonoBehaviour
             
             if (newTile.occupiedByEnemy && attackableTiles.Contains(newTile))
             {
-                if (Pathfinder.Instance.CheckCoverPoint(selectedCharacter.characterTile, newTile))
+                if (Pathfinder.Instance.CheckCoverPoint(selectedCharacter.characterTile, newTile, true))
                 {
                     selectedCharacter.GetComponent<SkillContainer>().ApplyCoverAccuracyDebuff();
+                    selectedCharacter.GetComponent<SkillContainer>().ApplyCoverDamageDebuff();
                     EnableDisableHitChanceUI(true);
                     /*HitChanceUIGameObject.SetActive(true);
                     StartCoroutine(HitChanceUIToMousePos());  
@@ -653,6 +655,7 @@ public class Interact : MonoBehaviour
                 else
                 {
                     selectedCharacter.GetComponent<SkillContainer>().ResetCoverAccruacyDebuff();
+                    selectedCharacter.GetComponent<SkillContainer>().ResetCoverdamageDebuff();
                     EnableDisableHitChanceUI(true);
                     /*HitChanceUIGameObject.SetActive(true);
                     StartCoroutine(HitChanceUIToMousePos());
@@ -662,6 +665,7 @@ public class Interact : MonoBehaviour
             else
             {
                 selectedCharacter.GetComponent<SkillContainer>().ResetCoverAccruacyDebuff();
+                selectedCharacter.GetComponent<SkillContainer>().ResetCoverdamageDebuff();
                 EnableDisableHitChanceUI(false);
                 /*StopCoroutine(HitChanceUIToMousePos());
                 HitChanceUIGameObject.SetActive(false);*/

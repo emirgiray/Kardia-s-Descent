@@ -9,15 +9,18 @@ using Image = UnityEngine.UI.Image;
 
 public class SkillContainer : MonoBehaviour
 {
-    [SerializeField] public List<SkillsData> skillsDataSOList = new List<SkillsData>();
+    [SerializeField] private List<SkillsData> skillsDataSOList = new List<SkillsData>();
     [SerializeField] public List<Skills> skillsList = new List<Skills>();
     //[SerializeField] public SkillsData selectedSOSkill;
     [SerializeField] public Skills selectedSkill;
     [SerializeField] public bool skillSelected = false;
-    [SerializeField] public bool skillCanbeUsed = true;
-    [SerializeField] public Character Character;
-    [SerializeField] public Inventory Inventory;
+    [SerializeField] private bool skillCanbeUsed = true;
+    [SerializeField] private Character Character;
+    [SerializeField] private Inventory Inventory;
     [SerializeField] public List<SkillButton> skillButtons = new List<SkillButton>();
+    
+    [HideInInspector] public int damageBeforeCoverDebuff;
+    [HideInInspector] public int accuracyBeforeCoverDebuff;
     
     private static LTDescr delay;
     // public Action skillNotReadyAction;
@@ -266,12 +269,14 @@ public class SkillContainer : MonoBehaviour
         {
             Character.AttackStart();
         }
+        
+        CalculateExtraStatValues();
     }
 
     public void DeselectSkill(Skills deselectSkill, Enemy enemy = null)
     {
         if (Character is Enemy)Debug.Log($"{this.name} Deselected {deselectSkill.skillData.name}");
-
+        ResetExtraStatValues();
         skillSelected = false;
         /*skillsList.Find(x => x.skillData == selectedSkill.skillData).remainingSkillCooldown = selectedSkill.remainingSkillCooldown;
         skillsList.Find(x => x.skillData == selectedSkill.skillData).skillReadyToUse = selectedSkill.skillReadyToUse;*/
@@ -291,6 +296,8 @@ public class SkillContainer : MonoBehaviour
         {
             enemy.AttackCancel();
         }
+        
+        
     }
     
 bool impact = false;
@@ -336,68 +343,21 @@ bool impact = false;
         
         StartCoroutine(AttackCancelDelay(attackAnimLength, selectedSkill, selectedTile, enemy, OnComplete));
         Character.Attack();
-        Debug.Log($"anim length: {attackAnimLength}");
+        //Debug.Log($"anim length: {attackAnimLength}");
         //Debug.Log($"skill lenght: {overrides[3].Key.length}");
-        
-        
-        
-        /*selectedSkill.skillData.ActivateSkill(selectedSkill, Character, selectedTile, gameObject,  () =>
-        {
-            //animationClips[3] is the useSkill animation
-            delay = LeanTween.delayedCall(attackAnimLength/*Character.animator.runtimeAnimatorController.animationClips[3].length#1#, () =>
-            {
-                DeselectSkill(selectedSkill, enemy);
-                ResetCoverAccruacyDebuff();
-                OnComplete?.Invoke();
-            });
-            
-           
-            
-        });
-        
-        if (Character is Player)
-        {
-            Interact.Instance.selectedCharacter.GetComponent<Character>().AttackEnd(selectedSkill);
-        }
-        else if (Character is Enemy)
-        {
-            enemy.AttackEnd(selectedSkill);
-        }*/
     }
 
     public IEnumerator AttackCancelDelay(float attackAnimLength, Skills selectedSkill, Tile selectedTile, Enemy enemy = null, Action OnComplete = null)
     {
         // yield return new WaitForSecondsRealtime(attackAnimLength);
         
-        //todo apply accuracy and damage bonuses from stats here the reset after complete
-
-        if (selectedSkill.skillData.skillType == SkillsData.SkillType.Melee)
-        {
-            selectedSkill.accuracy += Character.extraRangedAccuracy;
-        }
-        else if (selectedSkill.skillData.skillType == SkillsData.SkillType.Ranged)
-        {
-            selectedSkill.damage += Character.extraMeleeDamage;
-        }
-        
-        selectedSkill.accuracy += Character.extraRangedAccuracy;
-        
         selectedSkill.skillData.ActivateSkill(selectedSkill, Character, selectedTile, gameObject,  () =>
         {
+            DeselectSkill(selectedSkill, enemy);
+            ResetCoverAccruacyDebuff();
+            ResetCoverdamageDebuff();
 
-                DeselectSkill(selectedSkill, enemy);
-                ResetCoverAccruacyDebuff();
-                
-                if (selectedSkill.skillData.skillType == SkillsData.SkillType.Melee)
-                {
-                    selectedSkill.accuracy -= Character.extraRangedAccuracy;
-                }
-                else if (selectedSkill.skillData.skillType == SkillsData.SkillType.Ranged)
-                {
-                    selectedSkill.damage -= Character.extraMeleeDamage;
-                }
-                
-                OnComplete?.Invoke(); 
+            OnComplete?.Invoke(); 
                 
         });
         
@@ -433,7 +393,7 @@ bool impact = false;
     //todo delete this and calcuale for half damage on cover
     public int CalculateCoverAccuracyDebuff(Tile attacker, Tile defender, Skills selectSkill)
     {
-        if (Pathfinder.Instance.CheckCoverPoint(attacker, defender))
+        if (Pathfinder.Instance.CheckCoverPoint(attacker, defender, true))
         {
             Debug.Log($"accuracy debuff: {selectSkill.coverAccuracyDebuff}");
             return selectSkill.coverAccuracyDebuff;
@@ -441,20 +401,73 @@ bool impact = false;
         Debug.Log($"accuracy debuff returned default: 0");
         return 0;
     }
+
+    public int CalculateCoverDamageDebuff(Tile attacker, Tile defender, Skills selectSkill)
+    {
+        if (Pathfinder.Instance.CheckCoverPoint(attacker, defender, true))
+        {
+            return selectSkill.damage / 2;
+        }
+        return 0;
+    }
     
+
     public void ApplyCoverAccuracyDebuff()
     {
+        accuracyBeforeCoverDebuff = selectedSkill.accuracy;
         selectedSkill.accuracy -= selectedSkill.coverAccuracyDebuff;
     }
 
-    public void ResetCoverAccruacyDebuff()//todo !!!!!!this doesnt calculate buffs/debuffs before cover check
+    public void ApplyCoverDamageDebuff()
     {
-        if (selectedSkill == null)
+        damageBeforeCoverDebuff = selectedSkill.damage;
+        selectedSkill.damage /= 2;
+        //Debug.Log($"damge before cover debuff: {damageBeforeCoverDebuff}, damage after cover debuff: {selectedSkill.damage}");
+    }
+    
+    public void ResetCoverAccruacyDebuff()
+    {
+        if (selectedSkill == null || accuracyBeforeCoverDebuff == 0)
         {
             return;
         }
         
-        if(skillSelected) selectedSkill.accuracy = selectedSkill.skillData.accuracy;
+        selectedSkill.accuracy = accuracyBeforeCoverDebuff;
+    }
+
+    public void ResetCoverdamageDebuff()
+    {
+        if (selectedSkill == null || damageBeforeCoverDebuff == 0)
+        {
+            return;
+        }
+        
+        selectedSkill.damage = damageBeforeCoverDebuff;
+    }
+
+    public void CalculateExtraStatValues()
+    {
+        // apply accuracy and damage bonuses from stats here the reset after complete
+        if (selectedSkill.skillData.skillType == SkillsData.SkillType.Ranged)
+        {
+            selectedSkill.accuracy += Character.extraRangedAccuracy;
+        }
+        else if (selectedSkill.skillData.skillType == SkillsData.SkillType.Melee)
+        {
+            selectedSkill.damage += Character.extraMeleeDamage;
+        }
+    }
+
+    public void ResetExtraStatValues()
+    {
+        if (selectedSkill.skillData.skillType == SkillsData.SkillType.Ranged)
+        {
+            selectedSkill.accuracy -= Character.extraRangedAccuracy;
+        }
+        else if (selectedSkill.skillData.skillType == SkillsData.SkillType.Melee)
+        {
+            selectedSkill.damage -= Character.extraMeleeDamage;
+        }
     }
     
     [System.Serializable]

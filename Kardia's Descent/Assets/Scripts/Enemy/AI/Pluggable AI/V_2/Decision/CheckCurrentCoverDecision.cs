@@ -16,7 +16,7 @@ public class CheckCurrentCoverDecision : DecisionAI
         int playersChecked = 0;
         foreach (var player in controller.players)
         {
-            if (Pathfinder.Instance.CheckCoverPoint(player.characterTile, controller.enemy.characterTile))
+            if (Pathfinder.Instance.CheckCoverPoint(player.characterTile, controller.enemy.characterTile, true))
             {
                 playersChecked++;
                 inCover++;

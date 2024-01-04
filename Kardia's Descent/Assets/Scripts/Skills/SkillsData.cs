@@ -28,6 +28,7 @@ public class SkillsData : ScriptableObject
     public VFXSpawner[] skillHitVFX;
     public VFXSpawner skillMissVFX;
     public SGT_AudioEvent skillAudioEvent;
+    [EnumPaging]
     public enum SkillType
     {
         Ranged, Melee
@@ -41,22 +42,26 @@ public class SkillsData : ScriptableObject
     }
 
     public PassiveOrActive passiveOrActive;
+    [EnumPaging]
     public enum SkillClass
     {
         Pistol, Rifle, Shotgun, Sniper, SMG, LMG, Axe, Sword, Dagger, Active, Passive, Buff
     }
     public SkillClass skillClass;
+    [EnumPaging]
     public enum DamageType
     {
         Physical, Random, Fire, Ice, Poison, Electric, Explosive, None
     }
     public DamageType damageType;
+    [EnumPaging]
     public enum SkillTarget
     {
          Enemy, Ally, Self,MultipleEnemies, MultipleAllies,  AllEnemies, AllAllies, All
     }
     public SkillTarget skillTarget;
     
+    [EnumPaging]
     public enum SkillHitType
     {
         Single, Area, Line, Cone, AllInRange, AllInLine, AllInCone, All

@@ -22,8 +22,8 @@ MonoBehaviour:
   actionPointUse: 0
   skillEffectDuration: 0
   skillBuffDebuffAmount: 0
-  accuracy: 100
-  coverAccuracyDebuff: 20
+  accuracy: 50
+  coverAccuracyDebuff: 0
   animatorOverrideController: {fileID: 22100000, guid: 36869fff4fd0c71418a963566a5b56d5,
     type: 2}
   skillStartVFX: {fileID: 0}

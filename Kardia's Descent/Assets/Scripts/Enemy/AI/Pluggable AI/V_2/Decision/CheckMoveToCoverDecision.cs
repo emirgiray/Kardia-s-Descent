@@ -30,7 +30,7 @@ public class CheckMoveToCoverDecision : DecisionAI
             {
                 playersChecked++;
                 
-                if (Pathfinder.Instance.CheckCoverPoint(player.characterTile, tile))
+                if (Pathfinder.Instance.CheckCoverPoint(player.characterTile, tile, true))
                 {
                     inCover++;
                     

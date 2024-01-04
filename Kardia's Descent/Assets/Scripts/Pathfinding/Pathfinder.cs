@@ -452,25 +452,44 @@ public class Pathfinder : MonoBehaviour
     }
 
     [Button]
-    public bool CheckCoverPoint(Tile attacking, Tile defending)
+    public bool CheckCoverPoint(Tile attacking, Tile defending, bool sphereCast)
     {
        //check if the defending character is in cover
        Vector3 attackingPos = new Vector3(attacking.transform.position.x, attacking.transform.position.y + characterYOffset, attacking.transform.position.z);
        Vector3 defendingPos = new Vector3(defending.transform.position.x, defending.transform.position.y + characterYOffset, defending.transform.position.z);
        
-       //Debug.DrawRay(defendingPos, (attackingPos - defendingPos).normalized * coverPointRayLenght,  Color.red);
-       if (Physics.Raycast(defendingPos, (attackingPos - defendingPos).normalized, out RaycastHit hit, coverPointRayLenght, coverPointMask))
-       {
-           //Debug.Log($"defender {defending} is in cover");
-           return true;
-       }
-       
-       if (defending.occupiedByPlayer)
-       {
-           if (Physics.Raycast(defendingPos, (attackingPos - defendingPos).normalized, out RaycastHit hit2, coverPointRayLenght, tankCoverPointMask))
+      
+       if (!sphereCast)
+       { 
+           //Debug.DrawRay(defendingPos, (attackingPos - defendingPos).normalized * coverPointRayLenght,  Color.red);
+           if (Physics.Raycast(defendingPos, (attackingPos - defendingPos).normalized, out RaycastHit hit, coverPointRayLenght, coverPointMask))
            {
-               //Debug.Log($"defender {defending} is in tank cover");
+               //Debug.Log($"defender {defending} is in cover");
                return true;
+           }
+       
+           if (defending.occupiedByPlayer)
+           {
+               if (Physics.Raycast(defendingPos, (attackingPos - defendingPos).normalized, out RaycastHit hit2, coverPointRayLenght, tankCoverPointMask))
+               {
+                   //Debug.Log($"defender {defending} is in tank cover");
+                   return true;
+               }
+           }
+       }
+       else
+       {
+           if (Physics.SphereCast(defendingPos, 0.5f, (attackingPos - defendingPos).normalized, out RaycastHit hit, coverPointRayLenght, coverPointMask))
+           {
+               return true;
+           }
+
+           if (defending.occupiedByPlayer)
+           {
+               if (Physics.SphereCast(defendingPos, 0.5f, (attackingPos - defendingPos).normalized, out RaycastHit hit2, coverPointRayLenght, tankCoverPointMask))
+               {
+                   return true;
+               }
            }
        }
        

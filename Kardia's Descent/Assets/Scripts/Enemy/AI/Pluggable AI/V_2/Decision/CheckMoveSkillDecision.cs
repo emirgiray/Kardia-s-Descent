@@ -42,7 +42,7 @@ public class CheckMoveSkillDecision : DecisionAI
                                 //if (Pathfinder.Instance.CheckCoverPoint(attackTile, tile ))
                                 {
                                     //Debug.Log($"enemy is in cover");
-                                    tileScore = 50 + skill.damage - controller.skillContainer.CalculateCoverAccuracyDebuff(tile, attackTile, skill)
+                                    tileScore = 50 + skill.damage - controller.skillContainer.CalculateCoverDamageDebuff(tile, attackTile, skill) - controller.skillContainer.CalculateCoverAccuracyDebuff(tile, attackTile, skill)
                                         + Pathfinder.Instance.GetTilesInBetween(controller.enemy, tile, attackTile, true).Count * 10;
 
                                    // Debug.Log($"remaining ap after move: {reaminingActionPointsAfterMove}");

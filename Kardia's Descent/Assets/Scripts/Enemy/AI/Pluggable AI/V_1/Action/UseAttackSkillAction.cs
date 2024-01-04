@@ -11,6 +11,9 @@ public class UseAttackSkillAction : ActionAI
         controller.skillContainer.selectedSkill.accuracy -= controller.skillContainer.CalculateCoverAccuracyDebuff(
             controller.decidedMoveTile, controller.targetPlayer.characterTile, controller.skillContainer.selectedSkill);//reduce accuracy if target player in cover
         
+        controller.skillContainer.selectedSkill.damage -= controller.skillContainer.CalculateCoverDamageDebuff(
+            controller.decidedMoveTile, controller.targetPlayer.characterTile, controller.skillContainer.selectedSkill);//reduce damage if target player in cover
+        
         UseSkill(controller, controller.skillContainer.selectedSkill, controller.targetPlayer);
     }
 

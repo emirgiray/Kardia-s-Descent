@@ -54,9 +54,9 @@ public class BasicMelee : SkillsData
     public IEnumerator WaitUntilEnum(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile,
         GameObject parent, Action OnComplete = null)
     {
-        Debug.Log($"wait started    ");
+        //Debug.Log($"wait started    ");
         yield return new WaitUntil(() => ActivaterCharacter.GetComponent<SkillContainer>().GetImpact() == true);
-        Debug.Log($"Waitfinished");
+        //Debug.Log($"Waitfinished");
         
         if (skillAudioEvent != null) skillAudioEvent.Play(ActivaterCharacter.transform);
         if (skillStartVFX != null) skillStartVFX.SpawnVFX(ActivaterCharacter.Hand);
@@ -76,7 +76,7 @@ public class BasicMelee : SkillsData
                     //selectedTile.occupyingEnemy.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
                     selectedTile.occupyingEnemy.GetComponent<DamageHandler>().TakeDamage(Skill.damage, ActivaterCharacter);
 
-                    Debug.Log($"HIT: {random} < {Skill.accuracy}");
+                    //Debug.Log($"HIT: {random} < {Skill.accuracy}");
                     //base.OnHit();
                 }
 
@@ -86,8 +86,8 @@ public class BasicMelee : SkillsData
                     {
                         fx.SpawnVFX(selectedTile.occupyingCoverPoint.transform);
                     }
-                    selectedTile.occupyingCoverPoint.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
-                    Debug.Log($"HIT: {random} < {Skill.accuracy}");
+                    if(selectedTile.occupyingCoverPoint.GetComponent<SGT_Health>() != null) selectedTile.occupyingCoverPoint.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
+                    //Debug.Log($"HIT: {random} < {Skill.accuracy}");
                 }
             }
 
@@ -102,7 +102,7 @@ public class BasicMelee : SkillsData
 
                     //selectedTile.occupyingPlayer.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
                     selectedTile.occupyingPlayer.GetComponent<DamageHandler>().TakeDamage(Skill.damage, ActivaterCharacter);
-                    Debug.Log($"HIT: {random} < {Skill.accuracy}");
+                    //Debug.Log($"HIT: {random} < {Skill.accuracy}");
                     //base.OnHit();
                 }
 
@@ -112,8 +112,8 @@ public class BasicMelee : SkillsData
                     {
                         fx.SpawnVFX(selectedTile.occupyingCoverPoint.transform);
                     }
-                    selectedTile.occupyingCoverPoint.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
-                    Debug.Log($"HIT: {random} < {Skill.accuracy}");
+                    if(selectedTile.occupyingCoverPoint.GetComponent<SGT_Health>() != null) selectedTile.occupyingCoverPoint.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);    
+                    //Debug.Log($"HIT: {random} < {Skill.accuracy}");
                 }
             }
         }
@@ -129,7 +129,7 @@ public class BasicMelee : SkillsData
                 skillMissVFX.SpawnVFX(selectedTile.occupyingPlayer.transform);
                 selectedTile.occupyingPlayer.GetComponent<SGT_Health>().Miss();
             }
-            Debug.Log($"MISSED: {random} > {Skill.accuracy}");
+            //Debug.Log($"MISSED: {random} > {Skill.accuracy}");
         }
         
         //if the current anim name contains idle, then invoke oncomplete

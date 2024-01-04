@@ -137,10 +137,10 @@ public class ShieldCharge : SkillsData
     public IEnumerator WaitUntilEnum(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile,
         GameObject parent, Action OnComplete = null)
     {
-        Debug.Log($"wait started    ");
+        //Debug.Log($"wait started    ");
         yield return new WaitUntil(() => ActivaterCharacter.GetComponent<SkillContainer>().GetImpact() == true);
         if (skillAudioEvent != null) skillAudioEvent.Play(ActivaterCharacter.transform);
-        Debug.Log($"Waitfinished");
+        //Debug.Log($"Waitfinished");
                     int random = UnityEngine.Random.Range(1, 101);
             if (random <= Skill.accuracy || Skill.accuracy == 100)
             {
@@ -156,7 +156,7 @@ public class ShieldCharge : SkillsData
                         //selectedTile.occupyingEnemy.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
                         selectedTile.occupyingEnemy.GetComponent<DamageHandler>().TakeDamage(Skill.damage, ActivaterCharacter);
 
-                        Debug.Log($"HIT: {random} < {Skill.accuracy}");
+                        //Debug.Log($"HIT: {random} < {Skill.accuracy}");
                         //base.OnHit();
                     }
 
@@ -167,8 +167,8 @@ public class ShieldCharge : SkillsData
                             fx.SpawnVFX(selectedTile.occupyingCoverPoint.transform);
                         }
                         
-                        selectedTile.occupyingCoverPoint.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
-                        Debug.Log($"HIT: {random} < {Skill.accuracy}");
+                        if(selectedTile.occupyingCoverPoint.GetComponent<SGT_Health>() != null) selectedTile.occupyingCoverPoint.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);  
+                        //Debug.Log($"HIT: {random} < {Skill.accuracy}");
                     }
                 }
 
@@ -184,7 +184,7 @@ public class ShieldCharge : SkillsData
                         selectedTile.occupyingPlayer.Stun(true, skillEffectDuration);
                         //selectedTile.occupyingPlayer.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
                         selectedTile.occupyingPlayer.GetComponent<DamageHandler>().TakeDamage(Skill.damage, ActivaterCharacter);
-                        Debug.Log($"HIT: {random} < {Skill.accuracy}");
+                        //Debug.Log($"HIT: {random} < {Skill.accuracy}");
                         //base.OnHit();
                     }
 
@@ -195,14 +195,14 @@ public class ShieldCharge : SkillsData
                             fx.SpawnVFX(selectedTile.occupyingCoverPoint.transform);
                         }
                         
-                        selectedTile.occupyingCoverPoint.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
-                        Debug.Log($"HIT: {random} < {Skill.accuracy}");
+                        if(selectedTile.occupyingCoverPoint.GetComponent<SGT_Health>() != null) selectedTile.occupyingCoverPoint.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
+                        //Debug.Log($"HIT: {random} < {Skill.accuracy}");
                     }
                 }
             }
             else
             {
-                Debug.Log($"MISSED: {random} > {Skill.accuracy}");
+                //Debug.Log($"MISSED: {random} > {Skill.accuracy}");
                 if (selectedTile.occupiedByEnemy)
                 {
                     skillMissVFX.SpawnVFX(selectedTile.occupyingEnemy.transform);
