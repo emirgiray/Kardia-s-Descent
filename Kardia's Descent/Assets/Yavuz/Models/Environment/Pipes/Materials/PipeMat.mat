@@ -192,7 +192,7 @@ Material:
     - _RimLightSmoothness: 0
     - _RimPower: 0.55
     - _SizeFalloff: 0
-    - _Smoothness: 0.5
+    - _Smoothness: 0.417
     - _SmoothnessTextureChannel: 0
     - _SpecClipMaskScale: 1
     - _SpecShadowStrength: 1
@@ -213,7 +213,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.7075472, g: 0.62893087, b: 0.5306604, a: 1}
+    - _BaseColor: {r: 0.6132076, g: 0.534113, b: 0.43676576, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FaceFrontDirection: {r: 0, g: 0, b: 1, a: 0}
