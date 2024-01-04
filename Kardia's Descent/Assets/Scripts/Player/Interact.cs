@@ -34,7 +34,7 @@ public class Interact : MonoBehaviour
     [BoxGroup("Free Roam")][SerializeField]
     public LayerMask freeRoamMask;
     [BoxGroup("Free Roam")][SerializeField]
-    public Transform freeRoamTarget;
+    //public Transform freeRoamTarget;
     IAstarAI[] ais;
     
     List<Tile> reachableTiles = new List<Tile>();
@@ -204,11 +204,11 @@ public class Interact : MonoBehaviour
         MouseUpdate();
         CheckMouseOverUI();
         CheckCharacterInputs();
-        UpdateFreeRoamTargetPosition();
+        //UpdateFreeRoamTargetPosition();
         
     }
 
-    public void UpdateFreeRoamTargetPosition()
+    /*public void UpdateFreeRoamTargetPosition()
     {
         if (TurnSystem.Instance.turnState == TurnSystem.TurnState.FreeRoamTurn && characterSelected && Input.GetMouseButtonDown(0))
         {
@@ -228,7 +228,7 @@ public class Interact : MonoBehaviour
                 freeRoamTarget.position = newPosition;
             }
         }
-    }
+    }*/
 
     public void CheckCharacterInputs()
     {
