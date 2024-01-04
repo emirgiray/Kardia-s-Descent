@@ -178,7 +178,7 @@ Material:
     - _HatchingEnabled: 0
     - _HatchingRotation: 0
     - _HatchingSmoothness: 0.1
-    - _Metallic: 0.571
+    - _Metallic: 0
     - _NoiseScale: 1
     - _NoiseStrength: 0.1
     - _OcclusionStrength: 1
@@ -189,11 +189,11 @@ Material:
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _RimEnabled: 1
-    - _RimLightAlign: 0
+    - _RimLightAlign: -0.02
     - _RimLightSmoothness: 0
-    - _RimPower: 0.5
+    - _RimPower: 0.356
     - _SizeFalloff: 0
-    - _Smoothness: 0.781
+    - _Smoothness: 0
     - _SmoothnessTextureChannel: 0
     - _SpecClipMaskScale: 1
     - _SpecShadowStrength: 1
