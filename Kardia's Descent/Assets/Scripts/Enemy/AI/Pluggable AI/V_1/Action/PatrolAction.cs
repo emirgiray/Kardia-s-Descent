@@ -18,7 +18,7 @@ public class PatrolAction : ActionAI
         {
             if (controller.enemy.turnOrder == TurnSystem.Instance.currentEnemyTurnOrder)
             {
-                controller.enemy.StartMove(FindRandomPath(controller),  null, false);
+                controller.enemy.StartMove(FindRandomPath(controller), true,  null, false);
                 controller.enemy.canMove = false;
                 //controller.enemy.remainingMoveRange = 0;
             }

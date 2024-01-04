@@ -17,7 +17,7 @@ public class Pathfinder : MonoBehaviour
     [SerializeField] private float characterYOffset = 0.5f;
     [SerializeField] private float tileVerticalityLenght = 2f;
     [Tooltip("This is the offset of the hexagonal tiles, it is used to calculate the distance between tiles, default is 1.75f for hex scale (1, 1, 1) )")]
-    [SerializeField] private /*const*/ float HEXAGONAL_OFFSET = 1.75f;
+    [SerializeField] public /*const*/ float HEXAGONAL_OFFSET = 1.75f;
     
     private void Awake()
     {
@@ -452,7 +452,7 @@ public class Pathfinder : MonoBehaviour
     }
 
     [Button]
-    public bool CheckCoverPoint(Tile attacking, Tile defending, bool sphereCast)
+    public bool CheckCoverPoint(Tile attacking, Tile defending, bool sphereCast, float sphereRaidus = 0.5f)
     {
        //check if the defending character is in cover
        Vector3 attackingPos = new Vector3(attacking.transform.position.x, attacking.transform.position.y + characterYOffset, attacking.transform.position.z);
@@ -479,14 +479,14 @@ public class Pathfinder : MonoBehaviour
        }
        else
        {
-           if (Physics.SphereCast(defendingPos, 0.5f, (attackingPos - defendingPos).normalized, out RaycastHit hit, coverPointRayLenght, coverPointMask))
+           if (Physics.SphereCast(defendingPos, sphereRaidus, (attackingPos - defendingPos).normalized, out RaycastHit hit, coverPointRayLenght, coverPointMask))
            {
                return true;
            }
 
            if (defending.occupiedByPlayer)
            {
-               if (Physics.SphereCast(defendingPos, 0.5f, (attackingPos - defendingPos).normalized, out RaycastHit hit2, coverPointRayLenght, tankCoverPointMask))
+               if (Physics.SphereCast(defendingPos, sphereRaidus, (attackingPos - defendingPos).normalized, out RaycastHit hit2, coverPointRayLenght, tankCoverPointMask))
                {
                    return true;
                }

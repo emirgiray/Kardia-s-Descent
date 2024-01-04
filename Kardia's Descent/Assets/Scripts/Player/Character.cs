@@ -12,6 +12,7 @@ public class Character : MonoBehaviour
     
     [SerializeField] public Sprite characterSprite;
     [SerializeField] public CharacterStats characterStats;
+    [SerializeField] public SkillContainer SkillContainer;
     [SerializeField] public int actionPoints = 3;
     [SerializeField] public int remainingActionPoints;
     [SerializeField] public int maxActionPoints = 10;
@@ -24,6 +25,7 @@ public class Character : MonoBehaviour
     [SerializeField] public bool canAttack = true;
     [SerializeField] public bool inCombat = true;
     [SerializeField] public bool isDead = false;
+    [SerializeField] public Transform Head;
     [SerializeField] public Transform Hand;
     [SerializeField] public bool isStunned = false;
     [SerializeField] int totalSteps = 0;
@@ -32,7 +34,7 @@ public class Character : MonoBehaviour
     [SerializeField] private float passingMoveTime = 0;
     public enum CharacterClass
     {
-        None, Tank, Rogue, Sniper, Bombardier, TheRegular, Medic, Support, Melee, Ranged
+        None, Tank, Rogue, Sniper, Bombardier, TheRegular, Medic, Support, Bruiser, Melee, Ranged
     }
 
     public CharacterClass characterClass;
@@ -41,7 +43,7 @@ public class Character : MonoBehaviour
     
     public CharacterMoveData movedata;
     public Tile characterTile;
-    [SerializeField] LayerMask GroundLayerMask;
+    [SerializeField] public LayerMask GroundLayerMask;
     [SerializeField] LayerMask detectionLayerMask;
     
     [SerializeField] public Animator animator;//todo make every character have the same animator and change the values with anim override, this may need a character stats script or SO
@@ -114,7 +116,7 @@ public class Character : MonoBehaviour
         Debug.Log("Unable to find a start position");
     }
 
-    public void StartMove(Path _path, Action OnComplete = null, bool spendActionPoints = true)
+    public void StartMove(Path _path, bool rotate = true, Action OnComplete = null, bool spendActionPoints = true)
     {
         if (canMove)
         {
@@ -137,11 +139,33 @@ public class Character : MonoBehaviour
                 //  print("enemy move start");
             }
             //lastTransform.position = _path.tiles[_path.tiles.Count -1 ].transform.position - _path.tiles[0].transform.position ;
-            StartCoroutine(MoveAlongPath(_path, OnComplete, spendActionPoints));
+            StartCoroutine(MoveAlongPath(_path, rotate, OnComplete, spendActionPoints));
         }
     }
+
+    public void StartKnockbackMove(Path _path, bool rotate = true, Action OnComplete = null, bool spendActionPoints = true)
+    {
+        characterState = CharacterState.Moving;
+        Moving = true;
+        characterTile.Occupied = false;
+        characterTile.ResetOcupying();
+            
+        animator.SetTrigger("Knockback");
+        animator.ResetTrigger("Hit");
+            
+        if (this is Player)
+        {
+            characterTile.occupiedByPlayer = false;
+        }
+        if (this is Enemy)
+        {
+            characterTile.occupiedByEnemy = false;
+        }
+        
+        StartCoroutine(MoveAlongPath(_path, rotate, OnComplete, spendActionPoints));
+    }
     
-    IEnumerator MoveAlongPath(Path path, Action OnComplete = null, bool spendActionPoints = true)
+    IEnumerator MoveAlongPath(Path path, bool rotate, Action OnComplete = null, bool spendActionPoints = true)
     {
         const float MIN_DISTANCE = 0.05f;
         const float TERRAIN_PENALTY = 0.5f;
@@ -163,7 +187,7 @@ public class Character : MonoBehaviour
                 /*if(!path.tiles[currentStep].Occupied) */
                 
                 
-                MoveAndRotate(currentTile, path.tiles[currentStep] /*nextTilePosition*/, movementTime , currentStep, pathLength);
+                MoveAndRotate(currentTile, path.tiles[currentStep] /*nextTilePosition*/, movementTime , currentStep, pathLength, rotate);
                 
                 animationTime += Time.deltaTime;
 
@@ -251,21 +275,23 @@ public class Character : MonoBehaviour
 
 float movementThreshold = 0.1f;
 
-    void MoveAndRotate(Tile origin, Tile destination, float duration, float currentStep, float pathLength)
+    void MoveAndRotate(Tile origin, Tile destination, float duration, float currentStep, float pathLength, bool rotate)
     {
         
-        transform.position = Vector3.Lerp(origin.transform.position, destination.transform.position, duration); 
-        if (Vector3.Distance(transform.position, destination.transform.position) > movementThreshold)
+        transform.position = Vector3.Lerp(origin.transform.position, destination.transform.position, duration);
+        if (rotate)
         {
-            transform.DOLookAt(destination.transform.position, 0.75f, AxisConstraint.Y, Vector3.up)
-                .SetEase(Ease.OutBack);
+            if (Vector3.Distance(transform.position, destination.transform.position) > movementThreshold)
+            {
+                transform.DOLookAt(destination.transform.position, 0.75f, AxisConstraint.Y, Vector3.up).SetEase(Ease.OutBack);
+            }
         }
     }
 
-    public void Rotate(Vector3 destination, Action OnComplete = null)
+    public void Rotate(Vector3 destination, float duration = 0.75f, Action OnComplete = null)
     {
         // transform.rotation = Quaternion.LookRotation(origin.DirectionTo(destination).Flat(), Vector3.up);
-        transform.DOLookAt(destination, 0.75f, AxisConstraint.Y, Vector3.up).SetEase(Ease.OutBack).OnComplete(()=> OnComplete?.Invoke());
+        transform.DOLookAt(destination, duration, AxisConstraint.Y, Vector3.up).SetEase(Ease.OutBack).OnComplete(()=> OnComplete?.Invoke());
  
         //StartCoroutine(RotateEnum(origin, destination));
     }
@@ -464,6 +490,7 @@ float movementThreshold = 0.1f;
         characterState = CharacterState.Dead;
         characterCard.SetActive(false);
         //gameObject.transform.DOMoveY(gameObject.transform.position.y - 0.5f, 0.5f);
+        Stun(false, 0);
         OnCharacterDeath?.Invoke(this);
         if (this is Player)
         {
@@ -496,7 +523,7 @@ float movementThreshold = 0.1f;
     }
     
   
-
+    GameObject stunVFX = null;
     public void Stun(bool value, int turns)
     {
         canMove = !value;
@@ -504,6 +531,25 @@ float movementThreshold = 0.1f;
         
         isStunned = value;
         remainingStunTurns = turns;
+        
+        
+        
+        if (value)
+        {
+            if (stunVFX == null)
+            {
+                stunVFX = VFXManager.Instance.stunVFX.SpawnVFX(Head);
+                stunVFX.transform.SetParent(Head);
+            }
+        }
+        else
+        {
+            if (stunVFX != null)
+            {
+                Debug.Log($"expression");
+                Destroy(stunVFX);
+            }
+        }
     }
 
     public void CheckRemoveStun()

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8436f111b854bff449ffffe387f822ee, type: 3}
   m_Name: Bruiser Basic
   m_EditorClassIdentifier: 
-  skillSprite: {fileID: -1155649192, guid: f050367bbcaea674495c2d5e36fc140b, type: 3}
+  skillSprite: {fileID: 21300028, guid: 7ab74e659e1f0a34d9cfec21c478fc12, type: 3}
   skillName: Basic
   skillDescription: Basic attack.
-  skillID: 1
-  skillDamage: 15
+  skillID: 5
+  skillDamage: 5
   skillRange: 3
   skillCooldown: 0
   actionPointUse: 3
@@ -24,18 +24,18 @@ MonoBehaviour:
   skillBuffDebuffAmount: 1
   accuracy: 50
   coverAccuracyDebuff: 0
-  animatorOverrideController: {fileID: 22100000, guid: 7e3ba37234fecc44ea2943c3515e1d61,
+  animatorOverrideController: {fileID: 22100000, guid: 21d0ca836db6d7d489d8e8d19f188d7c,
     type: 2}
-  skillStartVFX: {fileID: 11400000, guid: e10618c190f41fc4e8741574e0d4635d, type: 2}
+  skillStartVFX: {fileID: 0}
   skillHitVFX:
   - {fileID: 11400000, guid: 2d7ba90a2d4cad44ea904346e7ce5f75, type: 2}
   skillMissVFX: {fileID: 11400000, guid: f95dd6b5fb3dc4f4c9158365d41b4807, type: 2}
   skillAudioEvent: {fileID: 11400000, guid: 270f97129d40c8348826c266d928e7a8, type: 2}
-  skillType: 0
+  skillType: 1
   passiveOrActive: 0
   skillClass: 0
   damageType: 0
   skillTarget: 0
   skillHitType: 0
-  skillEffect: 0
+  skillEffect: 8
   buffDebuffType: 0

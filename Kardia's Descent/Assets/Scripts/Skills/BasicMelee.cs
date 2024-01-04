@@ -53,7 +53,7 @@ public class BasicMelee : SkillsData
     public IEnumerator WaitUntilEnum(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, Action OnComplete = null)
     {
         //Debug.Log($"wait started    ");
-        yield return new WaitUntil(() => ActivaterCharacter.GetComponent<SkillContainer>().GetImpact() == true);
+        yield return new WaitUntil(() => ActivaterCharacter.SkillContainer.GetImpact() == true);
         //Debug.Log($"Waitfinished");
         
         if (skillAudioEvent != null) skillAudioEvent.Play(ActivaterCharacter.transform);
@@ -62,6 +62,16 @@ public class BasicMelee : SkillsData
         if (base.TryHit(Skill, ActivaterCharacter, selectedTile, OnComplete))
         {
             base.DoDamage(Skill, ActivaterCharacter, selectedTile, OnComplete); 
+            
+            //todo add this part to base, and make it so that it can be called from anywhere
+            switch(skillEffect)
+            {
+                case SkillEffect.None:
+                    break;
+                case SkillEffect.Stun:
+                    base.DoStun(Skill, ActivaterCharacter, selectedTile);
+                    break;
+            }
         }
         else
         {

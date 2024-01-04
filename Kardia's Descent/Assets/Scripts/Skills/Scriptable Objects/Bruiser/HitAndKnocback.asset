@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4741ebfc2bd33284daa284f279198f6d, type: 3}
+  m_Name: HitAndKnocback
+  m_EditorClassIdentifier: 
+  skillSprite: {fileID: 21300030, guid: 7ab74e659e1f0a34d9cfec21c478fc12, type: 3}
+  skillName: Knockback
+  skillDescription: Hit and knock the opponent back 1 hex.
+  skillID: 6
+  skillDamage: 1
+  skillRange: 1
+  skillCooldown: 0
+  actionPointUse: 0
+  skillEffectDuration: 1
+  skillBuffDebuffAmount: 1
+  accuracy: 50
+  coverAccuracyDebuff: 0
+  animatorOverrideController: {fileID: 22100000, guid: 43da974f8ebaab7419bd2a1abc3c3b14,
+    type: 2}
+  skillStartVFX: {fileID: 0}
+  skillHitVFX:
+  - {fileID: 11400000, guid: 2d7ba90a2d4cad44ea904346e7ce5f75, type: 2}
+  skillMissVFX: {fileID: 11400000, guid: f95dd6b5fb3dc4f4c9158365d41b4807, type: 2}
+  skillAudioEvent: {fileID: 11400000, guid: 51fcbee42fed2d743af064c20de9a716, type: 2}
+  skillType: 1
+  passiveOrActive: 0
+  skillClass: 0
+  damageType: 0
+  skillTarget: 0
+  skillHitType: 0
+  skillEffect: 0
+  buffDebuffType: 0

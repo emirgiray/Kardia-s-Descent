@@ -15,7 +15,7 @@ public class HitAndKnocback : SkillsData
 
     public IEnumerator WaitUntilEnum(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, Action OnComplete = null)
     {
-        yield return new WaitUntil(() => ActivaterCharacter.GetComponent<SkillContainer>().GetImpact() == true);
+        yield return new WaitUntil(() => ActivaterCharacter.SkillContainer == true);
         
         if (skillAudioEvent != null) skillAudioEvent.Play(ActivaterCharacter.transform);
         if (skillStartVFX != null) skillStartVFX.SpawnVFX(ActivaterCharacter.Hand);
@@ -23,6 +23,7 @@ public class HitAndKnocback : SkillsData
         if (base.TryHit(Skill, ActivaterCharacter, selectedTile, OnComplete))
         {
             base.DoDamage(Skill, ActivaterCharacter, selectedTile, OnComplete); 
+            base.DoKnockBack(Skill, ActivaterCharacter, selectedTile, OnComplete);
         }
         else
         {

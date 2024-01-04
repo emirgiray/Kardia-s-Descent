@@ -32,9 +32,9 @@ MonoBehaviour:
   skillAudioEvent: {fileID: 0}
   skillType: 1
   passiveOrActive: 1
-  skillClass: 6
-  damageType: 0
-  skillTarget: 0
-  skillHitType: 0
-  skillEffect: 6
+  skillClass: 10
+  damageType: 7
+  skillTarget: 1
+  skillHitType: 4
+  skillEffect: 1
   buffDebuffType: 0

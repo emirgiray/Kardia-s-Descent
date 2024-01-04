@@ -280,6 +280,11 @@ PrefabInstance:
       objectReference: {fileID: 3262503112574649821}
     - target: {fileID: 7510704565162782655, guid: 04563854e99a65a4c8a042dc7f750368,
         type: 3}
+      propertyPath: Head
+      value: 
+      objectReference: {fileID: 6329874309789503413}
+    - target: {fileID: 7510704565162782655, guid: 04563854e99a65a4c8a042dc7f750368,
+        type: 3}
       propertyPath: health
       value: 
       objectReference: {fileID: 7963506671791240775}
@@ -633,6 +638,12 @@ MonoBehaviour:
 --- !u!4 &4432983759214351892 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5048294059854030272, guid: 8f4a0ceba62af4145b67e40edcc51274,
+    type: 3}
+  m_PrefabInstance: {fileID: 8901993097615668180}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6329874309789503413 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3193615822136523873, guid: 8f4a0ceba62af4145b67e40edcc51274,
     type: 3}
   m_PrefabInstance: {fileID: 8901993097615668180}
   m_PrefabAsset: {fileID: 0}

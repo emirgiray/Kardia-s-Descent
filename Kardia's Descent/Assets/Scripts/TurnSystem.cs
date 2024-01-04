@@ -48,6 +48,7 @@ public class TurnSystem : MonoBehaviour
     [FoldoutGroup("Events")] public UnityEvent OnEnemyTurn;
     [FoldoutGroup("Events")] public UnityEvent<Player> OnPlayerDeath;
     [FoldoutGroup("Events")] public UnityEvent<Player> OnPlayerAdd;
+    [FoldoutGroup("Events")] public UnityEvent<Transform> OnPlayerAddTransform;
     [FoldoutGroup("Events")] public UnityEvent<Enemy> OnEnemyDeath;
     [FoldoutGroup("Events")] public UnityEvent<Enemy> OnEnemyAdd;
 
@@ -96,7 +97,7 @@ public class TurnSystem : MonoBehaviour
         DecideWhosTurn();
     }
 
-    private void Update()//todo delete this, its for debug only
+    /*private void Update()//todo delete this, its for debug only
     {
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.T))
@@ -108,7 +109,7 @@ public class TurnSystem : MonoBehaviour
             NextRound();
         }
 #endif
-    }
+    }*/
 
 
     public void DecideWhosTurn()//todo bu isimlendirme yanlış, decideWhosRound olmalı
@@ -240,6 +241,7 @@ public class TurnSystem : MonoBehaviour
        players.Add(newPlayer);//todo might need to change this to addrange
        allEntities.Add(newPlayer.gameObject);
        OnPlayerAdd.Invoke(newPlayer);
+       OnPlayerAddTransform.Invoke(newPlayer.transform);
     }
     
     [Button,GUIColor(0,0,1)][FoldoutGroup("DEBUG")]

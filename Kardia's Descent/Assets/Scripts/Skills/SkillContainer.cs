@@ -65,22 +65,20 @@ public class SkillContainer : MonoBehaviour
 
     }
 
-    /*
     private void Start()
     {
         
-        PopulateSkillsList();
+        /*PopulateSkillsList();
         for (int i = 0; i < skillButtons.Count; i++)
         {
             int i1 = i;
             skillButtons[i].InitButton(skillsDataSOList[i], skillsList[i] , ()=> TrySelectSkill(skillsList[i1]), this);
             
             skillsList[i].skillButton = skillButtons[i];
-        }
+        }*/
 
-        
+        ApplyExtraStatValues();
     }
-    */
 
 
     public void PopulateSkillsList()
@@ -257,18 +255,17 @@ public class SkillContainer : MonoBehaviour
             Character.AttackStart();
         }
         
-        CalculateExtraStatValues();
+        // CalculateExtraStatValues(selectSkill);
     }
 
     public void DeselectSkill(Skills deselectSkill, Enemy enemy = null)
     {
+        // ResetExtraStatValues(deselectSkill);
         if (Character is Enemy)Debug.Log($"{this.name} Deselected {deselectSkill.skillData.name}");
-        ResetExtraStatValues();
         skillSelected = false;
         /*skillsList.Find(x => x.skillData == selectedSkill.skillData).remainingSkillCooldown = selectedSkill.remainingSkillCooldown;
         skillsList.Find(x => x.skillData == selectedSkill.skillData).skillReadyToUse = selectedSkill.skillReadyToUse;*/
         //skillsList.Find(x => x.skillData == selectedSkill.skillData).skillButton = selectedSkill.skillButton;
-        selectedSkill = null;
         
 
         if (Character is Player)
@@ -283,6 +280,7 @@ public class SkillContainer : MonoBehaviour
         {
             enemy.AttackCancel();
         }
+        selectedSkill = null;
         
         
     }
@@ -382,7 +380,7 @@ bool impact = false;
     //todo delete this and calcuale for half damage on cover
     public int CalculateCoverAccuracyDebuff(Tile attacker, Tile defender, Skills selectSkill)
     {
-        if (Pathfinder.Instance.CheckCoverPoint(attacker, defender, true))
+        if (Pathfinder.Instance.CheckCoverPoint(attacker, defender, true) && selectSkill.skillData.skillType == SkillsData.SkillType.Ranged)
         {
             Debug.Log($"accuracy debuff: {selectSkill.coverAccuracyDebuff}");
             return selectSkill.coverAccuracyDebuff;
@@ -393,7 +391,7 @@ bool impact = false;
 
     public int CalculateCoverDamageDebuff(Tile attacker, Tile defender, Skills selectSkill)
     {
-        if (Pathfinder.Instance.CheckCoverPoint(attacker, defender, true))
+        if (Pathfinder.Instance.CheckCoverPoint(attacker, defender, true) && selectSkill.skillData.skillType == SkillsData.SkillType.Ranged)
         {
             return selectSkill.damage / 2;
         }
@@ -434,30 +432,47 @@ bool impact = false;
         selectedSkill.damage = damageBeforeCoverDebuff;
     }
 
-    public void CalculateExtraStatValues()
+    public void ApplyExtraStatValues()
+    {
+        foreach (var skill in skillsList)
+        {
+            if (skill.skillData.skillType == SkillsData.SkillType.Ranged)
+            {
+                skill.accuracy += Character.extraRangedAccuracy;
+            }
+            else if (skill.skillData.skillType == SkillsData.SkillType.Melee)
+            {
+                skill.damage += Character.extraMeleeDamage;
+            }
+        }
+        
+        
+    }
+    
+    /*public void CalculateExtraStatValues(Skills skill)
     {
         // apply accuracy and damage bonuses from stats here the reset after complete
-        if (selectedSkill.skillData.skillType == SkillsData.SkillType.Ranged)
+        if (skill.skillData.skillType == SkillsData.SkillType.Ranged)
         {
-            selectedSkill.accuracy += Character.extraRangedAccuracy;
+            skill.accuracy += Character.extraRangedAccuracy;
         }
-        else if (selectedSkill.skillData.skillType == SkillsData.SkillType.Melee)
+        else if (skill.skillData.skillType == SkillsData.SkillType.Melee)
         {
-            selectedSkill.damage += Character.extraMeleeDamage;
+            skill.damage += Character.extraMeleeDamage;
         }
     }
 
-    public void ResetExtraStatValues()
+    public void ResetExtraStatValues(Skills skill)
     {
-        if (selectedSkill.skillData.skillType == SkillsData.SkillType.Ranged)
+        if (skill.skillData.skillType == SkillsData.SkillType.Ranged)
         {
-            selectedSkill.accuracy -= Character.extraRangedAccuracy;
+            skill.accuracy -= Character.extraRangedAccuracy;
         }
-        else if (selectedSkill.skillData.skillType == SkillsData.SkillType.Melee)
+        else if (skill.skillData.skillType == SkillsData.SkillType.Melee)
         {
-            selectedSkill.damage -= Character.extraMeleeDamage;
+            skill.damage -= Character.extraMeleeDamage;
         }
-    }
+    }*/
     
     [System.Serializable]
     public class Skills

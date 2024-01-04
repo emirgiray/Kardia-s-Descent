@@ -8,9 +8,10 @@ using Sirenix.Serialization;
 public class Tile : MonoBehaviour
 {
     [BoxGroup("Tile")] public bool selectable = true;
+    [BoxGroup("Tile")] [SerializeField] private bool disableMeshOnStart = true;
+    [BoxGroup("Tile")] public bool Occupied  = false;
     [BoxGroup("Tile")] public Tile parent;
     [BoxGroup("Tile")] public Tile connectedTile;
-    [BoxGroup("Tile")] public bool Occupied { get; set; } = false;
     [BoxGroup("Tile")] public Character occupyingCharacter;
     [BoxGroup("Tile")] public GameObject occupyingGO;
     [BoxGroup("Tile")] public MeshRenderer meshRenderer;
@@ -41,13 +42,18 @@ public class Tile : MonoBehaviour
 
     
     
-    /*private void Start()
+    private void Start()
     {
-        if (TileHighlightGO != null)
+        /*if (TileHighlightGO != null)
         {
             TileHighlightMeshRenderer = TileHighlightGO.GetComponent<MeshRenderer>();
+        }*/
+
+        if (disableMeshOnStart)
+        {
+            GetComponent<MeshRenderer>().enabled = false;
         }
-    }*/
+    }
 
     /*private void Update()
     {

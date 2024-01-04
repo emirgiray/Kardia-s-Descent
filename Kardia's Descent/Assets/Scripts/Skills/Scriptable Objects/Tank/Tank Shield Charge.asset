@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillSprite: {fileID: 6691833, guid: f050367bbcaea674495c2d5e36fc140b, type: 3}
   skillName: Shield Charge
-  skillDescription: Moves forward 2 hexes, hits using the shield, low dmg, stuns
-    for 1 turn.
+  skillDescription: Move forward 2 hexes, hits using the shield, low dmg, stuns for
+    1 turn.
   skillID: 2
   skillDamage: 5
   skillRange: 3

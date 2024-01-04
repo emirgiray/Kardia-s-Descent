@@ -95,7 +95,7 @@ public class SkillsData : ScriptableObject
     public virtual bool TryHit(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile,  Action OnComplete = null)
     {
         int random = UnityEngine.Random.Range(1, 101);
-        if (random <= Skill.accuracy || Skill.accuracy == 100) //hit
+        if (random <= Skill.accuracy || Skill.accuracy == 100 || Skill.accuracy > 100) //hit
         {
             Debug.Log($"HIT: {random} < {Skill.accuracy}");
             //OnHit(Skill, ActivaterCharacter, selectedTile, OnComplete);
@@ -109,6 +109,7 @@ public class SkillsData : ScriptableObject
         }
     }
 
+    /*
     public virtual void OnHit(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile,  Action OnComplete = null)
     {
         if (ActivaterCharacter is Player)
@@ -159,6 +160,7 @@ public class SkillsData : ScriptableObject
             }
         }
     }
+    */
     
     public void OnMiss(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile,  Action OnComplete = null)
     {
@@ -228,7 +230,55 @@ public class SkillsData : ScriptableObject
 
     public void DoKnockBack(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile,  Action OnComplete = null)
     {
+        Vector3 dir = selectedTile.transform.position - ActivaterCharacter.transform.position;
+        dir.y = 0;
+        dir.Normalize();
+        
+        Vector3 newPos = selectedTile.transform.position + dir * Pathfinder.Instance.HEXAGONAL_OFFSET * skillBuffDebuffAmount;
+
+        newPos = new Vector3(newPos.x, 5, newPos.z);
+        
+        if (Physics.Raycast(newPos, Vector3.down, out RaycastHit hit, 50f, ActivaterCharacter.GroundLayerMask))
+        {
+            var newTile = hit.transform.GetComponent<Tile>();
+
+            if (!newTile.Occupied)
+            {
+                
+                Debug.Log($"not occupied starting move to {newTile.name}"); 
+                // Path newPath = Pathfinder.Instance.PathBetween(ActivaterCharacter, newTile, selectedTile);
+                Path newPath = Pathfinder.Instance.MakePath(newTile, selectedTile);
+                
+                if (ActivaterCharacter is Player && selectedTile.occupiedByEnemy)
+                {
+                    Character defender = selectedTile.occupyingEnemy;
+                    // defender.canMove = true;
+                    // selectedTile.occupyingEnemy.StartMove(newPath, false, ()=> defender.canMove = false, false);
+                    defender.Rotate(ActivaterCharacter.transform.position, 0.5f);
+                    selectedTile.occupyingEnemy.StartKnockbackMove(newPath, false, null, false);
+                    
+                }
+                if (ActivaterCharacter is Enemy && selectedTile.occupiedByPlayer)
+                {
+                    Character defender = selectedTile.occupyingPlayer;
+                    // defender.canMove = true;
+                    // selectedTile.occupyingPlayer.StartMove(newPath, false, ()=> defender.canMove = false, false);
+                    defender.Rotate(ActivaterCharacter.transform.position, 0.5f);
+                    selectedTile.occupyingPlayer.StartKnockbackMove(newPath, false, null, false);
+                }
+                
+            }
+            else
+            {
+                Debug.Log($"ocuppied");
+            }
+        }
+        else
+        {
+            Debug.Log($"no hit");
+        }
         
     }
+    
     
 }

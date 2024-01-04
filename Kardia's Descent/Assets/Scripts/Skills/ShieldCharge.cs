@@ -27,7 +27,7 @@ public class ShieldCharge : SkillsData
         }
         else
         {
-            ActivaterCharacter.StartMove(path, () =>
+            ActivaterCharacter.StartMove(path,true, () =>
             {
                 ActivaterCharacter.Rotate(selectedTile.transform.position);
             
@@ -136,7 +136,7 @@ public class ShieldCharge : SkillsData
     public IEnumerator WaitUntilEnum(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, Action OnComplete = null)
     {
         //Debug.Log($"wait started    ");
-        yield return new WaitUntil(() => ActivaterCharacter.GetComponent<SkillContainer>().GetImpact() == true);
+        yield return new WaitUntil(() => ActivaterCharacter.SkillContainer.GetImpact() == true);
         if (skillAudioEvent != null) skillAudioEvent.Play(ActivaterCharacter.transform);
         //Debug.Log($"Waitfinished");
 

@@ -127,7 +127,7 @@ public class Interact : MonoBehaviour
             {
                 if (value == true)
                 {
-                    if (selectedCharacter.GetComponent<SkillContainer>().skillSelected == false)
+                    if (selectedCharacter.SkillContainer.skillSelected == false)
                     {
                         selectedCharacter.canMove = value;
                         HighlightReachableTiles();
@@ -136,7 +136,7 @@ public class Interact : MonoBehaviour
                 }
                 else
                 {
-                    if (selectedCharacter.GetComponent<SkillContainer>().skillSelected == false)
+                    if (selectedCharacter.SkillContainer.skillSelected == false)
                     {
                         selectedCharacter.canMove = value;
                         Clear();
@@ -157,7 +157,7 @@ public class Interact : MonoBehaviour
             {
                 if (value)
                 {
-                    if (selectedCharacter.GetComponent<SkillContainer>().skillSelected == true)
+                    if (selectedCharacter.SkillContainer.skillSelected == true)
                     {
                         //selectedCharacter.canAttack = value;//todo dont change this value, instead block all interactions when player hovers over skills, tooltips etc
                         HighlightAttackableTiles();
@@ -165,7 +165,7 @@ public class Interact : MonoBehaviour
                 }
                 else
                 {
-                    if (selectedCharacter.GetComponent<SkillContainer>().skillSelected == true)
+                    if (selectedCharacter.SkillContainer.skillSelected == true)
                     {
                         //selectedCharacter.canAttack = value;
                         ClearHighlightAttackableTiles();
@@ -204,8 +204,44 @@ public class Interact : MonoBehaviour
         MouseUpdate();
         CheckMouseOverUI();
         CheckCharacterInputs();
+        CheckDebugInputs();
         //UpdateFreeRoamTargetPosition();
         
+    }
+
+    private void CheckDebugInputs()
+    {
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            TurnSystem.Instance.NextTurn();
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            TurnSystem.Instance.NextRound();
+        }
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            if(characterSelected)
+            {
+                selectedCharacter.remainingActionPoints = 10;
+
+                foreach (var skill in selectedCharacter.SkillContainer.skillsList)
+                {
+                    skill.skillButton.EnableDisableButton(true);
+                    
+                    skill.skillCooldown = 0;
+                    skill.actionPointUse = 0;
+                    skill.accuracy = 100;
+                    selectedCharacter.SkillContainer.damageBeforeCoverDebuff = 100;
+                }
+            }
+            
+            
+            /*foreach (var player in TurnSystem.Instance.players)
+            {
+                player.remainingActionPoints = 99999;
+            }*/
+        }
     }
 
     /*public void UpdateFreeRoamTargetPosition()
@@ -410,7 +446,7 @@ public class Interact : MonoBehaviour
                     {
                         if (attackableTiles.Contains(currentTile))
                         {
-                            selectedCharacter.GetComponent<SkillContainer>().UseSkill(selectedCharacter.GetComponent<SkillContainer>().selectedSkill, currentTile);
+                            selectedCharacter.SkillContainer.UseSkill(selectedCharacter.SkillContainer.selectedSkill, currentTile);
                             
                         }
                     }
@@ -456,7 +492,7 @@ public class Interact : MonoBehaviour
         {
             SelectPlayer(chaaracter);
             characterSelected = true;
-            selectedCharacterSkillContainer = selectedCharacter.GetComponent<SkillContainer>();
+            selectedCharacterSkillContainer = selectedCharacter.SkillContainer;
         }
         else
         {
@@ -468,14 +504,14 @@ public class Interact : MonoBehaviour
                 case Character.CharacterState.WaitingTurn:
                     lastSelectedCharacter.GetComponent<Inventory>().ShowSkillsUI(false); //close skills ui
                     SelectPlayer(chaaracter);
-                    selectedCharacterSkillContainer = selectedCharacter.GetComponent<SkillContainer>();
+                    selectedCharacterSkillContainer = selectedCharacter.SkillContainer;
                     break;
                 
                 case Character.CharacterState.WaitingNextRound:
                     lastSelectedCharacter.GetComponent<Inventory>().ShowSkillsUI(false); //close skills ui
                     //lastSelectedCharacter.GetComponent<InventoryUI>().SetSkipTurnButtonInteractable(false); //disable skip turn button
                     SelectPlayer(chaaracter);
-                    selectedCharacterSkillContainer = selectedCharacter.GetComponent<SkillContainer>();
+                    selectedCharacterSkillContainer = selectedCharacter.SkillContainer;
                     break;
            
                 case Character.CharacterState.Attacking:
@@ -609,7 +645,7 @@ public class Interact : MonoBehaviour
     public void HighlightAttackableTiles()
     { 
         ClearHighlightAttackableTiles();
-        attackableTiles = pathfinder.GetAttackableTiles(selectedCharacter.characterTile, selectedCharacter.GetComponent<SkillContainer>().selectedSkill/*, selectedCharacter.characterTile*/);
+        attackableTiles = pathfinder.GetAttackableTiles(selectedCharacter.characterTile, selectedCharacter.SkillContainer.selectedSkill/*, selectedCharacter.characterTile*/);
         foreach (Tile tile in attackableTiles)
         {
             tile.HighlightAttackable();
@@ -633,8 +669,8 @@ public class Interact : MonoBehaviour
         //print(newTile);
         if (characterSelected && selectedCharacter.characterState == Character.CharacterState.Attacking)//todo add or FreeRoam
         {
-            selectedCharacter.GetComponent<SkillContainer>().ResetCoverAccruacyDebuff();
-            selectedCharacter.GetComponent<SkillContainer>().ResetCoverdamageDebuff();
+            selectedCharacter.SkillContainer.ResetCoverAccruacyDebuff();
+            selectedCharacter.SkillContainer.ResetCoverdamageDebuff();
             if (isMouseOverUI == false)
             {
                 selectedCharacter.Rotate(currentTile.transform.position);
@@ -644,32 +680,37 @@ public class Interact : MonoBehaviour
             {
                 if (Pathfinder.Instance.CheckCoverPoint(selectedCharacter.characterTile, newTile, true))
                 {
-                    selectedCharacter.GetComponent<SkillContainer>().ApplyCoverAccuracyDebuff();
-                    selectedCharacter.GetComponent<SkillContainer>().ApplyCoverDamageDebuff();
+                    if (selectedCharacter.SkillContainer.selectedSkill.skillData.skillType == SkillsData.SkillType.Ranged)
+                    {
+                        // selectedCharacter.SkillContainer.ApplyCoverAccuracyDebuff();
+                        selectedCharacter.SkillContainer.ApplyCoverDamageDebuff();
+                    }
+                    
                     EnableDisableHitChanceUI(true);
-                    /*HitChanceUIGameObject.SetActive(true);
-                    StartCoroutine(HitChanceUIToMousePos());  
-                    HitChanceText.text = selectedCharacter.GetComponent<SkillContainer>().selectedSkill.accuracy.ToString() + "%";*/
-                    //newTile.occupyingEnemy.GetComponent<TooltipTrigger>().AddToContent(selectedCharacter.GetComponent<SkillContainer>().selectedSkill.accuracy.ToString());
+
                 }
                 else
                 {
-                    selectedCharacter.GetComponent<SkillContainer>().ResetCoverAccruacyDebuff();
-                    selectedCharacter.GetComponent<SkillContainer>().ResetCoverdamageDebuff();
+                    if (selectedCharacter.SkillContainer.selectedSkill.skillData.skillType == SkillsData.SkillType.Ranged)
+                    {
+                        // selectedCharacter.SkillContainer.ResetCoverAccruacyDebuff();
+                        selectedCharacter.SkillContainer.ResetCoverdamageDebuff();
+                    }
+                    
                     EnableDisableHitChanceUI(true);
-                    /*HitChanceUIGameObject.SetActive(true);
-                    StartCoroutine(HitChanceUIToMousePos());
-                    HitChanceText.text = selectedCharacter.GetComponent<SkillContainer>().selectedSkill.accuracy.ToString() + "%";*/
+
                 }
             }
             else
             {
-                selectedCharacter.GetComponent<SkillContainer>().ResetCoverAccruacyDebuff();
-                selectedCharacter.GetComponent<SkillContainer>().ResetCoverdamageDebuff();
+                if (selectedCharacter.SkillContainer.selectedSkill.skillData.skillType == SkillsData.SkillType.Ranged)
+                {
+                    // selectedCharacter.SkillContainer.ResetCoverAccruacyDebuff();
+                    selectedCharacter.SkillContainer.ResetCoverdamageDebuff();
+                }
+                
                 EnableDisableHitChanceUI(false);
-                /*StopCoroutine(HitChanceUIToMousePos());
-                HitChanceUIGameObject.SetActive(false);*/
-                //lastTile.occupyingEnemy.GetComponent<TooltipTrigger>().AddToContent(selectedCharacter.GetComponent<SkillContainer>().selectedSkill.accuracy.ToString());
+
             }
             
         }
@@ -690,7 +731,7 @@ public class Interact : MonoBehaviour
         if (value)
         {
             StartCoroutine(HitChanceUIToMousePos()); 
-            HitChanceText.text = selectedCharacter.GetComponent<SkillContainer>().selectedSkill.accuracy.ToString() + "%";
+            HitChanceText.text = selectedCharacter.SkillContainer.selectedSkill.accuracy.ToString() + "%";
         }
         else
         {

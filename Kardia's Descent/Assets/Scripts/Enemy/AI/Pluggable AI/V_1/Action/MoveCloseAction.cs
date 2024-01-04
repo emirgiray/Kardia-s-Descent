@@ -22,7 +22,7 @@ public class MoveCloseAction : ActionAI
             if (controller.enemy.turnOrder == TurnSystem.Instance.currentEnemyTurnOrder && doonce)
             {
                // controller.enemy.StartMove(Pathfinder.Instance.GetPathBetween(controller.enemy.characterTile, controller.targetPlayer.characterTile, true));// 1
-                 controller.enemy.StartMove(FindPathToTargetPlayer(controller, controller.targetPlayer), () => doonce = true);
+                 controller.enemy.StartMove(FindPathToTargetPlayer(controller, controller.targetPlayer), true, () => doonce = true);
                  //Debug.Log($"path: {FindPathToTargetPlayer(controller, controller.targetPlayer)}");
                  doonce = false;
                // controller.enemy.canMove = false;

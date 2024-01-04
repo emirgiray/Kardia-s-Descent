@@ -359,6 +359,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterSprite: {fileID: 276419777, guid: f050367bbcaea674495c2d5e36fc140b, type: 3}
   characterStats: {fileID: 0}
+  SkillContainer: {fileID: 971612226134414077}
   actionPoints: 6
   remainingActionPoints: 0
   maxActionPoints: 10
@@ -368,7 +369,8 @@ MonoBehaviour:
   canAttack: 1
   inCombat: 1
   isDead: 0
-  Hand: {fileID: 0}
+  Head: {fileID: 0}
+  Hand: {fileID: 7694304149146994981}
   isStunned: 0
   totalSteps: 0
   remainingStunTurns: 0
@@ -970,6 +972,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+--- !u!4 &7694304149146994981 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -6206277720266400239, guid: b9784524c6ca27d48af6443cddedea93,
+    type: 3}
+  m_PrefabInstance: {fileID: 4835027136150574900}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8146732259452564482
 PrefabInstance:
   m_ObjectHideFlags: 0

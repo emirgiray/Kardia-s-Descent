@@ -1171,6 +1171,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 8564682593693525652}
   m_SourcePrefab: {fileID: 100100000, guid: a5edbbad0f6230543a42ee6c912cc294, type: 3}
+--- !u!4 &339046089230924267 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8524045829430040077, guid: a5edbbad0f6230543a42ee6c912cc294,
+    type: 3}
+  m_PrefabInstance: {fileID: 8286612431708090342}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &1133070937865020706 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 9027056546064403140, guid: a5edbbad0f6230543a42ee6c912cc294,
@@ -1216,6 +1222,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+--- !u!4 &6237541222020082516 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2625533349268489394, guid: a5edbbad0f6230543a42ee6c912cc294,
+    type: 3}
+  m_PrefabInstance: {fileID: 8286612431708090342}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8291867439157959740
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1418,6 +1430,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8148688877583324293, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
         type: 3}
+      propertyPath: Hand
+      value: 
+      objectReference: {fileID: 339046089230924267}
+    - target: {fileID: 8148688877583324293, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
+        type: 3}
+      propertyPath: Head
+      value: 
+      objectReference: {fileID: 6237541222020082516}
+    - target: {fileID: 8148688877583324293, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
+        type: 3}
       propertyPath: animator
       value: 
       objectReference: {fileID: 1133070937865020706}
@@ -1426,6 +1448,12 @@ PrefabInstance:
       propertyPath: characterClass
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 8148688877583324293, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
+        type: 3}
+      propertyPath: characterStats
+      value: 
+      objectReference: {fileID: 11400000, guid: fb82eb37f42438941b1b5b7bc9a9c4a4,
+        type: 2}
     - target: {fileID: 8148688877583324293, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
         type: 3}
       propertyPath: characterSprite

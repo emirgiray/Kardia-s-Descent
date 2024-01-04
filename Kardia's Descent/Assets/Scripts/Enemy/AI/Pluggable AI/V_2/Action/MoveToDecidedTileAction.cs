@@ -26,7 +26,7 @@ public class MoveToDecidedTileAction : ActionAI
                 }
                 else
                 {
-                    controller.enemy.StartMove(FindPathToTargetPlayer(controller), () => controller.canExitState = true);
+                    controller.enemy.StartMove(FindPathToTargetPlayer(controller), true, () => controller.canExitState = true);
                 }
                 
                  

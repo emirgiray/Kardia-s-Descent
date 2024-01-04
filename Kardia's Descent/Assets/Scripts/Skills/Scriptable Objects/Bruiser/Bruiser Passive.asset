@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4fde44c70ac9884794b32ca8cc7562e, type: 3}
+  m_Name: Bruiser Passive
+  m_EditorClassIdentifier: 
+  skillSprite: {fileID: 21300032, guid: 7ab74e659e1f0a34d9cfec21c478fc12, type: 3}
+  skillName: Double Trouble
+  skillDescription: Passive, perform every attack twcie.
+  skillID: 7
+  skillDamage: 0
+  skillRange: 0
+  skillCooldown: 0
+  actionPointUse: 0
+  skillEffectDuration: 0
+  skillBuffDebuffAmount: 0
+  accuracy: 0
+  coverAccuracyDebuff: 0
+  animatorOverrideController: {fileID: 0}
+  skillStartVFX: {fileID: 0}
+  skillHitVFX: []
+  skillMissVFX: {fileID: 0}
+  skillAudioEvent: {fileID: 0}
+  skillType: 0
+  passiveOrActive: 1
+  skillClass: 10
+  damageType: 7
+  skillTarget: 2
+  skillHitType: 0
+  skillEffect: 0
+  buffDebuffType: 0

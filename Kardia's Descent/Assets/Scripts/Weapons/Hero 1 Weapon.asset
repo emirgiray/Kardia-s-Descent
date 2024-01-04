@@ -24,6 +24,8 @@ MonoBehaviour:
   weaponBarrelFireLocation: {fileID: 0}
   SkillsDataList:
   - {fileID: 11400000, guid: 708b3a9b2e043bf49a33584a5289f53a, type: 2}
+  - {fileID: 11400000, guid: 7868fb694550fce44ac4648f066c8f58, type: 2}
+  - {fileID: 11400000, guid: a8976003f2c4b1f4aa7039473013689c, type: 2}
   damage: {x: 3, y: 5}
   accuracy: 80
   range: 5
