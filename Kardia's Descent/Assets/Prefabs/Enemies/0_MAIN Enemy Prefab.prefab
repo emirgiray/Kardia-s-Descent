@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3955181464615722805}
   - component: {fileID: 7486416555500777860}
   - component: {fileID: 567894773189391904}
+  - component: {fileID: 5090055960957447971}
   m_Layer: 0
   m_Name: Waypoint (1)
   m_TagString: Untagged
@@ -111,6 +112,23 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &5090055960957447971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534357420155081118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20af2bf23deea5a409b7600bc07e6eec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypointTile: {fileID: 0}
+  GroundLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  yOffset: 1
 --- !u!1 &2400920764014904748
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,6 +275,7 @@ GameObject:
   - component: {fileID: 1739590605006602611}
   - component: {fileID: 788114307237085115}
   - component: {fileID: 6095326819301816188}
+  - component: {fileID: 396684858345639858}
   m_Layer: 0
   m_Name: Waypoint (5)
   m_TagString: Untagged
@@ -356,6 +375,23 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &396684858345639858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2537837401024849449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20af2bf23deea5a409b7600bc07e6eec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypointTile: {fileID: 0}
+  GroundLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  yOffset: 1
 --- !u!1 &3239748233074938983
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,6 +404,7 @@ GameObject:
   - component: {fileID: 8258383960702684397}
   - component: {fileID: 5947813975390917107}
   - component: {fileID: 3721534017664212214}
+  - component: {fileID: 3278903484728442291}
   m_Layer: 0
   m_Name: Waypoint (4)
   m_TagString: Untagged
@@ -467,6 +504,23 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3278903484728442291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3239748233074938983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20af2bf23deea5a409b7600bc07e6eec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypointTile: {fileID: 0}
+  GroundLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  yOffset: 1
 --- !u!1 &5447740483884172149
 GameObject:
   m_ObjectHideFlags: 0
@@ -479,6 +533,7 @@ GameObject:
   - component: {fileID: 6412482807421477538}
   - component: {fileID: 6220955033693017023}
   - component: {fileID: 5909348388697335384}
+  - component: {fileID: 1482597869394984653}
   m_Layer: 0
   m_Name: Waypoint (2)
   m_TagString: Untagged
@@ -578,6 +633,23 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1482597869394984653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5447740483884172149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20af2bf23deea5a409b7600bc07e6eec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypointTile: {fileID: 0}
+  GroundLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  yOffset: 1
 --- !u!1 &5649455234823889604
 GameObject:
   m_ObjectHideFlags: 0
@@ -654,6 +726,7 @@ GameObject:
   - component: {fileID: 3104251380233554025}
   - component: {fileID: 2665987918259897225}
   - component: {fileID: 8494912698578090537}
+  - component: {fileID: 7847423442434924483}
   m_Layer: 0
   m_Name: Waypoint (3)
   m_TagString: Untagged
@@ -753,6 +826,23 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &7847423442434924483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7509575065070339177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20af2bf23deea5a409b7600bc07e6eec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypointTile: {fileID: 0}
+  GroundLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  yOffset: 1
 --- !u!1 &7741204839853584163
 GameObject:
   m_ObjectHideFlags: 0
@@ -1085,6 +1175,13 @@ MonoBehaviour:
   enemies: []
   movableTiles: []
   attackableTiles: []
+  waypointsParent: {fileID: 5649455234823889604}
+  waypoints:
+  - {fileID: 1534357420155081118}
+  - {fileID: 5447740483884172149}
+  - {fileID: 7509575065070339177}
+  - {fileID: 3239748233074938983}
+  - {fileID: 2537837401024849449}
   RandomWaitTimer: {x: 0, y: 0}
   RandomWaitTimer2: {x: 1.0247009, y: 1.5247767}
 --- !u!114 &971612226134414077

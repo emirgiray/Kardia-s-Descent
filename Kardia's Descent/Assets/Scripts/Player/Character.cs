@@ -240,35 +240,19 @@ public class Character : MonoBehaviour
             tile.occupyingEnemy = this.GetComponent<Enemy>();
             tile.occupiedByEnemy = true;
         }
-
-
+        
         if (!findTileAtStart)//dont do this if we are just finding the tile at the start
         {
             if (characterState != CharacterState.WaitingNextRound)//this is for the character to not end turn after moving bc maybe it has action points left
             {
                 characterState = CharacterState.WaitingTurn;
             }
-            
-            if (gameObject.tag == "Enemy")//todo: this is a temporary fix for enemies not ending turn after moving, if we want different behaviour for enemies like move hit then flee, we need to change this
-            {
-               
-                //remainingMoveRange = 0;
-                //canMove = false;
-                //EndofMovePoints();
-                //TurnSystem.Instance.currentEnemyTurnOrder++;
-            }
-            
+
             animator.SetBool("Walk", false);
             MoveEnd.Invoke();
             
             CheckToStartCombat();
         }
-        else
-        {
-            
-        }
-        
-        
     }
 
     float movementThreshold = 0.1f;
@@ -403,19 +387,41 @@ public class Character : MonoBehaviour
                 {
                     if (!Physics.Linecast(this.transform.position, GameManager.Instance.enemies[i].transform.position, detectionLayerMask))
                     {
+                        StartCombat();
+                        GameManager.Instance.enemies[i].StartCombat();
+                        
                         if (TurnSystem.Instance.turnState == TurnSystem.TurnState.FreeRoamTurn)
                         {
                             TurnSystem.Instance.CombatStarted();
                             
-                            StartCombat();
-                            GameManager.Instance.enemies[i].StartCombat();
                         }
                         //Debug.Log($"Combat started by {TurnSystem.Instance.enemies[i].name}");
                     }
                 }
                 
-                
+            }
+        }
 
+        if (this is Enemy)
+        {
+            for (int i = 0; i < TurnSystem.Instance.playersInCombat.Count; i++)
+            {
+                if (Pathfinder.Instance.GetTilesInBetween(this, characterTile, TurnSystem.Instance.playersInCombat[i].characterTile, true).Count <= 3)
+                {
+                    if (!Physics.Linecast(this.transform.position, TurnSystem.Instance.playersInCombat[i].transform.position, detectionLayerMask))
+                    {
+                        StartCombat();
+                        TurnSystem.Instance.playersInCombat[i].StartCombat();
+                        
+                        if (TurnSystem.Instance.turnState == TurnSystem.TurnState.FreeRoamTurn)
+                        {
+                            TurnSystem.Instance.CombatStarted();
+                            
+                        }
+                        //Debug.Log($"Combat started by {TurnSystem.Instance.enemies[i].name}");
+                    }
+                }
+                
             }
         }
     }
@@ -427,17 +433,24 @@ public class Character : MonoBehaviour
     {
         inCombat = true;
 
+        if (this is Player)
+        {
+            GameManager.Instance.AddPlayersToCombat();
+        }
         if (this is Enemy)
         {
+            GameManager.Instance.AddEnemyToCombat();
             GetComponent<StateController>().StartCombat();
         }
     }
-    
-    public void ResetMovePoints()
+
+    public void ExitCombat()
     {
-        remainingActionPoints = actionPoints;
-        OnMovePointsChangeEvent?.Invoke(remainingActionPoints);
+        inCombat = false;
+        ResetActionPoints();
+        SkillContainer.ForceResetSkillCooldowns();
     }
+    
         
     public void ResetActionPoints()
     {
@@ -488,8 +501,6 @@ public class Character : MonoBehaviour
 
     public void AttackEnd(SkillContainer.Skills skill)
     {
-        
-        
         characterState = CharacterState.WaitingTurn;
         remainingActionPoints -= skill.actionPointUse;//maybe add a - or + variable to skill use
         
@@ -541,8 +552,6 @@ public class Character : MonoBehaviour
         isStunned = value;
         remainingStunTurns = turns;
         
-        
-        
         if (value)
         {
             if (stunVFX == null)
@@ -555,7 +564,6 @@ public class Character : MonoBehaviour
         {
             if (stunVFX != null)
             {
-                Debug.Log($"expression");
                 Destroy(stunVFX);
             }
         }

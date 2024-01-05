@@ -17,6 +17,7 @@ public class PatrolAction : ActionAI
         {
             controller.canExitState = false;
             //controller.enemy.StartMove(FindRandomPath(controller), true, ()=>  controller.canExitState = true, false);
+            controller.enemy.StartMove(FindPathBetweenRandomWaypoints(controller), true, ()=>  controller.canExitState = true, false);
             
         }
     }
@@ -28,8 +29,10 @@ public class PatrolAction : ActionAI
         return Pathfinder.Instance.FindPath(controller.enemy, controller.enemy.characterTile, randomTile);
     }
 
-    public void FindPathBetweenWaypoints(StateController controller)
+    public Path FindPathBetweenRandomWaypoints(StateController controller)
     {
-        
+        Tile randomTile = controller.waypoints[Random.Range(0, controller.waypoints.Count)].GetComponent<Waypoints>().waypointTile;
+        controller.decidedMoveTile = randomTile;
+        return Pathfinder.Instance.FindPath(controller.enemy, controller.enemy.characterTile, randomTile);
     }
 }

@@ -18,13 +18,13 @@ public class Player : Character
     private void OnEnable()
     {
         TurnSystem.Instance.FriendlyTurn += base.StartTurn;
-        TurnSystem.Instance.OnPlayerTurnEvent += CheckRemoveStun;
+        TurnSystem.Instance.OnPlayerCheckStunTurnEvent += CheckRemoveStun;
         TurnSystem.Instance.OnPlayerTurnEvent += ResetKillsInTurn;
     }
     private void OnDisable()
     {
         TurnSystem.Instance.FriendlyTurn -= base.StartTurn;
-        TurnSystem.Instance.OnPlayerTurnEvent -= CheckRemoveStun;
+        TurnSystem.Instance.OnPlayerCheckStunTurnEvent -= CheckRemoveStun;
         TurnSystem.Instance.OnPlayerTurnEvent -= ResetKillsInTurn;
     }
 

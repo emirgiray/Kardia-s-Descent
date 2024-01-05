@@ -32,11 +32,15 @@ public class StateController : MonoBehaviour
     
     public List<Tile> movableTiles = new List<Tile>();
     public List<Tile> attackableTiles = new List<Tile>();
-    
+
     [MinMaxSlider(0,3)]
     public Vector2 RandomWaitTimer;
     [MinMaxSlider(0,3)]
     public Vector2 RandomWaitTimer2;
+    
+    [SerializeField] private GameObject waypointsParent;
+    public List<GameObject> waypoints = new List<GameObject>();
+    
 
     private void OnEnable()//todo might need to turn this into an action or delegate
     {
@@ -167,6 +171,16 @@ public class StateController : MonoBehaviour
         RandomWaitAssigner2();
     }
 
+    [Button, GUIColor(1f, 1f, 1f)]
+    public void FindWaypointsFromParent()
+    {
+        waypoints.Clear();
+        foreach (Transform child in waypointsParent.transform)
+        {
+            waypoints.Add(child.gameObject);
+        }
+    }
+    
     public List<Tile> GetReachableTiles()
     {
         movableTiles = pathfinder.GetReachableTiles(enemy.characterTile, enemy.remainingActionPoints);

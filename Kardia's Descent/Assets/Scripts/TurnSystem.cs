@@ -36,7 +36,9 @@ public class TurnSystem : MonoBehaviour
     public Action EnemyTurn;
     public Action RoundChanged;
     public Action OnPlayerTurnEvent;
+    public Action OnPlayerCheckStunTurnEvent;
     public Action OnEnemyTurnEvent;
+    public Action OnEnemyCheckStunTurnEvent;
     public Action<int> TurnChange;
     public Action<int> RoundChange;
     [FoldoutGroup("Events")] public UnityEvent OnTurnChange;
@@ -119,38 +121,24 @@ public class TurnSystem : MonoBehaviour
             turnState = TurnState.Friendly;
             OnPlayerTurn.Invoke();
             OnPlayerTurnEvent?.Invoke();
-            // OnEnemyTurnEvent?.Invoke();
+             OnEnemyCheckStunTurnEvent?.Invoke(); //stun events are reversed because it wasnt working properly before idk why
             if(FriendlyTurn != null) FriendlyTurn();
         }
         if (round % 2 == 0)
         {
             turnState = TurnState.Enemy;
             OnEnemyTurn.Invoke();
-            // OnPlayerTurnEvent?.Invoke();
+             OnPlayerCheckStunTurnEvent?.Invoke();
             OnEnemyTurnEvent?.Invoke();
             if(EnemyTurn != null) EnemyTurn();
         }
         if (round == 0)//Combat has not started yet
         {
             turnState = TurnState.FreeRoamTurn;
-            return;
+            //return;
             /*FriendlyTurn();*/
         }
         RoundChanged?.Invoke();
-    }
-
-    [Button,GUIColor(0,1,0)][FoldoutGroup("DEBUG")]
-    public void CombatStarted()
-    {
-        combatStartedImage.SetActive(true);
-        turn = 1;
-        round = 1;
-        TurnChange?.Invoke(turn);
-        OnTurnChange.Invoke();
-        OnCombatStart.Invoke();
-        RoundChange?.Invoke(round);
-        OnRoundChange.Invoke();
-        DecideWhosTurn();
     }
     
     [Button,GUIColor(0,1,0)][FoldoutGroup("DEBUG")]
@@ -188,6 +176,28 @@ public class TurnSystem : MonoBehaviour
         }*/
     }
 
+    [Button,GUIColor(0,1,0)][FoldoutGroup("DEBUG")]
+    public void CombatStarted()
+    {
+        combatStartedImage.SetActive(true);
+        turn = 1;
+        round = 1;
+        TurnChange?.Invoke(turn);
+        OnTurnChange.Invoke();
+        OnCombatStart.Invoke();
+        RoundChange?.Invoke(round);
+        OnRoundChange.Invoke();
+        DecideWhosTurn();
+    }
+
+    [Button, GUIColor(1f, 1f, 1f)]
+    public void CombatEnded()
+    {
+        turn = 0;
+        round = 0;
+        DecideWhosTurn();
+    }
+    
     public void DecideEnemyTurnOrder()//this will work according to enemy initiative //todo this is reversed!!!!
     {
         List<Tuple<Enemy, int>> enemyList = new List<Tuple<Enemy, int>>();
@@ -237,6 +247,17 @@ public class TurnSystem : MonoBehaviour
         allEntitiesInCombat.RemoveRange(allEntitiesInCombat.IndexOf(deadEnemy), 1);
         OnEnemyDeath.Invoke(deadEnemy);
         RemoveCard(deadEnemy);
+
+        GameManager.Instance.RemoveEnemyFromGame(deadEnemy);
+        
+        if (enemiesInCombat.Count <= 0)
+        {
+            CombatEnded();
+            foreach (var player in playersInCombat)
+            {
+                player.ExitCombat();
+            }
+        }
     }
     
     [Button,GUIColor(0,0,1)][FoldoutGroup("DEBUG")]

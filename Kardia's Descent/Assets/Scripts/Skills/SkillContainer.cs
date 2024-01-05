@@ -159,6 +159,22 @@ public class SkillContainer : MonoBehaviour
         }
         //skillReadyAction?.Invoke();
     }
+
+    /// <summary>
+    /// Used in combat exit
+    /// </summary>
+    public void ForceResetSkillCooldowns()
+    {
+        if (Character is Player)
+        {
+            for (int i = 0; i < skillsList.Count; i++)
+            {
+                skillsList[i].skillButton.EnableDisableButton(true);
+                skillsList[i].skillButton.cooldownImage.GetComponent<Image>().DOFillAmount(0, 2f);
+                skillsList[i].skillButton.cooldownText.text = "";
+            }
+        }
+    }
     
     public void SkillHighlighted(SkillsData highlightSkill)
     {

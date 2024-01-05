@@ -43,8 +43,28 @@ public class GameManager : MonoBehaviour
             if (player.gameObject.activeInHierarchy && TurnSystem.Instance.playersInCombat.Contains(player) == false )
             {
                 TurnSystem.Instance.AddPlayer(player);
+                
             }
         }
     }
+
+    public void AddEnemyToCombat()
+    {
+        foreach (var enemy in enemies)
+        {
+            if (enemy.gameObject.activeInHierarchy && enemy.inCombat && TurnSystem.Instance.enemiesInCombat.Contains(enemy) == false )
+            {
+                TurnSystem.Instance.AddEnemy(enemy);                
+            }
+        }
+        
+    }
+
+    public void RemoveEnemyFromGame(Enemy enemy)
+    {
+        enemies.Remove(enemy);
+        allEntities.Remove(enemy);
+    }
+
     
 }

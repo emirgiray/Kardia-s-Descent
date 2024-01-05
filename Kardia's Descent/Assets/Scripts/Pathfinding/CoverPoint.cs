@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class CoverPoint : MonoBehaviour
@@ -16,6 +17,7 @@ public class CoverPoint : MonoBehaviour
         FindTileAtstart();
     }
 
+    [Button, GUIColor(0.1f, 1f, 0.1f)]
     public void FindTileAtstart()
     {
         if (objectTile != null)
