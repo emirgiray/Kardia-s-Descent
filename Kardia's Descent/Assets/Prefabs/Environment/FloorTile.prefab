@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d46210187024b684dbb0e227c20070c9, type: 2}
+  - {fileID: 2100000, guid: c83db60afdb29a04288e58b5a6059477, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -130,8 +130,8 @@ MonoBehaviour:
   meshRenderer: {fileID: 0}
   TileHighlightGO: {fileID: 2910908981186622558}
   TileHighlightMeshRenderer: {fileID: 1883696041043539685}
-  defaultMat: {fileID: 2100000, guid: d46210187024b684dbb0e227c20070c9, type: 2}
-  disabledMat: {fileID: 2100000, guid: e1e16ce236e5b744d9edb321053a4dbc, type: 2}
+  defaultMat: {fileID: 2100000, guid: c83db60afdb29a04288e58b5a6059477, type: 2}
+  disabledMat: {fileID: 2100000, guid: 64360fc2f3edd1e4786aaed751ba59b1, type: 2}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
