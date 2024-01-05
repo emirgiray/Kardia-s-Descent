@@ -21,12 +21,13 @@ public class Interact : MonoBehaviour
     [BoxGroup("Objects")][SerializeField] private GameObject InspectTileGO;
     MeshRenderer inspectTileMeshRenderer;
     [BoxGroup("Objects")][SerializeField] public Camera mainCam;
-    [BoxGroup("Objects")][SerializeField] public Tile currentTile;
+    [BoxGroup("Objects")][SerializeField] private Tile currentTile;
     [BoxGroup("Objects")][SerializeField] Tile lastTile;
-    [BoxGroup("Objects")][SerializeField] public Character characterUnderMouse;
+    [BoxGroup("Objects")][SerializeField] private Character characterUnderMouse;
+    [BoxGroup("Objects")][SerializeField] private Character lastCharacterUnderMouse;
     [BoxGroup("Objects")][SerializeField] public Character selectedCharacter;
-    [BoxGroup("Objects")][SerializeField] public Character lastSelectedCharacter;
-    [BoxGroup("Objects")][SerializeField] public Character selectedEnemy;
+    [BoxGroup("Objects")][SerializeField] private Character lastSelectedCharacter;
+    [BoxGroup("Objects")][SerializeField] private Character selectedEnemy;
     
     [BoxGroup("UI")][SerializeField] public GameObject HitChanceUIGameObject;
     [BoxGroup("UI")][SerializeField] public TextMeshProUGUI HitChanceText;
@@ -96,6 +97,7 @@ public class Interact : MonoBehaviour
        {0, new Color(1, 1, 1, 0.7176471f) }, //white -- Movable
        {1, new Color(12.99604f, 1.903436f, 0f, 0.7176471f) },//Orange -- Attackable
        {2, new Color(0.3f, 0.8f, 0.3f, 0.4f) },//Green -- Movable
+       {3, new Color(1f, 0.1f, 0.1f, 0.9f) },//Red -- Not selectable
    };
 
     private void OnEnable()
@@ -272,7 +274,7 @@ public class Interact : MonoBehaviour
                 if (selectedCharacterSkillContainer.skillSelected == false)
                 {
                     selectedCharacter.GetComponent<Inventory>().ShowSkillsUI(false);
-                    selectedCharacter.GetComponent<QuickOutline>().enabled = false;
+                    selectedCharacter.outline.enabled = false;
                     characterSelected = false;
                     ClearHighlightReachableTiles();
                     // selectedCharacter.pathfinder.EnableIllustratePath(false);
@@ -525,11 +527,11 @@ public class Interact : MonoBehaviour
 
     public void SelectPlayer(Character character)
     {
-        if (lastSelectedCharacter != null) lastSelectedCharacter.GetComponent<QuickOutline>().enabled = false;
+        if (lastSelectedCharacter != null) lastSelectedCharacter.outline.enabled = false;
         
         selectedCharacter = character; //select character
-        
-        selectedCharacter.GetComponent<QuickOutline>().enabled = true;
+        characterSelected = true;
+        selectedCharacter.outline.enabled = true;
         
         lastSelectedCharacter = selectedCharacter;
         if (selectedCharacter.characterState == Character.CharacterState.WaitingTurn)
@@ -580,8 +582,6 @@ public class Interact : MonoBehaviour
 
    public bool RetrievePath(Character activator, out Path path)
     {
-      
-
         if (selectedCharacter != null)
         {
             if (selectedCharacter.pathfinder.GetReachableTiles(selectedCharacter.characterTile, selectedCharacter.remainingActionPoints/*, selectedCharacter.characterTile*/).Contains(currentTile))
@@ -631,18 +631,20 @@ public class Interact : MonoBehaviour
         }
     }
     public void HighlightReachableTiles()
-    { 
+    {
         ClearHighlightReachableTiles();
-        reachableTiles = selectedCharacter.pathfinder.GetReachableTiles(selectedCharacter.characterTile, selectedCharacter.remainingActionPoints/*, selectedCharacter.characterTile*/);
+        reachableTiles = selectedCharacter.pathfinder.GetReachableTiles(selectedCharacter.characterTile,
+            selectedCharacter.remainingActionPoints /*, selectedCharacter.characterTile*/);
         foreach (Tile tile in reachableTiles)
         {
             tile.HighlightMoveable();
-            
+
             if (tile == selectedCharacter.characterTile)
             {
                 tile.ClearHighlight();
             }
         }
+        
     }
     public void HighlightAttackableTiles()
     { 
@@ -715,6 +717,20 @@ public class Interact : MonoBehaviour
 
             }
             
+        }
+
+        if (newTile.occupiedByEnemy)
+        {
+            newTile.occupyingEnemy.outline.enabled = true;
+            lastCharacterUnderMouse = newTile.occupyingEnemy;
+        }
+        else
+        {
+            if (lastCharacterUnderMouse != null)
+            {
+                lastCharacterUnderMouse.outline.enabled = false;
+                lastCharacterUnderMouse = null;
+            }
         }
     }
 

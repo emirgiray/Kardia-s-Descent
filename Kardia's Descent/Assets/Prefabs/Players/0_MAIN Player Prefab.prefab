@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 6326383597764647500}
   - component: {fileID: 5475755088311690444}
   - component: {fileID: 7800979912286807391}
-  - component: {fileID: 2592495783906154403}
   - component: {fileID: 29732848317274237}
   - component: {fileID: 1727434434356038212}
   - component: {fileID: 3607636336836369656}
@@ -227,6 +226,11 @@ MonoBehaviour:
   characterStats: {fileID: 0}
   SkillContainer: {fileID: 6566286917398397367}
   pathfinder: {fileID: 29732848317274237}
+  movedata: {fileID: 11400000, guid: dd6f1c9025f1ba945b2082ff9cda2f56, type: 2}
+  characterTile: {fileID: 0}
+  characterCard: {fileID: 0}
+  animator: {fileID: 8171963017244894837}
+  outline: {fileID: 2419198862506966832}
   actionPoints: 6
   remainingActionPoints: 0
   maxActionPoints: 10
@@ -235,24 +239,18 @@ MonoBehaviour:
   canMove: 1
   canAttack: 1
   inCombat: 0
+  isStunned: 0
+  remainingStunTurns: 0
   isDead: 0
   Head: {fileID: 3811572432631322745}
   Hand: {fileID: 4568728419604377504}
-  isStunned: 0
-  totalSteps: 0
-  remainingStunTurns: 0
-  characterCard: {fileID: 0}
-  passingMoveTime: 0
   characterClass: 0
-  movedata: {fileID: 11400000, guid: dd6f1c9025f1ba945b2082ff9cda2f56, type: 2}
-  characterTile: {fileID: 0}
   GroundLayerMask:
     serializedVersion: 2
     m_Bits: 8
   detectionLayerMask:
     serializedVersion: 2
     m_Bits: 1
-  animator: {fileID: 8171963017244894837}
   characterState: 0
   OnMovePointsChangeEvent:
     m_PersistentCalls:
@@ -381,24 +379,6 @@ MonoBehaviour:
   heartData: {fileID: 0}
   isPowerUnlocked: 0
   isEquipped: 0
---- !u!114 &2592495783906154403
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3045574018136022521}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 0, g: 1, b: 0, a: 1}
-  outlineWidth: 2
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!114 &29732848317274237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1371,6 +1351,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1776660968872656196}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a33e02c5e9843b14899803d47dda757b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2419198862506966832}
   m_SourcePrefab: {fileID: 100100000, guid: a33e02c5e9843b14899803d47dda757b, type: 3}
 --- !u!4 &1678476469108849140 stripped
 Transform:
@@ -1432,6 +1416,24 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+--- !u!114 &2419198862506966832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017882941990232910}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0, g: 1, b: 0, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!4 &3811572432631322745 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -6618900677315688858, guid: a33e02c5e9843b14899803d47dda757b,

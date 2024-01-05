@@ -1072,6 +1072,11 @@ MonoBehaviour:
   characterStats: {fileID: 0}
   SkillContainer: {fileID: 971612226134414077}
   pathfinder: {fileID: 8866224488703451883}
+  movedata: {fileID: 11400000, guid: dd6f1c9025f1ba945b2082ff9cda2f56, type: 2}
+  characterTile: {fileID: 0}
+  characterCard: {fileID: 0}
+  animator: {fileID: 4920150254343422204}
+  outline: {fileID: 5718384393814015204}
   actionPoints: 6
   remainingActionPoints: 0
   maxActionPoints: 10
@@ -1080,24 +1085,18 @@ MonoBehaviour:
   canMove: 1
   canAttack: 1
   inCombat: 0
+  isStunned: 0
+  remainingStunTurns: 0
   isDead: 0
   Head: {fileID: 0}
   Hand: {fileID: 7694304149146994981}
-  isStunned: 0
-  totalSteps: 0
-  remainingStunTurns: 0
-  characterCard: {fileID: 0}
-  passingMoveTime: 0
   characterClass: 9
-  movedata: {fileID: 11400000, guid: dd6f1c9025f1ba945b2082ff9cda2f56, type: 2}
-  characterTile: {fileID: 0}
   GroundLayerMask:
     serializedVersion: 2
     m_Bits: 8
   detectionLayerMask:
     serializedVersion: 2
-    m_Bits: 1
-  animator: {fileID: 4920150254343422204}
+    m_Bits: 2
   characterState: 0
   OnMovePointsChangeEvent:
     m_PersistentCalls:
@@ -1153,7 +1152,7 @@ MonoBehaviour:
     type: 2}
   remainState: {fileID: 11400000, guid: 20a530a049e552949892a8e571154a9d, type: 2}
   enemyStats: {fileID: 0}
-  pathfinder: {fileID: 0}
+  pathfinder: {fileID: 8866224488703451883}
   turnSystem: {fileID: 0}
   enemy: {fileID: 0}
   skillContainer: {fileID: 0}
@@ -1385,8 +1384,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f9e86c7de7784746bf63006b068727d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  illustrator: {fileID: 0}
   illustratePath: 0
+  illustrator: {fileID: 0}
 --- !u!1001 &3579682752430526148
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1646,6 +1645,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 5828694121507842737}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b9784524c6ca27d48af6443cddedea93,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5718384393814015204}
   m_SourcePrefab: {fileID: 100100000, guid: b9784524c6ca27d48af6443cddedea93, type: 3}
 --- !u!4 &4941520734785401055 stripped
 Transform:
@@ -1707,6 +1710,24 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+--- !u!114 &5718384393814015204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5753381792072346213}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 0, b: 0, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!4 &7694304149146994981 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -6206277720266400239, guid: b9784524c6ca27d48af6443cddedea93,

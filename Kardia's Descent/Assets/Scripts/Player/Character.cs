@@ -8,53 +8,74 @@ using UnityEngine.Events;
 
 public class Character : MonoBehaviour
 {
-    
-    
-    [SerializeField] public Sprite characterSprite;
-    [SerializeField] public CharacterStats characterStats;
-    [SerializeField] public SkillContainer SkillContainer;
+    [BoxGroup("Character Info")]
+    public Sprite characterSprite;
+    [BoxGroup("Character Info")][SerializeField] 
+    private CharacterStats characterStats; 
+    [BoxGroup("Character Info")]
+    public SkillContainer SkillContainer;
+    [BoxGroup("Character Info")]
     public Pathfinder pathfinder;
-    [SerializeField] public int actionPoints = 3;
-    [SerializeField] public int remainingActionPoints;
-    [SerializeField] public int maxActionPoints = 10;
-    /*[SerializeField] public int moveRange = 3;
-    [SerializeField] public int remainingMoveRange;*/
-    [SerializeField] public int initiative = 1;//todo: this works in reverse!!!
-    [SerializeField] public SGT_Health health;
+    [BoxGroup("Character Info")]
+    public CharacterMoveData movedata;
+    [BoxGroup("Character Info")]
+    public Tile characterTile;
+    [BoxGroup("Character Info")] [SerializeField]
+    private GameObject characterCard;
+    [BoxGroup("Character Info")]
+    public Animator animator;
+    [BoxGroup("Character Info")]
+    public QuickOutline outline;
     
-    [SerializeField] public bool canMove = true;
-    [SerializeField] public bool canAttack = true;
-    [SerializeField] public bool inCombat = false;
-    [SerializeField] public bool isDead = false;
-    [SerializeField] public Transform Head;
-    [SerializeField] public Transform Hand;
-    [SerializeField] public bool isStunned = false;
-    [SerializeField] int totalSteps = 0;
-    [SerializeField] private int remainingStunTurns = 0;
-    [SerializeField] private GameObject characterCard;
-    [SerializeField] private float passingMoveTime = 0;
+    [BoxGroup("Stats")]
+    public int actionPoints = 3;
+    [BoxGroup("Stats")]
+    public int remainingActionPoints;
+    [BoxGroup("Stats")]
+    public int maxActionPoints = 10;
+    [BoxGroup("Stats")]
+    public int initiative = 1;//todo: this works in reverse!!!
+    [BoxGroup("Stats")]
+    public SGT_Health health;
+    
+    [BoxGroup("Functions")] [SerializeField] 
+    public bool canMove = true;
+    [BoxGroup("Functions")] [SerializeField] 
+    public bool canAttack = true;
+    [BoxGroup("Functions")] [SerializeField] 
+    public bool inCombat = false;
+    [BoxGroup("Functions")] [SerializeField] 
+    public bool isStunned = false;
+    [BoxGroup("Functions")] [SerializeField] 
+    private int remainingStunTurns = 0;
+    [BoxGroup("Functions")] [SerializeField] 
+    public bool isDead = false;
+    
+    [BoxGroup("Transforms")] [SerializeField] 
+    private Transform Head;
+    [BoxGroup("Transforms")]
+    public Transform Hand;
     public enum CharacterClass
     {
         None, Tank, Rogue, Sniper, Bombardier, TheRegular, Medic, Support, Bruiser, Melee, Ranged
     }
 
+    [BoxGroup("Character Info")]
     public CharacterClass characterClass;
     
     public bool Moving { get; private set; } = false;
     
-    public CharacterMoveData movedata;
-    public Tile characterTile;
-    [SerializeField] public LayerMask GroundLayerMask;
+    
+    public LayerMask GroundLayerMask;
     [SerializeField] LayerMask detectionLayerMask;
     
-    [SerializeField] public Animator animator;//todo make every character have the same animator and change the values with anim override, this may need a character stats script or SO
     
     
     public enum CharacterState
     {
         Idle, Moving, Attacking, Dead, WaitingTurn, WaitingNextRound
     }
-
+    [BoxGroup("Character Info")]
     public CharacterState characterState;
     
     public static Action<int> OnActionPointsChange;
@@ -247,6 +268,11 @@ public class Character : MonoBehaviour
             if (characterState != CharacterState.WaitingNextRound)//this is for the character to not end turn after moving bc maybe it has action points left
             {
                 characterState = CharacterState.WaitingTurn;
+                
+                if (this is Player)
+                {
+                    Interact.Instance.HighlightReachableTiles();
+                }
             }
 
             animator.SetBool("Walk", false);
@@ -384,7 +410,7 @@ public class Character : MonoBehaviour
         {
             for (int i = 0; i < GameManager.Instance.enemies.Count; i++)
             {
-                if (pathfinder.GetTilesInBetween(this, characterTile, GameManager.Instance.enemies[i].characterTile, true).Count <= 3)
+                if (pathfinder.GetTilesInBetween(this, characterTile, GameManager.Instance.enemies[i].characterTile, true).Count <= 4)
                 {
                     if (!Physics.Linecast(this.transform.position, GameManager.Instance.enemies[i].transform.position, detectionLayerMask))
                     {
@@ -407,7 +433,7 @@ public class Character : MonoBehaviour
         {
             for (int i = 0; i < TurnSystem.Instance.playersInCombat.Count; i++)
             {
-                if (pathfinder.GetTilesInBetween(this, characterTile, TurnSystem.Instance.playersInCombat[i].characterTile, true).Count <= 3)
+                if (pathfinder.GetTilesInBetween(this, characterTile, TurnSystem.Instance.playersInCombat[i].characterTile, true).Count <= 4)
                 {
                     if (!Physics.Linecast(this.transform.position, TurnSystem.Instance.playersInCombat[i].transform.position, detectionLayerMask))
                     {

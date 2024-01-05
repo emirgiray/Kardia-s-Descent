@@ -121,6 +121,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectable: 1
+  disableMeshOnStart: 1
+  Occupied: 0
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
@@ -128,6 +130,8 @@ MonoBehaviour:
   meshRenderer: {fileID: 0}
   TileHighlightGO: {fileID: 2910908981186622558}
   TileHighlightMeshRenderer: {fileID: 1883696041043539685}
+  defaultMat: {fileID: 2100000, guid: d46210187024b684dbb0e227c20070c9, type: 2}
+  disabledMat: {fileID: 2100000, guid: e1e16ce236e5b744d9edb321053a4dbc, type: 2}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0

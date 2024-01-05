@@ -7,7 +7,7 @@ using Sirenix.Serialization;
 
 public class Tile : MonoBehaviour
 {
-    [BoxGroup("Tile")] public bool selectable = true;
+    [BoxGroup("Tile")] [OnValueChanged("DeactivateVisualForEdior")] public bool selectable = true;
     [BoxGroup("Tile")] [SerializeField] private bool disableMeshOnStart = true;
     [BoxGroup("Tile")] public bool Occupied  = false;
     [BoxGroup("Tile")] public Tile parent;
@@ -17,6 +17,8 @@ public class Tile : MonoBehaviour
     [BoxGroup("Tile")] public MeshRenderer meshRenderer;
     [BoxGroup("Tile")] public GameObject TileHighlightGO;
     [BoxGroup("Tile")] public MeshRenderer TileHighlightMeshRenderer;
+    [BoxGroup("Editor")] public Material defaultMat;
+    [BoxGroup("Editor")] public Material disabledMat;
     
     [BoxGroup("Player")] public bool occupiedByPlayer = false;
     [BoxGroup("Player")] public Player occupyingPlayer;
@@ -40,7 +42,17 @@ public class Tile : MonoBehaviour
         {2, new Color(0.3f, 0.1f, 0f) } //Dark red
     };
 
-    
+    public void DeactivateVisualForEdior()
+    {
+        if (selectable)
+        {
+            GetComponent<MeshRenderer>().material = defaultMat;
+        }
+        else
+        {
+            GetComponent<MeshRenderer>().material = disabledMat;
+        }
+    }
     
     private void Start()
     {

@@ -18,7 +18,7 @@ public class StateController : MonoBehaviour
     public StateAI remainState;
    // public SkillsData selectedSkill;
     public EnemyStatsData enemyStats;
-    [HideInInspector] public Pathfinder pathfinder;
+    public Pathfinder pathfinder;
     [HideInInspector] public TurnSystem turnSystem;
     [HideInInspector] public Enemy enemy;
     [HideInInspector] public SkillContainer skillContainer;

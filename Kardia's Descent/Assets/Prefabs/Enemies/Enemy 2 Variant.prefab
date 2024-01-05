@@ -1170,6 +1170,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 8564682593693525652}
+    - targetCorrespondingSourceObject: {fileID: 4933739244037394111, guid: a5edbbad0f6230543a42ee6c912cc294,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6276324707601945688}
   m_SourcePrefab: {fileID: 100100000, guid: a5edbbad0f6230543a42ee6c912cc294, type: 3}
 --- !u!4 &339046089230924267 stripped
 Transform:
@@ -1222,6 +1226,24 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+--- !u!114 &6276324707601945688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3929355120605339993}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 0, b: 0, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!4 &6237541222020082516 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2625533349268489394, guid: a5edbbad0f6230543a42ee6c912cc294,
@@ -1438,6 +1460,11 @@ PrefabInstance:
       propertyPath: Head
       value: 
       objectReference: {fileID: 6237541222020082516}
+    - target: {fileID: 8148688877583324293, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
+        type: 3}
+      propertyPath: outline
+      value: 
+      objectReference: {fileID: 6276324707601945688}
     - target: {fileID: 8148688877583324293, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
         type: 3}
       propertyPath: animator
