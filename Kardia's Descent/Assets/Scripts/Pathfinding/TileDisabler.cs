@@ -8,6 +8,7 @@ public class TileDisabler : MonoBehaviour
     [SerializeField] private LayerMask groundLayerMask;
     [SerializeField] private float rayOriginOffset = 100f;
     [SerializeField] private float rayLength = 9999;
+    [SerializeField] private bool active = true;
     
     
     private void Awake()
@@ -16,16 +17,19 @@ public class TileDisabler : MonoBehaviour
         
         /*MeshRenderer[] meshRenderers = GetComponentsInChildren<MeshRenderer>();
         SkinnedMeshRenderer[] meshRenderers = GetComponentsInChildren<MeshRenderer>();*/
-        Renderer[] renderers = GetComponentsInChildren<Renderer>();
-        
-        foreach (Renderer child in renderers)
+        if (active)
         {
-            if (Physics.Raycast(child.transform.position + Vector3.up * rayOriginOffset, Vector3.down, out RaycastHit hit, rayLength, groundLayerMask))
+            Renderer[] renderers = GetComponentsInChildren<Renderer>();
+        
+            foreach (Renderer child in renderers)
             {
-                hit.transform.gameObject.GetComponent<Tile>().selectable = false;
-                //Debug.Log($"disabler: {child.name}   disabled tile: {hit.transform.gameObject.name}");
-            }
+                if (Physics.Raycast(child.transform.position + Vector3.up * rayOriginOffset, Vector3.down, out RaycastHit hit, rayLength, groundLayerMask))
+                {
+                    hit.transform.gameObject.GetComponent<Tile>().selectable = false;
+                    //Debug.Log($"disabler: {child.name}   disabled tile: {hit.transform.gameObject.name}");
+                }
 
+            }
         }
     }
 }

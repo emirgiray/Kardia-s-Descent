@@ -24,15 +24,28 @@ public class PatrolAction : ActionAI
     
     private Path FindRandomPath(StateController controller)
     {
-        List<Tile>  reachableTiles = Pathfinder.Instance.GetReachableTiles(controller.enemy.characterTile, controller.enemy.remainingActionPoints);
+        List<Tile>  reachableTiles = controller.enemy.pathfinder.GetReachableTiles(controller.enemy.characterTile, controller.enemy.remainingActionPoints);
         Tile randomTile = reachableTiles[Random.Range(0, reachableTiles.Count)];
-        return Pathfinder.Instance.FindPath(controller.enemy, controller.enemy.characterTile, randomTile);
+        return controller.enemy.pathfinder.FindPath(controller.enemy, controller.enemy.characterTile, randomTile);
     }
 
     public Path FindPathBetweenRandomWaypoints(StateController controller)
     {
-        Tile randomTile = controller.waypoints[Random.Range(0, controller.waypoints.Count)].GetComponent<Waypoints>().waypointTile;
-        controller.decidedMoveTile = randomTile;
-        return Pathfinder.Instance.FindPath(controller.enemy, controller.enemy.characterTile, randomTile);
+        int randomIndex = Random.Range(0, controller.waypoints.Count);
+
+        if (controller.waypoints[randomIndex].GetComponent<Waypoints>().waypointTile.selectable && controller.waypoints[randomIndex].GetComponent<Waypoints>().waypointTile.Occupied == false && 
+            controller.waypoints[randomIndex].GetComponent<Waypoints>().waypointTile != controller.enemy.characterTile)
+        {
+            Tile randomTile = controller.waypoints[randomIndex].GetComponent<Waypoints>().waypointTile;
+            controller.decidedMoveTile = randomTile;
+            return controller.enemy.pathfinder.FindPath(controller.enemy, controller.enemy.characterTile, randomTile);
+        }
+        else
+        {
+            return FindPathBetweenRandomWaypoints(controller);
+        }
+        
+        return null;
+        
     }
 }

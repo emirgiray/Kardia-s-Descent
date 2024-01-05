@@ -50,7 +50,6 @@ public class Interact : MonoBehaviour
     bool debug;
     
     Path Lastpath;
-    Pathfinder pathfinder;
     [Tooltip("This is a null check for selectedCharacter")]
     public bool characterSelected = false;
     public SkillContainer selectedCharacterSkillContainer;
@@ -131,7 +130,7 @@ public class Interact : MonoBehaviour
                     {
                         selectedCharacter.canMove = value;
                         HighlightReachableTiles();
-                        pathfinder.EnableIllustratePath(value);
+                        selectedCharacter.pathfinder.EnableIllustratePath(value);
                     }
                 }
                 else
@@ -141,7 +140,7 @@ public class Interact : MonoBehaviour
                         selectedCharacter.canMove = value;
                         Clear();
                         ClearHighlightReachableTiles();
-                        pathfinder.EnableIllustratePath(value);
+                        selectedCharacter.pathfinder.EnableIllustratePath(value);
                     }
                 
                 }
@@ -192,8 +191,6 @@ public class Interact : MonoBehaviour
     {
         mainCam = gameObject.GetComponent<Camera>();
         inspectTileMeshRenderer = InspectTileGO.GetComponentInChildren<MeshRenderer>();
-        if (pathfinder == null)
-            pathfinder = Pathfinder.Instance;
         
         ais = FindObjectsOfType<MonoBehaviour>().OfType<IAstarAI>().ToArray();
     }
@@ -276,12 +273,13 @@ public class Interact : MonoBehaviour
                 {
                     selectedCharacter.GetComponent<Inventory>().ShowSkillsUI(false);
                     selectedCharacter.GetComponent<QuickOutline>().enabled = false;
-                    selectedCharacter = null;
                     characterSelected = false;
                     ClearHighlightReachableTiles();
-                    pathfinder.EnableIllustratePath(false);
+                    // selectedCharacter.pathfinder.EnableIllustratePath(false);
+                    selectedCharacter.pathfinder.ClearIllustratedPath();
                     selectedCharacterSkillContainer.skillSelected = false;
                     selectedCharacterSkillContainer = null;
+                    selectedCharacter = null;
                 }
                 else //deselect skill
                 {
@@ -586,9 +584,10 @@ public class Interact : MonoBehaviour
 
         if (selectedCharacter != null)
         {
-            if (pathfinder.GetReachableTiles(selectedCharacter.characterTile, selectedCharacter.remainingActionPoints/*, selectedCharacter.characterTile*/).Contains(currentTile))
+            if (selectedCharacter.pathfinder.GetReachableTiles(selectedCharacter.characterTile, selectedCharacter.remainingActionPoints/*, selectedCharacter.characterTile*/).Contains(currentTile))
             {
-                path = pathfinder.FindPath(activator, selectedCharacter.characterTile, currentTile);
+                path = selectedCharacter.pathfinder.FindPath(activator, selectedCharacter.characterTile, currentTile);
+                selectedCharacter.pathfinder.illustrator.IllustratePath(path);
                 return true;
             }
             else
@@ -611,13 +610,16 @@ public class Interact : MonoBehaviour
     }
     private void Clear()
     {
-        pathfinder.ClearIllustratedPath();
-        if (currentTile == null  || currentTile.Occupied == false)
-            return;
+        if (characterSelected)
+        {
+            selectedCharacter.pathfinder.ClearIllustratedPath();
+            if (currentTile == null  || currentTile.Occupied == false)
+                return;
 
-        //currentTile.ModifyCost(currentTile.terrainCost-1);//Reverses to previous cost and color after being highlighted
-        //currentTile.ClearHighlight();
-        currentTile = null;
+            //currentTile.ModifyCost(currentTile.terrainCost-1);//Reverses to previous cost and color after being highlighted
+            //currentTile.ClearHighlight();
+            currentTile = null;
+        }
     }
     
 
@@ -631,7 +633,7 @@ public class Interact : MonoBehaviour
     public void HighlightReachableTiles()
     { 
         ClearHighlightReachableTiles();
-        reachableTiles = pathfinder.GetReachableTiles(selectedCharacter.characterTile, selectedCharacter.remainingActionPoints/*, selectedCharacter.characterTile*/);
+        reachableTiles = selectedCharacter.pathfinder.GetReachableTiles(selectedCharacter.characterTile, selectedCharacter.remainingActionPoints/*, selectedCharacter.characterTile*/);
         foreach (Tile tile in reachableTiles)
         {
             tile.HighlightMoveable();
@@ -645,7 +647,7 @@ public class Interact : MonoBehaviour
     public void HighlightAttackableTiles()
     { 
         ClearHighlightAttackableTiles();
-        attackableTiles = pathfinder.GetAttackableTiles(selectedCharacter.characterTile, selectedCharacter.SkillContainer.selectedSkill/*, selectedCharacter.characterTile*/);
+        attackableTiles = selectedCharacter.pathfinder.GetAttackableTiles(selectedCharacter.characterTile, selectedCharacter.SkillContainer.selectedSkill/*, selectedCharacter.characterTile*/);
         foreach (Tile tile in attackableTiles)
         {
             tile.HighlightAttackable();
@@ -678,7 +680,7 @@ public class Interact : MonoBehaviour
             
             if (newTile.occupiedByEnemy && attackableTiles.Contains(newTile))
             {
-                if (Pathfinder.Instance.CheckCoverPoint(selectedCharacter.characterTile, newTile, true))
+                if (selectedCharacter.pathfinder.CheckCoverPoint(selectedCharacter.characterTile, newTile, true))
                 {
                     if (selectedCharacter.SkillContainer.selectedSkill.skillData.skillType == SkillsData.SkillType.Ranged)
                     {

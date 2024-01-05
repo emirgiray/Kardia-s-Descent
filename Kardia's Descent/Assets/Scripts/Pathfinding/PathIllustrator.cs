@@ -1,7 +1,7 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-[RequireComponent(typeof(LineRenderer))]
+//[RequireComponent(typeof(LineRenderer))]
 public class PathIllustrator : MonoBehaviour
 {
     [SerializeField] private /*const*/ float LineHeightOffset = 0.33f;

@@ -12,7 +12,7 @@ public class ShieldCharge : SkillsData
     
     public override void ActivateSkill(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, Action OnComplete = null)
     {
-        Path path = Pathfinder.Instance.GetPathBetween(ActivaterCharacter, ActivaterCharacter.characterTile, selectedTile /*, true*/);
+        Path path = ActivaterCharacter.pathfinder.GetPathBetween(ActivaterCharacter, ActivaterCharacter.characterTile, selectedTile /*, true*/);
         // path.tiles.RemoveAt(path.tiles.Count - 1);
 
         ActivaterCharacter.canMove = true;

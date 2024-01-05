@@ -4,35 +4,37 @@ using System.Linq;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-[RequireComponent(typeof(PathIllustrator))]
+//[RequireComponent(typeof(PathIllustrator))]
 public class Pathfinder : MonoBehaviour
 {
-    public static Pathfinder Instance { get; private set; }
-    PathIllustrator illustrator;
-    [SerializeField] LayerMask tileMask;
+    //public static Pathfinder Instance { get; private set; }
+    [SerializeField] private bool illustratePath = false;
+    [ShowIf("illustratePath")]
+    public PathIllustrator illustrator;
+    /*[SerializeField] LayerMask tileMask;
     [SerializeField] LayerMask coverPointMask;
     [SerializeField] LayerMask tankCoverPointMask;
 
-    [SerializeField] private float coverPointRayLenght = 0.3f;
+    [SerializeField] private float coverPointRayLenght = 2.5f;
     [SerializeField] private float characterYOffset = 0.5f;
-    [SerializeField] private float tileVerticalityLenght = 2f;
+    [SerializeField] private float tileVerticalityLenght = 3f;
     [Tooltip("This is the offset of the hexagonal tiles, it is used to calculate the distance between tiles, default is 1.75f for hex scale (1, 1, 1) )")]
-    [SerializeField] public /*const*/ float HEXAGONAL_OFFSET = 1.75f;
+    [SerializeField] public /*const#1# float HEXAGONAL_OFFSET = 1.75f;*/
     
-    private void Awake()
+    /*private void Awake()
     {
         if (Instance == null)
             Instance = this;
         else
             Destroy(this);
 
-    }
+    }*/
 
-    private void Start()
+    /*private void Start()
     {
         if (illustrator == null)
             illustrator = GetComponent<PathIllustrator>();
-    }
+    }*/
 
     /*private void Update()
     {
@@ -79,7 +81,7 @@ public class Pathfinder : MonoBehaviour
             }
             else
             {
-                if (destination.Occupied && Vector3.Distance(currentTile.transform.position, destination.transform.position) <= (origin.GetComponent<MeshFilter>().sharedMesh.bounds.extents.x * HEXAGONAL_OFFSET))
+                if (destination.Occupied && Vector3.Distance(currentTile.transform.position, destination.transform.position) <= (origin.GetComponent<MeshFilter>().sharedMesh.bounds.extents.x * PathfinderVariables.Instance.HEXAGONAL_OFFSET))
                 {
                     return PathBetween(activator, currentTile, origin, forAIPathfinding);
                 }
@@ -122,7 +124,7 @@ public class Pathfinder : MonoBehaviour
     {
         
         List<Tile> tiles = new List<Tile>();
-        Vector3 direction = Vector3.forward * (origin.GetComponent<MeshFilter>().sharedMesh.bounds.extents.x * HEXAGONAL_OFFSET);
+        Vector3 direction = Vector3.forward * (origin.GetComponent<MeshFilter>().sharedMesh.bounds.extents.x * PathfinderVariables.Instance.HEXAGONAL_OFFSET);
         float rayLength = 4f;
         float rayHeightOffset = 1f;
 
@@ -133,7 +135,7 @@ public class Pathfinder : MonoBehaviour
 
             Vector3 aboveTilePos = (origin.transform.position + direction).With(y: origin.transform.position.y + rayHeightOffset);
 
-            if (Physics.Raycast(aboveTilePos, Vector3.down, out RaycastHit hit, rayLength, tileMask))
+            if (Physics.Raycast(aboveTilePos, Vector3.down, out RaycastHit hit, rayLength, PathfinderVariables.Instance.tileMask))
             {
                 Tile hitTile = hit.transform.GetComponent<Tile>();
                 if (hitTile.selectable)
@@ -193,22 +195,28 @@ public class Pathfinder : MonoBehaviour
     {
         Path path = MakePath(dest, source);
 
-        if (activator is Player)
+        /*if (illustratePath)
         {
-            illustrator.IllustratePath(path);
-        }
+            /*illustrator.IllustratePath(path);#1#
+        }*/
         
         return path;
     }
 
     public void ClearIllustratedPath()
     {
-        illustrator.ClearIllustratedPath();
+        if (illustratePath)
+        {
+            illustrator.ClearIllustratedPath();
+        }
     }
 
     public void EnableIllustratePath(bool value)
     {
-        illustrator.EnableIllustratePath(value);
+        if (illustratePath)
+        {
+            illustrator.EnableIllustratePath(value);
+        }
     }
 
     /// <summary>
@@ -354,7 +362,7 @@ public class Pathfinder : MonoBehaviour
                         
                             //also add verticle tiles with raycasting up
                             //Debug.DrawRay(neighbor.transform.position, Vector3.up * tileVerticalityLenght, Color.yellow);
-                            if (Physics.Raycast(neighbor.transform.position, Vector3.up, out RaycastHit hit, tileVerticalityLenght, tileMask))
+                            if (Physics.Raycast(neighbor.transform.position, Vector3.up, out RaycastHit hit, PathfinderVariables.Instance.tileVerticalityLenght, PathfinderVariables.Instance.tileMask))
                             {
                                 newFrontier.Add(hit.transform.GetComponent<Tile>());
                                 tiles.Add(hit.transform.GetComponent<Tile>());
@@ -385,7 +393,7 @@ public class Pathfinder : MonoBehaviour
         
         foreach (var tile in tiles)
         {
-            if (Physics.Raycast(tile.transform.position, Vector3.down, out RaycastHit hit, tileVerticalityLenght +1 , tileMask))
+            if (Physics.Raycast(tile.transform.position, Vector3.down, out RaycastHit hit, PathfinderVariables.Instance.tileVerticalityLenght +1 , PathfinderVariables.Instance.tileMask))
             {
                 /*Debug.Log($"tile: {selectedCharacterCharacterTile.name} = {selectedCharacterCharacterTile.transform.position.y}" +
                           $"tile: {hit.transform.GetComponent<Tile>().name} =  {hit.transform.GetComponent<Tile>().transform.position.y}");*/
@@ -435,7 +443,7 @@ public class Pathfinder : MonoBehaviour
                 destination, forAIPathfinding)[Pathfinder.Instance.GetTilesInBetween(origin,
                 destination, forAIPathfinding).Count - 1]);*/
 
-        Path path = Pathfinder.Instance.FindPath(activator, origin, destination, forAIPathfinding); 
+        Path path = FindPath(activator, origin, destination, forAIPathfinding); 
         
         // path.tiles = path.tiles.Skip(1).ToArray();
         /*List<Tile> list = new List<Tile>(path.tiles);
@@ -455,14 +463,14 @@ public class Pathfinder : MonoBehaviour
     public bool CheckCoverPoint(Tile attacking, Tile defending, bool sphereCast, float sphereRaidus = 0.5f)
     {
        //check if the defending character is in cover
-       Vector3 attackingPos = new Vector3(attacking.transform.position.x, attacking.transform.position.y + characterYOffset, attacking.transform.position.z);
-       Vector3 defendingPos = new Vector3(defending.transform.position.x, defending.transform.position.y + characterYOffset, defending.transform.position.z);
+       Vector3 attackingPos = new Vector3(attacking.transform.position.x, attacking.transform.position.y + PathfinderVariables.Instance.characterYOffset, attacking.transform.position.z);
+       Vector3 defendingPos = new Vector3(defending.transform.position.x, defending.transform.position.y + PathfinderVariables.Instance.characterYOffset, defending.transform.position.z);
        
       
        if (!sphereCast)
        { 
            //Debug.DrawRay(defendingPos, (attackingPos - defendingPos).normalized * coverPointRayLenght,  Color.red);
-           if (Physics.Raycast(defendingPos, (attackingPos - defendingPos).normalized, out RaycastHit hit, coverPointRayLenght, coverPointMask))
+           if (Physics.Raycast(defendingPos, (attackingPos - defendingPos).normalized, out RaycastHit hit, PathfinderVariables.Instance.coverPointRayLenght, PathfinderVariables.Instance.coverPointMask))
            {
                //Debug.Log($"defender {defending} is in cover");
                return true;
@@ -470,7 +478,7 @@ public class Pathfinder : MonoBehaviour
        
            if (defending.occupiedByPlayer)
            {
-               if (Physics.Raycast(defendingPos, (attackingPos - defendingPos).normalized, out RaycastHit hit2, coverPointRayLenght, tankCoverPointMask))
+               if (Physics.Raycast(defendingPos, (attackingPos - defendingPos).normalized, out RaycastHit hit2, PathfinderVariables.Instance.coverPointRayLenght, PathfinderVariables.Instance.tankCoverPointMask))
                {
                    //Debug.Log($"defender {defending} is in tank cover");
                    return true;
@@ -479,14 +487,14 @@ public class Pathfinder : MonoBehaviour
        }
        else
        {
-           if (Physics.SphereCast(defendingPos, sphereRaidus, (attackingPos - defendingPos).normalized, out RaycastHit hit, coverPointRayLenght, coverPointMask))
+           if (Physics.SphereCast(defendingPos, sphereRaidus, (attackingPos - defendingPos).normalized, out RaycastHit hit, PathfinderVariables.Instance.coverPointRayLenght, PathfinderVariables.Instance.coverPointMask))
            {
                return true;
            }
 
            if (defending.occupiedByPlayer)
            {
-               if (Physics.SphereCast(defendingPos, sphereRaidus, (attackingPos - defendingPos).normalized, out RaycastHit hit2, coverPointRayLenght, tankCoverPointMask))
+               if (Physics.SphereCast(defendingPos, sphereRaidus, (attackingPos - defendingPos).normalized, out RaycastHit hit2, PathfinderVariables.Instance.coverPointRayLenght, PathfinderVariables.Instance.tankCoverPointMask))
                {
                    return true;
                }

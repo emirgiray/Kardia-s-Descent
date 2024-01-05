@@ -25,7 +25,7 @@ public class CheckMoveSkillDecision : DecisionAI
         foreach (var tile in /*controller.GetReachableTiles()*/ reachableTiles)
         {
             int reaminingActionPointsAfterMove = controller.enemy.remainingActionPoints;
-            reaminingActionPointsAfterMove -= Pathfinder.Instance.GetTilesInBetween(controller.enemy, controller.enemy.characterTile, tile).Count + 1;
+            reaminingActionPointsAfterMove -= controller.pathfinder.GetTilesInBetween(controller.enemy, controller.enemy.characterTile, tile).Count + 1;
             tilesChecked++;
             //if (/*tile.isCoveredByCoverPoint*/ Pathfinder.Instance.CheckCoverPoint())
             {
@@ -35,7 +35,7 @@ public class CheckMoveSkillDecision : DecisionAI
                     {
                         //Debug.Log($"{skill.skillData}");
                         //Debug.Log($"skill ready to use and enough action points after move");
-                        foreach (var attackTile in Pathfinder.Instance.GetAttackableTiles(tile, skill))
+                        foreach (var attackTile in controller.pathfinder.GetAttackableTiles(tile, skill))
                         {
                             if (attackTile.occupiedByPlayer && !attackTile.occupyingPlayer.isDead)
                             {
@@ -43,7 +43,7 @@ public class CheckMoveSkillDecision : DecisionAI
                                 {
                                     //Debug.Log($"enemy is in cover");
                                     tileScore = 50 + skill.damage - controller.skillContainer.CalculateCoverDamageDebuff(tile, attackTile, skill) - controller.skillContainer.CalculateCoverAccuracyDebuff(tile, attackTile, skill)
-                                        + Pathfinder.Instance.GetTilesInBetween(controller.enemy, tile, attackTile, true).Count * 10;
+                                        + controller.pathfinder.GetTilesInBetween(controller.enemy, tile, attackTile, true).Count * 10;
 
                                    // Debug.Log($"remaining ap after move: {reaminingActionPointsAfterMove}");
                                    // Debug.Log($"tile: {tile}, curent score: {tileScore}, prev score: {prevTileScore} skill: {skill.skillData}, " +

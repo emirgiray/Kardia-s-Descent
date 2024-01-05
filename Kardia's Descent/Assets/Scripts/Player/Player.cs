@@ -59,7 +59,7 @@ public class Player : Character
     [Button]
     public List<Tile> gettilesinbetween(Tile dest)
     {
-        return Pathfinder.Instance.GetTilesInBetween(this, characterTile, dest, true);
+        return pathfinder.GetTilesInBetween(this, characterTile, dest, true);
     }
     /*private void Update()
     {

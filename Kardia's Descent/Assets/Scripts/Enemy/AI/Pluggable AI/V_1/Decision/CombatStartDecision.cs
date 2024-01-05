@@ -23,7 +23,7 @@ public class CombatStartDecision : DecisionAI
         {
             foreach (var skill in controller.skillContainer.skillsList)//state 1
             {
-                foreach (var attackTile in Pathfinder.Instance.GetAttackableTiles(controller.enemy.characterTile, skill))
+                foreach (var attackTile in controller.enemy.pathfinder.GetAttackableTiles(controller.enemy.characterTile, skill))
                 {
                     if (attackTile.occupyingPlayer != null) //todo null check can be too expensive
                     {
@@ -59,12 +59,12 @@ public class CombatStartDecision : DecisionAI
         {
             foreach (var skill in controller.skillContainer.skillsList)
             {
-                foreach (var attackTile in Pathfinder.Instance.GetAttackableTiles(tile, skill))
+                foreach (var attackTile in controller.enemy.pathfinder.GetAttackableTiles(tile, skill))
                 {
                     if (attackTile.occupyingPlayer != null)//todo null check can be too expensive
                     {
-                        tileScore = Pathfinder.Instance.GetTilesInBetween(controller.enemy, controller.enemy.characterTile, tile, true).Count
-                            + skill.skillData.skillDamage;
+                        tileScore = controller.enemy.pathfinder.GetTilesInBetween(controller.enemy, controller.enemy.characterTile, tile, true).Count
+                                    + skill.skillData.skillDamage;
                         if ( tileScore > prevTileScore)
                         {
                             /*controller.skillContainer.SelectSkill(skill, controller.enemy);

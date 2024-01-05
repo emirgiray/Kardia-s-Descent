@@ -26,7 +26,7 @@ public class CheckCoverMoveSkillDecsision : DecisionAI
         foreach (var tile in /*controller.GetReachableTiles()*/ reachableTiles)
         {
             int reaminingActionPointsAfterMove = controller.enemy.remainingActionPoints;
-            reaminingActionPointsAfterMove -= Pathfinder.Instance.GetTilesInBetween(controller.enemy, controller.enemy.characterTile, tile).Count + 1;//this is the cost of moving to the tile
+            reaminingActionPointsAfterMove -= controller.pathfinder.GetTilesInBetween(controller.enemy, controller.enemy.characterTile, tile).Count + 1;//this is the cost of moving to the tile
             tilesChecked++;
             //if (/*tile.isCoveredByCoverPoint*/ Pathfinder.Instance.CheckCoverPoint())
             {
@@ -36,11 +36,11 @@ public class CheckCoverMoveSkillDecsision : DecisionAI
                     {
                         //Debug.Log($"{skill.skillData}");
                         //Debug.Log($"skill ready to use and enough action points after move");
-                        foreach (var attackTile in Pathfinder.Instance.GetAttackableTiles(tile, skill))
+                        foreach (var attackTile in controller.pathfinder.GetAttackableTiles(tile, skill))
                         {
                             if (attackTile.occupiedByPlayer && !attackTile.occupyingPlayer.isDead)
                             {
-                                if (Pathfinder.Instance.CheckCoverPoint(attackTile, tile, true ))
+                                if (controller.pathfinder.CheckCoverPoint(attackTile, tile, true ))
                                 {
                                     if (skill.skillData.skillType == SkillsData.SkillType.Melee)
                                     {

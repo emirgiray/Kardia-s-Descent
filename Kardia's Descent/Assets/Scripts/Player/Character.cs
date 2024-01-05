@@ -13,6 +13,7 @@ public class Character : MonoBehaviour
     [SerializeField] public Sprite characterSprite;
     [SerializeField] public CharacterStats characterStats;
     [SerializeField] public SkillContainer SkillContainer;
+    public Pathfinder pathfinder;
     [SerializeField] public int actionPoints = 3;
     [SerializeField] public int remainingActionPoints;
     [SerializeField] public int maxActionPoints = 10;
@@ -383,7 +384,7 @@ public class Character : MonoBehaviour
         {
             for (int i = 0; i < GameManager.Instance.enemies.Count; i++)
             {
-                if (Pathfinder.Instance.GetTilesInBetween(this, characterTile, GameManager.Instance.enemies[i].characterTile, true).Count <= 3)
+                if (pathfinder.GetTilesInBetween(this, characterTile, GameManager.Instance.enemies[i].characterTile, true).Count <= 3)
                 {
                     if (!Physics.Linecast(this.transform.position, GameManager.Instance.enemies[i].transform.position, detectionLayerMask))
                     {
@@ -406,7 +407,7 @@ public class Character : MonoBehaviour
         {
             for (int i = 0; i < TurnSystem.Instance.playersInCombat.Count; i++)
             {
-                if (Pathfinder.Instance.GetTilesInBetween(this, characterTile, TurnSystem.Instance.playersInCombat[i].characterTile, true).Count <= 3)
+                if (pathfinder.GetTilesInBetween(this, characterTile, TurnSystem.Instance.playersInCombat[i].characterTile, true).Count <= 3)
                 {
                     if (!Physics.Linecast(this.transform.position, TurnSystem.Instance.playersInCombat[i].transform.position, detectionLayerMask))
                     {

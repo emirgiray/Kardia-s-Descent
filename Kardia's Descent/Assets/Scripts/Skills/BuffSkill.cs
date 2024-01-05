@@ -23,7 +23,7 @@ public class BuffSkill : SkillsData
                             break;
                         case SkillTarget.MultipleAllies:
                             // Handle buffing AP to multiple allies
-                            Pathfinder.Instance.GetAttackableTiles(ActivaterCharacter.characterTile, Skill).ForEach(tile =>
+                            ActivaterCharacter.pathfinder.GetAttackableTiles(ActivaterCharacter.characterTile, Skill).ForEach(tile =>
                                 {
                                     if (tile.occupiedByPlayer)
                                     {

@@ -7,7 +7,7 @@ using UnityEngine;
 public class CoverPoint : MonoBehaviour
 {
     [SerializeField] private Tile objectTile;
-    [SerializeField] private LayerMask GroundLayerMask;
+    [SerializeField] private Pathfinder pathfinder;
     [SerializeField] private float yOffset = 0.18f;
     [SerializeField] private List<Tile> coveringTiles = new List<Tile>();
     
@@ -26,7 +26,7 @@ public class CoverPoint : MonoBehaviour
             return;
         }
 
-        if (Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, 50f, GroundLayerMask))
+        if (Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, 50f, PathfinderVariables.Instance.tileMask))
         {
             FinalizePosition(hit.transform.GetComponent<Tile>());
             return;
@@ -43,7 +43,7 @@ public class CoverPoint : MonoBehaviour
         tile.OccupiedByCoverPoint = true;
         tile.occupyingCoverPoint = this;
         tile.occupyingGO = this.gameObject;
-        coveringTiles = Pathfinder.Instance.NeighborTiles(tile, true);
+        coveringTiles = pathfinder.NeighborTiles(tile, true);
         for (int i = 0; i < coveringTiles.Count; i++)
         {
             coveringTiles[i].isCoveredByCoverPoint = true;

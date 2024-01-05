@@ -234,7 +234,7 @@ public class SkillsData : ScriptableObject
         dir.y = 0;
         dir.Normalize();
         
-        Vector3 newPos = selectedTile.transform.position + dir * Pathfinder.Instance.HEXAGONAL_OFFSET * skillBuffDebuffAmount;
+        Vector3 newPos = selectedTile.transform.position + dir * PathfinderVariables.Instance.HEXAGONAL_OFFSET * skillBuffDebuffAmount;
 
         newPos = new Vector3(newPos.x, 5, newPos.z);
         
@@ -247,7 +247,7 @@ public class SkillsData : ScriptableObject
                 
                 Debug.Log($"not occupied starting move to {newTile.name}"); 
                 // Path newPath = Pathfinder.Instance.PathBetween(ActivaterCharacter, newTile, selectedTile);
-                Path newPath = Pathfinder.Instance.MakePath(newTile, selectedTile);
+                Path newPath = ActivaterCharacter.pathfinder.MakePath(newTile, selectedTile);
                 
                 if (ActivaterCharacter is Player && selectedTile.occupiedByEnemy)
                 {

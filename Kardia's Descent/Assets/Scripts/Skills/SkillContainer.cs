@@ -396,7 +396,7 @@ bool impact = false;
     //todo delete this and calcuale for half damage on cover
     public int CalculateCoverAccuracyDebuff(Tile attacker, Tile defender, Skills selectSkill)
     {
-        if (Pathfinder.Instance.CheckCoverPoint(attacker, defender, true) && selectSkill.skillData.skillType == SkillsData.SkillType.Ranged)
+        if (Character.pathfinder.CheckCoverPoint(attacker, defender, true) && selectSkill.skillData.skillType == SkillsData.SkillType.Ranged)
         {
             Debug.Log($"accuracy debuff: {selectSkill.coverAccuracyDebuff}");
             return selectSkill.coverAccuracyDebuff;
@@ -407,7 +407,7 @@ bool impact = false;
 
     public int CalculateCoverDamageDebuff(Tile attacker, Tile defender, Skills selectSkill)
     {
-        if (Pathfinder.Instance.CheckCoverPoint(attacker, defender, true) && selectSkill.skillData.skillType == SkillsData.SkillType.Ranged)
+        if (Character.pathfinder.CheckCoverPoint(attacker, defender, true) && selectSkill.skillData.skillType == SkillsData.SkillType.Ranged)
         {
             return selectSkill.damage / 2;
         }

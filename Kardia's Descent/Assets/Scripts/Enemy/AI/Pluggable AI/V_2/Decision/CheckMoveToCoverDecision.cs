@@ -30,7 +30,7 @@ public class CheckMoveToCoverDecision : DecisionAI
             {
                 playersChecked++;
                 
-                if (Pathfinder.Instance.CheckCoverPoint(player.characterTile, tile, true))
+                if (controller.pathfinder.CheckCoverPoint(player.characterTile, tile, true))
                 {
                     inCover++;
                     
@@ -54,7 +54,7 @@ public class CheckMoveToCoverDecision : DecisionAI
                     }
                 }
                 
-                tileScore = 100 + (inCover * 10 ) - Pathfinder.Instance.GetTilesInBetween(controller.enemy, tile, player.characterTile, true).Count * 2;
+                tileScore = 100 + (inCover * 10 ) - controller.pathfinder.GetTilesInBetween(controller.enemy, tile, player.characterTile, true).Count * 2;
                 if (inCover == 0)
                 {
                     tileScore = -1000;
@@ -79,7 +79,7 @@ public class CheckMoveToCoverDecision : DecisionAI
 
             foreach (var player in controller.players)  
             {
-                characterScore = Pathfinder.Instance.GetTilesInBetween(controller.enemy, controller.enemy.characterTile, player.characterTile, true).Count;
+                characterScore = controller.pathfinder.GetTilesInBetween(controller.enemy, controller.enemy.characterTile, player.characterTile, true).Count;
                 if (characterScore < prevCharacterScore)
                 {
                     controller.decidedMoveTile = player.characterTile;

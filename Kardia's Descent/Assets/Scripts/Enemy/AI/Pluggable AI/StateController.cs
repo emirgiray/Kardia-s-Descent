@@ -67,7 +67,6 @@ public class StateController : MonoBehaviour
     {
         enemy = GetComponent<Enemy>();
         skillContainer = GetComponent<SkillContainer>();
-        pathfinder = Pathfinder.Instance;
         turnSystem = TurnSystem.Instance;
         RandomWaitAssigner();
         RandomWaitAssigner2();
