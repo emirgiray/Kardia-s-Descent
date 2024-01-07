@@ -84,6 +84,7 @@ public class StateController : MonoBehaviour
 
     private void Start()
     {
+        FindWaypointsFromParent();
         /*players.AddRange(turnSystem.players);
         enemies.AddRange(turnSystem.enemies);*/
     }
@@ -176,7 +177,10 @@ public class StateController : MonoBehaviour
         waypoints.Clear();
         foreach (Transform child in waypointsParent.transform)
         {
-            waypoints.Add(child.gameObject);
+            if (child.gameObject.activeInHierarchy)
+            {
+                waypoints.Add(child.gameObject);
+            }
         }
     }
     
