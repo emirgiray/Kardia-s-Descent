@@ -27,7 +27,8 @@ namespace SGT_Tools.AI
         {
             if (!DelayLerp)
             {
-                Bar02.fillAmount = Mathf.Lerp(Bar02.fillAmount, Bar01.fillAmount, Time.deltaTime * BarSpeed);
+                if (Bar02 != null)
+                    Bar02.fillAmount = Mathf.Lerp(Bar02.fillAmount, Bar01.fillAmount, Time.deltaTime * BarSpeed);
             }
 
         }

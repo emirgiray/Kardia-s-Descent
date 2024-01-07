@@ -90,8 +90,8 @@ public class SGT_Health : MonoBehaviour {
     [PropertyOrder(0)]
     public int _Health;
 
-    private SGT_HealthAnim _HealthAnim;
-    private SGT_HealthAnim _HealthAnim_2;
+    [SerializeField] private SGT_HealthAnim _HealthAnim;
+    [SerializeField] private SGT_HealthAnim _HealthAnim_2;
 
     public int HealthAi
     {
@@ -115,6 +115,13 @@ public class SGT_Health : MonoBehaviour {
         {
             HealthAi = Max;
         }
+        
+        Init();
+        
+    }
+
+    public void Init()
+    {
         if (Bar02!=null) //If added bar2, we will add another component to health script for animation
         {
             if (gameObject.GetComponent<SGT_HealthAnim>()==null)
@@ -146,8 +153,6 @@ public class SGT_Health : MonoBehaviour {
             }
 
         }
-
-        
     }
 
     private void OnEnable()

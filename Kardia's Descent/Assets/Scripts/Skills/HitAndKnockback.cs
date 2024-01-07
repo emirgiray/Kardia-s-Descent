@@ -15,7 +15,7 @@ public class HitAndKnocback : SkillsData
 
     public IEnumerator WaitUntilEnum(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, Action OnComplete = null)
     {
-        yield return new WaitUntil(() => ActivaterCharacter.SkillContainer == true);
+        yield return new WaitUntil(() => ActivaterCharacter.SkillContainer.GetImpact() == true);
         
         if (skillAudioEvent != null) skillAudioEvent.Play(ActivaterCharacter.transform);
         if (skillStartVFX != null) skillStartVFX.SpawnVFX(ActivaterCharacter.Hand);

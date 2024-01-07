@@ -22,7 +22,8 @@ public class Interact : MonoBehaviour
     MeshRenderer inspectTileMeshRenderer;
     [BoxGroup("Objects")][SerializeField] public Camera mainCam;
     [BoxGroup("Objects")][SerializeField] private Tile currentTile;
-    [BoxGroup("Objects")][SerializeField] Tile lastTile;
+    [BoxGroup("Objects")][SerializeField] private Tile lastTile;
+    [BoxGroup("Objects")][SerializeField] public Tile lastAttackedTile;
     [BoxGroup("Objects")][SerializeField] private Character characterUnderMouse;
     [BoxGroup("Objects")][SerializeField] private Character lastCharacterUnderMouse;
     [BoxGroup("Objects")][SerializeField] public Character selectedCharacter;
@@ -353,6 +354,11 @@ public class Interact : MonoBehaviour
         
         if (currentTile.Occupied)
         {
+            if (characterSelected)
+            {
+                selectedCharacter.pathfinder.ClearIllustratedPath();
+            }
+            
             if (currentTile.OccupiedByCoverPoint)
             {
                 // inspectTileMeshRenderer.material.color = tileInspectColors[3];
@@ -451,6 +457,7 @@ public class Interact : MonoBehaviour
                         if (attackableTiles.Contains(currentTile))
                         {
                             selectedCharacter.SkillContainer.UseSkill(selectedCharacter.SkillContainer.selectedSkill, currentTile);
+                            lastAttackedTile = currentTile;
                             
                         }
                     }

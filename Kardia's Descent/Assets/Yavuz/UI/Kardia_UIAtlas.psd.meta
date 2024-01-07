@@ -554,10 +554,10 @@ TextureImporter:
       name: TopHex_Hero1
       rect:
         serializedVersion: 2
-        x: 65
-        y: 1564
-        width: 464
-        height: 552
+        x: 14
+        y: 1565
+        width: 560
+        height: 586
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -575,9 +575,9 @@ TextureImporter:
       name: TopHex_Hero2
       rect:
         serializedVersion: 2
-        x: 622
-        y: 1564
-        width: 485
+        x: 592
+        y: 1565
+        width: 560
         height: 586
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -596,10 +596,10 @@ TextureImporter:
       name: TopHex_Hero3
       rect:
         serializedVersion: 2
-        x: 1206
-        y: 1564
+        x: 1204
+        y: 1565
         width: 560
-        height: 569
+        height: 586
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -617,10 +617,10 @@ TextureImporter:
       name: TopHex_Enemy1
       rect:
         serializedVersion: 2
-        x: 88
+        x: 14
         y: 886
-        width: 441
-        height: 579
+        width: 560
+        height: 586
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -638,10 +638,10 @@ TextureImporter:
       name: TopHex_Enemy2
       rect:
         serializedVersion: 2
-        x: 671
+        x: 599
         y: 886
-        width: 441
-        height: 567
+        width: 560
+        height: 586
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -12,6 +12,9 @@ public class Player : Character
     private HeartContainer heartContainer;
     [FoldoutGroup("Stats For Quests")] [SerializeField]
     private int killsInTurn = 0;
+    [ShowIf("characterClass", CharacterClass.Bruiser)]
+    [SerializeField] private bool canBruiserDoubleAttack = true;
+    
     
     public delegate void QuestDelegate();
     public static event QuestDelegate JackTheRipperQuestCompleted;
@@ -20,14 +23,45 @@ public class Player : Character
         TurnSystem.Instance.FriendlyTurn += base.StartTurn;
         TurnSystem.Instance.OnPlayerCheckStunTurnEvent += CheckRemoveStun;
         TurnSystem.Instance.OnPlayerTurnEvent += ResetKillsInTurn;
+
+        if (characterClass == CharacterClass.Bruiser)
+        {
+            OnAttackEndAction += BruiserDoubleAttack;
+            TurnSystem.Instance.FriendlyTurn += ResetBruiserDoubleAttack;
+        }
     }
     private void OnDisable()
     {
         TurnSystem.Instance.FriendlyTurn -= base.StartTurn;
         TurnSystem.Instance.OnPlayerCheckStunTurnEvent -= CheckRemoveStun;
         TurnSystem.Instance.OnPlayerTurnEvent -= ResetKillsInTurn;
+        
+        if (characterClass == CharacterClass.Bruiser)
+        {
+            OnAttackEndAction -= BruiserDoubleAttack;
+            TurnSystem.Instance.FriendlyTurn -= ResetBruiserDoubleAttack;
+        }
+    }
+    
+    public void BruiserDoubleAttack(SkillContainer.Skills skill)
+    {
+        Debug.Log($"can double attack= {canBruiserDoubleAttack}");
+        if (canBruiserDoubleAttack && skill.skillData.name.Contains("Basic"))
+        {
+            remainingActionPoints += skill.actionPointUse;
+            skill.remainingSkillCooldown = skill.skillCooldown;
+            canBruiserDoubleAttack = false;
+            Vector3 pos = Interact.Instance.lastAttackedTile.transform.position;
+            Rotate(pos);
+            SkillContainer.UseSkill(skill, Interact.Instance.lastAttackedTile);
+            
+        }
     }
 
+    public void ResetBruiserDoubleAttack()
+    {
+        canBruiserDoubleAttack = true;
+    }
     public void CheckeHeartQuest()
     {
         if(heartContainer.heartData == null) return;

@@ -10,20 +10,21 @@ namespace CodeMonkey.CameraSystem {
     public class CameraSystem : MonoBehaviour {
 
         [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
-        [SerializeField] private float moveSpeed = 50f;
-        [SerializeField] float zoomSpeed = 5;
-        [SerializeField] float dragMoveSpeed = 50f;
-        [SerializeField] float rotateSpeed = 100f;
+        [SerializeField] private float moveSpeed = 10;
+        [SerializeField] float zoomSpeed = 1;
+        [SerializeField] float dragMoveSpeed = 0.5f;
+        [SerializeField] float rotateSpeed = 50;
         [SerializeField] Vector2 rotateMinMax;
         [SerializeField] private bool useEdgeScrolling = false;
-        [SerializeField] private bool useDragPan = false;
+        [SerializeField] private bool useDragPan = true;
         
-        [Tooltip("Best values (5, 15), (10, 20)")]
-        [SerializeField] Vector2 followOffsetYMinMax = new Vector2(10f, 50f);
+        [Tooltip("Best values (5, 15), (10, 20), (10, 25)")]
+        [SerializeField] Vector2 followOffsetYMinMax = new Vector2(10f, 25);
         [SerializeField] float staticFollowRangey = 20;
-        [Tooltip("Best values (10, 20), (15, 25)")]
-        [SerializeField] Vector2 followOffsetMinMax = new Vector2(5f, 50f);
-        [SerializeField] Vector2 fieldOfViewMinMax = new Vector2(10, 50f);
+        [Tooltip("Best values (10, 20), (15, 25), (15, 30)")]
+        [SerializeField] Vector2 followOffsetMinMax = new Vector2(15, 30);
+        [Tooltip("Best values (10, 30)")]
+        [SerializeField] Vector2 fieldOfViewMinMax = new Vector2(10, 30);
         
         /*[SerializeField] private float followOffsetMinY = 10f;
         [SerializeField] private float followOffsetMaxY = 50f;

@@ -27,15 +27,18 @@ public class CharacterRoundCard : MonoBehaviour
         character.health.Bar01_2 = Bar01_2;
        // Debug.Log($"character bar {character.health.Bar01_2} bar01_2: {Bar01_2} ");
         character.health.Bar02_2 = Bar02_2;
+        character.health.Init();
         image.sprite = character.characterSprite;
 
         if (characterIn is Player)
         {
-            borderImage.color = playerColor;
+            // borderImage.color = playerColor;
+            Bar01_2.color = playerColor;
         }
         else
         {
-            borderImage.color = enemyColor;
+            // borderImage.color = enemyColor;
+            Bar01_2.color = enemyColor;
         }
         
     }

@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40e1b56ff8194f9498d18383bf9980c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterSprite: {fileID: -11266308, guid: f050367bbcaea674495c2d5e36fc140b, type: 3}
+  characterSprite: {fileID: 0}
   characterStats: {fileID: 0}
   SkillContainer: {fileID: 6566286917398397367}
   pathfinder: {fileID: 29732848317274237}

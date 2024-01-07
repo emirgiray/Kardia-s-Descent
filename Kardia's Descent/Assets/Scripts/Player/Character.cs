@@ -82,6 +82,7 @@ public class Character : MonoBehaviour
     public Action OnTurnStart;
     public Action<Character> OnCharacterDeath;
     public Action OnCharacterRecieveDamageAction;
+    public Action<SkillContainer.Skills> OnAttackEndAction;
     
     [FoldoutGroup("Events")] public UnityEvent<int> OnMovePointsChangeEvent;
     [FoldoutGroup("Events")] public UnityEvent<int, string> OnActionPointsChangeEvent;
@@ -95,7 +96,7 @@ public class Character : MonoBehaviour
 
     [HideInInspector] public int extraMeleeDamage = 0;
     [HideInInspector] public int extraRangedAccuracy = 0;
- 
+
     private void Awake()
     {
         //characterState = CharacterState.Idle;
@@ -299,6 +300,7 @@ public class Character : MonoBehaviour
 
     public void Rotate(Vector3 destination, float duration = 0.75f, Action OnComplete = null)
     {
+        
         // transform.rotation = Quaternion.LookRotation(origin.DirectionTo(destination).Flat(), Vector3.up);
         transform.DOLookAt(destination, duration, AxisConstraint.Y, Vector3.up).SetEase(Ease.OutBack).OnComplete(()=> OnComplete?.Invoke());
  
@@ -498,10 +500,13 @@ public class Character : MonoBehaviour
 
     public void AttackStart()
     {
+        
         characterState = CharacterState.Attacking;
         
         animator.SetTrigger("AttackStart");
     }
+
+    
     public void AttackCancel()
     {
         characterState = CharacterState.WaitingTurn;
@@ -528,9 +533,9 @@ public class Character : MonoBehaviour
 
     public void AttackEnd(SkillContainer.Skills skill)
     {
+        OnAttackEndAction?.Invoke(skill);
         characterState = CharacterState.WaitingTurn;
         remainingActionPoints -= skill.actionPointUse;//maybe add a - or + variable to skill use
-        
         OnActionPointsChange?.Invoke(remainingActionPoints);
         OnActionPointsChangeEvent?.Invoke(remainingActionPoints, "-");
         CheckIfEndTurn();

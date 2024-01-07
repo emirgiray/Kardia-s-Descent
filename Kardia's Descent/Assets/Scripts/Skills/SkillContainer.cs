@@ -302,6 +302,13 @@ public class SkillContainer : MonoBehaviour
     }
     
 bool impact = false;
+/// <summary>
+/// 
+/// </summary>
+/// <param name="selectedSkill"></param>
+/// <param name="selectedTile"></param>
+/// <param name="enemy">currently only used in enemy</param>
+/// <param name="OnComplete">currently only used in enemy</param>
     public void UseSkill(Skills selectedSkill, Tile selectedTile, Enemy enemy = null, Action OnComplete = null)
     {
         SetImpact(false);
@@ -313,18 +320,17 @@ bool impact = false;
 
         if (Character is Enemy)Debug.Log($"{this.name} Used {selectedSkill.skillData.name}");
 
-        if (this.selectedSkill.skillCooldown != 0)
+        if (selectedSkill.skillCooldown != 0)
         {
-            
-            this.selectedSkill.skillButton.cooldownImage.GetComponent<Image>().DOFillAmount(1, 1f);
-            this.selectedSkill.remainingSkillCooldown = 0;
-            this.selectedSkill.skillReadyToUse = false;
+            selectedSkill.remainingSkillCooldown = 0;
+            selectedSkill.skillReadyToUse = false;
             // skillNotReadyAction?.Invoke();
             if (Character is Player)
             {
-                this.selectedSkill.skillButton.EnableDisableButton(false);
-                this.selectedSkill.skillButton.cooldownImage.gameObject.SetActive(true);
-                this.selectedSkill.skillButton.cooldownText.text = (this.selectedSkill.skillCooldown).ToString();
+                selectedSkill.skillButton.cooldownImage.gameObject.SetActive(true);
+                selectedSkill.skillButton.cooldownImage.GetComponent<Image>().DOFillAmount(1, 1f);
+                selectedSkill.skillButton.cooldownText.text = (selectedSkill.skillCooldown).ToString();
+                selectedSkill.skillButton.EnableDisableButton(false);
             }
         }
         
@@ -360,18 +366,20 @@ bool impact = false;
             ResetCoverAccruacyDebuff();
             ResetCoverdamageDebuff();
 
-            OnComplete?.Invoke(); 
+            OnComplete?.Invoke();
+            
+            if (Character is Player)
+            {
+                Interact.Instance.selectedCharacter.GetComponent<Character>().AttackEnd(selectedSkill);
+            }
+            else if (Character is Enemy)
+            {
+                enemy.AttackEnd(selectedSkill);
+            }
                 
         });
         
-        if (Character is Player)
-        {
-            Interact.Instance.selectedCharacter.GetComponent<Character>().AttackEnd(selectedSkill);
-        }
-        else if (Character is Enemy)
-        {
-            enemy.AttackEnd(selectedSkill);
-        }
+        
         
         yield return null;
     }

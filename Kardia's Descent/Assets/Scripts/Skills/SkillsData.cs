@@ -242,15 +242,15 @@ public class SkillsData : ScriptableObject
         {
             var newTile = hit.transform.GetComponent<Tile>();
 
-            if (!newTile.Occupied)
+            if (!newTile.Occupied && newTile.selectable)
             {
                 
                 Debug.Log($"not occupied starting move to {newTile.name}"); 
                 // Path newPath = Pathfinder.Instance.PathBetween(ActivaterCharacter, newTile, selectedTile);
-                Path newPath = ActivaterCharacter.pathfinder.MakePath(newTile, selectedTile);
                 
                 if (ActivaterCharacter is Player && selectedTile.occupiedByEnemy)
                 {
+                    Path newPath = selectedTile.occupyingEnemy.pathfinder.FindPath(ActivaterCharacter, selectedTile, newTile);
                     Character defender = selectedTile.occupyingEnemy;
                     // defender.canMove = true;
                     // selectedTile.occupyingEnemy.StartMove(newPath, false, ()=> defender.canMove = false, false);
@@ -260,6 +260,7 @@ public class SkillsData : ScriptableObject
                 }
                 if (ActivaterCharacter is Enemy && selectedTile.occupiedByPlayer)
                 {
+                    Path newPath = selectedTile.occupyingPlayer.pathfinder.FindPath(ActivaterCharacter, selectedTile, newTile);
                     Character defender = selectedTile.occupyingPlayer;
                     // defender.canMove = true;
                     // selectedTile.occupyingPlayer.StartMove(newPath, false, ()=> defender.canMove = false, false);

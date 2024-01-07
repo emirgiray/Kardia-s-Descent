@@ -94,10 +94,10 @@ public class GridEditor : EditorWindow
             tg = parent.GetComponent<TileGenerator>();
 
         //tg.GenerateGrid(tile, gridSize);
-        GenerateGrid(tile, gridSize);
+        GenerateGrid(tile, gridSize); //ben ekledim
     }
 
-    void ClearGrid()
+    void ClearGrid() //ben ekledim
     {
         for (int i = tg.transform.childCount; i >= tg.transform.childCount; i--)
         {
@@ -109,12 +109,12 @@ public class GridEditor : EditorWindow
         }
     }
 
-    Vector2 DetermineTileSize(Bounds tileBounds)
+    Vector2 DetermineTileSize(Bounds tileBounds)//ben ekledim
     {
         return new Vector2((tileBounds.extents.x * 2) * 0.75f, (tileBounds.extents.z * 2));
     }
 
-    public void GenerateGrid(GameObject tile, Vector2Int gridsize)
+    public void GenerateGrid(GameObject tile, Vector2Int gridsize)//ben ekledim
     {
         ClearGrid();
         Vector2 tileSize = DetermineTileSize(tile.GetComponent<MeshFilter>().sharedMesh.bounds);
@@ -134,12 +134,12 @@ public class GridEditor : EditorWindow
         }
     }
 
-    float UnevenRowOffset(float x, float y)
+    float UnevenRowOffset(float x, float y)//ben ekledim
     {
         return x % 2 == 0 ? y / 2 : 0f;
     }
 
-    void CreateTile(GameObject t, Vector3 pos, Vector2Int id)
+    void CreateTile(GameObject t, Vector3 pos, Vector2Int id)//ben ekledim
     {
         // GameObject newTile = Instantiate(t.gameObject, pos, Quaternion.identity, tg.transform);
         GameObject newTile = PrefabUtility.InstantiatePrefab(t) as GameObject;
