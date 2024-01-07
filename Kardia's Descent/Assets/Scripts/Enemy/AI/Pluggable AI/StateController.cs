@@ -65,6 +65,7 @@ public class StateController : MonoBehaviour
 
     private void Awake()
     {
+        FindWaypointsFromParent();
         enemy = GetComponent<Enemy>();
         skillContainer = GetComponent<SkillContainer>();
         turnSystem = TurnSystem.Instance;
@@ -84,7 +85,7 @@ public class StateController : MonoBehaviour
 
     private void Start()
     {
-        FindWaypointsFromParent();
+        
         /*players.AddRange(turnSystem.players);
         enemies.AddRange(turnSystem.enemies);*/
     }

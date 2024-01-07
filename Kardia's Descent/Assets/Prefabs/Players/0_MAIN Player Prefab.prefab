@@ -19,6 +19,8 @@ GameObject:
   - component: {fileID: 29732848317274237}
   - component: {fileID: 1727434434356038212}
   - component: {fileID: 3607636336836369656}
+  - component: {fileID: 2067046752837608681}
+  - component: {fileID: 3625488753374834585}
   m_Layer: 9
   m_Name: 0_MAIN Player Prefab
   m_TagString: Player
@@ -508,6 +510,56 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LineHeightOffset: 0.33
+--- !u!54 &2067046752837608681
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3045574018136022521}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!136 &3625488753374834585
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3045574018136022521}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 3.554887
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.2774435, z: 0}
 --- !u!1 &5090733536535404942
 GameObject:
   m_ObjectHideFlags: 0

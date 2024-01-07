@@ -7,6 +7,8 @@ using UnityEngine;
 public class CoverPoint : MonoBehaviour
 {
     [SerializeField] private Tile objectTile;
+    [SerializeField] private bool findTileAtStart = false;
+    
     [SerializeField] private Pathfinder pathfinder;
     [SerializeField] private float yOffset = 0.18f;
     [SerializeField] private List<Tile> coveringTiles = new List<Tile>();
@@ -14,10 +16,21 @@ public class CoverPoint : MonoBehaviour
 
     void Start()
     {
-        FindTileAtstart();
+        if (findTileAtStart)
+        {
+            FindTileAtstart();
+        }
+        else
+        {
+            if (objectTile == null)
+            {
+                Debug.LogError("Cover point: " + gameObject.name + " has no object tile !!! ");
+            }
+        }
+        
     }
 
-    [Button, GUIColor(0.1f, 1f, 0.1f)]
+    
     public void FindTileAtstart()
     {
         if (objectTile != null)
@@ -35,6 +48,17 @@ public class CoverPoint : MonoBehaviour
         Debug.Log("No tile found for cover point: " + gameObject.name + " at position: " + transform.position + "");
     }
 
+    [Button, GUIColor(0.1f, 1f, 0.1f)]
+    public void FindTile()
+    {
+        if (Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, 50f, PathfinderVariables.Instance.tileMask))
+        {
+            FinalizePosition(hit.transform.GetComponent<Tile>());
+            return;
+        }
+    }
+    
+    
     public void FinalizePosition(Tile tile)
     {
         transform.position = tile.transform.position + new Vector3(0,yOffset,0);

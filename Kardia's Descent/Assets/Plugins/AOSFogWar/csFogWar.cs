@@ -307,7 +307,10 @@ namespace FischlWorks_FogWar
 
         private void Update()
         {
-            UpdateFog();
+            if (Time.frameCount % 10 == 0)
+            {
+                UpdateFog();
+            }
         }
 
 

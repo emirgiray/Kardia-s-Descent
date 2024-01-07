@@ -27,7 +27,7 @@ public class Interact : MonoBehaviour
     [BoxGroup("Objects")][SerializeField] private Character lastCharacterUnderMouse;
     [BoxGroup("Objects")][SerializeField] public Character selectedCharacter;
     [BoxGroup("Objects")][SerializeField] private Character lastSelectedCharacter;
-    [BoxGroup("Objects")][SerializeField] private Character selectedEnemy;
+    // [BoxGroup("Objects")][SerializeField] private Character selectedEnemy;
     
     [BoxGroup("UI")][SerializeField] public GameObject HitChanceUIGameObject;
     [BoxGroup("UI")][SerializeField] public TextMeshProUGUI HitChanceText;
@@ -199,7 +199,7 @@ public class Interact : MonoBehaviour
 
     private void Update()
     {
-        Clear();
+        //Clear();
         MouseUpdate();
         CheckMouseOverUI();
         CheckCharacterInputs();
@@ -325,10 +325,14 @@ public class Interact : MonoBehaviour
 
        // if(lastTile != null) lastTile.ClearHighlight();
         currentTile = hit.transform.GetComponent<Tile>();
-        if(lastTile != currentTile) CurrentTileChangedAction?.Invoke(currentTile);//check if the currentTile value has changed
+        if (lastTile != null)
+        {
+                    if(lastTile != currentTile) CurrentTileChangedAction?.Invoke(currentTile);//check if the currentTile value has changed
+
+        }
         lastTile = currentTile;
-        characterUnderMouse = currentTile.occupyingCharacter;
-        InspectTileHighlight();
+        /*characterUnderMouse = currentTile.occupyingCharacter;*/
+        //InspectTileHighlight();
         InspectTile();
     }
 
@@ -464,10 +468,11 @@ public class Interact : MonoBehaviour
         {
             InspectCharacter();
         }
-        else if (currentTile.occupyingCharacter.gameObject.tag == "Enemy")
+        /*else if (currentTile.occupyingCharacter.gameObject.tag == "Enemy")
         {
             InspectEnemy();
-        }
+        }*/
+        
     }
 
     private void InspectCharacter()
@@ -487,6 +492,7 @@ public class Interact : MonoBehaviour
    
     public void TrySelectPlayer(Character chaaracter)
     {
+        Clear();
         //CharacterSelectedAction?.Invoke(chaaracter.characterTile);
         if (characterSelected == false)
         {
@@ -499,6 +505,9 @@ public class Interact : MonoBehaviour
             switch (lastSelectedCharacter.GetComponent<Character>().characterState)
             {
                 case Character.CharacterState.Idle:
+                    lastSelectedCharacter.GetComponent<Inventory>().ShowSkillsUI(false); //close skills ui
+                    SelectPlayer(chaaracter);
+                    selectedCharacterSkillContainer = selectedCharacter.SkillContainer;
                     break;
            
                 case Character.CharacterState.WaitingTurn:
@@ -534,7 +543,7 @@ public class Interact : MonoBehaviour
         selectedCharacter.outline.enabled = true;
         
         lastSelectedCharacter = selectedCharacter;
-        if (selectedCharacter.characterState == Character.CharacterState.WaitingTurn)
+        if (selectedCharacter.characterState == Character.CharacterState.WaitingTurn || selectedCharacter.characterState == Character.CharacterState.Idle)
         {
             if (selectedCharacter.remainingActionPoints > 0)
             {
@@ -545,28 +554,29 @@ public class Interact : MonoBehaviour
         selectedCharacter.GetComponent<Inventory>().ShowSkillsUI(true); //show skills ui
     }
     
-    public void InspectEnemy()
+    /*public void InspectEnemy()
     {
         //currentTile.HighlightRed();
 
         if (Input.GetMouseButtonDown(0))
             SelectEnemy();
-    }
-    private void SelectEnemy()
+    }*/
+    /*private void SelectEnemy()
     {
         selectedEnemy = currentTile.occupyingCharacter;
        // CharacterSelectedAction?.Invoke(selectedEnemy.characterTile);
-    }
+    }*/
 
     private void NavigateToTile(Character activator )
     {
         if (selectedCharacter == null || selectedCharacter.Moving == true)
             return;
-
+    
         if (RetrievePath(activator, out Path newPath))
         {
             if (Input.GetMouseButtonDown(0))
             {
+                Clear();
                 ClearHighlightReachableTiles();
                // GetComponent<AudioSource>().PlayOneShot(click);
                 selectedCharacter.StartMove(newPath);
@@ -670,6 +680,8 @@ public class Interact : MonoBehaviour
 
     public void CurrentTileChangedFunc(Tile newTile)//this calculates the accuracy before shooting, adds rotation to player
     {
+        characterUnderMouse = currentTile.occupyingCharacter;
+        
         //print(newTile);
         if (characterSelected && selectedCharacter.characterState == Character.CharacterState.Attacking)//todo add or FreeRoam
         {
@@ -732,6 +744,8 @@ public class Interact : MonoBehaviour
                 lastCharacterUnderMouse = null;
             }
         }
+        
+        InspectTileHighlight();
     }
 
     public IEnumerator HitChanceUIToMousePos()

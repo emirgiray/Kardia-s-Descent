@@ -42,6 +42,7 @@ public class Tile : MonoBehaviour
         {2, new Color(0.3f, 0.1f, 0f) } //Dark red
     };
 
+    [Button, GUIColor(1f, 0.1f, 0.1f)]
     public void DeactivateVisualForEdior()
     {
         if (selectable)
@@ -164,7 +165,7 @@ public class Tile : MonoBehaviour
         occupyingEnemy = null;
         occupyingGO = null;
     }
-    
+
     /*public void DebugCostText()
     {
         costText.text = TotalCost.ToString("F1");
