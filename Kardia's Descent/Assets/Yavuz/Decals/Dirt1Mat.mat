@@ -49,17 +49,17 @@ Material:
     - _DecalMeshBiasType: 0
     - _DecalMeshDepthBias: 0
     - _DecalMeshViewBias: 0
-    - _Dissolve_Amount: 0.378
+    - _Dissolve_Amount: 0
     - _Dissolve_Scale: 90
     - _DrawOrder: 0
-    - _Fill_Amount: 4.97
+    - _Fill_Amount: 4.9
     - _Has_Normal: 1
-    - _Metalllic: 0.492
+    - _Metalllic: 0.6
     - _NormalScale: -1.1
-    - _Outline_Width: 0
-    - _Smoothness: 0.229
+    - _Outline_Width: 0.1
+    - _Smoothness: 0.3
     m_Colors:
-    - _Color: {r: 0.084905684, g: 0, b: 0, a: 1}
+    - _Color: {r: 0.13207549, g: 0.058181934, b: 0.031772874, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &6286269352476877210
 MonoBehaviour:
