@@ -529,6 +529,153 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: TopHex_HP
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 2183
+        width: 353
+        height: 181
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d056d1fa9d06f449ace1470ea930354
+      internalID: -315147241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TopHex_Hero1
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 1564
+        width: 464
+        height: 552
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3782fd4622796c747b9c93d30a14eda9
+      internalID: 1037746094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TopHex_Hero2
+      rect:
+        serializedVersion: 2
+        x: 622
+        y: 1564
+        width: 485
+        height: 586
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7150cc3d1677247499ef150d3c5fb71c
+      internalID: 274480220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TopHex_Hero3
+      rect:
+        serializedVersion: 2
+        x: 1206
+        y: 1564
+        width: 560
+        height: 569
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d606b4dec968501468efe149a0550196
+      internalID: 1832450849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TopHex_Enemy1
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 886
+        width: 441
+        height: 579
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c8485dd2d09abf43921952ac5554c8d
+      internalID: -2145818744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TopHex_Enemy2
+      rect:
+        serializedVersion: 2
+        x: 671
+        y: 886
+        width: 441
+        height: 567
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41c271603a97ca14d80fe4f33ded6377
+      internalID: -845788115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AP_Indc
+      rect:
+        serializedVersion: 2
+        x: 3851
+        y: 3814
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0940b93d57785447a00e3d7e3e938e0
+      internalID: 1573853127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -540,9 +687,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Kardia_UIAtlas_0: 1573853127
-      Kardia_UIAtlas_11: -2126607450
-      Kardia_UIAtlas_12: -1616148948
+      AP_Indc: 1573853127
+      Kardia_UIAtlas_1: 2037170692
       Kardia_UIAtlas_2: 816221303
       Kardia_UIAtlas_3: 858309278
       Kardia_UIAtlas_4: 749771949
@@ -550,7 +696,6 @@ TextureImporter:
       Kardia_UIAtlas_6: 1815163699
       Kardia_UIAtlas_7: -1871624062
       Kardia_UIAtlas_8: 432443997
-      Kardia_UIAtlas_9: 632324815
       Kardia_UIAtlas_E1: 276419777
       Kardia_UIAtlas_E2: -671121250
       Kardia_UIAtlas_Logo: 1458395219
@@ -565,6 +710,12 @@ TextureImporter:
       P3_S2: 434477216
       P3_S3: 374684540
       P3_S4: -1155649192
+      TopHex_Enemy1: -2145818744
+      TopHex_Enemy2: -845788115
+      TopHex_HP: 632324815
+      TopHex_Hero1: 1037746094
+      TopHex_Hero2: -2126607450
+      TopHex_Hero3: -1616148948
       hexagon_Top: -62228848
   mipmapLimitGroupName: 
   pSDRemoveMatte: 1
