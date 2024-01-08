@@ -40,9 +40,7 @@ public class Interact : MonoBehaviour
     IAstarAI[] ais;
     
     List<Tile> reachableTiles = new List<Tile>();
-    [SerializeField]List<Tile> attackableTiles = new List<Tile>();
-    [SerializeField]
-    AudioClip click, pop;
+    List<Tile> attackableTiles = new List<Tile>();
     [SerializeField]LayerMask interactMask;
     [SerializeField]LayerMask UILayerMask;
     public Action<Tile> CurrentTileChangedAction;
@@ -326,10 +324,9 @@ public class Interact : MonoBehaviour
             CurrentTileChangedAction?.Invoke();
         }*/
         
-        
-        
         InspectTileGO.transform.position = currentTile.transform.position;
-        
+        lastTile.ShieldIcon.SetActive(false);
+
         if (currentTile.Occupied)
         {
             if (characterSelected)
@@ -340,7 +337,8 @@ public class Interact : MonoBehaviour
             if (currentTile.OccupiedByCoverPoint)
             {
                 // inspectTileMeshRenderer.material.color = tileInspectColors[3];
-                inspectTileMeshRenderer.material.SetColor("_RimColor",tileInspectColors[3]);
+                //inspectTileMeshRenderer.material.SetColor("_RimColor",tileInspectColors[3]);
+                inspectTileMeshRenderer.material.SetColor("_RimColor",tileInspectColors[0]);
                 return;
             }
             
@@ -364,6 +362,12 @@ public class Interact : MonoBehaviour
              if (currentTile.isCoveredByCoverPoint)
              {
                  inspectTileMeshRenderer.material.SetColor("_RimColor",tileInspectColors[3]);
+
+                 if (reachableTiles.Contains(currentTile))
+                 {
+                     currentTile.ShieldIcon.SetActive(true);
+                 }
+
              }
             // Debug.Log(inspectTileMeshRenderer.material.GetColor("_RimColor"));
         }

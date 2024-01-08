@@ -676,6 +676,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Kardia_UIAtlas_HalftonBG
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 279
+        width: 395
+        height: 395
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e60ef0dce0da73479f56676dd2e47cb
+      internalID: -2021078203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -698,6 +719,7 @@ TextureImporter:
       Kardia_UIAtlas_8: 432443997
       Kardia_UIAtlas_E1: 276419777
       Kardia_UIAtlas_E2: -671121250
+      Kardia_UIAtlas_HalftonBG: -2021078203
       Kardia_UIAtlas_Logo: 1458395219
       Kardia_UIAtlas_P1: -11266308
       Kardia_UIAtlas_P3: 439456557

@@ -16,6 +16,7 @@ public class Tile : MonoBehaviour
     [BoxGroup("Tile")] public GameObject occupyingGO;
     [BoxGroup("Tile")] public MeshRenderer meshRenderer;
     [BoxGroup("Tile")] public GameObject TileHighlightGO;
+    [BoxGroup("Tile")] public GameObject ShieldIcon;
     [BoxGroup("Tile")] public MeshRenderer TileHighlightMeshRenderer;
     [BoxGroup("Editor")] public Material defaultMat;
     [BoxGroup("Editor")] public Material disabledMat;
