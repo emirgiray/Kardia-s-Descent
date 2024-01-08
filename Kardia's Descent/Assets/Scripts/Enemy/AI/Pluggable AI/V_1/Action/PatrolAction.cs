@@ -33,10 +33,10 @@ public class PatrolAction : ActionAI
     {
         int randomIndex = Random.Range(0, controller.waypoints.Count);
 
-        if (controller.waypoints[randomIndex].GetComponent<Waypoints>().waypointTile.selectable && controller.waypoints[randomIndex].GetComponent<Waypoints>().waypointTile.Occupied == false && 
-            controller.waypoints[randomIndex].GetComponent<Waypoints>().waypointTile != controller.enemy.characterTile)
+        if (controller.waypoints[randomIndex].selectable && controller.waypoints[randomIndex].Occupied == false && 
+            controller.waypoints[randomIndex] != controller.enemy.characterTile)
         {
-            Tile randomTile = controller.waypoints[randomIndex].GetComponent<Waypoints>().waypointTile;
+            Tile randomTile = controller.waypoints[randomIndex];
             controller.decidedMoveTile = randomTile;
             return controller.enemy.pathfinder.FindPath(controller.enemy, controller.enemy.characterTile, randomTile);
         }

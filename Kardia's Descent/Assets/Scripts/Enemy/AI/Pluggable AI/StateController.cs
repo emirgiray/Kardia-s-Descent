@@ -39,7 +39,7 @@ public class StateController : MonoBehaviour
     public Vector2 RandomWaitTimer2;
     
     [SerializeField] private GameObject waypointsParent;
-    public List<GameObject> waypoints = new List<GameObject>();
+    public List<Tile> waypoints = new List<Tile>();
     
 
     private void OnEnable()//todo might need to turn this into an action or delegate
@@ -180,7 +180,8 @@ public class StateController : MonoBehaviour
         {
             if (child.gameObject.activeInHierarchy)
             {
-                waypoints.Add(child.gameObject);
+                child.GetComponent<Waypoints>().FindTile();
+                waypoints.Add(child.GetComponent<Waypoints>().waypointTile);
             }
         }
     }
