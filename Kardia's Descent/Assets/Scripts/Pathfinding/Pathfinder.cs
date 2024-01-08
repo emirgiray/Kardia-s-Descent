@@ -345,21 +345,14 @@ public class Pathfinder : MonoBehaviour
 
             foreach (Tile tile in frontier)
             {
-                
                 foreach (Tile neighbor in NeighborTiles(tile, true, true))
                 {
-                    /*if (neighbor.Occupied == true)
-                    {
-
-                    }*/
-
                     if (skill.skillData.skillType == SkillsData.SkillType.Ranged)
                     {
                         if (/*neighbor.Occupied == false && */!tiles.Contains(neighbor))
                         {
                             newFrontier.Add(neighbor);
                             tiles.Add(neighbor);
-                        
                             //also add verticle tiles with raycasting up
                             //Debug.DrawRay(neighbor.transform.position, Vector3.up * tileVerticalityLenght, Color.yellow);
                             if (Physics.Raycast(neighbor.transform.position, Vector3.up, out RaycastHit hit, PathfinderVariables.Instance.tileVerticalityLenght, PathfinderVariables.Instance.tileMask))
@@ -367,7 +360,6 @@ public class Pathfinder : MonoBehaviour
                                 newFrontier.Add(hit.transform.GetComponent<Tile>());
                                 tiles.Add(hit.transform.GetComponent<Tile>());
                             }
-                       
                         }
                     }
                     else //if the skill is melee
@@ -379,8 +371,6 @@ public class Pathfinder : MonoBehaviour
                        
                         }
                     }
-                    
-                    
                 }
             }
             
@@ -413,6 +403,52 @@ public class Pathfinder : MonoBehaviour
         
         
     }
+
+    public List<Tile> GetAttackableTilesLine(Tile originTile, Tile targetTile, SkillContainer.Skills skill)
+    {
+        Path path = FindPath(originTile.occupyingCharacter, originTile, targetTile);
+        
+        Vector3 dir = (targetTile.transform.position - originTile.transform.position).normalized;
+        
+        List<Tile> tiles = new List<Tile>();
+        tiles = path.tiles.ToList();
+        
+        if(tiles.Count > skill.range)
+        {
+            tiles = tiles.Take(skill.range).ToList();
+        }
+        if (targetTile.Occupied)
+        {
+            tiles.Add(targetTile);
+        }
+        
+        //remove if not in the same direction
+        List<Tile> tilesToRemove = new List<Tile>();
+        
+        foreach (var tile in tiles)
+        {
+            if ((tile.transform.position - originTile.transform.position).normalized != dir)
+            {
+                tilesToRemove.Add(tile);
+            }
+
+        }
+        
+        foreach (var tile in tilesToRemove)
+        {
+            tiles.Remove(tile);
+        }
+        
+        
+        if (tiles.Count == 1 && tiles[0] == targetTile && !NeighborTiles(originTile, true, true).Contains(targetTile))
+        {
+            tiles.Remove(tiles[0]);
+        }
+ 
+        
+        return tiles;
+    }
+      
     [Button]
     public List<Tile> GetTilesInBetween(Character activator,  Tile origin, Tile destination, bool forAIPathfinding = false)
     {

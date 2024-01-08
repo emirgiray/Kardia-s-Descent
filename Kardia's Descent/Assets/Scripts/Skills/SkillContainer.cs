@@ -145,7 +145,7 @@ public class SkillContainer : MonoBehaviour
 
                 if (skillsList[i].remainingSkillCooldown == skillsList[i].skillCooldown)
                 {
-                    // skillsList[i].skillReadyToUse = true;
+                     skillsList[i].skillReadyToUse = true;
                     if (Character is Player)
                     {
                         skillsList[i].skillButton.EnableDisableButton(true);//todo maybe also check the skip button interactable
@@ -194,17 +194,11 @@ public class SkillContainer : MonoBehaviour
             
             if (skillSelected == false) //if no skill is selected select that sakill
             {
-                if (Character.canAttack )
+                if (Character.canAttack && selectSkill.skillReadyToUse)
                 {
-                    // if (selectedSkill.skillReadyToUse)
-                    {
-                        skillSelected = true;
-                        SelectSkill(selectSkill);
-                    }
-                    // else
-                    // {
-                    //     Debug.Log("Skill not ready to use");
-                    // }
+                    skillSelected = true;
+                    SelectSkill(selectSkill);
+
                 }
             }
             else
@@ -215,16 +209,9 @@ public class SkillContainer : MonoBehaviour
                 }
                 else //if a skill is already selected and a new skill is selected, deselect the old skill and select the new one
                 {
-                    if (Character.canAttack)
+                    if (Character.canAttack && selectSkill.skillReadyToUse)
                     {
-                        // if (selectedSkill.skillReadyToUse)
-                        {
-                            SelectSkill(selectSkill);
-                        }
-                        // else
-                        // {
-                        //     Debug.Log("Skill not ready to use");
-                        // }
+                        SelectSkill(selectSkill);
                     }
                 }
             }
@@ -268,7 +255,7 @@ public class SkillContainer : MonoBehaviour
             lastSelectedSkill = selectedSkill;
             selectedSkill.skillButton.SwitchSelectedOutline(true);
             Interact.Instance.SkillSelected?.Invoke();
-            Interact.Instance.HighlightAttackableTiles();
+            Interact.Instance.HighlightAttackableTiles(selectedSkill);
             Interact.Instance.selectedCharacter.GetComponent<Character>().AttackStart();
             
         }

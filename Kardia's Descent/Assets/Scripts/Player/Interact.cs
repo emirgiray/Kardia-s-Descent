@@ -40,7 +40,7 @@ public class Interact : MonoBehaviour
     IAstarAI[] ais;
     
     List<Tile> reachableTiles = new List<Tile>();
-    List<Tile> attackableTiles = new List<Tile>();
+    [SerializeField]List<Tile> attackableTiles = new List<Tile>();
     [SerializeField]
     AudioClip click, pop;
     [SerializeField]LayerMask interactMask;
@@ -141,7 +141,7 @@ public class Interact : MonoBehaviour
                     if (selectedCharacter.SkillContainer.skillSelected == true)
                     {
                         //selectedCharacter.canAttack = value;//todo dont change this value, instead block all interactions when player hovers over skills, tooltips etc
-                        HighlightAttackableTiles();
+                        HighlightAttackableTiles(selectedCharacter.SkillContainer.selectedSkill);
                     }
                 }
                 else
@@ -642,19 +642,55 @@ public class Interact : MonoBehaviour
         }
         
     }
-    public void HighlightAttackableTiles()
+    public void HighlightAttackableTiles(SkillContainer.Skills selectedSkill)
     { 
         ClearHighlightAttackableTiles();
-        attackableTiles = selectedCharacter.pathfinder.GetAttackableTiles(selectedCharacter.characterTile, selectedCharacter.SkillContainer.selectedSkill/*, selectedCharacter.characterTile*/);
-        foreach (Tile tile in attackableTiles)
-        {
-            tile.HighlightAttackable();
 
-            if (tile == selectedCharacter.characterTile)
-            {
-                tile.ClearHighlight();
-            }
+        switch (selectedSkill.skillData.skillTargetType)
+        {
+            case SkillsData.SkillTargetType.AreaAroundSelf:
+                attackableTiles = selectedCharacter.pathfinder.GetAttackableTiles(selectedCharacter.characterTile, selectedCharacter.SkillContainer.selectedSkill/*, selectedCharacter.characterTile*/);
+                foreach (Tile tile in attackableTiles)
+                {
+                    tile.HighlightAttackable();
+
+                    if (tile == selectedCharacter.characterTile)
+                    {
+                        tile.ClearHighlight();
+                    }
+                }
+                break;
+            
+            case SkillsData.SkillTargetType.AreaAroundTarget:
+                throw new NotImplementedException();
+                break;
+            
+            case SkillsData.SkillTargetType.Line:
+                if (currentTile != null && currentTile.selectable)
+                {
+                    attackableTiles = selectedCharacter.pathfinder.GetAttackableTilesLine(selectedCharacter.characterTile, currentTile, selectedCharacter.SkillContainer.selectedSkill);
+                    if (attackableTiles != null)
+                    {
+                        foreach (Tile tile in attackableTiles)
+                        {
+                            tile.HighlightAttackable();
+
+                            if (tile == selectedCharacter.characterTile)
+                            {
+                                tile.ClearHighlight();
+                            }
+                        }
+                    }
+                }
+                
+                break;
+            
+            case SkillsData.SkillTargetType.Cone:
+                throw new NotImplementedException();
+                break;
         }
+        
+        
     }
     public void ClearHighlightAttackableTiles()
     {
@@ -677,6 +713,8 @@ public class Interact : MonoBehaviour
             {
                 selectedCharacter.Rotate(currentTile.transform.position);
             }
+            
+            HighlightAttackableTiles(selectedCharacter.SkillContainer.selectedSkill);
             
             if (newTile.occupiedByEnemy && attackableTiles.Contains(newTile))
             {

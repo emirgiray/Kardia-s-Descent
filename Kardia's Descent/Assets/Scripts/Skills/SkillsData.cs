@@ -54,6 +54,8 @@ public class SkillsData : ScriptableObject
         Physical, Random, Fire, Ice, Poison, Electric, Explosive, None
     }
     public DamageType damageType;
+    
+    
     [EnumPaging]
     public enum SkillTarget
     {
@@ -67,6 +69,13 @@ public class SkillsData : ScriptableObject
         Single, Area, Line, Cone, AllInRange, AllInLine, AllInCone, All
     }
     public SkillHitType skillHitType;
+    
+    [EnumPaging]
+    public enum SkillTargetType
+    {
+        AreaAroundSelf, AreaAroundTarget, Line, Cone
+    }
+    public SkillTargetType skillTargetType;
     
     [EnumToggleButtons]
     public enum SkillEffect
