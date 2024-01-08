@@ -15,6 +15,8 @@ public class SkillButton : MonoBehaviour
 {
     [SerializeField] public SkillsData skillData;
     [SerializeField] public SkillContainer.Skills skill;
+    [SerializeField] private Image SkillImage;
+    [SerializeField] private GameObject SkillSelectedOutline;
     [SerializeField] private Button button;
     [SerializeField] public TextMeshProUGUI cooldownText;
     [SerializeField] public TextMeshProUGUI apCostText;
@@ -33,12 +35,22 @@ public class SkillButton : MonoBehaviour
         skill = skillIn;
         skillContainer = skillContainerIn;
         
-        GetComponent<Image>().sprite = skillData.skillSprite;
+        SkillImage.sprite = skillData.skillSprite;
         //GetComponentInChildren<TextMeshProUGUI>().text = skillData.skillName;
         tooltipTrigger.SetHeader(skillDataIn.skillName);
         tooltipTrigger.SetContent(skillDataIn.skillDescription);
         tooltipTrigger.AddToContent("");
+        
+        if (skillDataIn.skillClass == SkillsData.SkillClass.Buff)
+        {
+            SkillSelectedOutline.GetComponent<UIOutline>().color = Interact.Instance.skillColors[1];
+        }
+        else
+        {
+            SkillSelectedOutline.GetComponent<UIOutline>().color = Interact.Instance.skillColors[0];
+        }
 
+        
         if (skillDataIn.passiveOrActive == SkillsData.PassiveOrActive.Active)
         {
             if (skillDataIn.skillClass != SkillsData.SkillClass.Buff)
@@ -72,6 +84,11 @@ public class SkillButton : MonoBehaviour
         
         
         
+    }
+
+    public void SwitchSelectedOutline(bool value)
+    {
+        SkillSelectedOutline.SetActive(value);
     }
 
     public void EnableDisableButton(bool value)

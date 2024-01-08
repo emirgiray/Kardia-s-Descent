@@ -13,6 +13,7 @@ public class SkillContainer : MonoBehaviour
     [SerializeField] public List<Skills> skillsList = new List<Skills>();
     //[SerializeField] public SkillsData selectedSOSkill;
     [SerializeField] public Skills selectedSkill;
+    [SerializeField] private Skills lastSelectedSkill;
     [SerializeField] public bool skillSelected = false;
    // [SerializeField] private bool skillCanbeUsed = true;
     [SerializeField] private Character Character;
@@ -254,6 +255,8 @@ public class SkillContainer : MonoBehaviour
         selectedSkill.skillButton = skillsList.Find(x => x.skillData == selectedSkill.skillData).skillButton;*/
         
         selectedSkill = selectSkill;
+        
+        
         if (selectedSkill.animatorOverrideController != null)
         {
             SetAnimAtorOverrides(selectedSkill.animatorOverrideController);
@@ -261,6 +264,9 @@ public class SkillContainer : MonoBehaviour
         
         if (Character is Player)
         {
+            if (lastSelectedSkill.skillButton != null) lastSelectedSkill.skillButton.SwitchSelectedOutline(false);
+            lastSelectedSkill = selectedSkill;
+            selectedSkill.skillButton.SwitchSelectedOutline(true);
             Interact.Instance.SkillSelected?.Invoke();
             Interact.Instance.HighlightAttackableTiles();
             Interact.Instance.selectedCharacter.GetComponent<Character>().AttackStart();
@@ -286,6 +292,7 @@ public class SkillContainer : MonoBehaviour
 
         if (Character is Player)
         {
+            selectedSkill.skillButton.SwitchSelectedOutline(false);
             Interact.Instance.ClearHighlightAttackableTiles();
             Interact.Instance.SkillDeselected?.Invoke();
             Interact.Instance.selectedCharacter.GetComponent<Character>().AttackCancel();
@@ -302,6 +309,8 @@ public class SkillContainer : MonoBehaviour
     }
     
 bool impact = false;
+
+
 /// <summary>
 /// 
 /// </summary>

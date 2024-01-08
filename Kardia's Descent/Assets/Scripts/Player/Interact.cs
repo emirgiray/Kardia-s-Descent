@@ -56,27 +56,7 @@ public class Interact : MonoBehaviour
     public bool characterSelected = false;
     public SkillContainer selectedCharacterSkillContainer;
     [SerializeField] public bool isMouseOverUI = false;
-    
-   /*
-   public Dictionary<int, Color> bulkHighlightColorsMap = new Dictionary<int, Color>()
-    {
-        {0, new Color(0.3f, 0.8f, 0.3f, 1) }, //Moveable
-        {1, new Color(1, 0.5f, 0.1f, 1) },//Attackable
-    };
-    */
-    
-    /*Dictionary<int, Color> tileInspectColors = new Dictionary<int, Color>()
-    {
-        {0, new Color(0f, 0.38f, 1f, 0.3f) }, //Blue -- Default
-        {1, new Color(0f, 1, 0, 0.3f) },//Green -- Player
-        {2, new Color(1f, 0, 0, 0.3f) },//Red -- Enemy
-        {3, new Color(1f, 1, 0, 0.3f) },//Yellow -- Cover
-
-    };*/
     [SerializeField] private static float intensity = 1;
-
-    
-    
     Dictionary<int, Color> tileInspectColors = new Dictionary<int, Color>()
     {
         {0, new Color(0.000f * intensity, 6.334f * intensity, 12.996f * intensity, 0.719f) }, //Blue -- Default
@@ -86,19 +66,18 @@ public class Interact : MonoBehaviour
 
     };
     
-    
-   /*public Dictionary<int, Color> tileHighligthColors = new Dictionary<int, Color>()
-    {
-        {0, new Color(0.3f, 0.8f, 0.3f, 0.4f) },//Green -- Movable
-        {1, new Color(1, 0.5f, 0.1f, 0.4f) },//Orange -- Attackable
-    };*/
-   
    public Dictionary<int, Color> tileHighligthColors = new Dictionary<int, Color>()
    {
        {0, new Color(1, 1, 1, 0.7176471f) }, //white -- Movable
        {1, new Color(12.99604f, 1.903436f, 0f, 0.7176471f) },//Orange -- Attackable
        {2, new Color(0.3f, 0.8f, 0.3f, 0.4f) },//Green -- Movable
        {3, new Color(1f, 0.1f, 0.1f, 0.9f) },//Red -- Not selectable
+   };
+   
+   public Dictionary<int, Color> skillColors = new Dictionary<int, Color>()
+   {
+       {0, new Color(0.9921569f, 0.7359219f, 0.5176471f, 1) },//Red -- Attack
+       {1, new Color(0.525716f, 0.9921569f, 0.5176471f, 1) },//Green -- Buff
    };
 
     private void OnEnable()
