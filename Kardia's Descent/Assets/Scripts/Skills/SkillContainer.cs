@@ -279,7 +279,7 @@ public class SkillContainer : MonoBehaviour
 
         if (Character is Player)
         {
-            selectedSkill.skillButton.SwitchSelectedOutline(false);
+            if (selectedSkill.skillButton != null) selectedSkill.skillButton.SwitchSelectedOutline(false);
             Interact.Instance.ClearHighlightAttackableTiles();
             Interact.Instance.SkillDeselected?.Invoke();
             Interact.Instance.selectedCharacter.GetComponent<Character>().AttackCancel();

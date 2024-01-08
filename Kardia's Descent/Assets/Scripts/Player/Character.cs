@@ -80,6 +80,8 @@ public class Character : MonoBehaviour
     
     public static Action<int> OnActionPointsChange;
     public Action OnTurnStart;
+    public Action CombatStartedAction;
+    public Action CombatEndedAction;
     public Action<Character> OnCharacterDeath;
     public Action OnCharacterRecieveDamageAction;
     public Action<SkillContainer.Skills> OnAttackEndAction;
@@ -325,6 +327,7 @@ public class Character : MonoBehaviour
                     canMove = true;
                     canAttack = true;
                     characterState = CharacterState.WaitingTurn;//todo enemy turn does not change to waiting for turn
+                    
                 }
                 
                 // ResetActionPoints();
@@ -349,6 +352,7 @@ public class Character : MonoBehaviour
                 if (this is Player)
                 {
                     if(PlayerTurnStart != null) PlayerTurnStart.Invoke();
+                    if(this == Interact.Instance.selectedCharacter ) Interact.Instance.HighlightReachableTiles();
                 }
             }
             else
@@ -380,6 +384,17 @@ public class Character : MonoBehaviour
     private static LTDescr delay;
     public void EndTurn()
     {
+        if(this is Player && TurnSystem.Instance.turnState == TurnSystem.TurnState.FreeRoamTurn)
+        {
+            return;
+        }
+
+        if (this is Player)
+        {
+            SkillContainer.DeselectSkill(SkillContainer.selectedSkill);
+            pathfinder.ClearIllustratedPath();
+        }
+        
         canMove = false;
         canAttack = false;
         characterState = CharacterState.WaitingNextRound;
@@ -461,7 +476,7 @@ public class Character : MonoBehaviour
     public void StartCombat()
     {
         inCombat = true;
-
+        CombatStartedAction?.Invoke();
         if (this is Player)
         {
             GameManager.Instance.AddPlayersToCombat();
@@ -476,6 +491,7 @@ public class Character : MonoBehaviour
     public void ExitCombat()
     {
         inCombat = false;
+        CombatEndedAction?.Invoke();
         ResetActionPoints();
         SkillContainer.ForceResetSkillCooldowns();
     }

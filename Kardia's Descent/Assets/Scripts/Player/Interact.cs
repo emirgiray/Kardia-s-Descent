@@ -185,7 +185,6 @@ public class Interact : MonoBehaviour
         CheckCharacterInputs();
         CheckDebugInputs();
         //UpdateFreeRoamTargetPosition();
-        
     }
 
     private void CheckDebugInputs()
@@ -614,7 +613,7 @@ public class Interact : MonoBehaviour
 
             //currentTile.ModifyCost(currentTile.terrainCost-1);//Reverses to previous cost and color after being highlighted
             //currentTile.ClearHighlight();
-            currentTile = null;
+            //currentTile = null;
         }
     }
     

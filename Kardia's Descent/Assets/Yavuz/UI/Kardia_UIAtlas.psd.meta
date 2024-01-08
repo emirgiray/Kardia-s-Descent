@@ -114,7 +114,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 6
-        y: 3862
+        y: 3842
         width: 396
         height: 455
       alignment: 0
@@ -596,7 +596,7 @@ TextureImporter:
       name: TopHex_Hero3
       rect:
         serializedVersion: 2
-        x: 1204
+        x: 1203
         y: 1565
         width: 560
         height: 586

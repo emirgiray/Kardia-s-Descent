@@ -79,7 +79,7 @@ public class Pathfinder : MonoBehaviour
             {  
                 return PathBetween(activator, destination, origin, forAIPathfinding);
             }
-            else
+            else //does this work???
             {
                 if (destination.Occupied && Vector3.Distance(currentTile.transform.position, destination.transform.position) <= (origin.GetComponent<MeshFilter>().sharedMesh.bounds.extents.x * PathfinderVariables.Instance.HEXAGONAL_OFFSET))
                 {

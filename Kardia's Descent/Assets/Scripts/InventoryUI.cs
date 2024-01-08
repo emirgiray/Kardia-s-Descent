@@ -35,10 +35,8 @@ public class InventoryUI : MonoBehaviour
     
     public void SubscribeToPlayerEvents()
     {
-
        // Character.OnActionPointsChange += UpdateActionPoints2;//actions doesnt work for some reason
         // player.OnCharacterRecieveDamageAction += UpdateHealth;
-        
         healthText.text = $"{player.health.Max} / {player.health.Max}";
         //healthMaxText.text = player.health.Max.ToString();
         player.OnActionPointsChangeEvent.AddListener(UpdateActionPoints);
@@ -46,11 +44,17 @@ public class InventoryUI : MonoBehaviour
         player.OnHealthChangeEvent.AddListener(UpdateHealth);
         player.PlayerTurnStart.AddListener(() => SetSkipTurnButtonInteractable(true));
         
+        EnableDisableSkipTurnButton(false);
+        player.CombatStartedAction += () =>  EnableDisableSkipTurnButton(true); //but this action works??
+        player.CombatEndedAction += () =>  EnableDisableSkipTurnButton(false); 
+        
         skipTurnButton.onClick.AddListener(player.EndTurn);
     }
 
     private void OnDisable()
     {
+        player.CombatStartedAction -= () =>  EnableDisableSkipTurnButton(true);
+        player.CombatEndedAction -= () =>  EnableDisableSkipTurnButton(false);
         // player.OnCharacterRecieveDamageAction -= UpdateHealth;
         //Character.OnActionPointsChange -= UpdateActionPoints2;
         //skipTurnButton.onClick.RemoveListener(player.EndTurn);
@@ -163,6 +167,12 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
+    public void EnableDisableSkipTurnButton(bool value)
+    {
+        skipTurnButton.gameObject.SetActive(value); 
+    }
+
+    
     public void SetSkipTurnButtonInteractable(bool value)
     {
         skipTurnButton.interactable = value;
