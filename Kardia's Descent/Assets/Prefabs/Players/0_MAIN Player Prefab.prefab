@@ -115,7 +115,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
   TakeDamageWithString:
     m_PersistentCalls:
       m_Calls:
@@ -412,6 +412,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   illustratePath: 1
   illustrator: {fileID: 3607636336836369656}
+  attackableTiles: []
 --- !u!120 &1727434434356038212
 LineRenderer:
   serializedVersion: 2

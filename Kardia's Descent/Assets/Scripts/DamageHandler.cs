@@ -21,7 +21,8 @@ public class DamageHandler : MonoBehaviour
     public void TakeDamage(int value, Character attacker)
     {
         sgtHealth.HealthDecrease(value);
-
+        character.OnCharacterRecieveDamageFunc();
+        
         if (sgtHealth.isDead)
         {
             Dead(attacker);

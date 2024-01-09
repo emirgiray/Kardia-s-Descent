@@ -141,6 +141,7 @@ public class Character : MonoBehaviour
         Debug.Log("Unable to find a start position");
     }
 
+    private IEnumerator moveCoroutine;
     public void StartMove(Path _path, bool rotate = true, Action OnComplete = null, bool spendActionPoints = true)
     {
         if (canMove)
@@ -164,7 +165,8 @@ public class Character : MonoBehaviour
                 //  print("enemy move start");
             }
             //lastTransform.position = _path.tiles[_path.tiles.Count -1 ].transform.position - _path.tiles[0].transform.position ;
-            StartCoroutine(MoveAlongPath(_path, rotate, OnComplete, spendActionPoints));
+            moveCoroutine = MoveAlongPath(_path, rotate, OnComplete, spendActionPoints);
+            StartCoroutine(moveCoroutine);
         }
     }
 
@@ -202,7 +204,7 @@ public class Character : MonoBehaviour
 
         while (currentStep <= pathLength )
         {
-            if (remainingActionPoints  > 0 || !spendActionPoints || TurnSystem.Instance.turnState == TurnSystem.TurnState.FreeRoamTurn)
+            if ((remainingActionPoints > 0 || !spendActionPoints || TurnSystem.Instance.turnState == TurnSystem.TurnState.FreeRoamTurn))
             {
                 yield return null;
                 //Move towards the next step in the path until we are closer than MIN_DIST
@@ -210,7 +212,6 @@ public class Character : MonoBehaviour
 
                 float movementTime = animationTime / (movedata.MoveTime + path.tiles[currentStep].terrainCost * TERRAIN_PENALTY);
                 /*if(!path.tiles[currentStep].Occupied) */
-                
                 
                 MoveAndRotate(currentTile, path.tiles[currentStep] /*nextTilePosition*/, movementTime , currentStep, pathLength, rotate);
                 
@@ -221,6 +222,10 @@ public class Character : MonoBehaviour
                 //decrease remainingMoveSteps if the value of currentTile is changed
                 if (currentTile != path.tiles[currentStep])
                 {
+                    characterTile.Occupied = false;
+                    characterTile.ResetOcupying();
+                    characterTile = path.tiles[currentStep];
+                    
                     if (inCombat && spendActionPoints && TurnSystem.Instance.turnState != TurnSystem.TurnState.FreeRoamTurn)
                     {
                         remainingActionPoints-- ;
@@ -243,6 +248,10 @@ public class Character : MonoBehaviour
         // FinalizePosition(path.tiles[pathLength], false);
         
         FinalizePosition(currentTile, false);
+        if (this is Player)
+        {
+            Debug.Log($"on complete");
+        }
         OnComplete?.Invoke();
     }
     
@@ -391,7 +400,7 @@ public class Character : MonoBehaviour
 
         if (this is Player)
         {
-            SkillContainer.DeselectSkill(SkillContainer.selectedSkill);
+            if(SkillContainer.skillSelected) SkillContainer.DeselectSkill(SkillContainer.selectedSkill);
             pathfinder.ClearIllustratedPath();
         }
         
@@ -473,9 +482,12 @@ public class Character : MonoBehaviour
 
     #region Combat
 
+    [Button, GUIColor(1f, 1f, 1f)]
     public void StartCombat()
     {
-        inCombat = true;
+        //FinalizePosition(characterTile, false);
+        // StopCoroutine(moveCoroutine);
+        StartCoroutine(WaitForMoveToEnd());
         CombatStartedAction?.Invoke();
         if (this is Player)
         {
@@ -486,6 +498,12 @@ public class Character : MonoBehaviour
             GameManager.Instance.AddEnemyToCombat();
             GetComponent<StateController>().StartCombat();
         }
+    }
+
+    public IEnumerator WaitForMoveToEnd()
+    {
+        yield return new WaitUntil(() => Moving == false);
+        inCombat = true;
     }
 
     public void ExitCombat()
@@ -592,6 +610,7 @@ public class Character : MonoBehaviour
     }
 
     GameObject stunVFX = null;
+
     public void Stun(bool value, int turns)
     {
         canMove = !value;

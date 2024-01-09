@@ -741,7 +741,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
 --- !u!1 &7509575065070339177
 GameObject:
   m_ObjectHideFlags: 0
@@ -890,7 +890,6 @@ GameObject:
   - component: {fileID: 5789014126072821151}
   - component: {fileID: 5460808850040777981}
   - component: {fileID: 4807473279575106974}
-  - component: {fileID: 5727996985727501561}
   - component: {fileID: 8866224488703451883}
   m_Layer: 9
   m_Name: 0_MAIN Enemy Prefab
@@ -972,7 +971,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
       - m_Target: {fileID: 53573456621042547}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -1070,6 +1069,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _Health: 0
+  _HealthAnim: {fileID: 0}
+  _HealthAnim_2: {fileID: 0}
 --- !u!114 &964982723527092187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1241,6 +1242,20 @@ MonoBehaviour:
     skillReadyToUse: 1
     skillButton: {fileID: 0}
     animatorOverrideController: {fileID: 0}
+  lastSelectedSkill:
+    skillData: {fileID: 0}
+    damage: 0
+    range: 0
+    skillCooldown: 0
+    remainingSkillCooldown: 0
+    actionPointUse: 0
+    skillEffectDuration: 0
+    skillBuffDebuffAmount: 0
+    accuracy: 0
+    coverAccuracyDebuff: 0
+    skillReadyToUse: 1
+    skillButton: {fileID: 0}
+    animatorOverrideController: {fileID: 0}
   skillSelected: 0
   Character: {fileID: 0}
   Inventory: {fileID: 0}
@@ -1385,21 +1400,6 @@ MonoBehaviour:
   moveTime: 4
   delay: 1.5
   ease: 9
---- !u!114 &5727996985727501561
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7741204839853584163}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 985add12ee4836e40b7241671b1d892c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fogWar: {fileID: 0}
-  visibility: 0
-  additionalRadius: 0
 --- !u!114 &8866224488703451883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1414,6 +1414,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   illustratePath: 0
   illustrator: {fileID: 0}
+  attackableTiles: []
 --- !u!1001 &3579682752430526148
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1677,6 +1678,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 5718384393814015204}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b9784524c6ca27d48af6443cddedea93,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7432546578477157872}
   m_SourcePrefab: {fileID: 100100000, guid: b9784524c6ca27d48af6443cddedea93, type: 3}
 --- !u!4 &4941520734785401055 stripped
 Transform:
@@ -1756,6 +1761,21 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &7432546578477157872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5753381792072346213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 985add12ee4836e40b7241671b1d892c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fogWar: {fileID: 0}
+  visibility: 0
+  additionalRadius: 0
 --- !u!4 &7694304149146994981 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -6206277720266400239, guid: b9784524c6ca27d48af6443cddedea93,

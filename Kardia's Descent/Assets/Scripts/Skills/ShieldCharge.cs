@@ -12,16 +12,24 @@ public class ShieldCharge : SkillsData
     
     public override void ActivateSkill(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, Action OnComplete = null)
     {
+        // ActivaterCharacter.animator.ResetTrigger("Attack");
+
+        Path path = new Path();
+        path.tiles = new List<Tile>();
+        /* path.tiles.Add(ActivaterCharacter.characterTile);
+         path.tiles.AddRange (ActivaterCharacter.pathfinder.attackableTiles); */
+        path.tiles.AddRange(ActivaterCharacter.pathfinder.attackableTiles); 
         // Path path = ActivaterCharacter.pathfinder.GetPathBetween(ActivaterCharacter, ActivaterCharacter.characterTile, selectedTile /*, true*/);
-        Path path = ActivaterCharacter.pathfinder.PathBetween(ActivaterCharacter,  selectedTile , ActivaterCharacter.characterTile /*, true*/);
-        if (path.tiles[path.tiles.Count - 1].Occupied)
+        // Path path = ActivaterCharacter.pathfinder.PathBetween(ActivaterCharacter,  selectedTile , ActivaterCharacter.characterTile /*, true*/);
+        
+        /*if (path.tiles[path.tiles.Count - 1].Occupied) //stop one tile before the destination tile
         {
             path.tiles.RemoveAt(path.tiles.Count - 1);
-        }
-
+        }*/
+        
         ActivaterCharacter.canMove = true;
 
-        if (path.tiles[path.tiles.Count - 1] == ActivaterCharacter.characterTile) //if the destination tile is the character tile
+        /*if (path.tiles[path.tiles.Count - 1] == ActivaterCharacter.characterTile) //if the destination tile is the character tile
         {
             ActivaterCharacter.Rotate(selectedTile.transform.position);
             
@@ -29,24 +37,38 @@ public class ShieldCharge : SkillsData
                 .StartCoroutine(WaitUntilEnum(Skill, ActivaterCharacter, selectedTile, OnComplete));
             //base.TryHit(Skill, ActivaterCharacter, selectedTile, parent, OnComplete = null);
         }
-        else
+        else*/
         {
+            int last = path.tiles.Count - 1;
+            Tile enemyTile = path.tiles[last];
+            
+            //change path.tiles to create a new path that gets the first enemy on the line
+            for (int i = 0; i < path.tiles.Count; i++) //maybe start i from 1
+            {
+                if (ActivaterCharacter is Player && path.tiles[i].occupiedByEnemy)
+                {
+                    enemyTile = path.tiles[i]; //store the enemy tile for hit miss calculation
+                    last = i;
+                }
+                if (ActivaterCharacter is Enemy && path.tiles[i].occupiedByPlayer)
+                {
+                    enemyTile = path.tiles[i]; 
+                    last = i;
+                }
+            }
+            
+            path.tiles.RemoveRange(last , path.tiles.Count - last);
             ActivaterCharacter.StartMove(path,true, () =>
             {
-                ActivaterCharacter.Rotate(selectedTile.transform.position);
+                ActivaterCharacter.Rotate(enemyTile.transform.position);
             
                 Interact.Instance.GetComponent<MonoBehaviour>()
-                    .StartCoroutine(WaitUntilEnum(Skill, ActivaterCharacter, selectedTile, OnComplete));
+                    .StartCoroutine(WaitUntilEnum(Skill, ActivaterCharacter, enemyTile, OnComplete));
                 //base.TryHit(Skill, ActivaterCharacter, selectedTile, parent, OnComplete = null);
-
-
+                
             }, false);
         }
-
         
-        
-
-
         /*if (accuracy <= 100)
         {
             int random = UnityEngine.Random.Range(1, 101);

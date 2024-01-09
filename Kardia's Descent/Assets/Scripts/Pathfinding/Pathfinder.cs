@@ -11,6 +11,7 @@ public class Pathfinder : MonoBehaviour
     [SerializeField] private bool illustratePath = false;
     [ShowIf("illustratePath")]
     public PathIllustrator illustrator;
+    public List<Tile> attackableTiles = new List<Tile>();
     /*[SerializeField] LayerMask tileMask;
     [SerializeField] LayerMask coverPointMask;
     [SerializeField] LayerMask tankCoverPointMask;
@@ -404,49 +405,75 @@ public class Pathfinder : MonoBehaviour
         
     }
 
-    public List<Tile> GetAttackableTilesLine(Tile originTile, Tile targetTile, SkillContainer.Skills skill)
+    public List<Tile> GetAttackableTilesLine(Character activatorCharacter, Tile originTile, Tile targetTile, SkillContainer.Skills skill)
     {
-        Path path = FindPath(originTile.occupyingCharacter, originTile, targetTile);
-        
+        // Path path = FindPath(originTile.occupyingCharacter, originTile, targetTile);
         Vector3 dir = (targetTile.transform.position - originTile.transform.position).normalized;
+        // Debug.Log($"dir: {dir}");
+        Path path = new Path();
+        path.tiles = new List<Tile>();
+        path.tiles.Add(originTile);
+        //path.tiles.Add(originTile);
+        Tile currentTile = originTile;
+        for (int i = 0; i < skill.range; i++)
+        {
+            foreach (var neigbour in NeighborTiles(currentTile, true))
+            {
+                if ((neigbour.transform.position - originTile.transform.position).normalized == dir && !path.tiles.Contains(neigbour))
+                {
+                    if (activatorCharacter is Player && !neigbour.occupiedByPlayer)
+                    {
+                        path.tiles.Add(neigbour);
+                        currentTile = neigbour;
+                    }
+                    if (activatorCharacter is Enemy && !neigbour.occupiedByEnemy)
+                    {
+                        path.tiles.Add(neigbour);
+                        currentTile = neigbour;
+                    }
+                    
+                }
+            }
+        }
         
         List<Tile> tiles = new List<Tile>();
-        tiles = path.tiles.ToList();
+        tiles = path.tiles;
         
-        if(tiles.Count > skill.range)
+        /*if(tiles.Count - 1 > skill.range)//-1?
         {
             tiles = tiles.Take(skill.range).ToList();
-        }
-        if (targetTile.Occupied)
+        }*/
+        
+        /*if ( targetTile.Occupied)
         {
             tiles.Add(targetTile);
-        }
+        }*/
         
         //remove if not in the same direction
         List<Tile> tilesToRemove = new List<Tile>();
         
-        foreach (var tile in tiles)
+        /*foreach (var tile in tiles)
         {
             if ((tile.transform.position - originTile.transform.position).normalized != dir)
             {
                 tilesToRemove.Add(tile);
             }
 
-        }
+        }*/
         
         foreach (var tile in tilesToRemove)
         {
             tiles.Remove(tile);
         }
         
-        
         if (tiles.Count == 1 && tiles[0] == targetTile && !NeighborTiles(originTile, true, true).Contains(targetTile))
         {
             tiles.Remove(tiles[0]);
         }
- 
-        
+        attackableTiles = tiles;
         return tiles;
+        
+        
     }
       
     [Button]

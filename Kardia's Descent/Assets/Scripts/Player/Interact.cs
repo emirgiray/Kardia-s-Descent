@@ -40,7 +40,7 @@ public class Interact : MonoBehaviour
     IAstarAI[] ais;
     
     List<Tile> reachableTiles = new List<Tile>();
-    List<Tile> attackableTiles = new List<Tile>();
+    [SerializeField]List<Tile> attackableTiles = new List<Tile>();
     [SerializeField]LayerMask interactMask;
     [SerializeField]LayerMask UILayerMask;
     public Action<Tile> CurrentTileChangedAction;
@@ -55,21 +55,32 @@ public class Interact : MonoBehaviour
     public SkillContainer selectedCharacterSkillContainer;
     [SerializeField] public bool isMouseOverUI = false;
     [SerializeField] private static float intensity = 1;
+    
     Dictionary<int, Color> tileInspectColors = new Dictionary<int, Color>()
     {
-        {0, new Color(0.000f * intensity, 6.334f * intensity, 12.996f * intensity, 0.719f) }, //Blue -- Default
+        {0, new Color(12, 12, 12f, 0.7176471f) },//White -- Default
         {1, new Color(0f, 12.99604f, 0.9965293f, 0.7176471f) },//Green -- Player
         {2, new Color(12.99604f, 0.3817299f, 0, 0.7176471f) },//Red -- Enemy
-        {3, new Color(12.99604f, 12.99604f, 0, 0.7176471f) },//Yellow -- Cover
-
+        {3, new Color(0.000f, 6.334f, 12.996f, 0.719f) }, //Blue -- Cover
+        {4, new Color(12.99604f, 12.99604f, 0, 0.7176471f) },//Yellow -- 
+        
+        //old
+        /*{0, new Color(0.000f, 6.334f, 12.996f, 0.719f) }, //Blue -- Default
+        {1, new Color(0f, 12.99604f, 0.9965293f, 0.7176471f) },//Green -- Player
+        {2, new Color(12.99604f, 0.3817299f, 0, 0.7176471f) },//Red -- Enemy
+        {3, new Color(12.99604f, 12.99604f, 0, 0.7176471f) },//Yellow -- Cover*/
     };
     
    public Dictionary<int, Color> tileHighligthColors = new Dictionary<int, Color>()
    {
-       {0, new Color(1, 1, 1, 0.7176471f) }, //white -- Movable
+       {0, new Color(0.3f, 0.8f, 0.3f, 0.7176471f) },//Green -- Movable
+       {1, new Color(12.99604f, 1.903436f, 0f, 0.7176471f) },//Orange -- Attackable
+       
+       //old
+       /*{0, new Color(1, 1, 1, 0.7176471f) }, //white -- Movable
        {1, new Color(12.99604f, 1.903436f, 0f, 0.7176471f) },//Orange -- Attackable
        {2, new Color(0.3f, 0.8f, 0.3f, 0.4f) },//Green -- Movable
-       {3, new Color(1f, 0.1f, 0.1f, 0.9f) },//Red -- Not selectable
+       {3, new Color(1f, 0.1f, 0.1f, 0.9f) },//Red -- Not selectable*/
    };
    
    public Dictionary<int, Color> skillColors = new Dictionary<int, Color>()
@@ -671,7 +682,7 @@ public class Interact : MonoBehaviour
             case SkillsData.SkillTargetType.Line:
                 if (currentTile != null && currentTile.selectable)
                 {
-                    attackableTiles = selectedCharacter.pathfinder.GetAttackableTilesLine(selectedCharacter.characterTile, currentTile, selectedCharacter.SkillContainer.selectedSkill);
+                    attackableTiles = selectedCharacter.pathfinder.GetAttackableTilesLine(selectedCharacter, selectedCharacter.characterTile, currentTile, selectedCharacter.SkillContainer.selectedSkill);
                     if (attackableTiles != null)
                     {
                         foreach (Tile tile in attackableTiles)
