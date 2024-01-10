@@ -8,6 +8,8 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] private int turn = 1;
     [SerializeField] private int round = 1;
+    
+    [SerializeField] private GameObject turnAndRoundGO;
     [SerializeField] private TextMeshProUGUI turnText;
     [SerializeField] private TextMeshProUGUI roundText;
 
@@ -15,12 +17,16 @@ public class UIManager : MonoBehaviour
     {
         TurnSystem.Instance.TurnChange += UpdateTurn;
         TurnSystem.Instance.RoundChange += UpdateRound;
+        TurnSystem.Instance.OnCombatStartAction += ()=> turnAndRoundGO.SetActive(true);
+        TurnSystem.Instance.OnCombatEndAction += ()=> turnAndRoundGO.SetActive(false);
     }
 
     private void OnDisable()
     {
         TurnSystem.Instance.TurnChange -= UpdateTurn;
         TurnSystem.Instance.RoundChange -= UpdateRound;
+        TurnSystem.Instance.OnCombatStartAction -= ()=> turnAndRoundGO.SetActive(true);
+        TurnSystem.Instance.OnCombatEndAction -= ()=> turnAndRoundGO.SetActive(false);
     }
 
     private void Start()

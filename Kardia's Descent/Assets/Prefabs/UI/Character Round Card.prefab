@@ -476,6 +476,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8054251731042729789}
+  - component: {fileID: 6733761574424419034}
   - component: {fileID: 4829582502059459563}
   m_Layer: 5
   m_Name: Enter Anim
@@ -503,6 +504,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6733761574424419034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2308767574158191490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 40306178, guid: aa0b1eebb5db27a419fa4564bbe5c9c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  preset: 0
+  onEnableBehaviour: 2
+  onDisableBehaviour: 0
 --- !u!114 &4829582502059459563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -547,7 +563,7 @@ MonoBehaviour:
       m_Calls: []
   targetIsSelf: 0
   targetGO: {fileID: 2003305544775791914}
-  tweenTargetIsTargetGO: 1
+  tweenTargetIsTargetGO: 0
   delay: 0
   duration: 1
   easeType: 6
@@ -582,14 +598,14 @@ MonoBehaviour:
   isFrom: 0
   isIndependentUpdate: 0
   autoKill: 0
-  autoGenerate: 0
+  autoGenerate: 1
   isActive: 1
   isValid: 1
   target: {fileID: 6786078145666265195}
   animationType: 7
   targetType: 3
   forcedTargetType: 0
-  autoPlay: 0
+  autoPlay: 1
   useTargetAsV3: 0
   endValueFloat: 1
   endValueV3: {x: 0, y: 0, z: 0}
@@ -697,6 +713,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7085672304841815822}
+  - component: {fileID: 7052153482123881144}
   - component: {fileID: 2953137649535811267}
   m_Layer: 5
   m_Name: Enter Anim
@@ -724,6 +741,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7052153482123881144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4205449501552098188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 40306178, guid: aa0b1eebb5db27a419fa4564bbe5c9c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  preset: 0
+  onEnableBehaviour: 2
+  onDisableBehaviour: 0
 --- !u!114 &2953137649535811267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -768,7 +800,7 @@ MonoBehaviour:
       m_Calls: []
   targetIsSelf: 0
   targetGO: {fileID: 1660984752083147741}
-  tweenTargetIsTargetGO: 1
+  tweenTargetIsTargetGO: 0
   delay: 0
   duration: 1
   easeType: 6
@@ -803,14 +835,14 @@ MonoBehaviour:
   isFrom: 0
   isIndependentUpdate: 0
   autoKill: 0
-  autoGenerate: 0
+  autoGenerate: 1
   isActive: 1
   isValid: 1
   target: {fileID: 6960831314641131057}
   animationType: 7
   targetType: 3
   forcedTargetType: 0
-  autoPlay: 0
+  autoPlay: 1
   useTargetAsV3: 0
   endValueFloat: 1
   endValueV3: {x: 0, y: 0, z: 0}
@@ -841,6 +873,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4039681772301589535}
+  - component: {fileID: 4087262228967477429}
   - component: {fileID: 184929848680865795}
   m_Layer: 5
   m_Name: Enter Anim
@@ -868,6 +901,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4087262228967477429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4782377292741373018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 40306178, guid: aa0b1eebb5db27a419fa4564bbe5c9c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  preset: 0
+  onEnableBehaviour: 0
+  onDisableBehaviour: 0
 --- !u!114 &184929848680865795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -912,7 +960,7 @@ MonoBehaviour:
       m_Calls: []
   targetIsSelf: 0
   targetGO: {fileID: 9129384605490324904}
-  tweenTargetIsTargetGO: 1
+  tweenTargetIsTargetGO: 0
   delay: 0
   duration: 1
   easeType: 6
@@ -947,14 +995,14 @@ MonoBehaviour:
   isFrom: 0
   isIndependentUpdate: 0
   autoKill: 0
-  autoGenerate: 0
+  autoGenerate: 1
   isActive: 1
   isValid: 1
   target: {fileID: 8597815332960131671}
   animationType: 7
   targetType: 3
   forcedTargetType: 0
-  autoPlay: 0
+  autoPlay: 1
   useTargetAsV3: 0
   endValueFloat: 1
   endValueV3: {x: 0, y: 0, z: 0}
@@ -1206,6 +1254,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1536665669298877887}
+  - component: {fileID: 768008479810768507}
   - component: {fileID: 3030363273330929686}
   m_Layer: 5
   m_Name: Enter Anim
@@ -1233,6 +1282,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &768008479810768507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5388474246741457450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 40306178, guid: aa0b1eebb5db27a419fa4564bbe5c9c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  preset: 0
+  onEnableBehaviour: 2
+  onDisableBehaviour: 0
 --- !u!114 &3030363273330929686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1277,7 +1341,7 @@ MonoBehaviour:
       m_Calls: []
   targetIsSelf: 0
   targetGO: {fileID: 2490433161382568135}
-  tweenTargetIsTargetGO: 1
+  tweenTargetIsTargetGO: 0
   delay: 0
   duration: 1
   easeType: 6
@@ -1312,14 +1376,14 @@ MonoBehaviour:
   isFrom: 0
   isIndependentUpdate: 0
   autoKill: 0
-  autoGenerate: 0
+  autoGenerate: 1
   isActive: 1
   isValid: 1
   target: {fileID: 9099716245712322940}
   animationType: 7
   targetType: 3
   forcedTargetType: 0
-  autoPlay: 0
+  autoPlay: 1
   useTargetAsV3: 0
   endValueFloat: 1
   endValueV3: {x: 0, y: 0, z: 0}
@@ -1427,6 +1491,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8163147950621902259}
+  - component: {fileID: 5357264961255000768}
   - component: {fileID: 6767160369877486699}
   m_Layer: 5
   m_Name: Enter Anim
@@ -1454,6 +1519,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5357264961255000768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5719818863267231163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 40306178, guid: aa0b1eebb5db27a419fa4564bbe5c9c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  preset: 0
+  onEnableBehaviour: 2
+  onDisableBehaviour: 0
 --- !u!114 &6767160369877486699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1498,7 +1578,7 @@ MonoBehaviour:
       m_Calls: []
   targetIsSelf: 0
   targetGO: {fileID: 5533984548436301765}
-  tweenTargetIsTargetGO: 1
+  tweenTargetIsTargetGO: 0
   delay: 0
   duration: 1
   easeType: 6
@@ -1533,14 +1613,14 @@ MonoBehaviour:
   isFrom: 0
   isIndependentUpdate: 0
   autoKill: 0
-  autoGenerate: 0
+  autoGenerate: 1
   isActive: 1
   isValid: 1
   target: {fileID: 2849165799383552822}
   animationType: 7
   targetType: 3
   forcedTargetType: 0
-  autoPlay: 0
+  autoPlay: 1
   useTargetAsV3: 0
   endValueFloat: 0.07058824
   endValueV3: {x: 0, y: 0, z: 0}
@@ -1571,6 +1651,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4413715970235153721}
+  - component: {fileID: 6229687760747447580}
   - component: {fileID: 8393951954498151606}
   m_Layer: 5
   m_Name: Enter Anim
@@ -1598,6 +1679,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6229687760747447580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5939383835688887955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 40306178, guid: aa0b1eebb5db27a419fa4564bbe5c9c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  preset: 0
+  onEnableBehaviour: 2
+  onDisableBehaviour: 0
 --- !u!114 &8393951954498151606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1642,7 +1738,7 @@ MonoBehaviour:
       m_Calls: []
   targetIsSelf: 0
   targetGO: {fileID: 7307959312962877872}
-  tweenTargetIsTargetGO: 1
+  tweenTargetIsTargetGO: 0
   delay: 0
   duration: 1
   easeType: 6
@@ -1677,14 +1773,14 @@ MonoBehaviour:
   isFrom: 0
   isIndependentUpdate: 0
   autoKill: 0
-  autoGenerate: 0
+  autoGenerate: 1
   isActive: 1
   isValid: 1
   target: {fileID: 5248227452243177523}
   animationType: 7
   targetType: 3
   forcedTargetType: 0
-  autoPlay: 0
+  autoPlay: 1
   useTargetAsV3: 0
   endValueFloat: 1
   endValueV3: {x: 0, y: 0, z: 0}
@@ -3627,6 +3723,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5391925675774885063}
+  - component: {fileID: 6484175316584265578}
   - component: {fileID: 4898936401699098006}
   m_Layer: 5
   m_Name: Enter Anim
@@ -3654,6 +3751,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0.000030517578, y: 47.60006}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6484175316584265578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8994820243363100421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 40306178, guid: aa0b1eebb5db27a419fa4564bbe5c9c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  preset: 0
+  onEnableBehaviour: 2
+  onDisableBehaviour: 0
 --- !u!114 &4898936401699098006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3698,7 +3810,7 @@ MonoBehaviour:
       m_Calls: []
   targetIsSelf: 0
   targetGO: {fileID: 7414507858274396407}
-  tweenTargetIsTargetGO: 1
+  tweenTargetIsTargetGO: 0
   delay: 0
   duration: 1
   easeType: 6
@@ -3733,14 +3845,14 @@ MonoBehaviour:
   isFrom: 0
   isIndependentUpdate: 0
   autoKill: 0
-  autoGenerate: 0
+  autoGenerate: 1
   isActive: 1
   isValid: 1
   target: {fileID: 3280587699539282642}
   animationType: 7
   targetType: 3
   forcedTargetType: 0
-  autoPlay: 0
+  autoPlay: 1
   useTargetAsV3: 0
   endValueFloat: 1
   endValueV3: {x: 0, y: 0, z: 0}

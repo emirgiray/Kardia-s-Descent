@@ -37,6 +37,10 @@ public class Character : MonoBehaviour
     public int initiative = 1;//todo: this works in reverse!!!
     [BoxGroup("Stats")]
     public SGT_Health health;
+    [BoxGroup("Stats")] [Tooltip("Like a vision cone, lower value means wider range")] [SerializeField]
+    private float detectingThreshold = 0.45f;
+    [BoxGroup("Stats")] [Tooltip("Kinda like a stealth value, in how many tiles away the enemy can detect this character")]
+    public int detectionTile = 4;
     
     [BoxGroup("Functions")] [SerializeField] 
     public bool canMove = true;
@@ -68,6 +72,8 @@ public class Character : MonoBehaviour
     
     public LayerMask GroundLayerMask;
     [SerializeField] LayerMask detectionLayerMask;
+
+    
     
     
     
@@ -148,7 +154,7 @@ public class Character : MonoBehaviour
         {
             MoveStart.Invoke();
             characterState = CharacterState.Moving;
-            Moving = true;
+            /*Moving = true;*/
             characterTile.Occupied = false;
             characterTile.ResetOcupying();
             
@@ -162,6 +168,12 @@ public class Character : MonoBehaviour
             if (this is Enemy)
             {
                 characterTile.occupiedByEnemy = false;
+
+                if (Interact.Instance.characterSelected && (Interact.Instance.selectedCharacter.characterState == CharacterState.WaitingTurn || Interact.Instance.selectedCharacter.characterState == CharacterState.Idle))
+                {
+                    Interact.Instance.HighlightReachableTiles();
+                }
+
                 //  print("enemy move start");
             }
             //lastTransform.position = _path.tiles[_path.tiles.Count -1 ].transform.position - _path.tiles[0].transform.position ;
@@ -207,6 +219,7 @@ public class Character : MonoBehaviour
             if ((remainingActionPoints > 0 || !spendActionPoints || TurnSystem.Instance.turnState == TurnSystem.TurnState.FreeRoamTurn))
             {
                 yield return null;
+                Moving = true;
                 //Move towards the next step in the path until we are closer than MIN_DIST
                 Vector3 nextTilePosition = path.tiles[currentStep].transform.position;
 
@@ -225,6 +238,22 @@ public class Character : MonoBehaviour
                     characterTile.Occupied = false;
                     characterTile.ResetOcupying();
                     characterTile = path.tiles[currentStep];
+                    Moving = false;
+                    if (this is Enemy && !inCombat)
+                    {
+                        CheckToStartCombat();
+                    }
+                    if (this is Player && !inCombat)
+                    {
+                        foreach (var enemy in TurnSystem.Instance.enemiesInCombat)
+                        {
+                            if (enemy.inCombat)
+                            {
+                                enemy.CheckToStartCombat();
+                            }
+                        }
+                        
+                    }
                     
                     if (inCombat && spendActionPoints && TurnSystem.Instance.turnState != TurnSystem.TurnState.FreeRoamTurn)
                     {
@@ -248,10 +277,6 @@ public class Character : MonoBehaviour
         // FinalizePosition(path.tiles[pathLength], false);
         
         FinalizePosition(currentTile, false);
-        if (this is Player)
-        {
-            Debug.Log($"on complete");
-        }
         OnComplete?.Invoke();
     }
     
@@ -287,10 +312,18 @@ public class Character : MonoBehaviour
                 }
             }
 
+            if (this is Enemy)
+            {
+                if (Interact.Instance.characterSelected && (Interact.Instance.selectedCharacter.characterState == CharacterState.WaitingTurn || Interact.Instance.selectedCharacter.characterState == CharacterState.Idle))
+                {
+                    Interact.Instance.HighlightReachableTiles();
+                }
+            }
+            
             animator.SetBool("Walk", false);
             MoveEnd.Invoke();
             
-            CheckToStartCombat();
+            // CheckToStartCombat();
         }
     }
 
@@ -432,7 +465,7 @@ public class Character : MonoBehaviour
     [Button]
     public void CheckToStartCombat()
     {
-        if (this is Player)
+        /*if (this is Player)
         {
             for (int i = 0; i < GameManager.Instance.enemies.Count; i++)
             {
@@ -440,39 +473,82 @@ public class Character : MonoBehaviour
                 {
                     if (!Physics.Linecast(this.transform.position, GameManager.Instance.enemies[i].transform.position, detectionLayerMask))
                     {
-                        StartCombat();
-                        GameManager.Instance.enemies[i].StartCombat();
+                        if(!inCombat) StartCombat();
+                        if(!GameManager.Instance.enemies[i].inCombat) GameManager.Instance.enemies[i].StartCombat();
                         
                         if (TurnSystem.Instance.turnState == TurnSystem.TurnState.FreeRoamTurn)
                         {
                             TurnSystem.Instance.CombatStarted();
-                            
                         }
                         //Debug.Log($"Combat started by {TurnSystem.Instance.enemies[i].name}");
                     }
                 }
                 
             }
-        }
-
+        }*/
+        
+        Vector3 yOffSet = new Vector3(0, PathfinderVariables.Instance.characterYOffset, 0);
         if (this is Enemy)
         {
-            for (int i = 0; i < TurnSystem.Instance.playersInCombat.Count; i++)
+            var playersInCombat = GameManager.Instance.players;
+            for (int i = 0; i < playersInCombat.Count; i++)
             {
-                if (pathfinder.GetTilesInBetween(this, characterTile, TurnSystem.Instance.playersInCombat[i].characterTile, true).Count <= 4)
+                if (playersInCombat[i].gameObject.activeInHierarchy && pathfinder.GetTilesInBetween(this, characterTile, playersInCombat[i].characterTile, true).Count <= playersInCombat[i].detectionTile)
                 {
-                    if (!Physics.Linecast(this.transform.position, TurnSystem.Instance.playersInCombat[i].transform.position, detectionLayerMask))
+                    Ray ray = new Ray(this.transform.position, this.transform.forward);
+                    Vector3 dir1 = ray.direction;
+                    Vector3 dir2 = playersInCombat[i].transform.position - ray.origin;
+                    
+                    var lookAngle = Vector3.Dot(dir1.normalized, dir2.normalized);
+                    
+                    if (lookAngle > detectingThreshold)
                     {
-                        StartCombat();
-                        TurnSystem.Instance.playersInCombat[i].StartCombat();
-                        
-                        if (TurnSystem.Instance.turnState == TurnSystem.TurnState.FreeRoamTurn)
+                        if (!Physics.Linecast(this.transform.position +yOffSet, playersInCombat[i].transform.position+ yOffSet, detectionLayerMask))
                         {
-                            TurnSystem.Instance.CombatStarted();
-                            
+                            if(!inCombat) StartCombat();
+                            if(!playersInCombat[i].inCombat) playersInCombat[i].StartCombat();
+                        
+                            if (TurnSystem.Instance.turnState == TurnSystem.TurnState.FreeRoamTurn)
+                            {
+                                TurnSystem.Instance.CombatStarted();
+                            }
+                            //Debug.Log($"Combat started by {TurnSystem.Instance.enemies[i].name}");
                         }
-                        //Debug.Log($"Combat started by {TurnSystem.Instance.enemies[i].name}");
                     }
+                    
+                    
+                }
+                
+            }
+        }
+    }
+    
+    [Button, GUIColor(0f, 1f, 1f)]
+    public void CheckDotDebug()
+    {
+        if (this is Enemy)
+        {
+            var playersInCombat = TurnSystem.Instance.playersInCombat;
+            for (int i = 0; i < playersInCombat.Count; i++)
+            {
+                //if (pathfinder.GetTilesInBetween(this, characterTile, playersInCombat[i].characterTile, true).Count <= 4)
+                {
+                    Ray ray = new Ray(this.transform.position, this.transform.forward);
+                    Vector3 dir1 = ray.direction;
+                    Vector3 dir2 = playersInCombat[i].transform.position - ray.origin;
+                    
+                    var lookAngle = Vector3.Dot(dir1.normalized, dir2.normalized);
+                    
+                    Debug.Log($"lookangle = {lookAngle}");
+                    if (lookAngle > detectingThreshold)
+                    {
+                        if (!Physics.Linecast(this.transform.position, playersInCombat[i].transform.position, detectionLayerMask))
+                        {
+                            Debug.Log($"Combat started ");
+                        }
+                    }
+                    
+                    
                 }
                 
             }
@@ -491,11 +567,11 @@ public class Character : MonoBehaviour
         CombatStartedAction?.Invoke();
         if (this is Player)
         {
-            GameManager.Instance.AddPlayersToCombat();
+            GameManager.Instance.AddPlayerToCombat(GetComponent<Player>());
         }
         if (this is Enemy)
         {
-            GameManager.Instance.AddEnemyToCombat();
+            GameManager.Instance.AddEnemyToCombat(GetComponent<Enemy>());
             GetComponent<StateController>().StartCombat();
         }
     }
@@ -503,6 +579,13 @@ public class Character : MonoBehaviour
     public IEnumerator WaitForMoveToEnd()
     {
         yield return new WaitUntil(() => Moving == false);
+        if (moveCoroutine != null) StopCoroutine(moveCoroutine);
+        FinalizePosition(characterTile, false);
+        
+        if (this is Enemy)
+        {
+            GetComponent<StateController>().canExitState = true;
+        }
         inCombat = true;
     }
 
@@ -580,7 +663,7 @@ public class Character : MonoBehaviour
         animator.SetBool("Dead", true);
         isDead = true;
         characterState = CharacterState.Dead;
-        characterCard.SetActive(false);
+        if (characterCard != null) characterCard.SetActive(false);
         //gameObject.transform.DOMoveY(gameObject.transform.position.y - 0.5f, 0.5f);
         Stun(false, 0);
         OnCharacterDeath?.Invoke(this);
@@ -594,6 +677,7 @@ public class Character : MonoBehaviour
         {
             characterTile.occupiedByEnemy = false;
             characterTile.occupyingEnemy = null;
+            GetComponent<StateController>().aiActive = false;
             TurnSystem.Instance.EnemyDied(GetComponent<Enemy>());
         }
         characterTile.occupyingGO = null;

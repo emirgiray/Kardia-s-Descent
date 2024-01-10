@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
             allEntities.Add(enemies[i]);
         }
         
-        AddPlayersToCombat();
+        // AddPlayersToCombat();
     }
     
     /// <summary>
@@ -47,8 +47,16 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    
+    public void AddPlayerToCombat(Player player)
+    {
+        if (player.gameObject.activeInHierarchy && TurnSystem.Instance.playersInCombat.Contains(player) == false )
+        {
+            TurnSystem.Instance.AddPlayer(player);                
+        }
+    }
 
-    public void AddEnemyToCombat()
+    public void AddEnemiesToCombat()
     {
         foreach (var enemy in enemies)
         {
@@ -58,6 +66,14 @@ public class GameManager : MonoBehaviour
             }
         }
         
+    }
+
+    public void AddEnemyToCombat(Enemy enemy)
+    {
+        if (enemy.gameObject.activeInHierarchy && TurnSystem.Instance.enemiesInCombat.Contains(enemy) == false )
+        {
+            TurnSystem.Instance.AddEnemy(enemy);                
+        }
     }
 
     public void RemoveEnemyFromGame(Enemy enemy)

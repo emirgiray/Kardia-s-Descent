@@ -11,11 +11,11 @@ public class Waypoints : MonoBehaviour
     
     void Start()
     {
-        FindTile();
+        FindNewTile();
     }
 
-    [Button, GUIColor(0.1f, 1f, 0.1f)]
-    public void FindTile()
+    [Button, GUIColor(1f, 1f, 0.1f)]
+    public void GoToTile()
     {
         if (waypointTile != null)
         { 
@@ -23,6 +23,18 @@ public class Waypoints : MonoBehaviour
             return;
         }
 
+        if (Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, 50f, GroundLayerMask))
+        {
+            FinalizePosition(hit.transform.GetComponent<Tile>());
+            return;
+        }
+        
+        Debug.Log("No tile found for waypoint: " + gameObject.name + " at position: " + transform.position + "");
+    }
+
+    [Button, GUIColor(0f, 1f, 0.5f)]
+    public void FindNewTile()
+    {
         if (Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, 50f, GroundLayerMask))
         {
             FinalizePosition(hit.transform.GetComponent<Tile>());

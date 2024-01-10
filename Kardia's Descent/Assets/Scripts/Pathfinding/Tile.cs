@@ -16,7 +16,7 @@ public class Tile : MonoBehaviour
     [BoxGroup("Tile")] public GameObject occupyingGO;
     [BoxGroup("Tile")] public MeshRenderer meshRenderer;
     [BoxGroup("Tile")] public GameObject TileHighlightGO;
-    [BoxGroup("Tile")] public GameObject ShieldIcon;
+    [BoxGroup("Tile")] [SerializeField] private GameObject ShieldIcon;
     [BoxGroup("Tile")] public MeshRenderer TileHighlightMeshRenderer;
     [BoxGroup("Editor")] public Material defaultMat;
     [BoxGroup("Editor")] public Material disabledMat;
@@ -98,7 +98,17 @@ public class Tile : MonoBehaviour
         {
             TileHighlightGO.SetActive(true);
             // TileHighlightMeshRenderer.material.color = Interact.Instance.tileHighligthColors[0];
-            TileHighlightMeshRenderer.material.SetColor("_RimColor", Interact.Instance.tileHighligthColors[0]);
+
+            if (isCoveredByCoverPoint)
+            {
+                TileHighlightMeshRenderer.material.SetColor("_RimColor", Interact.Instance.tileHighligthColors[3]);
+            }
+            else
+            {
+                TileHighlightMeshRenderer.material.SetColor("_RimColor", Interact.Instance.tileHighligthColors[0]);
+            }
+            
+            
         }
         else
         {
@@ -167,6 +177,11 @@ public class Tile : MonoBehaviour
         occupyingGO = null;
     }
 
+    public void SwitchShieldIcon(bool value)
+    {
+        ShieldIcon.SetActive(value);
+    }
+    
     /*public void DebugCostText()
     {
         costText.text = TotalCost.ToString("F1");

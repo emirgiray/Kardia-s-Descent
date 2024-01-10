@@ -106,13 +106,13 @@ public class SkillsData : ScriptableObject
         int random = UnityEngine.Random.Range(1, 101);
         if (random <= Skill.accuracy || Skill.accuracy == 100 || Skill.accuracy > 100) //hit
         {
-            Debug.Log($"HIT: {random} < {Skill.accuracy}");
+            // Debug.Log($"HIT: {random} < {Skill.accuracy}");
             //OnHit(Skill, ActivaterCharacter, selectedTile, OnComplete);
             return true;
         }
         else
         {
-            Debug.Log($"MISSED: {random} > {Skill.accuracy}");
+            // Debug.Log($"MISSED: {random} > {Skill.accuracy}");
             //OnMiss(Skill, ActivaterCharacter, selectedTile, OnComplete);
             return false;
         }

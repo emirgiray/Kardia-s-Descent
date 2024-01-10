@@ -33,6 +33,8 @@ public class TurnSystem : MonoBehaviour
     
     public Action FriendlyTurn;
     public Action FriendlySelected;
+    public Action OnCombatStartAction;
+    public Action OnCombatEndAction;
     public Action EnemyTurn;
     public Action RoundChanged;
     public Action OnPlayerTurnEvent;
@@ -45,7 +47,6 @@ public class TurnSystem : MonoBehaviour
     [FoldoutGroup("Events")] public UnityEvent<TextMeshProUGUI> OnTurnChangeUpdateText;
     [FoldoutGroup("Events")] public UnityEvent OnRoundChange;
     [FoldoutGroup("Events")] public UnityEvent<TextMeshProUGUI> OnRoundChangeUpdateText;
-    [FoldoutGroup("Events")] public UnityEvent OnCombatStart;
     [FoldoutGroup("Events")] public UnityEvent OnPlayerTurn;
     [FoldoutGroup("Events")] public UnityEvent OnEnemyTurn;
     [FoldoutGroup("Events")] public UnityEvent<Player> OnPlayerDeath;
@@ -184,7 +185,7 @@ public class TurnSystem : MonoBehaviour
         round = 1;
         TurnChange?.Invoke(turn);
         OnTurnChange.Invoke();
-        OnCombatStart.Invoke();
+        OnCombatStartAction?.Invoke();
         RoundChange?.Invoke(round);
         OnRoundChange.Invoke();
         DecideWhosTurn();
@@ -195,6 +196,7 @@ public class TurnSystem : MonoBehaviour
     {
         turn = 0;
         round = 0;
+        OnCombatEndAction?.Invoke();
         DecideWhosTurn();
     }
     
@@ -243,19 +245,22 @@ public class TurnSystem : MonoBehaviour
     [Button,GUIColor(1,1,1)][FoldoutGroup("DEBUG")]
     public void EnemyDied(Enemy deadEnemy)
     {
-        enemiesInCombat.RemoveRange(enemiesInCombat.IndexOf(deadEnemy), 1);
-        allEntitiesInCombat.RemoveRange(allEntitiesInCombat.IndexOf(deadEnemy), 1);
-        OnEnemyDeath.Invoke(deadEnemy);
-        RemoveCard(deadEnemy);
-
-        GameManager.Instance.RemoveEnemyFromGame(deadEnemy);
-        
-        if (enemiesInCombat.Count <= 0)
+        if (enemiesInCombat.Contains(deadEnemy))
         {
-            CombatEnded();
-            foreach (var player in playersInCombat)
+            enemiesInCombat.RemoveRange(enemiesInCombat.IndexOf(deadEnemy), 1);
+            allEntitiesInCombat.RemoveRange(allEntitiesInCombat.IndexOf(deadEnemy), 1);
+            OnEnemyDeath.Invoke(deadEnemy);
+            RemoveCard(deadEnemy);
+
+            GameManager.Instance.RemoveEnemyFromGame(deadEnemy);
+        
+            if (enemiesInCombat.Count <= 0)
             {
-                player.ExitCombat();
+                CombatEnded();
+                foreach (var player in playersInCombat)
+                {
+                    player.ExitCombat();
+                }
             }
         }
     }
@@ -289,9 +294,41 @@ public class TurnSystem : MonoBehaviour
             newCard.name = character.name + " Card";
             newCard.GetComponent<CharacterRoundCard>().Init(character, RoundInfo.GetComponent<RoundInfo>());
             character.SetCharacterCard(newCard);
-            RoundInfo.GetComponent<RoundInfo>().AddObject(newCard);
+            // RoundInfo.GetComponent<RoundInfo>().AddObject(newCard, character);
+            StartCoroutine(AddCardDelay(newCard, character));
+            /*if (turnState == TurnState.Friendly)
+            {
+                if (character is Player)
+                {
+                    newCard.transform.SetAsFirstSibling();
+                }
+                if (character is Enemy)
+                {
+                    newCard.transform.SetAsLastSibling();
+                }
+                
+            }
+            else if (turnState == TurnState.Enemy)
+            {
+                if (character is Player)
+                {
+                    newCard.transform.SetAsLastSibling();
+                }
+                if (character is Enemy)
+                {
+                    newCard.transform.SetAsFirstSibling();
+                }
+            }*/
+            
             //newCard.GetComponent<CustomEvent3>().CustomEvents3.AddListener(RoundInfo.GetComponent<RoundInfo>().Rearrange);
         }
+    }
+
+    public IEnumerator AddCardDelay(GameObject obj, Character character)
+    {
+        yield return new WaitForEndOfFrameUnit();
+        RoundInfo.GetComponent<RoundInfo>().AddObject(obj, character);
+        
     }
 
     public void RemoveCard(Character character)

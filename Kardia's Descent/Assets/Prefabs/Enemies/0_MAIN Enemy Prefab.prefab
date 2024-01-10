@@ -1111,6 +1111,8 @@ MonoBehaviour:
   maxActionPoints: 10
   initiative: 0
   health: {fileID: 1086629163380962625}
+  detectingThreshold: 0.45
+  detectionTile: 4
   canMove: 1
   canAttack: 1
   inCombat: 0
@@ -1125,7 +1127,7 @@ MonoBehaviour:
     m_Bits: 8
   detectionLayerMask:
     serializedVersion: 2
-    m_Bits: 2
+    m_Bits: 65
   characterState: 0
   OnMovePointsChangeEvent:
     m_PersistentCalls:
@@ -1209,11 +1211,11 @@ MonoBehaviour:
   RandomWaitTimer2: {x: 1.0247009, y: 1.5247767}
   waypointsParent: {fileID: 5649455234823889604}
   waypoints:
-  - {fileID: 1534357420155081118}
-  - {fileID: 5447740483884172149}
-  - {fileID: 7509575065070339177}
-  - {fileID: 3239748233074938983}
-  - {fileID: 2537837401024849449}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &971612226134414077
 MonoBehaviour:
   m_ObjectHideFlags: 0

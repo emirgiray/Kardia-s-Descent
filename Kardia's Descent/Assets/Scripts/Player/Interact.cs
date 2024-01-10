@@ -56,6 +56,12 @@ public class Interact : MonoBehaviour
     [SerializeField] public bool isMouseOverUI = false;
     [SerializeField] private static float intensity = 1;
     
+    /// <summary>
+    /// <param name="0">White -- Default</param>
+    /// <param name="1">Green -- Player</param>
+    /// <param name="2">Red -- Enemy</param>
+    /// <param name="3">Blue -- Cover</param>
+    /// </summary>
     Dictionary<int, Color> tileInspectColors = new Dictionary<int, Color>()
     {
         {0, new Color(12, 12, 12f, 0.7176471f) },//White -- Default
@@ -71,16 +77,24 @@ public class Interact : MonoBehaviour
         {3, new Color(12.99604f, 12.99604f, 0, 0.7176471f) },//Yellow -- Cover*/
     };
     
+    /// <summary>
+    /// <param name="0">Green -- Movable</param>
+    /// <param name="1">Orange -- Attackable</param>
+    /// <param name="2">NOT IMPLEMENTED</param>
+    /// <param name="3">Blue -- Cover</param>
+    /// </summary>
    public Dictionary<int, Color> tileHighligthColors = new Dictionary<int, Color>()
    {
        {0, new Color(0.3f, 0.8f, 0.3f, 0.7176471f) },//Green -- Movable
        {1, new Color(12.99604f, 1.903436f, 0f, 0.7176471f) },//Orange -- Attackable
        
+       {3, new Color(0.000f, 6.334f, 12.996f, 0.719f) }, //Blue -- Cover
        //old
        /*{0, new Color(1, 1, 1, 0.7176471f) }, //white -- Movable
        {1, new Color(12.99604f, 1.903436f, 0f, 0.7176471f) },//Orange -- Attackable
        {2, new Color(0.3f, 0.8f, 0.3f, 0.4f) },//Green -- Movable
        {3, new Color(1f, 0.1f, 0.1f, 0.9f) },//Red -- Not selectable*/
+       
    };
    
    public Dictionary<int, Color> skillColors = new Dictionary<int, Color>()
@@ -336,7 +350,7 @@ public class Interact : MonoBehaviour
         }*/
         
         InspectTileGO.transform.position = currentTile.transform.position;
-        lastTile.ShieldIcon.SetActive(false);
+        lastTile.SwitchShieldIcon(false);
 
         if (currentTile.Occupied)
         {
@@ -350,19 +364,21 @@ public class Interact : MonoBehaviour
                 // inspectTileMeshRenderer.material.color = tileInspectColors[3];
                 //inspectTileMeshRenderer.material.SetColor("_RimColor",tileInspectColors[3]);
                 inspectTileMeshRenderer.material.SetColor("_RimColor",tileInspectColors[0]);
-                return;
             }
-            
-            if (characterUnderMouse.gameObject.tag == "Player")
+
+            if (currentTile.occupyingCharacter)
             {
-                // inspectTileMeshRenderer.material.color = tileInspectColors[1];
-                inspectTileMeshRenderer.material.SetColor("_RimColor",tileInspectColors[1]);
+                if (characterUnderMouse.gameObject.tag == "Player")
+                {
+                    // inspectTileMeshRenderer.material.color = tileInspectColors[1];
+                    inspectTileMeshRenderer.material.SetColor("_RimColor",tileInspectColors[1]);
                 
-            }
-            else if (characterUnderMouse.gameObject.tag == "Enemy")
-            {
-                // inspectTileMeshRenderer.material.color = tileInspectColors[2];
-                inspectTileMeshRenderer.material.SetColor("_RimColor",tileInspectColors[2]);
+                }
+                else if (characterUnderMouse.gameObject.tag == "Enemy")
+                {
+                    // inspectTileMeshRenderer.material.color = tileInspectColors[2];
+                    inspectTileMeshRenderer.material.SetColor("_RimColor",tileInspectColors[2]);
+                }
             }
         }
         else
@@ -374,9 +390,9 @@ public class Interact : MonoBehaviour
              {
                  inspectTileMeshRenderer.material.SetColor("_RimColor",tileInspectColors[3]);
 
-                 if (reachableTiles.Contains(currentTile))
+                 if (reachableTiles.Contains(currentTile) && characterSelected && (selectedCharacter.characterState == Character.CharacterState.Idle || selectedCharacter.characterState == Character.CharacterState.WaitingTurn))
                  {
-                     currentTile.ShieldIcon.SetActive(true);
+                     currentTile.SwitchShieldIcon(true);
                  }
 
              }
@@ -643,15 +659,18 @@ public class Interact : MonoBehaviour
     public void HighlightReachableTiles()
     {
         ClearHighlightReachableTiles();
-        reachableTiles = selectedCharacter.pathfinder.GetReachableTiles(selectedCharacter.characterTile,
-            selectedCharacter.remainingActionPoints /*, selectedCharacter.characterTile*/);
-        foreach (Tile tile in reachableTiles)
+        if (characterSelected)
         {
-            tile.HighlightMoveable();
-
-            if (tile == selectedCharacter.characterTile)
+            reachableTiles = selectedCharacter.pathfinder.GetReachableTiles(selectedCharacter.characterTile,
+                selectedCharacter.remainingActionPoints /*, selectedCharacter.characterTile*/);
+            foreach (Tile tile in reachableTiles)
             {
-                tile.ClearHighlight();
+                tile.HighlightMoveable();
+
+                if (tile == selectedCharacter.characterTile)
+                {
+                    tile.ClearHighlight();
+                }
             }
         }
         

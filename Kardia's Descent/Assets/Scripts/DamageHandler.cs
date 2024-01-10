@@ -27,10 +27,23 @@ public class DamageHandler : MonoBehaviour
         {
             Dead(attacker);
         }
-        /*else
+        else
         {
-            TakeDamageEvent.Invoke();
-        }*/
+            if (!character.inCombat)
+            {
+                character.StartCombat();
+            }
+
+            if (!attacker.inCombat)
+            {
+                attacker.StartCombat();
+                if (TurnSystem.Instance.turnState == TurnSystem.TurnState.FreeRoamTurn)
+                {
+                    TurnSystem.Instance.CombatStarted();
+                }
+            }
+        }
+
 
     }
 

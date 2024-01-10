@@ -180,7 +180,7 @@ public class StateController : MonoBehaviour
         {
             if (child.gameObject.activeInHierarchy)
             {
-                child.GetComponent<Waypoints>().FindTile();
+                child.GetComponent<Waypoints>().FindNewTile();
                 waypoints.Add(child.GetComponent<Waypoints>().waypointTile);
             }
         }

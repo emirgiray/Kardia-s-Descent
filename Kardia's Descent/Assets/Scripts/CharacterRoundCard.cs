@@ -90,5 +90,11 @@ public class CharacterRoundCard : MonoBehaviour
         yield return new WaitForSecondsRealtime(0.5f);
         click = 0;
     }
+
+    public Character GetCharacter()
+    {
+        return character;
+    }
+
     
 }
