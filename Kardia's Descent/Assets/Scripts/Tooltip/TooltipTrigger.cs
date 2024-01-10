@@ -20,14 +20,14 @@ public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     public void OnPointerEnter(PointerEventData eventData)
     {
         OnPointerEnterEvent?.Invoke();
-        delay = LeanTween.delayedCall(delayTime, () => { TooltipSystem.Show(content, header); });
+        delay = LeanTween.delayedCall(delayTime, () => { TooltipSystem.Show(content, header, transform.position); });
         // TooltipSystem.Show(content, header);
     }
 
     private void OnMouseEnter()
     {
         OnPointerEnterEvent?.Invoke();
-        delay = LeanTween.delayedCall(delayTime, () => { TooltipSystem.Show(content, header); });
+        delay = LeanTween.delayedCall(delayTime, () => { TooltipSystem.Show(content, header, transform.position); });
     }
 
     public void OnPointerExit(PointerEventData eventData)

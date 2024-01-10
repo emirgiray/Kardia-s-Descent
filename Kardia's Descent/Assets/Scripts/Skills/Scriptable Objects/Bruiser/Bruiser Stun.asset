@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8436f111b854bff449ffffe387f822ee, type: 3}
   m_Name: Bruiser Stun
   m_EditorClassIdentifier: 
-  skillSprite: {fileID: 21300030, guid: 7ab74e659e1f0a34d9cfec21c478fc12, type: 3}
+  skillSprite: {fileID: 1971214589, guid: f050367bbcaea674495c2d5e36fc140b, type: 3}
   skillName: Ear Clap
   skillDescription: Stuns for 1 turn.
   skillID: 6
@@ -37,5 +37,6 @@ MonoBehaviour:
   damageType: 0
   skillTarget: 0
   skillHitType: 0
+  skillTargetType: 0
   skillEffect: 8
   buffDebuffType: 0

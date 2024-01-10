@@ -14,10 +14,11 @@ public class TooltipSystem : MonoBehaviour
         current = this;
     }
     
-    public static void Show(string content, string header = "")
+    public static void Show(string content, string header, Vector3 pivot)
     {
         current.tooltip.SetText(content, header);
         current.tooltip.gameObject.SetActive(true);
+        current.tooltip.SetPosition(pivot);
     }
     
     public static void Hide()

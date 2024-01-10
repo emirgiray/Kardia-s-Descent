@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db59d9eb833704c428e73b2f9fbc0e69, type: 3}
   m_Name: Tank Area Morale Buff
   m_EditorClassIdentifier: 
-  skillSprite: {fileID: 374684540, guid: f050367bbcaea674495c2d5e36fc140b, type: 3}
+  skillSprite: {fileID: -959594703, guid: f050367bbcaea674495c2d5e36fc140b, type: 3}
   skillName: Area Morale Buff
   skillDescription: Increase AP by 2 for allies in range.
   skillID: 3
@@ -37,5 +37,6 @@ MonoBehaviour:
   damageType: 7
   skillTarget: 4
   skillHitType: 7
+  skillTargetType: 0
   skillEffect: 1
   buffDebuffType: 1

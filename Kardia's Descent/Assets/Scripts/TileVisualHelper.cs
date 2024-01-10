@@ -26,7 +26,7 @@ public class TileVisualHelper : MonoBehaviour
     }
     
     [Button(ButtonSizes.Large), GUIColor(1f, 1f, 0.1f)]
-    public void UpdateVisuals()
+    public void UpdateColors()
     {
         for (int i = 0; i < transform.childCount; i++)
         {

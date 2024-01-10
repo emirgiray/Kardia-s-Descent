@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f30463883ca2f6459049e5182f68fce, type: 3}
   m_Name: Tank Shield Wall
   m_EditorClassIdentifier: 
-  skillSprite: {fileID: 434477216, guid: f050367bbcaea674495c2d5e36fc140b, type: 3}
+  skillSprite: {fileID: 1385725176, guid: f050367bbcaea674495c2d5e36fc140b, type: 3}
   skillName: Shield Wall
   skillDescription: Passive, serves as a full cover.
   skillID: 4
@@ -36,5 +36,6 @@ MonoBehaviour:
   damageType: 7
   skillTarget: 1
   skillHitType: 4
+  skillTargetType: 0
   skillEffect: 1
   buffDebuffType: 0

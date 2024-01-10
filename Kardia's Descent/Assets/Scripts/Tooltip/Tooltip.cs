@@ -25,7 +25,7 @@ public class Tooltip : MonoBehaviour
 
     private void OnEnable()
     {
-        gameObject.GetComponent<Image>().DOFade(1, fadeTime).SetEase(fadeInEase);
+        gameObject.GetComponent<Image>().DOFade(0.9f, fadeTime).SetEase(fadeInEase);
         headerText.DOFade(1, fadeTime).SetEase(fadeInEase);
         contentText.DOFade(1, fadeTime).SetEase(fadeInEase);
     }
@@ -59,12 +59,12 @@ public class Tooltip : MonoBehaviour
         int headerLength = headerText.text.Length;
         int contentLength = contentText.text.Length;
         
-        layoutElement.enabled = (headerLength > characterWrapLimit || contentLength > characterWrapLimit) ? true : false;
+        // layoutElement.enabled = (headerLength > characterWrapLimit || contentLength > characterWrapLimit) ? true : false;
     }
     
     private void Update()
     {
-        if (Application.isEditor)
+        /*if (Application.isEditor)
         {
             int headerLength = headerText.text.Length;
             int contentLength = contentText.text.Length;
@@ -78,6 +78,18 @@ public class Tooltip : MonoBehaviour
         float pivotY = position.y / Screen.height;
         
         rectTransform.pivot = new Vector2(pivotX, pivotY - 0.5f);
+        transform.position = position;*/
+    }
+
+    public void SetPosition(Vector3 pivot)
+    {
+        Vector2 position = Input.mousePosition;
+        
+        float pivotX = position.x / Screen.width;
+        float pivotY = position.y / Screen.height;
+        
+        rectTransform.pivot = new Vector2(pivotX, pivotY - 0.5f);
         transform.position = position;
     }
+
 }

@@ -73,7 +73,7 @@ public class SkillButton : MonoBehaviour
         if (skillDataIn.passiveOrActive == SkillsData.PassiveOrActive.Active)
         {
             button.onClick.AddListener(useSkill);
-            apCostText.text = $"AP: {skillDataIn.actionPointUse}";
+            apCostText.text = skillDataIn.actionPointUse.ToString();
             //OnInit();
         }
         else
