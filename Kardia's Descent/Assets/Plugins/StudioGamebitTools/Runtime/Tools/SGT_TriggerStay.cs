@@ -13,15 +13,23 @@ public class SGT_TriggerStay : MonoBehaviour
     [PropertyOrder(2)]
     public SGTEventGameObject TriggerStay;
 
+    public void ResetDoOnce()
+    {
+        doOnce = false;
+    }
 
-
-
+    bool doOnce = false;
     private void OnTriggerStay(Collider other)
     {
         if (Policy != null && other != null && !(SGT_Policy.Check(other.gameObject, Policy)))
         {
-            TriggerStay.Invoke(other.gameObject);
+            if (doOnce == false)
+            {
+                doOnce = true;
+                TriggerStay.Invoke(other.gameObject);
+            }
 
+            
         }
 
     }
