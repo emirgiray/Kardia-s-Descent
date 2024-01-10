@@ -125,6 +125,12 @@ public class Interact : MonoBehaviour
     
     public void EnableMovement(bool value)
     {
+        StartCoroutine(EnableMovementDelay(value));
+    }
+
+    public IEnumerator EnableMovementDelay(bool value)
+    {
+        yield return new WaitForEndOfFrame();
         if (selectedCharacter.characterState == Character.CharacterState.WaitingTurn || selectedCharacter.characterState == Character.CharacterState.Idle)
         {
             if (characterSelected)
@@ -673,7 +679,6 @@ public class Interact : MonoBehaviour
                 }
             }
         }
-        
     }
     public void HighlightAttackableTiles(SkillContainer.Skills selectedSkill)
     { 
@@ -827,6 +832,11 @@ public class Interact : MonoBehaviour
             StopCoroutine(HitChanceUIToMousePos()); 
         }
         HitChanceUIGameObject.SetActive(value);
+    }
+
+    public List<Tile> GetReachableTiles()
+    {
+        return reachableTiles;
     }
     
     /*//Debug only

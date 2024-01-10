@@ -241,6 +241,14 @@ public class TurnSystem : MonoBehaviour
         OnPlayerDeath.Invoke(deadPlayer);
         RemoveCard(deadPlayer);
     }
+    
+    [Button,GUIColor(1,1,1)][FoldoutGroup("DEBUG")]
+    public void PlayerExitedCombat(Player deadPlayer)
+    {
+        playersInCombat.RemoveRange(playersInCombat.IndexOf(deadPlayer), 1);
+        allEntitiesInCombat.RemoveRange(allEntitiesInCombat.IndexOf(deadPlayer), 1);
+        RemoveCard(deadPlayer);
+    }
 
     [Button,GUIColor(1,1,1)][FoldoutGroup("DEBUG")]
     public void EnemyDied(Enemy deadEnemy)
@@ -257,7 +265,13 @@ public class TurnSystem : MonoBehaviour
             if (enemiesInCombat.Count <= 0)
             {
                 CombatEnded();
+                List<Player> playersToRemove = new List<Player>();
                 foreach (var player in playersInCombat)
+                {
+                    playersToRemove.Add(player);
+                }
+
+                foreach (var player in playersToRemove)
                 {
                     player.ExitCombat();
                 }
@@ -333,6 +347,7 @@ public class TurnSystem : MonoBehaviour
 
     public void RemoveCard(Character character)
     {
+        RoundInfo.GetComponent<RoundInfo>().RemoveObject(character.GetCharacterCard());
         Destroy(character.GetCharacterCard());
     }
     

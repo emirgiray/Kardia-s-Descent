@@ -16,7 +16,7 @@ MonoBehaviour:
   skillName: Basic
   skillDescription: Basic attack.
   skillID: 1
-  skillDamage: 10
+  skillDamage: 500
   skillRange: 3
   skillCooldown: 0
   actionPointUse: 0

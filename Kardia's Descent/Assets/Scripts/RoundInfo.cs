@@ -61,4 +61,9 @@ public class RoundInfo : MonoBehaviour
             }
         }
     }
+
+    public void RemoveObject(GameObject obj)
+    {
+        objects.Remove(obj);
+    }
 }

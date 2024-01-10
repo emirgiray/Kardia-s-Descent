@@ -169,9 +169,11 @@ public class Character : MonoBehaviour
             {
                 characterTile.occupiedByEnemy = false;
 
-                if (Interact.Instance.characterSelected && (Interact.Instance.selectedCharacter.characterState == CharacterState.WaitingTurn || Interact.Instance.selectedCharacter.characterState == CharacterState.Idle))
+                if (Interact.Instance.GetReachableTiles().Contains(characterTile) && Interact.Instance.characterSelected && (Interact.Instance.selectedCharacter.characterState == CharacterState.WaitingTurn || Interact.Instance.selectedCharacter.characterState == CharacterState.Idle))
                 {
-                    Interact.Instance.HighlightReachableTiles();
+                    characterTile.HighlightMoveable();
+                    //Interact.Instance.HighlightReachableTiles();
+                    // Debug.Log($"enemy start move");
                 }
 
                 //  print("enemy move start");
@@ -312,11 +314,12 @@ public class Character : MonoBehaviour
                 }
             }
 
-            if (this is Enemy)
+            if (this is Enemy) //this is to update the reachable tiles after enemy movement
             {
-                if (Interact.Instance.characterSelected && (Interact.Instance.selectedCharacter.characterState == CharacterState.WaitingTurn || Interact.Instance.selectedCharacter.characterState == CharacterState.Idle))
-                {
-                    Interact.Instance.HighlightReachableTiles();
+                if (Interact.Instance.GetReachableTiles().Contains(tile) && Interact.Instance.characterSelected && (Interact.Instance.selectedCharacter.characterState == CharacterState.WaitingTurn || Interact.Instance.selectedCharacter.characterState == CharacterState.Idle))
+                { 
+                    tile.ClearHighlight();
+                    //Interact.Instance.HighlightReachableTiles();
                 }
             }
             
@@ -394,7 +397,10 @@ public class Character : MonoBehaviour
                 if (this is Player)
                 {
                     if(PlayerTurnStart != null) PlayerTurnStart.Invoke();
-                    if(this == Interact.Instance.selectedCharacter ) Interact.Instance.HighlightReachableTiles();
+                    if (this == Interact.Instance.selectedCharacter)
+                    {
+                        Interact.Instance.HighlightReachableTiles();
+                    }
                 }
             }
             else
@@ -595,6 +601,7 @@ public class Character : MonoBehaviour
         CombatEndedAction?.Invoke();
         ResetActionPoints();
         SkillContainer.ForceResetSkillCooldowns();
+        TurnSystem.Instance.PlayerExitedCombat(GetComponent<Player>());
     }
     
         

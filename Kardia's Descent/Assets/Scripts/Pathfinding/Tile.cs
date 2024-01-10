@@ -15,11 +15,11 @@ public class Tile : MonoBehaviour
     [BoxGroup("Tile")] public Character occupyingCharacter;
     [BoxGroup("Tile")] public GameObject occupyingGO;
     [BoxGroup("Tile")] public MeshRenderer meshRenderer;
-    [BoxGroup("Tile")] public GameObject TileHighlightGO;
+    [BoxGroup("Tile")] [SerializeField] private GameObject TileHighlightGO;
     [BoxGroup("Tile")] [SerializeField] private GameObject ShieldIcon;
     [BoxGroup("Tile")] public MeshRenderer TileHighlightMeshRenderer;
-    [BoxGroup("Editor")] public Material defaultMat;
-    [BoxGroup("Editor")] public Material disabledMat;
+    [BoxGroup("Editor")] [SerializeField] private Material defaultMat;
+    [BoxGroup("Editor")] [SerializeField] private Material disabledMat;
     
     [BoxGroup("Player")] public bool occupiedByPlayer = false;
     [BoxGroup("Player")] public Player occupyingPlayer;
