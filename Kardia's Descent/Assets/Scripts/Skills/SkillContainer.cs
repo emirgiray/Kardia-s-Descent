@@ -252,8 +252,6 @@ public class SkillContainer : MonoBehaviour
         {
             if (Interact.Instance.GetCurrentTile() != null)
             {
-                Debug.Log($"last tile: {Interact.Instance.GetLastTile().name}");
-                Debug.Log($"current tile: {Interact.Instance.GetCurrentTile().name}");
                 if (Character.characterTile != Interact.Instance.GetCurrentTile())
                 {
                     Character.Rotate(Interact.Instance.GetCurrentTile().transform.position);

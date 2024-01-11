@@ -81,8 +81,9 @@ public class Tooltip : MonoBehaviour
         transform.position = position;*/
     }
 
-    public void SetPosition(Vector3 pivot)
+    public void SetPosition(Vector3 pos)
     {
+        layoutElement.enabled = true;
         Vector2 position = Input.mousePosition;
         
         float pivotX = position.x / Screen.width;
