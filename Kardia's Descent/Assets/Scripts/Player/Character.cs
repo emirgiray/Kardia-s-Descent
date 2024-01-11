@@ -54,6 +54,8 @@ public class Character : MonoBehaviour
     private int remainingStunTurns = 0;
     [BoxGroup("Functions")] [SerializeField] 
     public bool isDead = false;
+    [BoxGroup("Functions")] [SerializeField] 
+    public bool canRotate = true;
     
     [BoxGroup("Transforms")] [SerializeField] 
     private Transform Head;
@@ -332,7 +334,7 @@ public class Character : MonoBehaviour
 
     float movementThreshold = 0.1f;
 
-    void MoveAndRotate(Tile origin, Tile destination, float duration, float currentStep, float pathLength, bool rotate)
+   void MoveAndRotate(Tile origin, Tile destination, float duration, float currentStep, float pathLength, bool rotate)
     {
         
         transform.position = Vector3.Lerp(origin.transform.position, destination.transform.position, duration);
@@ -349,7 +351,10 @@ public class Character : MonoBehaviour
     {
         
         // transform.rotation = Quaternion.LookRotation(origin.DirectionTo(destination).Flat(), Vector3.up);
-        transform.DOLookAt(destination, duration, AxisConstraint.Y, Vector3.up).SetEase(Ease.OutBack).OnComplete(()=> OnComplete?.Invoke());
+        if (canRotate)
+        {
+            transform.DOLookAt(destination, duration, AxisConstraint.Y, Vector3.up).SetEase(Ease.OutBack).OnComplete(()=> OnComplete?.Invoke());
+        }
  
         //StartCoroutine(RotateEnum(origin, destination));
     }
@@ -624,7 +629,7 @@ public class Character : MonoBehaviour
 
     public void AttackStart()
     {
-        
+        canRotate = true;
         characterState = CharacterState.Attacking;
         
         animator.SetTrigger("AttackStart");
@@ -633,6 +638,7 @@ public class Character : MonoBehaviour
     
     public void AttackCancel()
     {
+        canRotate = true;
         characterState = CharacterState.WaitingTurn;
 
         if (this is Player)
@@ -646,6 +652,7 @@ public class Character : MonoBehaviour
 
     public void Attack()
     {
+        canRotate = false;
         if (this is Player)
         {
             Interact.Instance.EnableDisableHitChanceUI(false);

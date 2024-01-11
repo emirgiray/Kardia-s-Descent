@@ -224,7 +224,6 @@ public class SkillContainer : MonoBehaviour
     }
 
 
-    
     public void SelectSkill(Skills selectSkill, Enemy enemy = null)
     {
         /*if (Character is Enemy && !enemy.canAttack)
@@ -251,6 +250,7 @@ public class SkillContainer : MonoBehaviour
         
         if (Character is Player)
         {
+            if (Interact.Instance.GetCurrentTile() != null) Character.Rotate(Interact.Instance.GetCurrentTile().transform.position);
             if (lastSelectedSkill.skillButton != null) lastSelectedSkill.skillButton.SwitchSelectedOutline(false);
             lastSelectedSkill = selectedSkill;
             selectedSkill.skillButton.SwitchSelectedOutline(true);

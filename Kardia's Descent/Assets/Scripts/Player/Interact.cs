@@ -85,10 +85,10 @@ public class Interact : MonoBehaviour
     /// </summary>
    public Dictionary<int, Color> tileHighligthColors = new Dictionary<int, Color>()
    {
-       {0, new Color(0.3f, 0.8f, 0.3f, 0.7176471f) },//Green -- Movable
+       {0, new Color(0.3f, 6f, 0.3f, 0.7176471f) },//Green -- Movable
        {1, new Color(12.99604f, 1.903436f, 0f, 0.7176471f) },//Orange -- Attackable
        
-       {3, new Color(0.000f, 6.334f, 12.996f, 0.719f) }, //Blue -- Cover
+       {3, new Color(0.000f, 3.334f, 6.996f, 0.7176471f) }, //Blue -- Cover
        //old
        /*{0, new Color(1, 1, 1, 0.7176471f) }, //white -- Movable
        {1, new Color(12.99604f, 1.903436f, 0f, 0.7176471f) },//Orange -- Attackable
@@ -281,6 +281,7 @@ public class Interact : MonoBehaviour
             {
                 if (selectedCharacterSkillContainer.skillSelected == false)
                 {
+                    if (currentTile.isCoveredByCoverPoint) currentTile.SwitchShieldIcon(false);
                     selectedCharacter.GetComponent<Inventory>().ShowSkillsUI(false);
                     selectedCharacter.outline.enabled = false;
                     characterSelected = false;
@@ -837,6 +838,11 @@ public class Interact : MonoBehaviour
     public List<Tile> GetReachableTiles()
     {
         return reachableTiles;
+    }
+
+    public Tile GetCurrentTile()
+    {
+        return currentTile;
     }
     
     /*//Debug only

@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class TileVisualHelper : MonoBehaviour
 {
-    [Title("ATAKAN BURAYA BAK ALOOOOOO")]
     
     [Button(ButtonSizes.Large), GUIColor(0.1f, 1f, 0.1f) ]
     public void TurnVisualsOn()

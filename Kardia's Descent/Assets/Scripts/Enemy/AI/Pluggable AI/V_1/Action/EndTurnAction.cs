@@ -8,6 +8,13 @@ public class EndTurnAction : ActionAI
     public override void Act(StateController controller)
     {
         //Debug.Log($"{this.name} Ended Turn");
+        controller.stateControllerMono.StartCoroutine(TurnSkipDelay(controller));
+    }
+    
+    public IEnumerator TurnSkipDelay(StateController controller)
+    {
+        yield return new WaitForSecondsRealtime(1.5f);
         controller.EndTurn();
+        
     }
 }

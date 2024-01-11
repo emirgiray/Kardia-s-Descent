@@ -1085,8 +1085,8 @@ MonoBehaviour:
   image: {fileID: 8597815332960131671}
   borderImage: {fileID: 2849165799383552822}
   character: {fileID: 0}
-  playerColor: {r: 0, g: 1, b: 0.20784314, a: 1}
-  enemyColor: {r: 0.8113208, g: 0.13044766, b: 0, a: 1}
+  playerColor: {r: 0.8117648, g: 0.12941177, b: 0, a: 1}
+  enemyColor: {r: 0.46858996, g: 0.020825908, b: 0.49056602, a: 1}
   roundInfo: {fileID: 0}
   Bar01_2: {fileID: 6960831314641131057}
   Bar02_2: {fileID: 6786078145666265195}

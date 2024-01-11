@@ -1119,6 +1119,7 @@ MonoBehaviour:
   isStunned: 0
   remainingStunTurns: 0
   isDead: 0
+  canRotate: 1
   Head: {fileID: 0}
   Hand: {fileID: 7694304149146994981}
   characterClass: 9
@@ -1184,6 +1185,7 @@ MonoBehaviour:
   remainState: {fileID: 11400000, guid: 20a530a049e552949892a8e571154a9d, type: 2}
   enemyStats: {fileID: 0}
   pathfinder: {fileID: 8866224488703451883}
+  stateControllerMono: {fileID: 1086629163380962625}
   turnSystem: {fileID: 0}
   enemy: {fileID: 0}
   skillContainer: {fileID: 0}
