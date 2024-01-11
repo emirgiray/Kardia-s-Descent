@@ -327,19 +327,29 @@ public class Interact : MonoBehaviour
         //check if mouse is over ui but exclude some game objects
         isMouseOverUI = EventSystem.current.IsPointerOverGameObject(); //is this expensive
     }
+
+    private Tile lastTile2;
     private void MouseUpdate()
     {
         if (!Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 200f, interactMask) || isMouseOverUI)
             return;
 
        // if(lastTile != null) lastTile.ClearHighlight();
+       
+       lastTile2 = currentTile;
+       
+       
         currentTile = hit.transform.GetComponent<Tile>();
-        if (lastTile != null)
-        {
-                    if(lastTile != currentTile) CurrentTileChangedAction?.Invoke(currentTile);//check if the currentTile value has changed
 
+        {
+            if(lastTile2 != currentTile)
+            {
+                lastTile = lastTile2;
+                CurrentTileChangedAction?.Invoke(currentTile);//check if the currentTile value has changed
+            }
+            
         }
-        lastTile = currentTile;
+        
         /*characterUnderMouse = currentTile.occupyingCharacter;*/
         //InspectTileHighlight();
         InspectTile();
@@ -357,7 +367,7 @@ public class Interact : MonoBehaviour
         }*/
         
         InspectTileGO.transform.position = currentTile.transform.position;
-        lastTile.SwitchShieldIcon(false);
+        if (lastTile != null) lastTile.SwitchShieldIcon(false);
 
         if (currentTile.Occupied)
         {
@@ -750,7 +760,14 @@ public class Interact : MonoBehaviour
             selectedCharacter.SkillContainer.ResetCoverdamageDebuff();
             if (isMouseOverUI == false)
             {
-                selectedCharacter.Rotate(currentTile.transform.position);
+                if (selectedCharacter.characterTile != currentTile)
+                {
+                    selectedCharacter.Rotate(currentTile.transform.position);
+                }
+                else
+                {
+                    selectedCharacter.Rotate(lastTile.transform.position);
+                }
             }
             
             HighlightAttackableTiles(selectedCharacter.SkillContainer.selectedSkill);
@@ -844,7 +861,10 @@ public class Interact : MonoBehaviour
     {
         return currentTile;
     }
-    
+    public Tile GetLastTile()
+    {
+        return lastTile;
+    }
     /*//Debug only
     void ClearLastPath()
     {

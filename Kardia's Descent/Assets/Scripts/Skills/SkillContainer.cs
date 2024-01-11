@@ -250,7 +250,20 @@ public class SkillContainer : MonoBehaviour
         
         if (Character is Player)
         {
-            if (Interact.Instance.GetCurrentTile() != null) Character.Rotate(Interact.Instance.GetCurrentTile().transform.position);
+            if (Interact.Instance.GetCurrentTile() != null)
+            {
+                Debug.Log($"last tile: {Interact.Instance.GetLastTile().name}");
+                Debug.Log($"current tile: {Interact.Instance.GetCurrentTile().name}");
+                if (Character.characterTile != Interact.Instance.GetCurrentTile())
+                {
+                    Character.Rotate(Interact.Instance.GetCurrentTile().transform.position);
+                }
+                else
+                {
+                    Character.Rotate(Interact.Instance.GetLastTile().transform.position);
+                }
+                
+            }
             if (lastSelectedSkill.skillButton != null) lastSelectedSkill.skillButton.SwitchSelectedOutline(false);
             lastSelectedSkill = selectedSkill;
             selectedSkill.skillButton.SwitchSelectedOutline(true);
