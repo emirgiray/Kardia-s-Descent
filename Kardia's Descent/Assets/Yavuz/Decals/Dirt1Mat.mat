@@ -49,12 +49,12 @@ Material:
     - _DecalMeshBiasType: 0
     - _DecalMeshDepthBias: 0
     - _DecalMeshViewBias: 0
-    - _Dissolve_Amount: 0
-    - _Dissolve_Scale: 90
+    - _Dissolve_Amount: 0.5
+    - _Dissolve_Scale: 76
     - _DrawOrder: 0
-    - _Fill_Amount: 4.9
+    - _Fill_Amount: 5
     - _Has_Normal: 1
-    - _Metalllic: 0.6
+    - _Metalllic: 0.5
     - _NormalScale: -1.1
     - _Outline_Width: 0.1
     - _Smoothness: 0.3
