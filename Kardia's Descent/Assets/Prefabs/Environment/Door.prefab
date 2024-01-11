@@ -89,6 +89,7 @@ MonoBehaviour:
   active: 1
   rendererChildren: 0
   emptyChildren: 1
+  disabledTiles: []
 --- !u!1 &5283757133264541945
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,6 +229,18 @@ MonoBehaviour:
           m_StringArgument: Open
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 6712560267852788641}
+        m_TargetAssemblyTypeName: TileDisabler, Assembly-CSharp
+        m_MethodName: ReEnableTiles
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   TriggerExit:
     m_PersistentCalls:
       m_Calls:
@@ -253,6 +266,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Close
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6712560267852788641}
+        m_TargetAssemblyTypeName: TileDisabler, Assembly-CSharp
+        m_MethodName: ReDeisableTiles
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &-4267054160966271949
@@ -332,6 +357,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Open
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6712560267852788641}
+        m_TargetAssemblyTypeName: TileDisabler, Assembly-CSharp
+        m_MethodName: ReEnableTiles
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &6459536139635911813
