@@ -5,6 +5,7 @@ using DG.Tweening;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
@@ -30,6 +31,7 @@ public class InventoryUI : MonoBehaviour
     // [BoxGroup("Health")] [SerializeField] private TextMeshProUGUI healthMaxText;
     [BoxGroup("Health")] [SerializeField] private Image Bar01;
     [BoxGroup("Health")] [SerializeField] private Image Bar02;
+    public UnityEvent HeartEquippedEvent;
 
     public void SetPlayer(Player playerIn)
     {
@@ -210,12 +212,18 @@ public class InventoryUI : MonoBehaviour
     {
         return skipTurnButton;
     }
-
     public void SetHeartIcon(Sprite heartIconIn)
     {
+        HeartEquippedEvent?.Invoke();
         heartIcon.sprite = heartIconIn;
     }
 
+    [Button, GUIColor(1f, 1f, 1f)]
+    public void HeartEquippedEventTest()
+    {
+        HeartEquippedEvent?.Invoke();
+    }
+    
     public SkillButton GetHeartButton()
     {
         return heartButton;

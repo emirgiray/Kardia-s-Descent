@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dc7798f6e3258c46bad0f03f4ebd409, type: 3}
   m_Name: Test Heart
   m_EditorClassIdentifier: 
-  HeartSprite: {fileID: 21300026, guid: 7ab74e659e1f0a34d9cfec21c478fc12, type: 3}
+  HeartSprite: {fileID: 2005359547, guid: f050367bbcaea674495c2d5e36fc140b, type: 3}
   heartName: Test Heart
   heartIndex: 1
   heartDescription: Adds stats.

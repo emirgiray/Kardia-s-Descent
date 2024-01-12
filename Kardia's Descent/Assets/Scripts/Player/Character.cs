@@ -725,19 +725,27 @@ public class Character : MonoBehaviour
 
         if (dropItemsOnDeath)
         {
-            DropItemsOnDeath();
+            // DropAllItemsOnDeath();
+            DropRandomItemOnDeath();
         }
         //characterTile = null;
         
     }
 
-    public void DropItemsOnDeath()
+    public void DropAllItemsOnDeath()
     {
         Vector3 dropPos = transform.position + new Vector3(0, 1, 0);
         foreach (var item in itemsToDrop)
         {
             Instantiate(item, dropPos, Quaternion.identity);
         }
+    }
+
+    public void DropRandomItemOnDeath()
+    {
+        Vector3 dropPos = transform.position + new Vector3(0, 1, 0);
+        int randomIndex = UnityEngine.Random.Range(0, itemsToDrop.Count);
+        Instantiate(itemsToDrop[randomIndex], dropPos, Quaternion.identity);
     }
     
     public void OnCharacterRecieveDamageFunc()

@@ -4512,6 +4512,21 @@ MonoBehaviour:
   healthText: {fileID: 7741452989559644398}
   Bar01: {fileID: 7838086903350218799}
   Bar02: {fileID: 8202343024993573061}
+  HeartEquippedEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 413881922610782822}
+        m_TargetAssemblyTypeName: DG.Tweening.DOTweenAnimation, Assembly-CSharp-firstpass
+        m_MethodName: RewindThenRecreateTweenAndPlay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7833915211247820888
 GameObject:
   m_ObjectHideFlags: 0
@@ -6102,6 +6117,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3890908050621656218, guid: 9a05d135c14b5ca408863ca00901bf22,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.20081
+      objectReference: {fileID: 0}
+    - target: {fileID: 3890908050621656218, guid: 9a05d135c14b5ca408863ca00901bf22,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.20081
+      objectReference: {fileID: 0}
+    - target: {fileID: 3890908050621656218, guid: 9a05d135c14b5ca408863ca00901bf22,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.20081
+      objectReference: {fileID: 0}
+    - target: {fileID: 3890908050621656218, guid: 9a05d135c14b5ca408863ca00901bf22,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -6160,6 +6190,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5149164049548047318, guid: 9a05d135c14b5ca408863ca00901bf22,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 327
+      objectReference: {fileID: 0}
+    - target: {fileID: 5149164049548047318, guid: 9a05d135c14b5ca408863ca00901bf22,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 385
+      objectReference: {fileID: 0}
+    - target: {fileID: 5149164049548047318, guid: 9a05d135c14b5ca408863ca00901bf22,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 5149164049548047318, guid: 9a05d135c14b5ca408863ca00901bf22,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 5149164049548047318, guid: 9a05d135c14b5ca408863ca00901bf22,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 5149164049548047318, guid: 9a05d135c14b5ca408863ca00901bf22,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 3.106993
+      objectReference: {fileID: 0}
     - target: {fileID: 8633694538762580221, guid: 9a05d135c14b5ca408863ca00901bf22,
         type: 3}
       propertyPath: m_Name
@@ -6174,12 +6234,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 1645680785, guid: f050367bbcaea674495c2d5e36fc140b,
+      objectReference: {fileID: 1158375599, guid: f050367bbcaea674495c2d5e36fc140b,
         type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8633694538762580221, guid: 9a05d135c14b5ca408863ca00901bf22,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 413881922610782822}
   m_SourcePrefab: {fileID: 100100000, guid: 9a05d135c14b5ca408863ca00901bf22, type: 3}
 --- !u!114 &491757788595631575 stripped
 MonoBehaviour:
@@ -6193,6 +6257,129 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1061139442335147665 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8633694538762580221, guid: 9a05d135c14b5ca408863ca00901bf22,
+    type: 3}
+  m_PrefabInstance: {fileID: 8748497104355628652}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &413881922610782822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061139442335147665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d0390bd8b8ffd640b34fe25065ff1df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  updateType: 0
+  isSpeedBased: 0
+  hasOnStart: 0
+  hasOnPlay: 0
+  hasOnUpdate: 0
+  hasOnStepComplete: 0
+  hasOnComplete: 0
+  hasOnTweenCreated: 0
+  hasOnRewind: 0
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlay:
+    m_PersistentCalls:
+      m_Calls: []
+  onUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+  onStepComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  onComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  onTweenCreated:
+    m_PersistentCalls:
+      m_Calls: []
+  onRewind:
+    m_PersistentCalls:
+      m_Calls: []
+  targetIsSelf: 1
+  targetGO: {fileID: 0}
+  tweenTargetIsTargetGO: 1
+  delay: 0
+  duration: 0.5
+  easeType: 37
+  easeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.5
+      value: 1
+      inSlope: 0.0038760735
+      outSlope: 0.0038760735
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.238938
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  loopType: 0
+  loops: 1
+  id: 
+  isRelative: 0
+  isFrom: 0
+  isIndependentUpdate: 0
+  autoKill: 0
+  autoGenerate: 1
+  isActive: 1
+  isValid: 1
+  target: {fileID: 5519072841726982902}
+  animationType: 5
+  targetType: 11
+  forcedTargetType: 0
+  autoPlay: 0
+  useTargetAsV3: 0
+  endValueFloat: 1.3
+  endValueV3: {x: 0, y: 0, z: 0}
+  endValueV2: {x: 0, y: 0}
+  endValueColor: {r: 1, g: 1, b: 1, a: 1}
+  endValueString: 
+  endValueRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  endValueTransform: {fileID: 0}
+  optionalBool0: 1
+  optionalBool1: 0
+  optionalFloat0: 0
+  optionalInt0: 0
+  optionalRotationMode: 0
+  optionalScrambleMode: 0
+  optionalShakeRandomnessMode: 0
+  optionalString: 
 --- !u!224 &5519072841726982902 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3890908050621656218, guid: 9a05d135c14b5ca408863ca00901bf22,
@@ -6205,7 +6392,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 8748497104355628652}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1061139442335147665}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e613801b12392204991b5e5a62817a2f, type: 3}
