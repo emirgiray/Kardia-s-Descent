@@ -12,10 +12,14 @@ public class InventoryUI : MonoBehaviour
     [BoxGroup("Player")][SerializeField] private Player player;
     [BoxGroup("Player")] [SerializeField] private TextMeshProUGUI nameText;
     [BoxGroup("Player")] [SerializeField] private RawImage playerPortrait;
+    [BoxGroup("Player")] [SerializeField] private TooltipTrigger playerPortraitTooltip;
     
     [BoxGroup("Skils")] [SerializeField] private GameObject HorizontalLayoutGroup;
     [BoxGroup("Skils")] [SerializeField] private List<SkillButton> SkillButtons = new List<SkillButton>();
     [BoxGroup("Skils")] [SerializeField] private List<GameObject> SkillKeymaps = new List<GameObject>();
+
+    [BoxGroup("Heart")] [SerializeField] private SkillButton heartButton;
+    [BoxGroup("Heart")] [SerializeField] private Image heartIcon;
     
     [BoxGroup("Points")] [SerializeField] private TextMeshProUGUI actionText;
     [BoxGroup("Points")] [SerializeField] private Image APBar01;
@@ -206,5 +210,25 @@ public class InventoryUI : MonoBehaviour
     {
         return skipTurnButton;
     }
-    
+
+    public void SetHeartIcon(Sprite heartIconIn)
+    {
+        heartIcon.sprite = heartIconIn;
+    }
+
+    public SkillButton GetHeartButton()
+    {
+        return heartButton;
+    }
+
+    public void SetPlayerPortraitTooltip()
+    {
+        playerPortraitTooltip.SetHeader(player.name);
+        playerPortraitTooltip.SetContent($"Strenght: {player.characterStats.Strength} \n" +
+                                         $" Dexterity: {player.characterStats.Dexterity} \n" +
+                                         $" Constitution: {player.characterStats.Constitution} \n" +
+                                         $" Aiming: {player.characterStats.Aiming}");
+
+    }
+
 }

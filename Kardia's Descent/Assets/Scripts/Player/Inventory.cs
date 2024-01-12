@@ -12,15 +12,14 @@ public class Inventory : MonoBehaviour
 
     [SerializeField] private Player player;
     
-    
     public List<WeaponData> weaponsDataList = new List<WeaponData>();
     public List<SkillsData> skillsDataList = new List<SkillsData>();
     public List<SkillsData> skillsToAdd = new List<SkillsData>();
     public List<WeaponPartData> weaponPartDataList = new List<WeaponPartData>();
+    public List<HeartData> heartsInInventory = new List<HeartData>();
     [SerializeField] private WeaponContainer weaponContainer;
     [SerializeField] private SkillContainer skillsContainer;
     
-
     [SerializeField] private GameObject spawnedWeapon;
     [SerializeField] private Transform hand;
     
@@ -38,8 +37,6 @@ public class Inventory : MonoBehaviour
     [BoxGroup("DEBUG")] [SerializeField] private WeaponData testWeaponData;
     
     SGT_Health sgtHealth;
-    
-    
      void Start()
     {
         sgtHealth = GetComponent<SGT_Health>();
@@ -69,7 +66,8 @@ public class Inventory : MonoBehaviour
      {
          SpawnedInventoryUI = Instantiate(InventoryUI, InventoryUISlot.transform);
          SpawnedInventoryUIScript = SpawnedInventoryUI.GetComponent<InventoryUI>();
-         
+         player.inventoryUI = SpawnedInventoryUIScript;
+         player.heartContainer.SetHeartButton(SpawnedInventoryUIScript.GetHeartButton());
      }
 
      public void BeforePopulateSkillsUI()

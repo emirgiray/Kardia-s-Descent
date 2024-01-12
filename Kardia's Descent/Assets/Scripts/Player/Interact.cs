@@ -68,7 +68,7 @@ public class Interact : MonoBehaviour
         {1, new Color(0f, 12.99604f, 0.9965293f, 0.7176471f) },//Green -- Player
         {2, new Color(12.99604f, 0.3817299f, 0, 0.7176471f) },//Red -- Enemy
         {3, new Color(0.000f, 6.334f, 12.996f, 0.719f) }, //Blue -- Cover
-        {4, new Color(12.99604f, 12.99604f, 0, 0.7176471f) },//Yellow -- 
+        {4, new Color(12.99604f, 12.99604f, 0, 0.7176471f) },//Yellow -- Interactable
         
         //old
         /*{0, new Color(0.000f, 6.334f, 12.996f, 0.719f) }, //Blue -- Default
@@ -82,6 +82,7 @@ public class Interact : MonoBehaviour
     /// <param name="1">Orange -- Attackable</param>
     /// <param name="2">NOT IMPLEMENTED</param>
     /// <param name="3">Blue -- Cover</param>
+    /// <param name="4">Yellow -- Interactable</param>
     /// </summary>
    public Dictionary<int, Color> tileHighligthColors = new Dictionary<int, Color>()
    {
@@ -89,6 +90,7 @@ public class Interact : MonoBehaviour
        {1, new Color(12.99604f, 1.903436f, 0f, 0.7176471f) },//Orange -- Attackable
        
        {3, new Color(0.000f, 3.334f, 6.996f, 0.7176471f) }, //Blue -- Cover
+       {4, new Color(12.99604f, 6.903436f, 0f, 0.7176471f) },//Yellow -- Interactable
        //old
        /*{0, new Color(1, 1, 1, 0.7176471f) }, //white -- Movable
        {1, new Color(12.99604f, 1.903436f, 0f, 0.7176471f) },//Orange -- Attackable
@@ -382,6 +384,10 @@ public class Interact : MonoBehaviour
                 //inspectTileMeshRenderer.material.SetColor("_RimColor",tileInspectColors[3]);
                 inspectTileMeshRenderer.material.SetColor("_RimColor",tileInspectColors[0]);
             }
+            if (currentTile.occupiedByInteractable)
+            {
+                inspectTileMeshRenderer.material.SetColor("_RimColor",tileInspectColors[4]);
+            }
 
             if (currentTile.occupyingCharacter)
             {
@@ -434,7 +440,7 @@ public class Interact : MonoBehaviour
         }
         else
         {
-            switch (selectedCharacter.GetComponent<Character>().characterState)
+            switch (selectedCharacter.characterState)
             {
                 case Character.CharacterState.Idle:
                     if (currentTile.Occupied)
@@ -496,6 +502,12 @@ public class Interact : MonoBehaviour
     public void InspectSomeone()
     {
         if (currentTile.OccupiedByCoverPoint)return;
+
+        if (currentTile.occupiedByInteractable)
+        {
+            InspectInteractable(currentTile);
+            return;
+        }
         
         if (currentTile.occupyingCharacter.gameObject.tag == "Player")
         {
@@ -508,6 +520,29 @@ public class Interact : MonoBehaviour
         
     }
 
+    private void InspectInteractable(Tile tile)
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (RetrievePath(selectedCharacter, out Path newPath))
+            {
+                // newPath.tiles.Remove(newPath.tiles[newPath.tiles.Count - 1]);
+                Clear();
+                ClearHighlightReachableTiles();
+                selectedCharacter.StartMove(newPath, true, () =>
+                {
+                    selectedCharacter.canMove = false;
+                    selectedCharacter.Rotate(tile.transform.position, 0.75f, () =>
+                    {
+                        tile.occupyingInteractable.OnInteract(selectedCharacter);
+                        selectedCharacter.canMove = true;
+                    });
+                });
+            }
+        }
+            
+    }
+    
     private void InspectCharacter()
     {
         if (currentTile.occupyingCharacter.Moving)
@@ -627,7 +662,7 @@ public class Interact : MonoBehaviour
     {
         if (selectedCharacter != null)
         {
-            if (selectedCharacter.pathfinder.GetReachableTiles(selectedCharacter.characterTile, selectedCharacter.remainingActionPoints/*, selectedCharacter.characterTile*/).Contains(currentTile))
+            if (selectedCharacter.pathfinder.GetReachableTiles(selectedCharacter.characterTile, selectedCharacter.remainingActionPoints).Contains(currentTile))
             {
                 path = selectedCharacter.pathfinder.FindPath(activator, selectedCharacter.characterTile, currentTile);
                 selectedCharacter.pathfinder.illustrator.IllustratePath(path);
@@ -635,6 +670,21 @@ public class Interact : MonoBehaviour
             }
             else
             {
+                if (currentTile.occupiedByInteractable)//todo burda kaldın
+                {
+                    path = selectedCharacter.pathfinder.FindPath(activator, selectedCharacter.characterTile, currentTile);
+                    List<Tile> tiles = path.tiles ;
+                    
+                    selectedCharacter.pathfinder.illustrator.IllustratePath(path);
+                    return true;
+                }
+                else
+                {
+                    path = null;
+                    return false;
+                }
+
+                
                 path = null;
                 return false;
             }

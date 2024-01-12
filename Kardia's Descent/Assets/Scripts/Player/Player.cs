@@ -7,9 +7,7 @@ using UnityEngine;
 public class Player : Character
 {
     [SerializeField] private RenderTexture playerPortrait;
-
-    [FoldoutGroup("Stats For Quests")] [SerializeField]
-    private HeartContainer heartContainer;
+    
     [FoldoutGroup("Stats For Quests")] [SerializeField]
     private int killsInTurn = 0;
     [ShowIf("characterClass", CharacterClass.Bruiser)]

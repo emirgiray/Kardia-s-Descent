@@ -229,6 +229,9 @@ MonoBehaviour:
   characterSprite: {fileID: 0}
   characterStats: {fileID: 0}
   SkillContainer: {fileID: 6566286917398397367}
+  heartContainer: {fileID: 7800979912286807391}
+  inventory: {fileID: 5475755088311690444}
+  inventoryUI: {fileID: 0}
   pathfinder: {fileID: 29732848317274237}
   movedata: {fileID: 11400000, guid: dd6f1c9025f1ba945b2082ff9cda2f56, type: 2}
   characterTile: {fileID: 0}
@@ -240,15 +243,21 @@ MonoBehaviour:
   maxActionPoints: 10
   initiative: 1
   health: {fileID: 5225323832543321503}
+  detectingThreshold: 0.45
+  detectionTile: 4
   canMove: 1
   canAttack: 1
   inCombat: 0
   isStunned: 0
   remainingStunTurns: 0
   isDead: 0
+  canRotate: 1
+  dropItemsOnDeath: 0
+  itemsToDrop: []
   Head: {fileID: 3811572432631322745}
   Hand: {fileID: 4568728419604377504}
   characterClass: 0
+  Moving: 0
   GroundLayerMask:
     serializedVersion: 2
     m_Bits: 8
@@ -286,7 +295,6 @@ MonoBehaviour:
   extraMeleeDamage: 0
   extraRangedAccuracy: 0
   playerPortrait: {fileID: 8400000, guid: 8d4fd00542bae0b43957e359329b47a2, type: 2}
-  heartContainer: {fileID: 0}
   killsInTurn: 0
   canBruiserDoubleAttack: 1
 --- !u!114 &6566286917398397367
@@ -369,6 +377,7 @@ MonoBehaviour:
   skillsDataList: []
   skillsToAdd: []
   weaponPartDataList: []
+  heartsInInventory: []
   weaponContainer: {fileID: 6326383597764647500}
   skillsContainer: {fileID: 6566286917398397367}
   spawnedWeapon: {fileID: 0}
@@ -396,8 +405,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heartData: {fileID: 0}
+  character: {fileID: 7510704565162782655}
   isPowerUnlocked: 0
   isEquipped: 0
+  heartButton: {fileID: 0}
 --- !u!114 &29732848317274237
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -10,10 +11,16 @@ public class Character : MonoBehaviour
 {
     [BoxGroup("Character Info")]
     public Sprite characterSprite;
-    [BoxGroup("Character Info")][SerializeField] 
-    private CharacterStats characterStats; 
+    [BoxGroup("Character Info")]
+    public CharacterStats characterStats; 
     [BoxGroup("Character Info")]
     public SkillContainer SkillContainer;
+    [BoxGroup("Character Info")]
+    public HeartContainer heartContainer;
+    [BoxGroup("Character Info")]
+    public Inventory inventory;
+    [BoxGroup("Character Info")]
+    public InventoryUI inventoryUI;
     [BoxGroup("Character Info")]
     public Pathfinder pathfinder;
     [BoxGroup("Character Info")]
@@ -42,20 +49,24 @@ public class Character : MonoBehaviour
     [BoxGroup("Stats")] [Tooltip("Kinda like a stealth value, in how many tiles away the enemy can detect this character")]
     public int detectionTile = 4;
     
-    [BoxGroup("Functions")] [SerializeField] 
+    [BoxGroup("Variables")] [SerializeField] 
     public bool canMove = true;
-    [BoxGroup("Functions")] [SerializeField] 
+    [BoxGroup("Variables")] [SerializeField] 
     public bool canAttack = true;
-    [BoxGroup("Functions")] [SerializeField] 
+    [BoxGroup("Variables")] [SerializeField] 
     public bool inCombat = false;
-    [BoxGroup("Functions")] [SerializeField] 
+    [BoxGroup("Variables")] [SerializeField] 
     public bool isStunned = false;
-    [BoxGroup("Functions")] [SerializeField] 
+    [BoxGroup("Variables")] [SerializeField] 
     private int remainingStunTurns = 0;
-    [BoxGroup("Functions")] [SerializeField] 
+    [BoxGroup("Variables")] [SerializeField] 
     public bool isDead = false;
-    [BoxGroup("Functions")] [SerializeField] 
+    [BoxGroup("Variables")] [SerializeField] 
     public bool canRotate = true;
+    [BoxGroup("Functions")] [SerializeField] 
+    private bool dropItemsOnDeath = false;
+    [BoxGroup("Functions")] [ShowIf("dropItemsOnDeath")] [SerializeField] 
+    private List<GameObject> itemsToDrop = new List<GameObject>();
     
     [BoxGroup("Transforms")] [SerializeField] 
     private Transform Head;
@@ -69,7 +80,7 @@ public class Character : MonoBehaviour
     [BoxGroup("Character Info")]
     public CharacterClass characterClass;
     
-    public bool Moving { get; private set; } = false;
+    public bool Moving  = false;
     
     
     public LayerMask GroundLayerMask;
@@ -120,13 +131,28 @@ public class Character : MonoBehaviour
     {
         if (characterStats != null)
         {
+            //Strength
             extraMeleeDamage = characterStats.Strength * 5;
+            //Dexterity
             actionPoints = characterStats.Dexterity;
-            GetComponent<SGT_Health>().Max = 100 + characterStats.Constitution * 10;
-            extraRangedAccuracy = characterStats.Dexterity * 5;
+            if (actionPoints > maxActionPoints)
+            {
+                actionPoints = maxActionPoints;
+            }
+            ResetActionPoints();
+            //Constitution
+            int prevMaxHealth = health.Max;
+            
+            health.Max = 100 + characterStats.Constitution * 10;
+            health.HealthIncrease(health.Max - prevMaxHealth);
+            health.UpdateHealthBar();
+            if (inventoryUI != null) inventoryUI.UpdateHealth();
+            
+            //Aiming
+            extraRangedAccuracy = characterStats.Aiming * 5;
         }
     }
-
+    
     #region Movement
 
     /// <summary>
@@ -696,10 +722,24 @@ public class Character : MonoBehaviour
         }
         characterTile.occupyingGO = null;
         characterTile.Occupied = false;
+
+        if (dropItemsOnDeath)
+        {
+            DropItemsOnDeath();
+        }
         //characterTile = null;
         
     }
 
+    public void DropItemsOnDeath()
+    {
+        Vector3 dropPos = transform.position + new Vector3(0, 1, 0);
+        foreach (var item in itemsToDrop)
+        {
+            Instantiate(item, dropPos, Quaternion.identity);
+        }
+    }
+    
     public void OnCharacterRecieveDamageFunc()
     {
         animator.SetTrigger("Hit");

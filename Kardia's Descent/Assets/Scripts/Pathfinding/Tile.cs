@@ -7,29 +7,55 @@ using Sirenix.Serialization;
 
 public class Tile : MonoBehaviour
 {
-    [BoxGroup("Tile")] [OnValueChanged("DeactivateVisualForEdior")] public bool selectable = true;
-    [BoxGroup("Tile")] [SerializeField] private bool disableMeshOnStart = true;
-    [BoxGroup("Tile")] public bool Occupied  = false;
-    [BoxGroup("Tile")] public Tile parent;
-    [BoxGroup("Tile")] public Tile connectedTile;
-    [BoxGroup("Tile")] public Character occupyingCharacter;
-    [BoxGroup("Tile")] public GameObject occupyingGO;
-    [BoxGroup("Tile")] public MeshRenderer meshRenderer;
-    [BoxGroup("Tile")] [SerializeField] private GameObject TileHighlightGO;
-    [BoxGroup("Tile")] [SerializeField] private GameObject ShieldIcon;
-    [BoxGroup("Tile")] public MeshRenderer TileHighlightMeshRenderer;
-    [BoxGroup("Editor")] [SerializeField] private Material defaultMat;
-    [BoxGroup("Editor")] [SerializeField] private Material disabledMat;
+    [BoxGroup("Tile")] [OnValueChanged("DeactivateVisualForEdior")]
+    public bool selectable = true;
+    [BoxGroup("Tile")] [SerializeField] 
+    private bool disableMeshOnStart = true;
+    [BoxGroup("Tile")] 
+    public bool Occupied  = false;
+    [BoxGroup("Tile")] 
+    public Tile parent;
+    [BoxGroup("Tile")] 
+    public Tile connectedTile;
+    [BoxGroup("Tile")] 
+    public Character occupyingCharacter;
+    [BoxGroup("Tile")] 
+    public GameObject occupyingGO;
+    [BoxGroup("Tile")] 
+    public MeshRenderer meshRenderer;
+    [BoxGroup("Tile")] [SerializeField] 
+    private GameObject TileHighlightGO;
+    [BoxGroup("Tile")] [SerializeField] 
+    private GameObject ShieldIcon;
+    [BoxGroup("Tile")] 
+    public MeshRenderer TileHighlightMeshRenderer;
     
-    [BoxGroup("Player")] public bool occupiedByPlayer = false;
-    [BoxGroup("Player")] public Player occupyingPlayer;
+    [BoxGroup("Editor")] [SerializeField] 
+    private Material defaultMat;
+    [BoxGroup("Editor")] [SerializeField] 
+    private Material disabledMat;
     
-    [BoxGroup("Enemy")] public bool occupiedByEnemy = false;
-    [BoxGroup("Enemy")] public Enemy occupyingEnemy;
+    [BoxGroup("Player")] [ShowIf("Occupied")]
+    public bool occupiedByPlayer = false; 
+    [BoxGroup("Player")] [ShowIf("occupiedByPlayer")]
+    public Player occupyingPlayer;
     
-    [BoxGroup("Cover Point")] public bool OccupiedByCoverPoint = false;
-    [BoxGroup("Cover Point")] public CoverPoint occupyingCoverPoint;
-    [BoxGroup("Cover Point")] public bool isCoveredByCoverPoint = false;
+    [BoxGroup("Enemy")] [ShowIf("Occupied")]
+    public bool occupiedByEnemy = false;
+    [BoxGroup("Enemy")] [ShowIf("occupiedByEnemy")]
+    public Enemy occupyingEnemy;
+    
+    [BoxGroup("Cover Point")] [ShowIf("Occupied")]
+    public bool OccupiedByCoverPoint = false;
+    [BoxGroup("Cover Point")] [ShowIf("OccupiedByCoverPoint")]
+    public CoverPoint occupyingCoverPoint;
+    [BoxGroup("Cover Point")] 
+    public bool isCoveredByCoverPoint = false;
+    
+    [BoxGroup("Interactable")] [ShowIf("Occupied")]
+    public bool occupiedByInteractable = false;
+    [BoxGroup("Interactable")] [ShowIf("occupiedByInteractable")]
+    public Interactable occupyingInteractable;
 
     [HideInInspector] [BoxGroup("Tile")] public float costFromOrigin = 0;
     [HideInInspector] [BoxGroup("Tile")]  public float costToDestination = 0;
@@ -174,6 +200,8 @@ public class Tile : MonoBehaviour
         occupyingCharacter = null;
         occupyingPlayer = null;
         occupyingEnemy = null;
+        occupyingInteractable = null;
+        occupyingCoverPoint = null;
         occupyingGO = null;
     }
 

@@ -80,12 +80,23 @@ public class SkillButton : MonoBehaviour
         {
             button.enabled = false;
         }
-
-        
-        
-        
     }
 
+    public void SetHeader(string text)
+    {
+        tooltipTrigger.SetHeader(text);
+    }
+
+    public void SetContent(string text)
+    {
+        tooltipTrigger.SetContent(text);
+    }
+
+    public void AddToContent(string text)
+    {
+        tooltipTrigger.AddToContent(text);
+    }
+    
     public void SwitchSelectedOutline(bool value)
     {
         SkillSelectedOutline.SetActive(value);

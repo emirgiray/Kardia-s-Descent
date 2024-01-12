@@ -12,11 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dc7798f6e3258c46bad0f03f4ebd409, type: 3}
   m_Name: Jack The Ripper
   m_EditorClassIdentifier: 
-  HeartModel: {fileID: 919132149155446097, guid: 44ea3595548714e4aa31b665a70bf233,
-    type: 3}
+  HeartSprite: {fileID: 0}
   heartName: Jack The Ripper
   heartIndex: 0
   heartDescription: Gain 2-3 AP when you kill.
   heartRarity: 4
+  BonusStrength: 0
+  BonusDexterity: 0
+  BonusConstitution: 0
+  BonusAiming: 0
   unlockCondition: 'Requirement: Kill 3 enemies in one turn.'
   isPowerUnlocked: 0

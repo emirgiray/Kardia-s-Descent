@@ -6,8 +6,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "HeartData", menuName = "ScriptableObjects/Hearts", order = 0)]
 public class HeartData : ScriptableObject
 {
-    [PreviewField(Height= 200,Alignment =ObjectFieldAlignment.Left)]
-    public GameObject HeartModel;
+    [PreviewField(Height = 200, Alignment = ObjectFieldAlignment.Left)]
+    public Sprite HeartSprite;
     [Space][BoxGroup("Heart Info")] public string heartName = "";
     [BoxGroup("Heart Info")] public int heartIndex = 0;
     [Multiline] [BoxGroup("Heart Info")]public string heartDescription = "";
@@ -19,6 +19,15 @@ public class HeartData : ScriptableObject
 
     [BoxGroup("Heart Info")]
     public HeartRarity heartRarity;
+    
+    [HideIf("heartRarity", HeartRarity.Legendary)]
+    public int BonusStrength;
+    [HideIf("heartRarity", HeartRarity.Legendary)]
+    public int BonusDexterity;
+    [HideIf("heartRarity", HeartRarity.Legendary)]
+    public int BonusConstitution;
+    [HideIf("heartRarity", HeartRarity.Legendary)]
+    public int BonusAiming;
     
     [Multiline][ShowIf("heartRarity", HeartRarity.Legendary)]
     public string unlockCondition = "";

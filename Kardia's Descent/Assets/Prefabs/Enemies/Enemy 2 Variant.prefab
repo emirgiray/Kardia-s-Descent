@@ -1279,6 +1279,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1086629163380962625, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
         type: 3}
+      propertyPath: _Health
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1086629163380962625, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
+        type: 3}
       propertyPath: Dead.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}

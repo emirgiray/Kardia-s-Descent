@@ -1068,7 +1068,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _Health: 0
+  _Health: 100
   _HealthAnim: {fileID: 0}
   _HealthAnim_2: {fileID: 0}
 --- !u!114 &964982723527092187
@@ -1100,6 +1100,8 @@ MonoBehaviour:
   characterSprite: {fileID: 0}
   characterStats: {fileID: 0}
   SkillContainer: {fileID: 971612226134414077}
+  heartContainer: {fileID: 0}
+  inventoryUI: {fileID: 0}
   pathfinder: {fileID: 8866224488703451883}
   movedata: {fileID: 11400000, guid: dd6f1c9025f1ba945b2082ff9cda2f56, type: 2}
   characterTile: {fileID: 0}
