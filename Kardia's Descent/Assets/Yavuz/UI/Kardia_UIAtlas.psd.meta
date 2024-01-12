@@ -970,6 +970,90 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: heart_0
+      rect:
+        serializedVersion: 2
+        x: 846
+        y: 43
+        width: 327
+        height: 385
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9471b6bf6cb8a194d829bcfad30e0f6a
+      internalID: 1158375599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heart_1
+      rect:
+        serializedVersion: 2
+        x: 1289
+        y: 43
+        width: 326
+        height: 385
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0d260dd78891e645b5ac012310e539b
+      internalID: 2005359547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heart_2
+      rect:
+        serializedVersion: 2
+        x: 1709
+        y: 43
+        width: 326
+        height: 385
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9977b2d54e9c8349950c825c4c4cdef
+      internalID: -92832186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heart_3
+      rect:
+        serializedVersion: 2
+        x: 2127
+        y: 43
+        width: 326
+        height: 385
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10e12a32b81a6ff4794e0e270d121b32
+      internalID: 1469048405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -1024,6 +1108,10 @@ TextureImporter:
       h3_s2: 322038598
       h3_s3: -959594703
       h3_s4: 1385725176
+      heart_0: 1158375599
+      heart_1: 2005359547
+      heart_2: -92832186
+      heart_3: 1469048405
       hexagon_Top: -62228848
       icon_skip: -523618045
   mipmapLimitGroupName: 
