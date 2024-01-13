@@ -12,7 +12,7 @@ public class Player : Character
     private int killsInTurn = 0;
     [ShowIf("characterClass", CharacterClass.Bruiser)]
     [SerializeField] private bool canBruiserDoubleAttack = true;
-    
+    public bool isUnlocked = false;
     
     public delegate void QuestDelegate();
     public static event QuestDelegate JackTheRipperQuestCompleted;
@@ -40,7 +40,21 @@ public class Player : Character
             TurnSystem.Instance.FriendlyTurn -= ResetBruiserDoubleAttack;
         }
     }
-    
+
+    private void Start()
+    {
+        if (isUnlocked == false)
+        {
+            StartCoroutine(StartDelay());
+        }
+
+    }
+
+    public IEnumerator StartDelay()
+    {
+        yield return new WaitForSecondsRealtime(0.1f);
+        animator.enabled = false;
+    }
     public void BruiserDoubleAttack(SkillContainer.Skills skill)
     {
         Debug.Log($"can double attack= {canBruiserDoubleAttack}");
@@ -83,16 +97,30 @@ public class Player : Character
     {
         killsInTurn = 0;
     }
-      public RenderTexture GetPlayerPortrait()
-        {
-            return playerPortrait;
-        }
+    
+    public void UnlockPlayer()
+    {
+        isUnlocked = true;
+        animator.enabled = true;
+    }
+
+    public bool GetUnlocked()
+    {
+        return isUnlocked;
+    }
+
+    public RenderTexture GetPlayerPortrait()
+    {
+        return playerPortrait;
+    }
 
     [Button]
     public List<Tile> gettilesinbetween(Tile dest)
     {
         return pathfinder.GetTilesInBetween(this, characterTile, dest, true);
     }
+
+    
     /*private void Update()
     {
         if (characterState == CharacterState.Attacking)

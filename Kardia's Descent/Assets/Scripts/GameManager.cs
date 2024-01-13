@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
     
     public void AddPlayerToCombat(Player player)
     {
-        if (player.gameObject.activeInHierarchy && TurnSystem.Instance.playersInCombat.Contains(player) == false )
+        if (player.gameObject.activeInHierarchy && TurnSystem.Instance.playersInCombat.Contains(player) == false && player.GetUnlocked())
         {
             TurnSystem.Instance.AddPlayer(player);                
         }

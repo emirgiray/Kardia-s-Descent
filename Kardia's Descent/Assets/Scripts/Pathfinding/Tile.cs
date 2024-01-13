@@ -203,6 +203,7 @@ public class Tile : MonoBehaviour
         occupyingInteractable = null;
         occupyingCoverPoint = null;
         occupyingGO = null;
+        occupiedByInteractable = false;
     }
 
     public void SwitchShieldIcon(bool value)

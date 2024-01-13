@@ -14,13 +14,16 @@ public class Interactable : MonoBehaviour
     
     public enum CharacterClass
     {
-        None, Heart, Character, Chest
+        None, Heart, Player, Chest
     }
 
     public CharacterClass InteractableType;
 
     [ShowIf("InteractableType", CharacterClass.Heart)]
     [SerializeField] private HeartData heart;
+
+    [ShowIf("InteractableType", CharacterClass.Player)]
+    [SerializeField] private Player player;
     
     
     public UnityEvent OnInteractEvent;
@@ -35,7 +38,7 @@ public class Interactable : MonoBehaviour
         {
             if (objectTile == null)
             {
-                Debug.LogError("Cover point: " + gameObject.name + " has no object tile !!! ");
+                Debug.LogError("Interactable: " + gameObject.name + " has no object tile !!!");
             }
         }
         
@@ -50,9 +53,16 @@ public class Interactable : MonoBehaviour
                 break;
             case CharacterClass.Heart:
                 character.heartContainer.PickUpHeart(heart);
+                objectTile.Occupied = false;
+                objectTile.ResetOcupying();
+                Destroy(gameObject);
                 break;
-            case CharacterClass.Character:
-                throw new ArgumentOutOfRangeException();
+            case CharacterClass.Player:
+                player.UnlockPlayer();
+                objectTile.Occupied = false;
+                objectTile.ResetOcupying();
+                Destroy(gameObject);
+                player.FinalizePosition(objectTile, true);
                 break;
             case CharacterClass.Chest:
                 throw new ArgumentOutOfRangeException();
@@ -60,10 +70,7 @@ public class Interactable : MonoBehaviour
             default:
                 throw new ArgumentOutOfRangeException();
         }
-        objectTile.Occupied = false;
-        objectTile.ResetOcupying();
         
-        Destroy(gameObject);
     }
     
     public void FindTileAtstart()
@@ -80,7 +87,7 @@ public class Interactable : MonoBehaviour
             return;
         }
         
-        Debug.Log("No tile found for cover point: " + gameObject.name + " at position: " + transform.position + "");
+        Debug.Log("No tile found for interactable: " + gameObject.name + " at position: " + transform.position + "");
     }
 
     [Button, GUIColor(0.1f, 1f, 0.1f)]

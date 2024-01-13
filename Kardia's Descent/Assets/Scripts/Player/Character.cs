@@ -105,6 +105,7 @@ public class Character : MonoBehaviour
     public Action OnCharacterRecieveDamageAction;
     public Action<SkillContainer.Skills> OnAttackEndAction;
     
+    [FoldoutGroup("Events")] public UnityEvent AwakeEvent;
     [FoldoutGroup("Events")] public UnityEvent<int> OnMovePointsChangeEvent;
     [FoldoutGroup("Events")] public UnityEvent<int, string> OnActionPointsChangeEvent;
     [FoldoutGroup("Events")] public UnityEvent<int> OnActionPointsChangeEvent2;
@@ -125,6 +126,7 @@ public class Character : MonoBehaviour
         AssignSkillValues();
         ResetActionPoints();
         FindTileAtStart();
+        AwakeEvent?.Invoke();
     }
 
     public void AssignSkillValues()
@@ -310,7 +312,7 @@ public class Character : MonoBehaviour
         OnComplete?.Invoke();
     }
     
-    void FinalizePosition(Tile tile, bool findTileAtStart)
+    public void FinalizePosition(Tile tile, bool findTileAtStart)
     {
         transform.position = tile.transform.position;
         characterTile = tile;
@@ -530,7 +532,9 @@ public class Character : MonoBehaviour
             var playersInCombat = GameManager.Instance.players;
             for (int i = 0; i < playersInCombat.Count; i++)
             {
-                if (playersInCombat[i].gameObject.activeInHierarchy && pathfinder.GetTilesInBetween(this, characterTile, playersInCombat[i].characterTile, true).Count <= playersInCombat[i].detectionTile)
+                if (playersInCombat[i].gameObject.activeInHierarchy &&
+                    pathfinder.GetTilesInBetween(this, characterTile, playersInCombat[i].characterTile, true).Count <= playersInCombat[i].detectionTile
+                    && playersInCombat[i].GetUnlocked())
                 {
                     Ray ray = new Ray(this.transform.position, this.transform.forward);
                     Vector3 dir1 = ray.direction;
