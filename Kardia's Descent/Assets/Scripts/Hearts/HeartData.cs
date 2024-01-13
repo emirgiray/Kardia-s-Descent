@@ -14,7 +14,7 @@ public class HeartData : ScriptableObject
     
     public enum HeartRarity
     {
-        Common, Uncommon, Rare, Epic, Legendary
+        Common, Rare, Legendary
     }
 
     [BoxGroup("Heart Info")]

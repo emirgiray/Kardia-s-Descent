@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,7 +10,9 @@ public class GameManager : MonoBehaviour
      public List<Player> players = new List<Player>();
      public List<Enemy> enemies = new List<Enemy>();
      public List<Character> allEntities = new List<Character>();
-    
+
+     public UnityEvent<Transform> PlayerUnlockedEventTransform;
+     
     private void Awake()
     {
         if (Instance == null)
@@ -82,5 +85,9 @@ public class GameManager : MonoBehaviour
         allEntities.Remove(enemy);
     }
 
+    public void PlayerUnlocked(Transform playerTransform)
+    {
+        PlayerUnlockedEventTransform?.Invoke(playerTransform);
+    }
     
 }

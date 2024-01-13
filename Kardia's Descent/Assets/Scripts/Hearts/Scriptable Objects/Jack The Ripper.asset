@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dc7798f6e3258c46bad0f03f4ebd409, type: 3}
   m_Name: Jack The Ripper
   m_EditorClassIdentifier: 
-  HeartSprite: {fileID: 0}
+  HeartSprite: {fileID: 1469048405, guid: f050367bbcaea674495c2d5e36fc140b, type: 3}
   heartName: Jack The Ripper
   heartIndex: 0
   heartDescription: Gain 2-3 AP when you kill.
-  heartRarity: 4
+  heartRarity: 2
   BonusStrength: 0
   BonusDexterity: 0
   BonusConstitution: 0

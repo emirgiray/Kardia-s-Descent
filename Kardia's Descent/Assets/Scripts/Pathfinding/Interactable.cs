@@ -21,7 +21,17 @@ public class Interactable : MonoBehaviour
 
     [ShowIf("InteractableType", CharacterClass.Heart)]
     [SerializeField] private HeartData heart;
+    [ShowIf("InteractableType", CharacterClass.Heart)]
+    [SerializeField] private MeshRenderer heartRenderer;
+    [ShowIf("InteractableType", CharacterClass.Heart)]
+    [SerializeField] private GameObject heartVFX;
+    [ShowIf("InteractableType", CharacterClass.Heart)]
+    [SerializeField] private Material[] rarityMaterials;
+    [ShowIf("InteractableType", CharacterClass.Heart)]
+    [SerializeField] private GameObject[] rarityVFXs;
 
+    
+    
     [ShowIf("InteractableType", CharacterClass.Player)]
     [SerializeField] private Player player;
     
@@ -41,6 +51,39 @@ public class Interactable : MonoBehaviour
                 Debug.LogError("Interactable: " + gameObject.name + " has no object tile !!!");
             }
         }
+
+        switch (InteractableType)
+        {
+            case CharacterClass.None:
+                break;
+            case CharacterClass.Heart:
+                switch (heart.heartRarity)
+                {
+                    case HeartData.HeartRarity.Common:
+                        heartRenderer.material = rarityMaterials[0];
+                        Instantiate(rarityVFXs[0], heartVFX.transform.position, Quaternion.identity, heartVFX.transform);
+                        break;
+                    case HeartData.HeartRarity.Rare:
+                        heartRenderer.material = rarityMaterials[1];
+                        Instantiate(rarityVFXs[1], heartVFX.transform.position, Quaternion.identity, heartVFX.transform);
+                        break;
+                    case HeartData.HeartRarity.Legendary:
+                        heartRenderer.material = rarityMaterials[2];
+                        Instantiate(rarityVFXs[2], heartVFX.transform.position, Quaternion.identity, heartVFX.transform);
+                        break;
+                }
+
+                
+                break;
+            case CharacterClass.Player:
+                
+                break;
+            case CharacterClass.Chest:
+                
+                break;
+
+                
+        }
         
     }
 
@@ -59,6 +102,7 @@ public class Interactable : MonoBehaviour
                 break;
             case CharacterClass.Player:
                 player.UnlockPlayer();
+                GameManager.Instance.PlayerUnlockedEventTransform.Invoke(player.transform);
                 objectTile.Occupied = false;
                 objectTile.ResetOcupying();
                 Destroy(gameObject);

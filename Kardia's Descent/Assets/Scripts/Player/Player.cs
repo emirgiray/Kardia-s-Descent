@@ -57,7 +57,6 @@ public class Player : Character
     }
     public void BruiserDoubleAttack(SkillContainer.Skills skill)
     {
-        Debug.Log($"can double attack= {canBruiserDoubleAttack}");
         if (canBruiserDoubleAttack && skill.skillData.name.Contains("Basic"))
         {
             remainingActionPoints += skill.actionPointUse;

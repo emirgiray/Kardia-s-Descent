@@ -281,16 +281,17 @@ public class SkillContainer : MonoBehaviour
     public void DeselectSkill(Skills deselectSkill, Enemy enemy = null)
     {
         // ResetExtraStatValues(deselectSkill);
-        if (Character is Enemy)Debug.Log($"{this.name} Deselected {deselectSkill.skillData.name}");
         skillSelected = false;
         /*skillsList.Find(x => x.skillData == selectedSkill.skillData).remainingSkillCooldown = selectedSkill.remainingSkillCooldown;
         skillsList.Find(x => x.skillData == selectedSkill.skillData).skillReadyToUse = selectedSkill.skillReadyToUse;*/
         //skillsList.Find(x => x.skillData == selectedSkill.skillData).skillButton = selectedSkill.skillButton;
         
-
         if (Character is Player)
         {
-            if (selectedSkill.skillButton != null) selectedSkill.skillButton.SwitchSelectedOutline(false);
+            if (deselectSkill.skillButton != null)
+            {
+                deselectSkill.skillButton.SwitchSelectedOutline(false);
+            }
             Interact.Instance.ClearHighlightAttackableTiles();
             Interact.Instance.SkillDeselected?.Invoke();
             Interact.Instance.selectedCharacter.GetComponent<Character>().AttackCancel();
