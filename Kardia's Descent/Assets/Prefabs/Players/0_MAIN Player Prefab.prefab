@@ -265,6 +265,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   characterState: 0
+  AwakeEvent:
+    m_PersistentCalls:
+      m_Calls: []
   OnMovePointsChangeEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -297,6 +300,7 @@ MonoBehaviour:
   playerPortrait: {fileID: 8400000, guid: 8d4fd00542bae0b43957e359329b47a2, type: 2}
   killsInTurn: 0
   canBruiserDoubleAttack: 1
+  isUnlocked: 0
 --- !u!114 &6566286917398397367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -647,7 +651,7 @@ Transform:
   m_GameObject: {fileID: 7508310156781045900}
   serializedVersion: 2
   m_LocalRotation: {x: -0.0000002950279, y: -0.7071068, z: 0.70710677, w: -0.00000029502792}
-  m_LocalPosition: {x: 0, y: 7.37, z: 0}
+  m_LocalPosition: {x: 0, y: 4.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -662,13 +666,13 @@ Light:
   m_GameObject: {fileID: 7508310156781045900}
   m_Enabled: 1
   serializedVersion: 10
-  m_Type: 2
+  m_Type: 0
   m_Shape: 0
-  m_Color: {r: 0.04517317, g: 0, b: 1, a: 1}
-  m_Intensity: 24.46
-  m_Range: 10
-  m_SpotAngle: 68.637886
-  m_InnerSpotAngle: 21.80208
+  m_Color: {r: 0.81960785, g: 0.6356786, b: 0.40784314, a: 1}
+  m_Intensity: 17.6
+  m_Range: 7.1
+  m_SpotAngle: 97.949394
+  m_InnerSpotAngle: 51.11358
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
