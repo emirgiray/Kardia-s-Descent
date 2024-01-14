@@ -46,7 +46,7 @@ Material:
     - _Distortion_Speed: 0.09
     - _Distortion_Strength: 0.003
     - _Dither_Value: 0.24
-    - _Gradient_Scale: 2.78
+    - _Gradient_Scale: 2.6
     - _Vignette_Power: -0.9
     m_Colors:
     - _Scene_Color: {r: 6.0285444, g: 3.1450405, b: 19.049961, a: 1}
