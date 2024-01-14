@@ -10,6 +10,7 @@ public class Player : Character
     
     [FoldoutGroup("Stats For Quests")] [SerializeField]
     private int killsInTurn = 0;
+    private int totalKills = 0;
     [ShowIf("characterClass", CharacterClass.Bruiser)]
     [SerializeField] private bool canBruiserDoubleAttack = true;
     public bool isUnlocked = false;
@@ -90,6 +91,7 @@ public class Player : Character
     public void IncreaseKills()
     {
         killsInTurn++;
+        totalKills++;
     }
 
     private void ResetKillsInTurn()

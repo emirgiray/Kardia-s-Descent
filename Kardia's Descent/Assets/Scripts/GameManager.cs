@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,9 +14,27 @@ public class GameManager : MonoBehaviour
      public List<Character> allEntities = new List<Character>();
 
      public UnityEvent<Transform> PlayerUnlockedEventTransform;
-     
+
+     [BoxGroup("Stats For End Game")]
+     public int totalDamageDealt;
+     [BoxGroup("Stats For End Game")]
+     public int totalDamageTaken;
+     [BoxGroup("Stats For End Game")]
+     public int totalKills;
+     [BoxGroup("Stats For End Game")]
+     public int totalHeartsCollected;
+     [BoxGroup("Stats For End Game")] [SerializeField] 
+     private DateTime startTime;
+     [BoxGroup("Stats For End Game")] [SerializeField]
+     private TimeSpan playTime;
+     [BoxGroup("Stats For End Game")] [SerializeField]
+     private string formattedPlayTime;
+     [BoxGroup("Stats For End Game")] [SerializeField]
+     private int score;
     private void Awake()
     {
+        startTime = DateTime.Now;
+        
         if (Instance == null)
             Instance = this;
         else
@@ -35,7 +55,9 @@ public class GameManager : MonoBehaviour
         
         // AddPlayersToCombat();
     }
-    
+
+    #region Add/Remove Players/Enemies
+
     /// <summary>
     /// Can be called anytime, only adds players that are active in the scene and not already in combat
     /// </summary>
@@ -84,10 +106,47 @@ public class GameManager : MonoBehaviour
         enemies.Remove(enemy);
         allEntities.Remove(enemy);
     }
+    
+    public void RemovePlayerFromGame(Player player)
+    {
+        players.Remove(player);
+        allEntities.Remove(player);
+
+        if (players.Count == 0)
+        {
+            GameOver(false);
+        }
+    }
 
     public void PlayerUnlocked(Transform playerTransform)
     {
         PlayerUnlockedEventTransform?.Invoke(playerTransform);
     }
+
+    #endregion
+
+
+    public void GameOver(bool win)
+    {
+        CalcuatePlayTime();
+        CalculateScore();
+        UIManager.Instance.GameOver(win, score, totalDamageDealt, totalDamageTaken, totalKills, totalHeartsCollected, formattedPlayTime);
+    }
     
+
+    [Button, GUIColor(1f, 1f, 1f)]
+    public void CalcuatePlayTime()
+    {
+        playTime = DateTime.Now - startTime;
+        int hours = (int)playTime.TotalHours;
+        int minutes = playTime.Minutes;
+        int seconds = playTime.Seconds;
+        formattedPlayTime = string.Format("{0:D2}:{1:D2}:{2:D2}", hours, minutes, seconds);
+        
+    }
+
+    public void CalculateScore()
+    {
+        score = (totalDamageDealt * 10) + (totalKills * 10) + (totalHeartsCollected * 20) - totalDamageTaken - (int)playTime.TotalSeconds;
+    }
 }
