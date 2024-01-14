@@ -197,9 +197,9 @@ Material:
     - _SpecClipMaskScale: 1
     - _SpecShadowStrength: 1
     - _SpecularClipStrength: 0
-    - _SpecularFalloff: 1
+    - _SpecularFalloff: 0.295
     - _SpecularHighlights: 1
-    - _SpecularSize: 1
+    - _SpecularSize: 0.368
     - _SpherizeNormalEnabled: 0
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
