@@ -54,12 +54,12 @@ Material:
     - _DrawOrder: 0
     - _Fill_Amount: 4.9
     - _Has_Normal: 1
-    - _Metalllic: 0.6
-    - _NormalScale: -1.1
-    - _Outline_Width: 0.1
-    - _Smoothness: 0.3
+    - _Metalllic: 1
+    - _NormalScale: -2.41
+    - _Outline_Width: 0.118
+    - _Smoothness: 0.551
     m_Colors:
-    - _Color: {r: 0.13207549, g: 0.058181934, b: 0.031772874, a: 1}
+    - _Color: {r: 0.0146849295, g: 0.015097514, b: 0.01886791, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &6286269352476877210
 MonoBehaviour:
