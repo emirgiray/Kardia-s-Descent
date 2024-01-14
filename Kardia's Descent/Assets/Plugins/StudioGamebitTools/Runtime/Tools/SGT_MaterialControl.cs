@@ -15,6 +15,8 @@ public class SGT_MaterialControl : MonoBehaviour
     [SerializeField] private SkinnedMeshRenderer[] matSkin = null;
     [Tooltip("Eğer Karakter RenderMesh ise buna atamalısın yada boş bırakmalısın")]
     [SerializeField] private MeshRenderer[] matMesh = null;
+    [SerializeField] private Material[] mat = null;
+    
     [SerializeField]
     private Color Color;
 
@@ -44,8 +46,13 @@ public class SGT_MaterialControl : MonoBehaviour
             }
         }
 
-       
-
+        for (int i = 0; i < mat.Length; i++)
+        {
+            if (mat[i] != null)
+            {
+                mat[i].SetFloat(materialName, NewValue);
+            }
+        }
 
     }
 

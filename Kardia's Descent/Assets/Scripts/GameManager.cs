@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     
+    [SerializeField] private bool isPaused = false;
+    
      public List<Player> players = new List<Player>();
      public List<Enemy> enemies = new List<Enemy>();
      public List<Character> allEntities = new List<Character>();
@@ -31,6 +33,9 @@ public class GameManager : MonoBehaviour
      private string formattedPlayTime;
      [BoxGroup("Stats For End Game")] [SerializeField]
      private int score;
+     
+     public UnityEvent GamePausedEvent;
+     public UnityEvent GameUnpausedEvent;
     private void Awake()
     {
         startTime = DateTime.Now;
@@ -126,6 +131,8 @@ public class GameManager : MonoBehaviour
     #endregion
 
 
+    #region Game States
+
     public void GameOver(bool win)
     {
         CalcuatePlayTime();
@@ -149,4 +156,25 @@ public class GameManager : MonoBehaviour
     {
         score = (totalDamageDealt * 10) + (totalKills * 10) + (totalHeartsCollected * 20) - totalDamageTaken - (int)playTime.TotalSeconds;
     }
+    
+    public void PauseGame(bool value)
+    {
+        if (value)
+        {
+            UIManager.Instance.PauseGame(true);
+            Time.timeScale = 0;
+            isPaused = true;
+            GamePausedEvent?.Invoke();
+        }
+        else
+        {
+            UIManager.Instance.PauseGame(false);
+            Time.timeScale = 1;
+            isPaused = false;
+            GameUnpausedEvent?.Invoke();
+        }
+        
+    }
+
+    #endregion
 }

@@ -337,7 +337,8 @@ public class Interact : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                PauseGame(!isPaused);
+                isPaused = !isPaused;
+                GameManager.Instance.PauseGame(isPaused);
             }
         }
     }
@@ -919,23 +920,7 @@ public class Interact : MonoBehaviour
         }
         HitChanceUIGameObject.SetActive(value);
     }
-
-    public void PauseGame(bool value)
-    {
-        if (value)
-        {
-            UIManager.Instance.PauseGame(true);
-            Time.timeScale = 0;
-            isPaused = true;
-        }
-        else
-        {
-            UIManager.Instance.PauseGame(false);
-            Time.timeScale = 1;
-            isPaused = false;
-        }
-        
-    }
+    
     
     public List<Tile> GetReachableTiles()
     {

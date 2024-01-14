@@ -41,7 +41,12 @@ public class SGT_Lerp : MonoBehaviour
         DOTween.To(() => CurrentFloat, x => CurrentFloat = x, TargetFloat, LerpTime).SetDelay(Delay).OnComplete(OnComplete).OnStart(OnStart).OnPause(OnPause).OnUpdate(OnMoving).SetEase(Easy).SetLoops(LoopTime, Loop).SetId(RandomId);
 
     }
+    public void LerpUnscaledFloat()
+    {
+        RandomId = Random.Range(0, 90000000);
+        DOTween.To(() => CurrentFloat, x => CurrentFloat = x, TargetFloat, LerpTime).SetDelay(Delay).OnComplete(OnComplete).OnStart(OnStart).OnPause(OnPause).OnUpdate(OnMoving).SetEase(Easy).SetLoops(LoopTime, Loop).SetId(RandomId).SetUpdate(true);
 
+    }
 
     public void PauseLerpFromID()
     {
