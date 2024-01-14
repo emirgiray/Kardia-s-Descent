@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: PauseMenuMat
+  m_Shader: {fileID: -6465566751694194690, guid: af23b4c2cf91d99419f03b97ec8f6726,
+    type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _SampleTexture2D_34b71de8be7d47f791c280d4ecbaff76_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: b8e9dd66d48b89e488ec8950be78264a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _Dissolve: 0
+    - _Distortion_Speed: 0.09
+    - _Distortion_Strength: 0.003
+    - _Dither_Value: 0.24
+    - _Gradient_Scale: 2.78
+    - _Vignette_Power: -0.9
+    m_Colors:
+    - _Scene_Color: {r: 6.0285444, g: 3.1450405, b: 19.049961, a: 1}
+    - _Underwater_Color: {r: 0, g: 0, b: 0, a: 1}
+    - _Vignette_Color: {r: 0.1895997, g: 0.14382343, b: 0.3018868, a: 1}
+  m_BuildTextureStacks: []
