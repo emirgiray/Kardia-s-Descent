@@ -1,28 +1,48 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { get; private set; }
-    [SerializeField] private int turn = 1;
-    [SerializeField] private int round = 1;
     
-    [SerializeField] private GameObject turnAndRoundGO;
-    [SerializeField] private TextMeshProUGUI turnText;
-    [SerializeField] private TextMeshProUGUI roundText;
+    [BoxGroup("Turn And Round")] [SerializeField]
+    private int turn = 1;
+    [BoxGroup("Turn And Round")] [SerializeField]
+    private int round = 1;
+    [BoxGroup("Turn And Round")] [SerializeField]
+    private GameObject turnAndRoundGO;
+    [BoxGroup("Turn And Round")] [SerializeField]
+    private TextMeshProUGUI turnText;
+    [BoxGroup("Turn And Round")] [SerializeField]
+    private TextMeshProUGUI roundText;
 
-    [SerializeField] private GameObject WinScreenGO;
-    [SerializeField] private GameObject LoseScreenGO;
-    [SerializeField] private TextMeshProUGUI scoreText;
-    [SerializeField] private TextMeshProUGUI totalDamageDealtText;
-    [SerializeField] private TextMeshProUGUI totalDamageTakenText;
-    [SerializeField] private TextMeshProUGUI totalKillsText;
-    [SerializeField] private TextMeshProUGUI totalHeartsCollectedText;
-    [SerializeField] private TextMeshProUGUI totalPlayTimeText;
-    [SerializeField] private TextMeshProUGUI totalturnsText;
+    [BoxGroup("Pause Menu")] [SerializeField]
+    private GameObject PauseScreenGO;
+    
+    [BoxGroup("End Game")] [SerializeField]
+    private GameObject WinLoseScreenGO;
+    [BoxGroup("End Game")] [SerializeField]
+    private GameObject WinTextGO;
+    [BoxGroup("End Game")] [SerializeField]
+    private GameObject LoseTextGO;
+    [BoxGroup("End Game")] [SerializeField]
+    private TextMeshProUGUI scoreText;
+    [BoxGroup("End Game")] [SerializeField]
+    private TextMeshProUGUI totalDamageDealtText;
+    [BoxGroup("End Game")] [SerializeField]
+    private TextMeshProUGUI totalDamageTakenText;
+    [BoxGroup("End Game")] [SerializeField]
+    private TextMeshProUGUI totalKillsText;
+    [BoxGroup("End Game")] [SerializeField]
+    private TextMeshProUGUI totalHeartsCollectedText;
+    [BoxGroup("End Game")] [SerializeField]
+    private TextMeshProUGUI totalPlayTimeText;
+    [BoxGroup("End Game")] [SerializeField]
+    private TextMeshProUGUI totalTurnsText;
     
 
     private void Awake()
@@ -67,23 +87,27 @@ public class UIManager : MonoBehaviour
 
     public void GameOver(bool win, int score, int damageDealt, int damageTaken, int kills, int heartsCollected, string playTime)
     {
+        WinLoseScreenGO.SetActive(true);
         scoreText.text = score.ToString();
         totalDamageDealtText.text = damageDealt.ToString();
         totalDamageTakenText.text = damageTaken.ToString();
         totalKillsText.text = kills.ToString();
         totalHeartsCollectedText.text = heartsCollected.ToString();
         totalPlayTimeText.text = playTime;
-        totalturnsText.text = TurnSystem.Instance.totalTurnsInGame.ToString();
+        totalTurnsText.text = TurnSystem.Instance.totalTurnsInGame.ToString();
         if (win)
         {
-            WinScreenGO.SetActive(true);
+            WinTextGO.SetActive(true);
         }
         else
         {
-            LoseScreenGO.SetActive(true);
+            LoseTextGO.SetActive(true);
         }
     }
     
-
+    public void PauseGame(bool value)
+    {
+        PauseScreenGO.SetActive(value);
+    }
     
 }

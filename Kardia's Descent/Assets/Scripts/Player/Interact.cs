@@ -18,20 +18,31 @@ public class Interact : MonoBehaviour
     public Action SkillHighlighted;
     public Action SkillSelected;
     public Action SkillDeselected;
-    [BoxGroup("Objects")][SerializeField] private GameObject InspectTileGO;
+    [BoxGroup("Objects")][SerializeField] 
+    private GameObject InspectTileGO;
     MeshRenderer inspectTileMeshRenderer;
-    [BoxGroup("Objects")][SerializeField] public Camera mainCam;
-    [BoxGroup("Objects")][SerializeField] private Tile currentTile;
-    [BoxGroup("Objects")][SerializeField] private Tile lastTile;
-    [BoxGroup("Objects")][SerializeField] public Tile lastAttackedTile;
-    [BoxGroup("Objects")][SerializeField] private Character characterUnderMouse;
-    [BoxGroup("Objects")][SerializeField] private Character lastCharacterUnderMouse;
-    [BoxGroup("Objects")][SerializeField] public Character selectedCharacter;
-    [BoxGroup("Objects")][SerializeField] private Character lastSelectedCharacter;
+    [BoxGroup("Objects")][SerializeField] 
+    public Camera mainCam;
+    [BoxGroup("Objects")][SerializeField] 
+    private Tile currentTile;
+    [BoxGroup("Objects")][SerializeField] 
+    private Tile lastTile;
+    [BoxGroup("Objects")][SerializeField] 
+    public Tile lastAttackedTile;
+    [BoxGroup("Objects")][SerializeField] 
+    private Character characterUnderMouse;
+    [BoxGroup("Objects")][SerializeField] 
+    private Character lastCharacterUnderMouse;
+    [BoxGroup("Objects")][SerializeField] 
+    public Character selectedCharacter;
+    [BoxGroup("Objects")][SerializeField] 
+    private Character lastSelectedCharacter;
     // [BoxGroup("Objects")][SerializeField] private Character selectedEnemy;
     
-    [BoxGroup("UI")][SerializeField] public GameObject HitChanceUIGameObject;
-    [BoxGroup("UI")][SerializeField] public TextMeshProUGUI HitChanceText;
+    [BoxGroup("UI")]
+    public GameObject HitChanceUIGameObject;
+    [BoxGroup("UI")]
+    public TextMeshProUGUI HitChanceText;
     
     [BoxGroup("Free Roam")][SerializeField]
     public LayerMask freeRoamMask;
@@ -55,7 +66,7 @@ public class Interact : MonoBehaviour
     public SkillContainer selectedCharacterSkillContainer;
     [SerializeField] public bool isMouseOverUI = false;
     [SerializeField] private static float intensity = 1;
-    
+    private bool isPaused = false;
     /// <summary>
     /// <param name="0">White -- Default</param>
     /// <param name="1">Green -- Player</param>
@@ -322,6 +333,13 @@ public class Interact : MonoBehaviour
                 
             }
         }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                PauseGame(!isPaused);
+            }
+        }
     }
     
     public void CheckMouseOverUI()
@@ -333,7 +351,7 @@ public class Interact : MonoBehaviour
     private Tile lastTile2;
     private void MouseUpdate()
     {
-        if (!Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 200f, interactMask) || isMouseOverUI)
+        if ((!Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 200f, interactMask) || isMouseOverUI) || isPaused)
             return;
 
        // if(lastTile != null) lastTile.ClearHighlight();
@@ -902,6 +920,23 @@ public class Interact : MonoBehaviour
         HitChanceUIGameObject.SetActive(value);
     }
 
+    public void PauseGame(bool value)
+    {
+        if (value)
+        {
+            UIManager.Instance.PauseGame(true);
+            Time.timeScale = 0;
+            isPaused = true;
+        }
+        else
+        {
+            UIManager.Instance.PauseGame(false);
+            Time.timeScale = 1;
+            isPaused = false;
+        }
+        
+    }
+    
     public List<Tile> GetReachableTiles()
     {
         return reachableTiles;
