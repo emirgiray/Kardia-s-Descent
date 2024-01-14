@@ -410,7 +410,7 @@ public class Character : MonoBehaviour
                 
                 // ResetActionPoints();
 
-                if (!doOnce)
+                //if (!doOnce) //bu niye var aq
                 {
                     AddActionPoints();
                     OnActionPointsChangeEvent?.Invoke(remainingActionPoints, "+");
@@ -767,7 +767,7 @@ public class Character : MonoBehaviour
         canAttack = !value;
         
         isStunned = value;
-        remainingStunTurns = turns;
+        remainingStunTurns += turns;
         
         if (value)
         {

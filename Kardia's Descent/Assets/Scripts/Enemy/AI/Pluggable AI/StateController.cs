@@ -50,8 +50,10 @@ public class StateController : MonoBehaviour
         turnSystem.OnPlayerAdd.AddListener(PlayerAdded);
         turnSystem.OnEnemyAdd.AddListener(EnemyAdded);
         
+        
         enemy.OnTurnStart += ResetToDefaultCombatState;
-        enemy.OnTurnStart += TryActivateAI;
+        // enemy.OnTurnStart += TryActivateAI;
+        turnSystem.TurnChanged += TryActivateAI;
     }
     private void OnDisable()
     {
@@ -61,7 +63,8 @@ public class StateController : MonoBehaviour
         turnSystem.OnEnemyAdd.RemoveListener(EnemyAdded);
         
         enemy.OnTurnStart -= ResetToDefaultCombatState;
-        enemy.OnTurnStart -= TryActivateAI;
+        // enemy.OnTurnStart -= TryActivateAI;
+        turnSystem.TurnChanged -= TryActivateAI;
     }
 
     private void Awake()
@@ -142,7 +145,7 @@ public class StateController : MonoBehaviour
 
     public void TryActivateAI()
     {
-        aiActive = (enemy.turnOrder == TurnSystem.Instance.currentEnemyTurnOrder && !enemy.isDead); //todo do this with events in turn system
+        aiActive = (enemy.turnOrder == TurnSystem.Instance.currentEnemyTurnOrder && !enemy.isDead); 
     }
     
     public void TransitionToState(StateAI nextState)

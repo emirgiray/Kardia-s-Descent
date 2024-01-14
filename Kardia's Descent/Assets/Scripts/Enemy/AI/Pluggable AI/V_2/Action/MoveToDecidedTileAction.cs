@@ -20,7 +20,7 @@ public class MoveToDecidedTileAction : ActionAI
             {
                 if (controller.enemy.characterTile == controller.decidedMoveTile)
                 {
-                    Debug.Log($"DECIDEDI MOVE TILE IS SAME AS ENEMY TILE");
+                    // Debug.Log($"DECIDEDI MOVE TILE IS SAME AS ENEMY TILE");
                     controller.canExitState = true;
                     return;
                 }

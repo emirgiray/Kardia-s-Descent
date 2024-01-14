@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -41,6 +42,8 @@ public class UIManager : MonoBehaviour
     private TextMeshProUGUI totalHeartsCollectedText;
     [BoxGroup("End Game")] [SerializeField]
     private TextMeshProUGUI totalPlayTimeText;
+    [BoxGroup("End Game")] [SerializeField]
+    private Image bestHeartImage;
     [BoxGroup("End Game")] [SerializeField]
     private TextMeshProUGUI totalTurnsText;
     
@@ -94,7 +97,22 @@ public class UIManager : MonoBehaviour
         totalKillsText.text = kills.ToString();
         totalHeartsCollectedText.text = heartsCollected.ToString();
         totalPlayTimeText.text = playTime;
-        totalTurnsText.text = TurnSystem.Instance.totalTurnsInGame.ToString();
+        
+        int prevRarity = 0;
+        foreach (var player in GameManager.Instance.players)
+        {
+            if (player.isUnlocked && player.heartContainer.heartData != null)
+            {
+                if ((int)player.heartContainer.heartData.heartRarity >= prevRarity)
+                {
+                    prevRarity = (int) player.heartContainer.heartData.heartRarity;
+                    bestHeartImage.sprite = player.heartContainer.heartData.HeartSprite;
+                }
+            }
+            
+        }
+        
+        //totalTurnsText.text = TurnSystem.Instance.totalTurnsInGame.ToString();
         if (win)
         {
             WinTextGO.SetActive(true);

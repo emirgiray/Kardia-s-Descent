@@ -231,7 +231,7 @@ public class SkillContainer : MonoBehaviour
             enemy.EndTurn();
             return;
         }*/
-        if (Character is Enemy)Debug.Log($"{this.name} Selected {selectSkill.skillData.name}");
+        // if (Character is Enemy)Debug.Log($"{this.name} Selected {selectSkill.skillData.name}");
         
         /*selectedSkill = skillsList.Find(x => x.skillData == selectSkill);
         selectedSkill.skillData = selectSkill;
@@ -326,7 +326,7 @@ bool impact = false;
             return;
         }*/
 
-        if (Character is Enemy)Debug.Log($"{this.name} Used {selectedSkill.skillData.name}");
+        // if (Character is Enemy)Debug.Log($"{this.name} Used {selectedSkill.skillData.name}");
 
         if (selectedSkill.skillCooldown != 0)
         {
@@ -414,10 +414,10 @@ bool impact = false;
     {
         if (Character.pathfinder.CheckCoverPoint(attacker, defender, true) && selectSkill.skillData.skillType == SkillsData.SkillType.Ranged)
         {
-            Debug.Log($"accuracy debuff: {selectSkill.coverAccuracyDebuff}");
+            // Debug.Log($"accuracy debuff: {selectSkill.coverAccuracyDebuff}");
             return selectSkill.coverAccuracyDebuff;
         }
-        Debug.Log($"accuracy debuff returned default: 0");
+        // Debug.Log($"accuracy debuff returned default: 0");
         return 0;
     }
 

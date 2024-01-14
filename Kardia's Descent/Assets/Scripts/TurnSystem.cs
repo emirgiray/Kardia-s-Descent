@@ -37,6 +37,7 @@ public class TurnSystem : MonoBehaviour
     public Action OnCombatEndAction;
     public Action EnemyTurn;
     public Action RoundChanged;
+    public Action TurnChanged;
     public Action OnPlayerTurnEvent;
     public Action OnPlayerCheckStunTurnEvent;
     public Action OnEnemyTurnEvent;
@@ -167,6 +168,7 @@ public class TurnSystem : MonoBehaviour
                 //TurnSystem.Instance.currentEnemyTurnOrder = 0;
             }
         }
+        TurnChanged?.Invoke();
         /*else if (turnState == TurnState.None
         {
             
