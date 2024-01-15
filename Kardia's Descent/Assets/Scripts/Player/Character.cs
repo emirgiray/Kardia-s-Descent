@@ -50,6 +50,8 @@ public class Character : MonoBehaviour
     public int detectionTile = 4;
     
     [BoxGroup("Variables")] [SerializeField] 
+    public float YOffset = 0;
+    [BoxGroup("Variables")] [SerializeField] 
     public bool canMove = true;
     [BoxGroup("Variables")] [SerializeField] 
     public bool canAttack = true;
@@ -314,7 +316,7 @@ public class Character : MonoBehaviour
     
     public void FinalizePosition(Tile tile, bool findTileAtStart)
     {
-        transform.position = tile.transform.position;
+        transform.position = tile.transform.position + new Vector3(0, YOffset, 0);
         characterTile = tile;
         Moving = false;
         tile.Occupied = true;

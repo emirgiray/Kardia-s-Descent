@@ -245,6 +245,7 @@ MonoBehaviour:
   health: {fileID: 5225323832543321503}
   detectingThreshold: 0.45
   detectionTile: 4
+  YOffset: 0
   canMove: 1
   canAttack: 1
   inCombat: 0

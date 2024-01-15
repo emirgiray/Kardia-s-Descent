@@ -11,11 +11,12 @@ public class VFXSpawner : ScriptableObject
     public Transform spawnPosition;
     public Vector3 spawnOffset;
     public Vector3 scale = Vector3.one;
+    public Vector3 rotationOffset = Vector3.zero;
     
     
     public GameObject SpawnVFX(Transform spawnPosition/*, Vector3 spawnOffset, float VFXDuration*/)
     {
-        GameObject vfx = Instantiate(VFXPrefab, spawnPosition.position + spawnOffset, spawnPosition.rotation);
+        GameObject vfx = Instantiate(VFXPrefab, spawnPosition.position + spawnOffset, spawnPosition.rotation * Quaternion.Euler(rotationOffset));
         vfx.transform.localScale = scale;
         if (VFXDuration > 0)
         {

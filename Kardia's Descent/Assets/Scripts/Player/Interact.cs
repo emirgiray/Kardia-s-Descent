@@ -59,7 +59,7 @@ public class Interact : MonoBehaviour
     //Debug purposes only
     [SerializeField]
     bool debug;
-    
+    private Tile lastTile2;
     Path Lastpath;
     [Tooltip("This is a null check for selectedCharacter")]
     public bool characterSelected = false;
@@ -134,70 +134,6 @@ public class Interact : MonoBehaviour
         CurrentTileChangedAction += CurrentTileChangedFunc;
     }
 
-  
-    
-    public void EnableMovement(bool value)
-    {
-        StartCoroutine(EnableMovementDelay(value));
-    }
-
-    public IEnumerator EnableMovementDelay(bool value)
-    {
-        yield return new WaitForEndOfFrame();
-        if (selectedCharacter.characterState == Character.CharacterState.WaitingTurn || selectedCharacter.characterState == Character.CharacterState.Idle)
-        {
-            if (characterSelected)
-            {
-                if (value == true)
-                {
-                    if (selectedCharacter.SkillContainer.skillSelected == false)
-                    {
-                        selectedCharacter.canMove = value;
-                        HighlightReachableTiles();
-                        selectedCharacter.pathfinder.EnableIllustratePath(value);
-                    }
-                }
-                else
-                {
-                    if (selectedCharacter.SkillContainer.skillSelected == false)
-                    {
-                        selectedCharacter.canMove = value;
-                        Clear();
-                        ClearHighlightReachableTiles();
-                        selectedCharacter.pathfinder.EnableIllustratePath(value);
-                    }
-                
-                }
-            }
-        }
-    }
-
-    public void EnableAttackableTiles(bool value)
-    {
-        if (selectedCharacter.characterState == Character.CharacterState.Attacking || selectedCharacter.characterState == Character.CharacterState.Idle)
-        {
-            if (characterSelected)
-            {
-                if (value)
-                {
-                    if (selectedCharacter.SkillContainer.skillSelected == true)
-                    {
-                        //selectedCharacter.canAttack = value;//todo dont change this value, instead block all interactions when player hovers over skills, tooltips etc
-                        HighlightAttackableTiles(selectedCharacter.SkillContainer.selectedSkill);
-                    }
-                }
-                else
-                {
-                    if (selectedCharacter.SkillContainer.skillSelected == true)
-                    {
-                        //selectedCharacter.canAttack = value;
-                        ClearHighlightAttackableTiles();
-                    }
-                }
-            }
-        }
-    }
-
     private void Awake()
     {
         if (Instance == null)
@@ -228,6 +164,8 @@ public class Interact : MonoBehaviour
         CheckDebugInputs();
         //UpdateFreeRoamTargetPosition();
     }
+
+    #region Inputs
 
     private void CheckDebugInputs()
     {
@@ -263,29 +201,7 @@ public class Interact : MonoBehaviour
             }*/
         }
     }
-
-    /*public void UpdateFreeRoamTargetPosition()
-    {
-        if (TurnSystem.Instance.turnState == TurnSystem.TurnState.FreeRoamTurn && characterSelected && Input.GetMouseButtonDown(0))
-        {
-            Vector3 newPosition = Vector3.zero;
-            bool positionFound = false;
-        
-            // Fire a ray through the scene at the mouse position and place the target where it hits
-            RaycastHit hit;
-            if (Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity, freeRoamMask))
-            {
-                newPosition = hit.point;
-                positionFound = true;
-            }
-            
-            if (positionFound && newPosition != freeRoamTarget.position)
-            {
-                freeRoamTarget.position = newPosition;
-            }
-        }
-    }*/
-
+    
     public void CheckCharacterInputs()
     {
         if (characterSelected) //eselect character //todo skill selectedi variable olarak tut
@@ -304,6 +220,8 @@ public class Interact : MonoBehaviour
                     selectedCharacterSkillContainer.skillSelected = false;
                     selectedCharacterSkillContainer = null;
                     selectedCharacter = null;
+    
+                    TooltipSystem.Hide();
                 }
                 else //deselect skill
                 {
@@ -342,22 +260,25 @@ public class Interact : MonoBehaviour
             }
         }
     }
-    
+
+    #endregion
+
+    #region Mouse Update
+
     public void CheckMouseOverUI()
     {
         //check if mouse is over ui but exclude some game objects
         isMouseOverUI = EventSystem.current.IsPointerOverGameObject(); //is this expensive
     }
-
-    private Tile lastTile2;
+    
     private void MouseUpdate()
     {
         if ((!Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 200f, interactMask) || isMouseOverUI) || isPaused)
             return;
 
-       // if(lastTile != null) lastTile.ClearHighlight();
+        // if(lastTile != null) lastTile.ClearHighlight();
        
-       lastTile2 = currentTile;
+        lastTile2 = currentTile;
        
        
         currentTile = hit.transform.GetComponent<Tile>();
@@ -375,6 +296,10 @@ public class Interact : MonoBehaviour
         //InspectTileHighlight();
         InspectTile();
     }
+
+    #endregion
+
+    #region Inspect / Select Player
 
     public void InspectTileHighlight()
     {
@@ -426,18 +351,18 @@ public class Interact : MonoBehaviour
         else
         {
             // inspectTileMeshRenderer.material.color = tileInspectColors[0];
-             inspectTileMeshRenderer.material.SetColor("_RimColor",tileInspectColors[0]);
+            inspectTileMeshRenderer.material.SetColor("_RimColor",tileInspectColors[0]);
 
-             if (currentTile.isCoveredByCoverPoint)
-             {
-                 inspectTileMeshRenderer.material.SetColor("_RimColor",tileInspectColors[3]);
+            if (currentTile.isCoveredByCoverPoint)
+            {
+                inspectTileMeshRenderer.material.SetColor("_RimColor",tileInspectColors[3]);
 
-                 if (reachableTiles.Contains(currentTile) && characterSelected && (selectedCharacter.characterState == Character.CharacterState.Idle || selectedCharacter.characterState == Character.CharacterState.WaitingTurn))
-                 {
-                     currentTile.SwitchShieldIcon(true);
-                 }
+                if (reachableTiles.Contains(currentTile) && characterSelected && (selectedCharacter.characterState == Character.CharacterState.Idle || selectedCharacter.characterState == Character.CharacterState.WaitingTurn))
+                {
+                    currentTile.SwitchShieldIcon(true);
+                }
 
-             }
+            }
             // Debug.Log(inspectTileMeshRenderer.material.GetColor("_RimColor"));
         }
     }
@@ -576,7 +501,6 @@ public class Interact : MonoBehaviour
             
     }
     
-   
     public void TrySelectPlayer(Character chaaracter)
     {
         Clear();
@@ -640,7 +564,7 @@ public class Interact : MonoBehaviour
         }
         selectedCharacter.GetComponent<Inventory>().ShowSkillsUI(true); //show skills ui
     }
-    
+
     /*public void InspectEnemy()
     {
         //currentTile.HighlightRed();
@@ -653,6 +577,10 @@ public class Interact : MonoBehaviour
         selectedEnemy = currentTile.occupyingCharacter;
        // CharacterSelectedAction?.Invoke(selectedEnemy.characterTile);
     }*/
+    
+    #endregion
+
+    #region Tile
 
     private void NavigateToTile(Character activator )
     {
@@ -665,7 +593,7 @@ public class Interact : MonoBehaviour
             {
                 Clear();
                 ClearHighlightReachableTiles();
-               // GetComponent<AudioSource>().PlayOneShot(click);
+                // GetComponent<AudioSource>().PlayOneShot(click);
                 selectedCharacter.StartMove(newPath);
                 /*foreach (var VARIABLE in newPath.tiles)
                 {
@@ -677,7 +605,7 @@ public class Interact : MonoBehaviour
         }
     }
 
-   public bool RetrievePath(Character activator, out Path path)
+    public bool RetrievePath(Character activator, out Path path)
     {
         if (selectedCharacter != null)
         {
@@ -734,7 +662,6 @@ public class Interact : MonoBehaviour
         }
     }
     
-
     public void ClearHighlightReachableTiles()
     {
         foreach (Tile tile in reachableTiles)
@@ -897,6 +824,46 @@ public class Interact : MonoBehaviour
         InspectTileHighlight();
     }
 
+    public List<Tile> GetReachableTiles()
+    {
+        return reachableTiles;
+    }
+
+    public Tile GetCurrentTile()
+    {
+        return currentTile;
+    }
+    public Tile GetLastTile()
+    {
+        return lastTile;
+    }
+    public void EnableAttackableTiles(bool value)
+    {
+        if (selectedCharacter.characterState == Character.CharacterState.Attacking || selectedCharacter.characterState == Character.CharacterState.Idle)
+        {
+            if (characterSelected)
+            {
+                if (value)
+                {
+                    if (selectedCharacter.SkillContainer.skillSelected == true)
+                    {
+                        //selectedCharacter.canAttack = value;//todo dont change this value, instead block all interactions when player hovers over skills, tooltips etc
+                        HighlightAttackableTiles(selectedCharacter.SkillContainer.selectedSkill);
+                    }
+                }
+                else
+                {
+                    if (selectedCharacter.SkillContainer.skillSelected == true)
+                    {
+                        //selectedCharacter.canAttack = value;
+                        ClearHighlightAttackableTiles();
+                    }
+                }
+            }
+        }
+    }
+
+    #endregion
     public IEnumerator HitChanceUIToMousePos()
     {
         while (true)
@@ -922,19 +889,64 @@ public class Interact : MonoBehaviour
     }
     
     
-    public List<Tile> GetReachableTiles()
+     public void EnableMovement(bool value)
     {
-        return reachableTiles;
+        StartCoroutine(EnableMovementDelay(value));
     }
 
-    public Tile GetCurrentTile()
+    public IEnumerator EnableMovementDelay(bool value)
     {
-        return currentTile;
+        yield return new WaitForEndOfFrame();
+        if (selectedCharacter.characterState == Character.CharacterState.WaitingTurn || selectedCharacter.characterState == Character.CharacterState.Idle)
+        {
+            if (characterSelected)
+            {
+                if (value == true)
+                {
+                    if (selectedCharacter.SkillContainer.skillSelected == false)
+                    {
+                        selectedCharacter.canMove = value;
+                        HighlightReachableTiles();
+                        selectedCharacter.pathfinder.EnableIllustratePath(value);
+                    }
+                }
+                else
+                {
+                    if (selectedCharacter.SkillContainer.skillSelected == false)
+                    {
+                        selectedCharacter.canMove = value;
+                        Clear();
+                        ClearHighlightReachableTiles();
+                        selectedCharacter.pathfinder.EnableIllustratePath(value);
+                    }
+                
+                }
+            }
+        }
     }
-    public Tile GetLastTile()
+
+    
+    /*public void UpdateFreeRoamTargetPosition()
     {
-        return lastTile;
-    }
+        if (TurnSystem.Instance.turnState == TurnSystem.TurnState.FreeRoamTurn && characterSelected && Input.GetMouseButtonDown(0))
+        {
+            Vector3 newPosition = Vector3.zero;
+            bool positionFound = false;
+
+            // Fire a ray through the scene at the mouse position and place the target where it hits
+            RaycastHit hit;
+            if (Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity, freeRoamMask))
+            {
+                newPosition = hit.point;
+                positionFound = true;
+            }
+
+            if (positionFound && newPosition != freeRoamTarget.position)
+            {
+                freeRoamTarget.position = newPosition;
+            }
+        }
+    }*/
     /*//Debug only
     void ClearLastPath()
     {

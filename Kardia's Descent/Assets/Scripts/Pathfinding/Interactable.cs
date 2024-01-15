@@ -9,8 +9,10 @@ public class Interactable : MonoBehaviour
 {
     [SerializeField] private Tile objectTile;
     [SerializeField] private bool findTileAtStart = false;
-    
     [SerializeField] private float yOffset = 0.18f;
+
+    [SerializeField] private VFXSpawner VFX;
+    
     
     public enum CharacterClass
     {
@@ -90,6 +92,7 @@ public class Interactable : MonoBehaviour
     public void OnInteract(Character character)
     {
         OnInteractEvent.Invoke();
+        if (VFX != null) VFX.SpawnVFX(gameObject.transform);
         switch (InteractableType)
         {
             case CharacterClass.None:
