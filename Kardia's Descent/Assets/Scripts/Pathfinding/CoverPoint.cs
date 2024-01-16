@@ -27,6 +27,20 @@ public class CoverPoint : MonoBehaviour
                 Debug.LogError("Cover point: " + gameObject.name + " has no object tile !!! ");
             }
         }
+
+        if (objectTile != null)
+        {
+            objectTile.Occupied = true;
+            objectTile.OccupiedByCoverPoint = true;
+            objectTile.occupyingCoverPoint = this;
+            objectTile.occupyingGO = this.gameObject;
+            coveringTiles = pathfinder.NeighborTiles(objectTile, true);
+            for (int i = 0; i < coveringTiles.Count; i++)
+            {
+                coveringTiles[i].isCoveredByCoverPoint = true;
+            }
+        }
+
         
     }
 
