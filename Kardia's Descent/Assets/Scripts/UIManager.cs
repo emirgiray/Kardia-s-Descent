@@ -46,7 +46,8 @@ public class UIManager : MonoBehaviour
     private Image bestHeartImage;
     [BoxGroup("End Game")] [SerializeField]
     private TextMeshProUGUI totalTurnsText;
-    
+
+   
 
     private void Awake()
     {
@@ -123,9 +124,41 @@ public class UIManager : MonoBehaviour
         }
     }
     
+    public void IncreaseText(TMP_Text textMesh, float targetValue, float delay)
+    {
+        StartCoroutine(IncreaseTextCoroutine(textMesh, targetValue, delay));
+    }
+
+    IEnumerator IncreaseTextCoroutine(TMP_Text textMesh, float targetValue, float delay)
+    {
+        // Wait for the specified delay before starting the coroutine
+        yield return new WaitForSeconds(delay);
+        
+        // Loop through the text and increase each character's value
+        for (int i = 0; i < textMesh.text.Length; i++)
+        {
+            // Get the current character's value
+            float currentCharValue = float.Parse(textMesh.text[i].ToString());
+
+            // Increase the current character's value
+            currentCharValue += 1f;
+
+            // Set the current character's value
+            textMesh.text = textMesh.text.Remove(i, 1).Insert(i, currentCharValue.ToString());
+
+            // Wait for a short delay before continuing
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        // End the coroutine
+        yield break;
+    }
+    
     public void PauseGame(bool value)
     {
         PauseScreenGO.SetActive(value);
     }
+    
+  
     
 }

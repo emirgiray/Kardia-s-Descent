@@ -18,7 +18,7 @@ public class CoverPoint : MonoBehaviour
     {
         if (findTileAtStart)
         {
-            FindTileAtstart();
+            FindNewTile();
         }
         else
         {
@@ -30,8 +30,8 @@ public class CoverPoint : MonoBehaviour
         
     }
 
-    
-    public void FindTileAtstart()
+    [Button, GUIColor(1f, 1f, 0.1f)]
+    public void GoToTile()
     {
         if (objectTile != null)
         { 
@@ -48,14 +48,16 @@ public class CoverPoint : MonoBehaviour
         Debug.Log("No tile found for cover point: " + gameObject.name + " at position: " + transform.position + "");
     }
 
-    [Button, GUIColor(0.1f, 1f, 0.1f)]
-    public void FindTile()
+    [Button, GUIColor(0f, 1f, 0.5f)]
+    public void FindNewTile()
     {
         if (Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, 50f, PathfinderVariables.Instance.tileMask))
         {
             FinalizePosition(hit.transform.GetComponent<Tile>());
             return;
         }
+        
+        Debug.Log("No tile found for cover point: " + gameObject.name + " at position: " + transform.position + "");
     }
     
     

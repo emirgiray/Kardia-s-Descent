@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -33,6 +34,14 @@ public class GameManager : MonoBehaviour
      private string formattedPlayTime;
      [BoxGroup("Stats For End Game")] [SerializeField]
      private int score;
+     
+     [BoxGroup("Options")] [SerializeField]
+     private bool fpsOn = false;
+     [BoxGroup("Options")] [SerializeField]
+     private GameObject fpsGO;
+     [BoxGroup("Options")] [SerializeField]
+     private TextMeshProUGUI fpsText;
+
      
      public UnityEvent GamePausedEvent;
      public UnityEvent GameUnpausedEvent;
@@ -174,6 +183,33 @@ public class GameManager : MonoBehaviour
             GameUnpausedEvent?.Invoke();
         }
         
+    }
+
+    #endregion
+
+    #region Options
+
+    public void ToggleFPS()
+    {
+        fpsOn = !fpsOn;
+        fpsGO.SetActive(fpsOn);
+        if (fpsOn)
+        {
+            StartCoroutine(FPS());
+        }
+        else
+        {
+            StopCoroutine(FPS());
+        }
+    }
+
+    private IEnumerator FPS()
+    {
+        while (fpsOn)
+        {
+            yield return new WaitForSecondsRealtime(1);
+            fpsText.text = (1f / Time.unscaledDeltaTime).ToString("0");
+        }
     }
 
     #endregion
