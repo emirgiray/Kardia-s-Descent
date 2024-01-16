@@ -1,10 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = Unity.Mathematics.Random;
 
 public class UIManager : MonoBehaviour
 {
@@ -92,11 +94,16 @@ public class UIManager : MonoBehaviour
     public void GameOver(bool win, int score, int damageDealt, int damageTaken, int kills, int heartsCollected, string playTime)
     {
         WinLoseScreenGO.SetActive(true);
-        scoreText.text = score.ToString();
-        totalDamageDealtText.text = damageDealt.ToString();
-        totalDamageTakenText.text = damageTaken.ToString();
-        totalKillsText.text = kills.ToString();
-        totalHeartsCollectedText.text = heartsCollected.ToString();
+        // totalDamageDealtText.text = damageDealt.ToString();
+        LerpUnscaled(totalDamageDealtText, damageDealt, 1);
+        // totalDamageTakenText.text = damageTaken.ToString();
+        LerpUnscaled(totalDamageTakenText, damageTaken, 3);
+        // totalKillsText.text = kills.ToString();
+        LerpUnscaled(totalKillsText, kills, 5);
+        // totalHeartsCollectedText.text = heartsCollected.ToString();
+        LerpUnscaled(totalHeartsCollectedText, heartsCollected, 7);
+        //scoreText.text = score.ToString();
+        LerpUnscaled(scoreText, score, 10);
         totalPlayTimeText.text = playTime;
         
         int prevRarity = 0;
@@ -110,7 +117,8 @@ public class UIManager : MonoBehaviour
                     bestHeartImage.sprite = player.heartContainer.heartData.HeartSprite;
                 }
             }
-            
+            bestHeartImage.transform.DOPunchScale(bestHeartImage.transform.localScale * 1.1f, 0.5f, 1, 1).SetDelay(9);
+
         }
         
         //totalTurnsText.text = TurnSystem.Instance.totalTurnsInGame.ToString();
@@ -123,36 +131,44 @@ public class UIManager : MonoBehaviour
             LoseTextGO.SetActive(true);
         }
     }
-    
-    public void IncreaseText(TMP_Text textMesh, float targetValue, float delay)
+
+    private int current = 0;
+    public void LerpUnscaled(TextMeshProUGUI text, int targetValue, float delay)
     {
-        StartCoroutine(IncreaseTextCoroutine(textMesh, targetValue, delay));
+        current = 0;
+        DOTween.To(() => current, x => current = x, targetValue, 1).SetDelay(delay).OnComplete(()=> OnComplete(text)).OnUpdate(()=> OnUpdate(text, current)).SetUpdate(true);
+
     }
 
-    IEnumerator IncreaseTextCoroutine(TMP_Text textMesh, float targetValue, float delay)
+    public void OnComplete(TextMeshProUGUI text)
     {
-        // Wait for the specified delay before starting the coroutine
-        yield return new WaitForSeconds(delay);
-        
-        // Loop through the text and increase each character's value
-        for (int i = 0; i < textMesh.text.Length; i++)
+        current = 0;
+        text.transform.DOPunchScale(text.transform.localScale * 1.5f, 0.5f, 1, 1);
+        current = 0;
+    }
+
+    public void OnUpdate(TextMeshProUGUI text, int current)
+    {
+        text.text = current.ToString();
+    }
+
+    //in unity c# write me a method that uses a coroutine and takes in TextMeshProUGUI text, float targetValue, float delay as parameterss, then increases the text's text value to targetValue in a given time
+    /*private void IncreaseText(TextMeshProUGUI text, int targetValue, float delay)
+    {
+        StartCoroutine(IncreaseTextEnum(text, targetValue, delay));
+    }
+
+    private IEnumerator IncreaseTextEnum(TextMeshProUGUI text, int targetValue, float delay)
+    {
+        yield return new WaitForSecondsRealtime(delay);
+        int currentValue = 0;
+        while (currentValue < targetValue)
         {
-            // Get the current character's value
-            float currentCharValue = float.Parse(textMesh.text[i].ToString());
-
-            // Increase the current character's value
-            currentCharValue += 1f;
-
-            // Set the current character's value
-            textMesh.text = textMesh.text.Remove(i, 1).Insert(i, currentCharValue.ToString());
-
-            // Wait for a short delay before continuing
-            yield return new WaitForSeconds(0.1f);
+            currentValue++;
+            text.text = currentValue.ToString();
+            yield return new WaitForSecondsRealtime(0.0000000000001f);
         }
-
-        // End the coroutine
-        yield break;
-    }
+    }*/
     
     public void PauseGame(bool value)
     {
