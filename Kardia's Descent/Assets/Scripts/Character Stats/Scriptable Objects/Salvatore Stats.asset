@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7218acd798eec4940936a4c347b9d67b, type: 3}
   m_Name: Salvatore Stats
   m_EditorClassIdentifier: 
-  Strength: 5
-  Dexterity: 5
-  Constitution: 5
-  Aiming: 5
+  Strength: 4
+  Dexterity: 2
+  Constitution: 10
+  Aiming: 0

@@ -16,13 +16,13 @@ MonoBehaviour:
   skillName: Basic
   skillDescription: Basic attack.
   skillID: 5
-  skillDamage: 100
-  skillRange: 3
-  skillCooldown: 1
-  actionPointUse: 3
+  skillDamage: 0
+  skillRange: 1
+  skillCooldown: 0
+  actionPointUse: 2
   skillEffectDuration: 0
   skillBuffDebuffAmount: 0
-  accuracy: 1000
+  accuracy: 50
   coverAccuracyDebuff: 0
   animatorOverrideController: {fileID: 22100000, guid: 21d0ca836db6d7d489d8e8d19f188d7c,
     type: 2}

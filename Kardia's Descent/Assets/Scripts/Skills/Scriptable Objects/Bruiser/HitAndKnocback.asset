@@ -17,12 +17,12 @@ MonoBehaviour:
   skillDescription: Hit and push the opponent back 1 hex.
   skillID: 7
   skillDamage: 0
-  skillRange: 3
-  skillCooldown: 0
-  actionPointUse: 0
+  skillRange: 1
+  skillCooldown: 2
+  actionPointUse: 2
   skillEffectDuration: 1
   skillBuffDebuffAmount: 1
-  accuracy: 100
+  accuracy: 50
   coverAccuracyDebuff: 0
   animatorOverrideController: {fileID: 22100000, guid: 43da974f8ebaab7419bd2a1abc3c3b14,
     type: 2}

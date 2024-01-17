@@ -17,9 +17,9 @@ MonoBehaviour:
   skillDescription: Stuns for 1 turn.
   skillID: 6
   skillDamage: 5
-  skillRange: 2
-  skillCooldown: 0
-  actionPointUse: 0
+  skillRange: 1
+  skillCooldown: 3
+  actionPointUse: 4
   skillEffectDuration: 1
   skillBuffDebuffAmount: 1
   accuracy: 50
