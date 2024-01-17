@@ -17,7 +17,7 @@ MonoBehaviour:
   skillDescription: Move forward 2 hexes, hits using the shield, low dmg, stuns for
     1 turn.
   skillID: 2
-  skillDamage: 5
+  skillDamage: 0
   skillRange: 3
   skillCooldown: 2
   actionPointUse: 3

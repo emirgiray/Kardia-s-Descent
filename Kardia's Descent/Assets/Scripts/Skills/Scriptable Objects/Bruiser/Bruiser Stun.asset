@@ -16,7 +16,7 @@ MonoBehaviour:
   skillName: Ear Clap
   skillDescription: Stuns for 1 turn.
   skillID: 6
-  skillDamage: 5
+  skillDamage: 0
   skillRange: 1
   skillCooldown: 3
   actionPointUse: 4
