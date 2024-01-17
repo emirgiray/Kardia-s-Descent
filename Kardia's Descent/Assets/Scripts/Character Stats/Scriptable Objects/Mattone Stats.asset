@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Mattone Stats
   m_EditorClassIdentifier: 
   Strength: 6
-  Dexterity: 4
+  Dexterity: 6
   Constitution: 6
   Aiming: 0

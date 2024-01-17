@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Salvatore Stats
   m_EditorClassIdentifier: 
   Strength: 4
-  Dexterity: 2
+  Dexterity: 4
   Constitution: 10
   Aiming: 0
