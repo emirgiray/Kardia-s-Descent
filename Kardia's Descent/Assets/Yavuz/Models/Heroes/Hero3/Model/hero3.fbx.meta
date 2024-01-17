@@ -162,7 +162,7 @@ ModelImporter:
       name: hero3_rig|charge attack
       takeName: hero3_rig|charge
       internalID: 2372447370815180179
-      firstFrame: 0
+      firstFrame: 12
       lastFrame: 60
       wrapMode: 0
       orientationOffsetY: 0
