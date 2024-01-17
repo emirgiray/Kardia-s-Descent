@@ -34,6 +34,11 @@ public class SGT_Health : MonoBehaviour {
     public Image Bar01_2;
     [FoldoutGroup("AnimBars")]
     public Image Bar02_2;
+    
+    [FoldoutGroup("AnimBars")]
+    public Image Bar01_3;
+    [FoldoutGroup("AnimBars")]
+    public Image Bar02_3;
 
     [FoldoutGroup("AnimBars")]
     public float BarAnimSpeed = 10;
@@ -92,6 +97,7 @@ public class SGT_Health : MonoBehaviour {
 
     [SerializeField] private SGT_HealthAnim _HealthAnim;
     [SerializeField] private SGT_HealthAnim _HealthAnim_2;
+    [SerializeField] private SGT_HealthAnim _HealthAnim_3;
 
     public int HealthAi
     {
@@ -153,6 +159,24 @@ public class SGT_Health : MonoBehaviour {
             }
 
         }
+        
+        if (Bar01_3 != null) 
+        {
+            if (gameObject.transform.GetChild(1).GetComponent<SGT_HealthAnim>() == null)
+            {
+                _HealthAnim_3 = gameObject.transform.GetChild(1).gameObject.AddComponent<SGT_HealthAnim>();
+            }
+            if (_HealthAnim_3 != null)
+            {
+                _HealthAnim_3.Bar01 = Bar01_3;
+                _HealthAnim_3.Bar02 = Bar02_3;
+                _HealthAnim_3.BarSpeed = BarAnimSpeed;
+                _HealthAnim_3.BarDelay = Bar02Delay;
+            }
+
+        }
+        
+        
     }
 
     private void OnEnable()
@@ -207,6 +231,20 @@ public class SGT_Health : MonoBehaviour {
                 if (_HealthAnim_2!=null)
                 {
                     _HealthAnim_2.DelayBar();
+                }
+               
+               
+            }
+            
+            if (Bar01_3!=null)
+            {
+                Bar01_3.fillAmount = SGT_Math.Remap(HealthAi, Min, Max, 0, 1);
+            }
+            if (Bar02_3!=null)
+            {
+                if (_HealthAnim_3!=null)
+                {
+                    _HealthAnim_3.DelayBar();
                 }
                
                
