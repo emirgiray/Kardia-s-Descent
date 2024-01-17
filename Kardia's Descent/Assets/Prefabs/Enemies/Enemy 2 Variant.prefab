@@ -1236,6 +1236,9 @@ MonoBehaviour:
   fogWar: {fileID: 0}
   visibility: 0
   additionalRadius: 0
+  OnVisibilityChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &339046089230924267 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8524045829430040077, guid: a5edbbad0f6230543a42ee6c912cc294,
@@ -1269,6 +1272,9 @@ MonoBehaviour:
   fogWar: {fileID: 0}
   visibility: 0
   additionalRadius: 0
+  OnVisibilityChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2383121015336379461 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6047628369215835043, guid: a5edbbad0f6230543a42ee6c912cc294,
@@ -1290,6 +1296,9 @@ MonoBehaviour:
   fogWar: {fileID: 0}
   visibility: 0
   additionalRadius: 0
+  OnVisibilityChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &2780094322700095058 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6082981099545649588, guid: a5edbbad0f6230543a42ee6c912cc294,
@@ -1317,6 +1326,9 @@ MonoBehaviour:
   fogWar: {fileID: 0}
   visibility: 0
   additionalRadius: 0
+  OnVisibilityChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3929355120605339993 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4933739244037394111, guid: a5edbbad0f6230543a42ee6c912cc294,
@@ -1383,6 +1395,9 @@ MonoBehaviour:
   fogWar: {fileID: 0}
   visibility: 0
   additionalRadius: 0
+  OnVisibilityChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4879745809518845882 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3550983782210842716, guid: a5edbbad0f6230543a42ee6c912cc294,
@@ -1404,6 +1419,9 @@ MonoBehaviour:
   fogWar: {fileID: 0}
   visibility: 0
   additionalRadius: 0
+  OnVisibilityChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5114562700242213649 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3748514104431457527, guid: a5edbbad0f6230543a42ee6c912cc294,
@@ -1425,6 +1443,9 @@ MonoBehaviour:
   fogWar: {fileID: 0}
   visibility: 0
   additionalRadius: 0
+  OnVisibilityChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &6237541222020082516 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2625533349268489394, guid: a5edbbad0f6230543a42ee6c912cc294,
@@ -1452,6 +1473,9 @@ MonoBehaviour:
   fogWar: {fileID: 0}
   visibility: 0
   additionalRadius: 0
+  OnVisibilityChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7672791966003802191 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1766763170810781609, guid: a5edbbad0f6230543a42ee6c912cc294,
@@ -1473,6 +1497,9 @@ MonoBehaviour:
   fogWar: {fileID: 0}
   visibility: 0
   additionalRadius: 0
+  OnVisibilityChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8176741473121272002 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 254005972250586916, guid: a5edbbad0f6230543a42ee6c912cc294,
@@ -1494,6 +1521,9 @@ MonoBehaviour:
   fogWar: {fileID: 0}
   visibility: 0
   additionalRadius: 0
+  OnVisibilityChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &8291867439157959740
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1667,6 +1697,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4807473279575106974, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
+        type: 3}
+      propertyPath: damageModifier
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4807473279575106974, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
         type: 3}
