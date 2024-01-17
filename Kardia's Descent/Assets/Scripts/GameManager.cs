@@ -126,7 +126,17 @@ public class GameManager : MonoBehaviour
         players.Remove(player);
         allEntities.Remove(player);
 
-        if (players.Count == 0)
+        List<Player> unlockedPlayers = new List<Player>();
+        
+        foreach (var player2 in players)
+        {
+            if (player.isUnlocked)
+            {
+                unlockedPlayers.Add(player2);
+            }
+        }
+        
+        if (players.Count == 0 || unlockedPlayers.Count == 0)
         {
             GameOver(false);
         }

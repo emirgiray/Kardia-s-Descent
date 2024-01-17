@@ -235,6 +235,7 @@ public class Character : MonoBehaviour
             characterTile.occupiedByEnemy = false;
         }
         
+
         StartCoroutine(MoveAlongPath(_path, rotate, OnComplete, spendActionPoints));
     }
     
@@ -356,6 +357,7 @@ public class Character : MonoBehaviour
             }
             
             animator.SetBool("Walk", false);
+            animator.ResetTrigger("Knockback");
             MoveEnd.Invoke();
             
             // CheckToStartCombat();
