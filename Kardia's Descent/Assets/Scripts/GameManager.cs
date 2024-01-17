@@ -130,12 +130,14 @@ public class GameManager : MonoBehaviour
         
         foreach (var player2 in players)
         {
-            if (player.isUnlocked)
+            if (player2.isUnlocked)
             {
                 unlockedPlayers.Add(player2);
+                Debug.Log($"player2: {player2.name}");
             }
         }
-        
+
+        Debug.Log($"players.Count: {players.Count}, unlockedPlayers.Count: {unlockedPlayers.Count}");
         if (players.Count == 0 || unlockedPlayers.Count == 0)
         {
             GameOver(false);
