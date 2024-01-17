@@ -534,7 +534,7 @@ public class Character : MonoBehaviour
             var playersInCombat = GameManager.Instance.players;
             for (int i = 0; i < playersInCombat.Count; i++)
             {
-                if (Vector3.Distance(characterTile.transform.position, playersInCombat[i].transform.position) < 10 && playersInCombat[i].gameObject.activeInHierarchy &&
+                if (Vector3.Distance(characterTile.transform.position, playersInCombat[i].transform.position) < 10 && playersInCombat[i].gameObject.activeInHierarchy && playersInCombat[i].isUnlocked &&
                     pathfinder.GetTilesInBetween(this, characterTile, playersInCombat[i].characterTile, true).Count <= playersInCombat[i].detectionTile
                     && playersInCombat[i].GetUnlocked())
                 {
