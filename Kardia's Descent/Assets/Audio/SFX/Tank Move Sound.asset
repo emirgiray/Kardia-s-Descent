@@ -16,9 +16,9 @@ MonoBehaviour:
   MixerGroup: {fileID: -4324112792324781537, guid: 0fea7b96089dff640a53cd560574e66e,
     type: 2}
   clips:
-  - {fileID: 8300000, guid: a29612c6bc247bb47873a2520086a735, type: 3}
+  - {fileID: 8300000, guid: 2b30999a76d4e324098fc61f6262575f, type: 3}
   volume: {x: 0.9, y: 1}
-  pitch: {x: 0.9, y: 1}
+  pitch: {x: 1, y: 1}
   _3DAudios: 0
   RolloffMode: 0
   _MinDistance: 1
