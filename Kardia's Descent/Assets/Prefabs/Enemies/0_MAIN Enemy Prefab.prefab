@@ -1101,6 +1101,7 @@ MonoBehaviour:
   characterStats: {fileID: 0}
   SkillContainer: {fileID: 971612226134414077}
   heartContainer: {fileID: 0}
+  inventory: {fileID: 0}
   inventoryUI: {fileID: 0}
   pathfinder: {fileID: 8866224488703451883}
   movedata: {fileID: 11400000, guid: dd6f1c9025f1ba945b2082ff9cda2f56, type: 2}
@@ -1115,6 +1116,7 @@ MonoBehaviour:
   health: {fileID: 1086629163380962625}
   detectingThreshold: 0.45
   detectionTile: 4
+  YOffset: 0
   canMove: 1
   canAttack: 1
   inCombat: 0
@@ -1122,9 +1124,12 @@ MonoBehaviour:
   remainingStunTurns: 0
   isDead: 0
   canRotate: 1
+  dropItemsOnDeath: 0
+  itemsToDrop: []
   Head: {fileID: 0}
   Hand: {fileID: 7694304149146994981}
   characterClass: 9
+  Moving: 0
   GroundLayerMask:
     serializedVersion: 2
     m_Bits: 8
@@ -1132,6 +1137,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 65
   characterState: 0
+  AwakeEvent:
+    m_PersistentCalls:
+      m_Calls: []
   OnMovePointsChangeEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -1300,6 +1308,7 @@ MonoBehaviour:
   skillsDataList: []
   skillsToAdd: []
   weaponPartDataList: []
+  heartsInInventory: []
   weaponContainer: {fileID: 4144644680711025957}
   skillsContainer: {fileID: 971612226134414077}
   spawnedWeapon: {fileID: 0}
@@ -1542,7 +1551,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1426809487291341555, guid: ac3393e7e0bd79f4eb348e5d544d370f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 254990916444103240}
   m_SourcePrefab: {fileID: 100100000, guid: ac3393e7e0bd79f4eb348e5d544d370f, type: 3}
 --- !u!1 &2477153329434498103 stripped
 GameObject:
@@ -1550,6 +1563,21 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3579682752430526148}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &254990916444103240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2477153329434498103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 985add12ee4836e40b7241671b1d892c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fogWar: {fileID: 0}
+  visibility: 0
+  additionalRadius: 0
 --- !u!114 &5207586908084094229 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8784419287715875793, guid: ac3393e7e0bd79f4eb348e5d544d370f,
