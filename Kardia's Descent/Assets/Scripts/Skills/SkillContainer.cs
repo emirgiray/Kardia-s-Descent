@@ -16,7 +16,7 @@ public class SkillContainer : MonoBehaviour
     [SerializeField] private Skills lastSelectedSkill;
     [SerializeField] public bool skillSelected = false;
    // [SerializeField] private bool skillCanbeUsed = true;
-    [SerializeField] private Character Character;
+    [SerializeField] public Character Character;
     [SerializeField] private Inventory Inventory;
     [SerializeField] public List<SkillButton> skillButtons = new List<SkillButton>();
     
