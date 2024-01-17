@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0a41638027f3f24c9189531ad23dd74, type: 3}
+  m_Name: Tank Move Sound
+  m_EditorClassIdentifier: 
+  AudioManagerCenter: {fileID: 11400000, guid: 4e6cb3a3a333b3246859816701a12be1, type: 2}
+  MixerGroup: {fileID: -4324112792324781537, guid: 0fea7b96089dff640a53cd560574e66e,
+    type: 2}
+  clips:
+  - {fileID: 8300000, guid: a29612c6bc247bb47873a2520086a735, type: 3}
+  volume: {x: 0.9, y: 1}
+  pitch: {x: 0.9, y: 1}
+  _3DAudios: 0
+  RolloffMode: 0
+  _MinDistance: 1
+  _MaxDistance: 50
+  Replay: 0
+  Spatialize: 1
+  AttachObject: 0
+  FadeIn: 0
+  FadeTime: 1
