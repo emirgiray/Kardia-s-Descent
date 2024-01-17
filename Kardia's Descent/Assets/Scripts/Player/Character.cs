@@ -775,7 +775,7 @@ public class Character : MonoBehaviour
         {
             if (stunVFX == null)
             {
-                stunVFX = VFXManager.Instance.stunVFX.SpawnVFX(Head);
+                stunVFX = VFXManager.Instance.stunVFX.SpawnVFXWithReturn(Head);
                 stunVFX.transform.SetParent(Head);
             }
         }

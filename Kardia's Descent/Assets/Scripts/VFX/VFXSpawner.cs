@@ -14,7 +14,7 @@ public class VFXSpawner : ScriptableObject
     public Vector3 rotationOffset = Vector3.zero;
     
     
-    public GameObject SpawnVFX(Transform spawnPosition/*, Vector3 spawnOffset, float VFXDuration*/)
+    public void SpawnVFX(Transform spawnPosition/*, Vector3 spawnOffset, float VFXDuration*/)
     {
         GameObject vfx = Instantiate(VFXPrefab, spawnPosition.position + spawnOffset, spawnPosition.rotation * Quaternion.Euler(rotationOffset));
         vfx.transform.localScale = scale;
@@ -22,6 +22,18 @@ public class VFXSpawner : ScriptableObject
         {
             Destroy(vfx, VFXDuration);
         }
+        //spawnOffset = Vector3.zero;
+    }
+    
+    public GameObject SpawnVFXWithReturn(Transform spawnPosition/*, Vector3 spawnOffset, float VFXDuration*/)
+    {
+        GameObject vfx = Instantiate(VFXPrefab, spawnPosition.position + spawnOffset, spawnPosition.rotation * Quaternion.Euler(rotationOffset));
+        vfx.transform.localScale = scale;
+        if (VFXDuration > 0)
+        {
+            Destroy(vfx, VFXDuration);
+        }
+
         return vfx;
         //spawnOffset = Vector3.zero;
     }
@@ -30,6 +42,7 @@ public class VFXSpawner : ScriptableObject
     {
         this.spawnOffset = spawnOffset;
     }
+    
 
     public void SetDuration(float VFXDuration)
     {
