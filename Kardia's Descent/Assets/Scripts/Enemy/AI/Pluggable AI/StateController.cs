@@ -115,13 +115,16 @@ public class StateController : MonoBehaviour
                 if (canExitState)
                 {
                     currentStateSeconds = 0;
-                    currentState.UpdateState(this);
-                    
-                    //Debug.Log($"STATE: {currentState}");
-                    if (!runOnce && RandomWait())
+                    if (currentState != null)
                     {
-                        currentState.DoActionsOnce(this);
-                        runOnce = true;
+                        currentState.UpdateState(this);
+
+                        //Debug.Log($"STATE: {currentState}");
+                        if (!runOnce && RandomWait())
+                        {
+                            currentState.DoActionsOnce(this);
+                            runOnce = true;
+                        }
                     }
                 }
                 else
