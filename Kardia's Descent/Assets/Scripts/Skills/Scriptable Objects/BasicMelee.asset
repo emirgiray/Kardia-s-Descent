@@ -16,7 +16,7 @@ MonoBehaviour:
   skillName: Basic Melee
   skillDescription: Basic attack.
   skillID: 0
-  skillDamage: 15
+  skillDamage: 0
   skillRange: 1
   skillCooldown: 0
   actionPointUse: 2
@@ -36,5 +36,6 @@ MonoBehaviour:
   damageType: 0
   skillTarget: 0
   skillHitType: 0
+  skillTargetType: 0
   skillEffect: 0
   buffDebuffType: 0
