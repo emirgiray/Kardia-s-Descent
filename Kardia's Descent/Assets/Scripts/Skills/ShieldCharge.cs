@@ -56,10 +56,11 @@ public class ShieldCharge : SkillsData
                     last = i;
                 }
             }
-            
+            ActivaterCharacter.movedata.MoveTime /= 1.5f;
             path.tiles.RemoveRange(last , path.tiles.Count - last);
             ActivaterCharacter.StartMove(path,true, () =>
             {
+                
                 ActivaterCharacter.Rotate(enemyTile.transform.position);
             
                 Interact.Instance.GetComponent<MonoBehaviour>()
@@ -175,7 +176,7 @@ public class ShieldCharge : SkillsData
         {
             base.OnMiss(Skill, ActivaterCharacter, selectedTile, OnComplete);
         }
-        
+        ActivaterCharacter.movedata.MoveTime *= 1.5f;
             /*int random = UnityEngine.Random.Range(1, 101);
             if (random <= Skill.accuracy || Skill.accuracy == 100)
             {
