@@ -17,7 +17,8 @@
 
 using UnityEngine;                  // Monobehaviour
 using System.Collections.Generic;   // List
-using System.Linq;                  // ToList
+using System.Linq;
+using UnityEngine.Events; // ToList
 
 
 
@@ -45,7 +46,7 @@ namespace FischlWorks_FogWar
         private List<MeshRenderer> meshRenderers = null;
         private List<SkinnedMeshRenderer> skinnedMeshRenderers = null;
 
-
+        public UnityEvent<bool> OnVisibilityChanged = new UnityEvent<bool>();
 
         private void Start()
         {
@@ -85,6 +86,7 @@ namespace FischlWorks_FogWar
             {
                 renderer.enabled = visibility;
             }
+            OnVisibilityChanged.Invoke(visibility);
         }
 
 
