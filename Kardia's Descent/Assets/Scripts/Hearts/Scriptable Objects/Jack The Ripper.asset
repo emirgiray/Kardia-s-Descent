@@ -15,7 +15,7 @@ MonoBehaviour:
   HeartSprite: {fileID: 1469048405, guid: f050367bbcaea674495c2d5e36fc140b, type: 3}
   heartName: Jack The Ripper
   heartIndex: 0
-  heartDescription: Gain 2-3 AP when you kill.
+  heartDescription: Gain 2 AP when you kill.
   heartRarity: 2
   BonusStrength: 0
   BonusDexterity: 0

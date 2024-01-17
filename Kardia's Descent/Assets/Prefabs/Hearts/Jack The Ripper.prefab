@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 6689202083473041524}
   - component: {fileID: 2439219470246044005}
   m_Layer: 0
-  m_Name: TEST Legendary Heart Pickup
+  m_Name: Jack The Ripper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
