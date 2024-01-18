@@ -55,7 +55,14 @@ public class SkillButton : MonoBehaviour
         {
             if (skillDataIn.skillClass != SkillsData.SkillClass.Buff)
             {
-                tooltipTrigger.AddToContent($"Damage: {skillDataIn.skillDamage + skillContainerIn.Character.extraMeleeDamage}");
+                if (skillDataIn.skillType == SkillsData.SkillType.Melee)
+                {
+                    tooltipTrigger.AddToContent($"Damage: {skillDataIn.skillDamage + skillContainerIn.Character.extraMeleeDamage}");
+                }
+                else if (skillDataIn.skillType == SkillsData.SkillType.Ranged)
+                {
+                    tooltipTrigger.AddToContent($"Damage: {skillDataIn.skillDamage}");
+                }
                 tooltipTrigger.AddToContent($"Accuracy: {skillDataIn.accuracy + skillContainerIn.Character.extraRangedAccuracy}");
             }
             
