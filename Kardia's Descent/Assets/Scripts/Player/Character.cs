@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using CodeMonkey.CameraSystem;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -500,9 +501,25 @@ public class Character : MonoBehaviour
         {
             Interact.Instance.ClearHighlightAttackableTiles();
             Interact.Instance.ClearHighlightReachableTiles();
+            
+            
         }
         
         TurnSystem.Instance.NextTurn();
+
+        if (this is Player)
+        {
+            foreach (var player in GameManager.Instance.players)
+            {
+                if (player.isUnlocked && player.inCombat && player.characterState != CharacterState.Dead && player.characterState != CharacterState.WaitingNextRound)
+                {
+                    CameraSystem.Instance.OnCharacterSelected(player.characterTile);
+                    Interact.Instance.TrySelectPlayer(player);
+                    return;
+                }
+            }
+        }
+        
     }
 
     [Button]

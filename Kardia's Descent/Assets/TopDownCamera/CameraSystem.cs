@@ -9,6 +9,7 @@ namespace CodeMonkey.CameraSystem {
 
     public class CameraSystem : MonoBehaviour {
 
+        public static CameraSystem Instance { get; private set; }
         [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
         [SerializeField] private float moveSpeed = 10;
         [SerializeField] float zoomSpeed = 1;
@@ -52,19 +53,18 @@ namespace CodeMonkey.CameraSystem {
         {
             Vector3 targetPosition = characterTile.transform.position;
             transform.DOMove(targetPosition, 0.5f).SetEase(Ease.Linear);
-
-
+            
             followOffset.y =  staticFollowRangey;
                 Mathf.Clamp(followOffset.y, followOffsetYMinMax.x, followOffsetYMinMax.y);
             
             //followOffset.y = Mathf.Clamp(followOffset.y, followOffsetYMinMax.x, followOffsetYMinMax.y);
-            
             
             cinemachineVirtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset =
                 Vector3.Lerp(cinemachineVirtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset, followOffset, Time.deltaTime * zoomSpeed);
         }
 
         private void Awake() {
+            Instance = this;
             followOffset = cinemachineVirtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset;
         }
 
