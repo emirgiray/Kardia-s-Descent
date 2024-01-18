@@ -296,7 +296,7 @@ public class SkillContainer : MonoBehaviour
             Interact.Instance.SkillDeselected?.Invoke();
             Interact.Instance.selectedCharacter.GetComponent<Character>().AttackCancel();
             StopCoroutine(Interact.Instance.HitChanceUIToMousePos());  
-            Character.OnActionPointsChange?.Invoke(Character.remainingActionPoints);
+            
 
             Interact.Instance.HitChanceUIGameObject.SetActive(false);
         }

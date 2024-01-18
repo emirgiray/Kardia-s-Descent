@@ -704,6 +704,11 @@ public class Character : MonoBehaviour
         OnActionPointsChange?.Invoke(remainingActionPoints);
         OnActionPointsChangeEvent?.Invoke(remainingActionPoints, "-");
         CheckIfEndTurn();
+
+        if (!inCombat)
+        {
+            ResetActionPoints();
+        }
     }
 
     public void OnCharacterDeathFunc()
