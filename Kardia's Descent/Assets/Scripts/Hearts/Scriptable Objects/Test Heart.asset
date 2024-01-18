@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Test Heart
   m_EditorClassIdentifier: 
   HeartSprite: {fileID: 2005359547, guid: f050367bbcaea674495c2d5e36fc140b, type: 3}
-  heartName: Heart
+  heartName: Common Heart
   heartIndex: 1
-  heartDescription: Adds stats.
+  heartDescription: Gives extra HP.
   heartRarity: 0
-  BonusStrength: 5
-  BonusDexterity: 5
+  BonusStrength: 0
+  BonusDexterity: 0
   BonusConstitution: 5
-  BonusAiming: 5
+  BonusAiming: 0
   unlockCondition: 
   isPowerUnlocked: 0
