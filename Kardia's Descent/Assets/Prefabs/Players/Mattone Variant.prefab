@@ -86,8 +86,91 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1037746094, guid: f050367bbcaea674495c2d5e36fc140b,
         type: 3}
+    - target: {fileID: 7510704565162782655, guid: 04563854e99a65a4c8a042dc7f750368,
+        type: 3}
+      propertyPath: MoveEnd.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7510704565162782655, guid: 04563854e99a65a4c8a042dc7f750368,
+        type: 3}
+      propertyPath: MoveStart.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7510704565162782655, guid: 04563854e99a65a4c8a042dc7f750368,
+        type: 3}
+      propertyPath: MoveEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7510704565162782655, guid: 04563854e99a65a4c8a042dc7f750368,
+        type: 3}
+      propertyPath: MoveEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: ff8a3e8524cb8df44a2d6bf9a69c1ec5,
+        type: 2}
+    - target: {fileID: 7510704565162782655, guid: 04563854e99a65a4c8a042dc7f750368,
+        type: 3}
+      propertyPath: MoveStart.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7510704565162782655, guid: 04563854e99a65a4c8a042dc7f750368,
+        type: 3}
+      propertyPath: MoveStart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: ff8a3e8524cb8df44a2d6bf9a69c1ec5,
+        type: 2}
+    - target: {fileID: 7510704565162782655, guid: 04563854e99a65a4c8a042dc7f750368,
+        type: 3}
+      propertyPath: MoveEnd.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7510704565162782655, guid: 04563854e99a65a4c8a042dc7f750368,
+        type: 3}
+      propertyPath: MoveEnd.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StopAudioSource
+      objectReference: {fileID: 0}
+    - target: {fileID: 7510704565162782655, guid: 04563854e99a65a4c8a042dc7f750368,
+        type: 3}
+      propertyPath: MoveStart.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7510704565162782655, guid: 04563854e99a65a4c8a042dc7f750368,
+        type: 3}
+      propertyPath: MoveStart.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Play
+      objectReference: {fileID: 0}
+    - target: {fileID: 7510704565162782655, guid: 04563854e99a65a4c8a042dc7f750368,
+        type: 3}
+      propertyPath: MoveEnd.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SGT_Tools.Audio.SimpleAudioEvent, SGT_Audio
+      objectReference: {fileID: 0}
+    - target: {fileID: 7510704565162782655, guid: 04563854e99a65a4c8a042dc7f750368,
+        type: 3}
+      propertyPath: MoveStart.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SGT_Tools.Audio.SimpleAudioEvent, SGT_Audio
+      objectReference: {fileID: 0}
+    - target: {fileID: 7510704565162782655, guid: 04563854e99a65a4c8a042dc7f750368,
+        type: 3}
+      propertyPath: MoveStart.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 4536056914119889449}
+    - target: {fileID: 7510704565162782655, guid: 04563854e99a65a4c8a042dc7f750368,
+        type: 3}
+      propertyPath: MoveEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7510704565162782655, guid: 04563854e99a65a4c8a042dc7f750368,
+        type: 3}
+      propertyPath: MoveStart.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Transform, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04563854e99a65a4c8a042dc7f750368, type: 3}
+--- !u!4 &4536056914119889449 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3066464748635369359, guid: 04563854e99a65a4c8a042dc7f750368,
+    type: 3}
+  m_PrefabInstance: {fileID: 1476348123561934246}
+  m_PrefabAsset: {fileID: 0}
