@@ -57,9 +57,12 @@ public class Tile : MonoBehaviour
     [BoxGroup("Interactable")] [ShowIf("occupiedByInteractable")]
     public Interactable occupyingInteractable;
 
-    [HideInInspector] [BoxGroup("Tile")] public float costFromOrigin = 0;
-    [HideInInspector] [BoxGroup("Tile")]  public float costToDestination = 0;
-    [HideInInspector] [BoxGroup("Tile")] public int terrainCost = 0;
+    [HideInInspector] [BoxGroup("Tile")] 
+    public float costFromOrigin = 0;
+    [HideInInspector] [BoxGroup("Tile")] 
+    public float costToDestination = 0;
+    [HideInInspector] [BoxGroup("Tile")] 
+    public int terrainCost = 0;
     [HideInInspector] [BoxGroup("Tile")] public float TotalCost { get { return costFromOrigin + costToDestination + terrainCost; } }
     
     Dictionary<int, Color> costMap = new Dictionary<int, Color>()
@@ -206,10 +209,10 @@ public class Tile : MonoBehaviour
         occupiedByInteractable = false;
     }
 
-    public void SwitchShieldIcon(bool value)
+    /*public void SwitchShieldIcon(bool value)
     {
         ShieldIcon.SetActive(value);
-    }
+    }*/
     
     /*public void DebugCostText()
     {

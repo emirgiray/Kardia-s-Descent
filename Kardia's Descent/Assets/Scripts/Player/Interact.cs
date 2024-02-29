@@ -20,6 +20,8 @@ public class Interact : MonoBehaviour
     public Action SkillDeselected;
     [BoxGroup("Objects")][SerializeField] 
     private GameObject InspectTileGO;
+    [BoxGroup("Objects")][SerializeField] 
+    private GameObject InspectTileCoverIconGO;
     MeshRenderer inspectTileMeshRenderer;
     [BoxGroup("Objects")][SerializeField] 
     public Camera mainCam;
@@ -210,7 +212,7 @@ public class Interact : MonoBehaviour
             {
                 if (selectedCharacterSkillContainer.skillSelected == false)
                 {
-                    if (currentTile.isCoveredByCoverPoint) currentTile.SwitchShieldIcon(false);
+                    if (currentTile.isCoveredByCoverPoint) InspectTileCoverIconGO.SetActive(false);
                     selectedCharacter.GetComponent<Inventory>().ShowSkillsUI(false);
                     selectedCharacter.outline.enabled = false;
                     characterSelected = false;
@@ -313,7 +315,7 @@ public class Interact : MonoBehaviour
         }*/
         
         InspectTileGO.transform.position = currentTile.transform.position;
-        if (lastTile != null) lastTile.SwitchShieldIcon(false);
+        InspectTileCoverIconGO.SetActive(false);
 
         if (currentTile.Occupied)
         {
@@ -359,7 +361,7 @@ public class Interact : MonoBehaviour
 
                 if (reachableTiles.Contains(currentTile) && characterSelected && (selectedCharacter.characterState == Character.CharacterState.Idle || selectedCharacter.characterState == Character.CharacterState.WaitingTurn))
                 {
-                    currentTile.SwitchShieldIcon(true);
+                    InspectTileCoverIconGO.SetActive(true);
                 }
 
             }
