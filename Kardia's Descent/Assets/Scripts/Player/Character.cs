@@ -119,8 +119,8 @@ public class Character : MonoBehaviour
     [FoldoutGroup("Events")] public UnityEvent MovePointsExhausted;
     [FoldoutGroup("Events")] public UnityEvent ActionPointsExhausted;
 
-    [HideInInspector] public int extraMeleeDamage = 0;
-    [HideInInspector] public int extraRangedAccuracy = 0;
+   public int extraMeleeDamage = 0;
+   public int extraRangedAccuracy = 0;
 
     private void Awake()
     {
@@ -657,6 +657,7 @@ public class Character : MonoBehaviour
         CombatEndedAction?.Invoke();
         ResetActionPoints();
         SkillContainer.ForceResetSkillCooldowns();
+        characterState = CharacterState.WaitingTurn;
         TurnSystem.Instance.PlayerExitedCombat(GetComponent<Player>());
     }
     

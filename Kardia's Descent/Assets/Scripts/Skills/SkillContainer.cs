@@ -78,9 +78,14 @@ public class SkillContainer : MonoBehaviour
             skillsList[i].skillButton = skillButtons[i];
         }*/
 
-        ApplyExtraStatValues();
+        StartCoroutine(Delay());
     }
 
+    public IEnumerator Delay()
+    {
+        yield return new WaitForEndOfFrame();
+        ApplyExtraStatValues();
+    }
 
     public void PopulateSkillsList()
     {

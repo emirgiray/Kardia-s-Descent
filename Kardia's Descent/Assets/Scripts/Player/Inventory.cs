@@ -62,6 +62,13 @@ public class Inventory : MonoBehaviour
         
     }
 
+    [SerializeField] private RenderTexture renderTexture;
+    
+    public void SetPortrait()
+    {
+        SpawnedInventoryUIScript.SetPlayerPortrait(renderTexture);
+    }
+
      public void SpawnInventoryUI()
      {
          SpawnedInventoryUI = Instantiate(InventoryUI, InventoryUISlot.transform);

@@ -244,7 +244,7 @@ public class Interact : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                if (selectedCharacter.GetComponent<Inventory>().GetSpawnedInventoryUIScript().GetSkipButton().interactable)
+              //  if (selectedCharacter.GetComponent<Inventory>().GetSpawnedInventoryUIScript().GetSkipButton().interactable)
                 {
                     selectedCharacter.GetComponent<Inventory>().GetSpawnedInventoryUIScript().GetSkipButton().onClick.Invoke();
                 }

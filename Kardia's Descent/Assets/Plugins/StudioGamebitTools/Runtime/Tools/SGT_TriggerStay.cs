@@ -23,7 +23,7 @@ public class SGT_TriggerStay : MonoBehaviour
     {
         if (Policy != null && other != null && !(SGT_Policy.Check(other.gameObject, Policy)))
         {
-            if (doOnce == false)
+            //if (doOnce == false)
             {
                 doOnce = true;
                 TriggerStay.Invoke(other.gameObject);

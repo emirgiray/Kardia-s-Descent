@@ -133,11 +133,9 @@ public class GameManager : MonoBehaviour
             if (player2.isUnlocked)
             {
                 unlockedPlayers.Add(player2);
-                Debug.Log($"player2: {player2.name}");
             }
         }
 
-        Debug.Log($"players.Count: {players.Count}, unlockedPlayers.Count: {unlockedPlayers.Count}");
         if (players.Count == 0 || unlockedPlayers.Count == 0)
         {
             GameOver(false);
@@ -175,7 +173,7 @@ public class GameManager : MonoBehaviour
 
     public void CalculateScore()
     {
-        score = (totalDamageDealt * 10) + (totalKills * 10) + (totalHeartsCollected * 20) - totalDamageTaken - (int)playTime.TotalSeconds;
+        score = (totalDamageDealt * 10) + (totalKills * 10) + (totalHeartsCollected * 20) - totalDamageTaken * (int)playTime.TotalSeconds / 10;
     }
     
     public void PauseGame(bool value)
