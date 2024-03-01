@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 792f2826cb647ab4a935a3f915fb122e, type: 3}
+  m_Name: Scene Type 3
+  m_EditorClassIdentifier: 
+  Scene:
+    m_SceneAsset: {fileID: 102900000, guid: ddaa7b2405017384aa25d682a07edc7e, type: 3}
+    m_SceneName: RLSC Level 3
+  typeImage: {fileID: 21300032, guid: 7ab74e659e1f0a34d9cfec21c478fc12, type: 3}
+  typeName: 3
+  changeSpriteByType: 1
+  TypeSpriteChanger: {fileID: 11400000, guid: ef0fabc02a3c6c84790a9bdec38b6c5d, type: 2}

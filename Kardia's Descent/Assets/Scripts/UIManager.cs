@@ -5,6 +5,7 @@ using DG.Tweening;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using Random = Unity.Mathematics.Random;
 
@@ -49,7 +50,13 @@ public class UIManager : MonoBehaviour
     [BoxGroup("End Game")] [SerializeField]
     private TextMeshProUGUI totalTurnsText;
 
-   
+    [BoxGroup("Possible Next Scenes")] [SerializeField]
+    private Transform possibleNextScenesParent;
+    [BoxGroup("Possible Next Scenes")] [SerializeField]
+    private GameObject sceneTypesPrefab;
+    [BoxGroup("Possible Next Scenes")] [SerializeField]
+    private GameObject possibleNextScenesBG;
+
 
     private void Awake()
     {
@@ -174,7 +181,27 @@ public class UIManager : MonoBehaviour
     {
         PauseScreenGO.SetActive(value);
     }
-    
-  
+
+    List<GameObject> spawnedSceneTypes = new();
+    public void SpawnSceneTypeButtons(Sprite spriteIn, string nameIn, UnityAction callbackIn)
+    {
+        possibleNextScenesBG.SetActive(true);
+        GameObject temp = Instantiate(sceneTypesPrefab, possibleNextScenesParent);
+        spawnedSceneTypes.Add(temp);
+        temp.transform.GetChild(0).GetComponent<Image>().sprite = spriteIn;
+        temp.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = nameIn;
+        temp.GetComponent<Button>().onClick.AddListener(callbackIn);
+    }
+
+    [Button, GUIColor(1f, 1f, 1f)]
+    public void ClearSceneTypeButtons()
+    {
+        possibleNextScenesBG.SetActive(false);
+        foreach (var sceneType in spawnedSceneTypes)
+        {
+            Destroy(sceneType);
+        }
+        spawnedSceneTypes.Clear();
+    }
     
 }
