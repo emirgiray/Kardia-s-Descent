@@ -305,6 +305,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7510704565162782655, guid: 04563854e99a65a4c8a042dc7f750368,
         type: 3}
+      propertyPath: PlayerPreview
+      value: 
+      objectReference: {fileID: 3493393127891647222, guid: abf031df3a816b54bbe77f917c86157f,
+        type: 3}
+    - target: {fileID: 7510704565162782655, guid: 04563854e99a65a4c8a042dc7f750368,
+        type: 3}
       propertyPath: characterClass
       value: 1
       objectReference: {fileID: 0}
@@ -318,7 +324,7 @@ PrefabInstance:
         type: 3}
       propertyPath: playerPortrait
       value: 
-      objectReference: {fileID: 8400000, guid: 54cb95db6fb0a7a4181bd215d7ede231, type: 2}
+      objectReference: {fileID: 8400000, guid: c71689639b6081446a133060a9adc9ff, type: 2}
     - target: {fileID: 7510704565162782655, guid: 04563854e99a65a4c8a042dc7f750368,
         type: 3}
       propertyPath: characterSprite

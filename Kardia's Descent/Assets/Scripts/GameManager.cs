@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using FischlWorks_FogWar;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
@@ -145,6 +146,8 @@ public class GameManager : MonoBehaviour
     public void PlayerUnlocked(Transform playerTransform)
     {
         PlayerUnlockedEventTransform?.Invoke(playerTransform);
+        csFogWar fogWar = FindObjectOfType<csFogWar>();
+        fogWar.AddFogRevealerRevelear(playerTransform);
     }
 
     #endregion
@@ -171,14 +174,19 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void CalculateScore()
+    private void CalculateScore()
     {
         score = (totalDamageDealt * 10) + (totalKills * 10) + (totalHeartsCollected * 20) - totalDamageTaken * (int)playTime.TotalSeconds / 10;
     }
     
     public void PauseGame(bool value)
     {
-        if (value)
+        isPaused = !isPaused;
+        UIManager.Instance.PauseGame(isPaused);
+        Time.timeScale = isPaused ? 0 : 1;
+        (isPaused ? GamePausedEvent : GameUnpausedEvent)?.Invoke();
+
+        /*if (value)
         {
             UIManager.Instance.PauseGame(true);
             Time.timeScale = 0;
@@ -191,8 +199,8 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 1;
             isPaused = false;
             GameUnpausedEvent?.Invoke();
-        }
-        
+        }*/
+
     }
 
     #endregion

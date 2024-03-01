@@ -7,6 +7,7 @@ using UnityEngine;
 public class Player : Character
 {
     [SerializeField] private RenderTexture playerPortrait;
+    public GameObject PlayerPreview;
     
     [FoldoutGroup("Stats For Quests")] [SerializeField]
     private int killsInTurn = 0;

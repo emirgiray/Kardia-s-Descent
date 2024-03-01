@@ -248,7 +248,7 @@ public class Interact : MonoBehaviour
             {
               //  if (selectedCharacter.GetComponent<Inventory>().GetSpawnedInventoryUIScript().GetSkipButton().interactable)
                 {
-                    selectedCharacter.GetComponent<Inventory>().GetSpawnedInventoryUIScript().GetSkipButton().onClick.Invoke();
+                    selectedCharacter.inventory.GetSpawnedInventoryUIScript().GetSkipButton().onClick.Invoke();
                 }
                 
             }

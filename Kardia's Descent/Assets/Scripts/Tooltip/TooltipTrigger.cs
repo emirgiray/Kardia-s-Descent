@@ -21,6 +21,7 @@ public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     {
         OnPointerEnterEvent?.Invoke();
         delay = LeanTween.delayedCall(delayTime, () => { TooltipSystem.Show(content, header, transform.position); });
+        // Debug.Log($"çalıştı pointer"); //sometimes tooltip gives out errors but seems to fix it
         // TooltipSystem.Show(content, header);
     }
 
@@ -28,6 +29,7 @@ public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     {
         OnPointerEnterEvent?.Invoke();
         delay = LeanTween.delayedCall(delayTime, () => { TooltipSystem.Show(content, header, transform.position); });
+        // Debug.Log($"çalıştı mouse"); //sometimes tooltip gives out errors but seems to fix it
     }
 
     public void OnPointerExit(PointerEventData eventData)

@@ -85,13 +85,8 @@ public class Character : MonoBehaviour
     
     public bool Moving  = false;
     
-    
     public LayerMask GroundLayerMask;
     [SerializeField] LayerMask detectionLayerMask;
-
-    
-    
-    
     
     public enum CharacterState
     {
@@ -638,7 +633,7 @@ public class Character : MonoBehaviour
         }
     }
 
-    public IEnumerator WaitForMoveToEnd()
+    private IEnumerator WaitForMoveToEnd()
     {
         yield return new WaitUntil(() => Moving == false);
         if (moveCoroutine != null) StopCoroutine(moveCoroutine);
@@ -662,13 +657,13 @@ public class Character : MonoBehaviour
     }
     
         
-    public void ResetActionPoints()
+    private void ResetActionPoints()
     {
         remainingActionPoints = actionPoints;
         OnActionPointsChangeEvent?.Invoke(remainingActionPoints, "+");
     }
 
-    public void AddActionPoints()
+    private void AddActionPoints()
     {
         remainingActionPoints += actionPoints;
         if (remainingActionPoints > maxActionPoints)
@@ -763,7 +758,7 @@ public class Character : MonoBehaviour
         
     }
 
-    public void DropAllItemsOnDeath()
+    private void DropAllItemsOnDeath()
     {
         Vector3 dropPos = transform.position + new Vector3(0, 1, 0);
         foreach (var item in itemsToDrop)
@@ -772,7 +767,7 @@ public class Character : MonoBehaviour
         }
     }
 
-    public void DropRandomItemOnDeath()
+    private void DropRandomItemOnDeath()
     {
         Vector3 dropPos = transform.position + new Vector3(0, 1, 0);
         int randomIndex = UnityEngine.Random.Range(0, itemsToDrop.Count);
