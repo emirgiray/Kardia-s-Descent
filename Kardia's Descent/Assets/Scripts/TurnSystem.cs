@@ -28,7 +28,7 @@ public class TurnSystem : MonoBehaviour
     }
     public TurnState turnState;
     
-    [SerializeField] private GameObject RoundInfo;
+    [SerializeField] public GameObject RoundInfo;
     [SerializeField] private GameObject CharacterCardPrefab;
     
     public Action FriendlyTurn;

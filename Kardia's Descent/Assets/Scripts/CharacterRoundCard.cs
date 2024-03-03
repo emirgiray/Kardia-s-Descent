@@ -23,22 +23,43 @@ public class CharacterRoundCard : MonoBehaviour
         character = characterIn;
         roundInfo = roundInfoIn;
         nameText.text = characterIn.name;
-        
-        character.health.Bar01_2 = Bar01_2;
-       // Debug.Log($"character bar {character.health.Bar01_2} bar01_2: {Bar01_2} ");
-        character.health.Bar02_2 = Bar02_2;
-        character.health.Init();
         image.sprite = character.characterSprite;
 
-        if (characterIn is Player)
+        if (character.health.Bar01_2 == null)
         {
-            // borderImage.color = playerColor;
-            Bar01_2.color = playerColor;
+            character.health.Bar01_2 = Bar01_2;
+            // Debug.Log($"character bar {character.health.Bar01_2} bar01_2: {Bar01_2} ");
+            character.health.Bar02_2 = Bar02_2;
+            character.health.Init();
+
+            if (characterIn is Player)
+            {
+                // borderImage.color = playerColor;
+                Bar01_2.color = playerColor;
+            }
+            else
+            {
+                // borderImage.color = enemyColor;
+                Bar01_2.color = enemyColor;
+            }
         }
-        else
+        else if (character.health.Bar01_3 == null)
         {
-            // borderImage.color = enemyColor;
-            Bar01_2.color = enemyColor;
+            character.health.Bar01_3 = Bar01_2;
+            // Debug.Log($"character bar {character.health.Bar01_2} bar01_2: {Bar01_2} ");
+            character.health.Bar02_3 = Bar02_2;
+            character.health.Init();
+
+            if (characterIn is Player)
+            {
+                // borderImage.color = playerColor;
+                Bar01_2.color = playerColor;
+            }
+            else
+            {
+                // borderImage.color = enemyColor;
+                Bar01_2.color = enemyColor;
+            }
         }
         
     }

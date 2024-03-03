@@ -15,7 +15,11 @@ public class GameManager : MonoBehaviour
     
      public List<Player> players = new List<Player>();
      public List<Enemy> enemies = new List<Enemy>();
+     [HideInInspector] 
      public List<Character> allEntities = new List<Character>();
+     
+     [HideInInspector] 
+     public List<GameObject> playersGO = new();
 
      public UnityEvent<Transform> PlayerUnlockedEventTransform;
 
@@ -27,8 +31,8 @@ public class GameManager : MonoBehaviour
      public int totalKills;
      [BoxGroup("Stats For End Game")]
      public int totalHeartsCollected;
-     [BoxGroup("Stats For End Game")] [SerializeField] 
-     private DateTime startTime;
+     [BoxGroup("Stats For End Game")] 
+     public DateTime startTime;
      [BoxGroup("Stats For End Game")] [SerializeField]
      private TimeSpan playTime;
      [BoxGroup("Stats For End Game")] [SerializeField]
@@ -48,15 +52,19 @@ public class GameManager : MonoBehaviour
      public UnityEvent GameUnpausedEvent;
     private void Awake()
     {
-        startTime = DateTime.Now;
-        
         if (Instance == null)
             Instance = this;
         else
             Destroy(this);
         
-        players.AddRange(GameObject.FindObjectsOfType<Player>(true));
-        enemies.AddRange(GameObject.FindObjectsOfType<Enemy>(true));
+        players.AddRange(FindObjectsOfType<Player>(true));
+
+        foreach (var player in players)
+        {
+            playersGO.Add(player.gameObject);
+        }
+        
+        enemies.AddRange(FindObjectsOfType<Enemy>(true));
 
         for (int i = 0; i < players.Count; i++)
         {
@@ -136,6 +144,8 @@ public class GameManager : MonoBehaviour
                 unlockedPlayers.Add(player2);
             }
         }
+        
+        playersGO.Remove(player.gameObject);
 
         if (players.Count == 0 || unlockedPlayers.Count == 0)
         {
@@ -155,6 +165,11 @@ public class GameManager : MonoBehaviour
 
     #region Game States
 
+    public void StartGame()
+    {
+        startTime = DateTime.Now;
+    }
+    
     public void GameOver(bool win)
     {
         CalcuatePlayTime();

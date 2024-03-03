@@ -8,6 +8,9 @@ public class Player : Character
 {
     [SerializeField] private RenderTexture playerPortrait;
     public GameObject PlayerPreview;
+
+    [Tooltip("This is needed for save system")]
+    public GameObject playerPrefab;
     
     [FoldoutGroup("Stats For Quests")] [SerializeField]
     private int killsInTurn = 0;

@@ -12,9 +12,12 @@ public class MainPrefabScript : MonoBehaviour
     
     public List<GameObject> SelectedPlayers = new();
     public List<GameObject> InventoryUISlots = new();
+
+    public Transform PartyRoundCardsSlot;
+    public GameObject PartyRoundCardPrefab;
     
     private List<Transform> PlayerSlots = new();
-    public List<GameObject> spawnedPlayers = new();
+    private List<GameObject> spawnedPlayers = new();
     private List<Player> spawnedPlayerScripts = new();
     private csFogWar fogWar;
     private void Awake()
@@ -42,8 +45,12 @@ public class MainPrefabScript : MonoBehaviour
             spawnedPlayerScripts.Add(temp.GetComponent<Player>());
             spawnedPlayerScripts[i].inventory.InventoryUISlot = InventoryUISlots[i];
             fogWar.AddFogRevealerRevelear(temp.transform);
+            
             GameObject tempPreview = Instantiate(spawnedPlayerScripts[i].PlayerPreview, playerPreviewParent.transform);
             tempPreview.transform.localPosition = new Vector3(i * 10, 0, 0);
+            
+            GameObject tempPartyRoundCard = Instantiate(PartyRoundCardPrefab, PartyRoundCardsSlot);
+            tempPartyRoundCard.GetComponent<CharacterRoundCard>().Init(spawnedPlayerScripts[i], TurnSystem.Instance.RoundInfo.GetComponent<RoundInfo>());
         }
     }
     

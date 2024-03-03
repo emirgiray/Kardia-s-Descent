@@ -7,42 +7,59 @@ using UnityEngine.EventSystems;
 
 public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    private static LTDescr delay;
     [SerializeField] private float delayTime = 0.5f;
-    
+
     [SerializeField] private string header;
     [SerializeField] [Multiline] private string content;
-    
+
     public UnityEvent OnPointerEnterEvent;
     public UnityEvent OnPointerExitEvent;
-    
-    
+
+    private Coroutine showTooltipCoroutine;
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         OnPointerEnterEvent?.Invoke();
-        delay = LeanTween.delayedCall(delayTime, () => { TooltipSystem.Show(content, header, transform.position); });
-        // Debug.Log($"çalıştı pointer"); //sometimes tooltip gives out errors but seems to fix it
-        // TooltipSystem.Show(content, header);
+        if (showTooltipCoroutine != null)
+        {
+            StopCoroutine(showTooltipCoroutine);
+        }
+        showTooltipCoroutine = StartCoroutine(ShowTooltipAfterDelay());
+    }
+
+    private IEnumerator ShowTooltipAfterDelay()
+    {
+        yield return new WaitForSeconds(delayTime);
+        TooltipSystem.Show(content, header, transform.position);
     }
 
     private void OnMouseEnter()
     {
         OnPointerEnterEvent?.Invoke();
-        delay = LeanTween.delayedCall(delayTime, () => { TooltipSystem.Show(content, header, transform.position); });
-        // Debug.Log($"çalıştı mouse"); //sometimes tooltip gives out errors but seems to fix it
+        if (showTooltipCoroutine != null)
+        {
+            StopCoroutine(showTooltipCoroutine);
+        }
+        showTooltipCoroutine = StartCoroutine(ShowTooltipAfterDelay());
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         OnPointerExitEvent?.Invoke();
-        LeanTween.cancel(delay.uniqueId);
+        if (showTooltipCoroutine != null)
+        {
+            StopCoroutine(showTooltipCoroutine);
+        }
         TooltipSystem.Hide();
     }
 
     private void OnMouseExit()
     {
         OnPointerExitEvent?.Invoke();
-        LeanTween.cancel(delay.uniqueId);
+        if (showTooltipCoroutine != null)
+        {
+            StopCoroutine(showTooltipCoroutine);
+        }
         TooltipSystem.Hide();
     }
 
@@ -57,10 +74,8 @@ public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         content += contentIn;
     }
 
-    
     public void SetHeader(string headerIn)
     {
         header = headerIn;
     }
-
 }
