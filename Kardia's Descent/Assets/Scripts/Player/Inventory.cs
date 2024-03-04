@@ -75,6 +75,11 @@ public class Inventory : MonoBehaviour
          SpawnedInventoryUIScript = SpawnedInventoryUI.GetComponent<InventoryUI>();
          player.inventoryUI = SpawnedInventoryUIScript;
          player.heartContainer.SetHeartButton(SpawnedInventoryUIScript.GetHeartButton());
+
+         if (player.heartContainer.heartData != null)
+         {
+             player.heartContainer.EquipHeart(player.heartContainer.heartData);
+         }
      }
 
      public void BeforePopulateSkillsUI()
@@ -125,6 +130,8 @@ public class Inventory : MonoBehaviour
      {
          sgtHealth.Bar01 = SpawnedInventoryUIScript.GetBar01();
          sgtHealth.Bar02 = SpawnedInventoryUIScript.GetBar02();
+            sgtHealth.Init();
+            sgtHealth.ForceSetValues();
      }
 
      public void PopulatePointsUI()

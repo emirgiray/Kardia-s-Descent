@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "HeartData", menuName = "ScriptableObjects/Hearts", order = 0)]
+[CreateAssetMenu(fileName = "HeartData", menuName = "ScriptableObjects/Hearts/HeartData", order = 0)]
 public class HeartData : ScriptableObject
 {
     [PreviewField(Height = 200, Alignment = ObjectFieldAlignment.Left)]

@@ -323,9 +323,47 @@ public class SGT_Health : MonoBehaviour {
                 _HealthAnim_2.DelayBar();
             }
         }
+        if (Bar01_3!=null)
+        {
+            Bar01_3.fillAmount = SGT_Math.Remap(HealthAi, Min, Max, 0, 1);
+        }
+        if (Bar02_3!=null)
+        {
+            if (_HealthAnim_3!=null)
+            {
+                _HealthAnim_3.DelayBar();
+            }
+        }
         
     }
 
+    public void ForceSetValues()
+    {
+        if (Bar01!=null)
+        {
+            Bar01.fillAmount = SGT_Math.Remap(HealthAi, Min, Max, 0, 1);
+        }
+        if (Bar02!=null)
+        {
+            Bar02.fillAmount = SGT_Math.Remap(HealthAi, Min, Max, 0, 1);
+        }
+        if (Bar01_2!=null)
+        {
+            Bar01_2.fillAmount = SGT_Math.Remap(HealthAi, Min, Max, 0, 1);
+        }
+        if (Bar02_2!=null)
+        {
+            Bar02_2.fillAmount = SGT_Math.Remap(HealthAi, Min, Max, 0, 1);
+        }
+        if (Bar01_3!=null)
+        {
+            Bar01_3.fillAmount = SGT_Math.Remap(HealthAi, Min, Max, 0, 1);
+        }
+        if (Bar02_3!=null)
+        {
+            Bar02_3.fillAmount = SGT_Math.Remap(HealthAi, Min, Max, 0, 1);
+        }
+    }
 
     //Normalized değerlirini bildirir.
     public void UpdateNormalized()

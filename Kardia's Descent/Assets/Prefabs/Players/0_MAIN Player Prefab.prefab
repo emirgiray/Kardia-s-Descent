@@ -64,11 +64,13 @@ MonoBehaviour:
   Min: 0
   Diffuculty: {fileID: 11400000, guid: a3e4e6a8e8c94bb4393038a5ab79830e, type: 2}
   ResetOnEnable: 0
-  ResetOnStart: 1
+  ResetOnStart: 0
   Bar01: {fileID: 0}
   Bar02: {fileID: 0}
   Bar01_2: {fileID: 0}
   Bar02_2: {fileID: 0}
+  Bar01_3: {fileID: 0}
+  Bar02_3: {fileID: 0}
   BarAnimSpeed: 5
   Bar02Delay: 1
   Dead:
@@ -200,6 +202,7 @@ MonoBehaviour:
   _Health: 100
   _HealthAnim: {fileID: 0}
   _HealthAnim_2: {fileID: 0}
+  _HealthAnim_3: {fileID: 0}
 --- !u!114 &7384818883079876269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,6 +302,8 @@ MonoBehaviour:
   extraMeleeDamage: 0
   extraRangedAccuracy: 0
   playerPortrait: {fileID: 8400000, guid: 8d4fd00542bae0b43957e359329b47a2, type: 2}
+  PlayerPreview: {fileID: 0}
+  playerPrefab: {fileID: 0}
   killsInTurn: 0
   canBruiserDoubleAttack: 1
   isUnlocked: 0
@@ -397,6 +402,7 @@ MonoBehaviour:
   spawnedSkillButtonPrefabs: []
   spawnTestWeapon: 1
   testWeaponData: {fileID: 11400000, guid: 5f648099aa9d4ef40979b543a77708fd, type: 2}
+  renderTexture: {fileID: 0}
 --- !u!114 &7800979912286807391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -414,6 +420,7 @@ MonoBehaviour:
   isPowerUnlocked: 0
   isEquipped: 0
   heartButton: {fileID: 0}
+  hearthStatsApplied: 0
 --- !u!114 &29732848317274237
 MonoBehaviour:
   m_ObjectHideFlags: 0

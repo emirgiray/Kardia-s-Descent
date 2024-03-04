@@ -242,7 +242,7 @@ public class TurnSystem : MonoBehaviour
         allEntitiesInCombat.RemoveRange(allEntitiesInCombat.IndexOf(deadPlayer), 1);
         OnPlayerDeath.Invoke(deadPlayer);
         RemoveCard(deadPlayer);
-        GameManager.Instance.RemovePlayerFromGame(deadPlayer);
+        LevelManager.Instance.RemovePlayerFromGame(deadPlayer);
     }
     
     [Button,GUIColor(1,1,1)][FoldoutGroup("DEBUG")]
@@ -263,7 +263,7 @@ public class TurnSystem : MonoBehaviour
             OnEnemyDeath.Invoke(deadEnemy);
             RemoveCard(deadEnemy);
 
-            GameManager.Instance.RemoveEnemyFromGame(deadEnemy);
+            LevelManager.Instance.RemoveEnemyFromGame(deadEnemy);
         
             if (enemiesInCombat.Count <= 0)
             {

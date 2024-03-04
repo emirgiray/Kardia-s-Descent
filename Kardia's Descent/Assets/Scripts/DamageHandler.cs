@@ -25,11 +25,11 @@ public class DamageHandler : MonoBehaviour
 
         if (attacker is Player)
         {
-            GameManager.Instance.totalDamageDealt += value;
+            LevelManager.Instance.totalDamageDealt += value;
         }
         if (attacker is Enemy)
         {
-            GameManager.Instance.totalDamageTaken += value;
+            LevelManager.Instance.totalDamageTaken += value;
         }
         
         if (sgtHealth.isDead)
@@ -61,7 +61,7 @@ public class DamageHandler : MonoBehaviour
         if (attacker is Player)
         {
             attacker.GetComponent<Player>().IncreaseKills();
-            GameManager.Instance.totalKills++;
+            LevelManager.Instance.totalKills++;
         }
     }
 

@@ -10,6 +10,12 @@ public class CharacterStats : ScriptableObject
     public int Dexterity;
     public int Constitution;
     public int Aiming;
+    
+    [Space(30)]
+    [SerializeField] private int DefaultStrength;
+    [SerializeField] private int DefaultDexterity;
+    [SerializeField] private int DefaultConstitution;
+    [SerializeField] private int DefaultAiming;
 
     public void AddStrength(int value)
     {
@@ -44,8 +50,12 @@ public class CharacterStats : ScriptableObject
         Aiming -= value;
     }
 
-    public void Save()
+    public void ResetValues()
     {
+        Strength = DefaultStrength;
+        Dexterity = DefaultDexterity;
+        Constitution = DefaultConstitution;
+        Aiming = DefaultAiming;
         
     }
    

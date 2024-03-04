@@ -16,3 +16,7 @@ MonoBehaviour:
   Dexterity: 4
   Constitution: 2
   Aiming: 6
+  DefaultStrength: 0
+  DefaultDexterity: 4
+  DefaultConstitution: 2
+  DefaultAiming: 6

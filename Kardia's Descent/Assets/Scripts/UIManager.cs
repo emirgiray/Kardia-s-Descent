@@ -114,7 +114,7 @@ public class UIManager : MonoBehaviour
         totalPlayTimeText.text = playTime;
         
         int prevRarity = 0;
-        foreach (var player in GameManager.Instance.players)
+        foreach (var player in LevelManager.Instance.players)
         {
             if (player.isUnlocked && player.heartContainer.heartData != null)
             {

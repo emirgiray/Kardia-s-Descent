@@ -18,7 +18,7 @@ public class MainPrefabScript : MonoBehaviour
     
     private List<Transform> PlayerSlots = new();
     private List<GameObject> spawnedPlayers = new();
-    private List<Player> spawnedPlayerScripts = new();
+    public List<Player> spawnedPlayerScripts = new();
     private csFogWar fogWar;
     private void Awake()
     {
@@ -30,6 +30,11 @@ public class MainPrefabScript : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(this.gameObject);
         
+       
+    }
+
+    public void InitializeLevel()
+    {
         // todo load selected players from save system, also load health values hearts etc (or add players to dont destroy on load)
         
         fogWar = FindObjectOfType<csFogWar>();
@@ -53,6 +58,4 @@ public class MainPrefabScript : MonoBehaviour
             tempPartyRoundCard.GetComponent<CharacterRoundCard>().Init(spawnedPlayerScripts[i], TurnSystem.Instance.RoundInfo.GetComponent<RoundInfo>());
         }
     }
-    
-    
 }

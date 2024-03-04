@@ -43,7 +43,7 @@ public class InventoryUI : MonoBehaviour
     {
        // Character.OnActionPointsChange += UpdateActionPoints2;//actions doesnt work for some reason
         // player.OnCharacterRecieveDamageAction += UpdateHealth;
-        healthText.text = $"{player.health.Max} / {player.health.Max}";
+        healthText.text = $"{player.health._Health} / {player.health.Max}";
         //healthMaxText.text = player.health.Max.ToString();
         player.OnActionPointsChangeEvent.AddListener(UpdateActionPoints);
         //player.OnActionPointsChangeEvent2.AddListener();

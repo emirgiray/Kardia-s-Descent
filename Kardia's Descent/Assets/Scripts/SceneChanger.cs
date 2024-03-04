@@ -1,19 +1,33 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Object = UnityEngine.Object;
+using Random = UnityEngine.Random;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
 public class SceneChanger : MonoBehaviour
 {
+    public static SceneChanger Instance { get; private set; }
+    
     public List<SceneType> possibleNextScenes = new();
     
     public AllSceneTypes allSceneTypes;
-    
+
+    public SceneField firstLevel;
+
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(this);
+    }
+
     [Button, GUIColor(1f, 1f, 1f)]
     public void OfferRandomScenes()
     {
@@ -47,6 +61,10 @@ public class SceneChanger : MonoBehaviour
         ChangeScene(Value);
     }
 
+    public void LoadFirstLevel()
+    {
+        ChangeSceneDelay(firstLevel);
+    }
     
     public void ChangeScene(string Value)
     {

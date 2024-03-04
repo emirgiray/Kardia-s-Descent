@@ -232,6 +232,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5225323832543321503, guid: 04563854e99a65a4c8a042dc7f750368,
+        type: 3}
+      propertyPath: Max
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5225323832543321503, guid: 04563854e99a65a4c8a042dc7f750368,
+        type: 3}
+      propertyPath: _Health
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5225323832543321503, guid: 04563854e99a65a4c8a042dc7f750368,
+        type: 3}
+      propertyPath: ResetOnStart
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5475755088311690444, guid: 04563854e99a65a4c8a042dc7f750368,
         type: 3}
       propertyPath: hand
@@ -305,6 +320,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7510704565162782655, guid: 04563854e99a65a4c8a042dc7f750368,
         type: 3}
+      propertyPath: actionPoints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7510704565162782655, guid: 04563854e99a65a4c8a042dc7f750368,
+        type: 3}
       propertyPath: playerPrefab
       value: 
       objectReference: {fileID: 883855727420601889}
@@ -336,6 +356,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1832450849, guid: f050367bbcaea674495c2d5e36fc140b,
         type: 3}
+    - target: {fileID: 7510704565162782655, guid: 04563854e99a65a4c8a042dc7f750368,
+        type: 3}
+      propertyPath: extraMeleeDamage
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7510704565162782655, guid: 04563854e99a65a4c8a042dc7f750368,
+        type: 3}
+      propertyPath: extraRangedAccuracy
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7510704565162782655, guid: 04563854e99a65a4c8a042dc7f750368,
+        type: 3}
+      propertyPath: remainingActionPoints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7510704565162782655, guid: 04563854e99a65a4c8a042dc7f750368,
         type: 3}
       propertyPath: MoveEnd.m_PersistentCalls.m_Calls.Array.size
@@ -517,6 +552,16 @@ PrefabInstance:
         type: 3}
       propertyPath: AwakeEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7800979912286807391, guid: 04563854e99a65a4c8a042dc7f750368,
+        type: 3}
+      propertyPath: heartData
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7800979912286807391, guid: 04563854e99a65a4c8a042dc7f750368,
+        type: 3}
+      propertyPath: hearthStatsApplied
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

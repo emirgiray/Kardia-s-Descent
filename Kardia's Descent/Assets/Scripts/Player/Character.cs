@@ -504,7 +504,7 @@ public class Character : MonoBehaviour
 
         if (this is Player)
         {
-            foreach (var player in GameManager.Instance.players)
+            foreach (var player in LevelManager.Instance.players)
             {
                 if (player.isUnlocked && player.inCombat && player.characterState != CharacterState.Dead && player.characterState != CharacterState.WaitingNextRound)
                 {
@@ -522,14 +522,14 @@ public class Character : MonoBehaviour
     {
         /*if (this is Player)
         {
-            for (int i = 0; i < GameManager.Instance.enemies.Count; i++)
+            for (int i = 0; i < LevelManager.Instance.enemies.Count; i++)
             {
-                if (pathfinder.GetTilesInBetween(this, characterTile, GameManager.Instance.enemies[i].characterTile, true).Count <= 4)
+                if (pathfinder.GetTilesInBetween(this, characterTile, LevelManager.Instance.enemies[i].characterTile, true).Count <= 4)
                 {
-                    if (!Physics.Linecast(this.transform.position, GameManager.Instance.enemies[i].transform.position, detectionLayerMask))
+                    if (!Physics.Linecast(this.transform.position, LevelManager.Instance.enemies[i].transform.position, detectionLayerMask))
                     {
                         if(!inCombat) StartCombat();
-                        if(!GameManager.Instance.enemies[i].inCombat) GameManager.Instance.enemies[i].StartCombat();
+                        if(!LevelManager.Instance.enemies[i].inCombat) LevelManager.Instance.enemies[i].StartCombat();
                         
                         if (TurnSystem.Instance.turnState == TurnSystem.TurnState.FreeRoamTurn)
                         {
@@ -545,7 +545,7 @@ public class Character : MonoBehaviour
         Vector3 yOffSet = new Vector3(0, PathfinderVariables.Instance.characterYOffset, 0);
         if (this is Enemy)
         {
-            var playersInCombat = GameManager.Instance.players;
+            var playersInCombat = LevelManager.Instance.players;
             for (int i = 0; i < playersInCombat.Count; i++)
             {
                 if (Vector3.Distance(characterTile.transform.position, playersInCombat[i].transform.position) < 10 && playersInCombat[i].gameObject.activeInHierarchy && playersInCombat[i].isUnlocked &&
@@ -624,11 +624,11 @@ public class Character : MonoBehaviour
         CombatStartedAction?.Invoke();
         if (this is Player)
         {
-            GameManager.Instance.AddPlayerToCombat(GetComponent<Player>());
+            LevelManager.Instance.AddPlayerToCombat(GetComponent<Player>());
         }
         if (this is Enemy)
         {
-            GameManager.Instance.AddEnemyToCombat(GetComponent<Enemy>());
+            LevelManager.Instance.AddEnemyToCombat(GetComponent<Enemy>());
             GetComponent<StateController>().StartCombat();
         }
     }

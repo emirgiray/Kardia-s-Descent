@@ -12,7 +12,7 @@ public class HeartContainer : MonoBehaviour
     public bool isPowerUnlocked = false;
     public bool isEquipped = false;
     [SerializeField] private SkillButton heartButton;
-
+    public bool hearthStatsApplied = false;
     
 
     public void SetHeartButton(SkillButton heartButtonIn)
@@ -35,7 +35,7 @@ public class HeartContainer : MonoBehaviour
 
     public void PickUpHeart(HeartData heartDataIn)
     {
-        GameManager.Instance.totalHeartsCollected++;
+        LevelManager.Instance.totalHeartsCollected++;
         character.inventory.heartsInInventory.Add(heartDataIn);
         
         if (character.heartContainer.heartData == null)
@@ -55,7 +55,7 @@ public class HeartContainer : MonoBehaviour
             isPowerUnlocked = true;
         }
 
-        if (heartDataIn.heartRarity != HeartData.HeartRarity.Legendary)
+        if (heartDataIn.heartRarity != HeartData.HeartRarity.Legendary && !hearthStatsApplied)
         {
             character.characterStats.AddStrength(heartDataIn.BonusStrength);
             character.characterStats.AddDexterity(heartDataIn.BonusDexterity);
@@ -63,6 +63,7 @@ public class HeartContainer : MonoBehaviour
             character.characterStats.AddAiming(heartDataIn.BonusAiming);
             
             character.AssignSkillValues();
+            hearthStatsApplied = true;
         }
         SetTooltipInfo();
     }

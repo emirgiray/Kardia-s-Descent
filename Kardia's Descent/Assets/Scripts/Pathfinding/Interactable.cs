@@ -105,7 +105,7 @@ public class Interactable : MonoBehaviour
                 break;
             case CharacterClass.Player:
                 player.UnlockPlayer();
-                GameManager.Instance.PlayerUnlocked(player.transform);
+                LevelManager.Instance.PlayerUnlocked(player.transform);
                 objectTile.Occupied = false;
                 objectTile.ResetOcupying();
                 Destroy(gameObject);

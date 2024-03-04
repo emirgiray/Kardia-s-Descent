@@ -258,7 +258,7 @@ public class Interact : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 isPaused = !isPaused;
-                GameManager.Instance.PauseGame(isPaused);
+                LevelManager.Instance.PauseGame(isPaused);
             }
         }
     }
