@@ -30,8 +30,18 @@ public class MainMenuController : MonoBehaviour
     [BoxGroup("Character")] [SerializeField]
     private Sprite defaultUnselectedSprite;
     
-    [BoxGroup("Start")] [SerializeField]
+    [BoxGroup("Character")] [SerializeField]
+    private GameObject spawnedCharacter;
+    [BoxGroup("Character")] [SerializeField]
+    private List<GameObject> SpawnedSkillSprites = new();
+
+    [BoxGroup("Skills")] [SerializeField]
+    private Transform skillLayoutTransform;
+    
+    [BoxGroup("Buttons")] [SerializeField]
     private Button startButton;
+    [BoxGroup("Buttons")] [SerializeField]
+    public Button selectButton;
     
     private void Awake()
     {
@@ -68,18 +78,44 @@ public class MainMenuController : MonoBehaviour
             MainMenuCharacterButton charButton = temp.GetComponent<MainMenuCharacterButton>();
             charButton.characterPrefab = playerScript.playerPrefab;
             charButton.characterName = player.name;
-            charButton.isUnlcoked = playerScript.isUnlocked;
+            charButton.isUnlocked = playerScript.isUnlocked;
             charButton.characterImage = playerScript.characterSprite;
 
         }
         
+        SpawnPlayerPreview(selectionLayoutTransform.GetChild(0).GetComponent<MainMenuCharacterButton>()); //spawn first character
+        selectButton.onClick.AddListener(() =>  selectionLayoutTransform.GetChild(0).GetComponent<MainMenuCharacterButton>().EquipCharacter());
+        
     }
 
+    public void SpawnPlayerPreview(MainMenuCharacterButton button)
+    {
+        if (spawnedCharacter) Destroy(spawnedCharacter);
+        spawnedCharacter = Instantiate(button.characterPrefab, characterGOSpawnTransform.position, characterGOSpawnTransform.rotation, characterGOSpawnTransform);
+
+        Inventory inventory = spawnedCharacter.GetComponent<Inventory>();
+        
+        for (int i = 0; i < inventory.testWeaponData.SkillsDataList.Count; i++)
+        {
+            skillLayoutTransform.GetChild(i).GetComponent<SkillButton>().InitForMenuButton(inventory.testWeaponData.SkillsDataList[i]);
+            
+        }
+        
+        foreach (var component in spawnedCharacter.GetComponents<Component>())
+        {
+            if (!(component is Transform))
+            {
+                Destroy(component);
+            }
+        }
+    }
+    
     public void AddToSelected(MainMenuCharacterButton button)
     {
         selectedLayoutTransform.transform.GetChild(button.index).GetComponent<Image>().sprite = button.characterImage;
         selectedList.Add(button.gameObject);
         startButton.interactable = true;
+        //SpawnPlayerPreview(button);
     }
     
     public void RemoveFromSelected(MainMenuCharacterButton button)

@@ -69,14 +69,8 @@ public class SkillButton : MonoBehaviour
             tooltipTrigger.AddToContent($"Range: {skillDataIn.skillRange}");
             tooltipTrigger.AddToContent($"AP Use: {skillDataIn.actionPointUse}");
             tooltipTrigger.AddToContent($"CD: {skillDataIn.skillCooldown}");
-                
-            
-            
-            
         }
         
-        
-
         if (skillDataIn.passiveOrActive == SkillsData.PassiveOrActive.Active)
         {
             button.onClick.AddListener(useSkill);
@@ -86,6 +80,39 @@ public class SkillButton : MonoBehaviour
         else
         {
             button.enabled = false;
+        }
+    }
+
+    public void InitForMenuButton(SkillsData skillDataIn)
+    {
+        SkillImage.sprite = skillDataIn.skillSprite;
+        
+        tooltipTrigger.SetHeader(skillDataIn.skillName);
+        tooltipTrigger.SetContent(skillDataIn.skillDescription);
+        tooltipTrigger.AddToContent("");
+        if (skillDataIn.passiveOrActive == SkillsData.PassiveOrActive.Active)
+        {
+            if (skillDataIn.skillClass != SkillsData.SkillClass.Buff)
+            {
+                if (skillDataIn.skillType == SkillsData.SkillType.Melee)
+                {
+                    tooltipTrigger.AddToContent($"Damage: {skillDataIn.skillDamage}");
+                }
+                else if (skillDataIn.skillType == SkillsData.SkillType.Ranged)
+                {
+                    tooltipTrigger.AddToContent($"Damage: {skillDataIn.skillDamage}");
+                }
+                tooltipTrigger.AddToContent($"Accuracy: {skillDataIn.accuracy}");
+            }
+            
+            tooltipTrigger.AddToContent($"Range: {skillDataIn.skillRange}");
+            tooltipTrigger.AddToContent($"AP Use: {skillDataIn.actionPointUse}");
+            tooltipTrigger.AddToContent($"CD: {skillDataIn.skillCooldown}");
+        }
+        
+        if (skillDataIn.passiveOrActive == SkillsData.PassiveOrActive.Active)
+        {
+            apCostText.text = skillDataIn.actionPointUse.ToString();
         }
     }
 
@@ -121,13 +148,16 @@ public class SkillButton : MonoBehaviour
     
     public void HighlightSkill()
     {
-        //pointer enter
-       GetComponent<EventTrigger>().triggers[0].callback.AddListener((data)=> Interact.Instance.EnableMovement(false));
-       GetComponent<EventTrigger>().triggers[0].callback.AddListener((data)=> Interact.Instance.EnableAttackableTiles(false));
+        if (!SceneChanger.Instance.isOnMainMenu)
+        {
+            //pointer enter
+            GetComponent<EventTrigger>().triggers[0].callback.AddListener((data)=> Interact.Instance.EnableMovement(false));
+            GetComponent<EventTrigger>().triggers[0].callback.AddListener((data)=> Interact.Instance.EnableAttackableTiles(false));
        
-       //pointer exit
-       GetComponent<EventTrigger>().triggers[1].callback.AddListener((data)=> Interact.Instance.EnableMovement(true));
-       GetComponent<EventTrigger>().triggers[1].callback.AddListener((data)=> Interact.Instance.EnableAttackableTiles(true));
+            //pointer exit
+            GetComponent<EventTrigger>().triggers[1].callback.AddListener((data)=> Interact.Instance.EnableMovement(true));
+            GetComponent<EventTrigger>().triggers[1].callback.AddListener((data)=> Interact.Instance.EnableAttackableTiles(true));
+        }
 
     }
     

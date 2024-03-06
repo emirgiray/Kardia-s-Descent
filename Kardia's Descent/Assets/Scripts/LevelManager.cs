@@ -18,8 +18,6 @@ public class LevelManager : MonoBehaviour
      
      [HideInInspector] 
      public List<GameObject> playersGO = new();
-
-     public UnityEvent<Transform> PlayerUnlockedEventTransform;
      
      [FoldoutGroup("Events")]
      public UnityEvent GamePausedEvent; //these are not used
@@ -36,6 +34,12 @@ public class LevelManager : MonoBehaviour
 
     public void InitializeCharacters()
     {
+        players.Clear();
+        enemies.Clear();
+        allEntities.Clear();
+        playersGO.Clear();
+        
+        
         players.AddRange(FindObjectsOfType<Player>(true));
 
         foreach (var player in players)
@@ -108,6 +112,14 @@ public class LevelManager : MonoBehaviour
         enemies.Remove(enemy);
         allEntities.Remove(enemy);
     }
+
+    public void AddPlayerToGame(Player player)
+    {
+        
+        players.Add(player);
+        allEntities.Add(player);
+        playersGO.Add(player.gameObject);
+    }
     
     public void RemovePlayerFromGame(Player player)
     {
@@ -134,9 +146,9 @@ public class LevelManager : MonoBehaviour
 
     public void PlayerUnlocked(Transform playerTransform)
     {
-        PlayerUnlockedEventTransform?.Invoke(playerTransform);
         csFogWar fogWar = FindObjectOfType<csFogWar>();
         fogWar.AddFogRevealerRevelear(playerTransform);
+        MainPrefabScript.Instance.SelectedPlayers.Add(playerTransform.gameObject);
     }
 
     #endregion

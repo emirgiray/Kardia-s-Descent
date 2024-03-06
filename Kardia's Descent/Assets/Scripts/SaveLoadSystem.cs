@@ -8,11 +8,12 @@ using UnityEngine;
 using Debug = UnityEngine.Debug;
 
 // todo add a satart and awake functions to all levels
-// todo save() should look at maybe another function to get the values 
+// todo save() should look at maybe another function to get the values other than level manager
 public class SaveLoadSystem : MonoBehaviour
 {
     public bool loadOnAwake;
-    
+    [HideInInspector]
+    public bool loadedForFirstTime;
     public static SaveLoadSystem Instance { get; private set; }
     public string saveFileName = "saveFile";
     public bool encryptData;
@@ -44,45 +45,57 @@ public class SaveLoadSystem : MonoBehaviour
         {
             GenerateFileLocation();
         }
-        
-        if(loadOnAwake) LoadGame();
+
+        if (loadOnAwake)
+        {
+            LoadGame();
+            loadedForFirstTime = true;
+        }
     }
     
     private void GetValues()
     {
-        foreach (var player in LevelManager.Instance.players)
+        /*foreach (var player in LevelManager.Instance.players)
         {
-            if (player.isUnlocked)
+            if (!player.isUnlocked) continue;
+
+            int playerIndex = allPlayers.allPlayers.FindIndex(p => p.name.Equals(player.name + " Variant"));
+            Debug.Log($"Player name: {player.name} Player index: {playerIndex}");
+            if (playerIndex == -1) continue;
+
+            saveData.playerDatas.Add(new PLayerData
             {
-                for (int i = 0; i < allPlayers.allPlayers.Count; i++)
-                {
-                    if (allPlayers.allPlayers[i].name.Equals(player.name + " Variant"))
-                    {
-                        saveData.playerDatas.Add(new PLayerData
-                        {
-                            playerID = i,
-                            health = player.health._Health,
-                            maxHealth = player.health.Max,
-                            isUnlocked = player.isUnlocked,
-                            Strength = player.characterStats.Strength,
-                            Dexterity = player.characterStats.Dexterity,
-                            Constitution = player.characterStats.Constitution,
-                            Aiming = player.characterStats.Aiming,
-                            heartID = player.heartContainer.heartData != null ? player.heartContainer.heartData.heartIndex : -1
-                            
-                            /*playerID = i,
-                            health = player.health._Health,
-                            maxHealth = player.health.Max,
-                            
-                            heartID = player.heartContainer.heartData.heartIndex,
-                            Strength = player.characterStats.Strength,
-                            Dexterity = player.characterStats.Dexterity,
-                            Constitution = player.characterStats.Constitution,
-                            Aiming = player.characterStats.Aiming,*/
-                        });
-                    }
-                }
-            }
+                playerID = playerIndex,
+                health = player.health._Health,
+                maxHealth = player.health.Max,
+                isUnlocked = player.isUnlocked,
+                Strength = player.characterStats.Strength,
+                Dexterity = player.characterStats.Dexterity,
+                Constitution = player.characterStats.Constitution,
+                Aiming = player.characterStats.Aiming,
+                heartID = player.heartContainer.heartData?.heartIndex ?? -1
+            });
+        }*/
+
+        foreach (var player in MainPrefabScript.Instance.SelectedPlayers)
+        {
+            int playerIndex = allPlayers.allPlayers.FindIndex(p => p.name.Equals(player.name/* + " Variant"*/));
+            Player playerScript = player.GetComponent<Player>();
+            Debug.Log($"Player name: {player.name} Player index: {playerIndex}");
+            if (playerIndex == -1) continue;
+
+            saveData.playerDatas.Add(new PLayerData
+            {
+                playerID = playerIndex,
+                health = playerScript.health._Health,
+                maxHealth = playerScript.health.Max,
+                isUnlocked = playerScript.isUnlocked,
+                Strength = playerScript.characterStats.Strength,
+                Dexterity = playerScript.characterStats.Dexterity,
+                Constitution = playerScript.characterStats.Constitution,
+                Aiming = playerScript.characterStats.Aiming,
+                heartID = playerScript.heartContainer.heartData?.heartIndex ?? -1
+            });
         }
 
         saveData.startTime = GameManager.Instance.startTime.ToString();

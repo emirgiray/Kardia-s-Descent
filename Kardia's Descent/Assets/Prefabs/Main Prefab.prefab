@@ -8521,6 +8521,9 @@ MonoBehaviour:
   firstLevel:
     m_SceneAsset: {fileID: 102900000, guid: 4b241cffbdda5134c8b0d145c6ab18c7, type: 3}
     m_SceneName: Level 1_BACKUP_Prefabs
+  mainMenuLevel:
+    m_SceneAsset: {fileID: 102900000, guid: f7cfe8530a8bef74b9d5601fc822c0f3, type: 3}
+    m_SceneName: Main Menu 2
 --- !u!114 &9165005917305822135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8540,8 +8543,8 @@ MonoBehaviour:
   allHeartDatas: {fileID: 11400000, guid: 3205190d312943148bab0c147b621110, type: 2}
   saveData:
     playerDatas: []
-    totalKills: 0
     startTime: 
+    totalKills: 0
     totalDamageDealt: 0
     totalDamageTaken: 0
     totalHeartsCollected: 0
@@ -10455,6 +10458,7 @@ MonoBehaviour:
   SaveLoadSystem: {fileID: 9165005917305822135}
   GameManager: {fileID: 6222046011016691636}
   LevelManager: {fileID: 1476355996276291527}
+  SceneChanger: {fileID: 4304799865440428433}
   SelectedPlayers: []
   InventoryUISlots:
   - {fileID: 1027863488603791439}

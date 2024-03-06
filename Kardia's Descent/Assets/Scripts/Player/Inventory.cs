@@ -34,7 +34,7 @@ public class Inventory : MonoBehaviour
     [BoxGroup("UI")] [SerializeField] public List<GameObject> spawnedSkillButtonPrefabs = new List<GameObject>();
     
     [BoxGroup("DEBUG")] [SerializeField] private bool spawnTestWeapon = true;
-    [BoxGroup("DEBUG")] [SerializeField] private WeaponData testWeaponData;
+    [BoxGroup("DEBUG")] [SerializeField] public WeaponData testWeaponData;
     
     SGT_Health sgtHealth;
      void Start()

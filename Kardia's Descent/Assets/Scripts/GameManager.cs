@@ -54,11 +54,17 @@ public class GameManager : MonoBehaviour
     public void StartRun()
     {
         MainPrefabScript.Instance.SelectedPlayers = SelectedPlayers;
-        MainPrefabScript.Instance.MainCameraHolder.SetActive(true);
         startTime = DateTime.Now;
         SaveLoadSystem.Instance.loadOnAwake = true;
         // save selected players to save system
+
+        foreach (var player in SelectedPlayers)
+        {
+            LevelManager.Instance.AddPlayerToGame(player.GetComponent<Player>());
+        }
+        
         SaveLoadSystem.Instance.SaveGame();
+        MainPrefabScript.Instance.MainCameraHolder.SetActive(true);
         SceneChanger.Instance.LoadFirstLevel();
     }
 

@@ -19,6 +19,9 @@ public class SceneChanger : MonoBehaviour
     public AllSceneTypes allSceneTypes;
 
     public SceneField firstLevel;
+    public SceneField mainMenuLevel;
+
+    public bool isOnMainMenu => SceneManager.GetActiveScene().name == mainMenuLevel.SceneName;
 
     private void Awake()
     {
@@ -53,6 +56,12 @@ public class SceneChanger : MonoBehaviour
                 possibleNextScenes.Clear();
             });
         }
+    }
+    [Button, GUIColor(1f, 0.1f, 0.1f)]
+    public void ClearOfferedScenes()
+    {
+        UIManager.Instance.ClearSceneTypeButtons();
+        possibleNextScenes.Clear();
     }
 
     private IEnumerator ChangeSceneDelay(string Value)

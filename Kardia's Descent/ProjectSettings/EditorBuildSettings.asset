@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level 1.unity
     guid: 7875635a8e211f445b03d5e1b8778078
+  - enabled: 1
+    path: Assets/Scenes/RoguelikeSceneChanger/Level 1_BACKUP_Prefabs.unity
+    guid: 4b241cffbdda5134c8b0d145c6ab18c7
   m_configObjects: {}

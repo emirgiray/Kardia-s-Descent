@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using FischlWorks_FogWar;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -14,6 +15,7 @@ public class MainPrefabScript : MonoBehaviour
     public SaveLoadSystem SaveLoadSystem;
     public GameManager GameManager;
     public LevelManager LevelManager;
+    public SceneChanger SceneChanger;
     
     public List<GameObject> SelectedPlayers = new();
     public List<GameObject> InventoryUISlots = new();
@@ -25,7 +27,7 @@ public class MainPrefabScript : MonoBehaviour
     private List<GameObject> spawnedPlayers = new();
     public List<Player> spawnedPlayerScripts = new();
     private csFogWar fogWar;
-    private void Awake()
+    public void Awake()
     {
         if (Instance != null && Instance != this)
         {
@@ -34,8 +36,8 @@ public class MainPrefabScript : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(this.gameObject);
-
-        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(0)) //if in main menu
+        //DOTween.Init();
+        if (SceneChanger.isOnMainMenu) //if in main menu
         {
             MainCameraHolder.SetActive(false);
             SaveLoadSystem.loadOnAwake = false;
@@ -60,7 +62,8 @@ public class MainPrefabScript : MonoBehaviour
         for (int i = 0; i < SelectedPlayers.Count; i++)
         {
             GameObject temp = Instantiate(SelectedPlayers[i], PlayerSlots[i].position, PlayerSlots[i].rotation/*, CharacterSlots[i]*/);
-            temp.name = temp.name.Replace(" Variant(Clone)", "");
+            // temp.name = temp.name.Replace(" Variant(Clone)", "");
+            temp.name = temp.name.Replace("(Clone)", "");
             spawnedPlayers.Add(temp);
             spawnedPlayerScripts.Add(temp.GetComponent<Player>());
             spawnedPlayerScripts[i].inventory.InventoryUISlot = InventoryUISlots[i];
