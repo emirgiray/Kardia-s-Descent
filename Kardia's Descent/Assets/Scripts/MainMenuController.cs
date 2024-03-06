@@ -55,6 +55,46 @@ public class MainMenuController : MonoBehaviour
             Destroy(this);
     }
 
+    private Vector3 lastMousePosition;
+    private float rotationSpeed = 0f;
+    [SerializeField] private float rotateMultiplier = 0.5f;
+    [SerializeField] private float smoothnessDuration = 1f; // Duration over which to smooth the rotation
+
+    private void Update()
+    {
+        RotateCharacterWithMouse();
+    }
+
+    private void RotateCharacterWithMouse()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            Vector3 delta = Input.mousePosition - lastMousePosition;
+            rotationSpeed = delta.x * rotateMultiplier;
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            StartCoroutine(SmoothRotation());
+        }
+
+        characterGOSpawnTransform.Rotate(0, -rotationSpeed, 0, Space.World);
+        lastMousePosition = Input.mousePosition;
+    }
+
+    private IEnumerator SmoothRotation()
+    {
+        float timeElapsed = 0;
+
+        while (timeElapsed < smoothnessDuration)
+        {
+            rotationSpeed = Mathf.Lerp(rotationSpeed, 0, timeElapsed / smoothnessDuration);
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        rotationSpeed = 0;
+    }
+
     public void LightsControl()
     {
         StartCoroutine(LightsControlDelay());
