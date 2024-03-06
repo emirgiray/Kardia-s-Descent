@@ -12,8 +12,7 @@ using Debug = UnityEngine.Debug;
 public class SaveLoadSystem : MonoBehaviour
 {
     public bool loadOnAwake;
-    [HideInInspector]
-    public bool loadedForFirstTime;
+   
     public static SaveLoadSystem Instance { get; private set; }
     public string saveFileName = "saveFile";
     public bool encryptData;
@@ -34,7 +33,7 @@ public class SaveLoadSystem : MonoBehaviour
     [ReadOnly] [Multiline(2)]
     public string saveFileFullPath;
 
-    private void Awake()
+    public void Awake()
     {
         if (Instance == null)
             Instance = this;
@@ -46,37 +45,20 @@ public class SaveLoadSystem : MonoBehaviour
             GenerateFileLocation();
         }
 
-        if (loadOnAwake)
+        //InitAwake();
+    }
+
+    public void InitAwake()
+    {
+        //if (loadOnAwake)
         {
-            LoadGame();
-            loadedForFirstTime = true;
+            AssignValues();
+            SaveGame();
         }
     }
     
     private void GetValues()
     {
-        /*foreach (var player in LevelManager.Instance.players)
-        {
-            if (!player.isUnlocked) continue;
-
-            int playerIndex = allPlayers.allPlayers.FindIndex(p => p.name.Equals(player.name + " Variant"));
-            Debug.Log($"Player name: {player.name} Player index: {playerIndex}");
-            if (playerIndex == -1) continue;
-
-            saveData.playerDatas.Add(new PLayerData
-            {
-                playerID = playerIndex,
-                health = player.health._Health,
-                maxHealth = player.health.Max,
-                isUnlocked = player.isUnlocked,
-                Strength = player.characterStats.Strength,
-                Dexterity = player.characterStats.Dexterity,
-                Constitution = player.characterStats.Constitution,
-                Aiming = player.characterStats.Aiming,
-                heartID = player.heartContainer.heartData?.heartIndex ?? -1
-            });
-        }*/
-
         foreach (var player in MainPrefabScript.Instance.SelectedPlayers)
         {
             int playerIndex = allPlayers.allPlayers.FindIndex(p => p.name.Equals(player.name/* + " Variant"*/));
@@ -103,7 +85,6 @@ public class SaveLoadSystem : MonoBehaviour
         saveData.totalDamageTaken = GameManager.Instance.totalDamageTaken;
         saveData.totalKills = GameManager.Instance.totalKills;
         saveData.totalHeartsCollected = GameManager.Instance.totalHeartsCollected;
-        
     }
     
     [Button, GUIColor(1f, 0.1f, 1f)]
@@ -137,12 +118,13 @@ public class SaveLoadSystem : MonoBehaviour
             
             JsonUtility.FromJsonOverwrite(json, saveData);
             
-            AssignValues();
+            //AssignValues();
         }
     }
 
     private void AssignValues()
     {
+        Debug.Log($"expression");
         MainPrefabScript.Instance.SelectedPlayers.Clear(); // clear the list if it has values
         
         for (int i = 0; i < saveData.playerDatas.Count; i++) // first tell the mainprefabscript to spawn the players
@@ -158,7 +140,8 @@ public class SaveLoadSystem : MonoBehaviour
         
         MainPrefabScript.Instance.InitializeLevel();
         LevelManager.Instance.InitializeCharacters();
-
+        
+        
         for (int i = 0; i < saveData.playerDatas.Count; i++) // then assign the values to the players
         {
             Player player = MainPrefabScript.Instance.spawnedPlayerScripts[i];
@@ -179,6 +162,8 @@ public class SaveLoadSystem : MonoBehaviour
                 player.heartContainer.hearthStatsApplied = true;
             }
         }
+        
+        
     }
 
     #region File Stuff
@@ -240,7 +225,11 @@ public class SaveLoadSystem : MonoBehaviour
         MainPrefabScript.Instance.InitializeLevel();
         LevelManager.Instance.InitializeCharacters();
     }
-    
+
+    public bool GetDoesSaveExist()
+    {
+        return File.Exists(saveFileFullPath);
+    }
 }
 
 // This save data is for an individual run, not for the entire game
@@ -254,7 +243,7 @@ public class SaveData
     public int totalDamageTaken;
     public int totalHeartsCollected;
     
-    
+    public string lastScene;
     // add player stats, health, items, hearts etc
     // add current scene, all scene remainingSceneTypes types
 }

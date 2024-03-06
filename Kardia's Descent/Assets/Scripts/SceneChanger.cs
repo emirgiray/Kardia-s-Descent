@@ -67,6 +67,7 @@ public class SceneChanger : MonoBehaviour
     private IEnumerator ChangeSceneDelay(string Value)
     {
         yield return new WaitForSecondsRealtime(1);
+        
         ChangeScene(Value);
     }
 
@@ -77,6 +78,8 @@ public class SceneChanger : MonoBehaviour
     
     public void ChangeScene(string Value)
     {
+        SaveLoadSystem.Instance.saveData.lastScene = Value;
+        //SaveLoadSystem.Instance.SaveGame();
         SceneManager.LoadSceneAsync(Value,LoadSceneMode.Single);
     }
     
@@ -108,6 +111,11 @@ public class SceneChanger : MonoBehaviour
     public void LoadSceneWithIndex(int indexScene)
     {
         SceneManager.LoadScene(indexScene);
+    }
+
+    public string GetCurrentScene()
+    {
+        return SceneManager.GetActiveScene().name;
     }
 
 }

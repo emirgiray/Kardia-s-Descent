@@ -42,6 +42,10 @@ public class MainMenuController : MonoBehaviour
     private Button startButton;
     [BoxGroup("Buttons")] [SerializeField]
     public Button selectButton;
+    [BoxGroup("Buttons")] [SerializeField]
+    private Button newGameButton;
+    [BoxGroup("Buttons")] [SerializeField]
+    public Button continueButton;
     
     private void Awake()
     {
@@ -133,5 +137,25 @@ public class MainMenuController : MonoBehaviour
     {
         GameManager.Instance.StartRun();
     }
+
+    public void InitNewGameAndContinue()
+    {
+        continueButton.interactable = SaveLoadSystem.Instance.GetDoesSaveExist();
+    }
     
+    public void NewGame()
+    {
+        if (SaveLoadSystem.Instance.GetDoesSaveExist())
+        {
+            SaveLoadSystem.Instance.DeleteSaveFile();
+        }
+        
+        
+    }
+
+    public void Continue()
+    {
+        SaveLoadSystem.Instance.LoadGame();
+        SceneChanger.Instance.ChangeScene(SaveLoadSystem.Instance.saveData.lastScene);
+    }
 }

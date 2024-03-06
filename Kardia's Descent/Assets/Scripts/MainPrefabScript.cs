@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
+using DG.Tweening.Core;
 using FischlWorks_FogWar;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -36,7 +37,14 @@ public class MainPrefabScript : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(this.gameObject);
-        //DOTween.Init();
+        
+
+        InitAwake();
+        
+    }
+
+    public void InitAwake()
+    {
         if (SceneChanger.isOnMainMenu) //if in main menu
         {
             MainCameraHolder.SetActive(false);
@@ -48,8 +56,17 @@ public class MainPrefabScript : MonoBehaviour
             SaveLoadSystem.loadOnAwake = true;
         }
         
-    }
+        if (DOTween.Init() == null)
+        {
+            Debug.Log($"Null dotween");
+            DOTween.Init();
+        }
+        else
+        {
+            Debug.Log($"dotween");
+        }
 
+    }
     public void InitializeLevel()
     {
         // todo load selected players from save system, also load health values hearts etc (or add players to dont destroy on load)

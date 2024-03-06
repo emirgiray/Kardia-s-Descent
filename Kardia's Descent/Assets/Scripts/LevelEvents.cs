@@ -15,8 +15,8 @@ public class LevelEvents : MonoBehaviour
     {
         AwakeEvent.Invoke();
         
-        if(SaveLoadSystem.Instance.loadOnAwake && !SaveLoadSystem.Instance.loadedForFirstTime) SaveLoadSystem.Instance.LoadGame();
-        MainPrefabScript.Instance.Awake();
+        /*if(SaveLoadSystem.Instance.loadOnAwake) */SaveLoadSystem.Instance.InitAwake();
+        MainPrefabScript.Instance.InitAwake();
     }
     
     private void Start()
