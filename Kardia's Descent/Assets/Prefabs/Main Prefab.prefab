@@ -8184,6 +8184,8 @@ GameObject:
   - component: {fileID: 897530335977526617}
   - component: {fileID: 3395024168122902677}
   - component: {fileID: 4304799865440428433}
+  - component: {fileID: 9165005917305822135}
+  - component: {fileID: 6222046011016691636}
   m_Layer: 0
   m_Name: Level Manager
   m_TagString: Untagged
@@ -8219,7 +8221,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a791f23a36af8e4d862553b3e9da9d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPaused: 0
   players: []
   enemies: []
   allEntities: []
@@ -8239,15 +8240,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  totalDamageDealt: 0
-  totalDamageTaken: 0
-  totalKills: 0
-  totalHeartsCollected: 0
-  formattedPlayTime: 
-  score: 0
-  fpsOn: 0
-  fpsGO: {fileID: 1761828144642917719}
-  fpsText: {fileID: 6909756005851074147}
   GamePausedEvent:
     m_PersistentCalls:
       m_Calls:
@@ -8527,8 +8519,232 @@ MonoBehaviour:
   possibleNextScenes: []
   allSceneTypes: {fileID: 11400000, guid: 9718d308dff3b6e4490a8e268f7aa6d5, type: 2}
   firstLevel:
-    m_SceneAsset: {fileID: 0}
-    m_SceneName: 
+    m_SceneAsset: {fileID: 102900000, guid: 4b241cffbdda5134c8b0d145c6ab18c7, type: 3}
+    m_SceneName: Level 1_BACKUP_Prefabs
+--- !u!114 &9165005917305822135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6212535698092160449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d62d83d02556d804fb0820639e813b53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadOnAwake: 0
+  saveFileName: saveFile
+  encryptData: 0
+  allPlayers: {fileID: 11400000, guid: cc6fd88f6d85f664483d2dda6793e81c, type: 2}
+  allHeartDatas: {fileID: 11400000, guid: 3205190d312943148bab0c147b621110, type: 2}
+  saveData:
+    playerDatas: []
+    totalKills: 0
+    startTime: 
+    totalDamageDealt: 0
+    totalDamageTaken: 0
+    totalHeartsCollected: 0
+  saveFilePath: C:/Users/emiry/AppData/LocalLow/DefaultCompany/Kardia's Descent/Saves/
+  saveFileFullPath: C:/Users/emiry/AppData/LocalLow/DefaultCompany/Kardia's Descent/Saves/saveFile.json
+--- !u!114 &6222046011016691636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6212535698092160449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7c19fc08fa9c3144b017a02bcad3ef6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SelectedPlayers: []
+  selectMax: 4
+  isPaused: 0
+  totalDamageDealt: 0
+  totalDamageTaken: 0
+  totalKills: 0
+  totalHeartsCollected: 0
+  formattedPlayTime: 
+  score: 0
+  fpsOn: 0
+  fpsGO: {fileID: 1761828144642917719}
+  fpsText: {fileID: 6909756005851074147}
+  GamePausedEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4902090781797363908}
+        m_TargetAssemblyTypeName: SGT_Lerp, SGT_Tools
+        m_MethodName: SetCurrenFloat
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4902090781797363908}
+        m_TargetAssemblyTypeName: SGT_Lerp, SGT_Tools
+        m_MethodName: SetTargetFloat
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4902090781797363908}
+        m_TargetAssemblyTypeName: SGT_Lerp, SGT_Tools
+        m_MethodName: SetLerpTime
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4902090781797363908}
+        m_TargetAssemblyTypeName: SGT_Lerp, SGT_Tools
+        m_MethodName: LerpUnscaledFloat
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  GameUnpausedEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4902090781797363908}
+        m_TargetAssemblyTypeName: SGT_Lerp, SGT_Tools
+        m_MethodName: SetCurrenFloat
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4902090781797363908}
+        m_TargetAssemblyTypeName: SGT_Lerp, SGT_Tools
+        m_MethodName: SetTargetFloat
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4902090781797363908}
+        m_TargetAssemblyTypeName: SGT_Lerp, SGT_Tools
+        m_MethodName: SetLerpTime
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.5
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4902090781797363908}
+        m_TargetAssemblyTypeName: SGT_Lerp, SGT_Tools
+        m_MethodName: LerpUnscaledFloat
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2625762945870379009}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7190224640607917794}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2338017516393601304}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6207901661330851307}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8400771449174625878}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4683430181749839619}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6396440403902776577
 GameObject:
   m_ObjectHideFlags: 0
@@ -10235,8 +10451,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e76f1fd988601d14c92b23ee681b2ebf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SelectedPlayers:
-  - {fileID: 883855727420601889, guid: d398bbf6cce345f4ea47a677310a9a90, type: 3}
+  MainCameraHolder: {fileID: 2336478616791830259}
+  SaveLoadSystem: {fileID: 9165005917305822135}
+  GameManager: {fileID: 6222046011016691636}
+  LevelManager: {fileID: 1476355996276291527}
+  SelectedPlayers: []
   InventoryUISlots:
   - {fileID: 1027863488603791439}
   - {fileID: 8178900605153528931}

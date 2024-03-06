@@ -11,8 +11,6 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance { get; private set; }
     
-    [SerializeField] private bool isPaused = false;
-    
      public List<Player> players = new List<Player>();
      public List<Enemy> enemies = new List<Enemy>();
      [HideInInspector] 
@@ -22,34 +20,10 @@ public class LevelManager : MonoBehaviour
      public List<GameObject> playersGO = new();
 
      public UnityEvent<Transform> PlayerUnlockedEventTransform;
-
-     [BoxGroup("Stats For End Game")]
-     public int totalDamageDealt;
-     [BoxGroup("Stats For End Game")]
-     public int totalDamageTaken;
-     [BoxGroup("Stats For End Game")]
-     public int totalKills;
-     [BoxGroup("Stats For End Game")]
-     public int totalHeartsCollected;
-     [BoxGroup("Stats For End Game")] 
-     public DateTime startTime;
-     [BoxGroup("Stats For End Game")] [SerializeField]
-     private TimeSpan playTime;
-     [BoxGroup("Stats For End Game")] [SerializeField]
-     private string formattedPlayTime;
-     [BoxGroup("Stats For End Game")] [SerializeField]
-     private int score;
      
-     [BoxGroup("Options")] [SerializeField]
-     private bool fpsOn = false;
-     [BoxGroup("Options")] [SerializeField]
-     private GameObject fpsGO;
-     [BoxGroup("Options")] [SerializeField]
-     private TextMeshProUGUI fpsText;
-
-     
-     
-     public UnityEvent GamePausedEvent;
+     [FoldoutGroup("Events")]
+     public UnityEvent GamePausedEvent; //these are not used
+     [FoldoutGroup("Events")]
      public UnityEvent GameUnpausedEvent;
     private void Awake()
     {
@@ -154,7 +128,7 @@ public class LevelManager : MonoBehaviour
 
         if (players.Count == 0 || unlockedPlayers.Count == 0)
         {
-            GameOver(false);
+            GameManager.Instance.GameOver(false);
         }
     }
 
@@ -168,87 +142,5 @@ public class LevelManager : MonoBehaviour
     #endregion
 
 
-    #region Game States
-
-    public void StartGame()
-    {
-        startTime = DateTime.Now;
-    }
-    
-    public void GameOver(bool win)
-    {
-        CalcuatePlayTime();
-        CalculateScore();
-        UIManager.Instance.GameOver(win, score, totalDamageDealt, totalDamageTaken, totalKills, totalHeartsCollected, formattedPlayTime);
-    }
-    
-
-    [Button, GUIColor(1f, 1f, 1f)]
-    public void CalcuatePlayTime()
-    {
-        playTime = DateTime.Now - startTime;
-        int hours = (int)playTime.TotalHours;
-        int minutes = playTime.Minutes;
-        int seconds = playTime.Seconds;
-        formattedPlayTime = string.Format("{0:D2}:{1:D2}:{2:D2}", hours, minutes, seconds);
-        
-    }
-
-    private void CalculateScore()
-    {
-        score = (totalDamageDealt * 10) + (totalKills * 10) + (totalHeartsCollected * 20) - totalDamageTaken * (int)playTime.TotalSeconds / 10;
-    }
-    
-    public void PauseGame(bool value)
-    {
-        isPaused = !isPaused;
-        UIManager.Instance.PauseGame(isPaused);
-        Time.timeScale = isPaused ? 0 : 1;
-        (isPaused ? GamePausedEvent : GameUnpausedEvent)?.Invoke();
-
-        /*if (value)
-        {
-            UIManager.Instance.PauseGame(true);
-            Time.timeScale = 0;
-            isPaused = true;
-            GamePausedEvent?.Invoke();
-        }
-        else
-        {
-            UIManager.Instance.PauseGame(false);
-            Time.timeScale = 1;
-            isPaused = false;
-            GameUnpausedEvent?.Invoke();
-        }*/
-
-    }
-
-    #endregion
-
-    #region Options
-
-    public void ToggleFPS()
-    {
-        fpsOn = !fpsOn;
-        fpsGO.SetActive(fpsOn);
-        if (fpsOn)
-        {
-            StartCoroutine(FPS());
-        }
-        else
-        {
-            StopCoroutine(FPS());
-        }
-    }
-
-    private IEnumerator FPS()
-    {
-        while (fpsOn)
-        {
-            yield return new WaitForSecondsRealtime(1);
-            fpsText.text = (1f / Time.unscaledDeltaTime).ToString("0");
-        }
-    }
-
-    #endregion
+   
 }

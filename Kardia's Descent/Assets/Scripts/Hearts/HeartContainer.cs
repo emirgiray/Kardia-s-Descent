@@ -35,7 +35,7 @@ public class HeartContainer : MonoBehaviour
 
     public void PickUpHeart(HeartData heartDataIn)
     {
-        LevelManager.Instance.totalHeartsCollected++;
+        GameManager.Instance.totalHeartsCollected++;
         character.inventory.heartsInInventory.Add(heartDataIn);
         
         if (character.heartContainer.heartData == null)

@@ -4,11 +4,16 @@ using System.Collections.Generic;
 using System.Linq;
 using FischlWorks_FogWar;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 //remember to make this script execute first but after turn system
 public class MainPrefabScript : MonoBehaviour
 {
     public static MainPrefabScript Instance;
+    public GameObject MainCameraHolder;
+    public SaveLoadSystem SaveLoadSystem;
+    public GameManager GameManager;
+    public LevelManager LevelManager;
     
     public List<GameObject> SelectedPlayers = new();
     public List<GameObject> InventoryUISlots = new();
@@ -29,8 +34,18 @@ public class MainPrefabScript : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(this.gameObject);
+
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(0)) //if in main menu
+        {
+            MainCameraHolder.SetActive(false);
+            SaveLoadSystem.loadOnAwake = false;
+        }
+        else
+        {
+            MainCameraHolder.SetActive(true);
+            SaveLoadSystem.loadOnAwake = true;
+        }
         
-       
     }
 
     public void InitializeLevel()

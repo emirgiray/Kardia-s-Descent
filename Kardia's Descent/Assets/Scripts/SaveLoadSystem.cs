@@ -7,9 +7,11 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
+// todo add a satart and awake functions to all levels
+// todo save() should look at maybe another function to get the values 
 public class SaveLoadSystem : MonoBehaviour
 {
-    [SerializeField] private bool loadOnAwake;
+    public bool loadOnAwake;
     
     public static SaveLoadSystem Instance { get; private set; }
     public string saveFileName = "saveFile";
@@ -61,6 +63,7 @@ public class SaveLoadSystem : MonoBehaviour
                             playerID = i,
                             health = player.health._Health,
                             maxHealth = player.health.Max,
+                            isUnlocked = player.isUnlocked,
                             Strength = player.characterStats.Strength,
                             Dexterity = player.characterStats.Dexterity,
                             Constitution = player.characterStats.Constitution,
@@ -82,10 +85,11 @@ public class SaveLoadSystem : MonoBehaviour
             }
         }
 
-        saveData.startTime = LevelManager.Instance.startTime.ToString();
-        saveData.totalDamageDealt = LevelManager.Instance.totalDamageDealt;
-        saveData.totalDamageTaken = LevelManager.Instance.totalDamageTaken;
-        saveData.totalKills = LevelManager.Instance.totalKills;
+        saveData.startTime = GameManager.Instance.startTime.ToString();
+        saveData.totalDamageDealt = GameManager.Instance.totalDamageDealt;
+        saveData.totalDamageTaken = GameManager.Instance.totalDamageTaken;
+        saveData.totalKills = GameManager.Instance.totalKills;
+        saveData.totalHeartsCollected = GameManager.Instance.totalHeartsCollected;
         
     }
     
@@ -133,10 +137,11 @@ public class SaveLoadSystem : MonoBehaviour
             MainPrefabScript.Instance.SelectedPlayers.Add(allPlayers.allPlayers[saveData.playerDatas[i].playerID]);
         }
         
-        LevelManager.Instance.startTime = DateTime.Parse(saveData.startTime);
-        LevelManager.Instance.totalDamageDealt = saveData.totalDamageDealt;
-        LevelManager.Instance.totalDamageTaken = saveData.totalDamageTaken;
-        LevelManager.Instance.totalKills = saveData.totalKills;
+        GameManager.Instance.startTime = DateTime.Parse(saveData.startTime);
+        GameManager.Instance.totalDamageDealt = saveData.totalDamageDealt;
+        GameManager.Instance.totalDamageTaken = saveData.totalDamageTaken;
+        GameManager.Instance.totalKills = saveData.totalKills;
+        GameManager.Instance.totalHeartsCollected = saveData.totalHeartsCollected;
         
         MainPrefabScript.Instance.InitializeLevel();
         LevelManager.Instance.InitializeCharacters();
@@ -149,6 +154,7 @@ public class SaveLoadSystem : MonoBehaviour
             player.characterStats.Dexterity = saveData.playerDatas[i].Dexterity;
             player.characterStats.Constitution = saveData.playerDatas[i].Constitution;
             player.characterStats.Aiming = saveData.playerDatas[i].Aiming;
+            player.isUnlocked = saveData.playerDatas[i].isUnlocked;
             //player.AssignSkillValues(); // this is already done on character awake
             
             player.health.Max = saveData.playerDatas[i].maxHealth;
@@ -229,8 +235,8 @@ public class SaveLoadSystem : MonoBehaviour
 public class SaveData
 {
     public List<PLayerData> playerDatas = new();
-    public int totalKills;
     public string startTime;
+    public int totalKills;
     public int totalDamageDealt;
     public int totalDamageTaken;
     public int totalHeartsCollected;
@@ -246,6 +252,7 @@ public class PLayerData
     public int playerID;
     public int health;
     public int maxHealth;
+    public bool isUnlocked;
     
     public int Strength;
     public int Dexterity;

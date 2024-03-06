@@ -63,7 +63,7 @@ public class SceneChanger : MonoBehaviour
 
     public void LoadFirstLevel()
     {
-        ChangeSceneDelay(firstLevel);
+        ChangeScene(firstLevel);
     }
     
     public void ChangeScene(string Value)

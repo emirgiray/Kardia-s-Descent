@@ -1054,6 +1054,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Kardia_UIAtlas_UnSelectedChar
+      rect:
+        serializedVersion: 2
+        x: 497
+        y: 2447
+        width: 395
+        height: 454
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25ea8ae6b4b6f144ead1dc4192246404
+      internalID: -42690226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -1066,7 +1087,6 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       AP_Indc: 1573853127
-      Kardia_UIAtlas_0: 1553729516
       Kardia_UIAtlas_1: 2037170692
       Kardia_UIAtlas_2: 816221303
       Kardia_UIAtlas_3: 858309278
@@ -1086,6 +1106,7 @@ TextureImporter:
       Kardia_UIAtlas_P3_S3: -110413828
       Kardia_UIAtlas_P3_S4: 861851198
       Kardia_UIAtlas_SkipButton: 923261104
+      Kardia_UIAtlas_UnSelectedChar: 1553729516
       P1_S1: -2000082879
       P1_S2: -524270995
       P1_S3: 1896535530
