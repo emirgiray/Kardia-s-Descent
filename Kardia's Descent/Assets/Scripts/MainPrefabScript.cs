@@ -12,7 +12,7 @@ using UnityEngine.SceneManagement;
 public class MainPrefabScript : MonoBehaviour
 {
     public static MainPrefabScript Instance;
-    public GameObject MainCameraHolder;
+    public Camera MainCamera;
     public SaveLoadSystem SaveLoadSystem;
     public GameManager GameManager;
     public LevelManager LevelManager;
@@ -47,16 +47,16 @@ public class MainPrefabScript : MonoBehaviour
     {
         if (SceneChanger.isOnMainMenu) //if in main menu
         {
-            MainCameraHolder.SetActive(false);
+            MainCamera.enabled = false;
             SaveLoadSystem.loadOnAwake = false;
         }
         else
         {
-            MainCameraHolder.SetActive(true);
+            MainCamera.enabled = true;
             SaveLoadSystem.loadOnAwake = true;
         }
         
-        if (DOTween.Init() == null)
+        /*if (DOTween.Init() == null)
         {
             Debug.Log($"Null dotween");
             DOTween.Init();
@@ -64,7 +64,7 @@ public class MainPrefabScript : MonoBehaviour
         else
         {
             Debug.Log($"dotween");
-        }
+        }*/
 
     }
     public void InitializeLevel()

@@ -8225,21 +8225,6 @@ MonoBehaviour:
   enemies: []
   allEntities: []
   playersGO: []
-  PlayerUnlockedEventTransform:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: FischlWorks_FogWar.csFogWar, Assembly-CSharp-firstpass
-        m_MethodName: AddFogRevealerRevelear
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   GamePausedEvent:
     m_PersistentCalls:
       m_Calls:
@@ -8548,6 +8533,7 @@ MonoBehaviour:
     totalDamageDealt: 0
     totalDamageTaken: 0
     totalHeartsCollected: 0
+    lastScene: 
   saveFilePath: C:/Users/emiry/AppData/LocalLow/DefaultCompany/Kardia's Descent/Saves/
   saveFileFullPath: C:/Users/emiry/AppData/LocalLow/DefaultCompany/Kardia's Descent/Saves/saveFile.json
 --- !u!114 &6222046011016691636
@@ -10454,7 +10440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e76f1fd988601d14c92b23ee681b2ebf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainCameraHolder: {fileID: 2336478616791830259}
+  MainCamera: {fileID: 6139130776220831130}
   SaveLoadSystem: {fileID: 9165005917305822135}
   GameManager: {fileID: 6222046011016691636}
   LevelManager: {fileID: 1476355996276291527}

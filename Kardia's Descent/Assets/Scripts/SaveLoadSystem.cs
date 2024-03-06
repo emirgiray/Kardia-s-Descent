@@ -63,9 +63,10 @@ public class SaveLoadSystem : MonoBehaviour
         {
             int playerIndex = allPlayers.allPlayers.FindIndex(p => p.name.Equals(player.name/* + " Variant"*/));
             Player playerScript = player.GetComponent<Player>();
-            Debug.Log($"Player name: {player.name} Player index: {playerIndex}");
+          //  Debug.Log($"Player name: {player.name} Player index: {playerIndex}");
             if (playerIndex == -1) continue;
 
+            playerScript.AssignSkillValues();
             saveData.playerDatas.Add(new PLayerData
             {
                 playerID = playerIndex,
@@ -124,7 +125,7 @@ public class SaveLoadSystem : MonoBehaviour
 
     private void AssignValues()
     {
-        Debug.Log($"expression");
+      //  Debug.Log($"expression");
         MainPrefabScript.Instance.SelectedPlayers.Clear(); // clear the list if it has values
         
         for (int i = 0; i < saveData.playerDatas.Count; i++) // first tell the mainprefabscript to spawn the players
