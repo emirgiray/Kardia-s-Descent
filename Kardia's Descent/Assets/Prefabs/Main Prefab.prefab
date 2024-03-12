@@ -8526,6 +8526,7 @@ MonoBehaviour:
   encryptData: 0
   allPlayers: {fileID: 11400000, guid: cc6fd88f6d85f664483d2dda6793e81c, type: 2}
   allHeartDatas: {fileID: 11400000, guid: 3205190d312943148bab0c147b621110, type: 2}
+  allSceneTypes: {fileID: 11400000, guid: 9718d308dff3b6e4490a8e268f7aa6d5, type: 2}
   saveData:
     playerDatas: []
     startTime: 
@@ -8534,6 +8535,7 @@ MonoBehaviour:
     totalDamageTaken: 0
     totalHeartsCollected: 0
     lastScene: 
+    remainingSceneTypes: []
   saveFilePath: C:/Users/emiry/AppData/LocalLow/DefaultCompany/Kardia's Descent/Saves/
   saveFileFullPath: C:/Users/emiry/AppData/LocalLow/DefaultCompany/Kardia's Descent/Saves/saveFile.json
 --- !u!114 &6222046011016691636

@@ -263,6 +263,9 @@ MonoBehaviour:
   fogWar: {fileID: 0}
   visibility: 0
   additionalRadius: 0
+  OnVisibilityChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2537837401024849449
 GameObject:
   m_ObjectHideFlags: 0
@@ -940,6 +943,8 @@ MonoBehaviour:
   Bar02: {fileID: 8916734316303707170}
   Bar01_2: {fileID: 0}
   Bar02_2: {fileID: 0}
+  Bar01_3: {fileID: 0}
+  Bar02_3: {fileID: 0}
   BarAnimSpeed: 5
   Bar02Delay: 1
   Dead:
@@ -1071,6 +1076,7 @@ MonoBehaviour:
   _Health: 100
   _HealthAnim: {fileID: 0}
   _HealthAnim_2: {fileID: 0}
+  _HealthAnim_3: {fileID: 0}
 --- !u!114 &964982723527092187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1321,6 +1327,7 @@ MonoBehaviour:
   spawnedSkillButtonPrefabs: []
   spawnTestWeapon: 1
   testWeaponData: {fileID: 11400000, guid: 5f648099aa9d4ef40979b543a77708fd, type: 2}
+  renderTexture: {fileID: 0}
 --- !u!114 &5789014126072821151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1578,6 +1585,9 @@ MonoBehaviour:
   fogWar: {fileID: 0}
   visibility: 0
   additionalRadius: 0
+  OnVisibilityChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &5207586908084094229 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8784419287715875793, guid: ac3393e7e0bd79f4eb348e5d544d370f,
@@ -1810,6 +1820,9 @@ MonoBehaviour:
   fogWar: {fileID: 0}
   visibility: 0
   additionalRadius: 0
+  OnVisibilityChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &7694304149146994981 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -6206277720266400239, guid: b9784524c6ca27d48af6443cddedea93,

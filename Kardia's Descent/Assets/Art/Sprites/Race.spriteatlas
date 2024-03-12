@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Race
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: WebGL
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 4
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 857c24b34d5bc0c4c9d371fe5bff8c5f, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: ffa0d32019b931b4ea69969cffb6c2be, type: 3}
+  - {fileID: 21300000, guid: b02c703087153f445b547f3c975d4062, type: 3}
+  - {fileID: 21300000, guid: 480077513a373d543b778ecc809a08d6, type: 3}
+  - {fileID: 21300000, guid: 73a9fc13168df7c42b3e800e7f21bc53, type: 3}
+  - {fileID: 21300000, guid: 34828b635e34dee458c5324e87645949, type: 3}
+  - {fileID: 21300000, guid: d498d03533e42284aac78e3217db4fbc, type: 3}
+  - {fileID: 21300000, guid: c9257b36bf626164d8754848bed33168, type: 3}
+  - {fileID: 21300000, guid: e5bfcf564e469bb41bd365b3bac60ce3, type: 3}
+  - {fileID: 21300000, guid: e7c87f86c1a04c34e882ee45eac4628c, type: 3}
+  - {fileID: 21300000, guid: d1d288e6e36de144ba9693ed6e04a7ce, type: 3}
+  - {fileID: 21300000, guid: ee529e671ba5b18459356aa737968cec, type: 3}
+  - {fileID: 21300000, guid: f7a98678da7a709409480ae19a713bf1, type: 3}
+  - {fileID: 21300000, guid: 7b72412b048fbf541b9640d3c9332aa4, type: 3}
+  - {fileID: 21300000, guid: 5ca368cb5f7e865448b3b9f9a53f3ce4, type: 3}
+  - {fileID: 21300000, guid: f7f9832d3d618a4409fc21b343ba42d9, type: 3}
+  - {fileID: 21300000, guid: e234ea8d90016214db0fb16e1d1f18b8, type: 3}
+  - {fileID: 21300000, guid: 11be2eed36899eb4b9325bbee8180e18, type: 3}
+  - {fileID: 21300000, guid: d40b4dbf0cf20414cad64b6a6b322d5b, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Offer_Holder_1
+  - Offer_Holder_2
+  - Badge_silver
+  - Arrow_point
+  - Badge_deafult_lock
+  - Arrow_point_off
+  - Badge_gold
+  - Offer_Badge_Gold
+  - Offer_Holder_3
+  - Offer_Silver
+  - Offer_Gold
+  - Offer_Badge_Silver
+  - Time-Race_main_icon
+  - Badge_deafult
+  - Badge_bronze
+  - Offer_Badge_Bronze
+  - Offer_Fog_effect
+  - Offer_Bronze
+  m_RenderDataMap: {}
+  m_Tag: Race
+  m_IsVariant: 0

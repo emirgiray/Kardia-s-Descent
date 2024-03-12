@@ -27,6 +27,8 @@ public class MainPrefabScript : MonoBehaviour
     private List<Transform> PlayerSlots = new();
     private List<GameObject> spawnedPlayers = new();
     public List<Player> spawnedPlayerScripts = new();
+    public List<GameObject> previews = new();
+    public List<GameObject> partyRoundCards = new();
     private csFogWar fogWar;
     public void Awake()
     {
@@ -69,8 +71,8 @@ public class MainPrefabScript : MonoBehaviour
     }
     public void InitializeLevel()
     {
+        ClearPrevious();
         // todo load selected players from save system, also load health values hearts etc (or add players to dont destroy on load)
-        
         fogWar = FindObjectOfType<csFogWar>();
         PlayerSlots = GameObject.Find("Player Slots").GetComponentsInChildren<Transform>().ToList();
         PlayerSlots.RemoveAt(0); //remove the parent transform
@@ -88,9 +90,31 @@ public class MainPrefabScript : MonoBehaviour
             
             GameObject tempPreview = Instantiate(spawnedPlayerScripts[i].PlayerPreview, playerPreviewParent.transform);
             tempPreview.transform.localPosition = new Vector3(i * 10, 0, 0);
+            previews.Add(tempPreview);
             
             GameObject tempPartyRoundCard = Instantiate(PartyRoundCardPrefab, PartyRoundCardsSlot);
             tempPartyRoundCard.GetComponent<CharacterRoundCard>().Init(spawnedPlayerScripts[i], TurnSystem.Instance.RoundInfo.GetComponent<RoundInfo>());
+            partyRoundCards.Add(tempPartyRoundCard);
         }
+    }
+
+    private void ClearPrevious()
+    {
+        foreach (var player in spawnedPlayers)
+        {
+            Destroy(player);
+        }
+        spawnedPlayers.Clear();
+        spawnedPlayerScripts.Clear();
+        foreach (var preview in previews)
+        {
+            Destroy(preview);
+        }
+        previews.Clear();
+        foreach (var card in partyRoundCards)
+        {
+            Destroy(card);
+        }
+        partyRoundCards.Clear();
     }
 }

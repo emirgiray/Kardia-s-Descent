@@ -90,6 +90,11 @@ public class GameManager : MonoBehaviour
         return true;
         
     }
+
+    public void ResetToDefault()
+    {
+        Interact.Instance.ResetToDefault();
+    }
     
     #region Game States
     

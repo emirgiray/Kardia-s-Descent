@@ -19,6 +19,7 @@ public class SaveLoadSystem : MonoBehaviour
     
     public AllPlayers allPlayers;
     public AllHeartDatas allHeartDatas;
+    public AllSceneTypes allSceneTypes;
     public SaveData saveData;
     
     // players
@@ -50,11 +51,13 @@ public class SaveLoadSystem : MonoBehaviour
 
     public void InitAwake()
     {
-        //if (loadOnAwake)
+        if (loadOnAwake)
         {
-            AssignValues();
-            SaveGame();
+            LoadGame();
         }
+
+        AssignValues();
+        SaveGame();
     }
     
     private void GetValues()
@@ -86,6 +89,13 @@ public class SaveLoadSystem : MonoBehaviour
         saveData.totalDamageTaken = GameManager.Instance.totalDamageTaken;
         saveData.totalKills = GameManager.Instance.totalKills;
         saveData.totalHeartsCollected = GameManager.Instance.totalHeartsCollected;
+
+        saveData.remainingSceneTypes.Clear();
+        foreach (var types in allSceneTypes.remainingSceneTypes)
+        {
+            saveData.remainingSceneTypes.Add(types.Scene.SceneName);
+        }
+        
     }
     
     [Button, GUIColor(1f, 0.1f, 1f)]
@@ -164,6 +174,12 @@ public class SaveLoadSystem : MonoBehaviour
             }
         }
         
+        allSceneTypes.remainingSceneTypes.Clear();
+        foreach (var type in saveData.remainingSceneTypes)
+        {
+            allSceneTypes.remainingSceneTypes.Add(allSceneTypes.defaultAllSceneTypes.Find(x => x.Scene.SceneName.Equals(type)));
+        }
+        
         
     }
 
@@ -193,6 +209,7 @@ public class SaveLoadSystem : MonoBehaviour
         if (File.Exists(saveFileFullPath))
         {
             File.Delete(saveFileFullPath);
+            allSceneTypes.ResetToDefault();
         }
     }
     
@@ -245,8 +262,9 @@ public class SaveData
     public int totalHeartsCollected;
     
     public string lastScene;
-    // add player stats, health, items, hearts etc
-    // add current scene, all scene remainingSceneTypes types
+    // add player items
+    // add  all scene remainingSceneTypes types
+    public List<string> remainingSceneTypes = new();
 }
 
 [Serializable]

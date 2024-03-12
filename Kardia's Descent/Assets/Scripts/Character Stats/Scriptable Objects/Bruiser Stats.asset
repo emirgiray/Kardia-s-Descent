@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7218acd798eec4940936a4c347b9d67b, type: 3}
   m_Name: Bruiser Stats
   m_EditorClassIdentifier: 
-  Strength: 10
+  Strength: 8
   Dexterity: 6
   Constitution: 6
   Aiming: 6
-  DefaultStrength: 10
+  DefaultStrength: 8
   DefaultDexterity: 6
   DefaultConstitution: 6
   DefaultAiming: 6

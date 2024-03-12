@@ -927,7 +927,14 @@ public class Interact : MonoBehaviour
         }
     }
 
-    
+    public void ResetToDefault()
+    {
+        Clear();
+        characterSelected = false;
+        selectedCharacter = null;
+        lastSelectedCharacter = null;
+        selectedCharacterSkillContainer = null;
+    }
     /*public void UpdateFreeRoamTargetPosition()
     {
         if (TurnSystem.Instance.turnState == TurnSystem.TurnState.FreeRoamTurn && characterSelected && Input.GetMouseButtonDown(0))

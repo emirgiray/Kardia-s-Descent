@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
+//todo bg colors
 [CreateAssetMenu(fileName = "SceneType", menuName = "ScriptableObjects/ScenesAndTypes/SceneType", order = 0)]
 public class SceneType : ScriptableObject
 {

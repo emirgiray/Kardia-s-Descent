@@ -13,7 +13,7 @@ public class MainMenuController : MonoBehaviour
     [BoxGroup("Lights")] [SerializeField]
     private List<GameObject> Lights = new();
     [BoxGroup("Lights")] [SerializeField]
-    private float lightsDelay = 0.5f;
+    private float lightsDelay = 0.2f;
 
     [BoxGroup("Character")] [SerializeField]
     private Transform characterGOSpawnTransform;
@@ -31,12 +31,15 @@ public class MainMenuController : MonoBehaviour
     private Sprite defaultUnselectedSprite;
     
     [BoxGroup("Character")] [SerializeField]
-    private GameObject spawnedCharacter;
+    public GameObject spawnedCharacter;
     [BoxGroup("Character")] [SerializeField]
     private List<GameObject> SpawnedSkillSprites = new();
 
     [BoxGroup("Skills")] [SerializeField]
     private Transform skillLayoutTransform;
+    [BoxGroup("Skills")][SerializeField] 
+    public RadarChart radarChart;
+
     
     [BoxGroup("Buttons")] [SerializeField]
     private Button startButton;
@@ -47,12 +50,15 @@ public class MainMenuController : MonoBehaviour
     [BoxGroup("Buttons")] [SerializeField]
     public Button continueButton;
     
+    private Quaternion spawnFirstTransform;
     private void Awake()
     {
         if (Instance == null)
             Instance = this;
         else
             Destroy(this);
+
+        spawnFirstTransform = characterGOSpawnTransform.rotation;
     }
 
     private Vector3 lastMousePosition;
@@ -128,15 +134,19 @@ public class MainMenuController : MonoBehaviour
         }
         
         SpawnPlayerPreview(selectionLayoutTransform.GetChild(0).GetComponent<MainMenuCharacterButton>()); //spawn first character
+        selectionLayoutTransform.GetChild(0).GetComponent<MainMenuCharacterButton>(). equipButton.gameObject.SetActive(true);
+        radarChart.SetStats(selectionLayoutTransform.GetChild(0).GetComponent<MainMenuCharacterButton>().characterPrefab.GetComponent<Player>().characterStats);
         selectButton.onClick.AddListener(() =>  selectionLayoutTransform.GetChild(0).GetComponent<MainMenuCharacterButton>().EquipCharacter());
         
     }
 
     public void SpawnPlayerPreview(MainMenuCharacterButton button)
     {
+        if (spawnedCharacter != null && spawnedCharacter.name == button.characterPrefab.name + "(Clone)") return;
         if (spawnedCharacter) Destroy(spawnedCharacter);
+        characterGOSpawnTransform.rotation = spawnFirstTransform;
         spawnedCharacter = Instantiate(button.characterPrefab, characterGOSpawnTransform.position, characterGOSpawnTransform.rotation, characterGOSpawnTransform);
-
+        
         Inventory inventory = spawnedCharacter.GetComponent<Inventory>();
         
         for (int i = 0; i < inventory.testWeaponData.SkillsDataList.Count; i++)
@@ -157,6 +167,9 @@ public class MainMenuController : MonoBehaviour
     public void AddToSelected(MainMenuCharacterButton button)
     {
         selectedLayoutTransform.transform.GetChild(button.index).GetComponent<Image>().sprite = button.characterImage;
+        selectedLayoutTransform.transform.GetChild(button.index).GetChild(0).gameObject.SetActive(true);
+        selectedLayoutTransform.transform.GetChild(button.index).GetChild(0).GetComponent<Button>().onClick.RemoveAllListeners();
+        selectedLayoutTransform.transform.GetChild(button.index).GetChild(0).GetComponent<Button>().onClick.AddListener(()=> button.RemoveCharacter());
         selectedList.Add(button.gameObject);
         startButton.interactable = true;
         //SpawnPlayerPreview(button);
@@ -166,6 +179,7 @@ public class MainMenuController : MonoBehaviour
     {
         selectedLayoutTransform.transform.GetChild(button.index).GetComponent<Image>().sprite = defaultUnselectedSprite;
         selectedList.Remove(button.gameObject);
+        selectedLayoutTransform.transform.GetChild(button.index).GetChild(0).gameObject.SetActive(false);
         
         if (selectedList.Count == 0)
         {

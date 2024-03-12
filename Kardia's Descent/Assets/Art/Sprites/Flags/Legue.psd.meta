@@ -1,0 +1,3768 @@
+fileFormatVersion: 2
+guid: b59518c86cdc9e742b774f11fd1411c6
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 2
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Legue_0
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1864
+        width: 163
+        height: 154
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7df50b7985a754f8fa18751dac97f854
+      internalID: 1678443666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_1
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 1864
+        width: 163
+        height: 154
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3679dbb5e1219461fb04995874e17b5b
+      internalID: 1957891317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_2
+      rect:
+        serializedVersion: 2
+        x: 693
+        y: 1864
+        width: 162
+        height: 154
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c83a9570bb5624848a672c7650b2159e
+      internalID: 574446258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_3
+      rect:
+        serializedVersion: 2
+        x: 967
+        y: 1865
+        width: 248
+        height: 154
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ef320185c1f744099228c23e2c508be
+      internalID: -935684554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_4
+      rect:
+        serializedVersion: 2
+        x: 1281
+        y: 1865
+        width: 248
+        height: 154
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4ec4196ae90a44829781f431c6070b8
+      internalID: 1664526554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_5
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 1634
+        width: 248
+        height: 154
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f465f5bf1c1564a24b28eb2dcfe65e61
+      internalID: -126215958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_6
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 1616
+        width: 248
+        height: 171
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8336dc5d9d4f402bb1033dbfb6ed6b3
+      internalID: 1186376294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_7
+      rect:
+        serializedVersion: 2
+        x: 653
+        y: 1617
+        width: 248
+        height: 170
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19cd87afcb60a4c8e8d271ebdd1bb098
+      internalID: -1038016294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_8
+      rect:
+        serializedVersion: 2
+        x: 964
+        y: 1617
+        width: 243
+        height: 170
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5e99a86eacb94e1480b3efbb8a9d448
+      internalID: 1039014318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_10
+      rect:
+        serializedVersion: 2
+        x: 1254
+        y: 1617
+        width: 302
+        height: 170
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e18441b69ad294f7a81de81d97aaadd5
+      internalID: -361649492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_11
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 1524
+        width: 91
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 223b17b07f61a457e8b39f1ea69e3048
+      internalID: -1475109807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_12
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 1524
+        width: 92
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15b314787abdf451883cbe5cf933c3ae
+      internalID: -1230218323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_13
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 1524
+        width: 92
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f97d928ee785460a87e60c81989be15
+      internalID: 1617435792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_14
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 1524
+        width: 92
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8e90e3445ae841fa959ad1d9279ed5e
+      internalID: 1895596520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_15
+      rect:
+        serializedVersion: 2
+        x: 574
+        y: 1524
+        width: 92
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd8c0a5726d664db1ac52557a336ed84
+      internalID: 950246684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_16
+      rect:
+        serializedVersion: 2
+        x: 712
+        y: 1524
+        width: 93
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73a5eba249da1448683bddfbf4783650
+      internalID: -1907782498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_17
+      rect:
+        serializedVersion: 2
+        x: 853
+        y: 1524
+        width: 91
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43fd91d52d95f495a9bad918e60405b3
+      internalID: -165100934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_18
+      rect:
+        serializedVersion: 2
+        x: 992
+        y: 1527
+        width: 91
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd309eb80c32144d58c1cda7ad64bc9d
+      internalID: -1094174460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_19
+      rect:
+        serializedVersion: 2
+        x: 1131
+        y: 1524
+        width: 92
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f222f13dd9014f4c87122924d83361c
+      internalID: -327985131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_20
+      rect:
+        serializedVersion: 2
+        x: 1271
+        y: 1524
+        width: 91
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4a2564feb7f4416ea9697ec4f0e566e
+      internalID: -1339766337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_21
+      rect:
+        serializedVersion: 2
+        x: 1410
+        y: 1524
+        width: 91
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d7867ec7dfe24efe9937cd323ecb5b3
+      internalID: -1053235353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_22
+      rect:
+        serializedVersion: 2
+        x: 1549
+        y: 1524
+        width: 91
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8760ba69d4b84faa8a22e879e1d34c8
+      internalID: 1938003217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_23
+      rect:
+        serializedVersion: 2
+        x: 1688
+        y: 1524
+        width: 92
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 617297bacbfcb4cde8482f896ce4c2be
+      internalID: -492401950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_24
+      rect:
+        serializedVersion: 2
+        x: 1828
+        y: 1524
+        width: 91
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52926ddd75f55456080a352ab20a1930
+      internalID: -588247027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_25
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 1426
+        width: 91
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b0e837b1126f407ab8a25b618aa694b
+      internalID: 350894212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_26
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 1426
+        width: 96
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95ca77243572d46dea86a5220ff2d764
+      internalID: -26318400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_27
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 1424
+        width: 92
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58d81d08ceed14bc4a96d4179541efc1
+      internalID: 1843397584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_28
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 1426
+        width: 92
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bdbd6122876045fdb42fd7c7417d747
+      internalID: 1799029398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_29
+      rect:
+        serializedVersion: 2
+        x: 574
+        y: 1426
+        width: 92
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c093dfbb6abe7403489cf0d273506d59
+      internalID: 1276827593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_30
+      rect:
+        serializedVersion: 2
+        x: 712
+        y: 1424
+        width: 93
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d86b5ebfd2039449d976ce8d1f592897
+      internalID: 427705188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_31
+      rect:
+        serializedVersion: 2
+        x: 853
+        y: 1426
+        width: 91
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c33af515afaa4358b40e9433409bd9f
+      internalID: 1159379486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_32
+      rect:
+        serializedVersion: 2
+        x: 992
+        y: 1426
+        width: 92
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00c80e40b93e3482b9e56d1da3a32328
+      internalID: -1097469234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_33
+      rect:
+        serializedVersion: 2
+        x: 1131
+        y: 1426
+        width: 92
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 281823ea982874076a8adeb5de88db8f
+      internalID: 1235448304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_34
+      rect:
+        serializedVersion: 2
+        x: 1271
+        y: 1426
+        width: 91
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7689fbb8eb53a44f7950b7f2296c95f9
+      internalID: 27885516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_35
+      rect:
+        serializedVersion: 2
+        x: 1410
+        y: 1426
+        width: 91
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae8a5c3d733d4440b847dfa78eea6fcf
+      internalID: -1473619974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_36
+      rect:
+        serializedVersion: 2
+        x: 1548
+        y: 1426
+        width: 92
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 899d7bd1ac1b149bfa177663ab5c111f
+      internalID: 781286683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_37
+      rect:
+        serializedVersion: 2
+        x: 1688
+        y: 1426
+        width: 92
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57b5b53a9493140c38e57d9851bce35f
+      internalID: -678080246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_38
+      rect:
+        serializedVersion: 2
+        x: 1828
+        y: 1426
+        width: 91
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f64bd664c44054efd99fb2c938bc14c7
+      internalID: 191057957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_39
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 1324
+        width: 91
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 086758dc7728645fc9e8ab92c2864a8d
+      internalID: 1309047047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_40
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 1324
+        width: 92
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2bf6f508fe1e44da8ce032f4f0c0f7e
+      internalID: -730052711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_41
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 1324
+        width: 91
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21d2f63a4ac1b4dc7a9785c8de2f2ff5
+      internalID: 587309168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_42
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 1324
+        width: 91
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2afdd630dca54595bdac04879917afa
+      internalID: -1569366044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_43
+      rect:
+        serializedVersion: 2
+        x: 574
+        y: 1324
+        width: 92
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d12241f8c9ad045d99bda0d334e65cad
+      internalID: 1197523867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_44
+      rect:
+        serializedVersion: 2
+        x: 712
+        y: 1320
+        width: 93
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1484b3bdea937431db33b80169d055b7
+      internalID: -817204380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_45
+      rect:
+        serializedVersion: 2
+        x: 852
+        y: 1320
+        width: 92
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d020693da09154a898608ab30998d78d
+      internalID: 1122112486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_46
+      rect:
+        serializedVersion: 2
+        x: 992
+        y: 1324
+        width: 91
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ab2fd7e16a334e1982bea8c0d62f2d2
+      internalID: -2126514180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_47
+      rect:
+        serializedVersion: 2
+        x: 1131
+        y: 1324
+        width: 92
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20c6b833ebcd645d2899077d1a4b8b0b
+      internalID: 1391477631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_48
+      rect:
+        serializedVersion: 2
+        x: 1268
+        y: 1320
+        width: 96
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3331ae6eab91e478bb6007aa6b25278c
+      internalID: 1748938492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_49
+      rect:
+        serializedVersion: 2
+        x: 1410
+        y: 1320
+        width: 91
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fc478829e6034f469fa29eb2ad8e0ee
+      internalID: 1035965069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_50
+      rect:
+        serializedVersion: 2
+        x: 1549
+        y: 1324
+        width: 91
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f877b7a35a0ed4f5aaf4b32133a5a296
+      internalID: 1220664199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_51
+      rect:
+        serializedVersion: 2
+        x: 1688
+        y: 1324
+        width: 92
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc6b2d7c5133e465b8e8ea6e4234e473
+      internalID: 947965247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_52
+      rect:
+        serializedVersion: 2
+        x: 1828
+        y: 1324
+        width: 91
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7feb720990ca14e2d9e9689973e97e57
+      internalID: 527098220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_53
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 1222
+        width: 91
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 070e10e03296a449f94ecf064ac15507
+      internalID: -1972304660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_54
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 1222
+        width: 92
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82b13c08885914824bb298fac3192f8b
+      internalID: -1455292264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_55
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 1222
+        width: 92
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 059606ae340c54d3897987bdc7afee44
+      internalID: 92958879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_56
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 1222
+        width: 92
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86434bfe2e5ae4cb8bf4f9ae08f5f389
+      internalID: 831352786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_57
+      rect:
+        serializedVersion: 2
+        x: 574
+        y: 1222
+        width: 92
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92bdfd3dd4db84a7f91b5755ee28b800
+      internalID: 1494692181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_58
+      rect:
+        serializedVersion: 2
+        x: 712
+        y: 1222
+        width: 93
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac936ebf9b03c40518e68c771596fa48
+      internalID: 979255031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_59
+      rect:
+        serializedVersion: 2
+        x: 853
+        y: 1222
+        width: 91
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d53022d2dcfe847f9a7af47f743bcc1b
+      internalID: -1602011730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_60
+      rect:
+        serializedVersion: 2
+        x: 992
+        y: 1222
+        width: 91
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 321e6d8db01d64fd9a421bbc75a74bdb
+      internalID: -1637192154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_61
+      rect:
+        serializedVersion: 2
+        x: 1131
+        y: 1222
+        width: 92
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4dd31cf247d848bf94d58e7f6155b3b
+      internalID: 810151804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_62
+      rect:
+        serializedVersion: 2
+        x: 1271
+        y: 1222
+        width: 91
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb176a66eca984bc18ea80c39ffe676f
+      internalID: 1720417894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_63
+      rect:
+        serializedVersion: 2
+        x: 1410
+        y: 1222
+        width: 91
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fb88ba3480114e83a67636eed0a8073
+      internalID: 709249501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_64
+      rect:
+        serializedVersion: 2
+        x: 1548
+        y: 1222
+        width: 92
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50c64219cf1874b179aa900f56861424
+      internalID: 1406326739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_65
+      rect:
+        serializedVersion: 2
+        x: 1688
+        y: 1222
+        width: 92
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c3bfe811ec694eb88a272eae95fb81e
+      internalID: 1181515756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_66
+      rect:
+        serializedVersion: 2
+        x: 1828
+        y: 1222
+        width: 91
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f72829789787941e78b0736a5107e354
+      internalID: 196518228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_67
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 1120
+        width: 92
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 598d6f0256fd44a7099204a6fc311ee4
+      internalID: -1547594197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_68
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 1120
+        width: 92
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04710c92e3c03477f9a537d2be0a7193
+      internalID: -1804829234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_69
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 1120
+        width: 92
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69e6fb0aac6ac4299b22ec4eab6fd550
+      internalID: 323548899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_70
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 1120
+        width: 92
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0850573c224764ccba7164836b0c9201
+      internalID: 1690149227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_71
+      rect:
+        serializedVersion: 2
+        x: 574
+        y: 1120
+        width: 92
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a7cd01f895814a8bbf9b601f875d71f
+      internalID: 736618164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_72
+      rect:
+        serializedVersion: 2
+        x: 712
+        y: 1120
+        width: 93
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5108be2059bb4995a50ae6e6668fda8
+      internalID: 1018728217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_73
+      rect:
+        serializedVersion: 2
+        x: 853
+        y: 1120
+        width: 91
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c459917f4512441187aea0d6f63f852
+      internalID: -1379273562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_74
+      rect:
+        serializedVersion: 2
+        x: 992
+        y: 1120
+        width: 91
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac9f87fb18f194534aaaea405ec8b811
+      internalID: -157268094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_75
+      rect:
+        serializedVersion: 2
+        x: 1131
+        y: 1120
+        width: 92
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a541755226733457ab84123657ded16a
+      internalID: 1066035063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_76
+      rect:
+        serializedVersion: 2
+        x: 1271
+        y: 1120
+        width: 91
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3590cfc67dfc14584b6bd3255c91cd84
+      internalID: -453612671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_77
+      rect:
+        serializedVersion: 2
+        x: 1410
+        y: 1120
+        width: 91
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7670ae85872c547a381bc781c5136914
+      internalID: -1711366712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_78
+      rect:
+        serializedVersion: 2
+        x: 1549
+        y: 1120
+        width: 91
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b02d2b64523fb4e2f9798c0235e98e48
+      internalID: -312797878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_79
+      rect:
+        serializedVersion: 2
+        x: 1688
+        y: 1120
+        width: 92
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fee6a33c692cf4b849e42adbd79c0c98
+      internalID: 1685575836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_80
+      rect:
+        serializedVersion: 2
+        x: 1828
+        y: 1120
+        width: 91
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f521a2bc1f0442faa94d9396c03f988
+      internalID: 1577674013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_81
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 1018
+        width: 91
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9478287427efe440f944a4e7df41d08c
+      internalID: 313871433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_82
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 1018
+        width: 92
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 177349721632a4a9eae65046723557ee
+      internalID: -1587572931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_83
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 1018
+        width: 92
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 205912502351848da85a4d42914c92aa
+      internalID: -1183212669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_84
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 1018
+        width: 92
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 214e8386ca3ed45b7b60281a9f572c2e
+      internalID: 28523420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_85
+      rect:
+        serializedVersion: 2
+        x: 574
+        y: 1018
+        width: 92
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c04ed18ccb5ae413c8e3189dc1901086
+      internalID: 349764384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_86
+      rect:
+        serializedVersion: 2
+        x: 712
+        y: 1018
+        width: 93
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2544737451e44b4d8618a3882d81ed5
+      internalID: 474255526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_87
+      rect:
+        serializedVersion: 2
+        x: 853
+        y: 1018
+        width: 91
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4eca97f9b8d72473d8ceb77f88eb016e
+      internalID: -1256030322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_88
+      rect:
+        serializedVersion: 2
+        x: 992
+        y: 1018
+        width: 91
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62a484f6423b84d35ab8835c0ba4e22e
+      internalID: -1579025525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_89
+      rect:
+        serializedVersion: 2
+        x: 1131
+        y: 1018
+        width: 92
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12e443a210d5b4f80a840aadc9e00b30
+      internalID: -13639824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_90
+      rect:
+        serializedVersion: 2
+        x: 1271
+        y: 1018
+        width: 91
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9abe5fb4c989432493a4b47fb37ab56
+      internalID: 1409772371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_91
+      rect:
+        serializedVersion: 2
+        x: 1410
+        y: 1018
+        width: 91
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3743d57658bc74d659bba2927169bffd
+      internalID: -1612139356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_92
+      rect:
+        serializedVersion: 2
+        x: 1549
+        y: 1018
+        width: 91
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da6f24973f4634d40adb45f0d800d67c
+      internalID: -1955277785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_93
+      rect:
+        serializedVersion: 2
+        x: 1688
+        y: 1018
+        width: 92
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6ae0f9b329574b8cb4f78288fa783b9
+      internalID: -1121015973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_94
+      rect:
+        serializedVersion: 2
+        x: 1828
+        y: 1018
+        width: 91
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c8b1296cc86148599ab75f9d3c8910a
+      internalID: 769894758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_95
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 916
+        width: 91
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60b80f9cf80a54ccfac690d8ee4f5585
+      internalID: 1073313172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_96
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 916
+        width: 92
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38616e8618ba84fbb98ed4bd0db53a27
+      internalID: -1428010719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_97
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 916
+        width: 92
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db900228dacca44bdaede9b538a15342
+      internalID: 825203190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_98
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 916
+        width: 92
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcf0d75b4f9ef4c7bb9f52a64a8cf03d
+      internalID: -1594673410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_99
+      rect:
+        serializedVersion: 2
+        x: 574
+        y: 916
+        width: 92
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e784e05bbe61461b869f40835fe838b
+      internalID: 1361238274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_100
+      rect:
+        serializedVersion: 2
+        x: 712
+        y: 916
+        width: 93
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f5e8c9496b8a485a9e31f6cd0471dae
+      internalID: -1089742611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_101
+      rect:
+        serializedVersion: 2
+        x: 853
+        y: 916
+        width: 91
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c25ee2b0aba5a449f84405a4291bc2c2
+      internalID: 1780794207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_102
+      rect:
+        serializedVersion: 2
+        x: 992
+        y: 916
+        width: 91
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c70959afc62d4299b683c8f56cadb88
+      internalID: 1111247590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_103
+      rect:
+        serializedVersion: 2
+        x: 1131
+        y: 916
+        width: 92
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5997fa6f7677546919302650903d839c
+      internalID: -1076365014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_104
+      rect:
+        serializedVersion: 2
+        x: 1271
+        y: 916
+        width: 91
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b536d2ab683a4e0cb420a5788e2e014
+      internalID: -1666400875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_105
+      rect:
+        serializedVersion: 2
+        x: 1410
+        y: 916
+        width: 91
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d61b681fee8f34007820226df0a7727e
+      internalID: -1918073981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_106
+      rect:
+        serializedVersion: 2
+        x: 1549
+        y: 916
+        width: 91
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33569f7537e10444386934fd3eac0af5
+      internalID: 880193480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_107
+      rect:
+        serializedVersion: 2
+        x: 1688
+        y: 916
+        width: 92
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51f6b96b190d14f3dab3dc17d100265d
+      internalID: -102274988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_108
+      rect:
+        serializedVersion: 2
+        x: 1828
+        y: 916
+        width: 91
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18f0efae0a4b04b5e8121d9dca4feec3
+      internalID: 408636983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_109
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 814
+        width: 91
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d51e9b53d2540402eb53be115048d490
+      internalID: -2017362313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_110
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 814
+        width: 96
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8751dd453ccd4973bdf1ac0aa7cc147
+      internalID: 401104946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_111
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 814
+        width: 93
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: caf2e279551244291aae9f89dc614126
+      internalID: 398412713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_112
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 814
+        width: 92
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a991cfffa1f34eb9af5aac41090133d
+      internalID: -368626274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_113
+      rect:
+        serializedVersion: 2
+        x: 574
+        y: 814
+        width: 92
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93395dc058628487b9f125c2284340e2
+      internalID: -1071031107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_114
+      rect:
+        serializedVersion: 2
+        x: 712
+        y: 814
+        width: 93
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0be492f883f364005b828d9e53f5425f
+      internalID: -1236216500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_115
+      rect:
+        serializedVersion: 2
+        x: 853
+        y: 814
+        width: 91
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d6eed31d2cfa466ea648fc617d0d729
+      internalID: 347325262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_116
+      rect:
+        serializedVersion: 2
+        x: 992
+        y: 814
+        width: 91
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7eaf8f63cdb84443b97152c3b0ede335
+      internalID: 944268331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_117
+      rect:
+        serializedVersion: 2
+        x: 1131
+        y: 814
+        width: 92
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 143173ed552764d058ff69dc0cedf88a
+      internalID: 1138036569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_118
+      rect:
+        serializedVersion: 2
+        x: 1271
+        y: 814
+        width: 91
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c731fbc243ce24ea39d3ee33c09601e9
+      internalID: 1860993667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_119
+      rect:
+        serializedVersion: 2
+        x: 1410
+        y: 814
+        width: 91
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37cf2f0f482ae420ebe7f3b73b6bc7ad
+      internalID: 529419206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_120
+      rect:
+        serializedVersion: 2
+        x: 1549
+        y: 814
+        width: 91
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 905d88857233d4369ad0affb7b5c9713
+      internalID: 2052795920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_121
+      rect:
+        serializedVersion: 2
+        x: 1688
+        y: 814
+        width: 92
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e98650541255468da6a3f54bed41f5b
+      internalID: -2020845565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_122
+      rect:
+        serializedVersion: 2
+        x: 1828
+        y: 814
+        width: 91
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41a564352da9e40b3834942c8f368bfc
+      internalID: -1704847679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_123
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 712
+        width: 91
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bf48b43faa244a4eb2104cf40bf8dc3
+      internalID: -486593907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_124
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 712
+        width: 96
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 742a83ce70e394f19b8997ec3f5771ca
+      internalID: 1139970722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_125
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 712
+        width: 92
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb3d42e1f195a473f905d014672ec32a
+      internalID: 1171542334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_126
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 712
+        width: 92
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 597b6532b2de844bfad74234ac03d86a
+      internalID: -282812941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_127
+      rect:
+        serializedVersion: 2
+        x: 574
+        y: 712
+        width: 92
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6af8f8e1ee0144a7eb73ba5c94c8294a
+      internalID: -1411320465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_128
+      rect:
+        serializedVersion: 2
+        x: 714
+        y: 710
+        width: 92
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd0e2cdb1e675426795dc66756036a23
+      internalID: 1822778072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_129
+      rect:
+        serializedVersion: 2
+        x: 853
+        y: 712
+        width: 91
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 047b800c44d9d480d9ac3543747282b3
+      internalID: -1377511854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_130
+      rect:
+        serializedVersion: 2
+        x: 992
+        y: 712
+        width: 91
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a88fda477e58b4fbd95b745a0ea74380
+      internalID: -1190288276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_131
+      rect:
+        serializedVersion: 2
+        x: 1131
+        y: 712
+        width: 92
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 272700b5804fb4aa8a9baae3b984fe68
+      internalID: -816183471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_132
+      rect:
+        serializedVersion: 2
+        x: 1271
+        y: 712
+        width: 91
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e76d67fa689af4a9b973473e81647639
+      internalID: -1081430233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_133
+      rect:
+        serializedVersion: 2
+        x: 1410
+        y: 712
+        width: 91
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f39dbfe209ad4e8eb29ec562d6b5310
+      internalID: -2127015784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_134
+      rect:
+        serializedVersion: 2
+        x: 1549
+        y: 712
+        width: 91
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 691267efc85aa475f8c06e37ba28660e
+      internalID: -1754729206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_135
+      rect:
+        serializedVersion: 2
+        x: 1688
+        y: 712
+        width: 92
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6311c7bb5006a47e0b884660a230f308
+      internalID: -1459037015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_136
+      rect:
+        serializedVersion: 2
+        x: 1828
+        y: 712
+        width: 91
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a473136b141e3455fa1594056ee7d507
+      internalID: 1765916174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_137
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 611
+        width: 92
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 682ff6d12062c413e807d64370e8912a
+      internalID: 1997428397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_138
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 611
+        width: 92
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6846f7dca84194af79f41401a11ec925
+      internalID: -1108918755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_139
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 611
+        width: 93
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27ef0f0858c8c4e75b53ffb51273c1d2
+      internalID: 1536905119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_140
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 610
+        width: 92
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a75062ecfef74b61bf50d08efd969a0
+      internalID: 660148054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_141
+      rect:
+        serializedVersion: 2
+        x: 574
+        y: 611
+        width: 92
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: daa7030247d084d7cb3886e1f865479d
+      internalID: 91939310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_142
+      rect:
+        serializedVersion: 2
+        x: 712
+        y: 611
+        width: 93
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73045e58ff0f842f49e26eb362ecd9cf
+      internalID: 560029910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_143
+      rect:
+        serializedVersion: 2
+        x: 853
+        y: 611
+        width: 91
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3306bd2fe81ee4a9eb792be3a7af43b9
+      internalID: 470750021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_144
+      rect:
+        serializedVersion: 2
+        x: 992
+        y: 610
+        width: 91
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85402f3d4d6ea44cdb7cf2500c95ff2b
+      internalID: -1951041203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_145
+      rect:
+        serializedVersion: 2
+        x: 1131
+        y: 611
+        width: 92
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d81b025a38e844ba6a443d98fd2190d2
+      internalID: 1572566123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_146
+      rect:
+        serializedVersion: 2
+        x: 1271
+        y: 611
+        width: 91
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e95d63e61d1304e479af35378a4e675a
+      internalID: -147217308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_147
+      rect:
+        serializedVersion: 2
+        x: 1410
+        y: 611
+        width: 92
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45c897a1100e24fc0a57c92fc23a4b78
+      internalID: 2114121345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_148
+      rect:
+        serializedVersion: 2
+        x: 1549
+        y: 611
+        width: 92
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40b4ea6b5096e459a8499dcbbe2b8b01
+      internalID: -1418744480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_149
+      rect:
+        serializedVersion: 2
+        x: 1688
+        y: 611
+        width: 93
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f773ad52c340e4312867309feac047bd
+      internalID: -443106653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_150
+      rect:
+        serializedVersion: 2
+        x: 1828
+        y: 611
+        width: 91
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41cbac2b9b6884d0d88c0bdf014c9ca7
+      internalID: -1935206508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_151
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 509
+        width: 91
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0db72eabc6d8145c0abf160a12a07e78
+      internalID: -1882872227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_152
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 509
+        width: 96
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01bf6ee47ea674342a3036d9ffcea756
+      internalID: -1545134422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_153
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 509
+        width: 92
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab1bee77f2b12416b95a5221c7b45cc4
+      internalID: 1016951110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_154
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 509
+        width: 92
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 404deddc0c14745c88434f145c5b68fc
+      internalID: -1475038407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_155
+      rect:
+        serializedVersion: 2
+        x: 574
+        y: 509
+        width: 92
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1695eff09b3c143a19fd9784cc2575e8
+      internalID: -1544240099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_156
+      rect:
+        serializedVersion: 2
+        x: 712
+        y: 509
+        width: 93
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f27dcab88a0c74785a2c960a29004d5c
+      internalID: -376938640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_157
+      rect:
+        serializedVersion: 2
+        x: 853
+        y: 508
+        width: 91
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43753d07b2b8a4976a92ecbed47931ab
+      internalID: 259172332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_158
+      rect:
+        serializedVersion: 2
+        x: 992
+        y: 509
+        width: 91
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c29a16da82bd74034a71f3990d3e8015
+      internalID: -919589392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_159
+      rect:
+        serializedVersion: 2
+        x: 1131
+        y: 509
+        width: 92
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 297091d63d7b24d60877ac3f10879304
+      internalID: 1426554784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_160
+      rect:
+        serializedVersion: 2
+        x: 1271
+        y: 509
+        width: 93
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 911e3a64ae8b647d3a6d1191d94bbc71
+      internalID: -567302947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_161
+      rect:
+        serializedVersion: 2
+        x: 1410
+        y: 510
+        width: 92
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e3a69325149f4fbbad27b2e8c79d5bb
+      internalID: 251194079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_162
+      rect:
+        serializedVersion: 2
+        x: 1549
+        y: 510
+        width: 92
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39b091a1a16c1477aae8a1e3a02b3e7d
+      internalID: -1068688051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_163
+      rect:
+        serializedVersion: 2
+        x: 1688
+        y: 509
+        width: 92
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4725dd410f8a4aeb802b828e8d885eb
+      internalID: 517092563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legue_164
+      rect:
+        serializedVersion: 2
+        x: 1828
+        y: 509
+        width: 92
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ce9a7a92985a418f8da4150bd6f0a4c
+      internalID: -144831430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 73ef5a5c2ab0c4b2d88e1981ab38c3d3
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Legue_0: 1678443666
+      Legue_1: 1957891317
+      Legue_10: -361649492
+      Legue_100: -1089742611
+      Legue_101: 1780794207
+      Legue_102: 1111247590
+      Legue_103: -1076365014
+      Legue_104: -1666400875
+      Legue_105: -1918073981
+      Legue_106: 880193480
+      Legue_107: -102274988
+      Legue_108: 408636983
+      Legue_109: -2017362313
+      Legue_11: -1475109807
+      Legue_110: 401104946
+      Legue_111: 398412713
+      Legue_112: -368626274
+      Legue_113: -1071031107
+      Legue_114: -1236216500
+      Legue_115: 347325262
+      Legue_116: 944268331
+      Legue_117: 1138036569
+      Legue_118: 1860993667
+      Legue_119: 529419206
+      Legue_12: -1230218323
+      Legue_120: 2052795920
+      Legue_121: -2020845565
+      Legue_122: -1704847679
+      Legue_123: -486593907
+      Legue_124: 1139970722
+      Legue_125: 1171542334
+      Legue_126: -282812941
+      Legue_127: -1411320465
+      Legue_128: 1822778072
+      Legue_129: -1377511854
+      Legue_13: 1617435792
+      Legue_130: -1190288276
+      Legue_131: -816183471
+      Legue_132: -1081430233
+      Legue_133: -2127015784
+      Legue_134: -1754729206
+      Legue_135: -1459037015
+      Legue_136: 1765916174
+      Legue_137: 1997428397
+      Legue_138: -1108918755
+      Legue_139: 1536905119
+      Legue_14: 1895596520
+      Legue_140: 660148054
+      Legue_141: 91939310
+      Legue_142: 560029910
+      Legue_143: 470750021
+      Legue_144: -1951041203
+      Legue_145: 1572566123
+      Legue_146: -147217308
+      Legue_147: 2114121345
+      Legue_148: -1418744480
+      Legue_149: -443106653
+      Legue_15: 950246684
+      Legue_150: -1935206508
+      Legue_151: -1882872227
+      Legue_152: -1545134422
+      Legue_153: 1016951110
+      Legue_154: -1475038407
+      Legue_155: -1544240099
+      Legue_156: -376938640
+      Legue_157: 259172332
+      Legue_158: -919589392
+      Legue_159: 1426554784
+      Legue_16: -1907782498
+      Legue_160: -567302947
+      Legue_161: 251194079
+      Legue_162: -1068688051
+      Legue_163: 517092563
+      Legue_164: -144831430
+      Legue_17: -165100934
+      Legue_18: -1094174460
+      Legue_19: -327985131
+      Legue_2: 574446258
+      Legue_20: -1339766337
+      Legue_21: -1053235353
+      Legue_22: 1938003217
+      Legue_23: -492401950
+      Legue_24: -588247027
+      Legue_25: 350894212
+      Legue_26: -26318400
+      Legue_27: 1843397584
+      Legue_28: 1799029398
+      Legue_29: 1276827593
+      Legue_3: -935684554
+      Legue_30: 427705188
+      Legue_31: 1159379486
+      Legue_32: -1097469234
+      Legue_33: 1235448304
+      Legue_34: 27885516
+      Legue_35: -1473619974
+      Legue_36: 781286683
+      Legue_37: -678080246
+      Legue_38: 191057957
+      Legue_39: 1309047047
+      Legue_4: 1664526554
+      Legue_40: -730052711
+      Legue_41: 587309168
+      Legue_42: -1569366044
+      Legue_43: 1197523867
+      Legue_44: -817204380
+      Legue_45: 1122112486
+      Legue_46: -2126514180
+      Legue_47: 1391477631
+      Legue_48: 1748938492
+      Legue_49: 1035965069
+      Legue_5: -126215958
+      Legue_50: 1220664199
+      Legue_51: 947965247
+      Legue_52: 527098220
+      Legue_53: -1972304660
+      Legue_54: -1455292264
+      Legue_55: 92958879
+      Legue_56: 831352786
+      Legue_57: 1494692181
+      Legue_58: 979255031
+      Legue_59: -1602011730
+      Legue_6: 1186376294
+      Legue_60: -1637192154
+      Legue_61: 810151804
+      Legue_62: 1720417894
+      Legue_63: 709249501
+      Legue_64: 1406326739
+      Legue_65: 1181515756
+      Legue_66: 196518228
+      Legue_67: -1547594197
+      Legue_68: -1804829234
+      Legue_69: 323548899
+      Legue_7: -1038016294
+      Legue_70: 1690149227
+      Legue_71: 736618164
+      Legue_72: 1018728217
+      Legue_73: -1379273562
+      Legue_74: -157268094
+      Legue_75: 1066035063
+      Legue_76: -453612671
+      Legue_77: -1711366712
+      Legue_78: -312797878
+      Legue_79: 1685575836
+      Legue_8: 1039014318
+      Legue_80: 1577674013
+      Legue_81: 313871433
+      Legue_82: -1587572931
+      Legue_83: -1183212669
+      Legue_84: 28523420
+      Legue_85: 349764384
+      Legue_86: 474255526
+      Legue_87: -1256030322
+      Legue_88: -1579025525
+      Legue_89: -13639824
+      Legue_9: -1187148303
+      Legue_90: 1409772371
+      Legue_91: -1612139356
+      Legue_92: -1955277785
+      Legue_93: -1121015973
+      Legue_94: 769894758
+      Legue_95: 1073313172
+      Legue_96: -1428010719
+      Legue_97: 825203190
+      Legue_98: -1594673410
+      Legue_99: 1361238274
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -45,13 +45,14 @@ public class SceneChanger : MonoBehaviour
                 continue;
             }
             
-            possibleNextScenes.Add(allSceneTypes.remainingSceneTypes[randomScene]);
+            SceneType temp = allSceneTypes.remainingSceneTypes[randomScene];
+            possibleNextScenes.Add(temp);
 
-            UIManager.Instance.SpawnSceneTypeButtons(possibleNextScenes[i].typeImage, possibleNextScenes[i].typeName.ToString(), ()=>
+            UIManager.Instance.SpawnSceneTypeButtons(temp.typeImage, temp.typeName.ToString(), ()=>
             {
-                allSceneTypes.RemoveSceneType(possibleNextScenes[i]);
+                allSceneTypes.RemoveSceneType(temp);
                 //ChangeScene(possibleNextScenes[i].Scene.SceneName);
-                StartCoroutine(ChangeSceneDelay(possibleNextScenes[i].Scene.SceneName)); 
+                StartCoroutine(ChangeSceneDelay(temp.Scene.SceneName)); 
                 UIManager.Instance.ClearSceneTypeButtons();
                 possibleNextScenes.Clear();
             });
@@ -79,6 +80,7 @@ public class SceneChanger : MonoBehaviour
     public void ChangeScene(string Value)
     {
         SaveLoadSystem.Instance.saveData.lastScene = Value;
+        GameManager.Instance.ResetToDefault();
         //SaveLoadSystem.Instance.SaveGame();
         SceneManager.LoadSceneAsync(Value,LoadSceneMode.Single);
     }
