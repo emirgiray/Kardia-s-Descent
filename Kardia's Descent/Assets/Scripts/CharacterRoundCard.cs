@@ -77,7 +77,7 @@ public class CharacterRoundCard : MonoBehaviour
         
         if (click % 2 == 0)
         {
-            Interact.Instance.CharacterSelectedAction?.Invoke(character.characterTile);
+            Interact.Instance.CharacterSelectedAction?.Invoke(character.characterTile, 0.5f);
 
             if (character is Player)
             {

@@ -8359,6 +8359,7 @@ MonoBehaviour:
   players: []
   enemies: []
   allEntities: []
+  cameraTransform: {fileID: 0}
   playersGO: []
   GamePausedEvent:
     m_PersistentCalls:
@@ -10583,6 +10584,7 @@ MonoBehaviour:
   GameManager: {fileID: 6222046011016691636}
   LevelManager: {fileID: 1476355996276291527}
   SceneChanger: {fileID: 4304799865440428433}
+  Interact: {fileID: 1496949621526387923}
   SelectedPlayers: []
   InventoryUISlots:
   - {fileID: 1027863488603791439}
@@ -10595,6 +10597,7 @@ MonoBehaviour:
   spawnedPlayerScripts: []
   previews: []
   partyRoundCards: []
+  inventoryUIs: []
 --- !u!1 &7760350633488948628
 GameObject:
   m_ObjectHideFlags: 0

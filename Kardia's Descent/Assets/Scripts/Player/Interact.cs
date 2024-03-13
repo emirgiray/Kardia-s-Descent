@@ -57,7 +57,7 @@ public class Interact : MonoBehaviour
     [SerializeField]LayerMask interactMask;
     [SerializeField]LayerMask UILayerMask;
     public Action<Tile> CurrentTileChangedAction;
-    public Action<Tile> CharacterSelectedAction;
+    public Action<Tile, float> CharacterSelectedAction;
     //Debug purposes only
     [SerializeField]
     bool debug;
@@ -930,10 +930,20 @@ public class Interact : MonoBehaviour
     public void ResetToDefault()
     {
         Clear();
+        if (currentTile.isCoveredByCoverPoint) InspectTileCoverIconGO.SetActive(false);
+        selectedCharacter.GetComponent<Inventory>().ShowSkillsUI(false);
+        selectedCharacter.outline.enabled = false;
         characterSelected = false;
-        selectedCharacter = null;
-        lastSelectedCharacter = null;
+        ClearHighlightReachableTiles();
+        // selectedCharacter.pathfinder.EnableIllustratePath(false);
+        selectedCharacter.pathfinder.ClearIllustratedPath();
+        selectedCharacterSkillContainer.skillSelected = false;
         selectedCharacterSkillContainer = null;
+        selectedCharacter = null;
+    
+        TooltipSystem.Hide();
+        lastSelectedCharacter = null;
+        reachableTiles.Clear();
     }
     /*public void UpdateFreeRoamTargetPosition()
     {

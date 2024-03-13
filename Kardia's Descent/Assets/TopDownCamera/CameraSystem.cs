@@ -49,10 +49,10 @@ namespace CodeMonkey.CameraSystem {
             Interact.Instance.CharacterSelectedAction -= OnCharacterSelected;
         }
 
-        public void OnCharacterSelected(Tile characterTile)
+        public void OnCharacterSelected(Tile characterTile, float lerpTime = 0.5f)
         {
             Vector3 targetPosition = characterTile.transform.position;
-            transform.DOMove(targetPosition, 0.5f).SetEase(Ease.Linear);
+            transform.DOMove(targetPosition, lerpTime).SetEase(Ease.Linear);
             
             followOffset.y =  staticFollowRangey;
                 Mathf.Clamp(followOffset.y, followOffsetYMinMax.x, followOffsetYMinMax.y);

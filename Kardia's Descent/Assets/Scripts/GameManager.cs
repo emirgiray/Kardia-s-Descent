@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
             Destroy(this);
     }
     
-    public void StartRun()
+    public void StartRun() // this fires once the player presses start
     {
         MainPrefabScript.Instance.SelectedPlayers = SelectedPlayers;
         startTime = DateTime.Now;

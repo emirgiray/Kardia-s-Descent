@@ -17,7 +17,7 @@ public class MainPrefabScript : MonoBehaviour
     public GameManager GameManager;
     public LevelManager LevelManager;
     public SceneChanger SceneChanger;
-    
+    public Interact Interact;
     public List<GameObject> SelectedPlayers = new();
     public List<GameObject> InventoryUISlots = new();
 
@@ -26,9 +26,11 @@ public class MainPrefabScript : MonoBehaviour
     
     private List<Transform> PlayerSlots = new();
     private List<GameObject> spawnedPlayers = new();
+    [HideInInspector]
     public List<Player> spawnedPlayerScripts = new();
-    public List<GameObject> previews = new();
-    public List<GameObject> partyRoundCards = new();
+    private List<GameObject> previews = new();
+    private List<GameObject> partyRoundCards = new();
+    private List<GameObject> inventoryUIs = new();
     private csFogWar fogWar;
     public void Awake()
     {
@@ -56,6 +58,7 @@ public class MainPrefabScript : MonoBehaviour
         {
             MainCamera.enabled = true;
             SaveLoadSystem.loadOnAwake = true;
+            
         }
         
         /*if (DOTween.Init() == null)
@@ -77,7 +80,7 @@ public class MainPrefabScript : MonoBehaviour
         PlayerSlots = GameObject.Find("Player Slots").GetComponentsInChildren<Transform>().ToList();
         PlayerSlots.RemoveAt(0); //remove the parent transform
         GameObject playerPreviewParent = GameObject.Find("Player Preview");
-        
+
         for (int i = 0; i < SelectedPlayers.Count; i++)
         {
             GameObject temp = Instantiate(SelectedPlayers[i], PlayerSlots[i].position, PlayerSlots[i].rotation/*, CharacterSlots[i]*/);
@@ -96,16 +99,24 @@ public class MainPrefabScript : MonoBehaviour
             tempPartyRoundCard.GetComponent<CharacterRoundCard>().Init(spawnedPlayerScripts[i], TurnSystem.Instance.RoundInfo.GetComponent<RoundInfo>());
             partyRoundCards.Add(tempPartyRoundCard);
         }
+        
+        Interact.Instance.CharacterSelectedAction?.Invoke(spawnedPlayerScripts[0].characterTile, 0.001f);
     }
 
     private void ClearPrevious()
     {
+        foreach (var playerS in spawnedPlayerScripts)
+        {
+            Destroy(playerS.inventory.SpawnedInventoryUI);
+        }
+        spawnedPlayerScripts.Clear();
+        
         foreach (var player in spawnedPlayers)
         {
             Destroy(player);
         }
         spawnedPlayers.Clear();
-        spawnedPlayerScripts.Clear();
+        
         foreach (var preview in previews)
         {
             Destroy(preview);

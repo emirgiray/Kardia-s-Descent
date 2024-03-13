@@ -11,7 +11,14 @@ public class TooltipSystem : MonoBehaviour
     
     private void Awake()
     {
-        current = this;
+        if (current != null)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            current = this;
+        }
     }
     
     public static void Show(string content, string header, Vector3 pos)

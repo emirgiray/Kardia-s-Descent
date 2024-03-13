@@ -26,7 +26,7 @@ public class Inventory : MonoBehaviour
     [BoxGroup("UI")] [SerializeField] private GameObject InventoryUI;
     [BoxGroup("UI")] [SerializeField] public GameObject InventoryUISlot;
 
-    [BoxGroup("UI")] [SerializeField] [ReadOnly] private GameObject SpawnedInventoryUI;
+    [BoxGroup("UI")] [SerializeField] [ReadOnly] public GameObject SpawnedInventoryUI;
     [BoxGroup("UI")] [SerializeField] [ReadOnly] private InventoryUI SpawnedInventoryUIScript;
     //[BoxGroup("UI")] [SerializeField] private GameObject skillsUI;
     //[BoxGroup("UI")] [SerializeField] private GameObject horizontalLayoutGroup;
