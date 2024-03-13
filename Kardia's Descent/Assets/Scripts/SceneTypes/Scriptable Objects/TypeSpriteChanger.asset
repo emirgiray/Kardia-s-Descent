@@ -15,15 +15,22 @@ MonoBehaviour:
   typeSpritesList:
   - typeName: 0
     sprite: {fileID: 21300026, guid: 7ab74e659e1f0a34d9cfec21c478fc12, type: 3}
+    bgColor: {r: 1, g: 1, b: 1, a: 1}
   - typeName: 1
     sprite: {fileID: 21300000, guid: a20dfa1f1493e8943ac3290a4f43927a, type: 3}
+    bgColor: {r: 0.2754717, g: 0.2754717, b: 0.2754717, a: 1}
   - typeName: 2
     sprite: {fileID: 21300000, guid: 4acda4e6d4c7e1f4bbb2748777012805, type: 3}
+    bgColor: {r: 1, g: 0.49375945, b: 0, a: 1}
   - typeName: 3
     sprite: {fileID: 21300000, guid: 978f5921e87d04a7f88a2dc6c330fab2, type: 3}
+    bgColor: {r: 1, g: 0.073584795, b: 0.073584795, a: 1}
   - typeName: 4
     sprite: {fileID: 21300000, guid: cb66ca581d8564707be250f982c44273, type: 3}
+    bgColor: {r: 1, g: 0.9789965, b: 0, a: 1}
   - typeName: 5
     sprite: {fileID: 21300000, guid: 9b1e04cfc9221400ea1cefec3dfaa278, type: 3}
+    bgColor: {r: 0.39581847, g: 1, b: 0, a: 1}
   - typeName: 6
     sprite: {fileID: 21300000, guid: ea01d4cf1a1584b888fd8c1e1e82143d, type: 3}
+    bgColor: {r: 0.390566, g: 0.7548566, b: 1, a: 1}

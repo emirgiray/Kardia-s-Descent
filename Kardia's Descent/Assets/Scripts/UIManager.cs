@@ -183,11 +183,12 @@ public class UIManager : MonoBehaviour
     }
 
     List<GameObject> spawnedSceneTypes = new();
-    public void SpawnSceneTypeButtons(Sprite spriteIn, string nameIn, UnityAction callbackIn)
+    public void SpawnSceneTypeButtons(Sprite spriteIn, string nameIn, Color colorIn, UnityAction callbackIn)
     {
         possibleNextScenesBG.SetActive(true);
         GameObject temp = Instantiate(sceneTypesPrefab, possibleNextScenesParent);
         spawnedSceneTypes.Add(temp);
+        temp.GetComponent<Image>().color = colorIn;
         temp.transform.GetChild(0).GetComponent<Image>().sprite = spriteIn;
         temp.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = nameIn;
         temp.GetComponent<Button>().onClick.AddListener(callbackIn);

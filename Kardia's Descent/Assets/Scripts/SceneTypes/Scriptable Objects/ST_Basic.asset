@@ -16,6 +16,7 @@ MonoBehaviour:
     m_SceneAsset: {fileID: 102900000, guid: ba986e8c8220ee2499bd96657401bdeb, type: 3}
     m_SceneName: ST_Basic
   typeImage: {fileID: 21300000, guid: a20dfa1f1493e8943ac3290a4f43927a, type: 3}
+  bgColor: {r: 0.2754717, g: 0.2754717, b: 0.2754717, a: 1}
   typeName: 1
   changeSpriteByType: 1
   TypeSpriteChanger: {fileID: 11400000, guid: ef0fabc02a3c6c84790a9bdec38b6c5d, type: 2}

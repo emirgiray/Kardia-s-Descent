@@ -4,11 +4,13 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 
 [Serializable]
-public struct SerializableTypeSprite
+public class SerializableTypeSprite
 {
     public SceneType.TypeName typeName;
     [PreviewField(Height = 50, Alignment = ObjectFieldAlignment.Left)]
     public Sprite sprite;
+
+    public Color bgColor = Color.white;
 }
 
 [CreateAssetMenu(fileName = "TypeSpriteChanger", menuName = "ScriptableObjects/ScenesAndTypes/TypeSpriteChanger", order = 0)]
@@ -41,6 +43,11 @@ public class TypeSpriteChanger : ScriptableObject
             Debug.LogWarning($"No sprite found for type name: {typeName}");
             return null;
         }
+    }
+    
+    public Color GetTypeColor(SceneType.TypeName typeName)
+    {
+        return typeSpritesList.Find(x => x.typeName == typeName).bgColor;
     }
     
     private void OnValidate()

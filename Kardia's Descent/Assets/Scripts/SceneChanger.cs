@@ -48,7 +48,7 @@ public class SceneChanger : MonoBehaviour
             SceneType temp = allSceneTypes.remainingSceneTypes[randomScene];
             possibleNextScenes.Add(temp);
 
-            UIManager.Instance.SpawnSceneTypeButtons(temp.typeImage, temp.typeName.ToString(), ()=>
+            UIManager.Instance.SpawnSceneTypeButtons(temp.typeImage, temp.typeName.ToString(), temp.bgColor, ()=>
             {
                 allSceneTypes.RemoveSceneType(temp);
                 //ChangeScene(possibleNextScenes[i].Scene.SceneName);

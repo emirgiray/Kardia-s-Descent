@@ -16,7 +16,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 37341b455bc0248419d4e3995417f15f, type: 2}
   - {fileID: 11400000, guid: 7f53ec7a85e8fd94b9806f1603b8d798, type: 2}
   - {fileID: 11400000, guid: ec684a7af18f40a4bb7364afb9b347df, type: 2}
+  - {fileID: 11400000, guid: 7f53ec7a85e8fd94b9806f1603b8d798, type: 2}
+  - {fileID: 11400000, guid: 7f53ec7a85e8fd94b9806f1603b8d798, type: 2}
+  - {fileID: 11400000, guid: 7f53ec7a85e8fd94b9806f1603b8d798, type: 2}
   defaultAllSceneTypes:
   - {fileID: 11400000, guid: 37341b455bc0248419d4e3995417f15f, type: 2}
   - {fileID: 11400000, guid: 7f53ec7a85e8fd94b9806f1603b8d798, type: 2}
   - {fileID: 11400000, guid: ec684a7af18f40a4bb7364afb9b347df, type: 2}
+  - {fileID: 11400000, guid: 2f4a336bc7c03004fab918d00dfe0cd0, type: 2}
+  - {fileID: 11400000, guid: e150affc6813b7d43bd0a33b50f2b029, type: 2}
+  - {fileID: 11400000, guid: ece80e29f300ac740a9bd52b080f5523, type: 2}
