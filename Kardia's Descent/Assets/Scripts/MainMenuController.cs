@@ -22,6 +22,10 @@ public class MainMenuController : MonoBehaviour
     [BoxGroup("Character")] [SerializeField]
     private GameObject characterButtonPrefab;
     [BoxGroup("Character")] [SerializeField]
+    public List<MainMenuCharacterButton> allButtons = new();
+    [BoxGroup("Character")] [SerializeField]
+    public MainMenuCharacterButton selectedChar;
+    [BoxGroup("Character")] [SerializeField]
     private Transform selectionLayoutTransform;
     [BoxGroup("Character")] [SerializeField]
     private Transform selectedLayoutTransform;
@@ -43,8 +47,8 @@ public class MainMenuController : MonoBehaviour
     
     [BoxGroup("Buttons")] [SerializeField]
     private Button startButton;
-    [BoxGroup("Buttons")] [SerializeField]
-    public Button selectButton;
+    /*[BoxGroup("Buttons")] [SerializeField]
+    public Button selectButton;*/
     [BoxGroup("Buttons")] [SerializeField]
     private Button newGameButton;
     [BoxGroup("Buttons")] [SerializeField]
@@ -126,6 +130,7 @@ public class MainMenuController : MonoBehaviour
             
             var temp = Instantiate(characterButtonPrefab, selectionLayoutTransform);
             MainMenuCharacterButton charButton = temp.GetComponent<MainMenuCharacterButton>();
+            allButtons.Add(charButton);
             charButton.characterPrefab = playerScript.playerPrefab;
             charButton.characterName = player.name;
             charButton.isUnlocked = playerScript.isUnlocked;
@@ -133,10 +138,13 @@ public class MainMenuController : MonoBehaviour
 
         }
         
-        SpawnPlayerPreview(selectionLayoutTransform.GetChild(0).GetComponent<MainMenuCharacterButton>()); //spawn first character
-        selectionLayoutTransform.GetChild(0).GetComponent<MainMenuCharacterButton>(). equipButton.gameObject.SetActive(true);
-        radarChart.SetStats(selectionLayoutTransform.GetChild(0).GetComponent<MainMenuCharacterButton>().characterPrefab.GetComponent<Player>().characterStats);
-        selectButton.onClick.AddListener(() =>  selectionLayoutTransform.GetChild(0).GetComponent<MainMenuCharacterButton>().EquipCharacter());
+        MainMenuCharacterButton firstButton = selectionLayoutTransform.GetChild(0).GetComponent<MainMenuCharacterButton>();
+        SpawnPlayerPreview(firstButton); //spawn first character
+        firstButton.equipButton.gameObject.SetActive(true);
+        radarChart.SetStats(firstButton.characterPrefab.GetComponent<Player>().characterStats);
+        firstButton.selectedImage.SetActive(true);
+        selectedChar = firstButton;
+        // selectButton.onClick.AddListener(() =>  selectionLayoutTransform.GetChild(0).GetComponent<MainMenuCharacterButton>().EquipCharacter());
         
     }
 
@@ -211,5 +219,14 @@ public class MainMenuController : MonoBehaviour
     {
         SaveLoadSystem.Instance.LoadGame();
         SceneChanger.Instance.ChangeScene(SaveLoadSystem.Instance.saveData.lastScene);
+    }
+    
+    public void SelectedCharacterChanged()
+    {
+        foreach (var button in allButtons)
+        { 
+            button.equipButton.gameObject.SetActive(button == selectedChar && !button.equipped);
+            button.selectedImage.SetActive(button == selectedChar);
+        }
     }
 }

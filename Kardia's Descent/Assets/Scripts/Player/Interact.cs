@@ -930,17 +930,20 @@ public class Interact : MonoBehaviour
     public void ResetToDefault()
     {
         Clear();
-        if (currentTile.isCoveredByCoverPoint) InspectTileCoverIconGO.SetActive(false);
-        selectedCharacter.GetComponent<Inventory>().ShowSkillsUI(false);
-        selectedCharacter.outline.enabled = false;
-        characterSelected = false;
-        ClearHighlightReachableTiles();
-        // selectedCharacter.pathfinder.EnableIllustratePath(false);
-        selectedCharacter.pathfinder.ClearIllustratedPath();
-        selectedCharacterSkillContainer.skillSelected = false;
-        selectedCharacterSkillContainer = null;
+        if (currentTile != null && currentTile.isCoveredByCoverPoint) InspectTileCoverIconGO.SetActive(false);
+        if (selectedCharacter != null)
+        {
+            selectedCharacter.GetComponent<Inventory>().ShowSkillsUI(false);
+            selectedCharacter.outline.enabled = false;
+            ClearHighlightReachableTiles();
+            // selectedCharacter.pathfinder.EnableIllustratePath(false);
+            selectedCharacter.pathfinder.ClearIllustratedPath();
+            selectedCharacterSkillContainer.skillSelected = false;
+            selectedCharacterSkillContainer = null;
+        }
+
         selectedCharacter = null;
-    
+        characterSelected = false;
         TooltipSystem.Hide();
         lastSelectedCharacter = null;
         reachableTiles.Clear();

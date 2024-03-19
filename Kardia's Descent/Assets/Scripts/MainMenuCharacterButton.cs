@@ -9,11 +9,13 @@ public class MainMenuCharacterButton : MonoBehaviour
     public string characterName;
     public int index = -1;
     public bool isUnlocked;
+    public bool equipped = false;
     public Button equipButton;
+    public GameObject selectedImage;
+    public GameObject equippedImage;
     [SerializeField] private Button button;
     [SerializeField] private Image selfImage;
     [SerializeField] private Image lockImage;
-    [SerializeField] private bool equipped = false;
     
     private void Start()
     {
@@ -25,12 +27,14 @@ public class MainMenuCharacterButton : MonoBehaviour
     private void SelectCharacter()
     {
         MainMenuController.Instance.SpawnPlayerPreview(this);
+        MainMenuController.Instance.selectedChar = this;
         
         MainMenuController.Instance.radarChart.SetStats(characterPrefab.GetComponent<Player>().characterStats);
-        MainMenuController.Instance.selectButton.onClick.RemoveAllListeners();
-        MainMenuController.Instance.selectButton.onClick.AddListener(equipped ? RemoveCharacter : EquipCharacter);
-        MainMenuController.Instance.selectButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = equipped ? "Remove" : "Select";
+        // MainMenuController.Instance.selectButton.onClick.RemoveAllListeners();
+        // MainMenuController.Instance.selectButton.onClick.AddListener(equipped ? RemoveCharacter : EquipCharacter);
+        // MainMenuController.Instance.selectButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = equipped ? "Remove" : "Select";
         equipButton.gameObject.SetActive(!equipped);
+        selectedImage.SetActive(true);
     }
 
     public void EquipCharacter()
@@ -41,6 +45,7 @@ public class MainMenuCharacterButton : MonoBehaviour
             index = GameManager.Instance.SelectedPlayers.Count - 1;
             MainMenuController.Instance.AddToSelected(this);
             UpdateButton(RemoveCharacter, "Remove");
+            equippedImage.SetActive(true);
         }
     }
 
@@ -55,18 +60,21 @@ public class MainMenuCharacterButton : MonoBehaviour
             equipped = false;
             MainMenuController.Instance.RemoveFromSelected(this);
             index = -1;
+            MainMenuController.Instance.SelectedCharacterChanged();
+            equippedImage.SetActive(false);
         }
     }
     
     public void UpdateButton(UnityEngine.Events.UnityAction action, string text)
     {
-        MainMenuController.Instance.selectButton.onClick.RemoveAllListeners();
-        MainMenuController.Instance.selectButton.onClick.AddListener(action);
-        MainMenuController.Instance.selectButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = text;
+        // MainMenuController.Instance.selectButton.onClick.RemoveAllListeners();
+        // MainMenuController.Instance.selectButton.onClick.AddListener(action);
+        // MainMenuController.Instance.selectButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = text;
     }
 
     public void ButtonClicked()
     {
         SelectCharacter();
+        MainMenuController.Instance.SelectedCharacterChanged();
     }
 }

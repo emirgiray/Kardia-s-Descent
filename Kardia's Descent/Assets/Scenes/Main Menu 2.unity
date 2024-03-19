@@ -13121,6 +13121,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1199471052}
+        m_TargetAssemblyTypeName: MainMenuController, Assembly-CSharp
+        m_MethodName: StartSelection
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onPlay:
     m_PersistentCalls:
       m_Calls: []
@@ -13156,7 +13168,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
-        m_CallState: 2
+        m_CallState: 0
       - m_Target: {fileID: 1549218409}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -14718,7 +14730,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &776726763
 Transform:
   m_ObjectHideFlags: 0
@@ -15154,7 +15166,7 @@ MonoBehaviour:
   targetGO: {fileID: 496300497}
   tweenTargetIsTargetGO: 1
   delay: 0
-  duration: 1
+  duration: 0.5
   easeType: 6
   easeCurve:
     serializedVersion: 2
@@ -15310,7 +15322,7 @@ MonoBehaviour:
   targetGO: {fileID: 496300497}
   tweenTargetIsTargetGO: 1
   delay: 0
-  duration: 1
+  duration: 0.5
   easeType: 6
   easeCurve:
     serializedVersion: 2
@@ -19825,6 +19837,8 @@ MonoBehaviour:
   characterSelectionUI: {fileID: 1048994185}
   characterButtonPrefab: {fileID: 5225614294673800130, guid: 779cb41d5620d19408a44d47446f905d,
     type: 3}
+  allButtons: []
+  selectedChar: {fileID: 0}
   selectionLayoutTransform: {fileID: 275545566}
   selectedLayoutTransform: {fileID: 506038109}
   selectedList: []
@@ -19835,7 +19849,6 @@ MonoBehaviour:
   skillLayoutTransform: {fileID: 8109101}
   radarChart: {fileID: 1804251908}
   startButton: {fileID: 1348826053}
-  selectButton: {fileID: 2115221311}
   newGameButton: {fileID: 1575873875}
   continueButton: {fileID: 102410993}
   rotateMultiplier: 0.1
@@ -22086,7 +22099,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1523981241
 Transform:
   m_ObjectHideFlags: 0
@@ -26421,7 +26434,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1956303129
 Transform:
   m_ObjectHideFlags: 0
