@@ -90,6 +90,7 @@ public class SaveLoadSystem : MonoBehaviour
         saveData.totalKills = GameManager.Instance.totalKills;
         saveData.totalHeartsCollected = GameManager.Instance.totalHeartsCollected;
 
+        saveData.lastScene = SceneChanger.Instance.currentScene.SceneName;
         saveData.remainingSceneTypes.Clear();
         foreach (var types in allSceneTypes.remainingSceneTypes)
         {

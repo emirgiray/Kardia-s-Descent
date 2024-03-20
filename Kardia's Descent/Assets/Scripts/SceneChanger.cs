@@ -20,6 +20,7 @@ public class SceneChanger : MonoBehaviour
 
     public SceneField firstLevel;
     public SceneField mainMenuLevel;
+    public SceneField currentScene;
 
     public bool isOnMainMenu => SceneManager.GetActiveScene().name == mainMenuLevel.SceneName;
 
@@ -81,7 +82,7 @@ public class SceneChanger : MonoBehaviour
     {
         SaveLoadSystem.Instance.saveData.lastScene = Value;
         GameManager.Instance.ResetToDefault();
-        //SaveLoadSystem.Instance.SaveGame();
+        currentScene = Value;
         SceneManager.LoadSceneAsync(Value,LoadSceneMode.Single);
     }
     

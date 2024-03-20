@@ -572,10 +572,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopHex_Hero2
+      name: TopHex_Borders
       rect:
         serializedVersion: 2
-        x: 600
+        x: 603
         y: 1566
         width: 600
         height: 600
@@ -1063,7 +1063,7 @@ TextureImporter:
         width: 395
         height: 454
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1115,11 +1115,11 @@ TextureImporter:
       P3_S2: 434477216
       P3_S3: 374684540
       P3_S4: -1155649192
+      TopHex_Borders: 274480220
       TopHex_Enemy1: -2145818744
       TopHex_Enemy2: -845788115
       TopHex_HP: 632324815
       TopHex_Hero1: 1037746094
-      TopHex_Hero2: -2126607450
       TopHex_Hero3: -1616148948
       h1_s1: -1738812705
       h1_s2: 1971214589
