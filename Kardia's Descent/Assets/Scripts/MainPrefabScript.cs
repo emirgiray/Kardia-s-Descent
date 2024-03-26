@@ -78,6 +78,19 @@ public class MainPrefabScript : MonoBehaviour
         // todo load selected players from save system, also load health values hearts etc (or add players to dont destroy on load)
         fogWar = FindObjectOfType<csFogWar>();
         PlayerSlots = GameObject.Find("Player Slots").GetComponentsInChildren<Transform>().ToList();
+        List<Transform> slotsToRemove = new();
+        foreach (var slot in PlayerSlots)
+        {
+            if (!slot.name.Contains("Player Slot"))
+            {
+                slotsToRemove.Add(slot);
+            }
+        }
+        foreach (var remove in slotsToRemove)
+        {
+            PlayerSlots.Remove(remove);
+        }
+        
         PlayerSlots.RemoveAt(0); //remove the parent transform
         GameObject playerPreviewParent = GameObject.Find("Player Preview");
 

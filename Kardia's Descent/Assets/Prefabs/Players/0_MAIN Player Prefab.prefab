@@ -401,7 +401,7 @@ MonoBehaviour:
     type: 3}
   spawnedSkillButtonPrefabs: []
   spawnTestWeapon: 1
-  testWeaponData: {fileID: 11400000, guid: 5f648099aa9d4ef40979b543a77708fd, type: 2}
+  testWeaponData: {fileID: 0}
   renderTexture: {fileID: 0}
 --- !u!114 &7800979912286807391
 MonoBehaviour:

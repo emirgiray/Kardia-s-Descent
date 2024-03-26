@@ -8,119 +8,107 @@ using UnityEngine;
 public class BuffSkill : SkillsData
 {
     public override void ActivateSkill(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, Action OnComplete = null)
+{
+    bool isBuff = base.skillEffect == SkillEffect.Buff; //if not buff, then it's debuff
+
+    if (ActivaterCharacter is Player)
     {
-        bool isBuff = base.skillEffect == SkillEffect.Buff; //if not buff, then it's debuff
-        
-        if (ActivaterCharacter is Player)
+        if (buffDebuffType == BuffDebuffType.AP)
         {
-            switch (buffDebuffType)
+            if (skillTarget == SkillTarget.Self)
             {
-                case BuffDebuffType.AP:
-                    switch (skillTarget)
-                    {
-                        case SkillTarget.Self:
-                            // Handle buffing AP to self
-                            break;
-                        case SkillTarget.MultipleAllies:
-                            // Handle buffing AP to multiple allies
-                            ActivaterCharacter.pathfinder.GetAttackableTiles(ActivaterCharacter.characterTile, Skill).ForEach(tile =>
-                                {
-                                    if (tile.occupiedByPlayer)
-                                    {
-                                        ChangeAP(tile.occupyingPlayer, isBuff, Skill.skillBuffDebuffAmount);
-                                        foreach (var fx in skillHitVFX)
-                                        {
-                                           // fx.SpawnVFX(selectedTile.occupyingEnemy.transform);
-                                            fx.SpawnVFX(tile.occupyingPlayer.transform);
-                                            if (skillAudioEvent != null) skillAudioEvent.Play(ActivaterCharacter.transform);
-                                        }
-                                    }
-                                });
-                            break;
-                        case SkillTarget.All:
-                            // Handle buffing AP to all
-                            break;
-                        // More cases for other SkillTargets...
-                    }
-                    break;
-                // More cases for other BuffDebuffTypes...
-            }
-        }
-        else if (ActivaterCharacter is Enemy)
-        {
-            switch (buffDebuffType)
-            {
-                case BuffDebuffType.AP:
-                    switch (skillTarget) {
-                        case SkillTarget.Enemy:
-                            // Handle debuffing AP to an enemy
-                            break;
-                        case SkillTarget.MultipleEnemies:
-                            // Handle debuffing AP to multiple enemies
-                            break;
-                        case SkillTarget.AllEnemies:
-                            // Handle debuffing AP to all enemies
-                            break;
-                        // More cases for other SkillTargets...
-                    }
-                    break;
-                // More cases for other BuffDebuffTypes...
-            }
-        }
-        
-        OnComplete?.Invoke();
-        
-        /*switch (base.skillTarget)
-        {
-            case SkillTarget.MultipleAllies:
-            {
-                if (ActivaterCharacter is Player)
+                // Handle buffing AP to self
+                ChangeAP(ActivaterCharacter, isBuff, Skill.skillBuffDebuffAmount, permaBuff);
+                foreach (var fx in skillHitVFX)
                 {
-                    foreach (var tile in Pathfinder.Instance.GetAttackableTiles(ActivaterCharacter.characterTile, Skill))
+                    fx.SpawnVFX(ActivaterCharacter.characterTile.transform);
+                    if (skillAudioEvent != null) skillAudioEvent.Play(ActivaterCharacter.transform);
+                }
+            }
+            else if (skillTarget == SkillTarget.MultipleAllies)
+            {
+                // Handle buffing AP to multiple allies
+                ActivaterCharacter.pathfinder.GetAttackableTiles(ActivaterCharacter.characterTile, Skill).ForEach(tile =>
+                {
+                    if (tile.occupiedByPlayer)
                     {
-                        if (tile.occupiedByPlayer)
+                        ChangeAP(tile.occupyingPlayer, isBuff, Skill.skillBuffDebuffAmount, permaBuff);
+                        foreach (var fx in skillHitVFX)
                         {
-                            
+                            fx.SpawnVFX(tile.occupyingPlayer.transform);
+                            if (skillAudioEvent != null) skillAudioEvent.Play(ActivaterCharacter.transform);
                         }
-
                     }
-                }
-
-                if (ActivaterCharacter is Enemy)
-                {
-                    if (selectedTile.occupiedByPlayer)
-                    {
-                        selectedTile.occupyingPlayer.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
-                        selectedTile.occupyingPlayer.Stun(true, skillEffectDuration);
-                    }
-
-                    if (selectedTile.OccupiedByCoverPoint)
-                    {
-                        selectedTile.occupyingCoverPoint.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
-                    }
-                }
-
-                OnComplete?.Invoke();
-                break;
+                });
             }
-        }*/
+            else if (skillTarget == SkillTarget.All)
+            {
+                // Handle buffing AP to all
+            }
+            // More if statements for other SkillTargets...
+        }
+        // More if statements for other BuffDebuffTypes...
+    }
+    else if (ActivaterCharacter is Enemy)
+    {
+        if (buffDebuffType == BuffDebuffType.AP)
+        {
+            if (skillTarget == SkillTarget.Enemy)
+            {
+                // Handle debuffing AP to an enemy
+            }
+            else if (skillTarget == SkillTarget.MultipleEnemies)
+            {
+                // Handle debuffing AP to multiple enemies
+            }
+            else if (skillTarget == SkillTarget.AllEnemies)
+            {
+                // Handle debuffing AP to all enemies
+            }
+            // More if statements for other SkillTargets...
+        }
+        // More if statements for other BuffDebuffTypes...
     }
 
-    public void ChangeAP(Character character ,bool increase, int amount)
+    OnComplete?.Invoke();
+}
+
+    private void ChangeAP(Character character ,bool increase, int amount, bool perma)
     {
-        if (increase)
+        if (perma)
         {
-            //increase AP
-            character.remainingActionPoints += amount;
-            character.OnActionPointsChangeEvent?.Invoke(character.remainingActionPoints, "+");
+            if (increase)
+            {
+                //permanent increase AP
+                character.remainingActionPoints += amount;
+                character.OnActionPointsChangeEvent?.Invoke(character.remainingActionPoints, "+");
+            }
+            else
+            {
+                //permanent decrease AP
+                character.remainingActionPoints -= amount;
+                character.OnActionPointsChangeEvent?.Invoke(character.remainingActionPoints, "-");
+            }
         }
         else
         {
-            //decrease AP
-            character.remainingActionPoints -= amount;
-            character.OnActionPointsChangeEvent?.Invoke(character.remainingActionPoints, "-");
+            if (increase)
+            {
+                //temporary increase AP
+                character.temporaryActionPointsToDecrease += amount;
+                character.remainingActionPoints += amount;
+                character.OnActionPointsChangeEvent?.Invoke(character.remainingActionPoints, "+");
+            }
+           
         }
     }
 
+    public void Heal(Character character, int amount)
+    {
+        character.health.HealthAi += amount;
+        character.OnHealthChangeEvent?.Invoke();
+    }
+    
+    
 
 }

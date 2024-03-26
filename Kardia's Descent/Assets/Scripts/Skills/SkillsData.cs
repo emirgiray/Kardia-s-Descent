@@ -21,6 +21,7 @@ public class SkillsData : ScriptableObject
     public int actionPointUse = 1;
     public int skillEffectDuration = 1;
     public int skillBuffDebuffAmount = 1;
+    public bool permaBuff = true;
     public int accuracy = 80;
     public int coverAccuracyDebuff = 20;
     public AnimatorOverrideController animatorOverrideController;

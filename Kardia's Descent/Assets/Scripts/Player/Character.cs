@@ -41,6 +41,8 @@ public class Character : MonoBehaviour
     public int remainingActionPoints;
     [BoxGroup("Stats")]
     public int maxActionPoints = 10;
+    [BoxGroup("Stats")] [Tooltip("Used for decreasin at the end of the turn if there is a non perma ap buff")]
+    public int temporaryActionPointsToDecrease = 0;
     [BoxGroup("Stats")]
     public int initiative = 1;//todo: this works in reverse!!!
     [BoxGroup("Stats")]
@@ -243,12 +245,23 @@ public class Character : MonoBehaviour
         int currentStep = 0;
         int pathLength = path.tiles.Count-1;
         Tile currentTile = path.tiles[0];
+        Tile targetTile = path.tiles[pathLength];
         float animationTime = 0f;
 
         while (currentStep <= pathLength )
         {
             if ((remainingActionPoints > 0 || !spendActionPoints || TurnSystem.Instance.turnState == TurnSystem.TurnState.FreeRoamTurn))
             {
+                if (path.tiles[currentStep].Occupied )
+                {
+                    if (path.tiles[currentStep].occupyingCharacter != this)
+                    {
+                        // stop
+                        StartCoroutine(WaitForMoveToEnd());
+                    }
+                }
+               
+                
                 yield return null;
                 Moving = true;
                 //Move towards the next step in the path until we are closer than MIN_DIST
@@ -412,6 +425,8 @@ public class Character : MonoBehaviour
 
                 //if (!doOnce) //bu niye var aq
                 {
+                    remainingActionPoints -= temporaryActionPointsToDecrease;
+                    temporaryActionPointsToDecrease = 0;
                     AddActionPoints();
                     OnActionPointsChangeEvent?.Invoke(remainingActionPoints, "+");
                 }
@@ -465,6 +480,8 @@ public class Character : MonoBehaviour
     private static LTDescr delay;
     public void EndTurn()
     {
+        
+        
         if(this is Player && TurnSystem.Instance.turnState == TurnSystem.TurnState.FreeRoamTurn)
         {
             return;
@@ -666,6 +683,7 @@ public class Character : MonoBehaviour
     private void AddActionPoints()
     {
         remainingActionPoints += actionPoints;
+        
         if (remainingActionPoints > maxActionPoints)
         {
             remainingActionPoints = maxActionPoints;

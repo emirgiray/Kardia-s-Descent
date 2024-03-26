@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db59d9eb833704c428e73b2f9fbc0e69, type: 3}
+  m_Name: Regular Double Time
+  m_EditorClassIdentifier: 
+  skillSprite: {fileID: 21300028, guid: 7ab74e659e1f0a34d9cfec21c478fc12, type: 3}
+  skillName: Double Time
+  skillDescription: Get an extra 5 AP for this turn. Lose it if not used.
+  skillID: 9
+  skillDamage: 0
+  skillRange: 1
+  skillCooldown: 4
+  actionPointUse: 0
+  skillEffectDuration: 1
+  skillBuffDebuffAmount: 5
+  permaBuff: 0
+  accuracy: 50
+  coverAccuracyDebuff: 0
+  animatorOverrideController: {fileID: 0}
+  skillStartVFX: {fileID: 0}
+  skillHitVFX:
+  - {fileID: 11400000, guid: 237c0dabba02e51489b196796b9fe4f4, type: 2}
+  skillMissVFX: {fileID: 0}
+  skillAudioEvent: {fileID: 0}
+  skillType: 0
+  passiveOrActive: 0
+  skillClass: 11
+  damageType: 7
+  skillTarget: 2
+  skillHitType: 0
+  skillTargetType: 0
+  skillEffect: 1
+  buffDebuffType: 1
