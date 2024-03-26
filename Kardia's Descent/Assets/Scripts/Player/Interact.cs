@@ -243,12 +243,8 @@ public class Interact : MonoBehaviour
                 selectedCharacterSkillContainer.TrySelectSkill(selectedCharacterSkillContainer.skillsList[2]);
             }
             if (Input.GetKeyDown(KeyCode.Space))
-            {
-              //  if (selectedCharacter.GetComponent<Inventory>().GetSpawnedInventoryUIScript().GetSkipButton().interactable)
-                {
-                    selectedCharacter.inventory.GetSpawnedInventoryUIScript().GetSkipButton().onClick.Invoke();
-                }
-                
+            { 
+                selectedCharacter.inventory.GetSpawnedInventoryUIScript().GetSkipButton().onClick.Invoke();
             }
         }
         else
@@ -265,7 +261,7 @@ public class Interact : MonoBehaviour
 
     #region Mouse Update
 
-    public void CheckMouseOverUI()
+    private void CheckMouseOverUI()
     {
         //check if mouse is over ui but exclude some game objects
         isMouseOverUI = EventSystem.current.IsPointerOverGameObject(); //is this expensive
@@ -301,7 +297,7 @@ public class Interact : MonoBehaviour
 
     #region Inspect / Select Player
 
-    public void InspectTileHighlight()
+    private void InspectTileHighlight()
     {
         //make the this method work every 15 frames
         /*if (Time.frameCount % 15 != 0)
@@ -419,14 +415,6 @@ public class Interact : MonoBehaviour
                     break;
                 //TODO do it in a better way; get the selected tile then do the logic there (range, accuracy damage)
                 case Character.CharacterState.Attacking:
-
-                    /*if (currentTile.occupiedByEnemy)
-                    {
-                        if (Pathfinder.Instance.CheckCoverPoint(selectedCharacter, currentTile.occupyingCharacter))
-                        {
-                            
-                        }
-                    }*/
                     
                     if (Input.GetMouseButtonDown(0) && selectedCharacter.canAttack)
                     {
@@ -438,12 +426,20 @@ public class Interact : MonoBehaviour
                         }
                     }
                     break;
+                
+                case Character.CharacterState.Moving:
+                    if (currentTile.Occupied)
+                    {
+                        Debug.Log($"movinbg");
+                        InspectSomeone();
+                    }
+                    break;
             }
         }
             
     }
 
-    public void InspectSomeone()
+    private void InspectSomeone()
     {
         if (currentTile.OccupiedByCoverPoint)return;
 
@@ -491,7 +487,7 @@ public class Interact : MonoBehaviour
     {
         if (currentTile.occupyingCharacter.Moving)
             return;
-
+       
         //currentTile.Highlight(Color.white);
 
         if (Input.GetMouseButtonDown(0))
@@ -513,22 +509,22 @@ public class Interact : MonoBehaviour
         }
         else
         {
-            switch (lastSelectedCharacter.GetComponent<Character>().characterState)
+            switch (lastSelectedCharacter.characterState)
             {
                 case Character.CharacterState.Idle:
-                    lastSelectedCharacter.GetComponent<Inventory>().ShowSkillsUI(false); //close skills ui
+                    lastSelectedCharacter.inventory.ShowSkillsUI(false); //close skills ui
                     SelectPlayer(chaaracter);
                     selectedCharacterSkillContainer = selectedCharacter.SkillContainer;
                     break;
            
                 case Character.CharacterState.WaitingTurn:
-                    lastSelectedCharacter.GetComponent<Inventory>().ShowSkillsUI(false); //close skills ui
+                    lastSelectedCharacter.inventory.ShowSkillsUI(false); //close skills ui
                     SelectPlayer(chaaracter);
                     selectedCharacterSkillContainer = selectedCharacter.SkillContainer;
                     break;
                 
                 case Character.CharacterState.WaitingNextRound:
-                    lastSelectedCharacter.GetComponent<Inventory>().ShowSkillsUI(false); //close skills ui
+                    lastSelectedCharacter.inventory.ShowSkillsUI(false); //close skills ui
                     //lastSelectedCharacter.GetComponent<InventoryUI>().SetSkipTurnButtonInteractable(false); //disable skip turn button
                     SelectPlayer(chaaracter);
                     selectedCharacterSkillContainer = selectedCharacter.SkillContainer;
@@ -539,13 +535,19 @@ public class Interact : MonoBehaviour
                     //selectedCharacter = lastSelectedCharacter;
                     //lastSelectedCharacter.GetComponent<Character>().Rotate(lastSelectedCharacter.transform.position, currentTile.transform.position);
                     break;
+                
+                case Character.CharacterState.Moving:
+                    lastSelectedCharacter.inventory.ShowSkillsUI(false); //close skills ui
+                    SelectPlayer(chaaracter);
+                    selectedCharacterSkillContainer = selectedCharacter.SkillContainer;
+                    break;
                
             }
         }
         
     }
 
-    public void SelectPlayer(Character character)
+    private void SelectPlayer(Character character)
     {
         if (lastSelectedCharacter != null) lastSelectedCharacter.outline.enabled = false;
         
@@ -605,7 +607,7 @@ public class Interact : MonoBehaviour
         }
     }
 
-    public bool RetrievePath(Character activator, out Path path)
+    private bool RetrievePath(Character activator, out Path path)
     {
         if (selectedCharacter != null)
         {
@@ -745,7 +747,7 @@ public class Interact : MonoBehaviour
         }
     }
 
-    public void CurrentTileChangedFunc(Tile newTile)//this calculates the accuracy before shooting, adds rotation to player
+    private void CurrentTileChangedFunc(Tile newTile)//this calculates the accuracy before shooting, adds rotation to player
     {
         characterUnderMouse = currentTile.occupyingCharacter;
         
@@ -756,14 +758,7 @@ public class Interact : MonoBehaviour
             selectedCharacter.SkillContainer.ResetCoverdamageDebuff();
             if (isMouseOverUI == false)
             {
-                if (selectedCharacter.characterTile != currentTile)
-                {
-                    selectedCharacter.Rotate(currentTile.transform.position);
-                }
-                else
-                {
-                    selectedCharacter.Rotate(lastTile.transform.position);
-                }
+                selectedCharacter.Rotate(selectedCharacter.characterTile != currentTile ? currentTile.transform.position : lastTile.transform.position);
             }
             
             HighlightAttackableTiles(selectedCharacter.SkillContainer.selectedSkill);
@@ -894,7 +889,7 @@ public class Interact : MonoBehaviour
         StartCoroutine(EnableMovementDelay(value));
     }
 
-    public IEnumerator EnableMovementDelay(bool value)
+    private IEnumerator EnableMovementDelay(bool value)
     {
         yield return new WaitForEndOfFrame();
         if (selectedCharacter.characterState == Character.CharacterState.WaitingTurn || selectedCharacter.characterState == Character.CharacterState.Idle)

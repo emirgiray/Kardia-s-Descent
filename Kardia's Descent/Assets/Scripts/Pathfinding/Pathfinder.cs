@@ -192,7 +192,7 @@ public class Pathfinder : MonoBehaviour
     /// <param name="dest"></param>
     /// <param name="source"></param>
     /// <returns></returns>
-    public Path PathBetween(Character activator, Tile dest, Tile source, bool forAIPathfinding = false)
+    private Path PathBetween(Character activator, Tile dest, Tile source, bool forAIPathfinding = false)
     {
         Path path = MakePath(dest, source);
 
@@ -226,7 +226,7 @@ public class Pathfinder : MonoBehaviour
     /// <param name="destination"></param>
     /// <param name="origin"></param>
     /// <returns></returns>
-    public Path MakePath(Tile destination, Tile origin)
+    private Path MakePath(Tile destination, Tile origin)
     {
         List<Tile> tiles = new List<Tile>();
         Tile current = destination;

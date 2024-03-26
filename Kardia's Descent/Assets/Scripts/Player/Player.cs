@@ -55,12 +55,12 @@ public class Player : Character
 
     }
 
-    public IEnumerator StartDelay()
+    private IEnumerator StartDelay()
     {
         yield return new WaitForSecondsRealtime(0.1f);
         animator.enabled = false;
     }
-    public void BruiserDoubleAttack(SkillContainer.Skills skill)
+    private void BruiserDoubleAttack(SkillContainer.Skills skill)
     {
         if (canBruiserDoubleAttack && skill.skillData.name.Contains("Basic"))
         {
@@ -74,7 +74,7 @@ public class Player : Character
         }
     }
 
-    public void ResetBruiserDoubleAttack()
+    private void ResetBruiserDoubleAttack()
     {
         canBruiserDoubleAttack = true;
     }
