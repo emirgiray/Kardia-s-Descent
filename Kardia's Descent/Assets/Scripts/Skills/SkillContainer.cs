@@ -9,6 +9,7 @@ using Image = UnityEngine.UI.Image;
 
 public class SkillContainer : MonoBehaviour
 {
+    
     [SerializeField] private List<SkillsData> skillsDataSOList = new List<SkillsData>();
     [SerializeField] public List<Skills> skillsList = new List<Skills>();
     //[SerializeField] public SkillsData selectedSOSkill;
@@ -29,16 +30,12 @@ public class SkillContainer : MonoBehaviour
 
     private void OnEnable()
     {
-        Character = GetComponent<Character>();
-        Inventory = GetComponent<Inventory>();
         if (Character is Player)
         {
             Character.OnActionPointsChange += CheckIfEnoughAPForSkill;
-            
         }
         
-        TurnSystem.Instance.RoundChanged += ResetSkillCooldowns;
-        
+        Character.everythingUseful.TurnSystem.RoundChanged += ResetSkillCooldowns;
     }
 
     private void OnDisable()
@@ -48,8 +45,7 @@ public class SkillContainer : MonoBehaviour
             Character.OnActionPointsChange -= CheckIfEnoughAPForSkill;
         }
         
-        
-        TurnSystem.Instance.RoundChanged -= ResetSkillCooldowns;
+        Character.everythingUseful.TurnSystem.RoundChanged -= ResetSkillCooldowns;
     }
 
     public void CheckIfEnoughAPForSkill(int ap)
@@ -133,9 +129,9 @@ public class SkillContainer : MonoBehaviour
     
     public void ResetSkillCooldowns()
     {
-        if (TurnSystem.Instance.IsThisCharactersTurn(Character))
+        if (Character.TurnSystem.IsThisCharactersTurn(Character))
         {
-            //Debug.Log($"Character {Character.name} {TurnSystem.Instance.turnState} turn started, resetting skill cooldowns");
+            //Debug.Log($"Character {Character.name} {Character.TurnSystem.turnState} turn started, resetting skill cooldowns");
             for (int i = 0; i < skillsList.Count; i++)
             {
                 if (skillsList[i].remainingSkillCooldown < skillsList[i].skillCooldown)
@@ -184,7 +180,7 @@ public class SkillContainer : MonoBehaviour
     
     public void SkillHighlighted(SkillsData highlightSkill)
     {
-        Interact.Instance.SkillHighlighted?.Invoke();
+        Character.Interact.SkillHighlighted?.Invoke();
     }
 
     public void TrySelectSkill(Skills selectSkill)
@@ -255,24 +251,24 @@ public class SkillContainer : MonoBehaviour
         
         if (Character is Player)
         {
-            if (Interact.Instance.GetCurrentTile() != null)
+            if (Character.Interact.GetCurrentTile() != null)
             {
-                if (Character.characterTile != Interact.Instance.GetCurrentTile())
+                if (Character.characterTile != Character.Interact.GetCurrentTile())
                 {
-                    Character.Rotate(Interact.Instance.GetCurrentTile().transform.position);
+                    Character.Rotate(Character.Interact.GetCurrentTile().transform.position);
                 }
                 else
                 {
-                    Character.Rotate(Interact.Instance.GetLastTile().transform.position);
+                    Character.Rotate(Character.Interact.GetLastTile().transform.position);
                 }
                 
             }
             if (lastSelectedSkill.skillButton != null) lastSelectedSkill.skillButton.SwitchSelectedOutline(false);
             lastSelectedSkill = selectedSkill;
             selectedSkill.skillButton.SwitchSelectedOutline(true);
-            Interact.Instance.SkillSelected?.Invoke();
-            Interact.Instance.HighlightAttackableTiles(selectedSkill);
-            Interact.Instance.selectedCharacter.GetComponent<Character>().AttackStart();
+            Character.Interact.SkillSelected?.Invoke();
+            Character.Interact.HighlightAttackableTiles(selectedSkill);
+            Character.Interact.selectedCharacter.GetComponent<Character>().AttackStart();
             
         }
         else if (Character is Enemy)
@@ -297,13 +293,13 @@ public class SkillContainer : MonoBehaviour
             {
                 deselectSkill.skillButton.SwitchSelectedOutline(false);
             }
-            Interact.Instance.ClearHighlightAttackableTiles();
-            Interact.Instance.SkillDeselected?.Invoke();
-            Interact.Instance.selectedCharacter.GetComponent<Character>().AttackCancel();
-            StopCoroutine(Interact.Instance.HitChanceUIToMousePos());  
+            Character.Interact.ClearHighlightAttackableTiles();
+            Character.Interact.SkillDeselected?.Invoke();
+            Character.Interact.selectedCharacter.GetComponent<Character>().AttackCancel();
+            StopCoroutine(Character.Interact.HitChanceUIToMousePos());  
             
 
-            Interact.Instance.HitChanceUIGameObject.SetActive(false);
+            Character.Interact.HitChanceUIGameObject.SetActive(false);
         }
         else if (Character is Enemy)
         {
@@ -385,7 +381,7 @@ bool impact = false;
             
             if (Character is Player)
             {
-                Interact.Instance.selectedCharacter.GetComponent<Character>().AttackEnd(selectedSkill);
+                Character.Interact.selectedCharacter.GetComponent<Character>().AttackEnd(selectedSkill);
             }
             else if (Character is Enemy)
             {

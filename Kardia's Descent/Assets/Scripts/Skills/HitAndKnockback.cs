@@ -8,7 +8,7 @@ public class HitAndKnocback : SkillsData
 {
     public override void ActivateSkill(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, Action OnComplete = null) //skill logic goes here
     {
-        Interact.Instance.GetComponent<MonoBehaviour>()
+        ActivaterCharacter.Interact.GetComponent<MonoBehaviour>()
             .StartCoroutine(WaitUntilEnum(Skill, ActivaterCharacter, selectedTile, OnComplete));
           
     }

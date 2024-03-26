@@ -10,6 +10,7 @@ using UnityEngine.Events;
 
 public class Character : MonoBehaviour
 {
+    public EverythingUseful everythingUseful;
     [BoxGroup("Character Info")]
     public Sprite characterSprite;
     [BoxGroup("Character Info")]
@@ -119,8 +120,18 @@ public class Character : MonoBehaviour
    public int extraMeleeDamage = 0;
    public int extraRangedAccuracy = 0;
 
-    private void Awake()
+   public TurnSystem TurnSystem;
+   public Interact Interact;
+   public CameraSystem CameraSystem;
+   public LevelManager LevelManager;
+   
+
+   private void Awake()
     {
+        TurnSystem = everythingUseful.TurnSystem;
+        Interact = everythingUseful.Interact;
+        CameraSystem = everythingUseful.CameraSystem;
+        LevelManager = everythingUseful.LevelManager;
         //characterState = CharacterState.Idle;
         // ResetMovePoints();
         AssignSkillValues();
@@ -199,10 +210,10 @@ public class Character : MonoBehaviour
             {
                 characterTile.occupiedByEnemy = false;
 
-                if (Interact.Instance.GetReachableTiles().Contains(characterTile) && Interact.Instance.characterSelected && (Interact.Instance.selectedCharacter.characterState == CharacterState.WaitingTurn || Interact.Instance.selectedCharacter.characterState == CharacterState.Idle))
+                if (Interact.GetReachableTiles().Contains(characterTile) && Interact.characterSelected && (Interact.selectedCharacter.characterState == CharacterState.WaitingTurn || Interact.selectedCharacter.characterState == CharacterState.Idle))
                 {
                     characterTile.HighlightMoveable();
-                    //Interact.Instance.HighlightReachableTiles();
+                    //Interact.HighlightReachableTiles();
                     // Debug.Log($"enemy start move");
                 }
 
@@ -250,7 +261,7 @@ public class Character : MonoBehaviour
 
         while (currentStep <= pathLength )
         {
-            if ((remainingActionPoints > 0 || !spendActionPoints || TurnSystem.Instance.turnState == TurnSystem.TurnState.FreeRoamTurn))
+            if ((remainingActionPoints > 0 || !spendActionPoints || TurnSystem.turnState == TurnSystem.TurnState.FreeRoamTurn))
             {
                 if (path.tiles[currentStep].Occupied )
                 {
@@ -289,7 +300,7 @@ public class Character : MonoBehaviour
                     }
                     if (this is Player && !inCombat)
                     {
-                        foreach (var enemy in TurnSystem.Instance.enemiesInCombat)
+                        foreach (var enemy in TurnSystem.enemiesInCombat)
                         {
                             if (enemy.inCombat)
                             {
@@ -299,7 +310,7 @@ public class Character : MonoBehaviour
                         
                     }
                     
-                    if (inCombat && spendActionPoints && TurnSystem.Instance.turnState != TurnSystem.TurnState.FreeRoamTurn)
+                    if (inCombat && spendActionPoints && TurnSystem.turnState != TurnSystem.TurnState.FreeRoamTurn)
                     {
                         remainingActionPoints-- ;
                         // OnActionPointsChange?.Invoke(remainingActionPoints);
@@ -352,16 +363,16 @@ public class Character : MonoBehaviour
                 
                 if (this is Player)
                 {
-                    Interact.Instance.HighlightReachableTiles();
+                    Interact.HighlightReachableTiles();
                 }
             }
 
             if (this is Enemy) //this is to update the reachable tiles after enemy movement
             {
-                if (Interact.Instance.GetReachableTiles().Contains(tile) && Interact.Instance.characterSelected && (Interact.Instance.selectedCharacter.characterState == CharacterState.WaitingTurn || Interact.Instance.selectedCharacter.characterState == CharacterState.Idle))
+                if (Interact.GetReachableTiles().Contains(tile) && Interact.characterSelected && (Interact.selectedCharacter.characterState == CharacterState.WaitingTurn || Interact.selectedCharacter.characterState == CharacterState.Idle))
                 { 
                     tile.ClearHighlight();
-                    //Interact.Instance.HighlightReachableTiles();
+                    //Interact.HighlightReachableTiles();
                 }
             }
             
@@ -408,9 +419,9 @@ public class Character : MonoBehaviour
     bool doOnce = true;
     public void StartTurn()
     {
-        if (TurnSystem.Instance.turnState != TurnSystem.TurnState.FreeRoamTurn && inCombat)
+        if (TurnSystem.turnState != TurnSystem.TurnState.FreeRoamTurn && inCombat)
         {
-            if (TurnSystem.Instance.IsThisCharactersTurn(this))
+            if (TurnSystem.IsThisCharactersTurn(this))
             {
 
                 if (!isStunned)
@@ -445,9 +456,9 @@ public class Character : MonoBehaviour
                 if (this is Player)
                 {
                     if(PlayerTurnStart != null) PlayerTurnStart.Invoke();
-                    if (this == Interact.Instance.selectedCharacter)
+                    if (this == Interact.selectedCharacter)
                     {
-                        Interact.Instance.HighlightReachableTiles();
+                        Interact.HighlightReachableTiles();
                     }
                 }
             }
@@ -464,7 +475,7 @@ public class Character : MonoBehaviour
         MovePointsExhausted.Invoke();
         characterState = CharacterState.WaitingTurn;
         CheckIfEndTurn();
-        // TurnSystem.Instance.NextTurn();
+        // TurnSystem.NextTurn();
     }
 
     public void CheckIfEndTurn()
@@ -482,7 +493,7 @@ public class Character : MonoBehaviour
     {
         
         
-        if(this is Player && TurnSystem.Instance.turnState == TurnSystem.TurnState.FreeRoamTurn)
+        if(this is Player && TurnSystem.turnState == TurnSystem.TurnState.FreeRoamTurn)
         {
             return;
         }
@@ -511,22 +522,22 @@ public class Character : MonoBehaviour
 
         if (this is Player)
         {
-            Interact.Instance.ClearHighlightAttackableTiles();
-            Interact.Instance.ClearHighlightReachableTiles();
+            Interact.ClearHighlightAttackableTiles();
+            Interact.ClearHighlightReachableTiles();
             
             
         }
         
-        TurnSystem.Instance.NextTurn();
+        TurnSystem.NextTurn();
 
         if (this is Player)
         {
-            foreach (var player in LevelManager.Instance.players)
+            foreach (var player in LevelManager.players)
             {
                 if (player.isUnlocked && player.inCombat && player.characterState != CharacterState.Dead && player.characterState != CharacterState.WaitingNextRound)
                 {
-                    CameraSystem.Instance.OnCharacterSelected(player.characterTile);
-                    Interact.Instance.TrySelectPlayer(player);
+                    CameraSystem.OnCharacterSelected(player.characterTile);
+                    Interact.TrySelectPlayer(player);
                     return;
                 }
             }
@@ -548,11 +559,11 @@ public class Character : MonoBehaviour
                         if(!inCombat) StartCombat();
                         if(!LevelManager.Instance.enemies[i].inCombat) LevelManager.Instance.enemies[i].StartCombat();
                         
-                        if (TurnSystem.Instance.turnState == TurnSystem.TurnState.FreeRoamTurn)
+                        if (TurnSystem.turnState == TurnSystem.TurnState.FreeRoamTurn)
                         {
-                            TurnSystem.Instance.CombatStarted();
+                            TurnSystem.CombatStarted();
                         }
-                        //Debug.Log($"Combat started by {TurnSystem.Instance.enemies[i].name}");
+                        //Debug.Log($"Combat started by {TurnSystem.enemies[i].name}");
                     }
                 }
                 
@@ -562,7 +573,7 @@ public class Character : MonoBehaviour
         Vector3 yOffSet = new Vector3(0, PathfinderVariables.Instance.characterYOffset, 0);
         if (this is Enemy)
         {
-            var playersInCombat = LevelManager.Instance.players;
+            var playersInCombat = LevelManager.players;
             for (int i = 0; i < playersInCombat.Count; i++)
             {
                 if (Vector3.Distance(characterTile.transform.position, playersInCombat[i].transform.position) < 10 && playersInCombat[i].gameObject.activeInHierarchy && playersInCombat[i].isUnlocked &&
@@ -582,11 +593,11 @@ public class Character : MonoBehaviour
                             if(!inCombat) StartCombat();
                             if(!playersInCombat[i].inCombat) playersInCombat[i].StartCombat();
                         
-                            if (TurnSystem.Instance.turnState == TurnSystem.TurnState.FreeRoamTurn)
+                            if (TurnSystem.turnState == TurnSystem.TurnState.FreeRoamTurn)
                             {
-                                TurnSystem.Instance.CombatStarted();
+                                TurnSystem.CombatStarted();
                             }
-                            //Debug.Log($"Combat started by {TurnSystem.Instance.enemies[i].name}");
+                            //Debug.Log($"Combat started by {TurnSystem.enemies[i].name}");
                         }
                     }
                     
@@ -602,7 +613,7 @@ public class Character : MonoBehaviour
     {
         if (this is Enemy)
         {
-            var playersInCombat = TurnSystem.Instance.playersInCombat;
+            var playersInCombat = TurnSystem.playersInCombat;
             for (int i = 0; i < playersInCombat.Count; i++)
             {
                 //if (pathfinder.GetTilesInBetween(this, characterTile, playersInCombat[i].characterTile, true).Count <= 4)
@@ -641,11 +652,11 @@ public class Character : MonoBehaviour
         CombatStartedAction?.Invoke();
         if (this is Player)
         {
-            LevelManager.Instance.AddPlayerToCombat(GetComponent<Player>());
+            LevelManager.AddPlayerToCombat(GetComponent<Player>());
         }
         if (this is Enemy)
         {
-            LevelManager.Instance.AddEnemyToCombat(GetComponent<Enemy>());
+            LevelManager.AddEnemyToCombat(GetComponent<Enemy>());
             GetComponent<StateController>().StartCombat();
         }
     }
@@ -670,7 +681,7 @@ public class Character : MonoBehaviour
         ResetActionPoints();
         SkillContainer.ForceResetSkillCooldowns();
         characterState = CharacterState.WaitingTurn;
-        TurnSystem.Instance.PlayerExitedCombat(GetComponent<Player>());
+        TurnSystem.PlayerExitedCombat(GetComponent<Player>());
     }
     
         
@@ -708,7 +719,7 @@ public class Character : MonoBehaviour
 
         if (this is Player)
         {
-            Interact.Instance.EnableDisableHitChanceUI(false);
+            Interact.EnableDisableHitChanceUI(false);
         }
         
         //animator.ResetTrigger("Attack");
@@ -720,7 +731,7 @@ public class Character : MonoBehaviour
         canRotate = false;
         if (this is Player)
         {
-            Interact.Instance.EnableDisableHitChanceUI(false);
+            Interact.EnableDisableHitChanceUI(false);
         }
         
         animator.ResetTrigger("AttackCancel");
@@ -755,14 +766,14 @@ public class Character : MonoBehaviour
         {
             characterTile.occupiedByPlayer = false;
             characterTile.occupyingPlayer = null;
-            TurnSystem.Instance.PlayerDied(GetComponent<Player>());
+            TurnSystem.PlayerDied(GetComponent<Player>());
         }
         if (this is Enemy)
         {
             characterTile.occupiedByEnemy = false;
             characterTile.occupyingEnemy = null;
             GetComponent<StateController>().aiActive = false;
-            TurnSystem.Instance.EnemyDied(GetComponent<Enemy>());
+            TurnSystem.EnemyDied(GetComponent<Enemy>());
         }
         characterTile.occupyingGO = null;
         characterTile.Occupied = false;

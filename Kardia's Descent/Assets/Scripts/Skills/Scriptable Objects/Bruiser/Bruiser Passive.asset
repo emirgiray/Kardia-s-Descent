@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4fde44c70ac9884794b32ca8cc7562e, type: 3}
   m_Name: Bruiser Passive
   m_EditorClassIdentifier: 
+  everythingUseful: {fileID: 11400000, guid: 0adf6649dfa6c2b48877232f4002ec52, type: 2}
   skillSprite: {fileID: 1645680785, guid: f050367bbcaea674495c2d5e36fc140b, type: 3}
   skillName: Double Trouble
   skillDescription: Passive, perform every basic attack twice.
@@ -22,6 +23,7 @@ MonoBehaviour:
   actionPointUse: 0
   skillEffectDuration: 0
   skillBuffDebuffAmount: 0
+  permaBuff: 1
   accuracy: 0
   coverAccuracyDebuff: 0
   animatorOverrideController: {fileID: 0}

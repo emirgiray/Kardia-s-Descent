@@ -1425,6 +1425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9949c45195accb488ece67c47dc53d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  everythingUseful: {fileID: 11400000, guid: 0adf6649dfa6c2b48877232f4002ec52, type: 2}
   cinemachineVirtualCamera: {fileID: 7619247797625470286}
   moveSpeed: 10
   zoomSpeed: 1
@@ -2445,6 +2446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2615d352f3dac5247b662eaf2cfdd433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  everythingUseful: {fileID: 0}
   objects: []
 --- !u!1 &2439410792422498521
 GameObject:
@@ -3432,6 +3434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb9898b06af48bb4a8b655c0ed7f1373, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  everythingUseful: {fileID: 11400000, guid: 0adf6649dfa6c2b48877232f4002ec52, type: 2}
   turn: 0
   round: 0
   turnAndRoundGO: {fileID: 3295341642865181630}
@@ -7311,6 +7314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56d62aca62755ba42b6d82c01f31715c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  everythingUseful: {fileID: 11400000, guid: 0adf6649dfa6c2b48877232f4002ec52, type: 2}
   cameraTransform: {fileID: 0}
 --- !u!114 &5581367462937363117
 MonoBehaviour:
@@ -8356,10 +8360,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a791f23a36af8e4d862553b3e9da9d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  everythingUseful: {fileID: 11400000, guid: 0adf6649dfa6c2b48877232f4002ec52, type: 2}
   players: []
   enemies: []
   allEntities: []
-  cameraTransform: {fileID: 0}
   playersGO: []
   GamePausedEvent:
     m_PersistentCalls:
@@ -8637,6 +8641,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a3c281d6cb584b4b86b613fce1f87eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  everythingUseful: {fileID: 11400000, guid: 0adf6649dfa6c2b48877232f4002ec52, type: 2}
   possibleNextScenes: []
   allSceneTypes: {fileID: 11400000, guid: 9718d308dff3b6e4490a8e268f7aa6d5, type: 2}
   firstLevel:
@@ -8645,6 +8650,9 @@ MonoBehaviour:
   mainMenuLevel:
     m_SceneAsset: {fileID: 102900000, guid: f7cfe8530a8bef74b9d5601fc822c0f3, type: 3}
     m_SceneName: Main Menu 2
+  currentScene:
+    m_SceneAsset: {fileID: 0}
+    m_SceneName: 
 --- !u!114 &9165005917305822135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8657,6 +8665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d62d83d02556d804fb0820639e813b53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  everythingUseful: {fileID: 11400000, guid: 0adf6649dfa6c2b48877232f4002ec52, type: 2}
   loadOnAwake: 0
   saveFileName: saveFile
   encryptData: 0
@@ -8686,6 +8695,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7c19fc08fa9c3144b017a02bcad3ef6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  everythingUseful: {fileID: 11400000, guid: 0adf6649dfa6c2b48877232f4002ec52, type: 2}
   SelectedPlayers: []
   selectMax: 4
   isPaused: 0
@@ -9243,6 +9253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cae9cde96cce9354ea7bbc922d827ee3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  everythingUseful: {fileID: 11400000, guid: 0adf6649dfa6c2b48877232f4002ec52, type: 2}
   InspectTileGO: {fileID: 8784705004452843393}
   InspectTileCoverIconGO: {fileID: 5698048274555494151}
   mainCam: {fileID: 0}
@@ -10366,6 +10377,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e915826b0af28a348bc39962567a86c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  everythingUseful: {fileID: 11400000, guid: 0adf6649dfa6c2b48877232f4002ec52, type: 2}
   playersInCombat: []
   enemiesInCombat: []
   allEntitiesInCombat: []
@@ -10535,6 +10547,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1289079610104736304}
   - component: {fileID: 8920082568792098167}
+  - component: {fileID: 472881729164264370}
   m_Layer: 0
   m_Name: Main Prefab
   m_TagString: Untagged
@@ -10579,12 +10592,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e76f1fd988601d14c92b23ee681b2ebf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  everythingUseful: {fileID: 11400000, guid: 0adf6649dfa6c2b48877232f4002ec52, type: 2}
   MainCamera: {fileID: 6139130776220831130}
   SaveLoadSystem: {fileID: 9165005917305822135}
   GameManager: {fileID: 6222046011016691636}
   LevelManager: {fileID: 1476355996276291527}
   SceneChanger: {fileID: 4304799865440428433}
   Interact: {fileID: 1496949621526387923}
+  TurnSystem: {fileID: 4377341019600772746}
   SelectedPlayers: []
   InventoryUISlots:
   - {fileID: 1027863488603791439}
@@ -10595,9 +10610,29 @@ MonoBehaviour:
   PartyRoundCardPrefab: {fileID: 4817859511953182997, guid: 163875383e3051c4295f7a099d7c47b5,
     type: 3}
   spawnedPlayerScripts: []
-  previews: []
-  partyRoundCards: []
-  inventoryUIs: []
+--- !u!114 &472881729164264370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7610655241762704172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1afa011ae23f53408ef99feaf3b1e67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EverythingUseful: {fileID: 11400000, guid: 0adf6649dfa6c2b48877232f4002ec52, type: 2}
+  GameManager: {fileID: 6222046011016691636}
+  LevelManager: {fileID: 1476355996276291527}
+  PathfinderVariables: {fileID: 7100006637450398535}
+  SceneChanger: {fileID: 4304799865440428433}
+  SaveLoadSystem: {fileID: 9165005917305822135}
+  MainPrefabScript: {fileID: 8920082568792098167}
+  Interact: {fileID: 1496949621526387923}
+  TurnSystem: {fileID: 4377341019600772746}
+  UIManager: {fileID: 8315470284690167364}
+  CameraSystem: {fileID: 1685987198067103943}
 --- !u!1 &7760350633488948628
 GameObject:
   m_ObjectHideFlags: 0

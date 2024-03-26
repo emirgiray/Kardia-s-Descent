@@ -9,7 +9,7 @@ namespace CodeMonkey.CameraSystem {
 
     public class CameraSystem : MonoBehaviour {
 
-        public static CameraSystem Instance { get; private set; }
+        [SerializeField] private EverythingUseful everythingUseful;
         [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
         [SerializeField] private float moveSpeed = 10;
         [SerializeField] float zoomSpeed = 1;
@@ -41,12 +41,12 @@ namespace CodeMonkey.CameraSystem {
 
         private void OnEnable()
         {
-            Interact.Instance.CharacterSelectedAction += OnCharacterSelected;
+            everythingUseful.Interact.CharacterSelectedAction += OnCharacterSelected;
         }
 
         private void OnDisable()
         {
-            Interact.Instance.CharacterSelectedAction -= OnCharacterSelected;
+            everythingUseful.Interact.CharacterSelectedAction -= OnCharacterSelected;
         }
 
         public void OnCharacterSelected(Tile characterTile, float lerpTime = 0.5f)
@@ -64,7 +64,6 @@ namespace CodeMonkey.CameraSystem {
         }
 
         private void Awake() {
-            Instance = this;
             followOffset = cinemachineVirtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset;
         }
 

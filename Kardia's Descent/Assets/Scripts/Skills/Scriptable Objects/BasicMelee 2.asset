@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8436f111b854bff449ffffe387f822ee, type: 3}
   m_Name: BasicMelee 2
   m_EditorClassIdentifier: 
+  everythingUseful: {fileID: 11400000, guid: 0adf6649dfa6c2b48877232f4002ec52, type: 2}
   skillSprite: {fileID: 21300000, guid: c0684f1d5885abc4b8e5b6de5bb9c17a, type: 3}
   skillName: Basic Melee
   skillDescription: Basic attack.
@@ -22,6 +23,7 @@ MonoBehaviour:
   actionPointUse: 4
   skillEffectDuration: 1
   skillBuffDebuffAmount: 1
+  permaBuff: 1
   accuracy: 50
   coverAccuracyDebuff: 0
   animatorOverrideController: {fileID: 0}

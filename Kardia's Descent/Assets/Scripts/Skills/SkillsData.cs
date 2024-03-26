@@ -9,6 +9,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SkillsData", menuName = "ScriptableObjects/Skills/SkillsData", order = 1)]
 public class SkillsData : ScriptableObject
 {
+    public EverythingUseful everythingUseful;
     [PreviewField(Height= 200,Alignment =ObjectFieldAlignment.Left)]
     public Sprite skillSprite;
     [Space]

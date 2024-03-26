@@ -9,8 +9,7 @@ using UnityEngine.Events;
 
 public class LevelManager : MonoBehaviour
 {
-    public static LevelManager Instance { get; private set; }
-    
+    [SerializeField] private EverythingUseful everythingUseful;
      public List<Player> players = new List<Player>();
      public List<Enemy> enemies = new List<Enemy>();
      [HideInInspector] 
@@ -23,14 +22,15 @@ public class LevelManager : MonoBehaviour
      public UnityEvent GamePausedEvent; //these are not used
      [FoldoutGroup("Events")]
      public UnityEvent GameUnpausedEvent;
-    private void Awake()
-    {
-        if (Instance == null)
-            Instance = this;
-        else
-            Destroy(this);
-        
-    }
+     
+     private TurnSystem TurnSystem;
+     private GameManager GameManager;
+   
+     private void Awake()
+     {
+         TurnSystem = everythingUseful.TurnSystem;
+         GameManager = everythingUseful.GameManager;
+     }
 
     public void InitializeCharacters()
     {
@@ -71,9 +71,9 @@ public class LevelManager : MonoBehaviour
     {
         foreach (var player in players)
         {
-            if (player.gameObject.activeInHierarchy && TurnSystem.Instance.playersInCombat.Contains(player) == false )
+            if (player.gameObject.activeInHierarchy && TurnSystem.playersInCombat.Contains(player) == false )
             {
-                TurnSystem.Instance.AddPlayer(player);
+                TurnSystem.AddPlayer(player);
                 
             }
         }
@@ -81,9 +81,9 @@ public class LevelManager : MonoBehaviour
     
     public void AddPlayerToCombat(Player player)
     {
-        if (player.gameObject.activeInHierarchy && TurnSystem.Instance.playersInCombat.Contains(player) == false && player.GetUnlocked())
+        if (player.gameObject.activeInHierarchy && TurnSystem.playersInCombat.Contains(player) == false && player.GetUnlocked())
         {
-            TurnSystem.Instance.AddPlayer(player);                
+            TurnSystem.AddPlayer(player);                
         }
     }
 
@@ -91,9 +91,9 @@ public class LevelManager : MonoBehaviour
     {
         foreach (var enemy in enemies)
         {
-            if (enemy.gameObject.activeInHierarchy && enemy.inCombat && TurnSystem.Instance.enemiesInCombat.Contains(enemy) == false )
+            if (enemy.gameObject.activeInHierarchy && enemy.inCombat && TurnSystem.enemiesInCombat.Contains(enemy) == false )
             {
-                TurnSystem.Instance.AddEnemy(enemy);                
+                TurnSystem.AddEnemy(enemy);                
             }
         }
         
@@ -101,9 +101,9 @@ public class LevelManager : MonoBehaviour
 
     public void AddEnemyToCombat(Enemy enemy)
     {
-        if (enemy.gameObject.activeInHierarchy && TurnSystem.Instance.enemiesInCombat.Contains(enemy) == false )
+        if (enemy.gameObject.activeInHierarchy && TurnSystem.enemiesInCombat.Contains(enemy) == false )
         {
-            TurnSystem.Instance.AddEnemy(enemy);                
+            TurnSystem.AddEnemy(enemy);                
         }
     }
 
@@ -140,7 +140,7 @@ public class LevelManager : MonoBehaviour
 
         if (players.Count == 0 || unlockedPlayers.Count == 0)
         {
-            GameManager.Instance.GameOver(false);
+            GameManager.GameOver(false);
         }
     }
 

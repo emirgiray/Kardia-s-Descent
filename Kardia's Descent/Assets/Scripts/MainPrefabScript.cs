@@ -11,6 +11,7 @@ using UnityEngine.SceneManagement;
 //remember to make this script execute first but after turn system
 public class MainPrefabScript : MonoBehaviour
 {
+    [SerializeField] private EverythingUseful everythingUseful;
     public static MainPrefabScript Instance;
     public Camera MainCamera;
     public SaveLoadSystem SaveLoadSystem;
@@ -18,6 +19,7 @@ public class MainPrefabScript : MonoBehaviour
     public LevelManager LevelManager;
     public SceneChanger SceneChanger;
     public Interact Interact;
+    public TurnSystem TurnSystem;
     public List<GameObject> SelectedPlayers = new();
     public List<GameObject> InventoryUISlots = new();
 
@@ -109,11 +111,11 @@ public class MainPrefabScript : MonoBehaviour
             previews.Add(tempPreview);
             
             GameObject tempPartyRoundCard = Instantiate(PartyRoundCardPrefab, PartyRoundCardsSlot);
-            tempPartyRoundCard.GetComponent<CharacterRoundCard>().Init(spawnedPlayerScripts[i], TurnSystem.Instance.RoundInfo.GetComponent<RoundInfo>());
+            tempPartyRoundCard.GetComponent<CharacterRoundCard>().Init(spawnedPlayerScripts[i], TurnSystem.RoundInfo.GetComponent<RoundInfo>());
             partyRoundCards.Add(tempPartyRoundCard);
         }
         
-        Interact.Instance.CharacterSelectedAction?.Invoke(spawnedPlayerScripts[0].characterTile, 0.001f);
+        Interact.CharacterSelectedAction?.Invoke(spawnedPlayerScripts[0].characterTile, 0.001f);
     }
 
     private void ClearPrevious()

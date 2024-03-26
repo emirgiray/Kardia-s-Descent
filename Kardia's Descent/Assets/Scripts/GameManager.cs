@@ -8,8 +8,7 @@ using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance { get; private set; }
-    
+    [SerializeField] private EverythingUseful everythingUseful;
     public List<GameObject> SelectedPlayers = new();
     public int selectMax = 4;
     private int currentSelected = 0;
@@ -43,30 +42,23 @@ public class GameManager : MonoBehaviour
     public UnityEvent GamePausedEvent;
     [FoldoutGroup("Events")]
     public UnityEvent GameUnpausedEvent;
-    private void Awake()
-    {
-        if (Instance == null)
-            Instance = this;
-        else
-            Destroy(this);
-    }
     
     public void StartRun() // this fires once the player presses start
     {
         MainPrefabScript.Instance.SelectedPlayers = SelectedPlayers;
         startTime = DateTime.Now;
-        SaveLoadSystem.Instance.loadOnAwake = true;
+        everythingUseful.SaveLoadSystem.loadOnAwake = true;
         // save selected players to save system
 
         foreach (var player in SelectedPlayers)
         {
-            LevelManager.Instance.AddPlayerToGame(player.GetComponent<Player>());
+            everythingUseful.LevelManager.AddPlayerToGame(player.GetComponent<Player>());
         }
         
-        SaveLoadSystem.Instance.SaveGame();
-        MainPrefabScript.Instance.MainCamera.enabled = true;
-        SaveLoadSystem.Instance.saveData.lastScene = SceneChanger.Instance.firstLevel;
-        SceneChanger.Instance.LoadFirstLevel();
+        everythingUseful.SaveLoadSystem.SaveGame();
+        everythingUseful.MainPrefabScript.MainCamera.enabled = true;
+        everythingUseful.SaveLoadSystem.saveData.lastScene = everythingUseful.SceneChanger.firstLevel;
+        everythingUseful.SceneChanger.LoadFirstLevel();
     }
 
     /// <summary>
@@ -93,7 +85,7 @@ public class GameManager : MonoBehaviour
 
     public void ResetToDefault()
     {
-        Interact.Instance.ResetToDefault();
+        everythingUseful.Interact.ResetToDefault();
     }
     
     #region Game States
@@ -102,7 +94,7 @@ public class GameManager : MonoBehaviour
     {
         CalcuatePlayTime();
         CalculateScore();
-        UIManager.Instance.GameOver(win, score, totalDamageDealt, totalDamageTaken, totalKills, totalHeartsCollected, formattedPlayTime);
+        everythingUseful.UIManager.GameOver(win, score, totalDamageDealt, totalDamageTaken, totalKills, totalHeartsCollected, formattedPlayTime);
     }
     
 
@@ -125,7 +117,7 @@ public class GameManager : MonoBehaviour
     public void PauseGame(bool value)
     {
         isPaused = !isPaused;
-        UIManager.Instance.PauseGame(isPaused);
+        everythingUseful.UIManager.PauseGame(isPaused);
         Time.timeScale = isPaused ? 0 : 1;
         (isPaused ? GamePausedEvent : GameUnpausedEvent)?.Invoke();
     }

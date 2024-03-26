@@ -121,9 +121,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e756be36c92cff47bb1f4e8017253b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  everythingUseful: {fileID: 11400000, guid: 0adf6649dfa6c2b48877232f4002ec52, type: 2}
+  selectable: 1
+  disableMeshOnStart: 1
+  Occupied: 0
   parent: {fileID: 0}
   connectedTile: {fileID: 0}
   occupyingCharacter: {fileID: 0}
+  occupyingGO: {fileID: 0}
+  meshRenderer: {fileID: 0}
+  TileHighlightGO: {fileID: 0}
+  ShieldIcon: {fileID: 0}
+  TileHighlightMeshRenderer: {fileID: 0}
+  defaultMat: {fileID: 0}
+  disabledMat: {fileID: 0}
   occupiedByPlayer: 0
   occupyingPlayer: {fileID: 0}
   occupiedByEnemy: 0
@@ -131,6 +142,8 @@ MonoBehaviour:
   OccupiedByCoverPoint: 0
   occupyingCoverPoint: {fileID: 0}
   isCoveredByCoverPoint: 0
+  occupiedByInteractable: 0
+  occupyingInteractable: {fileID: 0}
   costFromOrigin: 0
   costToDestination: 0
   terrainCost: 0
@@ -147,9 +160,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectTile: {fileID: 0}
-  GroundLayerMask:
-    serializedVersion: 2
-    m_Bits: 8
+  findTileAtStart: 0
+  pathfinder: {fileID: 0}
   yOffset: 1
   coveringTiles: []
 --- !u!114 &2397469090214151577
@@ -172,6 +184,10 @@ MonoBehaviour:
   ResetOnStart: 1
   Bar01: {fileID: 0}
   Bar02: {fileID: 0}
+  Bar01_2: {fileID: 0}
+  Bar02_2: {fileID: 0}
+  Bar01_3: {fileID: 0}
+  Bar02_3: {fileID: 0}
   BarAnimSpeed: 10
   Bar02Delay: 0.4
   Dead:
@@ -195,10 +211,16 @@ MonoBehaviour:
   TakeDamageWithValue:
     m_PersistentCalls:
       m_Calls: []
+  TakeDamageWithString:
+    m_PersistentCalls:
+      m_Calls: []
   HealthDecreaseValue:
     m_PersistentCalls:
       m_Calls: []
   HealthAdded:
+    m_PersistentCalls:
+      m_Calls: []
+  HealthAddedWithString:
     m_PersistentCalls:
       m_Calls: []
   GetCurrentHealth:
@@ -207,4 +229,10 @@ MonoBehaviour:
   GetCurrentHealthNormalized:
     m_PersistentCalls:
       m_Calls: []
+  MissEvent:
+    m_PersistentCalls:
+      m_Calls: []
   _Health: 0
+  _HealthAnim: {fileID: 0}
+  _HealthAnim_2: {fileID: 0}
+  _HealthAnim_3: {fileID: 0}

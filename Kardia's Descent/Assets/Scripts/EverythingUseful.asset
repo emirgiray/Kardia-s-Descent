@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1932f7f1656f264da7b08a67b86b4b3, type: 3}
+  m_Name: EverythingUseful
+  m_EditorClassIdentifier: 
+  GameManager: {fileID: 0}
+  LevelManager: {fileID: 0}
+  PathfinderVariables: {fileID: 0}
+  SceneChanger: {fileID: 0}
+  SaveLoadSystem: {fileID: 0}
+  MainPrefabScript: {fileID: 0}
+  Interact: {fileID: 0}
+  TurnSystem: {fileID: 0}
+  UIManager: {fileID: 0}

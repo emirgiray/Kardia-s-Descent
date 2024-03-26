@@ -14,7 +14,7 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(AudioSource))]
 public class Interact : MonoBehaviour
 {
-    public static Interact Instance { get; private set; }
+    [SerializeField] private EverythingUseful everythingUseful;
     public Action SkillHighlighted;
     public Action SkillSelected;
     public Action SkillDeselected;
@@ -136,17 +136,15 @@ public class Interact : MonoBehaviour
         CurrentTileChangedAction += CurrentTileChangedFunc;
     }
 
+    private TurnSystem TurnSystem;
+    private LevelManager LevelManager;
+    private GameManager GameManager;
+   
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            //DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        TurnSystem = everythingUseful.TurnSystem;
+        LevelManager = everythingUseful.LevelManager;
+        GameManager = everythingUseful.GameManager;
     }
 
     private void Start()
@@ -173,11 +171,11 @@ public class Interact : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.T))
         {
-            TurnSystem.Instance.NextTurn();
+            TurnSystem.NextTurn();
         }
         if (Input.GetKeyDown(KeyCode.R))
         {
-            TurnSystem.Instance.NextRound();
+            TurnSystem.NextRound();
         }
         if (Input.GetKeyDown(KeyCode.Y))
         {
@@ -258,7 +256,7 @@ public class Interact : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 isPaused = !isPaused;
-                GameManager.Instance.PauseGame(isPaused);
+                GameManager.PauseGame(isPaused);
             }
         }
     }

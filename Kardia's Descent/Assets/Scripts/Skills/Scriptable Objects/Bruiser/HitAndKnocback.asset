@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4741ebfc2bd33284daa284f279198f6d, type: 3}
   m_Name: HitAndKnocback
   m_EditorClassIdentifier: 
+  everythingUseful: {fileID: 11400000, guid: 0adf6649dfa6c2b48877232f4002ec52, type: 2}
   skillSprite: {fileID: 1897925181, guid: f050367bbcaea674495c2d5e36fc140b, type: 3}
   skillName: Bully
   skillDescription: Hit and push the opponent back 1 hex.
@@ -22,6 +23,7 @@ MonoBehaviour:
   actionPointUse: 2
   skillEffectDuration: 1
   skillBuffDebuffAmount: 1
+  permaBuff: 1
   accuracy: 75
   coverAccuracyDebuff: 0
   animatorOverrideController: {fileID: 22100000, guid: 43da974f8ebaab7419bd2a1abc3c3b14,

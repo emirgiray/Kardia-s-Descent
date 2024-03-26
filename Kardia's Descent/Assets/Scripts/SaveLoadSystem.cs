@@ -11,9 +11,9 @@ using Debug = UnityEngine.Debug;
 // todo save() should look at maybe another function to get the values other than level manager
 public class SaveLoadSystem : MonoBehaviour
 {
+    [SerializeField] private EverythingUseful everythingUseful;
     public bool loadOnAwake;
    
-    public static SaveLoadSystem Instance { get; private set; }
     public string saveFileName = "saveFile";
     public bool encryptData;
     
@@ -34,17 +34,16 @@ public class SaveLoadSystem : MonoBehaviour
     [ReadOnly] [Multiline(2)]
     public string saveFileFullPath;
 
+    GameManager GameManager;
+    LevelManager LevelManager;
+    SceneChanger SceneChanger;
+    MainPrefabScript MainPrefabScript;
     public void Awake()
     {
-        if (Instance == null)
-            Instance = this;
-        else
-            Destroy(this);
-        
-        if (saveFileFullPath == null)
-        {
-            GenerateFileLocation();
-        }
+        GameManager = everythingUseful.GameManager;
+        LevelManager = everythingUseful.LevelManager;
+        SceneChanger = everythingUseful.SceneChanger;
+        MainPrefabScript = everythingUseful.MainPrefabScript;
 
         //InitAwake();
     }
@@ -62,7 +61,7 @@ public class SaveLoadSystem : MonoBehaviour
     
     private void GetValues()
     {
-        foreach (var player in MainPrefabScript.Instance.SelectedPlayers)
+        foreach (var player in MainPrefabScript.SelectedPlayers)
         {
             int playerIndex = allPlayers.allPlayers.FindIndex(p => p.name.Equals(player.name/* + " Variant"*/));
             Player playerScript = player.GetComponent<Player>();
@@ -84,13 +83,13 @@ public class SaveLoadSystem : MonoBehaviour
             });
         }
 
-        saveData.startTime = GameManager.Instance.startTime.ToString();
-        saveData.totalDamageDealt = GameManager.Instance.totalDamageDealt;
-        saveData.totalDamageTaken = GameManager.Instance.totalDamageTaken;
-        saveData.totalKills = GameManager.Instance.totalKills;
-        saveData.totalHeartsCollected = GameManager.Instance.totalHeartsCollected;
+        saveData.startTime = GameManager.startTime.ToString();
+        saveData.totalDamageDealt = GameManager.totalDamageDealt;
+        saveData.totalDamageTaken = GameManager.totalDamageTaken;
+        saveData.totalKills = GameManager.totalKills;
+        saveData.totalHeartsCollected = GameManager.totalHeartsCollected;
 
-        saveData.lastScene = SceneChanger.Instance.currentScene.SceneName;
+        saveData.lastScene = SceneChanger.currentScene.SceneName;
         saveData.remainingSceneTypes.Clear();
         foreach (var types in allSceneTypes.remainingSceneTypes)
         {
@@ -137,26 +136,26 @@ public class SaveLoadSystem : MonoBehaviour
     private void AssignValues()
     {
       //  Debug.Log($"expression");
-        MainPrefabScript.Instance.SelectedPlayers.Clear(); // clear the list if it has values
+        MainPrefabScript.SelectedPlayers.Clear(); // clear the list if it has values
         
         for (int i = 0; i < saveData.playerDatas.Count; i++) // first tell the mainprefabscript to spawn the players
         { 
-            MainPrefabScript.Instance.SelectedPlayers.Add(allPlayers.allPlayers[saveData.playerDatas[i].playerID]);
+            MainPrefabScript.SelectedPlayers.Add(allPlayers.allPlayers[saveData.playerDatas[i].playerID]);
         }
         
-        GameManager.Instance.startTime = DateTime.Parse(saveData.startTime);
-        GameManager.Instance.totalDamageDealt = saveData.totalDamageDealt;
-        GameManager.Instance.totalDamageTaken = saveData.totalDamageTaken;
-        GameManager.Instance.totalKills = saveData.totalKills;
-        GameManager.Instance.totalHeartsCollected = saveData.totalHeartsCollected;
+        GameManager.startTime = DateTime.Parse(saveData.startTime);
+        GameManager.totalDamageDealt = saveData.totalDamageDealt;
+        GameManager.totalDamageTaken = saveData.totalDamageTaken;
+        GameManager.totalKills = saveData.totalKills;
+        GameManager.totalHeartsCollected = saveData.totalHeartsCollected;
         
-        MainPrefabScript.Instance.InitializeLevel();
-        LevelManager.Instance.InitializeCharacters();
+        MainPrefabScript.InitializeLevel();
+        LevelManager.InitializeCharacters();
         
         
         for (int i = 0; i < saveData.playerDatas.Count; i++) // then assign the values to the players
         {
-            Player player = MainPrefabScript.Instance.spawnedPlayerScripts[i];
+            Player player = MainPrefabScript.spawnedPlayerScripts[i];
             
             player.characterStats.Strength = saveData.playerDatas[i].Strength;
             player.characterStats.Dexterity = saveData.playerDatas[i].Dexterity;
@@ -241,8 +240,8 @@ public class SaveLoadSystem : MonoBehaviour
     [Button, GUIColor(1f, 1f, 1f)]
     public void LevelManagerAndMainPrefabInit()
     {
-        MainPrefabScript.Instance.InitializeLevel();
-        LevelManager.Instance.InitializeCharacters();
+        MainPrefabScript.InitializeLevel();
+        LevelManager.InitializeCharacters();
     }
 
     public bool GetDoesSaveExist()

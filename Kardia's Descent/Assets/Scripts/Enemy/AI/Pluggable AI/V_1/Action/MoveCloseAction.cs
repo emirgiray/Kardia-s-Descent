@@ -17,9 +17,9 @@ public class MoveCloseAction : ActionAI
        // Debug.Log($"doOnce = {doonce}");
 
         
-        if (TurnSystem.Instance.turnState == TurnSystem.TurnState.Enemy && controller.enemy.canMove/* && controller.RandomWait()*/)//todo seems like adding delay fixes problems like stuttering and going back to first tile
+        if (controller.enemy.everythingUseful.TurnSystem.turnState == TurnSystem.TurnState.Enemy && controller.enemy.canMove/* && controller.RandomWait()*/)//todo seems like adding delay fixes problems like stuttering and going back to first tile
         {
-            if (controller.enemy.turnOrder == TurnSystem.Instance.currentEnemyTurnOrder && doonce)
+            if (controller.enemy.turnOrder == controller.enemy.everythingUseful.TurnSystem.currentEnemyTurnOrder && doonce)
             {
                // controller.enemy.StartMove(Pathfinder.Instance.GetPathBetween(controller.enemy.characterTile, controller.targetPlayer.characterTile, true));// 1
                  controller.enemy.StartMove(FindPathToTargetPlayer(controller, controller.targetPlayer), true, () => doonce = true);

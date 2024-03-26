@@ -72,7 +72,7 @@ public class StateController : MonoBehaviour
         FindWaypointsFromParent();
         enemy = GetComponent<Enemy>();
         skillContainer = GetComponent<SkillContainer>();
-        turnSystem = TurnSystem.Instance;
+        turnSystem = enemy.everythingUseful.TurnSystem;
         RandomWaitAssigner();
         RandomWaitAssigner2();
 
@@ -109,7 +109,7 @@ public class StateController : MonoBehaviour
         else
         {
             
-            if ((TurnSystem.Instance.turnState == TurnSystem.TurnState.Enemy && enemy.turnOrder == TurnSystem.Instance.currentEnemyTurnOrder) || !enemy.inCombat)
+            if ((enemy.TurnSystem.turnState == TurnSystem.TurnState.Enemy && enemy.turnOrder == enemy.TurnSystem.currentEnemyTurnOrder) || !enemy.inCombat)
             {
                 currentStateSeconds += Time.deltaTime;
                 if (canExitState)
@@ -148,7 +148,7 @@ public class StateController : MonoBehaviour
 
     public void TryActivateAI()
     {
-        aiActive = (enemy.turnOrder == TurnSystem.Instance.currentEnemyTurnOrder && !enemy.isDead); 
+        aiActive = (enemy.turnOrder == enemy.TurnSystem.currentEnemyTurnOrder && !enemy.isDead); 
     }
     
     public void TransitionToState(StateAI nextState)

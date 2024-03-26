@@ -229,6 +229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40e1b56ff8194f9498d18383bf9980c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  everythingUseful: {fileID: 11400000, guid: 0adf6649dfa6c2b48877232f4002ec52, type: 2}
   characterSprite: {fileID: 0}
   characterStats: {fileID: 0}
   SkillContainer: {fileID: 6566286917398397367}
@@ -244,6 +245,7 @@ MonoBehaviour:
   actionPoints: 6
   remainingActionPoints: 0
   maxActionPoints: 10
+  temporaryActionPointsToDecrease: 0
   initiative: 1
   health: {fileID: 5225323832543321503}
   detectingThreshold: 0.45
@@ -301,6 +303,10 @@ MonoBehaviour:
       m_Calls: []
   extraMeleeDamage: 0
   extraRangedAccuracy: 0
+  TurnSystem: {fileID: 0}
+  Interact: {fileID: 0}
+  CameraSystem: {fileID: 0}
+  LevelManager: {fileID: 0}
   playerPortrait: {fileID: 8400000, guid: 8d4fd00542bae0b43957e359329b47a2, type: 2}
   PlayerPreview: {fileID: 0}
   playerPrefab: {fileID: 0}
@@ -350,8 +356,8 @@ MonoBehaviour:
     skillButton: {fileID: 0}
     animatorOverrideController: {fileID: 0}
   skillSelected: 0
-  Character: {fileID: 0}
-  Inventory: {fileID: 0}
+  Character: {fileID: 7510704565162782655}
+  Inventory: {fileID: 5475755088311690444}
   skillButtons: []
   damageBeforeCoverDebuff: 0
   accuracyBeforeCoverDebuff: 0
@@ -550,6 +556,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 421785ed51b43d74dbdd3f5f16865aed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  everythingUseful: {fileID: 11400000, guid: 0adf6649dfa6c2b48877232f4002ec52, type: 2}
   LineHeightOffset: 0.33
 --- !u!54 &2067046752837608681
 Rigidbody:

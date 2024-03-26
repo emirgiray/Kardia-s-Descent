@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class HeartContainer : MonoBehaviour
 {
+    
     public HeartData heartData;
     [SerializeField] private Character character;
     public bool isPowerUnlocked = false;
@@ -35,7 +36,7 @@ public class HeartContainer : MonoBehaviour
 
     public void PickUpHeart(HeartData heartDataIn)
     {
-        GameManager.Instance.totalHeartsCollected++;
+        character.everythingUseful.GameManager.totalHeartsCollected++;
         character.inventory.heartsInInventory.Add(heartDataIn);
         
         if (character.heartContainer.heartData == null)

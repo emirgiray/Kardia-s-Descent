@@ -23,26 +23,26 @@ public class Player : Character
     public static event QuestDelegate JackTheRipperQuestCompleted;
     private void OnEnable()
     {
-        TurnSystem.Instance.FriendlyTurn += base.StartTurn;
-        TurnSystem.Instance.OnPlayerCheckStunTurnEvent += CheckRemoveStun;
-        TurnSystem.Instance.OnPlayerTurnEvent += ResetKillsInTurn;
+        everythingUseful.TurnSystem.FriendlyTurn += base.StartTurn;
+        everythingUseful.TurnSystem.OnPlayerCheckStunTurnEvent += CheckRemoveStun;
+        everythingUseful.TurnSystem.OnPlayerTurnEvent += ResetKillsInTurn;
 
         if (characterClass == CharacterClass.Bruiser)
         {
             OnAttackEndAction += BruiserDoubleAttack;
-            TurnSystem.Instance.FriendlyTurn += ResetBruiserDoubleAttack;
+            everythingUseful.TurnSystem.FriendlyTurn += ResetBruiserDoubleAttack;
         }
     }
     private void OnDisable()
     {
-        TurnSystem.Instance.FriendlyTurn -= base.StartTurn;
-        TurnSystem.Instance.OnPlayerCheckStunTurnEvent -= CheckRemoveStun;
-        TurnSystem.Instance.OnPlayerTurnEvent -= ResetKillsInTurn;
+       everythingUseful.TurnSystem.FriendlyTurn -= base.StartTurn;
+       everythingUseful.TurnSystem.OnPlayerCheckStunTurnEvent -= CheckRemoveStun;
+       everythingUseful.TurnSystem.OnPlayerTurnEvent -= ResetKillsInTurn;
         
         if (characterClass == CharacterClass.Bruiser)
         {
             OnAttackEndAction -= BruiserDoubleAttack;
-            TurnSystem.Instance.FriendlyTurn -= ResetBruiserDoubleAttack;
+            everythingUseful.TurnSystem.FriendlyTurn -= ResetBruiserDoubleAttack;
         }
     }
 
@@ -67,9 +67,9 @@ public class Player : Character
             remainingActionPoints += skill.actionPointUse;
             skill.remainingSkillCooldown = skill.skillCooldown;
             canBruiserDoubleAttack = false;
-            Vector3 pos = Interact.Instance.lastAttackedTile.transform.position;
+            Vector3 pos = Interact.lastAttackedTile.transform.position;
             Rotate(pos);
-            SkillContainer.UseSkill(skill, Interact.Instance.lastAttackedTile);
+            SkillContainer.UseSkill(skill, Interact.lastAttackedTile);
             
         }
     }

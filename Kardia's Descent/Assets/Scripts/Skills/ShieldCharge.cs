@@ -63,7 +63,7 @@ public class ShieldCharge : SkillsData
                 
                 ActivaterCharacter.Rotate(enemyTile.transform.position);
             
-                Interact.Instance.GetComponent<MonoBehaviour>()
+                everythingUseful.Interact.GetComponent<MonoBehaviour>()
                     .StartCoroutine(WaitUntilEnum(Skill, ActivaterCharacter, enemyTile, OnComplete));
                 //base.TryHit(Skill, ActivaterCharacter, selectedTile, parent, OnComplete = null);
                 

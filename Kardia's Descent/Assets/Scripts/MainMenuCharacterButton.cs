@@ -4,6 +4,7 @@ using TMPro;
 
 public class MainMenuCharacterButton : MonoBehaviour
 {
+    [SerializeField] private EverythingUseful everythingUseful;
     public GameObject characterPrefab;
     public Sprite characterImage;
     public string characterName;
@@ -30,19 +31,19 @@ public class MainMenuCharacterButton : MonoBehaviour
         MainMenuController.Instance.selectedChar = this;
         
         MainMenuController.Instance.radarChart.SetStats(characterPrefab.GetComponent<Player>().characterStats);
-        // MainMenuController.Instance.selectButton.onClick.RemoveAllListeners();
-        // MainMenuController.Instance.selectButton.onClick.AddListener(equipped ? RemoveCharacter : EquipCharacter);
-        // MainMenuController.Instance.selectButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = equipped ? "Remove" : "Select";
+        // MainMenuController.selectButton.onClick.RemoveAllListeners();
+        // MainMenuController.selectButton.onClick.AddListener(equipped ? RemoveCharacter : EquipCharacter);
+        // MainMenuController.selectButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = equipped ? "Remove" : "Select";
         equipButton.gameObject.SetActive(!equipped);
         selectedImage.SetActive(true);
     }
 
     public void EquipCharacter()
     {
-        if (GameManager.Instance.AddToSelectedPlayers(characterPrefab))
+        if (everythingUseful.GameManager.AddToSelectedPlayers(characterPrefab))
         {
             equipped = true;
-            index = GameManager.Instance.SelectedPlayers.Count - 1;
+            index = everythingUseful.GameManager.SelectedPlayers.Count - 1;
             MainMenuController.Instance.AddToSelected(this);
             UpdateButton(RemoveCharacter, "Remove");
             equippedImage.SetActive(true);
@@ -51,7 +52,7 @@ public class MainMenuCharacterButton : MonoBehaviour
 
     public void RemoveCharacter()
     {
-        if (GameManager.Instance.RemoveFromSelectedPlayers(characterPrefab))
+        if (everythingUseful.GameManager.RemoveFromSelectedPlayers(characterPrefab))
         {
             if (MainMenuController.Instance.spawnedCharacter.name == characterPrefab.name + "(Clone)")
             {
@@ -67,9 +68,9 @@ public class MainMenuCharacterButton : MonoBehaviour
     
     public void UpdateButton(UnityEngine.Events.UnityAction action, string text)
     {
-        // MainMenuController.Instance.selectButton.onClick.RemoveAllListeners();
-        // MainMenuController.Instance.selectButton.onClick.AddListener(action);
-        // MainMenuController.Instance.selectButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = text;
+        // MainMenuController.selectButton.onClick.RemoveAllListeners();
+        // MainMenuController.selectButton.onClick.AddListener(action);
+        // MainMenuController.selectButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = text;
     }
 
     public void ButtonClicked()

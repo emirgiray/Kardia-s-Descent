@@ -7,6 +7,7 @@ using UnityEngine.Events;
 
 public class Interactable : MonoBehaviour
 {
+    [SerializeField] private EverythingUseful everythingUseful;
     [SerializeField] private Tile objectTile;
     [SerializeField] private bool findTileAtStart = false;
     [SerializeField] private float yOffset = 0.18f;
@@ -105,7 +106,7 @@ public class Interactable : MonoBehaviour
                 break;
             case CharacterClass.Player:
                 player.UnlockPlayer();
-                LevelManager.Instance.PlayerUnlocked(player.transform);
+                everythingUseful.LevelManager.PlayerUnlocked(player.transform);
                 objectTile.Occupied = false;
                 objectTile.ResetOcupying();
                 Destroy(gameObject);

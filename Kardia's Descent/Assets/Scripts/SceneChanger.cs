@@ -12,7 +12,7 @@ using UnityEditor;
 
 public class SceneChanger : MonoBehaviour
 {
-    public static SceneChanger Instance { get; private set; }
+    [SerializeField] private EverythingUseful everythingUseful;
     
     public List<SceneType> possibleNextScenes = new();
     
@@ -23,15 +23,7 @@ public class SceneChanger : MonoBehaviour
     public SceneField currentScene;
 
     public bool isOnMainMenu => SceneManager.GetActiveScene().name == mainMenuLevel.SceneName;
-
-    private void Awake()
-    {
-        if (Instance == null)
-            Instance = this;
-        else
-            Destroy(this);
-    }
-
+    
     [Button, GUIColor(1f, 1f, 1f)]
     public void OfferRandomScenes()
     {
@@ -49,12 +41,12 @@ public class SceneChanger : MonoBehaviour
             SceneType temp = allSceneTypes.remainingSceneTypes[randomScene];
             possibleNextScenes.Add(temp);
 
-            UIManager.Instance.SpawnSceneTypeButtons(temp.typeImage, temp.typeName.ToString(), temp.bgColor, ()=>
+            everythingUseful.UIManager.SpawnSceneTypeButtons(temp.typeImage, temp.typeName.ToString(), temp.bgColor, ()=>
             {
                 allSceneTypes.RemoveSceneType(temp);
                 //ChangeScene(possibleNextScenes[i].Scene.SceneName);
                 StartCoroutine(ChangeSceneDelay(temp.Scene.SceneName)); 
-                UIManager.Instance.ClearSceneTypeButtons();
+                everythingUseful.UIManager.ClearSceneTypeButtons();
                 possibleNextScenes.Clear();
             });
         }
@@ -62,7 +54,7 @@ public class SceneChanger : MonoBehaviour
     [Button, GUIColor(1f, 0.1f, 0.1f)]
     public void ClearOfferedScenes()
     {
-        UIManager.Instance.ClearSceneTypeButtons();
+        everythingUseful.UIManager.ClearSceneTypeButtons();
         possibleNextScenes.Clear();
     }
 
@@ -80,8 +72,8 @@ public class SceneChanger : MonoBehaviour
     
     public void ChangeScene(string Value)
     {
-        SaveLoadSystem.Instance.saveData.lastScene = Value;
-        GameManager.Instance.ResetToDefault();
+        everythingUseful.SaveLoadSystem.saveData.lastScene = Value;
+        everythingUseful.GameManager.ResetToDefault();
         currentScene = Value;
         SceneManager.LoadSceneAsync(Value,LoadSceneMode.Single);
     }

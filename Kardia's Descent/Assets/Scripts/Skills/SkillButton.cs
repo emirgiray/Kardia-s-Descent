@@ -23,18 +23,14 @@ public class SkillButton : MonoBehaviour
     [SerializeField] public GameObject cooldownImage;
     [SerializeField] private SkillContainer skillContainer;
     [SerializeField] private TooltipTrigger tooltipTrigger;
-
-    private void Awake()
-    {
-        HighlightSkill();
-    }
+    
 
     public void InitButton(SkillsData skillDataIn, SkillContainer.Skills skillIn , UnityAction useSkill, SkillContainer skillContainerIn)
     {
         skillData = skillDataIn;
         skill = skillIn;
         skillContainer = skillContainerIn;
-        
+        HighlightSkill();
         SkillImage.sprite = skillData.skillSprite;
         //GetComponentInChildren<TextMeshProUGUI>().text = skillData.skillName;
         tooltipTrigger.SetHeader(skillDataIn.skillName);
@@ -43,11 +39,11 @@ public class SkillButton : MonoBehaviour
         
         if (skillDataIn.skillClass == SkillsData.SkillClass.Buff)
         {
-            SkillSelectedOutline.GetComponent<UIOutline>().color = Interact.Instance.skillColors[1];
+            SkillSelectedOutline.GetComponent<UIOutline>().color = skillData.everythingUseful.Interact.skillColors[1];
         }
         else
         {
-            SkillSelectedOutline.GetComponent<UIOutline>().color = Interact.Instance.skillColors[0];
+            SkillSelectedOutline.GetComponent<UIOutline>().color = skillData.everythingUseful.Interact.skillColors[0];
         }
 
         
@@ -148,15 +144,15 @@ public class SkillButton : MonoBehaviour
     
     public void HighlightSkill()
     {
-        if (!SceneChanger.Instance.isOnMainMenu)
+        if (!skillData.everythingUseful.SceneChanger.isOnMainMenu)
         {
             //pointer enter
-            GetComponent<EventTrigger>().triggers[0].callback.AddListener((data)=> Interact.Instance.EnableMovement(false));
-            GetComponent<EventTrigger>().triggers[0].callback.AddListener((data)=> Interact.Instance.EnableAttackableTiles(false));
+            GetComponent<EventTrigger>().triggers[0].callback.AddListener((data)=> skillData.everythingUseful.Interact.EnableMovement(false));
+            GetComponent<EventTrigger>().triggers[0].callback.AddListener((data)=> skillData.everythingUseful.Interact.EnableAttackableTiles(false));
        
             //pointer exit
-            GetComponent<EventTrigger>().triggers[1].callback.AddListener((data)=> Interact.Instance.EnableMovement(true));
-            GetComponent<EventTrigger>().triggers[1].callback.AddListener((data)=> Interact.Instance.EnableAttackableTiles(true));
+            GetComponent<EventTrigger>().triggers[1].callback.AddListener((data)=> skillData.everythingUseful.Interact.EnableMovement(true));
+            GetComponent<EventTrigger>().triggers[1].callback.AddListener((data)=> skillData.everythingUseful.Interact.EnableAttackableTiles(true));
         }
 
     }

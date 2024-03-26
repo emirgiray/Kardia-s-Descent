@@ -11,8 +11,8 @@ using Random = Unity.Mathematics.Random;
 
 public class UIManager : MonoBehaviour
 {
-    public static UIManager Instance { get; private set; }
-    
+
+    [SerializeField] private EverythingUseful everythingUseful;
     [BoxGroup("Turn And Round")] [SerializeField]
     private int turn = 1;
     [BoxGroup("Turn And Round")] [SerializeField]
@@ -57,35 +57,35 @@ public class UIManager : MonoBehaviour
     [BoxGroup("Possible Next Scenes")] [SerializeField]
     private GameObject possibleNextScenesBG;
 
-
+    TurnSystem TurnSystem;
+    LevelManager LevelManager;
+    
     private void Awake()
     {
-        if (Instance == null)
-            Instance = this;
-        else
-            Destroy(this);
+        TurnSystem = everythingUseful.TurnSystem;
+        LevelManager = everythingUseful.LevelManager;
     }
 
     private void OnEnable()
     {
-        TurnSystem.Instance.TurnChange += UpdateTurn;
-        TurnSystem.Instance.RoundChange += UpdateRound;
-        TurnSystem.Instance.OnCombatStartAction += ()=> turnAndRoundGO.SetActive(true);
-        TurnSystem.Instance.OnCombatEndAction += ()=> turnAndRoundGO.SetActive(false);
+        TurnSystem.TurnChange += UpdateTurn;
+        TurnSystem.RoundChange += UpdateRound;
+        TurnSystem.OnCombatStartAction += ()=> turnAndRoundGO.SetActive(true);
+        TurnSystem.OnCombatEndAction += ()=> turnAndRoundGO.SetActive(false);
     }
 
     private void OnDisable()
     {
-        TurnSystem.Instance.TurnChange -= UpdateTurn;
-        TurnSystem.Instance.RoundChange -= UpdateRound;
-        TurnSystem.Instance.OnCombatStartAction -= ()=> turnAndRoundGO.SetActive(true);
-        TurnSystem.Instance.OnCombatEndAction -= ()=> turnAndRoundGO.SetActive(false);
+        TurnSystem.TurnChange -= UpdateTurn;
+        TurnSystem.RoundChange -= UpdateRound;
+        TurnSystem.OnCombatStartAction -= ()=> turnAndRoundGO.SetActive(true);
+        TurnSystem.OnCombatEndAction -= ()=> turnAndRoundGO.SetActive(false);
     }
 
     private void Start()
     {
-        UpdateTurn(TurnSystem.Instance.turn);
-        UpdateRound(TurnSystem.Instance.round);
+        UpdateTurn(TurnSystem.turn);
+        UpdateRound(TurnSystem.round);
     }
 
     private void UpdateTurn(int turn)
@@ -114,7 +114,7 @@ public class UIManager : MonoBehaviour
         totalPlayTimeText.text = playTime;
         
         int prevRarity = 0;
-        foreach (var player in LevelManager.Instance.players)
+        foreach (var player in LevelManager.players)
         {
             if (player.isUnlocked && player.heartContainer.heartData != null)
             {
@@ -128,7 +128,7 @@ public class UIManager : MonoBehaviour
 
         }
         
-        //totalTurnsText.text = TurnSystem.Instance.totalTurnsInGame.ToString();
+        //totalTurnsText.text = TurnSystem.totalTurnsInGame.ToString();
         if (win)
         {
             WinTextGO.SetActive(true);

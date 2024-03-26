@@ -10,7 +10,7 @@ using UnityEngine.Events;
 
 public class TurnSystem : MonoBehaviour
 {
-    public static TurnSystem Instance { get; private set; }
+    [SerializeField] private EverythingUseful everythingUseful;
     [SerializeField] public List<Player> playersInCombat = new List<Player>();
     [SerializeField] public List<Enemy> enemiesInCombat = new List<Enemy>();
     [SerializeField] public List<Character> allEntitiesInCombat = new List<Character>();
@@ -55,44 +55,7 @@ public class TurnSystem : MonoBehaviour
     [FoldoutGroup("Events")] public UnityEvent<Transform> OnPlayerAddTransform;
     [FoldoutGroup("Events")] public UnityEvent<Enemy> OnEnemyDeath;
     [FoldoutGroup("Events")] public UnityEvent<Enemy> OnEnemyAdd;
-
-
-    void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            //DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-        
-        /*players.AddRange(GameObject.FindObjectsOfType<Player>());
-        enemies.AddRange(GameObject.FindObjectsOfType<Enemy>());
-
-        for (int i = 0; i < players.Count; i++)
-        {
-            allEntities.Add(players[i].gameObject);
-        }
-
-        for (int i = 0; i < enemies.Count; i++)
-        {
-            allEntities.Add(enemies[i].gameObject);
-        }*/
-
-        /*for (int i = 0; i < allEntities.Count; i++)//set character cards,
-        {
-            GameObject newCard = Instantiate(CharacterCardPrefab, RoundInfo.transform);
-            newCard.name = allEntities[i].name + " Card";
-            newCard.GetComponent<CharacterRoundCard>().Init(allEntities[i].GetComponent<Character>(), RoundInfo.GetComponent<RoundInfo>());
-            allEntities[i].GetComponent<Character>().SetCharacterCard(newCard);
-            RoundInfo.GetComponent<RoundInfo>().AddObject(newCard);
-            //newCard.GetComponent<CustomEvent3>().CustomEvents3.AddListener(RoundInfo.GetComponent<RoundInfo>().Rearrange);
-        }*/
-        
-    }
+    
 
     private void Start()
     {
@@ -161,7 +124,7 @@ public class TurnSystem : MonoBehaviour
         }
         else if (turnState == TurnState.Enemy)
         {
-            TurnSystem.Instance.currentEnemyTurnOrder++;
+            everythingUseful.TurnSystem.currentEnemyTurnOrder++;
             if (turn > enemiesInCombat.Count)
             {
                 NextRound();
@@ -232,7 +195,7 @@ public class TurnSystem : MonoBehaviour
         RoundChange?.Invoke(round);
         OnRoundChange.Invoke();
         DecideWhosTurn();
-        TurnSystem.Instance.currentEnemyTurnOrder = 0;
+        everythingUseful.TurnSystem.currentEnemyTurnOrder = 0;
     }
 
     [Button,GUIColor(1,1,1)][FoldoutGroup("DEBUG")]
@@ -242,7 +205,7 @@ public class TurnSystem : MonoBehaviour
         allEntitiesInCombat.RemoveRange(allEntitiesInCombat.IndexOf(deadPlayer), 1);
         OnPlayerDeath.Invoke(deadPlayer);
         RemoveCard(deadPlayer);
-        LevelManager.Instance.RemovePlayerFromGame(deadPlayer);
+        everythingUseful.LevelManager.RemovePlayerFromGame(deadPlayer);
     }
     
     [Button,GUIColor(1,1,1)][FoldoutGroup("DEBUG")]
@@ -263,7 +226,7 @@ public class TurnSystem : MonoBehaviour
             OnEnemyDeath.Invoke(deadEnemy);
             RemoveCard(deadEnemy);
 
-            LevelManager.Instance.RemoveEnemyFromGame(deadEnemy);
+            everythingUseful.LevelManager.RemoveEnemyFromGame(deadEnemy);
         
             if (enemiesInCombat.Count <= 0)
             {

@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour
 {
+    [SerializeField] private EverythingUseful everythingUseful;
     public static MainMenuController Instance { get; private set; }
     
     public AllPlayers allPlayers;
@@ -197,19 +198,19 @@ public class MainMenuController : MonoBehaviour
 
     public void StartButtonPressed()
     {
-        GameManager.Instance.StartRun();
+        everythingUseful.GameManager.StartRun();
     }
 
     public void InitNewGameAndContinue()
     {
-        continueButton.interactable = SaveLoadSystem.Instance.GetDoesSaveExist();
+        continueButton.interactable = everythingUseful.SaveLoadSystem.GetDoesSaveExist();
     }
     
     public void NewGame()
     {
-        if (SaveLoadSystem.Instance.GetDoesSaveExist())
+        if (everythingUseful.SaveLoadSystem.GetDoesSaveExist())
         {
-            SaveLoadSystem.Instance.DeleteSaveFile();
+            everythingUseful.SaveLoadSystem.DeleteSaveFile();
         }
         
         
@@ -217,8 +218,8 @@ public class MainMenuController : MonoBehaviour
 
     public void Continue()
     {
-        SaveLoadSystem.Instance.LoadGame();
-        SceneChanger.Instance.ChangeScene(SaveLoadSystem.Instance.saveData.lastScene);
+        everythingUseful.SaveLoadSystem.LoadGame();
+        everythingUseful.SceneChanger.ChangeScene(everythingUseful.SaveLoadSystem.saveData.lastScene);
     }
     
     public void SelectedCharacterChanged()

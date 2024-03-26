@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db59d9eb833704c428e73b2f9fbc0e69, type: 3}
   m_Name: Tank Area Morale Buff
   m_EditorClassIdentifier: 
+  everythingUseful: {fileID: 11400000, guid: 0adf6649dfa6c2b48877232f4002ec52, type: 2}
   skillSprite: {fileID: -959594703, guid: f050367bbcaea674495c2d5e36fc140b, type: 3}
   skillName: Area Morale Buff
   skillDescription: Increase AP by 2 for allies in range.
@@ -22,6 +23,7 @@ MonoBehaviour:
   actionPointUse: 3
   skillEffectDuration: 1
   skillBuffDebuffAmount: 2
+  permaBuff: 1
   accuracy: 50
   coverAccuracyDebuff: 0
   animatorOverrideController: {fileID: 22100000, guid: a6564b79e07616541858205ca0f288fd,

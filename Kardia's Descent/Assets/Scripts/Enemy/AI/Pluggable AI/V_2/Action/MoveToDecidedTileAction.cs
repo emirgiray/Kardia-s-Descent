@@ -14,9 +14,9 @@ public class MoveToDecidedTileAction : ActionAI
         
         
         controller.canExitState = false;
-        if (TurnSystem.Instance.turnState == TurnSystem.TurnState.Enemy && controller.enemy.canMove)
+        if (controller.enemy.everythingUseful.TurnSystem.turnState == TurnSystem.TurnState.Enemy && controller.enemy.canMove)
         {
-            if (controller.enemy.turnOrder == TurnSystem.Instance.currentEnemyTurnOrder /*&& doonce*/)
+            if (controller.enemy.turnOrder == controller.enemy.everythingUseful.TurnSystem.currentEnemyTurnOrder /*&& doonce*/)
             {
                 if (controller.enemy.characterTile == controller.decidedMoveTile)
                 {

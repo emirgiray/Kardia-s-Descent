@@ -15,16 +15,16 @@ public class Enemy : Character
     public DecideState decideState;
     private void OnEnable()
     {
-        TurnSystem.Instance.EnemyTurn += base.StartTurn;
+        everythingUseful.TurnSystem.EnemyTurn += base.StartTurn;
         //base.canMove = false; //todo denemek için yaptım belki değiştirilebilir
         stateController = GetComponent<StateController>();
-        TurnSystem.Instance.OnEnemyCheckStunTurnEvent += CheckRemoveStun;
+        everythingUseful.TurnSystem.OnEnemyCheckStunTurnEvent += CheckRemoveStun;
     }
 
     private void OnDisable()
     {
-        TurnSystem.Instance.EnemyTurn -= base.StartTurn;
-        TurnSystem.Instance.OnEnemyCheckStunTurnEvent -= CheckRemoveStun;
+        everythingUseful.TurnSystem.EnemyTurn -= base.StartTurn;
+        everythingUseful.TurnSystem.OnEnemyCheckStunTurnEvent -= CheckRemoveStun;
     }
 
     /*private void Update()

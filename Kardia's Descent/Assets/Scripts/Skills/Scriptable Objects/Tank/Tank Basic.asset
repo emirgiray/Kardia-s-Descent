@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8436f111b854bff449ffffe387f822ee, type: 3}
   m_Name: Tank Basic
   m_EditorClassIdentifier: 
+  everythingUseful: {fileID: 11400000, guid: 0adf6649dfa6c2b48877232f4002ec52, type: 2}
   skillSprite: {fileID: 320847583, guid: f050367bbcaea674495c2d5e36fc140b, type: 3}
   skillName: Basic
   skillDescription: Basic attack.
@@ -22,6 +23,7 @@ MonoBehaviour:
   actionPointUse: 2
   skillEffectDuration: 1
   skillBuffDebuffAmount: 1
+  permaBuff: 1
   accuracy: 70
   coverAccuracyDebuff: 0
   animatorOverrideController: {fileID: 22100000, guid: 7e3ba37234fecc44ea2943c3515e1d61,

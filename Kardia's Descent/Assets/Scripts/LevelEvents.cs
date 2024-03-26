@@ -6,6 +6,7 @@ using UnityEngine.Events;
 
 public class LevelEvents : MonoBehaviour
 {
+    [SerializeField] private EverythingUseful everythingUseful;
     [FoldoutGroup("Events")]
     public UnityEvent AwakeEvent;
     [FoldoutGroup("Events")]
@@ -15,7 +16,7 @@ public class LevelEvents : MonoBehaviour
     {
         AwakeEvent.Invoke();
         
-        /*if(SaveLoadSystem.Instance.loadOnAwake) */SaveLoadSystem.Instance.InitAwake();
+        /*if(SaveLoadSystem.Instance.loadOnAwake) */everythingUseful.SaveLoadSystem.InitAwake();
         MainPrefabScript.Instance.InitAwake();
     }
     

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa17bff122660d49950f7c1b206c9fc, type: 3}
   m_Name: ShootSkill01
   m_EditorClassIdentifier: 
+  everythingUseful: {fileID: 11400000, guid: 0adf6649dfa6c2b48877232f4002ec52, type: 2}
   skillSprite: {fileID: 21300000, guid: 8c5e5033fe838ef40989eeb85a513b7f, type: 3}
   skillName: ShootSkill01
   skillDescription: Test
@@ -22,6 +23,7 @@ MonoBehaviour:
   actionPointUse: 1
   skillEffectDuration: 1
   skillBuffDebuffAmount: 1
+  permaBuff: 1
   accuracy: 50
   coverAccuracyDebuff: 0
   animatorOverrideController: {fileID: 22100000, guid: 21d0ca836db6d7d489d8e8d19f188d7c,
@@ -37,6 +39,7 @@ MonoBehaviour:
   damageType: 0
   skillTarget: 0
   skillHitType: 0
+  skillTargetType: 0
   skillEffect: 0
   buffDebuffType: 0
   Bullet: {fileID: 442650134954007290, guid: a16f60c51d7bf874e8ee3d3db9504520, type: 3}

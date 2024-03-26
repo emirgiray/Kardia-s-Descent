@@ -7,6 +7,7 @@ using Sirenix.Serialization;
 
 public class Tile : MonoBehaviour
 {
+    [SerializeField] private EverythingUseful everythingUseful;
     [BoxGroup("Tile")] [OnValueChanged("DeactivateVisualForEdior")]
     public bool selectable = true;
     [BoxGroup("Tile")] [SerializeField] 
@@ -130,11 +131,11 @@ public class Tile : MonoBehaviour
 
             if (isCoveredByCoverPoint)
             {
-                TileHighlightMeshRenderer.material.SetColor("_RimColor", Interact.Instance.tileHighligthColors[3]);
+                TileHighlightMeshRenderer.material.SetColor("_RimColor", everythingUseful.Interact.tileHighligthColors[3]);
             }
             else
             {
-                TileHighlightMeshRenderer.material.SetColor("_RimColor", Interact.Instance.tileHighligthColors[0]);
+                TileHighlightMeshRenderer.material.SetColor("_RimColor", everythingUseful.Interact.tileHighligthColors[0]);
             }
             
             
@@ -152,7 +153,7 @@ public class Tile : MonoBehaviour
         {
             TileHighlightGO.SetActive(true);
             // TileHighlightMeshRenderer.material.color = Interact.Instance.tileHighligthColors[1];
-            TileHighlightMeshRenderer.material.SetColor("_RimColor", Interact.Instance.tileHighligthColors[1]);
+            TileHighlightMeshRenderer.material.SetColor("_RimColor", everythingUseful.Interact.tileHighligthColors[1]);
         }
         else
         {

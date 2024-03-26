@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RoundInfo : MonoBehaviour
 {
+    [SerializeField] private EverythingUseful everythingUseful;
+    
     [SerializeField] private List<GameObject> objects = new List<GameObject>();
     
     public void Rearrange(GameObject obj)
@@ -20,7 +22,7 @@ public class RoundInfo : MonoBehaviour
         objects.Add(obj);
         int index = objects.IndexOf(obj);
 
-        if (TurnSystem.Instance.turnState == TurnSystem.TurnState.Friendly)
+        if (everythingUseful.TurnSystem.turnState == TurnSystem.TurnState.Friendly)
         {
             if (character is Player)
             {
@@ -40,7 +42,7 @@ public class RoundInfo : MonoBehaviour
                 obj.transform.SetSiblingIndex(index + 1);
             }
         }
-        else if (TurnSystem.Instance.turnState == TurnSystem.TurnState.Enemy)
+        else if (everythingUseful.TurnSystem.turnState == TurnSystem.TurnState.Enemy)
         {
             if (character is Player)
             {

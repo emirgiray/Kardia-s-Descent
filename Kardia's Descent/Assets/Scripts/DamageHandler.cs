@@ -25,11 +25,11 @@ public class DamageHandler : MonoBehaviour
 
         if (attacker is Player)
         {
-            GameManager.Instance.totalDamageDealt += value;
+            character.everythingUseful.GameManager.totalDamageDealt += value;
         }
         if (attacker is Enemy)
         {
-            GameManager.Instance.totalDamageTaken += value;
+            character.everythingUseful.GameManager.totalDamageTaken += value;
         }
         
         if (sgtHealth.isDead)
@@ -46,9 +46,9 @@ public class DamageHandler : MonoBehaviour
             if (!attacker.inCombat)
             {
                 attacker.StartCombat();
-                if (TurnSystem.Instance.turnState == TurnSystem.TurnState.FreeRoamTurn)
+                if (character.TurnSystem.turnState == TurnSystem.TurnState.FreeRoamTurn)
                 {
-                    TurnSystem.Instance.CombatStarted();
+                    character.TurnSystem.CombatStarted();
                 }
             }
         }
@@ -61,7 +61,7 @@ public class DamageHandler : MonoBehaviour
         if (attacker is Player)
         {
             attacker.GetComponent<Player>().IncreaseKills();
-            GameManager.Instance.totalKills++;
+            character.everythingUseful.GameManager.totalKills++;
         }
     }
 

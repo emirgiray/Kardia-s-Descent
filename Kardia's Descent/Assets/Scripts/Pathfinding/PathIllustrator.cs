@@ -4,6 +4,7 @@ using UnityEngine;
 //[RequireComponent(typeof(LineRenderer))]
 public class PathIllustrator : MonoBehaviour
 {
+    [SerializeField] private EverythingUseful everythingUseful;
     [SerializeField] private /*const*/ float LineHeightOffset = 0.33f;
     LineRenderer line;
     private bool canIllustratePath = true;
@@ -17,7 +18,7 @@ public class PathIllustrator : MonoBehaviour
     {
         if (canIllustratePath)
         {
-            Character character = Interact.Instance.selectedCharacter;
+            Character character = everythingUseful.Interact.selectedCharacter;
             
             line.positionCount = path.tiles.Count;
 
