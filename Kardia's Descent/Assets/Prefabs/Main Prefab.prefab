@@ -2446,7 +2446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2615d352f3dac5247b662eaf2cfdd433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  everythingUseful: {fileID: 0}
+  everythingUseful: {fileID: 11400000, guid: 0adf6649dfa6c2b48877232f4002ec52, type: 2}
   objects: []
 --- !u!1 &2439410792422498521
 GameObject:
@@ -8683,6 +8683,10 @@ MonoBehaviour:
     remainingSceneTypes: []
   saveFilePath: C:/Users/emiry/AppData/LocalLow/DefaultCompany/Kardia's Descent/Saves/
   saveFileFullPath: C:/Users/emiry/AppData/LocalLow/DefaultCompany/Kardia's Descent/Saves/saveFile.json
+  GameManager: {fileID: 6222046011016691636}
+  LevelManager: {fileID: 1476355996276291527}
+  SceneChanger: {fileID: 4304799865440428433}
+  MainPrefabScript: {fileID: 8920082568792098167}
 --- !u!114 &6222046011016691636
 MonoBehaviour:
   m_ObjectHideFlags: 0

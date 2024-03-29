@@ -949,6 +949,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce8bf210b63f21b42b13647e0d975451, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  everythingUseful: {fileID: 11400000, guid: 0adf6649dfa6c2b48877232f4002ec52, type: 2}
   characterPrefab: {fileID: 0}
   characterImage: {fileID: 0}
   characterName: 

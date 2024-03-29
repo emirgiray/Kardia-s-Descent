@@ -430,7 +430,6 @@ public class Interact : MonoBehaviour
                 case Character.CharacterState.Moving:
                     if (currentTile.Occupied)
                     {
-                        Debug.Log($"movinbg");
                         InspectSomeone();
                     }
                     break;

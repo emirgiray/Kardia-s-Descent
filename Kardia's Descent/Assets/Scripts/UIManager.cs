@@ -57,35 +57,36 @@ public class UIManager : MonoBehaviour
     [BoxGroup("Possible Next Scenes")] [SerializeField]
     private GameObject possibleNextScenesBG;
 
-    TurnSystem TurnSystem;
-    LevelManager LevelManager;
+
     
+    /*
     private void Awake()
     {
         TurnSystem = everythingUseful.TurnSystem;
         LevelManager = everythingUseful.LevelManager;
     }
+    */
 
     private void OnEnable()
     {
-        TurnSystem.TurnChange += UpdateTurn;
-        TurnSystem.RoundChange += UpdateRound;
-        TurnSystem.OnCombatStartAction += ()=> turnAndRoundGO.SetActive(true);
-        TurnSystem.OnCombatEndAction += ()=> turnAndRoundGO.SetActive(false);
+        everythingUseful.TurnSystem.TurnChange += UpdateTurn;
+        everythingUseful.TurnSystem.RoundChange += UpdateRound;
+        everythingUseful.TurnSystem.OnCombatStartAction += ()=> turnAndRoundGO.SetActive(true);
+        everythingUseful.TurnSystem.OnCombatEndAction += ()=> turnAndRoundGO.SetActive(false);
     }
 
     private void OnDisable()
     {
-        TurnSystem.TurnChange -= UpdateTurn;
-        TurnSystem.RoundChange -= UpdateRound;
-        TurnSystem.OnCombatStartAction -= ()=> turnAndRoundGO.SetActive(true);
-        TurnSystem.OnCombatEndAction -= ()=> turnAndRoundGO.SetActive(false);
+        everythingUseful.TurnSystem.TurnChange -= UpdateTurn;
+        everythingUseful.TurnSystem.RoundChange -= UpdateRound;
+        everythingUseful.TurnSystem.OnCombatStartAction -= ()=> turnAndRoundGO.SetActive(true);
+        everythingUseful.TurnSystem.OnCombatEndAction -= ()=> turnAndRoundGO.SetActive(false);
     }
 
     private void Start()
     {
-        UpdateTurn(TurnSystem.turn);
-        UpdateRound(TurnSystem.round);
+        UpdateTurn(everythingUseful.TurnSystem.turn);
+        UpdateRound(everythingUseful.TurnSystem.round);
     }
 
     private void UpdateTurn(int turn)
@@ -114,7 +115,7 @@ public class UIManager : MonoBehaviour
         totalPlayTimeText.text = playTime;
         
         int prevRarity = 0;
-        foreach (var player in LevelManager.players)
+        foreach (var player in everythingUseful.LevelManager.players)
         {
             if (player.isUnlocked && player.heartContainer.heartData != null)
             {

@@ -34,11 +34,11 @@ public class SaveLoadSystem : MonoBehaviour
     [ReadOnly] [Multiline(2)]
     public string saveFileFullPath;
 
-    GameManager GameManager;
-    LevelManager LevelManager;
-    SceneChanger SceneChanger;
-    MainPrefabScript MainPrefabScript;
-    public void Awake()
+    public GameManager GameManager;
+    public LevelManager LevelManager;
+    public SceneChanger SceneChanger;
+    public MainPrefabScript MainPrefabScript;
+    /*public void Awake()
     {
         GameManager = everythingUseful.GameManager;
         LevelManager = everythingUseful.LevelManager;
@@ -46,7 +46,7 @@ public class SaveLoadSystem : MonoBehaviour
         MainPrefabScript = everythingUseful.MainPrefabScript;
 
         //InitAwake();
-    }
+    }*/
 
     public void InitAwake()
     {
@@ -143,7 +143,7 @@ public class SaveLoadSystem : MonoBehaviour
             MainPrefabScript.SelectedPlayers.Add(allPlayers.allPlayers[saveData.playerDatas[i].playerID]);
         }
         
-        GameManager.startTime = DateTime.Parse(saveData.startTime);
+
         GameManager.totalDamageDealt = saveData.totalDamageDealt;
         GameManager.totalDamageTaken = saveData.totalDamageTaken;
         GameManager.totalKills = saveData.totalKills;
@@ -180,6 +180,9 @@ public class SaveLoadSystem : MonoBehaviour
             allSceneTypes.remainingSceneTypes.Add(allSceneTypes.defaultAllSceneTypes.Find(x => x.Scene.SceneName.Equals(type)));
         }
         
+        // GameManager.startTime = DateTime.ParseExact(saveData.startTime, "dd/MM/yyyy HH:mm:ss", null); //todo check if this works
+        GameManager.startTime = DateTime.Parse(saveData.startTime); 
+
         
     }
 

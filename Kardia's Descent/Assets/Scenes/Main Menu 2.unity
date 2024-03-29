@@ -19827,6 +19827,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4bd7a860e3fff54981b3e50abc7c1b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  everythingUseful: {fileID: 11400000, guid: 0adf6649dfa6c2b48877232f4002ec52, type: 2}
   allPlayers: {fileID: 11400000, guid: cc6fd88f6d85f664483d2dda6793e81c, type: 2}
   Lights:
   - {fileID: 1956303128}
@@ -27365,32 +27366,32 @@ PrefabInstance:
     - target: {fileID: 7632850872189376766, guid: 2cb7460ecb066dd42baf1795827245c7,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.20780629
+      value: 0.20780626
       objectReference: {fileID: 0}
     - target: {fileID: 7632850872189376766, guid: 2cb7460ecb066dd42baf1795827245c7,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0000015199184
+      value: -0.0000015497208
       objectReference: {fileID: 0}
     - target: {fileID: 7632850872189376766, guid: 2cb7460ecb066dd42baf1795827245c7,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.00000032782555
+      value: 0.00000033527613
       objectReference: {fileID: 0}
     - target: {fileID: 8716017361354939248, guid: 2cb7460ecb066dd42baf1795827245c7,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.20780629
+      value: 0.20780626
       objectReference: {fileID: 0}
     - target: {fileID: 8716017361354939248, guid: 2cb7460ecb066dd42baf1795827245c7,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0000015199184
+      value: -0.0000015497208
       objectReference: {fileID: 0}
     - target: {fileID: 8716017361354939248, guid: 2cb7460ecb066dd42baf1795827245c7,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.00000032782555
+      value: 0.00000033527613
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
