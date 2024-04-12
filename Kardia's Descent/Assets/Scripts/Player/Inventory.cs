@@ -90,7 +90,7 @@ public class Inventory : MonoBehaviour
              skillsContainer.skillButtons.Add(null);
              spawnedSkillButtonPrefabs[i] = Instantiate(skillButtonPrefab, SpawnedInventoryUIScript.GetHorizontalLayoutGroup().transform);
              skillsContainer.skillButtons[i] = spawnedSkillButtonPrefabs[i].GetComponent<SkillButton>();
-             SpawnedInventoryUIScript.SetSkillButtons(skillsContainer.skillButtons);
+             
              //skillsContainer.skillsList[i].skillButton = spawnedSkillButtonPrefabs[i].GetComponent<SkillButton>();//bu onemli
              
              // var i1 = i;
@@ -181,6 +181,7 @@ public class Inventory : MonoBehaviour
         weaponsDataList.Add(testWeaponData);
         if (GetComponent<Character>() is Player)
         {
+            SpawnedInventoryUIScript.SetSkillButtons(skillsContainer.skillButtons);
             PopulateSkillsUI();
         }
 

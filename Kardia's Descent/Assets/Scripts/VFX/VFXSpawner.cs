@@ -25,6 +25,15 @@ public class VFXSpawner : ScriptableObject
         //spawnOffset = Vector3.zero;
     }
     
+    public void SpawnVFX(Transform spawnPosition, Vector3 rotationTowards)
+    {
+        GameObject vfx = Instantiate(VFXPrefab, spawnPosition.position + spawnOffset, Quaternion.LookRotation(rotationTowards));
+        vfx.transform.localScale = scale;
+        if (VFXDuration > 0)
+        {
+            Destroy(vfx, VFXDuration);
+        }
+    }
     public GameObject SpawnVFXWithReturn(Transform spawnPosition/*, Vector3 spawnOffset, float VFXDuration*/)
     {
         GameObject vfx = Instantiate(VFXPrefab, spawnPosition.position + spawnOffset, spawnPosition.rotation * Quaternion.Euler(rotationOffset));

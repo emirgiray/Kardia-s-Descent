@@ -16,7 +16,7 @@ MonoBehaviour:
   skillSprite: {fileID: 21300028, guid: 7ab74e659e1f0a34d9cfec21c478fc12, type: 3}
   skillName: Double Time
   skillDescription: Get an extra 5 AP for this turn. Lose it if not used.
-  skillID: 9
+  skillID: 10
   skillDamage: 0
   skillRange: 1
   skillCooldown: 4

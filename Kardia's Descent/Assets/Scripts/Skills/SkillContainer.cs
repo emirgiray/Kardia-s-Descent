@@ -171,6 +171,7 @@ public class SkillContainer : MonoBehaviour
         {
             for (int i = 0; i < skillsList.Count; i++)
             {
+                skillsList[i].skillReadyToUse = true;
                 skillsList[i].skillButton.EnableDisableButton(true);
                 skillsList[i].skillButton.cooldownImage.GetComponent<Image>().DOFillAmount(0, 2f);
                 skillsList[i].skillButton.cooldownText.text = "";

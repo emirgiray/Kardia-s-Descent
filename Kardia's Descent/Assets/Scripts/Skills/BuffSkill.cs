@@ -47,6 +47,23 @@ public class BuffSkill : SkillsData
             }
             // More if statements for other SkillTargets...
         }
+
+        if (buffDebuffType == BuffDebuffType.HP)
+        {
+            if (skillEffect == SkillEffect.Heal)
+            {
+                if (skillTarget == SkillTarget.Self)
+                {
+                    // Handle buffing AP to self
+                    Heal(ActivaterCharacter, Skill.skillBuffDebuffAmount);
+                    foreach (var fx in skillHitVFX)
+                    {
+                        fx.SpawnVFX(ActivaterCharacter.characterTile.transform);
+                        if (skillAudioEvent != null) skillAudioEvent.Play(ActivaterCharacter.transform);
+                    }
+                }
+            }
+        }
         // More if statements for other BuffDebuffTypes...
     }
     else if (ActivaterCharacter is Enemy)

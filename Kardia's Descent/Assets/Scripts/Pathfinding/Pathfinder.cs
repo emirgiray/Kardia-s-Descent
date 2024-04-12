@@ -405,6 +405,36 @@ public class Pathfinder : MonoBehaviour
         
     }
 
+    public List<Tile> GetNeighbouringTiles(Tile origin, int range)
+    {
+        List<Tile> tiles = new List<Tile>();
+        List<Tile> frontier = new List<Tile>();
+        frontier.Add(origin);
+
+        int currentRange = 0;
+        while (currentRange < range)
+        {
+            List<Tile> newFrontier = new List<Tile>();
+
+            foreach (Tile tile in frontier)
+            {
+                foreach (Tile neighbor in NeighborTiles(tile, true, true))
+                {
+                    if (!tiles.Contains(neighbor))
+                    {
+                        newFrontier.Add(neighbor);
+                        tiles.Add(neighbor);
+                    }
+                }
+            }
+
+            frontier = newFrontier;
+            currentRange++;
+        }
+        return tiles;
+    }
+   
+
     public List<Tile> GetAttackableTilesLine(Character activatorCharacter, Tile originTile, Tile targetTile, SkillContainer.Skills skill)
     {
         // Path path = FindPath(originTile.occupyingCharacter, originTile, targetTile);

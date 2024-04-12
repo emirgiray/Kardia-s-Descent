@@ -242,6 +242,10 @@ public class Interact : MonoBehaviour
             {
                 selectedCharacterSkillContainer.TrySelectSkill(selectedCharacterSkillContainer.skillsList[2]);
             }
+            if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                selectedCharacterSkillContainer.TrySelectSkill(selectedCharacterSkillContainer.skillsList[3]);
+            }
             if (Input.GetKeyDown(KeyCode.Space))
             { 
                 selectedCharacter.inventory.GetSpawnedInventoryUIScript().GetSkipButton().onClick.Invoke();
@@ -320,8 +324,6 @@ public class Interact : MonoBehaviour
             
             if (currentTile.OccupiedByCoverPoint)
             {
-                // inspectTileMeshRenderer.material.color = tileInspectColors[3];
-                //inspectTileMeshRenderer.material.SetColor("_RimColor",tileInspectColors[3]);
                 inspectTileMeshRenderer.material.SetColor("_RimColor",tileInspectColors[0]);
             }
             if (currentTile.occupiedByInteractable)
@@ -416,13 +418,16 @@ public class Interact : MonoBehaviour
                 //TODO do it in a better way; get the selected tile then do the logic there (range, accuracy damage)
                 case Character.CharacterState.Attacking:
                     
-                    if (Input.GetMouseButtonDown(0) && selectedCharacter.canAttack)
+                    if (selectedCharacter.canAttack)
                     {
-                        if (attackableTiles.Contains(currentTile))
+                        if (Input.GetMouseButtonDown(0))
                         {
-                            selectedCharacter.SkillContainer.UseSkill(selectedCharacter.SkillContainer.selectedSkill, currentTile);
-                            lastAttackedTile = currentTile;
+                            if (attackableTiles.Contains(currentTile))
+                            {
+                                selectedCharacter.SkillContainer.UseSkill(selectedCharacter.SkillContainer.selectedSkill, currentTile);
+                                lastAttackedTile = currentTile;
                             
+                            }
                         }
                     }
                     break;
@@ -708,7 +713,12 @@ public class Interact : MonoBehaviour
                 break;
             
             case SkillsData.SkillTargetType.AreaAroundTarget:
-                throw new NotImplementedException();
+                
+                //attackableTiles = selectedCharacter.pathfinder.GetAttackableTiles(selectedCharacter.characterTile, selectedCharacter.SkillContainer.selectedSkill/*, selectedCharacter.characterTile*/);
+
+                
+                
+                
                 break;
             
             case SkillsData.SkillTargetType.Line:

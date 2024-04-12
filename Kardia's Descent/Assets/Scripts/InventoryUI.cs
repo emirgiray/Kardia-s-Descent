@@ -159,17 +159,16 @@ public class InventoryUI : MonoBehaviour
 
         /*foreach (var var in SkillButtonsIn)
         {
-            Debug.Log($"skill data: {var.skillData.name}, skill {var.skill}");
-        }
-        */
+            Debug.Log($"skill data: {var.skillData.name}, skill {var.skill.skillData.passiveOrActive}");
+        }*/
         
         for (int i = 0; i < SkillButtons.Count; i++)
         {
-            if (i < 3)
+           SkillKeymaps[i].SetActive(SkillButtons[i].skill.skillData.passiveOrActive == SkillsData.PassiveOrActive.Active);
+            /*if(i < 3)
             {
                 SkillKeymaps[i].SetActive(true);
-            }
-            
+            }*/
         }
     }
 

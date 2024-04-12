@@ -15,3 +15,4 @@ MonoBehaviour:
   allPlayers:
   - {fileID: 883855727420601889, guid: d398bbf6cce345f4ea47a677310a9a90, type: 3}
   - {fileID: 4483623310039523423, guid: c48e683056dac934481de488aded34b3, type: 3}
+  - {fileID: 4483623310039523423, guid: 3798ce8612c96b0498532e1e1c484820, type: 3}

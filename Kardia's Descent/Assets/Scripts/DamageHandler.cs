@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using SGT_Tools.Bridge;
 using Sirenix.OdinInspector;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,7 +10,6 @@ public class DamageHandler : MonoBehaviour
 {
     [SerializeField] private SGT_Health sgtHealth;
     [SerializeField] private Character character;
-    
     /*[DrawWithUnity]
     [FoldoutGroup("Events")]
     [PropertyOrder(2)]
@@ -21,8 +22,8 @@ public class DamageHandler : MonoBehaviour
     public void TakeDamage(int value, Character attacker)
     {
         sgtHealth.HealthDecrease(value);
-        character.OnCharacterRecieveDamageFunc();
-
+        character.OnCharacterRecieveDamageFunc(value);
+        
         if (attacker is Player)
         {
             character.everythingUseful.GameManager.totalDamageDealt += value;

@@ -10,60 +10,21 @@ public class BasicMelee : SkillsData
     {
         ActivaterCharacter.Interact.GetComponent<MonoBehaviour>()
             .StartCoroutine(WaitUntilEnum(Skill, ActivaterCharacter, selectedTile, OnComplete));
-        /*int random = UnityEngine.Random.Range(1, 101);
-        if (random <= Skill.accuracy ||
-            Skill.accuracy == 100) //todo do this in a different way, maybe a method in a class
-        {
-            if (ActivaterCharacter is Player)
-            {
-                if (selectedTile.occupiedByEnemy)
-                {
-                    selectedTile.occupyingEnemy.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
-                    skillHitVFX.SpawnVFX(selectedTile.occupyingEnemy.transform);
-                    Debug.Log($"HIT: {random} < {Skill.accuracy}");
-                }
-
-                if (selectedTile.OccupiedByCoverPoint)
-                {
-                    selectedTile.occupyingCoverPoint.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
-                    skillHitVFX.SpawnVFX(selectedTile.occupyingCoverPoint.transform);
-                    Debug.Log($"HIT: {random} < {Skill.accuracy}");
-                }
-            }
-
-            if (ActivaterCharacter is Enemy)
-            {
-                if (selectedTile.occupiedByPlayer)
-                {
-                    selectedTile.occupyingPlayer.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
-                    skillHitVFX.SpawnVFX(selectedTile.occupyingPlayer.transform);
-                    Debug.Log($"HIT: {random} < {Skill.accuracy}");
-                }
-            }
-        }
-        else
-        {
-            Debug.Log($"MISSED: {random} > {Skill.accuracy}");
-        }*/
-
-        //add delay of 0.1f seconds here
-        // OnComplete?.Invoke();
     }
 
     public IEnumerator WaitUntilEnum(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, Action OnComplete = null)
     {
         //Debug.Log($"wait started    ");
         yield return new WaitUntil(() => ActivaterCharacter.SkillContainer.GetImpact() == true);
-        //Debug.Log($"Waitfinished");
+        //Debug.Log($"Wait finished");
         
         if (skillAudioEvent != null) skillAudioEvent.Play(ActivaterCharacter.transform);
-        if (skillStartVFX != null) skillStartVFX.SpawnVFX(ActivaterCharacter.Hand);
+        if (skillStartVFX != null) skillStartVFX.SpawnVFX(ActivaterCharacter.Hand, selectedTile.transform.position);
         
         if (base.TryHit(Skill, ActivaterCharacter, selectedTile, OnComplete))
         {
             base.DoDamage(Skill, ActivaterCharacter, selectedTile, OnComplete); 
             
-            //todo add this part to base, and make it so that it can be called from anywhere
             switch(skillEffect)
             {
                 case SkillEffect.None:
@@ -77,86 +38,10 @@ public class BasicMelee : SkillsData
         {
             base.OnMiss(Skill, ActivaterCharacter, selectedTile, OnComplete);
         }
-        
-        /*int random = UnityEngine.Random.Range(1, 101);
-        if (random <= Skill.accuracy || Skill.accuracy == 100)
-        {
-            if (ActivaterCharacter is Player)
-            {
-                if (selectedTile.occupiedByEnemy)
-                {
-                    foreach (var fx in skillHitVFX)
-                    {
-                        fx.SpawnVFX(selectedTile.occupyingEnemy.transform);
-                    }
-                    //selectedTile.occupyingEnemy.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
-                    selectedTile.occupyingEnemy.GetComponent<DamageHandler>().TakeDamage(Skill.damage, ActivaterCharacter);
 
-                    //Debug.Log($"HIT: {random} < {Skill.accuracy}");
-                    //base.OnHit();
-                }
-
-                if (selectedTile.OccupiedByCoverPoint)
-                {
-                    foreach (var fx in skillHitVFX)
-                    {
-                        fx.SpawnVFX(selectedTile.occupyingCoverPoint.transform);
-                    }
-                    if(selectedTile.occupyingCoverPoint.GetComponent<SGT_Health>() != null) selectedTile.occupyingCoverPoint.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
-                    //Debug.Log($"HIT: {random} < {Skill.accuracy}");
-                }
-            }
-
-            if (ActivaterCharacter is Enemy)
-            {
-                if (selectedTile.occupiedByPlayer)
-                {
-                    foreach (var fx in skillHitVFX)
-                    {
-                        fx.SpawnVFX(selectedTile.occupyingPlayer.transform);
-                    }
-
-                    //selectedTile.occupyingPlayer.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
-                    selectedTile.occupyingPlayer.GetComponent<DamageHandler>().TakeDamage(Skill.damage, ActivaterCharacter);
-                    //Debug.Log($"HIT: {random} < {Skill.accuracy}");
-                    //base.OnHit();
-                }
-
-                if (selectedTile.OccupiedByCoverPoint)
-                {
-                    foreach (var fx in skillHitVFX)
-                    {
-                        fx.SpawnVFX(selectedTile.occupyingCoverPoint.transform);
-                    }
-                    if(selectedTile.occupyingCoverPoint.GetComponent<SGT_Health>() != null) selectedTile.occupyingCoverPoint.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);    
-                    //Debug.Log($"HIT: {random} < {Skill.accuracy}");
-                }
-            }
-        }
-        else
-        {
-            if (selectedTile.occupiedByEnemy)
-            {
-                skillMissVFX.SpawnVFX(selectedTile.occupyingEnemy.transform);
-                selectedTile.occupyingEnemy.GetComponent<SGT_Health>().Miss();
-            }
-            if (selectedTile.occupiedByPlayer)
-            {
-                skillMissVFX.SpawnVFX(selectedTile.occupyingPlayer.transform);
-                selectedTile.occupyingPlayer.GetComponent<SGT_Health>().Miss();
-            }
-            //Debug.Log($"MISSED: {random} > {Skill.accuracy}");
-        }*/
-        
         //if the current anim name contains idle, then invoke oncomplete
-        
-        
-        
         yield return new WaitUntil(() => ActivaterCharacter.animator.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("idle"));
-        
-        /*yield return new WaitUntil(() => ActivaterCharacter.animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"));
-        yield return new WaitUntil(() => ActivaterCharacter.animator.runtimeAnimatorController);*/
-        
+ 
         OnComplete?.Invoke();
     }
 }

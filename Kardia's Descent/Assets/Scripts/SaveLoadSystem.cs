@@ -9,6 +9,7 @@ using Debug = UnityEngine.Debug;
 
 // todo add a satart and awake functions to all levels
 // todo save() should look at maybe another function to get the values other than level manager
+// todo make this system not force to assign values like agent simulation
 public class SaveLoadSystem : MonoBehaviour
 {
     [SerializeField] private EverythingUseful everythingUseful;

@@ -179,11 +179,13 @@ public class SkillsData : ScriptableObject
         {
             skillMissVFX.SpawnVFX(selectedTile.occupyingEnemy.transform);
             selectedTile.occupyingEnemy.GetComponent<SGT_Health>().Miss();
+            selectedTile.occupyingEnemy.GetComponent<Character>().OnCharacterMiss();
         }
         if (ActivaterCharacter is Enemy && selectedTile.occupiedByPlayer)
         {
             skillMissVFX.SpawnVFX(selectedTile.occupyingPlayer.transform);
             selectedTile.occupyingPlayer.GetComponent<SGT_Health>().Miss();
+            selectedTile.occupyingPlayer.GetComponent<Character>().OnCharacterMiss();
         }
         
         //Debug.Log($"on hit 2");

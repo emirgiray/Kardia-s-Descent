@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using CodeMonkey.CameraSystem;
 using DG.Tweening;
+using SGT_Tools.Bridge;
 using Sirenix.OdinInspector;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
@@ -97,6 +99,8 @@ public class Character : MonoBehaviour
     }
     [BoxGroup("Character Info")]
     public CharacterState characterState;
+
+    public GameObject HitTextGameObject;
     
     public static Action<int> OnActionPointsChange;
     public Action OnTurnStart;
@@ -677,6 +681,7 @@ public class Character : MonoBehaviour
     public void ExitCombat()
     {
         inCombat = false;
+        canAttack = true;
         CombatEndedAction?.Invoke();
         ResetActionPoints();
         SkillContainer.ForceResetSkillCooldowns();
@@ -803,11 +808,35 @@ public class Character : MonoBehaviour
         Instantiate(itemsToDrop[randomIndex], dropPos, Quaternion.identity);
     }
     
-    public void OnCharacterRecieveDamageFunc()
+    public void OnCharacterRecieveDamageFunc(int value)
     {
+        SpawnText(value.ToString());
+        
         animator.SetTrigger("Hit");
         OnCharacterRecieveDamageAction?.Invoke();
         OnHealthChangeEvent?.Invoke();
+    }
+
+    public void OnCharacterMiss()
+    {
+        SpawnText("MISS");
+    }
+
+    public void OnCharacterHealed(int value)
+    {
+        SpawnText(value.ToString());
+    }
+
+    public void SpawnText(string value)
+    {
+        /*float randomX = Random.Range(character.Head.position.x, 0.5f);
+       Vector3 randomPosAroundHead = new Vector3(, character.Head.position.y + 1, 0);*/
+        
+        Vector3 PosAroundHead = SGT_Math.GetPositionAroundObject(Head, 0.5f);
+        Vector3 randomPosAroundHead = new Vector3(PosAroundHead.x, PosAroundHead.y + 2, PosAroundHead.z);
+        
+        GameObject spawnedHitText = Instantiate(HitTextGameObject, randomPosAroundHead, Quaternion.identity);
+        spawnedHitText.GetComponentInChildren<TextMeshPro>().text = value.ToString();
     }
 
     GameObject stunVFX = null;

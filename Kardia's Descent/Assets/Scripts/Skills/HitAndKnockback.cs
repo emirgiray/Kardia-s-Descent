@@ -18,7 +18,7 @@ public class HitAndKnocback : SkillsData
         yield return new WaitUntil(() => ActivaterCharacter.SkillContainer.GetImpact() == true);
         
         if (skillAudioEvent != null) skillAudioEvent.Play(ActivaterCharacter.transform);
-        if (skillStartVFX != null) skillStartVFX.SpawnVFX(ActivaterCharacter.Hand);
+        if (skillStartVFX != null) skillStartVFX.SpawnVFX(ActivaterCharacter.Hand, selectedTile.transform.position);   
         
         if (base.TryHit(Skill, ActivaterCharacter, selectedTile, OnComplete))
         {

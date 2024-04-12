@@ -16,7 +16,7 @@ MonoBehaviour:
   skillSprite: {fileID: 21300030, guid: 7ab74e659e1f0a34d9cfec21c478fc12, type: 3}
   skillName: Stim Pack
   skillDescription: Use a stim that heals 50 hp.
-  skillID: 10
+  skillID: 11
   skillDamage: 0
   skillRange: 1
   skillCooldown: 4
@@ -24,12 +24,12 @@ MonoBehaviour:
   skillEffectDuration: 1
   skillBuffDebuffAmount: 50
   permaBuff: 0
-  accuracy: 50
+  accuracy: 100
   coverAccuracyDebuff: 0
   animatorOverrideController: {fileID: 0}
   skillStartVFX: {fileID: 0}
   skillHitVFX:
-  - {fileID: 11400000, guid: 237c0dabba02e51489b196796b9fe4f4, type: 2}
+  - {fileID: 11400000, guid: 4fcc074eb6155394ca565f42d59efca3, type: 2}
   skillMissVFX: {fileID: 0}
   skillAudioEvent: {fileID: 0}
   skillType: 0
