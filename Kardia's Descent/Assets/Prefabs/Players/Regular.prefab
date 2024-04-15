@@ -65,6 +65,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5225323832543321503, guid: 04563854e99a65a4c8a042dc7f750368,
         type: 3}
+      propertyPath: Max
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 5225323832543321503, guid: 04563854e99a65a4c8a042dc7f750368,
+        type: 3}
+      propertyPath: _Health
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 5225323832543321503, guid: 04563854e99a65a4c8a042dc7f750368,
+        type: 3}
       propertyPath: ResetOnStart
       value: 0
       objectReference: {fileID: 0}
@@ -72,12 +82,17 @@ PrefabInstance:
         type: 3}
       propertyPath: testWeaponData
       value: 
-      objectReference: {fileID: 11400000, guid: 835ac1de152f2ab4093f524da8083b7b,
+      objectReference: {fileID: 11400000, guid: 30f3f114b9ef67d459a83504ae9e6932,
         type: 2}
     - target: {fileID: 7510704565162782655, guid: 04563854e99a65a4c8a042dc7f750368,
         type: 3}
       propertyPath: isUnlocked
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7510704565162782655, guid: 04563854e99a65a4c8a042dc7f750368,
+        type: 3}
+      propertyPath: actionPoints
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7510704565162782655, guid: 04563854e99a65a4c8a042dc7f750368,
         type: 3}
@@ -112,6 +127,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 274480220, guid: f050367bbcaea674495c2d5e36fc140b,
         type: 3}
+    - target: {fileID: 7510704565162782655, guid: 04563854e99a65a4c8a042dc7f750368,
+        type: 3}
+      propertyPath: extraMeleeDamage
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7510704565162782655, guid: 04563854e99a65a4c8a042dc7f750368,
+        type: 3}
+      propertyPath: extraRangedAccuracy
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7510704565162782655, guid: 04563854e99a65a4c8a042dc7f750368,
+        type: 3}
+      propertyPath: remainingActionPoints
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7510704565162782655, guid: 04563854e99a65a4c8a042dc7f750368,
         type: 3}
       propertyPath: MoveEnd.m_PersistentCalls.m_Calls.Array.size

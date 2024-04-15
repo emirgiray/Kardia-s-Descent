@@ -62,6 +62,8 @@ public class Character : MonoBehaviour
     [BoxGroup("Variables")] [SerializeField] 
     public bool canAttack = true;
     [BoxGroup("Variables")] [SerializeField] 
+    public bool isInAttackTileSelection = false; //used for knowing if its selecting where to attack, turns to false after attack is pressed to block changing attacking tile
+    [BoxGroup("Variables")] [SerializeField] 
     public bool inCombat = false;
     [BoxGroup("Variables")] [SerializeField] 
     public bool isStunned = false;
@@ -669,10 +671,14 @@ public class Character : MonoBehaviour
     {
         yield return new WaitUntil(() => Moving == false);
         if (moveCoroutine != null) StopCoroutine(moveCoroutine);
-        FinalizePosition(characterTile, false);
-        
-        if (this is Enemy)
+        if (this is Player && !isInAttackTileSelection)
         {
+            FinalizePosition(characterTile, false); // on combat start attack was cancelling so i did this
+        }
+        
+        if (this is Enemy && !isInAttackTileSelection)
+        {
+            FinalizePosition(characterTile, false);
             GetComponent<StateController>().canExitState = true;
         }
         inCombat = true;
@@ -710,6 +716,7 @@ public class Character : MonoBehaviour
 
     public void AttackStart()
     {
+        isInAttackTileSelection = true;
         canRotate = true;
         characterState = CharacterState.Attacking;
         
@@ -719,6 +726,7 @@ public class Character : MonoBehaviour
     
     public void AttackCancel()
     {
+        isInAttackTileSelection = false;
         canRotate = true;
         characterState = CharacterState.WaitingTurn;
 
@@ -733,6 +741,7 @@ public class Character : MonoBehaviour
 
     public void Attack()
     {
+        isInAttackTileSelection = false;
         canRotate = false;
         if (this is Player)
         {
@@ -745,6 +754,7 @@ public class Character : MonoBehaviour
 
     public void AttackEnd(SkillContainer.Skills skill)
     {
+        isInAttackTileSelection = false;
         OnAttackEndAction?.Invoke(skill);
         characterState = CharacterState.WaitingTurn;
         remainingActionPoints -= skill.actionPointUse;//maybe add a - or + variable to skill use

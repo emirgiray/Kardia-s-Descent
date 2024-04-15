@@ -25,8 +25,17 @@ public class SkillsData : ScriptableObject
     public bool permaBuff = true;
     public int accuracy = 80;
     public int coverAccuracyDebuff = 20;
+    [BoxGroup("Area Damage")] [ShowIf("skillHitType", SkillHitType.Area)]
+    public int impactRange = 2; //for area around target
+    [BoxGroup("Area Damage")] [ShowIf("skillHitType", SkillHitType.Area)]
+    public int innerImpactRadius = 1; //for full damage radius
+    [BoxGroup("Area Damage")] [ShowIf("skillHitType", SkillHitType.Area)]
+    public int outerImpactRadius  = 1; //for less damage radius
+    [BoxGroup("Area Damage")] [ShowIf("skillHitType", SkillHitType.Area)]
+    public float outerImpactDamageDebuff  = 0.5f; //less damage percentage
     public AnimatorOverrideController animatorOverrideController;
     public VFXSpawner skillStartVFX;
+    public VFXSpawner skillImpactVFX;
     public VFXSpawner[] skillHitVFX;
     public VFXSpawner skillMissVFX;
     public SGT_AudioEvent skillAudioEvent;
@@ -196,17 +205,18 @@ public class SkillsData : ScriptableObject
         
     }
 
-    public virtual void DoDamage(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, Action OnComplete = null)
+    public virtual void DoDamage(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, float damageMultipliar, Action OnComplete = null)
     {
+        if (skillImpactVFX != null) skillImpactVFX.SpawnVFX(selectedTile.transform);
+        
         if (ActivaterCharacter is Player && selectedTile.occupiedByEnemy)
         {
             foreach (var fx in skillHitVFX)
             {
                 fx.SpawnVFX(selectedTile.occupyingEnemy.transform);
             }
-
-            selectedTile.occupyingEnemy.GetComponent<DamageHandler>().TakeDamage(Skill.damage, ActivaterCharacter);
             
+            selectedTile.occupyingEnemy.GetComponent<DamageHandler>().TakeDamage((int)(Skill.damage * damageMultipliar), ActivaterCharacter);
         }
         if (ActivaterCharacter is Enemy && selectedTile.occupiedByPlayer)
         {
@@ -215,7 +225,7 @@ public class SkillsData : ScriptableObject
                 fx.SpawnVFX(selectedTile.occupyingPlayer.transform);
             }
 
-            selectedTile.occupyingPlayer.GetComponent<DamageHandler>().TakeDamage(Skill.damage, ActivaterCharacter);
+            selectedTile.occupyingPlayer.GetComponent<DamageHandler>().TakeDamage((int)(Skill.damage * damageMultipliar), ActivaterCharacter);
         }
         
         if (selectedTile.OccupiedByCoverPoint)
@@ -225,7 +235,7 @@ public class SkillsData : ScriptableObject
                 fx.SpawnVFX(selectedTile.occupyingCoverPoint.transform);
             }
 
-            if (selectedTile.occupyingCoverPoint.GetComponent<SGT_Health>() != null) selectedTile.occupyingCoverPoint.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
+            if (selectedTile.occupyingCoverPoint.GetComponent<SGT_Health>() != null) selectedTile.occupyingCoverPoint.GetComponent<SGT_Health>().HealthDecrease((int)(Skill.damage * damageMultipliar));
         }
     }
     public void DoStun(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile,  Action OnComplete = null)

@@ -24,12 +24,14 @@ public class Tile : MonoBehaviour
     public GameObject occupyingGO;
     [BoxGroup("Tile")] 
     public MeshRenderer meshRenderer;
-    [BoxGroup("Tile")] [SerializeField] 
-    private GameObject TileHighlightGO;
+    [BoxGroup("Tile")] 
+    public GameObject TileHighlightGO;
     [BoxGroup("Tile")] [SerializeField] 
     private GameObject ShieldIcon;
     [BoxGroup("Tile")] 
     public MeshRenderer TileHighlightMeshRenderer;
+    [BoxGroup("Tile")] 
+    public QuickOutline quickOutline;
     
     [BoxGroup("Editor")] [SerializeField] 
     private Material defaultMat;
@@ -121,6 +123,7 @@ public class Tile : MonoBehaviour
     {
         SetColor(Color.red);
     }
+    
 
     public void HighlightMoveable()
     {
@@ -132,10 +135,20 @@ public class Tile : MonoBehaviour
             if (isCoveredByCoverPoint)
             {
                 TileHighlightMeshRenderer.material.SetColor("_RimColor", everythingUseful.Interact.tileHighligthColors[3]);
+                // TileHighlightMeshRenderer.material.SetColor("_RimColor", everythingUseful.Interact.tileHighligthNormalColors[5]);
+                quickOutline.enabled = true;
+                // quickOutline.outlineFillMaterial.SetFloat( "ZTest", (float)UnityEngine.Rendering.CompareFunction.Less );
+                
+                
+                quickOutline.OutlineColor = everythingUseful.Interact.tileHighligthNormalColors[3];
             }
             else
             {
-                TileHighlightMeshRenderer.material.SetColor("_RimColor", everythingUseful.Interact.tileHighligthColors[0]);
+                // TileHighlightMeshRenderer.material.SetColor("_RimColor", everythingUseful.Interact.tileHighligthColors[0]);
+                TileHighlightMeshRenderer.material.SetColor("_RimColor", everythingUseful.Interact.tileHighligthNormalColors[5]);
+                // quickOutline.outlineFillMaterial.SetFloat("ZTest", 2);
+                quickOutline.enabled = true;
+                quickOutline.OutlineColor = everythingUseful.Interact.tileHighligthNormalColors[0];
             }
             
             
@@ -152,8 +165,10 @@ public class Tile : MonoBehaviour
         if (TileHighlightGO != null)
         {
             TileHighlightGO.SetActive(true);
-            // TileHighlightMeshRenderer.material.color = Interact.Instance.tileHighligthColors[1];
-            TileHighlightMeshRenderer.material.SetColor("_RimColor", everythingUseful.Interact.tileHighligthColors[1]);
+            //TileHighlightMeshRenderer.material.SetColor("_RimColor", everythingUseful.Interact.tileHighligthColors[1]);
+            TileHighlightMeshRenderer.material.SetColor("_RimColor", everythingUseful.Interact.tileHighligthNormalColors[5]);
+            quickOutline.enabled = true;
+            quickOutline.OutlineColor = everythingUseful.Interact.tileHighligthNormalColors[1];
         }
         else
         {
@@ -166,6 +181,7 @@ public class Tile : MonoBehaviour
         if (TileHighlightGO != null)
         {
             TileHighlightGO.SetActive(false);
+            quickOutline.enabled = false;
         }
         else
         {

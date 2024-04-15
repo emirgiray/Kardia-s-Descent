@@ -22,7 +22,7 @@ public class HitAndKnocback : SkillsData
         
         if (base.TryHit(Skill, ActivaterCharacter, selectedTile, OnComplete))
         {
-            base.DoDamage(Skill, ActivaterCharacter, selectedTile, OnComplete); 
+            base.DoDamage(Skill, ActivaterCharacter, selectedTile, 1, OnComplete); 
             base.DoKnockBack(Skill, ActivaterCharacter, selectedTile, OnComplete);
         }
         else

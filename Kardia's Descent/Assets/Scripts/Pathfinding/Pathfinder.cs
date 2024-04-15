@@ -404,37 +404,7 @@ public class Pathfinder : MonoBehaviour
         
         
     }
-
-    public List<Tile> GetNeighbouringTiles(Tile origin, int range)
-    {
-        List<Tile> tiles = new List<Tile>();
-        List<Tile> frontier = new List<Tile>();
-        frontier.Add(origin);
-
-        int currentRange = 0;
-        while (currentRange < range)
-        {
-            List<Tile> newFrontier = new List<Tile>();
-
-            foreach (Tile tile in frontier)
-            {
-                foreach (Tile neighbor in NeighborTiles(tile, true, true))
-                {
-                    if (!tiles.Contains(neighbor))
-                    {
-                        newFrontier.Add(neighbor);
-                        tiles.Add(neighbor);
-                    }
-                }
-            }
-
-            frontier = newFrontier;
-            currentRange++;
-        }
-        return tiles;
-    }
-   
-
+      
     public List<Tile> GetAttackableTilesLine(Character activatorCharacter, Tile originTile, Tile targetTile, SkillContainer.Skills skill)
     {
         // Path path = FindPath(originTile.occupyingCharacter, originTile, targetTile);
@@ -504,6 +474,132 @@ public class Pathfinder : MonoBehaviour
         return tiles;
         
         
+    }
+
+    public List<Tile> GetAttackableTilesArea(Tile selectedCharacterCharacterTile, SkillContainer.Skills skill, Tile impactOriginTile, out List<Tile> effectedTilesList, out List<Tile> innerEffectedTilesList, out List<Tile> outerEffectedTilesList)
+    {
+        List<Tile> attackableTiles = new List<Tile>();
+        attackableTiles.Add(selectedCharacterCharacterTile);
+        List<Tile> frontier = new List<Tile>();
+        frontier.Add(selectedCharacterCharacterTile);
+
+        int currentRange = 0;
+        while (currentRange < skill.range )
+        {
+            List<Tile> newFrontier = new List<Tile>();
+
+            foreach (Tile tile in frontier)
+            {
+                foreach (Tile neighbor in NeighborTiles(tile, true, true))
+                {
+                    if (skill.skillData.skillType == SkillsData.SkillType.Ranged)
+                    {
+                        if (/*neighbor.Occupied == false && */!attackableTiles.Contains(neighbor))
+                        {
+                            newFrontier.Add(neighbor);
+                            attackableTiles.Add(neighbor);
+                            //also add verticle tiles with raycasting up
+                            //Debug.DrawRay(neighbor.transform.position, Vector3.up * tileVerticalityLenght, Color.yellow);
+                            if (Physics.Raycast(neighbor.transform.position, Vector3.up, out RaycastHit hit, PathfinderVariables.Instance.tileVerticalityLenght, PathfinderVariables.Instance.tileMask))
+                            {
+                                newFrontier.Add(hit.transform.GetComponent<Tile>());
+                                attackableTiles.Add(hit.transform.GetComponent<Tile>());
+                            }
+                        }
+                    }
+                }
+            }
+            
+            frontier = newFrontier;
+            currentRange++;
+        }
+        
+        //remove the ones directly below
+        List<Tile> tilesToRemove = new List<Tile>();
+        
+        foreach (var tile in attackableTiles)
+        {
+            if (Physics.Raycast(tile.transform.position, Vector3.down, out RaycastHit hit, PathfinderVariables.Instance.tileVerticalityLenght +1 , PathfinderVariables.Instance.tileMask))
+            {
+                /*Debug.Log($"tile: {selectedCharacterCharacterTile.name} = {selectedCharacterCharacterTile.transform.position.y}" +
+                          $"tile: {hit.transform.GetComponent<Tile>().name} =  {hit.transform.GetComponent<Tile>().transform.position.y}");*/
+                if (selectedCharacterCharacterTile.transform.position.y != hit.transform.GetComponent<Tile>().transform.position.y)
+                {
+                    tilesToRemove.Add(hit.transform.GetComponent<Tile>());
+                }
+                
+            }
+        }
+
+        foreach (var tile in tilesToRemove)
+        {
+            attackableTiles.Remove(tile);
+        }
+        
+        // calculate the effected tiles around the impact tile (selectedTile)
+        // all the effected tiles
+        effectedTilesList = GetNeighbouringTiles(impactOriginTile, skill.skillData.impactRange);
+        // the inner effected tiles for full damage
+        innerEffectedTilesList = GetNeighbouringTiles(impactOriginTile, skill.skillData.innerImpactRadius);
+        innerEffectedTilesList.Add(impactOriginTile);
+        // the outer effected tiles for less damage
+        
+        List<Tile> temp = new List<Tile>();
+        
+        foreach (var tile in effectedTilesList)
+        {
+            if (!innerEffectedTilesList.Contains(tile))
+            {
+                temp.Add(tile);
+            }
+        }
+        
+        outerEffectedTilesList = temp;
+        /*List<Tile> toRemoveFromEffectedTiles = new List<Tile>();
+        foreach (var tile in effectedTilesList)
+        {
+            if (!attackableTiles.Contains(tile))
+            {
+                toRemoveFromEffectedTiles.Add(tile);
+            }
+        }
+        
+        foreach (var tile in toRemoveFromEffectedTiles)
+        {
+            effectedTilesList.Remove(tile);
+        }*/
+        
+        return attackableTiles;
+
+    }
+    
+    public List<Tile> GetNeighbouringTiles(Tile origin, int range)
+    {
+        List<Tile> tiles = new List<Tile>();
+        List<Tile> frontier = new List<Tile>();
+        frontier.Add(origin);
+
+        int currentRange = 0;
+        while (currentRange < range)
+        {
+            List<Tile> newFrontier = new List<Tile>();
+
+            foreach (Tile tile in frontier)
+            {
+                foreach (Tile neighbor in NeighborTiles(tile, true, true))
+                {
+                    if (!tiles.Contains(neighbor))
+                    {
+                        newFrontier.Add(neighbor);
+                        tiles.Add(neighbor);
+                    }
+                }
+            }
+
+            frontier = newFrontier;
+            currentRange++;
+        }
+        return tiles;
     }
       
     [Button]

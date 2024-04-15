@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "GrenadierBasic", menuName = "ScriptableObjects/Skills/GrenadierBasic", order = 0)]
 public class GrenadierBasic : SkillsData
 {
-    public int impactRange = 2;
+    
      public override void ActivateSkill(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, Action OnComplete = null) //skill logic goes here
     {
         ActivaterCharacter.Interact.GetComponent<MonoBehaviour>()
@@ -22,21 +22,44 @@ public class GrenadierBasic : SkillsData
         
         if (base.TryHit(Skill, ActivaterCharacter, selectedTile, OnComplete))
         {
+            List<Tile> effectedTiles = ActivaterCharacter.SkillContainer.effectedTiles;
+            List<Tile> innerEffectedTiles = ActivaterCharacter.SkillContainer.innerEffectedTiles;
+            List<Tile> outerEffectedTiles = ActivaterCharacter.SkillContainer.outerEffectedTiles;
+            
+            
             if (skillTargetType == SkillTargetType.AreaAroundTarget)
             {
-                List<Tile> tiles = ActivaterCharacter.pathfinder.GetNeighbouringTiles(selectedTile, impactRange);
-                foreach (var tile in tiles)
+                foreach (var tile in effectedTiles)
                 {
-                    base.DoDamage(Skill, ActivaterCharacter, tile, OnComplete); 
+                    float multipliar = 1;
+                    if (innerEffectedTiles.Contains(tile))
+                    {
+                        multipliar = 1;
+                    }
+                    else if (outerEffectedTiles.Contains(tile))
+                    {
+                        multipliar = 0.5f;
+                    }
+                    
+                    base.DoDamage(Skill, ActivaterCharacter, tile, multipliar, OnComplete); 
                 }
                 
             }
             else if (skillTargetType == SkillTargetType.AreaAroundSelf)
             {
-                List<Tile> tiles = ActivaterCharacter.pathfinder.GetNeighbouringTiles(ActivaterCharacter.characterTile, impactRange);
-                foreach (var tile in tiles)
+                foreach (var tile in effectedTiles)
                 {
-                    base.DoDamage(Skill, ActivaterCharacter, tile, OnComplete); 
+                    float multipliar = 1;
+                    if (innerEffectedTiles.Contains(tile))
+                    {
+                        multipliar = 1;
+                    }
+                    else if (outerEffectedTiles.Contains(tile))
+                    {
+                        multipliar = 0.5f;
+                    }
+                    
+                    base.DoDamage(Skill, ActivaterCharacter, tile, multipliar, OnComplete); 
                 }
             }
             

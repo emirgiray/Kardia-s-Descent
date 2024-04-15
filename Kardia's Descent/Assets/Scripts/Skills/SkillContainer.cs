@@ -24,6 +24,10 @@ public class SkillContainer : MonoBehaviour
     [HideInInspector] public int damageBeforeCoverDebuff;
     [HideInInspector] public int accuracyBeforeCoverDebuff;
     
+    // these are for the area skill effected tiles (bombadier)
+    [HideInInspector] public List<Tile> effectedTiles;
+    [HideInInspector] public List<Tile> innerEffectedTiles;
+    [HideInInspector] public List<Tile> outerEffectedTiles;
     private static LTDescr delay;
     // public Action skillNotReadyAction;
     //public Action skillReadyAction;
@@ -228,22 +232,7 @@ public class SkillContainer : MonoBehaviour
 
     public void SelectSkill(Skills selectSkill, Enemy enemy = null)
     {
-        /*if (Character is Enemy && !enemy.canAttack)
-        {
-            enemy.EndTurn();
-            return;
-        }*/
-        // if (Character is Enemy)Debug.Log($"{this.name} Selected {selectSkill.skillData.name}");
-        
-        /*selectedSkill = skillsList.Find(x => x.skillData == selectSkill);
-        selectedSkill.skillData = selectSkill;
-        selectedSkill.remainingSkillCooldown = skillsList.Find(x => x.skillData == selectedSkill.skillData).remainingSkillCooldown;
-        selectedSkill.skillCooldown = skillsList.Find(x => x.skillData == selectedSkill.skillData).skillCooldown;
-        selectedSkill.skillReadyToUse = skillsList.Find(x => x.skillData == selectedSkill.skillData).skillReadyToUse;
-        selectedSkill.skillButton = skillsList.Find(x => x.skillData == selectedSkill.skillData).skillButton;*/
-        
         selectedSkill = selectSkill;
-        
         
         if (selectedSkill.animatorOverrideController != null)
         {
@@ -260,7 +249,10 @@ public class SkillContainer : MonoBehaviour
                 }
                 else
                 {
-                    Character.Rotate(Character.Interact.GetLastTile().transform.position);
+                    if (Character.Interact.GetLastTile() != null)
+                    {
+                        Character.Rotate(Character.Interact.GetLastTile().transform.position);
+                    }
                 }
                 
             }
@@ -268,8 +260,8 @@ public class SkillContainer : MonoBehaviour
             lastSelectedSkill = selectedSkill;
             selectedSkill.skillButton.SwitchSelectedOutline(true);
             Character.Interact.SkillSelected?.Invoke();
-            Character.Interact.HighlightAttackableTiles(selectedSkill);
             Character.Interact.selectedCharacter.GetComponent<Character>().AttackStart();
+            Character.Interact.HighlightAttackableTiles(selectedSkill);
             
         }
         else if (Character is Enemy)

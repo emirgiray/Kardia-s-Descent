@@ -76,10 +76,11 @@ public class QuickOutline : MonoBehaviour {
 
   private Renderer[] renderers;
   private Material outlineMaskMaterial;
-  private Material outlineFillMaterial;
+  public Material outlineFillMaterial;
 
   private bool needsUpdate;
-
+  
+  
   void Awake() {
 
     // Cache renderers
@@ -91,7 +92,7 @@ public class QuickOutline : MonoBehaviour {
 
     outlineMaskMaterial.name = "OutlineMask (Instance)";
     outlineFillMaterial.name = "OutlineFill (Instance)";
-
+    //outlineFillMaterial.SetFloat( "_ZTest", (float)UnityEngine.Rendering.CompareFunction.Less );
     // Retrieve or generate smooth normals
     LoadSmoothNormals();
 

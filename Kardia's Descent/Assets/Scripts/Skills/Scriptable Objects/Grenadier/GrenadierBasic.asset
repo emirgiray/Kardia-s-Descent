@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86c8eca45ebaf6b419f38bb3e25d218f, type: 3}
   m_Name: GrenadierBasic
   m_EditorClassIdentifier: 
-  everythingUseful: {fileID: 0}
+  everythingUseful: {fileID: 11400000, guid: 0adf6649dfa6c2b48877232f4002ec52, type: 2}
   skillSprite: {fileID: 21300026, guid: 7ab74e659e1f0a34d9cfec21c478fc12, type: 3}
   skillName: Basic
   skillDescription: Basic attack.
@@ -26,6 +26,7 @@ MonoBehaviour:
   permaBuff: 1
   accuracy: 80
   coverAccuracyDebuff: 20
+  impactRange: 2
   animatorOverrideController: {fileID: 0}
   skillStartVFX: {fileID: 0}
   skillHitVFX:
@@ -41,4 +42,3 @@ MonoBehaviour:
   skillTargetType: 1
   skillEffect: 0
   buffDebuffType: 0
-  impactRange: 2
