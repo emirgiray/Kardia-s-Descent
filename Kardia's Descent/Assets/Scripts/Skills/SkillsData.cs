@@ -215,9 +215,9 @@ public class SkillsData : ScriptableObject
             {
                 fx.SpawnVFX(selectedTile.occupyingEnemy.transform);
             }
-            
             selectedTile.occupyingEnemy.GetComponent<DamageHandler>().TakeDamage((int)(Skill.damage * damageMultipliar), ActivaterCharacter);
         }
+        
         if (ActivaterCharacter is Enemy && selectedTile.occupiedByPlayer)
         {
             foreach (var fx in skillHitVFX)

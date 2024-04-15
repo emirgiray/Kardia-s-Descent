@@ -41,12 +41,12 @@ public class DamageHandler : MonoBehaviour
         {
             if (!character.inCombat)
             {
-                character.StartCombat();
+                character.StartCombat(attacker);
             }
 
             if (!attacker.inCombat)
             {
-                attacker.StartCombat();
+                attacker.StartCombat(attacker);
                 if (character.TurnSystem.turnState == TurnSystem.TurnState.FreeRoamTurn)
                 {
                     character.TurnSystem.CombatStarted();

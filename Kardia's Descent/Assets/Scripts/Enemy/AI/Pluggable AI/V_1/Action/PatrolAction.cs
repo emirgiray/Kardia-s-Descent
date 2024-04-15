@@ -32,7 +32,6 @@ public class PatrolAction : ActionAI
     public Path FindPathBetweenRandomWaypoints(StateController controller)
     {
         int randomIndex = Random.Range(0, controller.waypoints.Count);
-
         if (controller.waypoints[randomIndex].selectable && controller.waypoints[randomIndex].Occupied == false && 
             controller.waypoints[randomIndex] != controller.enemy.characterTile)
         {

@@ -27,8 +27,12 @@ MonoBehaviour:
   accuracy: 80
   coverAccuracyDebuff: 20
   impactRange: 2
+  innerImpactRadius: 1
+  outerImpactRadius: 1
+  outerImpactDamageDebuff: 0.5
   animatorOverrideController: {fileID: 0}
   skillStartVFX: {fileID: 0}
+  skillImpactVFX: {fileID: 11400000, guid: 63187610e0ae62540b57bdf8b20a52e9, type: 2}
   skillHitVFX:
   - {fileID: 11400000, guid: 2d7ba90a2d4cad44ea904346e7ce5f75, type: 2}
   skillMissVFX: {fileID: 11400000, guid: f95dd6b5fb3dc4f4c9158365d41b4807, type: 2}

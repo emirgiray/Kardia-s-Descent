@@ -277,7 +277,6 @@ public class Character : MonoBehaviour
                         StartCoroutine(WaitForMoveToEnd());
                     }
                 }
-               
                 
                 yield return null;
                 Moving = true;
@@ -298,7 +297,24 @@ public class Character : MonoBehaviour
                 {
                     characterTile.Occupied = false;
                     characterTile.ResetOcupying();
+                    characterTile.occupiedByEnemy = false;
+                    characterTile.occupiedByPlayer = false;
+                    
                     characterTile = path.tiles[currentStep];
+                    characterTile.Occupied = true;
+                    characterTile.occupyingCharacter = this;
+                    characterTile.occupyingGO = this.gameObject;
+                    if (this is Player)
+                    {
+                        characterTile.occupyingPlayer = this.GetComponent<Player>();
+                        characterTile.occupiedByPlayer = true;
+                    }
+                    else if (this is Enemy)
+                    {
+                        characterTile.occupyingEnemy = this.GetComponent<Enemy>();
+                        characterTile.occupiedByEnemy = true;
+                    }
+                    
                     Moving = false;
                     if (this is Enemy && !inCombat)
                     {
@@ -516,11 +532,6 @@ public class Character : MonoBehaviour
         
         characterCard.GetComponent<CustomEvent2>().CustomEmitterFunc2();
         
-        /*delay = LeanTween.delayedCall(1, () =>
-        {
-            characterCard.GetComponent<CustomEvent3>().CustomEmitterFunc3();
-        });*/
-        
         if (this is Enemy)
         {
             GetComponent<StateController>().aiActive = false;
@@ -530,8 +541,6 @@ public class Character : MonoBehaviour
         {
             Interact.ClearHighlightAttackableTiles();
             Interact.ClearHighlightReachableTiles();
-            
-            
         }
         
         TurnSystem.NextTurn();
@@ -554,28 +563,6 @@ public class Character : MonoBehaviour
     [Button]
     public void CheckToStartCombat()
     {
-        /*if (this is Player)
-        {
-            for (int i = 0; i < LevelManager.Instance.enemies.Count; i++)
-            {
-                if (pathfinder.GetTilesInBetween(this, characterTile, LevelManager.Instance.enemies[i].characterTile, true).Count <= 4)
-                {
-                    if (!Physics.Linecast(this.transform.position, LevelManager.Instance.enemies[i].transform.position, detectionLayerMask))
-                    {
-                        if(!inCombat) StartCombat();
-                        if(!LevelManager.Instance.enemies[i].inCombat) LevelManager.Instance.enemies[i].StartCombat();
-                        
-                        if (TurnSystem.turnState == TurnSystem.TurnState.FreeRoamTurn)
-                        {
-                            TurnSystem.CombatStarted();
-                        }
-                        //Debug.Log($"Combat started by {TurnSystem.enemies[i].name}");
-                    }
-                }
-                
-            }
-        }*/
-        
         Vector3 yOffSet = new Vector3(0, PathfinderVariables.Instance.characterYOffset, 0);
         if (this is Enemy)
         {
@@ -596,8 +583,8 @@ public class Character : MonoBehaviour
                     {
                         if (!Physics.Linecast(this.transform.position +yOffSet, playersInCombat[i].transform.position+ yOffSet, detectionLayerMask))
                         {
-                            if(!inCombat) StartCombat();
-                            if(!playersInCombat[i].inCombat) playersInCombat[i].StartCombat();
+                            if(!inCombat) StartCombat(playersInCombat[i]);
+                            if(!playersInCombat[i].inCombat) playersInCombat[i].StartCombat(this);
                         
                             if (TurnSystem.turnState == TurnSystem.TurnState.FreeRoamTurn)
                             {
@@ -650,12 +637,13 @@ public class Character : MonoBehaviour
     #region Combat
 
     [Button, GUIColor(1f, 1f, 1f)]
-    public void StartCombat()
+    public void StartCombat(Character combatStarter)
     {
         //FinalizePosition(characterTile, false);
         // StopCoroutine(moveCoroutine);
         StartCoroutine(WaitForMoveToEnd());
         CombatStartedAction?.Invoke();
+        Rotate(combatStarter.transform.position);
         if (this is Player)
         {
             LevelManager.AddPlayerToCombat(GetComponent<Player>());

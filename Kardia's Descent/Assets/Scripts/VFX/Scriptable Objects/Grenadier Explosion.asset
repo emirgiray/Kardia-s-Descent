@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd530e29431bf924d92335c55de37309, type: 3}
   m_Name: Grenadier Explosion
   m_EditorClassIdentifier: 
-  VFXPrefab: {fileID: 7155335147208632822, guid: 1b0828931455a1346a6a54bc5dd5d8d8,
+  VFXPrefab: {fileID: 4593184484909914552, guid: 2e1e9506f5904a64b81744324fb7cd50,
     type: 3}
   VFXDuration: 3
   spawnPosition: {fileID: 0}
   spawnOffset: {x: 0, y: 0, z: 0}
+  scale: {x: 1, y: 1, z: 1}
+  rotationOffset: {x: 0, y: 0, z: 0}
