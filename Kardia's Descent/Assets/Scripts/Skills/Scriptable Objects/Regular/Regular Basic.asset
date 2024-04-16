@@ -18,6 +18,7 @@ MonoBehaviour:
   skillDescription: Basic attack.
   skillID: 9
   skillDamage: 10
+  coverDamageMultipliar: 1
   skillRange: 4
   skillCooldown: 0
   actionPointUse: 2
@@ -26,13 +27,18 @@ MonoBehaviour:
   permaBuff: 1
   accuracy: 75
   coverAccuracyDebuff: 0
+  impactRange: 2
+  innerImpactRadius: 1
+  outerImpactRadius: 1
+  outerImpactDamageDebuff: 0.5
   animatorOverrideController: {fileID: 0}
   skillStartVFX: {fileID: 0}
+  skillImpactVFX: {fileID: 0}
   skillHitVFX:
   - {fileID: 11400000, guid: 2d7ba90a2d4cad44ea904346e7ce5f75, type: 2}
   skillMissVFX: {fileID: 11400000, guid: f95dd6b5fb3dc4f4c9158365d41b4807, type: 2}
   skillAudioEvent: {fileID: 11400000, guid: 51fcbee42fed2d743af064c20de9a716, type: 2}
-  skillType: 1
+  skillType: 0
   passiveOrActive: 0
   skillClass: 0
   damageType: 0

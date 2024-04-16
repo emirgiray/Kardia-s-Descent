@@ -265,7 +265,23 @@ public class Interact : MonoBehaviour
             }
         }
         else
-        {
+        { 
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                if(LevelManager.players.Count > 0 && LevelManager.players[0].isUnlocked) TrySelectPlayer(LevelManager.players[0]);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                if(LevelManager.players.Count > 1 && LevelManager.players[1].isUnlocked) TrySelectPlayer(LevelManager.players[1]);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                if(LevelManager.players.Count > 2 && LevelManager.players[2].isUnlocked) TrySelectPlayer(LevelManager.players[2]);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                if(LevelManager.players.Count > 3 && LevelManager.players[3].isUnlocked) TrySelectPlayer(LevelManager.players[3]);
+            }
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 isPaused = !isPaused;

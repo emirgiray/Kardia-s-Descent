@@ -538,12 +538,14 @@ public class Pathfinder : MonoBehaviour
         
         // calculate the effected tiles around the impact tile (selectedTile)
         // all the effected tiles
-        effectedTilesList = GetNeighbouringTiles(impactOriginTile, skill.skillData.impactRange);
+        effectedTilesList = GetNeighbouringTiles(impactOriginTile, skill.skillData.impactRange, true);
+        //effectedTilesList.Add(impactOriginTile);
+        Debug.Log($"effected count: {effectedTilesList.Count}");
         // the inner effected tiles for full damage
-        innerEffectedTilesList = GetNeighbouringTiles(impactOriginTile, skill.skillData.innerImpactRadius);
-        innerEffectedTilesList.Add(impactOriginTile);
+        innerEffectedTilesList = GetNeighbouringTiles(impactOriginTile, skill.skillData.innerImpactRadius, true);
+        //innerEffectedTilesList.Add(impactOriginTile);
+        Debug.Log($"inner count: {innerEffectedTilesList.Count}");
         // the outer effected tiles for less damage
-        
         List<Tile> temp = new List<Tile>();
         
         foreach (var tile in effectedTilesList)
@@ -555,6 +557,7 @@ public class Pathfinder : MonoBehaviour
         }
         
         outerEffectedTilesList = temp;
+        Debug.Log($"outer count: {outerEffectedTilesList.Count}");
         /*List<Tile> toRemoveFromEffectedTiles = new List<Tile>();
         foreach (var tile in effectedTilesList)
         {
@@ -573,7 +576,7 @@ public class Pathfinder : MonoBehaviour
 
     }
     
-    public List<Tile> GetNeighbouringTiles(Tile origin, int range)
+    public List<Tile> GetNeighbouringTiles(Tile origin, int range, bool includeOrigin)
     {
         List<Tile> tiles = new List<Tile>();
         List<Tile> frontier = new List<Tile>();
@@ -598,6 +601,11 @@ public class Pathfinder : MonoBehaviour
 
             frontier = newFrontier;
             currentRange++;
+        }
+
+        if (includeOrigin)
+        {
+            tiles.Add(origin);
         }
         return tiles;
     }

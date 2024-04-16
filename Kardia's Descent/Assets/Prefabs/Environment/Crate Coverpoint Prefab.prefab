@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 59445095691387519}
   - component: {fileID: 5937023270268279914}
   - component: {fileID: 3030469419005757986}
+  - component: {fileID: 2800654940840925722}
   m_Layer: 0
   m_Name: Crate Coverpoint Prefab
   m_TagString: Untagged
@@ -47,12 +48,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectTile: {fileID: 0}
+  findTileAtStart: 0
   pathfinder: {fileID: 3030469419005757986}
-  GroundLayerMask:
-    serializedVersion: 2
-    m_Bits: 8
   yOffset: 0.18
   coveringTiles: []
+  HitTextGameObject: {fileID: 8192422749196242801, guid: 18d9936a0ae5987499fb19403aaacbd1,
+    type: 3}
+  health: {fileID: 2800654940840925722}
 --- !u!114 &3030469419005757986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,8 +67,93 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f9e86c7de7784746bf63006b068727d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  illustrator: {fileID: 0}
   illustratePath: 0
+  illustrator: {fileID: 0}
+  attackableTiles: []
+--- !u!114 &2800654940840925722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 803809882220178894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54e5ec83081058440a6fa6e17a472043, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDead: 0
+  Max: 50
+  Min: 0
+  Diffuculty: {fileID: 11400000, guid: a3e4e6a8e8c94bb4393038a5ab79830e, type: 2}
+  ResetOnEnable: 0
+  ResetOnStart: 1
+  Bar01: {fileID: 0}
+  Bar02: {fileID: 0}
+  Bar01_2: {fileID: 0}
+  Bar02_2: {fileID: 0}
+  Bar01_3: {fileID: 0}
+  Bar02_3: {fileID: 0}
+  BarAnimSpeed: 10
+  Bar02Delay: 0.4
+  Dead:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5937023270268279914}
+        m_TargetAssemblyTypeName: CoverPoint, Assembly-CSharp
+        m_MethodName: OnCoverDestroyed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  TakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  TakeDamageWithValue:
+    m_PersistentCalls:
+      m_Calls: []
+  TakeDamageWithString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5937023270268279914}
+        m_TargetAssemblyTypeName: CoverPoint, Assembly-CSharp
+        m_MethodName: SpawnText
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  HealthDecreaseValue:
+    m_PersistentCalls:
+      m_Calls: []
+  HealthAdded:
+    m_PersistentCalls:
+      m_Calls: []
+  HealthAddedWithString:
+    m_PersistentCalls:
+      m_Calls: []
+  GetCurrentHealth:
+    m_PersistentCalls:
+      m_Calls: []
+  GetCurrentHealthNormalized:
+    m_PersistentCalls:
+      m_Calls: []
+  MissEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _Health: 0
+  _HealthAnim: {fileID: 0}
+  _HealthAnim_2: {fileID: 0}
+  _HealthAnim_3: {fileID: 0}
 --- !u!1001 &6473295822438692283
 PrefabInstance:
   m_ObjectHideFlags: 0

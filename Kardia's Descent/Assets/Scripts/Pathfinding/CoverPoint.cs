@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using SGT_Tools.Bridge;
 using Sirenix.OdinInspector;
+using TMPro;
 using UnityEngine;
 
 public class CoverPoint : MonoBehaviour
@@ -12,8 +14,9 @@ public class CoverPoint : MonoBehaviour
     [SerializeField] private Pathfinder pathfinder;
     [SerializeField] private float yOffset = 0.18f;
     [SerializeField] private List<Tile> coveringTiles = new List<Tile>();
+    [SerializeField] private GameObject HitTextGameObject;
+    [SerializeField] private SGT_Health health;
     
-
     void Start()
     {
         if (findTileAtStart)
@@ -90,6 +93,26 @@ public class CoverPoint : MonoBehaviour
         }
         
     }
+    public void SpawnText(string value)
+    {
+        /*float randomX = Random.Range(character.Head.position.x, 0.5f);
+       Vector3 randomPosAroundHead = new Vector3(, character.Head.position.y + 1, 0);*/
+        
+        Vector3 PosAroundHead = SGT_Math.GetPositionAroundObject(transform, 0.5f);
+        Vector3 randomPosAroundHead = new Vector3(PosAroundHead.x, PosAroundHead.y + 4, PosAroundHead.z);
+        
+        GameObject spawnedHitText = Instantiate(HitTextGameObject, randomPosAroundHead, Quaternion.identity);
+
+        if (int.Parse(value) >= health.Max)
+        {
+            spawnedHitText.GetComponentInChildren<TextMeshPro>().text = health.Max.ToString();
+        }
+        else
+        {
+            spawnedHitText.GetComponentInChildren<TextMeshPro>().text = value;
+        }
+        
+    }
 
     public void OnCoverDestroyed()
     {
@@ -107,9 +130,9 @@ public class CoverPoint : MonoBehaviour
         StartCoroutine(DeathDelay());
     }
 
-    public IEnumerator DeathDelay()
+    private IEnumerator DeathDelay()
     {
         yield return new WaitForSecondsRealtime(1);
-        gameObject.transform.DOMoveY(gameObject.transform.position.y - 1.5f, 0.5f);
+        gameObject.transform.DOMoveY(gameObject.transform.position.y - 5f, 1.5f).OnComplete(()=>Destroy(gameObject));
     }
 }

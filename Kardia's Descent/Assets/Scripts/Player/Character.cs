@@ -834,7 +834,16 @@ public class Character : MonoBehaviour
         Vector3 randomPosAroundHead = new Vector3(PosAroundHead.x, PosAroundHead.y + 2, PosAroundHead.z);
         
         GameObject spawnedHitText = Instantiate(HitTextGameObject, randomPosAroundHead, Quaternion.identity);
-        spawnedHitText.GetComponentInChildren<TextMeshPro>().text = value.ToString();
+
+        if (int.Parse(value) >= health.Max)
+        {
+            spawnedHitText.GetComponentInChildren<TextMeshPro>().text = health.Max.ToString();
+        }
+        else
+        {
+            spawnedHitText.GetComponentInChildren<TextMeshPro>().text = value;
+        }
+        
     }
 
     GameObject stunVFX = null;

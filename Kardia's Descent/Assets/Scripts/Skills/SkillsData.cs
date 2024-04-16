@@ -25,12 +25,13 @@ public class SkillsData : ScriptableObject
     public bool permaBuff = true;
     public int accuracy = 80;
     public int coverAccuracyDebuff = 20;
+
+    [Tooltip("Damage Multipliar when hitting cover")]
+    public float coverDamageMultipliar = 0.1f;
     [BoxGroup("Area Damage")] [ShowIf("skillHitType", SkillHitType.Area)]
     public int impactRange = 2; //for area around target
     [BoxGroup("Area Damage")] [ShowIf("skillHitType", SkillHitType.Area)]
     public int innerImpactRadius = 1; //for full damage radius
-    [BoxGroup("Area Damage")] [ShowIf("skillHitType", SkillHitType.Area)]
-    public int outerImpactRadius  = 1; //for less damage radius
     [BoxGroup("Area Damage")] [ShowIf("skillHitType", SkillHitType.Area)]
     public float outerImpactDamageDebuff  = 0.5f; //less damage percentage
     public AnimatorOverrideController animatorOverrideController;
@@ -235,7 +236,7 @@ public class SkillsData : ScriptableObject
                 fx.SpawnVFX(selectedTile.occupyingCoverPoint.transform);
             }
 
-            if (selectedTile.occupyingCoverPoint.GetComponent<SGT_Health>() != null) selectedTile.occupyingCoverPoint.GetComponent<SGT_Health>().HealthDecrease((int)(Skill.damage * damageMultipliar));
+            if (selectedTile.occupyingCoverPoint.GetComponent<SGT_Health>() != null) selectedTile.occupyingCoverPoint.GetComponent<SGT_Health>().HealthDecrease((int)(Skill.damage * coverDamageMultipliar * damageMultipliar));
         }
     }
     public void DoStun(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile,  Action OnComplete = null)

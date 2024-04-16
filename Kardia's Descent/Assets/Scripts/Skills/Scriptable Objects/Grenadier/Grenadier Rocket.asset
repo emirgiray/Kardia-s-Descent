@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c8eca45ebaf6b419f38bb3e25d218f, type: 3}
+  m_Name: Grenadier Rocket
+  m_EditorClassIdentifier: 
+  everythingUseful: {fileID: 11400000, guid: 0adf6649dfa6c2b48877232f4002ec52, type: 2}
+  skillSprite: {fileID: 21300030, guid: 7ab74e659e1f0a34d9cfec21c478fc12, type: 3}
+  skillName: Rocket
+  skillDescription: Shoot a rocket that destroys any cover in 1 hex radius. 100%
+    dmg to characters in direct hit. 50% dmg in 1 hex radius to characters.
+  skillID: 15
+  skillDamage: 10
+  skillRange: 5
+  skillCooldown: 0
+  actionPointUse: 0
+  skillEffectDuration: 0
+  skillBuffDebuffAmount: 0
+  permaBuff: 1
+  accuracy: 80
+  coverAccuracyDebuff: 20
+  coverDamageMultipliar: 5
+  impactRange: 2
+  innerImpactRadius: 1
+  outerImpactRadius: 1
+  outerImpactDamageDebuff: 0.5
+  animatorOverrideController: {fileID: 0}
+  skillStartVFX: {fileID: 0}
+  skillImpactVFX: {fileID: 11400000, guid: 82b1ce061c0b58a49a0d700e6d19ec34, type: 2}
+  skillHitVFX:
+  - {fileID: 11400000, guid: 2d7ba90a2d4cad44ea904346e7ce5f75, type: 2}
+  skillMissVFX: {fileID: 11400000, guid: f95dd6b5fb3dc4f4c9158365d41b4807, type: 2}
+  skillAudioEvent: {fileID: 0}
+  skillType: 0
+  passiveOrActive: 0
+  skillClass: 0
+  damageType: 0
+  skillTarget: 0
+  skillHitType: 1
+  skillTargetType: 1
+  skillEffect: 0
+  buffDebuffType: 0
