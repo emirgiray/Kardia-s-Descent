@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Grenadier Passive
   m_EditorClassIdentifier: 
   everythingUseful: {fileID: 11400000, guid: 0adf6649dfa6c2b48877232f4002ec52, type: 2}
-  skillSprite: {fileID: 21300028, guid: 7ab74e659e1f0a34d9cfec21c478fc12, type: 3}
+  skillSprite: {fileID: 21300034, guid: 7ab74e659e1f0a34d9cfec21c478fc12, type: 3}
   skillName: Passive
   skillDescription: Shoots a grenade launcher that does 100% dmg direct and 50% dmg
     in 1 hex radius.
@@ -28,9 +28,8 @@ MonoBehaviour:
   accuracy: 80
   coverAccuracyDebuff: 20
   coverDamageMultipliar: 0.1
-  impactRange: 3
+  impactRange: 1
   innerImpactRadius: 1
-  outerImpactRadius: 2
   outerImpactDamageDebuff: 0.5
   animatorOverrideController: {fileID: 0}
   skillStartVFX: {fileID: 0}

@@ -26,6 +26,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d5f01728396464944846e70ca07847fc, type: 2}
   - {fileID: 11400000, guid: 1e751bc78fbb67444a2d59558f9d6a8b, type: 2}
   - {fileID: 11400000, guid: ec0a17fb3d967994dbd6406f9d0a6415, type: 2}
+  - {fileID: 11400000, guid: 902ff574f827a1e4ba2f5d5ba87fd6e1, type: 2}
   damage: {x: 3, y: 5}
   accuracy: 80
   range: 5

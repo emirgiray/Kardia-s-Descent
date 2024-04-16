@@ -13,12 +13,11 @@ MonoBehaviour:
   m_Name: Regular Basic
   m_EditorClassIdentifier: 
   everythingUseful: {fileID: 11400000, guid: 0adf6649dfa6c2b48877232f4002ec52, type: 2}
-  skillSprite: {fileID: 21300026, guid: 7ab74e659e1f0a34d9cfec21c478fc12, type: 3}
+  skillSprite: {fileID: 21300028, guid: 7ab74e659e1f0a34d9cfec21c478fc12, type: 3}
   skillName: Basic
   skillDescription: Basic attack.
   skillID: 9
   skillDamage: 10
-  coverDamageMultipliar: 1
   skillRange: 4
   skillCooldown: 0
   actionPointUse: 2
@@ -27,9 +26,9 @@ MonoBehaviour:
   permaBuff: 1
   accuracy: 75
   coverAccuracyDebuff: 0
+  coverDamageMultipliar: 1
   impactRange: 2
   innerImpactRadius: 1
-  outerImpactRadius: 1
   outerImpactDamageDebuff: 0.5
   animatorOverrideController: {fileID: 0}
   skillStartVFX: {fileID: 0}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Regular Double Time
   m_EditorClassIdentifier: 
   everythingUseful: {fileID: 11400000, guid: 0adf6649dfa6c2b48877232f4002ec52, type: 2}
-  skillSprite: {fileID: 21300028, guid: 7ab74e659e1f0a34d9cfec21c478fc12, type: 3}
+  skillSprite: {fileID: 21300030, guid: 7ab74e659e1f0a34d9cfec21c478fc12, type: 3}
   skillName: Double Time
   skillDescription: Get an extra 5 AP for this turn. Lose it if not used.
   skillID: 10
@@ -26,8 +26,13 @@ MonoBehaviour:
   permaBuff: 0
   accuracy: 50
   coverAccuracyDebuff: 0
+  coverDamageMultipliar: 0.1
+  impactRange: 2
+  innerImpactRadius: 1
+  outerImpactDamageDebuff: 0.5
   animatorOverrideController: {fileID: 0}
   skillStartVFX: {fileID: 0}
+  skillImpactVFX: {fileID: 0}
   skillHitVFX:
   - {fileID: 11400000, guid: 237c0dabba02e51489b196796b9fe4f4, type: 2}
   skillMissVFX: {fileID: 0}
