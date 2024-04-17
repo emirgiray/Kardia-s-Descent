@@ -26,16 +26,21 @@ MonoBehaviour:
   permaBuff: 1
   accuracy: 50
   coverAccuracyDebuff: 0
+  coverDamageMultipliar: 0.1
+  impactRange: 2
+  innerImpactRadius: 1
+  outerImpactDamageDebuff: 0.5
   animatorOverrideController: {fileID: 22100000, guid: a6564b79e07616541858205ca0f288fd,
     type: 2}
   skillStartVFX: {fileID: 0}
+  skillImpactVFX: {fileID: 0}
   skillHitVFX:
   - {fileID: 11400000, guid: 237c0dabba02e51489b196796b9fe4f4, type: 2}
   skillMissVFX: {fileID: 0}
   skillAudioEvent: {fileID: 0}
   skillType: 0
   passiveOrActive: 0
-  skillClass: 11
+  skillClass: 2
   damageType: 7
   skillTarget: 4
   skillHitType: 7

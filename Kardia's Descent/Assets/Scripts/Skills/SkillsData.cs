@@ -34,6 +34,10 @@ public class SkillsData : ScriptableObject
     public int innerImpactRadius = 1; //for full damage radius
     [BoxGroup("Area Damage")] [ShowIf("skillHitType", SkillHitType.Area)]
     public float outerImpactDamageDebuff  = 0.5f; //less damage percentage
+    [BoxGroup("Cleave Damage")] [ShowIf("skillHitType", SkillHitType.Cleave)]
+    public int cleaveTimes = 1;
+    [BoxGroup("Cleave Damage")] [ShowIf("skillHitType", SkillHitType.Cleave)]
+    public bool cleaveStartLeft = true;
     public AnimatorOverrideController animatorOverrideController;
     public VFXSpawner skillStartVFX;
     public VFXSpawner skillImpactVFX;
@@ -57,7 +61,7 @@ public class SkillsData : ScriptableObject
     [EnumPaging]
     public enum SkillClass
     {
-        Pistol, Rifle, Shotgun, Sniper, SMG, LMG, Axe, Sword, Dagger, Active, Passive, Buff
+        /*Pistol, Rifle, Shotgun, Sniper, SMG, LMG, Axe, Sword, Dagger,*/ Active, Passive, Buff
     }
     public SkillClass skillClass;
     [EnumPaging]
@@ -73,19 +77,20 @@ public class SkillsData : ScriptableObject
     {
          Enemy, Ally, Self,MultipleEnemies, MultipleAllies,  AllEnemies, AllAllies, All
     }
+    [ShowIf("skillClass", SkillClass.Buff)]
     public SkillTarget skillTarget;
     
     [EnumPaging]
     public enum SkillHitType
     {
-        Single, Area, Line, Cone, AllInRange, AllInLine, AllInCone, All
+        Single, Area, Line, Cone, AllInRange, AllInLine, AllInCone, All, Cleave
     }
     public SkillHitType skillHitType;
     
     [EnumPaging]
     public enum SkillTargetType
     {
-        AreaAroundSelf, AreaAroundTarget, Line, Cone
+        AreaAroundSelf, AreaAroundTarget, Line, Cone, Cleave
     }
     public SkillTargetType skillTargetType;
     
@@ -191,11 +196,20 @@ public class SkillsData : ScriptableObject
             selectedTile.occupyingEnemy.GetComponent<SGT_Health>().Miss();
             selectedTile.occupyingEnemy.GetComponent<Character>().OnCharacterMiss();
         }
-        if (ActivaterCharacter is Enemy && selectedTile.occupiedByPlayer)
+        else if (ActivaterCharacter is Enemy && selectedTile.occupiedByPlayer)
         {
             skillMissVFX.SpawnVFX(selectedTile.occupyingPlayer.transform);
             selectedTile.occupyingPlayer.GetComponent<SGT_Health>().Miss();
             selectedTile.occupyingPlayer.GetComponent<Character>().OnCharacterMiss();
+        }
+        else if ((ActivaterCharacter is Player || ActivaterCharacter is Enemy) && selectedTile.OccupiedByCoverPoint)
+        {
+            skillMissVFX.SpawnVFX(selectedTile.occupyingCoverPoint.transform);
+            selectedTile.occupyingCoverPoint.GetComponent<SGT_Health>().Miss();
+        }
+        else
+        {
+            skillMissVFX.SpawnVFX(selectedTile.transform);
         }
         
         //Debug.Log($"on hit 2");

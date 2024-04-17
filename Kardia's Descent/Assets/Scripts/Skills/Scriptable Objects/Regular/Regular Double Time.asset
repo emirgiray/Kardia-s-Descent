@@ -39,7 +39,7 @@ MonoBehaviour:
   skillAudioEvent: {fileID: 0}
   skillType: 0
   passiveOrActive: 0
-  skillClass: 11
+  skillClass: 2
   damageType: 7
   skillTarget: 2
   skillHitType: 0

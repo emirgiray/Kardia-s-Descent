@@ -23,7 +23,12 @@ public class SceneChanger : MonoBehaviour
     public SceneField currentScene;
 
     public bool isOnMainMenu => SceneManager.GetActiveScene().name == mainMenuLevel.SceneName;
-    
+
+    private void Awake()
+    {
+        currentScene = SceneManager.GetActiveScene().name;
+    }
+
     [Button, GUIColor(1f, 1f, 1f)]
     public void OfferRandomScenes()
     {
@@ -99,6 +104,7 @@ public class SceneChanger : MonoBehaviour
     
     public void ReloadSameScene()
     {
+        everythingUseful.MainPrefabScript.ClearPrevious();
         int CurrentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(CurrentSceneIndex);
     }
@@ -106,6 +112,13 @@ public class SceneChanger : MonoBehaviour
     public void LoadSceneWithIndex(int indexScene)
     {
         SceneManager.LoadScene(indexScene);
+    }
+
+    public void LoadMainMenu()
+    {
+        everythingUseful.MainPrefabScript.ClearPrevious();
+        //everythingUseful.MainPrefabScript.SelectedPlayers.Clear();
+        ChangeScene(mainMenuLevel);
     }
 
     public string GetCurrentScene()

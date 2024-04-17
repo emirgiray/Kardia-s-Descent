@@ -313,6 +313,7 @@ public class TurnSystem : MonoBehaviour
 
     public void RemoveCard(Character character)
     {
+        if (character.GetCharacterCard() == null) return;
         RoundInfo.GetComponent<RoundInfo>().RemoveObject(character.GetCharacterCard());
         Destroy(character.GetCharacterCard());
     }

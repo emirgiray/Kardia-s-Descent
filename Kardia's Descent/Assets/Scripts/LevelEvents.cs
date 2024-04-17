@@ -16,8 +16,9 @@ public class LevelEvents : MonoBehaviour
     {
         AwakeEvent.Invoke();
         
-        /*if(SaveLoadSystem.Instance.loadOnAwake) */everythingUseful.SaveLoadSystem.InitAwake();
+        /*if(everythingUseful.SaveLoadSystem.loadOnAwake)*/ if(!everythingUseful.SceneChanger.isOnMainMenu) everythingUseful.SaveLoadSystem.InitAwake();
         MainPrefabScript.Instance.InitAwake();
+        EverythingUsefulAssigner.Instance.InitAwake();
     }
     
     private void Start()

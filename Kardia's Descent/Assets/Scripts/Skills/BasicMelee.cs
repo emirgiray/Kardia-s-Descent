@@ -21,23 +21,51 @@ public class BasicMelee : SkillsData
         if (skillAudioEvent != null) skillAudioEvent.Play(ActivaterCharacter.transform);
         if (skillStartVFX != null) skillStartVFX.SpawnVFX(ActivaterCharacter.Hand, selectedTile.transform.position);
         
-        if (base.TryHit(Skill, ActivaterCharacter, selectedTile, OnComplete))
+        if (skillTargetType == SkillTargetType.Cleave)
         {
-            base.DoDamage(Skill, ActivaterCharacter, selectedTile, 1, OnComplete); 
-            
-            switch(skillEffect)
+            List<Tile> effectedTiles = ActivaterCharacter.SkillContainer.effectedTiles;
+            foreach (var tile in effectedTiles)
             {
-                case SkillEffect.None:
-                    break;
-                case SkillEffect.Stun:
-                    base.DoStun(Skill, ActivaterCharacter, selectedTile);
-                    break;
+                if (base.TryHit(Skill, ActivaterCharacter, tile, OnComplete))
+                {
+                    base.DoDamage(Skill, ActivaterCharacter, tile, 1, OnComplete);
+                    switch (skillEffect)
+                    {
+                        case SkillEffect.None:
+                            break;
+                        case SkillEffect.Stun:
+                            base.DoStun(Skill, ActivaterCharacter, tile);
+                            break;
+                    }
+                }
+                else
+                {
+                    base.OnMiss(Skill, ActivaterCharacter, tile, OnComplete);
+                }
             }
         }
         else
         {
-            base.OnMiss(Skill, ActivaterCharacter, selectedTile, OnComplete);
+            if (base.TryHit(Skill, ActivaterCharacter, selectedTile, OnComplete))
+            {
+                base.DoDamage(Skill, ActivaterCharacter, selectedTile, 1, OnComplete); 
+            
+                switch(skillEffect)
+                {
+                    case SkillEffect.None:
+                        break;
+                    case SkillEffect.Stun:
+                        base.DoStun(Skill, ActivaterCharacter, selectedTile);
+                        break;
+                }
+            }
+            else
+            {
+                base.OnMiss(Skill, ActivaterCharacter, selectedTile, OnComplete);
+            }
         }
+        
+       
 
         //if the current anim name contains idle, then invoke oncomplete
         yield return new WaitUntil(() => ActivaterCharacter.animator.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("idle"));

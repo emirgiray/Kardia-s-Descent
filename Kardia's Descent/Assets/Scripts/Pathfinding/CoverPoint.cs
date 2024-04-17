@@ -103,7 +103,7 @@ public class CoverPoint : MonoBehaviour
         
         GameObject spawnedHitText = Instantiate(HitTextGameObject, randomPosAroundHead, Quaternion.identity);
 
-        if (int.Parse(value) >= health.Max)
+        if (value != "MISS" && int.Parse(value) >= health.Max)
         {
             spawnedHitText.GetComponentInChildren<TextMeshPro>().text = health.Max.ToString();
         }

@@ -273,8 +273,8 @@ public class Character : MonoBehaviour
                 {
                     if (path.tiles[currentStep].occupyingCharacter != this)
                     {
-                        // stop
-                        StartCoroutine(WaitForMoveToEnd());
+                        // stop if there is someone in fron
+                        StartCoroutine(WaitForMoveToEnd(false));
                     }
                 }
                 
@@ -513,8 +513,6 @@ public class Character : MonoBehaviour
     private static LTDescr delay;
     public void EndTurn()
     {
-        
-        
         if(this is Player && TurnSystem.turnState == TurnSystem.TurnState.FreeRoamTurn)
         {
             return;
@@ -641,7 +639,7 @@ public class Character : MonoBehaviour
     {
         //FinalizePosition(characterTile, false);
         // StopCoroutine(moveCoroutine);
-        StartCoroutine(WaitForMoveToEnd());
+        StartCoroutine(WaitForMoveToEnd(true));
         CombatStartedAction?.Invoke();
         Rotate(combatStarter.transform.position);
         if (this is Player)
@@ -655,7 +653,7 @@ public class Character : MonoBehaviour
         }
     }
 
-    private IEnumerator WaitForMoveToEnd()
+    private IEnumerator WaitForMoveToEnd(bool startCombat)
     {
         yield return new WaitUntil(() => Moving == false);
         if (moveCoroutine != null) StopCoroutine(moveCoroutine);
@@ -669,7 +667,7 @@ public class Character : MonoBehaviour
             FinalizePosition(characterTile, false);
             GetComponent<StateController>().canExitState = true;
         }
-        inCombat = true;
+        if(startCombat) inCombat = true;
     }
 
     public void ExitCombat()
@@ -834,8 +832,8 @@ public class Character : MonoBehaviour
         Vector3 randomPosAroundHead = new Vector3(PosAroundHead.x, PosAroundHead.y + 2, PosAroundHead.z);
         
         GameObject spawnedHitText = Instantiate(HitTextGameObject, randomPosAroundHead, Quaternion.identity);
-
-        if (int.Parse(value) >= health.Max)
+        
+        if (value != "MISS" && int.Parse(value) >= health.Max)
         {
             spawnedHitText.GetComponentInChildren<TextMeshPro>().text = health.Max.ToString();
         }

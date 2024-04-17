@@ -35,4 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Jury 1/ST_Heal.unity
     guid: f47c23d06911ed14e80bf58d6f5f6b45
+  - enabled: 1
+    path: Assets/Scenes/RoguelikeSceneChanger/New Char Test.unity
+    guid: 631af858b46f29946a324cac9917e4c4
   m_configObjects: {}

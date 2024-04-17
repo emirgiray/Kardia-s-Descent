@@ -25,12 +25,14 @@ MonoBehaviour:
   skillEffectDuration: 0
   skillBuffDebuffAmount: 0
   permaBuff: 1
-  accuracy: 80
+  accuracy: 100
   coverAccuracyDebuff: 20
   coverDamageMultipliar: 0.1
   impactRange: 3
   innerImpactRadius: 1
   outerImpactDamageDebuff: 0.5
+  cleaveTimes: 1
+  cleaveStartLeft: 1
   animatorOverrideController: {fileID: 0}
   skillStartVFX: {fileID: 0}
   skillImpactVFX: {fileID: 11400000, guid: 63187610e0ae62540b57bdf8b20a52e9, type: 2}

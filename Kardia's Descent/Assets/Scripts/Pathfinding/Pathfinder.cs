@@ -12,36 +12,6 @@ public class Pathfinder : MonoBehaviour
     [ShowIf("illustratePath")]
     public PathIllustrator illustrator;
     public List<Tile> attackableTiles = new List<Tile>();
-    /*[SerializeField] LayerMask tileMask;
-    [SerializeField] LayerMask coverPointMask;
-    [SerializeField] LayerMask tankCoverPointMask;
-
-    [SerializeField] private float coverPointRayLenght = 2.5f;
-    [SerializeField] private float characterYOffset = 0.5f;
-    [SerializeField] private float tileVerticalityLenght = 3f;
-    [Tooltip("This is the offset of the hexagonal tiles, it is used to calculate the distance between tiles, default is 1.75f for hex scale (1, 1, 1) )")]
-    [SerializeField] public /*const#1# float HEXAGONAL_OFFSET = 1.75f;*/
-    
-    /*private void Awake()
-    {
-        if (Instance == null)
-            Instance = this;
-        else
-            Destroy(this);
-
-    }*/
-
-    /*private void Start()
-    {
-        if (illustrator == null)
-            illustrator = GetComponent<PathIllustrator>();
-    }*/
-
-    /*private void Update()
-    {
-        // CheckCoverPoint(GameObject.Find("Enemy").GetComponent<Character>().characterTile, GameObject.Find("Player").GetComponent<Character>().characterTile);
-        CheckCoverPoint(GameObject.Find("Enemy 1").GetComponent<Character>().characterTile, GameObject.Find("Mattone").GetComponent<Character>().characterTile);
-    }*/
 
     /// <summary>
     /// Main pathfinding function, marks tiles as being in frontier, while keeping a copy of the frontier
@@ -438,28 +408,9 @@ public class Pathfinder : MonoBehaviour
         
         List<Tile> tiles = new List<Tile>();
         tiles = path.tiles;
-        
-        /*if(tiles.Count - 1 > skill.range)//-1?
-        {
-            tiles = tiles.Take(skill.range).ToList();
-        }*/
-        
-        /*if ( targetTile.Occupied)
-        {
-            tiles.Add(targetTile);
-        }*/
-        
+   
         //remove if not in the same direction
         List<Tile> tilesToRemove = new List<Tile>();
-        
-        /*foreach (var tile in tiles)
-        {
-            if ((tile.transform.position - originTile.transform.position).normalized != dir)
-            {
-                tilesToRemove.Add(tile);
-            }
-
-        }*/
         
         foreach (var tile in tilesToRemove)
         {
@@ -538,13 +489,11 @@ public class Pathfinder : MonoBehaviour
         
         // calculate the effected tiles around the impact tile (selectedTile)
         // all the effected tiles
-        effectedTilesList = GetNeighbouringTiles(impactOriginTile, skill.skillData.impactRange, true);
+        effectedTilesList = GetNeighbouringTiles(impactOriginTile, skill.skillData.impactRange, false);
         //effectedTilesList.Add(impactOriginTile);
-        Debug.Log($"effected count: {effectedTilesList.Count}");
         // the inner effected tiles for full damage
         innerEffectedTilesList = GetNeighbouringTiles(impactOriginTile, skill.skillData.innerImpactRadius, true);
         //innerEffectedTilesList.Add(impactOriginTile);
-        Debug.Log($"inner count: {innerEffectedTilesList.Count}");
         // the outer effected tiles for less damage
         List<Tile> temp = new List<Tile>();
         
@@ -557,25 +506,104 @@ public class Pathfinder : MonoBehaviour
         }
         
         outerEffectedTilesList = temp;
-        Debug.Log($"outer count: {outerEffectedTilesList.Count}");
-        /*List<Tile> toRemoveFromEffectedTiles = new List<Tile>();
-        foreach (var tile in effectedTilesList)
-        {
-            if (!attackableTiles.Contains(tile))
-            {
-                toRemoveFromEffectedTiles.Add(tile);
-            }
-        }
-        
-        foreach (var tile in toRemoveFromEffectedTiles)
-        {
-            effectedTilesList.Remove(tile);
-        }*/
-        
+      
         return attackableTiles;
 
     }
-    
+
+
+    public List<Tile> GetAttackableTilesCleave(Tile selectedCharacterCharacterTile, SkillContainer.Skills skill, Tile targetTile, bool startFromLeft, int cleaveTimes, out List<Tile> effectedTilesList)
+    {
+        List<Tile> attackableTiles = new List<Tile>();
+        attackableTiles.Add(selectedCharacterCharacterTile);
+        List<Tile> frontier = new List<Tile>();
+        frontier.Add(selectedCharacterCharacterTile);
+
+        int currentRange = 0;
+        while (currentRange < skill.range)
+        {
+            List<Tile> newFrontier = new List<Tile>();
+
+            foreach (Tile tile in frontier)
+            {
+                foreach (Tile neighbor in NeighborTiles(tile, true, true))
+                {
+                    if (skill.skillData.skillType == SkillsData.SkillType.Ranged)
+                    {
+                        if ( /*neighbor.Occupied == false && */!attackableTiles.Contains(neighbor))
+                        {
+                            newFrontier.Add(neighbor);
+                            attackableTiles.Add(neighbor);
+                            //also add verticle tiles with raycasting up
+                            //Debug.DrawRay(neighbor.transform.position, Vector3.up * tileVerticalityLenght, Color.yellow);
+                            if (Physics.Raycast(neighbor.transform.position, Vector3.up, out RaycastHit hit,
+                                    PathfinderVariables.Instance.tileVerticalityLenght,
+                                    PathfinderVariables.Instance.tileMask))
+                            {
+                                newFrontier.Add(hit.transform.GetComponent<Tile>());
+                                attackableTiles.Add(hit.transform.GetComponent<Tile>());
+                            }
+                        }
+                    }
+                }
+            }
+
+            frontier = newFrontier;
+            currentRange++;
+        }
+
+        //remove the ones directly below
+        List<Tile> tilesToRemove = new List<Tile>();
+
+        foreach (var tile in attackableTiles)
+        {
+            if (Physics.Raycast(tile.transform.position, Vector3.down, out RaycastHit hit,
+                    PathfinderVariables.Instance.tileVerticalityLenght + 1, PathfinderVariables.Instance.tileMask))
+            {
+                /*Debug.Log($"tile: {selectedCharacterCharacterTile.name} = {selectedCharacterCharacterTile.transform.position.y}" +
+                          $"tile: {hit.transform.GetComponent<Tile>().name} =  {hit.transform.GetComponent<Tile>().transform.position.y}");*/
+                if (selectedCharacterCharacterTile.transform.position.y !=
+                    hit.transform.GetComponent<Tile>().transform.position.y)
+                {
+                    tilesToRemove.Add(hit.transform.GetComponent<Tile>());
+                }
+
+            }
+        }
+
+        foreach (var tile in tilesToRemove)
+        {
+            attackableTiles.Remove(tile);
+        }
+        
+        // calculate the cleave effected tiles around the impact tile
+        // this finds a relative forward direction from the selected character to the impact tile
+        // then it finds the tiles on the left or right of the forward direction
+        Vector3 forwardDir = (targetTile.transform.position - selectedCharacterCharacterTile.transform.position).normalized;
+        Vector3 direction = forwardDir * (targetTile.GetComponent<MeshFilter>().sharedMesh.bounds.extents.x * PathfinderVariables.Instance.HEXAGONAL_OFFSET);
+        float rayLength = 4f;
+        float rayHeightOffset = 1f;
+
+        List<Tile> tempEffectedTilesList = new List<Tile>();
+        for (int i = 0; i < cleaveTimes; i++)
+        {
+            // direction = Quaternion.Euler(0f, startFromLeft ? 240 : -240, 0f) * direction; //first iteration
+            //Vector3 aboveTilePos = (targetTile.transform.position + direction).With(y: targetTile.transform.position.y + rayHeightOffset); //first iteration, cleaveTimes = 1 works great but cleaveTimes = 2,3 is off but interesting
+            direction = i == 0 ? Quaternion.Euler(0f, startFromLeft ? 240 : -240, 0f) * direction : Quaternion.Euler(0f, startFromLeft ? 300 : -120, 0f) * direction;
+            var aboveTilePos = i == 0 ? (targetTile.transform.position + direction).With(y: targetTile.transform.position.y + rayHeightOffset) : (tempEffectedTilesList[tempEffectedTilesList.Count - 1].transform.position + direction).With(y: tempEffectedTilesList[tempEffectedTilesList.Count - 1].transform.position.y + rayHeightOffset);
+            
+            if (Physics.Raycast(aboveTilePos, Vector3.down, out RaycastHit hit2, rayLength, PathfinderVariables.Instance.tileMask))
+            {
+                Tile hitTile = hit2.transform.GetComponent<Tile>();
+                tempEffectedTilesList.Add(hitTile);
+            }
+        }
+
+        effectedTilesList = tempEffectedTilesList;
+        effectedTilesList.Add(targetTile);
+        return attackableTiles;
+    }
+
     public List<Tile> GetNeighbouringTiles(Tile origin, int range, bool includeOrigin)
     {
         List<Tile> tiles = new List<Tile>();

@@ -68,7 +68,7 @@ public class Interact : MonoBehaviour
     public SkillContainer selectedCharacterSkillContainer;
     [SerializeField] public bool isMouseOverUI = false;
     [SerializeField] private static float intensity = 1;
-    private bool isPaused = false;
+    public bool isPaused = false;
     /// <summary>
     /// <param name="0">White -- Default</param>
     /// <param name="1">Green -- Player</param>
@@ -162,7 +162,6 @@ public class Interact : MonoBehaviour
 
     private void Start()
     {
-        mainCam = gameObject.GetComponent<Camera>();
         inspectTileMeshRenderer = InspectTileGO.GetComponentInChildren<MeshRenderer>();
         
         ais = FindObjectsOfType<MonoBehaviour>().OfType<IAstarAI>().ToArray();
@@ -260,8 +259,11 @@ public class Interact : MonoBehaviour
                 selectedCharacterSkillContainer.TrySelectSkill(selectedCharacterSkillContainer.skillsList[3]);
             }
             if (Input.GetKeyDown(KeyCode.Space))
-            { 
-                selectedCharacter.inventory.GetSpawnedInventoryUIScript().GetSkipButton().onClick.Invoke();
+            {
+                if (selectedCharacter.inventory.GetSpawnedInventoryUIScript().GetSkipButton().interactable)
+                {
+                    selectedCharacter.inventory.GetSpawnedInventoryUIScript().GetSkipButton().onClick.Invoke();
+                }
             }
         }
         else
@@ -769,7 +771,7 @@ public class Interact : MonoBehaviour
                 selectedCharacter.SkillContainer.innerEffectedTiles = innerEffectedTiles;
                 selectedCharacter.SkillContainer.outerEffectedTiles = outerEffectedTiles;
                 
-
+                //highlight effected tiles if they are in attack range
                 if (attackableTiles.Contains(currentTile))
                 {
                     foreach (Tile tile in effectedTiles)
@@ -803,6 +805,33 @@ public class Interact : MonoBehaviour
             
             case SkillsData.SkillTargetType.Cone:
                 throw new NotImplementedException();
+                break;
+            
+            case SkillsData.SkillTargetType.Cleave:
+                
+                attackableTiles = selectedCharacter.pathfinder.GetAttackableTilesCleave(selectedCharacter.characterTile, selectedCharacter.SkillContainer.selectedSkill, currentTile, 
+                    selectedSkill.skillData.cleaveStartLeft, selectedSkill.skillData.cleaveTimes, out effectedTiles);
+                
+                foreach (Tile tile in attackableTiles)
+                {
+                    tile.HighlightAttackable();
+
+                    if (tile == selectedCharacter.characterTile)
+                    {
+                        tile.ClearHighlight();
+                    }
+                }
+                selectedCharacter.SkillContainer.effectedTiles = effectedTiles;
+                //highlight effected tiles if they are in attack range
+                if (attackableTiles.Contains(currentTile))
+                {
+                    foreach (Tile tile in effectedTiles)
+                    {
+                        tile.TileHighlightGO.SetActive(true);
+                        tile.TileHighlightMeshRenderer.material.SetColor("_RimColor", everythingUseful.Interact.tileHighligthColors[1]);
+                    }
+                }
+
                 break;
         }
         

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
@@ -37,6 +38,9 @@ public class GameManager : MonoBehaviour
     private GameObject fpsGO;
     [BoxGroup("Options")] [SerializeField]
     private TextMeshProUGUI fpsText;
+
+    [SerializeField] private Material PauseRendererEffectReset;
+    
     
     [FoldoutGroup("Events")]
     public UnityEvent GamePausedEvent;
@@ -118,10 +122,22 @@ public class GameManager : MonoBehaviour
     {
         isPaused = !isPaused;
         everythingUseful.UIManager.PauseGame(isPaused);
+        everythingUseful.Interact.isPaused = isPaused;
         Time.timeScale = isPaused ? 0 : 1;
         (isPaused ? GamePausedEvent : GameUnpausedEvent)?.Invoke();
     }
 
+    private void OnApplicationQuit()
+    {
+        PauseRendererEffectReset.SetFloat("_Dissolve", 1);
+        DOTween.KillAll();
+    }
+
+    public void SetPauseRendererEffect(float value)
+    {
+        PauseRendererEffectReset.SetFloat("_Dissolve", value);
+    }
+    
     #endregion
 
     #region Options

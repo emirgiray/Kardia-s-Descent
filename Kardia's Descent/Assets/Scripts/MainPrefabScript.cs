@@ -27,8 +27,8 @@ public class MainPrefabScript : MonoBehaviour
     public GameObject PartyRoundCardPrefab;
     
     private List<Transform> PlayerSlots = new();
-    private List<GameObject> spawnedPlayers = new();
-    [HideInInspector]
+    public List<GameObject> spawnedPlayers = new();
+    /*[HideInInspector]*/
     public List<Player> spawnedPlayerScripts = new();
     private List<GameObject> previews = new();
     private List<GameObject> partyRoundCards = new();
@@ -55,6 +55,7 @@ public class MainPrefabScript : MonoBehaviour
         {
             MainCamera.enabled = false;
             SaveLoadSystem.loadOnAwake = false;
+            
         }
         else
         {
@@ -62,7 +63,7 @@ public class MainPrefabScript : MonoBehaviour
             SaveLoadSystem.loadOnAwake = true;
             
         }
-        
+
         /*if (DOTween.Init() == null)
         {
             Debug.Log($"Null dotween");
@@ -118,8 +119,13 @@ public class MainPrefabScript : MonoBehaviour
         Interact.CharacterSelectedAction?.Invoke(spawnedPlayerScripts[0].characterTile, 0.001f);
     }
 
-    private void ClearPrevious()
+    public void ClearPrevious()
     {
+        foreach (var entity in everythingUseful.LevelManager.allEntities)
+        {
+            if (entity != null) everythingUseful.TurnSystem.RemoveCard(entity);
+        }
+        everythingUseful.UIManager.turnAndRoundGO.SetActive(false);
         foreach (var playerS in spawnedPlayerScripts)
         {
             Destroy(playerS.inventory.SpawnedInventoryUI);
@@ -142,5 +148,7 @@ public class MainPrefabScript : MonoBehaviour
             Destroy(card);
         }
         partyRoundCards.Clear();
+
+        
     }
 }

@@ -138,7 +138,6 @@ public class SaveLoadSystem : MonoBehaviour
     {
       //  Debug.Log($"expression");
         MainPrefabScript.SelectedPlayers.Clear(); // clear the list if it has values
-        
         for (int i = 0; i < saveData.playerDatas.Count; i++) // first tell the mainprefabscript to spawn the players
         { 
             MainPrefabScript.SelectedPlayers.Add(allPlayers.allPlayers[saveData.playerDatas[i].playerID]);
@@ -150,9 +149,9 @@ public class SaveLoadSystem : MonoBehaviour
         GameManager.totalKills = saveData.totalKills;
         GameManager.totalHeartsCollected = saveData.totalHeartsCollected;
         
+        
         MainPrefabScript.InitializeLevel();
         LevelManager.InitializeCharacters();
-        
         
         for (int i = 0; i < saveData.playerDatas.Count; i++) // then assign the values to the players
         {

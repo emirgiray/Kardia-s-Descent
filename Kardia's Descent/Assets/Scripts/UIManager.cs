@@ -17,8 +17,8 @@ public class UIManager : MonoBehaviour
     private int turn = 1;
     [BoxGroup("Turn And Round")] [SerializeField]
     private int round = 1;
-    [BoxGroup("Turn And Round")] [SerializeField]
-    private GameObject turnAndRoundGO;
+    [BoxGroup("Turn And Round")]
+    public GameObject turnAndRoundGO;
     [BoxGroup("Turn And Round")] [SerializeField]
     private TextMeshProUGUI turnText;
     [BoxGroup("Turn And Round")] [SerializeField]
