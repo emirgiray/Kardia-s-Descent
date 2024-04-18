@@ -19,7 +19,7 @@ public class BasicMelee : SkillsData
         //Debug.Log($"Wait finished");
         
         if (skillAudioEvent != null) skillAudioEvent.Play(ActivaterCharacter.transform);
-        if (skillStartVFX != null) skillStartVFX.SpawnVFX(ActivaterCharacter.Hand, selectedTile.transform.position);
+        if (skillStartVFX != null) skillStartVFX.SpawnVFX(ActivaterCharacter.Hand);
         
         if (skillTargetType == SkillTargetType.Cleave)
         {

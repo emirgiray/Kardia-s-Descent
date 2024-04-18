@@ -25,7 +25,7 @@ public class RegularPassiveSkill : SkillsData
         //Debug.Log($"Wait finished");
         
         if (skillAudioEvent != null) skillAudioEvent.Play(ActivaterCharacter.transform);
-        if (skillStartVFX != null) skillStartVFX.SpawnVFX(ActivaterCharacter.Hand, selectedTile.transform.position);
+        if (skillStartVFX != null) skillStartVFX.SpawnVFX(ActivaterCharacter.Hand);
 
         while (fireCount < 3)
         {

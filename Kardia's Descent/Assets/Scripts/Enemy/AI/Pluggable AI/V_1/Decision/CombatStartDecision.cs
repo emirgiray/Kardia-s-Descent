@@ -35,7 +35,7 @@ public class CombatStartDecision : DecisionAI
                             controller.skillContainer.SelectSkill(skill, controller.enemy);// this can be added at the end
                             controller.decidedAttackSkill = skill;
                             controller.decidedMoveTile = controller.enemy.characterTile;
-                            controller.targetPlayer = attackTile.occupyingPlayer;
+                            controller.targetPlayerTile = attackTile;
                         }
 
                         prevTileScore = tileScore;
@@ -72,7 +72,7 @@ public class CombatStartDecision : DecisionAI
                             controller.skillContainer.SelectSkill(skill, controller.enemy);
                             controller.decidedAttackSkill = skill;
                             controller.decidedMoveTile = tile;
-                            controller.targetPlayer = attackTile.occupyingPlayer;
+                            controller.targetPlayerTile = attackTile;
                    //         Debug.Log(tile + " cuurent score: " + tileScore + " prev score: " + prevTileScore);
                             result = true; //this means move 
                         }

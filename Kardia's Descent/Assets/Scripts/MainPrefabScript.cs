@@ -36,6 +36,7 @@ public class MainPrefabScript : MonoBehaviour
     private csFogWar fogWar;
     public void Awake()
     {
+        
         if (Instance != null && Instance != this)
         {
             Destroy(this.gameObject);

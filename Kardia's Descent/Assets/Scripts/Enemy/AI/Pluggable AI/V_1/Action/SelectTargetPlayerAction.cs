@@ -7,7 +7,7 @@ public class SelectTargetPlayerAction : ActionAI
 {
     public override void Act(StateController controller)
     {
-        controller.targetPlayer = SelectClosestPlayer(controller);
+        controller.targetPlayerTile = SelectClosestPlayer(controller).characterTile;
     }
 
     public Player SelectClosestPlayer(StateController controller)

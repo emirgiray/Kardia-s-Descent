@@ -29,8 +29,10 @@ MonoBehaviour:
   coverAccuracyDebuff: 20
   coverDamageMultipliar: 0.1
   impactRange: 1
-  innerImpactRadius: 1
+  innerImpactRadius: 0
   outerImpactDamageDebuff: 0.5
+  cleaveTimes: 1
+  cleaveStartLeft: 1
   animatorOverrideController: {fileID: 0}
   skillStartVFX: {fileID: 0}
   skillImpactVFX: {fileID: 11400000, guid: 63187610e0ae62540b57bdf8b20a52e9, type: 2}
@@ -47,3 +49,4 @@ MonoBehaviour:
   skillTargetType: 1
   skillEffect: 0
   buffDebuffType: 0
+  bombDelay: 0.5

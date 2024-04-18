@@ -260,7 +260,7 @@ public class Interact : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                if (selectedCharacter.inventory.GetSpawnedInventoryUIScript().GetSkipButton().interactable)
+                if (selectedCharacter.inventory.GetSpawnedInventoryUIScript().GetSkipButton().interactable && selectedCharacter.inventory.GetSpawnedInventoryUIScript().GetSkipButton().gameObject.activeSelf)
                 {
                     selectedCharacter.inventory.GetSpawnedInventoryUIScript().GetSkipButton().onClick.Invoke();
                 }
@@ -737,7 +737,7 @@ public class Interact : MonoBehaviour
         
         switch (selectedSkill.skillData.skillTargetType)
         {
-            case SkillsData.SkillTargetType.AreaAroundSelf:
+            case SkillsData.SkillTargetType.AreaAroundSelf: //default
                 attackableTiles = selectedCharacter.pathfinder.GetAttackableTiles(selectedCharacter.characterTile, selectedCharacter.SkillContainer.selectedSkill/*, selectedCharacter.characterTile*/);
                 foreach (Tile tile in attackableTiles)
                 {

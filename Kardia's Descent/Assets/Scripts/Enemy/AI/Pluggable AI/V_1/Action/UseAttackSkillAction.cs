@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,31 +10,21 @@ public class UseAttackSkillAction : ActionAI
     {
         controller.canExitState = false;
         controller.skillContainer.selectedSkill.accuracy -= controller.skillContainer.CalculateCoverAccuracyDebuff(
-            controller.decidedMoveTile, controller.targetPlayer.characterTile, controller.skillContainer.selectedSkill);//reduce accuracy if target player in cover
+            controller.decidedMoveTile, controller.targetPlayerTile, controller.skillContainer.selectedSkill);//reduce accuracy if target player in cover
         
         controller.skillContainer.selectedSkill.damage -= controller.skillContainer.CalculateCoverDamageDebuff(
-            controller.decidedMoveTile, controller.targetPlayer.characterTile, controller.skillContainer.selectedSkill);//reduce damage if target player in cover
-        
-        UseSkill(controller, controller.skillContainer.selectedSkill, controller.targetPlayer);
-    }
+            controller.decidedMoveTile, controller.targetPlayerTile, controller.skillContainer.selectedSkill);//reduce damage if target player in cover
 
-    private void UseSkill(StateController controller, SkillContainer.Skills controllerSelectedSkill, Player controllerTargetPlayer)
-    {
-        /*controllerSelectedSkill.ActivateSkill(controller.enemy.gameObject, controllerTargetPlayer.characterTile, () =>
+        Action OnCompleteAddedAction;
+        controller.GetAttackableTiles(controller.skillContainer.selectedSkill, controller.targetPlayerTile, out OnCompleteAddedAction);
+        controller.skillContainer.UseSkill(controller.skillContainer.selectedSkill, controller.targetPlayerTile, controller.enemy, ()=>
         {
-            controllerSelectedSkill = null;
-            controller.enemy.AttackEnd();
-            /*if (controllerSelectedSkill != null)
-            {
-                controller.skillContainer.DeselectSkill(controllerSelectedSkill);
-            }#1#
-
-            
-        });*/
-        
-        controller.skillContainer.UseSkill(controllerSelectedSkill, controllerTargetPlayer.characterTile, controller.enemy, ()=> controller.canExitState = true);
-
+            controller.canExitState = true;
+            if (OnCompleteAddedAction != null) OnCompleteAddedAction();
+        });
     }
+
+   
 }
 
 

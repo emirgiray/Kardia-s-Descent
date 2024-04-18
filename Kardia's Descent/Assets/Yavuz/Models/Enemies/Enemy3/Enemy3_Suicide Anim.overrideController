@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Enemy3_Suicide Anim
+  m_Controller: {fileID: 9100000, guid: 93edf619cae912b43b3ca06de77b674c, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: -251351218608039746, guid: f5b39c2040ae88a4aaef4aaddb8e46b1,
+      type: 3}
+    m_OverrideClip: {fileID: 8322122964694473048, guid: f5b39c2040ae88a4aaef4aaddb8e46b1,
+      type: 3}

@@ -489,7 +489,8 @@ public class Pathfinder : MonoBehaviour
         
         // calculate the effected tiles around the impact tile (selectedTile)
         // all the effected tiles
-        effectedTilesList = GetNeighbouringTiles(impactOriginTile, skill.skillData.impactRange, false);
+        effectedTilesList = GetNeighbouringTiles(impactOriginTile, skill.skillData.impactRange, skill.skillData.impactRange == 1); //if the impact range is 1, include the origin tile bc it was buggy
+        
         //effectedTilesList.Add(impactOriginTile);
         // the inner effected tiles for full damage
         innerEffectedTilesList = GetNeighbouringTiles(impactOriginTile, skill.skillData.innerImpactRadius, true);
@@ -506,7 +507,7 @@ public class Pathfinder : MonoBehaviour
         }
         
         outerEffectedTilesList = temp;
-      
+
         return attackableTiles;
 
     }

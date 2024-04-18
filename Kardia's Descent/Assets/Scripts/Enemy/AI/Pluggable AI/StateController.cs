@@ -24,7 +24,7 @@ public class StateController : MonoBehaviour
     [HideInInspector] public Enemy enemy;
     [HideInInspector] public SkillContainer skillContainer;
     
-    public Player targetPlayer;
+    public Tile targetPlayerTile;
     public Tile decidedMoveTile;
     public SkillContainer.Skills decidedAttackSkill;
     
@@ -199,10 +199,69 @@ public class StateController : MonoBehaviour
         return movableTiles;
     }
     
-    public List<Tile> GetAttackableTiles()
-    {
-        attackableTiles = pathfinder.GetAttackableTiles(enemy.characterTile, skillContainer.selectedSkill);
-        return attackableTiles;
+    private List<Tile> effectedTiles;
+    private List<Tile> innerEffectedTiles;
+    private List<Tile> outerEffectedTiles;
+    public void GetAttackableTiles(SkillContainer.Skills selectedSkill, Tile targetTile, out Action OnCompleteAdded)
+    { 
+        OnCompleteAdded = null;
+        switch (selectedSkill.skillData.skillTargetType)
+        {
+            case SkillsData.SkillTargetType.AreaAroundTarget:
+                
+                //attackableTiles = selectedCharacter.pathfinder.GetAttackableTiles(selectedCharacter.characterTile, selectedCharacter.SkillContainer.selectedSkill/*, selectedCharacter.characterTile*/);
+                attackableTiles = enemy.pathfinder.GetAttackableTilesArea(enemy.characterTile, enemy.SkillContainer.selectedSkill, 
+                    targetTile, out effectedTiles, out innerEffectedTiles, out outerEffectedTiles);
+                
+                // other than the origin tile keep effected tiles around the target in a list
+                enemy.SkillContainer.effectedTiles = effectedTiles;
+                enemy.SkillContainer.innerEffectedTiles = innerEffectedTiles;
+                enemy.SkillContainer.outerEffectedTiles = outerEffectedTiles;
+                
+                OnCompleteAdded = null;
+                break;
+            
+            case SkillsData.SkillTargetType.AreaAroundSelf:
+                
+                //attackableTiles = selectedCharacter.pathfinder.GetAttackableTiles(selectedCharacter.characterTile, selectedCharacter.SkillContainer.selectedSkill/*, selectedCharacter.characterTile*/);
+                attackableTiles = enemy.pathfinder.GetAttackableTilesArea(enemy.characterTile, enemy.SkillContainer.selectedSkill, 
+                    targetTile, out effectedTiles, out innerEffectedTiles, out outerEffectedTiles);
+                
+                // other than the origin tile keep effected tiles around the target in a list
+                enemy.SkillContainer.effectedTiles = effectedTiles;
+                enemy.SkillContainer.innerEffectedTiles = innerEffectedTiles;
+                enemy.SkillContainer.outerEffectedTiles = outerEffectedTiles;
+                
+                targetPlayerTile = enemy.characterTile;
+                OnCompleteAdded = () => enemy.health.HealthDecrease(enemy.health.Max);
+                
+                break;
+            
+            case SkillsData.SkillTargetType.Line:
+                
+                attackableTiles = enemy.pathfinder.GetAttackableTilesLine(enemy,
+                    enemy.characterTile, targetTile, enemy.SkillContainer.selectedSkill);
+                
+                OnCompleteAdded = null;
+                break;
+            
+            case SkillsData.SkillTargetType.Cone:
+                throw new NotImplementedException();
+                OnCompleteAdded = null;
+                break;
+            
+            case SkillsData.SkillTargetType.Cleave:
+                
+                attackableTiles = enemy.pathfinder.GetAttackableTilesCleave(enemy.characterTile, enemy.SkillContainer.selectedSkill, targetTile, 
+                    selectedSkill.skillData.cleaveStartLeft, selectedSkill.skillData.cleaveTimes, out effectedTiles);
+                
+                enemy.SkillContainer.effectedTiles = effectedTiles;
+
+                OnCompleteAdded = null;
+                break;
+        }
+        
+        
     }
 
     public void ResetToDefaultCombatState()

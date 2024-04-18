@@ -61,7 +61,7 @@ public class CheckCoverMoveSkillDecsision : DecisionAI
                                         //controller.skillContainer.SelectSkill(skill, controller.enemy);
                                         controller.decidedAttackSkill = skill;
                                         controller.decidedMoveTile = tile;
-                                        controller.targetPlayer = attackTile.occupyingPlayer;
+                                        controller.targetPlayerTile = attackTile;
                            //             Debug.Log($"BIGGER THAN PREVIOUS, tile: {tile}, curent score: {tileScore}, prev score: {prevTileScore} skill: {skill.skillData}, tiles checked: {tilesChecked} / {/*controller.GetReachableTiles().Count*/ reachableTiles.Count}");
                                         result = true; //this means cover found 
                                         prevTileScore = tileScore;

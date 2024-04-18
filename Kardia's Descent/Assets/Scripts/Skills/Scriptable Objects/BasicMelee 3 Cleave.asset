@@ -30,7 +30,7 @@ MonoBehaviour:
   impactRange: 2
   innerImpactRadius: 1
   outerImpactDamageDebuff: 0.5
-  cleaveTimes: 1
+  cleaveTimes: 6
   cleaveStartLeft: 1
   animatorOverrideController: {fileID: 0}
   skillStartVFX: {fileID: 0}
