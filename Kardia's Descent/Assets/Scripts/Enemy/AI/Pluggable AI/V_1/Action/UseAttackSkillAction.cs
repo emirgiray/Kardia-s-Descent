@@ -16,11 +16,20 @@ public class UseAttackSkillAction : ActionAI
             controller.decidedMoveTile, controller.targetPlayerTile, controller.skillContainer.selectedSkill);//reduce damage if target player in cover
 
         Action OnCompleteAddedAction;
-        controller.GetAttackableTiles(controller.skillContainer.selectedSkill, controller.targetPlayerTile, out OnCompleteAddedAction);
+        controller.pathfinder.GetAttackableTiles(controller.enemy, controller.skillContainer.selectedSkill, controller.enemy.characterTile, controller.targetPlayerTile, out OnCompleteAddedAction);
+        
         controller.skillContainer.UseSkill(controller.skillContainer.selectedSkill, controller.targetPlayerTile, controller.enemy, ()=>
         {
             controller.canExitState = true;
             if (OnCompleteAddedAction != null) OnCompleteAddedAction();
+            
+            //if forced skill is the same as selected skill, then reset forced skill
+            if (controller.forcedSkillToUse == controller.skillContainer.selectedSkill)
+            {
+                controller.forcedSkillToUse.skillData = null;
+            }
+            controller.forcedTargetPlayerTile = null;
+            controller.lastUsedSkill = controller.skillContainer.selectedSkill;
         });
     }
 

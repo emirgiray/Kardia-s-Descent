@@ -1126,6 +1126,7 @@ MonoBehaviour:
   YOffset: 0
   canMove: 1
   canAttack: 1
+  isInAttackTileSelection: 0
   inCombat: 0
   isStunned: 0
   remainingStunTurns: 0
@@ -1201,20 +1202,49 @@ MonoBehaviour:
   canExitState: 1
   currentStateSeconds: 0
   currentState: {fileID: 11400000, guid: 13eaf84dbcd96fb4fa8ab358d9f2909e, type: 2}
-  defaultCombatStartState: {fileID: 11400000, guid: e496630f22336574c9bc1cdfab5680cb,
+  defaultCombatStartState: {fileID: 11400000, guid: 4341a257bcd24de4fbe468617b3387d1,
     type: 2}
   defaultNonCombatState: {fileID: 11400000, guid: 13eaf84dbcd96fb4fa8ab358d9f2909e,
     type: 2}
   remainState: {fileID: 11400000, guid: 20a530a049e552949892a8e571154a9d, type: 2}
+  endTurnState: {fileID: 11400000, guid: bd2a3a42c6458594dbe315790a3957c2, type: 2}
   enemyStats: {fileID: 0}
   pathfinder: {fileID: 8866224488703451883}
   stateControllerMono: {fileID: 1086629163380962625}
   turnSystem: {fileID: 0}
   enemy: {fileID: 0}
   skillContainer: {fileID: 0}
-  targetPlayer: {fileID: 0}
+  targetPlayerTile: {fileID: 0}
   decidedMoveTile: {fileID: 0}
   decidedAttackSkill:
+    skillData: {fileID: 0}
+    damage: 0
+    range: 0
+    skillCooldown: 0
+    remainingSkillCooldown: 0
+    actionPointUse: 0
+    skillEffectDuration: 0
+    skillBuffDebuffAmount: 0
+    accuracy: 0
+    coverAccuracyDebuff: 0
+    skillReadyToUse: 1
+    skillButton: {fileID: 0}
+    animatorOverrideController: {fileID: 0}
+  lastUsedSkill:
+    skillData: {fileID: 0}
+    damage: 0
+    range: 0
+    skillCooldown: 0
+    remainingSkillCooldown: 0
+    actionPointUse: 0
+    skillEffectDuration: 0
+    skillBuffDebuffAmount: 0
+    accuracy: 0
+    coverAccuracyDebuff: 0
+    skillReadyToUse: 1
+    skillButton: {fileID: 0}
+    animatorOverrideController: {fileID: 0}
+  forcedSkillToUse:
     skillData: {fileID: 0}
     damage: 0
     range: 0
@@ -1289,6 +1319,9 @@ MonoBehaviour:
   skillButtons: []
   damageBeforeCoverDebuff: 0
   accuracyBeforeCoverDebuff: 0
+  effectedTiles: []
+  innerEffectedTiles: []
+  outerEffectedTiles: []
 --- !u!114 &4144644680711025957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1812,6 +1845,7 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+  outlineFillMaterial: {fileID: 0}
 --- !u!114 &7432546578477157872
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -189,6 +189,13 @@ public class TurnSystem : MonoBehaviour
     [Button,GUIColor(0,1,0)][FoldoutGroup("DEBUG")]
     public void NextRound()
     {
+        playersInCombat.RemoveAll(player => PlayersToRemoveNextRound.Contains(player));
+        enemiesInCombat.RemoveAll(enemy => EnemiesToRemoveNextRound.Contains(enemy));
+        allEntitiesInCombat.RemoveAll(entity => EntitiesToRemoveNextRound.Contains(entity));
+        PlayersToRemoveNextRound.Clear();
+        EnemiesToRemoveNextRound.Clear();
+        EntitiesToRemoveNextRound.Clear();
+        
         turn = 1;
         TurnChange?.Invoke(turn);
         round++;
@@ -201,8 +208,10 @@ public class TurnSystem : MonoBehaviour
     [Button,GUIColor(1,1,1)][FoldoutGroup("DEBUG")]
     public void PlayerDied(Player deadPlayer)
     {
-        playersInCombat.RemoveRange(playersInCombat.IndexOf(deadPlayer), 1);
-        allEntitiesInCombat.RemoveRange(allEntitiesInCombat.IndexOf(deadPlayer), 1);
+        /*playersInCombat.RemoveRange(playersInCombat.IndexOf(deadPlayer), 1);
+        allEntitiesInCombat.RemoveRange(allEntitiesInCombat.IndexOf(deadPlayer), 1);*/
+        PlayersToRemoveNextRound.Add(deadPlayer);
+        EntitiesToRemoveNextRound.Add(deadPlayer);
         OnPlayerDeath.Invoke(deadPlayer);
         RemoveCard(deadPlayer);
         everythingUseful.LevelManager.RemovePlayerFromGame(deadPlayer);
@@ -216,13 +225,19 @@ public class TurnSystem : MonoBehaviour
         RemoveCard(deadPlayer);
     }
 
+    List<Enemy> EnemiesToRemoveNextRound = new();
+    List<Player> PlayersToRemoveNextRound = new();
+    List<Character> EntitiesToRemoveNextRound = new();
+
     [Button,GUIColor(1,1,1)][FoldoutGroup("DEBUG")]
     public void EnemyDied(Enemy deadEnemy)
     {
         if (enemiesInCombat.Contains(deadEnemy))
         {
-            enemiesInCombat.RemoveRange(enemiesInCombat.IndexOf(deadEnemy), 1);
-            allEntitiesInCombat.RemoveRange(allEntitiesInCombat.IndexOf(deadEnemy), 1);
+            /*enemiesInCombat.RemoveRange(enemiesInCombat.IndexOf(deadEnemy), 1);
+            allEntitiesInCombat.RemoveRange(allEntitiesInCombat.IndexOf(deadEnemy), 1);*/
+            EnemiesToRemoveNextRound.Add(deadEnemy);
+            EntitiesToRemoveNextRound.Add(deadEnemy);
             OnEnemyDeath.Invoke(deadEnemy);
             RemoveCard(deadEnemy);
 

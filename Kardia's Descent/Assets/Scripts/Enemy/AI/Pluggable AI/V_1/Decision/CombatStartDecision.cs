@@ -9,10 +9,11 @@ public class CombatStartDecision : DecisionAI
 
     public override bool Decide(StateController controller)
     {
-        return DecideBestTileAndSkill(controller);
+         // return DecideBestTileAndSkill(controller);
+         return true;
     }
 
-    private bool DecideBestTileAndSkill(StateController controller)//todo these are all different states, make them into different decisions :)
+    /*private bool DecideBestTileAndSkill(StateController controller)//todo these are all different states, make them into different decisions :)
     {
         int tileScore = 0;
         int prevTileScore = 0;
@@ -31,7 +32,7 @@ public class CombatStartDecision : DecisionAI
                         if (tileScore > prevTileScore)
                         {
                             /*controller.skillContainer.SelectSkill(skill, controller.enemy);
-                            controller.enemy.StartMove(Pathfinder.Instance.FindPath(controller.enemy.characterTile, tile));*/
+                            controller.enemy.StartMove(Pathfinder.Instance.FindPath(controller.enemy.characterTile, tile));#1#
                             controller.skillContainer.SelectSkill(skill, controller.enemy);// this can be added at the end
                             controller.decidedAttackSkill = skill;
                             controller.decidedMoveTile = controller.enemy.characterTile;
@@ -68,7 +69,7 @@ public class CombatStartDecision : DecisionAI
                         if ( tileScore > prevTileScore)
                         {
                             /*controller.skillContainer.SelectSkill(skill, controller.enemy);
-                            controller.enemy.StartMove(Pathfinder.Instance.FindPath(controller.enemy.characterTile, tile));*/
+                            controller.enemy.StartMove(Pathfinder.Instance.FindPath(controller.enemy.characterTile, tile));#1#
                             controller.skillContainer.SelectSkill(skill, controller.enemy);
                             controller.decidedAttackSkill = skill;
                             controller.decidedMoveTile = tile;
@@ -99,7 +100,7 @@ public class CombatStartDecision : DecisionAI
                         controller.decidedMoveTile = closestPlayer.characterTile;
                         
                         result = true; //this means move
-                    }*/
+                    }#1#
                 }
                 
             }
@@ -110,5 +111,5 @@ public class CombatStartDecision : DecisionAI
         
     //    Debug.Log("move = "+ result + " player NOT in range of skill, proceeding to move");
         return result;
-    }
+    }*/
 }

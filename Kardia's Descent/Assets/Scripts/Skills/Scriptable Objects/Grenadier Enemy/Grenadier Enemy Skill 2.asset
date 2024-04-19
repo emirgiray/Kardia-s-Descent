@@ -47,7 +47,7 @@ MonoBehaviour:
   damageType: 0
   skillTarget: 0
   skillHitType: 1
-  skillTargetType: 0
+  skillTargetType: 5
   skillEffect: 0
   buffDebuffType: 0
   bombDelay: 1

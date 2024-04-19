@@ -527,9 +527,9 @@ public class Character : MonoBehaviour
         canMove = false;
         canAttack = false;
         characterState = CharacterState.WaitingNextRound;
-        
-        characterCard.GetComponent<CustomEvent2>().CustomEmitterFunc2();
-        
+
+        if (characterCard != null) characterCard.GetComponent<CustomEvent2>().CustomEmitterFunc2();
+
         if (this is Enemy)
         {
             GetComponent<StateController>().aiActive = false;
@@ -650,6 +650,7 @@ public class Character : MonoBehaviour
         {
             LevelManager.AddEnemyToCombat(GetComponent<Enemy>());
             GetComponent<StateController>().StartCombat();
+            remainingActionPoints = 0; // enemies were having max ap on their first turn
         }
     }
 

@@ -90,8 +90,10 @@ public class SkillsData : ScriptableObject
     [EnumPaging]
     public enum SkillTargetType
     {
-        AreaAroundSelf, AreaAroundTarget, Line, Cone, Cleave
+        AreaAroundSelf, AreaAroundTarget, Line, Cone, Cleave, Suicide
     }
+
+    [Tooltip("AreaAroundSelf = default, AreaAroundTarget = bombadier")]
     public SkillTargetType skillTargetType;
     
     [EnumToggleButtons]

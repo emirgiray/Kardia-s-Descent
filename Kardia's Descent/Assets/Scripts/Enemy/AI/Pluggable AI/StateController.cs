@@ -16,6 +16,7 @@ public class StateController : MonoBehaviour
     public StateAI defaultCombatStartState;
     public StateAI defaultNonCombatState;
     public StateAI remainState;
+    public StateAI endTurnState;
    // public SkillsData selectedSkill;
     public EnemyStatsData enemyStats;
     public Pathfinder pathfinder;
@@ -26,7 +27,10 @@ public class StateController : MonoBehaviour
     
     public Tile targetPlayerTile;
     public Tile decidedMoveTile;
+    public Tile forcedTargetPlayerTile;
     public SkillContainer.Skills decidedAttackSkill;
+    public SkillContainer.Skills lastUsedSkill;
+    public SkillContainer.Skills forcedSkillToUse;
     
     public List<Player> players = new List<Player>();
     public List<Enemy> enemies = new List<Enemy>();
@@ -95,12 +99,21 @@ public class StateController : MonoBehaviour
     }
 
     private bool runOnce;
+    private bool runOnce2 = true;
     private void Update()
     {
         /*if (!enemy.inCombat && !enemy.isDead)
         {
             aiActive = true;
         }*/
+
+        if (enemy.isDead && runOnce2)
+        {
+            // currentState =endTurnState;
+            EndTurn();
+            runOnce2 = false;
+        }
+        
         
         if (!aiActive)
         {
@@ -109,7 +122,7 @@ public class StateController : MonoBehaviour
         else
         {
             
-            if ((enemy.TurnSystem.turnState == TurnSystem.TurnState.Enemy && enemy.turnOrder == enemy.TurnSystem.currentEnemyTurnOrder) || !enemy.inCombat)
+            if ((/*enemy.TurnSystem.IsThisCharactersTurn(enemy) &&*/ enemy.TurnSystem.turnState == TurnSystem.TurnState.Enemy && enemy.turnOrder == enemy.TurnSystem.currentEnemyTurnOrder) || !enemy.inCombat)
             {
                 currentStateSeconds += Time.deltaTime;
                 if (canExitState)
@@ -199,70 +212,75 @@ public class StateController : MonoBehaviour
         return movableTiles;
     }
     
-    private List<Tile> effectedTiles;
+    /*private List<Tile> effectedTiles;
     private List<Tile> innerEffectedTiles;
     private List<Tile> outerEffectedTiles;
-    public void GetAttackableTiles(SkillContainer.Skills selectedSkill, Tile targetTile, out Action OnCompleteAdded)
+    public List<Tile> GetAttackableTiles(SkillContainer.Skills selectedSkill, Tile targetTile, out Action OnCompleteAdded)
     { 
         OnCompleteAdded = null;
         switch (selectedSkill.skillData.skillTargetType)
         {
-            case SkillsData.SkillTargetType.AreaAroundTarget:
+            case SkillsData.SkillTargetType.AreaAroundSelf: //default
                 
-                //attackableTiles = selectedCharacter.pathfinder.GetAttackableTiles(selectedCharacter.characterTile, selectedCharacter.SkillContainer.selectedSkill/*, selectedCharacter.characterTile*/);
-                attackableTiles = enemy.pathfinder.GetAttackableTilesArea(enemy.characterTile, enemy.SkillContainer.selectedSkill, 
-                    targetTile, out effectedTiles, out innerEffectedTiles, out outerEffectedTiles);
-                
-                // other than the origin tile keep effected tiles around the target in a list
-                enemy.SkillContainer.effectedTiles = effectedTiles;
-                enemy.SkillContainer.innerEffectedTiles = innerEffectedTiles;
-                enemy.SkillContainer.outerEffectedTiles = outerEffectedTiles;
-                
-                OnCompleteAdded = null;
+                attackableTiles = enemy.pathfinder.GetAttackableTiles(enemy.characterTile, selectedSkill);
+                return attackableTiles;
                 break;
             
-            case SkillsData.SkillTargetType.AreaAroundSelf:
+            case SkillsData.SkillTargetType.AreaAroundTarget:
                 
-                //attackableTiles = selectedCharacter.pathfinder.GetAttackableTiles(selectedCharacter.characterTile, selectedCharacter.SkillContainer.selectedSkill/*, selectedCharacter.characterTile*/);
-                attackableTiles = enemy.pathfinder.GetAttackableTilesArea(enemy.characterTile, enemy.SkillContainer.selectedSkill, 
+                attackableTiles = enemy.pathfinder.GetAttackableTilesArea(enemy.characterTile, selectedSkill, 
                     targetTile, out effectedTiles, out innerEffectedTiles, out outerEffectedTiles);
-                
+               
                 // other than the origin tile keep effected tiles around the target in a list
                 enemy.SkillContainer.effectedTiles = effectedTiles;
                 enemy.SkillContainer.innerEffectedTiles = innerEffectedTiles;
                 enemy.SkillContainer.outerEffectedTiles = outerEffectedTiles;
+                return attackableTiles;
+                break;
+            
+            case SkillsData.SkillTargetType.Suicide:
                 
-                targetPlayerTile = enemy.characterTile;
-                OnCompleteAdded = () => enemy.health.HealthDecrease(enemy.health.Max);
+                attackableTiles = enemy.pathfinder.GetAttackableTilesArea(enemy.characterTile, selectedSkill, 
+                    targetTile, out effectedTiles, out innerEffectedTiles, out outerEffectedTiles);
+                // other than the origin tile keep effected tiles around the target in a list
+                enemy.SkillContainer.effectedTiles = effectedTiles;
+                enemy.SkillContainer.innerEffectedTiles = innerEffectedTiles;
+                enemy.SkillContainer.outerEffectedTiles = outerEffectedTiles;
+
                 
+                forcedTargetPlayerTile = enemy.characterTile;
+                OnCompleteAdded = () =>
+                {
+                    // EndTurn();
+                    enemy.health.HealthDecrease(enemy.health.Max);
+                };
+                return attackableTiles;
                 break;
             
             case SkillsData.SkillTargetType.Line:
                 
                 attackableTiles = enemy.pathfinder.GetAttackableTilesLine(enemy,
-                    enemy.characterTile, targetTile, enemy.SkillContainer.selectedSkill);
-                
-                OnCompleteAdded = null;
+                    enemy.characterTile, targetTile, selectedSkill);
+                return attackableTiles;
                 break;
             
             case SkillsData.SkillTargetType.Cone:
                 throw new NotImplementedException();
-                OnCompleteAdded = null;
+                return attackableTiles;
                 break;
             
             case SkillsData.SkillTargetType.Cleave:
                 
-                attackableTiles = enemy.pathfinder.GetAttackableTilesCleave(enemy.characterTile, enemy.SkillContainer.selectedSkill, targetTile, 
+                attackableTiles = enemy.pathfinder.GetAttackableTilesCleave(enemy.characterTile, selectedSkill, targetTile, 
                     selectedSkill.skillData.cleaveStartLeft, selectedSkill.skillData.cleaveTimes, out effectedTiles);
                 
                 enemy.SkillContainer.effectedTiles = effectedTiles;
-
-                OnCompleteAdded = null;
+                return attackableTiles;
                 break;
         }
+        return attackableTiles;
         
-        
-    }
+    }*/
 
     public void ResetToDefaultCombatState()
     {

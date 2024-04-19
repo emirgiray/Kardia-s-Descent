@@ -735,10 +735,12 @@ public class Interact : MonoBehaviour
         if (!selectedCharacter.isInAttackTileSelection) return; // the attacking tiles were able to be changed while anim was playing so i added this
         ClearHighlightAttackableTiles();
         
+        attackableTiles = selectedCharacter.pathfinder.GetAttackableTiles(selectedCharacter, selectedSkill, selectedCharacter.characterTile, currentTile, out Action oncompleted);
+        
         switch (selectedSkill.skillData.skillTargetType)
         {
             case SkillsData.SkillTargetType.AreaAroundSelf: //default
-                attackableTiles = selectedCharacter.pathfinder.GetAttackableTiles(selectedCharacter.characterTile, selectedCharacter.SkillContainer.selectedSkill/*, selectedCharacter.characterTile*/);
+                //attackableTiles = selectedCharacter.pathfinder.GetAttackableTiles(selectedCharacter.characterTile, selectedCharacter.SkillContainer.selectedSkill/*, selectedCharacter.characterTile*/);
                 foreach (Tile tile in attackableTiles)
                 {
                     tile.HighlightAttackable();
@@ -753,8 +755,8 @@ public class Interact : MonoBehaviour
             case SkillsData.SkillTargetType.AreaAroundTarget:
                 
                 //attackableTiles = selectedCharacter.pathfinder.GetAttackableTiles(selectedCharacter.characterTile, selectedCharacter.SkillContainer.selectedSkill/*, selectedCharacter.characterTile*/);
-                attackableTiles = selectedCharacter.pathfinder.GetAttackableTilesArea(selectedCharacter.characterTile, selectedCharacter.SkillContainer.selectedSkill, 
-                    currentTile, out effectedTiles, out innerEffectedTiles, out outerEffectedTiles);
+                /*attackableTiles = selectedCharacter.pathfinder.GetAttackableTilesArea(selectedCharacter.characterTile, selectedCharacter.SkillContainer.selectedSkill, 
+                    currentTile, out effectedTiles, out innerEffectedTiles, out outerEffectedTiles);*/
                 
                 foreach (Tile tile in attackableTiles)
                 {
@@ -767,14 +769,14 @@ public class Interact : MonoBehaviour
                 }
                 
                 // other than the origin tile keep effected tiles around the target in a list
-                selectedCharacter.SkillContainer.effectedTiles = effectedTiles;
+                /*selectedCharacter.SkillContainer.effectedTiles = effectedTiles;
                 selectedCharacter.SkillContainer.innerEffectedTiles = innerEffectedTiles;
-                selectedCharacter.SkillContainer.outerEffectedTiles = outerEffectedTiles;
+                selectedCharacter.SkillContainer.outerEffectedTiles = outerEffectedTiles;*/
                 
                 //highlight effected tiles if they are in attack range
                 if (attackableTiles.Contains(currentTile))
                 {
-                    foreach (Tile tile in effectedTiles)
+                    foreach (Tile tile in selectedCharacter.SkillContainer.effectedTiles)
                     {
                         tile.TileHighlightGO.SetActive(true);
                         tile.TileHighlightMeshRenderer.material.SetColor("_RimColor", everythingUseful.Interact.tileHighligthColors[1]);
@@ -786,17 +788,20 @@ public class Interact : MonoBehaviour
             case SkillsData.SkillTargetType.Line:
                 if (currentTile != null && currentTile.selectable)
                 {
-                    attackableTiles = selectedCharacter.pathfinder.GetAttackableTilesLine(selectedCharacter, selectedCharacter.characterTile, currentTile, selectedCharacter.SkillContainer.selectedSkill);
+                   // attackableTiles = selectedCharacter.pathfinder.GetAttackableTilesLine(selectedCharacter, selectedCharacter.characterTile, currentTile, selectedCharacter.SkillContainer.selectedSkill);
                     if (attackableTiles != null)
                     {
                         foreach (Tile tile in attackableTiles)
                         {
-                            tile.HighlightAttackable();
+                            /*tile.HighlightAttackable();
 
                             if (tile == selectedCharacter.characterTile)
                             {
                                 tile.ClearHighlight();
-                            }
+                            }*/
+                            
+                            tile.TileHighlightGO.SetActive(true);
+                            tile.TileHighlightMeshRenderer.material.SetColor("_RimColor", everythingUseful.Interact.tileHighligthColors[1]);
                         }
                     }
                 }
@@ -809,8 +814,8 @@ public class Interact : MonoBehaviour
             
             case SkillsData.SkillTargetType.Cleave:
                 
-                attackableTiles = selectedCharacter.pathfinder.GetAttackableTilesCleave(selectedCharacter.characterTile, selectedCharacter.SkillContainer.selectedSkill, currentTile, 
-                    selectedSkill.skillData.cleaveStartLeft, selectedSkill.skillData.cleaveTimes, out effectedTiles);
+                /*attackableTiles = selectedCharacter.pathfinder.GetAttackableTilesCleave(selectedCharacter.characterTile, selectedCharacter.SkillContainer.selectedSkill, currentTile, 
+                    selectedSkill.skillData.cleaveStartLeft, selectedSkill.skillData.cleaveTimes, out effectedTiles);*/
                 
                 foreach (Tile tile in attackableTiles)
                 {
@@ -821,11 +826,11 @@ public class Interact : MonoBehaviour
                         tile.ClearHighlight();
                     }
                 }
-                selectedCharacter.SkillContainer.effectedTiles = effectedTiles;
+                // selectedCharacter.SkillContainer.effectedTiles = effectedTiles;
                 //highlight effected tiles if they are in attack range
                 if (attackableTiles.Contains(currentTile))
                 {
-                    foreach (Tile tile in effectedTiles)
+                    foreach (Tile tile in selectedCharacter.SkillContainer.effectedTiles)
                     {
                         tile.TileHighlightGO.SetActive(true);
                         tile.TileHighlightMeshRenderer.material.SetColor("_RimColor", everythingUseful.Interact.tileHighligthColors[1]);

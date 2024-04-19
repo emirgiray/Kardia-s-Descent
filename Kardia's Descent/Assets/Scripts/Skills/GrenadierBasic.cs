@@ -53,7 +53,7 @@ public class GrenadierBasic : SkillsData
         List<Tile> innerEffectedTiles = ActivaterCharacter.SkillContainer.innerEffectedTiles;
         List<Tile> outerEffectedTiles = ActivaterCharacter.SkillContainer.outerEffectedTiles;
         
-        if (skillTargetType == SkillTargetType.AreaAroundTarget || skillTargetType == SkillTargetType.AreaAroundSelf)
+       // if (skillTargetType == SkillTargetType.AreaAroundTarget || skillTargetType == SkillTargetType.AreaAroundSelf)
         {
             foreach (var tile in effectedTiles)
             {

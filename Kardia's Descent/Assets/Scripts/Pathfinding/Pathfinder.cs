@@ -302,7 +302,80 @@ public class Pathfinder : MonoBehaviour
         
     }
 
-      public List<Tile> GetAttackableTiles(Tile selectedCharacterCharacterTile, SkillContainer.Skills skill)
+     private List<Tile> effectedTiles;
+    private List<Tile> innerEffectedTiles;
+    private List<Tile> outerEffectedTiles;
+    public List<Tile> GetAttackableTiles(Character character ,SkillContainer.Skills selectedSkill, Tile characterTile, Tile targetTile, out Action OnCompleteAdded)
+    { 
+        OnCompleteAdded = null;
+        switch (selectedSkill.skillData.skillTargetType)
+        {
+            case SkillsData.SkillTargetType.AreaAroundSelf: //default
+                
+                attackableTiles = GetAttackableTilesDefault(characterTile, selectedSkill);
+                return attackableTiles;
+                break;
+            
+            case SkillsData.SkillTargetType.AreaAroundTarget:
+                
+                attackableTiles = GetAttackableTilesArea(characterTile, selectedSkill, 
+                    targetTile, out effectedTiles, out innerEffectedTiles, out outerEffectedTiles);
+               
+                // other than the origin tile keep effected tiles around the target in a list
+                character.SkillContainer.effectedTiles = effectedTiles;
+                character.SkillContainer.innerEffectedTiles = innerEffectedTiles;
+                character.SkillContainer.outerEffectedTiles = outerEffectedTiles;
+                return attackableTiles;
+                break;
+            
+            case SkillsData.SkillTargetType.Suicide:
+                
+                attackableTiles = GetAttackableTilesArea(characterTile, selectedSkill, 
+                    targetTile, out effectedTiles, out innerEffectedTiles, out outerEffectedTiles);
+                // other than the origin tile keep effected tiles around the target in a list
+                character.SkillContainer.effectedTiles = effectedTiles;
+                character.SkillContainer.innerEffectedTiles = innerEffectedTiles;
+                character.SkillContainer.outerEffectedTiles = outerEffectedTiles;
+
+                if (character.TryGetComponent(out StateController stateController))
+                {
+                    stateController.forcedTargetPlayerTile = characterTile;
+                    OnCompleteAdded = () =>
+                    {
+                        // EndTurn();
+                        character.health.HealthDecrease(character.health.Max);
+                    };
+                }
+                
+                return attackableTiles;
+                break;
+            
+            case SkillsData.SkillTargetType.Line:
+                
+                attackableTiles =GetAttackableTilesLine(character,
+                    characterTile, targetTile, selectedSkill);
+                return attackableTiles;
+                break;
+            
+            case SkillsData.SkillTargetType.Cone:
+                throw new NotImplementedException();
+                return attackableTiles;
+                break;
+            
+            case SkillsData.SkillTargetType.Cleave:
+                
+                attackableTiles = GetAttackableTilesCleave(characterTile, selectedSkill, targetTile, 
+                    selectedSkill.skillData.cleaveStartLeft, selectedSkill.skillData.cleaveTimes, out effectedTiles);
+                
+                character.SkillContainer.effectedTiles = effectedTiles;
+                return attackableTiles;
+                break;
+        }
+        return attackableTiles;
+        
+    }
+    
+      public List<Tile> GetAttackableTilesDefault(Tile selectedCharacterCharacterTile, SkillContainer.Skills skill)
     {
         List<Tile> tiles = new List<Tile>();
         tiles.Add(selectedCharacterCharacterTile);
@@ -370,6 +443,8 @@ public class Pathfinder : MonoBehaviour
         {
             tiles.Remove(tile);
         }
+
+       // Debug.Log($"tiles: {tiles.Count}");
         return tiles;
         
         
