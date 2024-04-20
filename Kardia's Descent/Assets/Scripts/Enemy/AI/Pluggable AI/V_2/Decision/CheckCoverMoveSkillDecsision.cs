@@ -68,7 +68,7 @@ public class CheckCoverMoveSkillDecsision : DecisionAI
                             else
                             {
                              // Debug.Log($"enemy is in cover");
-                                tileScore = 50 + skill.damage - controller.skillContainer.CalculateCoverDamageDebuff(tile, attackTile, skill) - controller.skillContainer.CalculateCoverAccuracyDebuff(tile, attackTile, skill);
+                                tileScore = 50 + skill.damage - controller.skillContainer.CalculateCoverDamageDebuff(tile, attackTile, skill) /*- controller.skillContainer.CalculateCoverAccuracyDebuff(tile, attackTile, skill)*/;
                             }
                             //Debug.Log($"tile: {tile}, curent score: {tileScore}, prev score: {prevTileScore} skill: {skill.skillData}, tiles checked: {tilesChecked} / {/*controller.GetReachableTiles().Count*/ reachableTiles.Count}");
                             if ( tileScore > prevTileScore)

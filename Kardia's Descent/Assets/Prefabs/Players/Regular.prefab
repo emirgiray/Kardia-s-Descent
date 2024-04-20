@@ -123,7 +123,7 @@ PrefabInstance:
         type: 3}
       propertyPath: testWeaponData
       value: 
-      objectReference: {fileID: 11400000, guid: 30f3f114b9ef67d459a83504ae9e6932,
+      objectReference: {fileID: 11400000, guid: 835ac1de152f2ab4093f524da8083b7b,
         type: 2}
     - target: {fileID: 6326383597764647500, guid: 04563854e99a65a4c8a042dc7f750368,
         type: 3}

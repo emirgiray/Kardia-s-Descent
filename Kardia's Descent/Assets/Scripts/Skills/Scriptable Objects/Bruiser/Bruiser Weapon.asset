@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cbbb644fc5cf0741b45474c51fcf4bf, type: 3}
+  m_Name: Bruiser Weapon
+  m_EditorClassIdentifier: 
+  WeaponPrefab: {fileID: 8708415924257924684, guid: 683c2db5f3567c84eaf6e8f8d1def4fb,
+    type: 3}
+  weaponName: Enemy 2 Weapon
+  weaponRarity: 0
+  weaponType: 1
+  weaponClass: 1
+  weaponHand: 1
+  damageType: 0
+  weaponGripLocation: {fileID: 0}
+  weaponBarrelFireLocation: {fileID: 0}
+  SkillsDataList:
+  - {fileID: 11400000, guid: 12c1636bd96745049a9bdbe362968f3e, type: 2}
+  - {fileID: 11400000, guid: 708b3a9b2e043bf49a33584a5289f53a, type: 2}
+  - {fileID: 11400000, guid: 7868fb694550fce44ac4648f066c8f58, type: 2}
+  - {fileID: 11400000, guid: a8976003f2c4b1f4aa7039473013689c, type: 2}
+  damage: {x: 3, y: 5}
+  accuracy: 80
+  range: 5
+  fireAmount: 3
+  fireRate: 0.3
+  reloadTime: 0.5
+  bulletSpeed: 1
+  bulletLifeTime: 3
+  bulletSize: 1
+  starterWeapon: 0
+  selected: 0
+  unlocked: 0
+  collectedParts: 0
+  totalParts: 3
+  weaponParts:
+  - {fileID: 11400000, guid: f4943de4888336b42a9ae9ab809b13ee, type: 2}
+  - {fileID: 11400000, guid: b5f251c0e511c2f4e9c75abaf88cb2a0, type: 2}
+  - {fileID: 11400000, guid: 590d96ce5f0ecbc48b33d2dd3d572af6, type: 2}

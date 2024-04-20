@@ -8,25 +8,26 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Hero1Mat_BaseColorOLD
-  m_Shader: {fileID: -6465566751694194690, guid: 2c3c6a46626419c4f8bbdeab2ec2afbd,
-    type: 3}
+  m_Shader: {fileID: 4800000, guid: 933f24cde1e3f6a41818f56d729421ab, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - _HAFTONESHAPES_DOT
-  m_InvalidKeywords:
   - _EMISSION
   - _HALFTONESHAPE_DOT
   - _METALLICSPECGLOSSMAP
   - _NORMALMAP
   - _OUTLINE
+  - _SPECGLOSSMAP
   - _SPECULARHIGHLIGHTS_OFF
   - _TOON_SHADING_ON
+  m_InvalidKeywords:
+  - _HAFTONESHAPES_DOT
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 2050
+  stringTagMap:
+    RenderType: Opaque
   disabledShaderPasses: []
   m_LockedProperties: 
   m_SavedProperties:
@@ -160,8 +161,10 @@ Material:
     - _FaceShadowMapEnabled: 0
     - _FaceShadowMapPow: 0.2
     - _FaceShadowSmoothness: 0.1
+    - _FlattenGI: 0
     - _GlossMapScale: 0
     - _Glossiness: 1.52
+    - _GlossinessSource: 0
     - _GlossyReflections: 0
     - _HAFTONESHAPES: 0
     - _HafltoneFadeDistance: 10
@@ -196,6 +199,7 @@ Material:
     - _OutlineEnabled: 1
     - _OutlineMode: 0
     - _OutlineWidth: 7.43
+    - _OverrideShadowColor: 0
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
@@ -208,14 +212,17 @@ Material:
     - _RimPower: 0.55
     - _SPECULARHIGHLIGHTS: 0
     - _ShadowPatternSize: 0.3
+    - _Shininess: 0
     - _SizeFalloff: 0
     - _Smoothness: 0.146
+    - _SmoothnessSource: 0
     - _SmoothnessTextureChannel: 0
     - _SpecClipMaskScale: 1
     - _SpecColor_1: 0.1
     - _SpecFalloff: 0
     - _SpecShadowStrength: 1
     - _SpecShadowStrenth: 1
+    - _SpecSource: 0
     - _SpecularClipStrength: 0
     - _SpecularFalloff: 1
     - _SpecularHighlights: 0
@@ -255,7 +262,7 @@ Material:
     - _OutlineDistancFade: {r: -25, g: 50, b: 0, a: 0}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}
     - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
-    - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _SpecColor: {r: 0.19999993, g: 0.19999993, b: 0.19999993, a: 0.146}
     - _SpherizeNormalOrigin: {r: 0, g: 0, b: 0, a: 0}
     - _UvOffset: {r: 0, g: 0, b: 0, a: 0}
     - _UvTiling: {r: 1, g: 1, b: 0, a: 0}

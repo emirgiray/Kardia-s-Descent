@@ -307,6 +307,10 @@ public class Pathfinder : MonoBehaviour
     private List<Tile> outerEffectedTiles;
     public List<Tile> GetAttackableTiles(Character character ,SkillContainer.Skills selectedSkill, Tile characterTile, Tile targetTile, out Action OnCompleteAdded)
     { 
+        if (character.TryGetComponent(out StateController stateController))
+        {
+            stateController.forcedTargetPlayerTile = null;
+        }
         OnCompleteAdded = null;
         switch (selectedSkill.skillData.skillTargetType)
         {
@@ -337,7 +341,7 @@ public class Pathfinder : MonoBehaviour
                 character.SkillContainer.innerEffectedTiles = innerEffectedTiles;
                 character.SkillContainer.outerEffectedTiles = outerEffectedTiles;
 
-                if (character.TryGetComponent(out StateController stateController))
+                if (stateController)
                 {
                     stateController.forcedTargetPlayerTile = characterTile;
                     OnCompleteAdded = () =>
@@ -370,6 +374,11 @@ public class Pathfinder : MonoBehaviour
                 character.SkillContainer.effectedTiles = effectedTiles;
                 return attackableTiles;
                 break;
+        }
+
+        if (stateController)
+        {
+            stateController.forcedTargetPlayerTile = null;
         }
         return attackableTiles;
         
@@ -777,7 +786,7 @@ public class Pathfinder : MonoBehaviour
                return true;
            }
        
-           if (defending.occupiedByPlayer)
+           if (defending.occupiedByPlayer && defending.isCoveredByCoverPoint)
            {
                if (Physics.Raycast(defendingPos, (attackingPos - defendingPos).normalized, out RaycastHit hit2, PathfinderVariables.Instance.coverPointRayLenght, PathfinderVariables.Instance.tankCoverPointMask))
                {
@@ -793,7 +802,7 @@ public class Pathfinder : MonoBehaviour
                return true;
            }
 
-           if (defending.occupiedByPlayer)
+           if (defending.occupiedByPlayer && defending.isCoveredByCoverPoint)
            {
                if (Physics.SphereCast(defendingPos, sphereRaidus, (attackingPos - defendingPos).normalized, out RaycastHit hit2, PathfinderVariables.Instance.coverPointRayLenght, PathfinderVariables.Instance.tankCoverPointMask))
                {

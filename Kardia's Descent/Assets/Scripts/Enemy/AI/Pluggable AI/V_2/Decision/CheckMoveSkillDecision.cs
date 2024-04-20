@@ -58,7 +58,7 @@ public class CheckMoveSkillDecision : DecisionAI
                 if (attackTile.occupiedByPlayer && !attackTile.occupyingPlayer.isDead && attackTile.occupyingPlayer.inCombat)
                 {
                     //Debug.Log($"enemy is in cover");
-                    tileScore = 50 + skill.damage - controller.skillContainer.CalculateCoverDamageDebuff(tile, attackTile, skill) - controller.skillContainer.CalculateCoverAccuracyDebuff(tile, attackTile, skill)
+                    tileScore = 50 + skill.damage - controller.skillContainer.CalculateCoverDamageDebuff(tile, attackTile, skill) /*- controller.skillContainer.CalculateCoverAccuracyDebuff(tile, attackTile, skill)*/
                         + controller.pathfinder.GetTilesInBetween(controller.enemy, tile, attackTile, true).Count * 10;
                     /*
                     Debug.Log($"remaining ap after move: {reaminingActionPointsAfterMove}");
