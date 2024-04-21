@@ -1177,7 +1177,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4933739244037394111, guid: a5edbbad0f6230543a42ee6c912cc294,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6858347186877077637}
+      addedObject: {fileID: 4467768982618460247}
     - targetCorrespondingSourceObject: {fileID: 3748514104431457527, guid: a5edbbad0f6230543a42ee6c912cc294,
         type: 3}
       insertIndex: -1
@@ -1380,7 +1380,8 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!114 &6858347186877077637
+  outlineFillMaterial: {fileID: 0}
+--- !u!114 &4467768982618460247
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1397,7 +1398,19 @@ MonoBehaviour:
   additionalRadius: 0
   OnVisibilityChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1366402689247289405}
+        m_TargetAssemblyTypeName: StateController, Assembly-CSharp
+        m_MethodName: SetAIActive
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4879745809518845882 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3550983782210842716, guid: a5edbbad0f6230543a42ee6c912cc294,
@@ -1568,11 +1581,6 @@ PrefabInstance:
       propertyPath: TakeDamage.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1086629163380962625, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
-        type: 3}
-      propertyPath: TakeDamage.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 8335306693783725903}
     - target: {fileID: 1086629163380962625, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
         type: 3}
       propertyPath: TakeDamage.m_PersistentCalls.m_Calls.Array.data[2].m_Target
@@ -1872,6 +1880,18 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 5274653247332197000}
   m_SourcePrefab: {fileID: 100100000, guid: 4f1ae8bca5a16a14b9c4c32367ffc586, type: 3}
+--- !u!114 &1366402689247289405 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7053993269744270337, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
+    type: 3}
+  m_PrefabInstance: {fileID: 8291867439157959740}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764541655754650399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f599340377c6b845a7859ad7cd1899a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1764541655754650399 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7741204839853584163, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
@@ -1920,12 +1940,6 @@ MonoBehaviour:
 --- !u!4 &5919988543027285318 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2394410552398270842, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
-    type: 3}
-  m_PrefabInstance: {fileID: 8291867439157959740}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &8335306693783725903 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 53573456621042547, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
     type: 3}
   m_PrefabInstance: {fileID: 8291867439157959740}
   m_PrefabAsset: {fileID: 0}

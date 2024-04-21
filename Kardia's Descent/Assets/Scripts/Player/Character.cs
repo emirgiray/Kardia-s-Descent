@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using CodeMonkey.CameraSystem;
 using DG.Tweening;
+using FischlWorks_FogWar;
 using SGT_Tools.Bridge;
 using Sirenix.OdinInspector;
 using TMPro;
@@ -72,14 +73,16 @@ public class Character : MonoBehaviour
     [BoxGroup("Variables")] [SerializeField] 
     public bool isDead = false;
     [BoxGroup("Variables")] [SerializeField] 
+    public bool diedOnSelfTurn = false;
+    [BoxGroup("Variables")] [SerializeField] 
     public bool canRotate = true;
     [BoxGroup("Functions")] [SerializeField] 
     private bool dropItemsOnDeath = false;
-    [BoxGroup("Functions")] [ShowIf("dropItemsOnDeath")] [SerializeField] 
+    [BoxGroup("Functions")] [Sirenix.OdinInspector.ShowIf("dropItemsOnDeath")] [SerializeField] 
     private List<GameObject> itemsToDrop = new List<GameObject>();
     
     [BoxGroup("Transforms")] [SerializeField] 
-    private Transform Head;
+    public Transform Head;
     [BoxGroup("Transforms")]
     public Transform Hand;
     public enum CharacterClass
@@ -285,7 +288,11 @@ public class Character : MonoBehaviour
 
                 float movementTime = animationTime / (movedata.MoveTime + path.tiles[currentStep].terrainCost * TERRAIN_PENALTY);
                 /*if(!path.tiles[currentStep].Occupied) */
-                
+
+                if (moveAndRotateTween != null && moveAndRotateTween.IsActive())
+                {
+                    moveAndRotateTween.Kill(); // dotween optimization (?)
+                }
                 MoveAndRotate(currentTile, path.tiles[currentStep] /*nextTilePosition*/, movementTime , currentStep, pathLength, rotate);
                 
                 animationTime += Time.deltaTime;
@@ -408,6 +415,8 @@ public class Character : MonoBehaviour
 
     float movementThreshold = 0.1f;
 
+    Tween moveAndRotateTween;
+    Tween rotateTween;
    void MoveAndRotate(Tile origin, Tile destination, float duration, float currentStep, float pathLength, bool rotate)
     {
         
@@ -416,18 +425,21 @@ public class Character : MonoBehaviour
         {
             if (Vector3.Distance(transform.position, destination.transform.position) > movementThreshold)
             {
-                transform.DOLookAt(destination.transform.position, 0.75f, AxisConstraint.Y, Vector3.up).SetEase(Ease.OutBack);
+                moveAndRotateTween = transform.DOLookAt(destination.transform.position, 0.75f, AxisConstraint.Y, Vector3.up).SetEase(Ease.OutBack);
             }
         }
     }
 
     public void Rotate(Vector3 destination, float duration = 0.75f, Action OnComplete = null)
     {
-        
+        if (rotateTween != null /*&& moveAndRotateTween.IsActive()*/)
+        {
+            rotateTween.Kill(); // dotween optimization (?)
+        }
         // transform.rotation = Quaternion.LookRotation(origin.DirectionTo(destination).Flat(), Vector3.up);
         if (canRotate)
         {
-            transform.DOLookAt(destination, duration, AxisConstraint.Y, Vector3.up).SetEase(Ease.OutBack).OnComplete(()=> OnComplete?.Invoke());
+            rotateTween = transform.DOLookAt(destination, duration, AxisConstraint.Y, Vector3.up).SetEase(Ease.OutBack).OnComplete(()=> OnComplete?.Invoke());
         }
  
         //StartCoroutine(RotateEnum(origin, destination));
@@ -776,6 +788,11 @@ public class Character : MonoBehaviour
             characterTile.occupyingEnemy = null;
             GetComponent<StateController>().aiActive = false;
             TurnSystem.EnemyDied(GetComponent<Enemy>());
+
+            foreach (var var in GetComponentsInChildren<csFogVisibilityAgent>())
+            {
+                Destroy(var);
+            }
         }
         characterTile.occupyingGO = null;
         characterTile.Occupied = false;
@@ -807,7 +824,7 @@ public class Character : MonoBehaviour
     
     public void OnCharacterRecieveDamageFunc(int value)
     {
-        SpawnText(value.ToString());
+        everythingUseful.SpawnText(value.ToString(), Color.red, Head, 2, 1f, health);
         
         animator.SetTrigger("Hit");
         OnCharacterRecieveDamageAction?.Invoke();
@@ -816,33 +833,12 @@ public class Character : MonoBehaviour
 
     public void OnCharacterMiss()
     {
-        SpawnText("MISS");
+        everythingUseful.SpawnText("MISS", Color.white, Head, 2,1f, health);
     }
 
     public void OnCharacterHealed(int value)
     {
-        SpawnText(value.ToString());
-    }
-
-    public void SpawnText(string value)
-    {
-        /*float randomX = Random.Range(character.Head.position.x, 0.5f);
-       Vector3 randomPosAroundHead = new Vector3(, character.Head.position.y + 1, 0);*/
-        
-        Vector3 PosAroundHead = SGT_Math.GetPositionAroundObject(Head, 0.5f);
-        Vector3 randomPosAroundHead = new Vector3(PosAroundHead.x, PosAroundHead.y + 2, PosAroundHead.z);
-        
-        GameObject spawnedHitText = Instantiate(HitTextGameObject, randomPosAroundHead, Quaternion.identity);
-        
-        if (value != "MISS" && int.Parse(value) >= health.Max)
-        {
-            spawnedHitText.GetComponentInChildren<TextMeshPro>().text = health.Max.ToString();
-        }
-        else
-        {
-            spawnedHitText.GetComponentInChildren<TextMeshPro>().text = value;
-        }
-        
+        everythingUseful.SpawnText(value.ToString(),Color.green, Head,2 ,1f, health);
     }
 
     GameObject stunVFX = null;

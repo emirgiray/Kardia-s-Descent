@@ -39,11 +39,34 @@ public class HeartContainer : MonoBehaviour
         character.everythingUseful.GameManager.totalHeartsCollected++;
         character.inventory.heartsInInventory.Add(heartDataIn);
         
+        
         if (character.heartContainer.heartData == null)
         {
             EquipHeart(heartDataIn);
         }
 
+        float extraYOffset = 0;
+        
+        if (heartDataIn.BonusStrength > 0)
+        {
+            character.everythingUseful.SpawnText($"Strength +{heartDataIn.BonusStrength}" ,Color.green ,character.Head, 2, 3, true );
+            extraYOffset += 0.75f;
+        }
+        if (heartDataIn.BonusDexterity > 0)
+        {
+            character.everythingUseful.SpawnText($"Dexterity +{heartDataIn.BonusDexterity}" ,Color.green ,character.Head, 2 +extraYOffset,3, true );
+            extraYOffset += 0.75f;
+        }
+        if (heartDataIn.BonusConstitution > 0)
+        {
+            character.everythingUseful.SpawnText($"Constitution +{heartDataIn.BonusConstitution}" ,Color.green ,character.Head, 2 + extraYOffset,3, true );
+            extraYOffset += 0.75f;
+        }
+        if (heartDataIn.BonusAiming > 0)
+        {
+            character.everythingUseful.SpawnText($"Aiming +{heartDataIn.BonusAiming}" , Color.green, character.Head, 2 + extraYOffset,3, true);
+        }
+        
     }
     
     public void EquipHeart(HeartData heartDataIn)

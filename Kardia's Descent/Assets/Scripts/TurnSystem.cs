@@ -117,6 +117,7 @@ public class TurnSystem : MonoBehaviour
         OnTurnChange.Invoke();
         if (turnState == TurnState.Friendly)
         {
+            Debug.Log($"turn {turn} playersInCombat.Count {playersInCombat.Count}");
             if (turn > playersInCombat.Count)
             {
                 NextRound();
@@ -127,6 +128,7 @@ public class TurnSystem : MonoBehaviour
             everythingUseful.TurnSystem.currentEnemyTurnOrder++;
             if (turn > enemiesInCombat.Count)
             {
+                Debug.Log($"turn {turn} enemiesInCombat.Count {enemiesInCombat.Count}");
                 NextRound();
                 //TurnSystem.Instance.currentEnemyTurnOrder = 0;
             }
@@ -210,8 +212,19 @@ public class TurnSystem : MonoBehaviour
     {
         /*playersInCombat.RemoveRange(playersInCombat.IndexOf(deadPlayer), 1);
         allEntitiesInCombat.RemoveRange(allEntitiesInCombat.IndexOf(deadPlayer), 1);*/
-        PlayersToRemoveNextRound.Add(deadPlayer);
-        EntitiesToRemoveNextRound.Add(deadPlayer);
+        
+        if (turnState == TurnState.Friendly)
+        {
+            PlayersToRemoveNextRound.Add(deadPlayer);
+            EntitiesToRemoveNextRound.Add(deadPlayer);
+        }
+        else
+        {
+            playersInCombat.RemoveRange(playersInCombat.IndexOf(deadPlayer), 1);
+            allEntitiesInCombat.RemoveRange(allEntitiesInCombat.IndexOf(deadPlayer), 1);
+        }
+        
+       
         OnPlayerDeath.Invoke(deadPlayer);
         RemoveCard(deadPlayer);
         everythingUseful.LevelManager.RemovePlayerFromGame(deadPlayer);
@@ -236,8 +249,18 @@ public class TurnSystem : MonoBehaviour
         {
             /*enemiesInCombat.RemoveRange(enemiesInCombat.IndexOf(deadEnemy), 1);
             allEntitiesInCombat.RemoveRange(allEntitiesInCombat.IndexOf(deadEnemy), 1);*/
-            EnemiesToRemoveNextRound.Add(deadEnemy);
-            EntitiesToRemoveNextRound.Add(deadEnemy);
+
+            if (turnState == TurnState.Enemy)
+            {
+                EnemiesToRemoveNextRound.Add(deadEnemy);
+                EntitiesToRemoveNextRound.Add(deadEnemy);
+            }
+            else
+            {
+                enemiesInCombat.RemoveRange(enemiesInCombat.IndexOf(deadEnemy), 1);
+                allEntitiesInCombat.RemoveRange(allEntitiesInCombat.IndexOf(deadEnemy), 1);
+            }
+            
             OnEnemyDeath.Invoke(deadEnemy);
             RemoveCard(deadEnemy);
 

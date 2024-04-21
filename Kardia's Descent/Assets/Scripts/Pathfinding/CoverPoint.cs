@@ -8,6 +8,8 @@ using UnityEngine;
 
 public class CoverPoint : MonoBehaviour
 {
+    [SerializeField] private EverythingUseful everythingUseful;
+    
     [SerializeField] private Tile objectTile;
     [SerializeField] private bool findTileAtStart = false;
     
@@ -95,23 +97,7 @@ public class CoverPoint : MonoBehaviour
     }
     public void SpawnText(string value)
     {
-        /*float randomX = Random.Range(character.Head.position.x, 0.5f);
-       Vector3 randomPosAroundHead = new Vector3(, character.Head.position.y + 1, 0);*/
-        
-        Vector3 PosAroundHead = SGT_Math.GetPositionAroundObject(transform, 0.5f);
-        Vector3 randomPosAroundHead = new Vector3(PosAroundHead.x, PosAroundHead.y + 4, PosAroundHead.z);
-        
-        GameObject spawnedHitText = Instantiate(HitTextGameObject, randomPosAroundHead, Quaternion.identity);
-
-        if (value != "MISS" && int.Parse(value) >= health.Max)
-        {
-            spawnedHitText.GetComponentInChildren<TextMeshPro>().text = health.Max.ToString();
-        }
-        else
-        {
-            spawnedHitText.GetComponentInChildren<TextMeshPro>().text = value;
-        }
-        
+        everythingUseful.SpawnText(value, value != "MISS" ? Color.red : Color.white, transform, 4,1f, health);
     }
 
     public void OnCoverDestroyed()

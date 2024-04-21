@@ -21,3 +21,6 @@ MonoBehaviour:
   Interact: {fileID: 0}
   TurnSystem: {fileID: 0}
   UIManager: {fileID: 0}
+  CameraSystem: {fileID: 0}
+  SpawnTextGO: {fileID: 8192422749196242801, guid: 18d9936a0ae5987499fb19403aaacbd1,
+    type: 3}

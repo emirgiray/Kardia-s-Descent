@@ -107,7 +107,7 @@ public class StateController : MonoBehaviour
             aiActive = true;
         }*/
 
-        if (enemy.isDead && runOnce2)
+        if (enemy.isDead && runOnce2 && turnSystem.turnState == TurnSystem.TurnState.Enemy && enemy.diedOnSelfTurn) // this will only happen if an enemy dies in its turn for example from a suicide skill
         {
             // currentState =endTurnState;
             EndTurn();
@@ -159,11 +159,15 @@ public class StateController : MonoBehaviour
         ResetToDefaultCombatState();
     }
 
-    public void TryActivateAI()
+    private void TryActivateAI()
     {
         aiActive = (enemy.turnOrder == enemy.TurnSystem.currentEnemyTurnOrder && !enemy.isDead); 
     }
-    
+
+    public void SetAIActive(bool value)
+    {
+        aiActive = value;
+    }
     public void TransitionToState(StateAI nextState)
     {
         if (nextState != remainState)

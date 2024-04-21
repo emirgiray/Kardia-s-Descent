@@ -348,6 +348,7 @@ public class Pathfinder : MonoBehaviour
                     {
                         // EndTurn();
                         character.health.HealthDecrease(character.health.Max);
+                        character.diedOnSelfTurn = true;
                     };
                 }
                 

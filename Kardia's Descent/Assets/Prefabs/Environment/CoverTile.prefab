@@ -133,6 +133,7 @@ MonoBehaviour:
   TileHighlightGO: {fileID: 0}
   ShieldIcon: {fileID: 0}
   TileHighlightMeshRenderer: {fileID: 0}
+  quickOutline: {fileID: 0}
   defaultMat: {fileID: 0}
   disabledMat: {fileID: 0}
   occupiedByPlayer: 0
@@ -159,11 +160,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10a9ad3dd7f045b4899301dc183b432b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  everythingUseful: {fileID: 11400000, guid: 0adf6649dfa6c2b48877232f4002ec52, type: 2}
   objectTile: {fileID: 0}
   findTileAtStart: 0
   pathfinder: {fileID: 0}
   yOffset: 1
   coveringTiles: []
+  HitTextGameObject: {fileID: 0}
+  health: {fileID: 0}
 --- !u!114 &2397469090214151577
 MonoBehaviour:
   m_ObjectHideFlags: 0

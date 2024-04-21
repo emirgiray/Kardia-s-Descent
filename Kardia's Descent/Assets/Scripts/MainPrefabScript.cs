@@ -117,7 +117,8 @@ public class MainPrefabScript : MonoBehaviour
             partyRoundCards.Add(tempPartyRoundCard);
         }
         
-        Interact.CharacterSelectedAction?.Invoke(spawnedPlayerScripts[0].characterTile, 0.001f);
+        // Interact.CharacterSelectedAction?.Invoke(spawnedPlayerScripts[0].characterTile, 0.001f);
+        everythingUseful.CameraSystem.OnCharacterSelected(spawnedPlayerScripts[0].characterTile, 0.001f);
     }
 
     public void ClearPrevious()

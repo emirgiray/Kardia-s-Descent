@@ -10,7 +10,7 @@ namespace SGT_Tools.Tools
     public class SGT_DestroySelf : MonoBehaviour
     {
 
-        [SerializeField] private float DestroyTime = 0;
+        public float DestroyTime = 0;
         [SerializeField] private bool DestroyTotaly = false;
         public UnityEvent BeforeDestroyed = new UnityEvent();
         public UnityEvent Destroyed = new UnityEvent();

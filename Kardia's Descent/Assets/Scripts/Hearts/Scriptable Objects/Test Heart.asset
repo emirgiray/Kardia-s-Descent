@@ -17,9 +17,9 @@ MonoBehaviour:
   heartIndex: 1
   heartDescription: Gives extra HP.
   heartRarity: 0
-  BonusStrength: 0
+  BonusStrength: 1
   BonusDexterity: 0
   BonusConstitution: 5
-  BonusAiming: 0
+  BonusAiming: 1
   unlockCondition: 
   isPowerUnlocked: 0
