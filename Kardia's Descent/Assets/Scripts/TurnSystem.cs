@@ -29,6 +29,9 @@ public class TurnSystem : MonoBehaviour
     public TurnState turnState;
     
     [SerializeField] public GameObject RoundInfo;
+    [SerializeField] public RoundInfo RoundInfoScript;
+    [SerializeField] public GameObject RoundInfoArrows;
+    [SerializeField] public RoundInfo RoundInfoArrowsScript;
     [SerializeField] private GameObject CharacterCardPrefab;
     
     public Action FriendlyTurn;
@@ -310,7 +313,7 @@ public class TurnSystem : MonoBehaviour
         {
             GameObject newCard = Instantiate(CharacterCardPrefab, RoundInfo.transform);
             newCard.name = character.name + " Card";
-            newCard.GetComponent<CharacterRoundCard>().Init(character, RoundInfo.GetComponent<RoundInfo>());
+            newCard.GetComponent<CharacterRoundCard>().Init(character, RoundInfoScript);
             character.SetCharacterCard(newCard);
             // RoundInfo.GetComponent<RoundInfo>().AddObject(newCard, character);
             StartCoroutine(AddCardDelay(newCard, character));
@@ -342,17 +345,18 @@ public class TurnSystem : MonoBehaviour
         }
     }
 
-    public IEnumerator AddCardDelay(GameObject obj, Character character)
+    private IEnumerator AddCardDelay(GameObject obj, Character character)
     {
         yield return new WaitForEndOfFrameUnit();
-        RoundInfo.GetComponent<RoundInfo>().AddObject(obj, character);
-        
+        RoundInfoScript.AddObject(obj, character);
+        RoundInfoArrowsScript.AddArrow();
     }
 
     public void RemoveCard(Character character)
     {
         if (character.GetCharacterCard() == null) return;
-        RoundInfo.GetComponent<RoundInfo>().RemoveObject(character.GetCharacterCard());
+        RoundInfoScript.RemoveObject(character.GetCharacterCard());
+        RoundInfoArrowsScript.RemoveArrow();
         Destroy(character.GetCharacterCard());
     }
     

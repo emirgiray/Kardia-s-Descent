@@ -68,4 +68,37 @@ public class RoundInfo : MonoBehaviour
     {
         objects.Remove(obj);
     }
+    
+    bool firstTime = true;
+    public void AddArrow()
+    {
+        if (firstTime)
+        {
+            firstTime = false;
+            return;
+        }
+        
+        objects[0].SetActive(true);
+        var firstElement = objects[0];
+        objects.RemoveAt(0);
+        objects.Add(firstElement);
+    }
+
+    public void RemoveArrow()
+    {
+        objects[objects.Count-1].SetActive(false);
+        var lastElement = objects[objects.Count-1];
+        objects.RemoveAt(objects.Count-1);
+        objects.Insert(0, lastElement);
+    }
+
+    public void TurnOffAllArrows()
+    {
+        for (int i = 0; i < objects.Count; i++)
+        {
+            objects[i].SetActive(false);
+        }
+        
+        firstTime = true;
+    }
 }

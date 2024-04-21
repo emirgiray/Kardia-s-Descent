@@ -152,5 +152,7 @@ public class MainPrefabScript : MonoBehaviour
         partyRoundCards.Clear();
 
         
+        everythingUseful.TurnSystem.RoundInfoArrowsScript.TurnOffAllArrows();
+        
     }
 }
