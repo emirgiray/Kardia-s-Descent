@@ -40,24 +40,30 @@ public class ShieldCharge : SkillsData
                 last = i;
             }
             
-            ActivaterCharacter.movedata.MoveTime /= 1.5f;
-            path.tiles.RemoveRange(last , path.tiles.Count - last);
-            ActivaterCharacter.StartMove(path,true, () =>
-            {
-                
-                ActivaterCharacter.Rotate(enemyTile.transform.position);
             
-                everythingUseful.Interact.GetComponent<MonoBehaviour>()
-                    .StartCoroutine(WaitUntilEnum(Skill, ActivaterCharacter, enemyTile, OnComplete));
-                //base.TryHit(Skill, ActivaterCharacter, selectedTile, parent, OnComplete = null);
-                
-            }, false);
         }
-
+        ActivaterCharacter.movedata.MoveTime /= 1.5f;
+        path.tiles.RemoveRange(last , path.tiles.Count - last);
+        float defaultAnimSpeed = ActivaterCharacter.animator.speed;
+        ActivaterCharacter.animator.speed = defaultAnimSpeed * 1.25f;
+        ActivaterCharacter.StartMove(path,true, () =>
+        {
+            ActivaterCharacter.Rotate(enemyTile.transform.position);
+            
+            everythingUseful.Interact.GetComponent<MonoBehaviour>()
+                .StartCoroutine(WaitUntilEnum(Skill, ActivaterCharacter, enemyTile, defaultAnimSpeed, OnComplete));
+            //base.TryHit(Skill, ActivaterCharacter, selectedTile, parent, OnComplete = null);
+                
+        }, false);
     }
-    public IEnumerator WaitUntilEnum(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, Action OnComplete = null)
+    
+    
+    
+    private IEnumerator WaitUntilEnum(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, float defaultAnimSpeed, Action OnComplete = null)
     {
         //Debug.Log($"wait started    ");
+        yield return new WaitUntil(() => ActivaterCharacter.Moving == false);
+        ActivaterCharacter.animator.SetTrigger("ShieldChargeAttack");
         yield return new WaitUntil(() => ActivaterCharacter.SkillContainer.GetImpact() == true);
         if (skillAudioEvent != null) skillAudioEvent.Play(ActivaterCharacter.transform);
         //Debug.Log($"Waitfinished");
@@ -72,7 +78,7 @@ public class ShieldCharge : SkillsData
             base.OnMiss(Skill, ActivaterCharacter, selectedTile, OnComplete);
         }
         ActivaterCharacter.movedata.MoveTime *= 1.5f;
-         
+        ActivaterCharacter.animator.speed = defaultAnimSpeed;
             OnComplete?.Invoke();
     }
 }

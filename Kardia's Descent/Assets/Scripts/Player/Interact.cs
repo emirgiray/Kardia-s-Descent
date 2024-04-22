@@ -455,6 +455,7 @@ public class Interact : MonoBehaviour
                         {
                             if (attackableTiles.Contains(currentTile))
                             {
+                               
                                 selectedCharacter.SkillContainer.UseSkill(selectedCharacter.SkillContainer.selectedSkill, currentTile);
                                 lastAttackedTile = currentTile;
                             

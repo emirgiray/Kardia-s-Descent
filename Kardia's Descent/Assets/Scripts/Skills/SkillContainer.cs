@@ -61,7 +61,7 @@ public class SkillContainer : MonoBehaviour
             {
                 skill.skillButton.EnableDisableButton(Character.remainingActionPoints >= skill.actionPointUse);
             }
-            //Debug.Log($"skill: {skill.skillData.name} skill ap use: {skill.actionPointUse} ap: {Character.actionPoints}, can use skill: {Character.actionPoints >= skill.actionPointUse}");
+            //Debug.Log($"skill: {skill.skillData.name} skill ap use: {skill.actionPointUse} ap: {Character.remainingActionPoints}, can use skill: {Character.remainingActionPoints >= skill.actionPointUse}");
         }
 
     }
@@ -192,7 +192,7 @@ public class SkillContainer : MonoBehaviour
     {
         if (Character.characterState == Character.CharacterState.WaitingTurn || Character.characterState == Character.CharacterState.Idle || Character.characterState == Character.CharacterState.Attacking)
         {
-            if (Character.actionPoints < selectSkill.actionPointUse)
+            if (Character.remainingActionPoints < selectSkill.actionPointUse)
             {
                 Debug.Log("Not enough AP");
                 return;
@@ -289,8 +289,15 @@ public class SkillContainer : MonoBehaviour
             Character.Interact.ClearHighlightAttackableTiles();
             Character.Interact.SkillDeselected?.Invoke();
             Character.Interact.selectedCharacter.GetComponent<Character>().AttackCancel();
-            StopCoroutine(Character.Interact.HitChanceUIToMousePos());  
-            
+            StopCoroutine(Character.Interact.HitChanceUIToMousePos());
+
+            /*foreach (var skill in skillsList)
+            {
+                if (Character.remainingActionPoints < skill.actionPointUse)
+                {
+                    skill.skillButton.EnableDisableButton(false);
+                }
+            }*/
 
             Character.Interact.HitChanceUIGameObject.SetActive(false);
         }

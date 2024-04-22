@@ -107,7 +107,7 @@ public class Character : MonoBehaviour
 
     public GameObject HitTextGameObject;
     
-    public static Action<int> OnActionPointsChange;
+    public  Action<int> OnActionPointsChange;
     public Action OnTurnStart;
     public Action CombatStartedAction;
     public Action CombatEndedAction;
@@ -133,10 +133,14 @@ public class Character : MonoBehaviour
    public Interact Interact;
    public CameraSystem CameraSystem;
    public LevelManager LevelManager;
-   
 
+   public void APTest(int a)
+   {
+      // Debug.Log($"ap test {remainingActionPoints}");
+   }
    private void Awake()
     {
+        OnActionPointsChange += APTest;
         TurnSystem = everythingUseful.TurnSystem;
         Interact = everythingUseful.Interact;
         CameraSystem = everythingUseful.CameraSystem;
@@ -272,7 +276,7 @@ public class Character : MonoBehaviour
         {
             if ((remainingActionPoints > 0 || !spendActionPoints || TurnSystem.turnState == TurnSystem.TurnState.FreeRoamTurn))
             {
-                if (path.tiles[currentStep].Occupied )
+                if (!inCombat &&  path.tiles[currentStep].Occupied )
                 {
                     if (path.tiles[currentStep].occupyingCharacter != this)
                     {
@@ -343,7 +347,7 @@ public class Character : MonoBehaviour
                     {
                         remainingActionPoints-- ;
                         // OnActionPointsChange?.Invoke(remainingActionPoints);
-                        OnActionPointsChange(remainingActionPoints);
+                        if (OnActionPointsChange != null) OnActionPointsChange(remainingActionPoints);
                         OnActionPointsChangeEvent?.Invoke(remainingActionPoints, "-");
                         // print(OnMovePointsChangeEvent);
                     }
