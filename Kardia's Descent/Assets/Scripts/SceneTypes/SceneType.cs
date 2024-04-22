@@ -4,6 +4,11 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
+#if UNITY_EDITOR
+
+using UnityEditor;
+#endif
+
 //todo bg colors
 [CreateAssetMenu(fileName = "SceneType", menuName = "ScriptableObjects/ScenesAndTypes/SceneType", order = 0)]
 public class SceneType : ScriptableObject
@@ -17,7 +22,7 @@ public class SceneType : ScriptableObject
     public TypeName typeName;
     public enum TypeName
     {
-        None, Basic, Elite, Boss, Shop, Heal, Event
+        None, Basic, Elite, Boss, Shop, Heal, Event, Companion
     }
 
     [SerializeField] private bool changeSpriteByType = true;
@@ -32,11 +37,25 @@ public class SceneType : ScriptableObject
         bgColor = TypeSpriteChanger.GetTypeColor(typeName);
     }
 
-    public void CheckName()
+    /*public void CheckName()
     {
         if (name != Scene.SceneName)
         {
-            Debug.LogError("SceneType name and SceneField name does not match !!!");
+            //Debug.LogError("SceneType name and SceneField name does not match !!!");
+            name = Scene.SceneName;
+        }
+    }*/
+    
+    
+#if UNITY_EDITOR
+    public void CheckName()
+    {
+        if (name != Scene.SceneName && Scene != null)
+        {
+            string assetPath = AssetDatabase.GetAssetPath(this);
+            AssetDatabase.RenameAsset(assetPath, Scene.SceneName);
+            AssetDatabase.SaveAssets();
         }
     }
+#endif
 }

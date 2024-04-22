@@ -12,17 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3954735dc9af524eb5ca80151e3972a, type: 3}
   m_Name: AllSceneTypes
   m_EditorClassIdentifier: 
+  everythingUseful: {fileID: 11400000, guid: 0adf6649dfa6c2b48877232f4002ec52, type: 2}
   remainingSceneTypes:
-  - {fileID: 11400000, guid: 37341b455bc0248419d4e3995417f15f, type: 2}
-  - {fileID: 11400000, guid: 7f53ec7a85e8fd94b9806f1603b8d798, type: 2}
-  - {fileID: 11400000, guid: ec684a7af18f40a4bb7364afb9b347df, type: 2}
-  - {fileID: 11400000, guid: 7f53ec7a85e8fd94b9806f1603b8d798, type: 2}
-  - {fileID: 11400000, guid: 7f53ec7a85e8fd94b9806f1603b8d798, type: 2}
-  - {fileID: 11400000, guid: 7f53ec7a85e8fd94b9806f1603b8d798, type: 2}
+  - {fileID: 11400000, guid: 8e9a730be01609f4cae43473b877c8c2, type: 2}
+  - {fileID: 11400000, guid: 77c6eb3a5aad39f48a80349e796d0890, type: 2}
+  - {fileID: 11400000, guid: 6cf069adad6214b4794b736c795cf353, type: 2}
   defaultAllSceneTypes:
-  - {fileID: 11400000, guid: 37341b455bc0248419d4e3995417f15f, type: 2}
-  - {fileID: 11400000, guid: 7f53ec7a85e8fd94b9806f1603b8d798, type: 2}
-  - {fileID: 11400000, guid: ec684a7af18f40a4bb7364afb9b347df, type: 2}
-  - {fileID: 11400000, guid: 2f4a336bc7c03004fab918d00dfe0cd0, type: 2}
-  - {fileID: 11400000, guid: e150affc6813b7d43bd0a33b50f2b029, type: 2}
-  - {fileID: 11400000, guid: ece80e29f300ac740a9bd52b080f5523, type: 2}
+  - {fileID: 11400000, guid: 8e9a730be01609f4cae43473b877c8c2, type: 2}
+  - {fileID: 11400000, guid: 77c6eb3a5aad39f48a80349e796d0890, type: 2}
+  - {fileID: 11400000, guid: 6cf069adad6214b4794b736c795cf353, type: 2}

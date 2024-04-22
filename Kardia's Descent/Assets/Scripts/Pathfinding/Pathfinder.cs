@@ -357,8 +357,8 @@ public class Pathfinder : MonoBehaviour
             
             case SkillsData.SkillTargetType.Line:
                 
-                attackableTiles =GetAttackableTilesLine(character,
-                    characterTile, targetTile, selectedSkill);
+                attackableTiles = GetAttackableTilesLine(character, characterTile, targetTile, selectedSkill, out effectedTiles);
+                character.SkillContainer.effectedTiles = effectedTiles;
                 return attackableTiles;
                 break;
             
@@ -454,13 +454,11 @@ public class Pathfinder : MonoBehaviour
             tiles.Remove(tile);
         }
 
-       // Debug.Log($"tiles: {tiles.Count}");
+        // Debug.Log($"tiles: {tiles.Count}");
         return tiles;
-        
-        
     }
       
-    public List<Tile> GetAttackableTilesLine(Character activatorCharacter, Tile originTile, Tile targetTile, SkillContainer.Skills skill)
+    public List<Tile> GetAttackableTilesLine(Character activatorCharacter, Tile originTile, Tile targetTile, SkillContainer.Skills skill, out List<Tile> effectedTilesList)
     {
         // Path path = FindPath(originTile.occupyingCharacter, originTile, targetTile);
         Vector3 dir = (targetTile.transform.position - originTile.transform.position).normalized;
@@ -486,30 +484,66 @@ public class Pathfinder : MonoBehaviour
                         path.tiles.Add(neigbour);
                         currentTile = neigbour;
                     }
-                    
                 }
             }
         }
         
+        
         List<Tile> tiles = new List<Tile>();
         tiles = path.tiles;
-   
         //remove if not in the same direction
-        List<Tile> tilesToRemove = new List<Tile>();
         
+        List<Tile> tilesToRemove = new List<Tile>();
         foreach (var tile in tilesToRemove)
         {
             tiles.Remove(tile);
         }
-        
         if (tiles.Count == 1 && tiles[0] == targetTile && !NeighborTiles(originTile, true, true).Contains(targetTile))
         {
             tiles.Remove(tiles[0]);
         }
-        attackableTiles = tiles;
-        return tiles;
         
+        effectedTilesList = tiles;
         
+        // calculate the cleave effected tiles around the impact tile
+        // this finds a relative forward direction from the selected character to the impact tile
+        // then it finds the tiles on the left or right of the forward direction
+        List<Tile> tempAttackablesTilesList = new List<Tile>();
+        List<Tile> tempAttackablesOuterTilesList = new List<Tile>();
+        Vector3 direction = Vector3.forward * (originTile.GetComponent<MeshFilter>().sharedMesh.bounds.extents.x * PathfinderVariables.Instance.HEXAGONAL_OFFSET);
+        float rayLength = 4f;
+        float rayHeightOffset = 1f;
+        for (int i = 0; i < 3; i++)
+        {
+            direction = Quaternion.Euler(0f, 120, 0f) * direction;
+            Vector3 aboveTilePos = (originTile.transform.position + direction).With(y: originTile.transform.position.y + rayHeightOffset);
+            if (Physics.Raycast(aboveTilePos, Vector3.down, out RaycastHit hit2, rayLength, PathfinderVariables.Instance.tileMask))
+            {
+                Tile hitTile = hit2.transform.GetComponent<Tile>();
+                tempAttackablesTilesList.Add(hitTile);
+                
+                Vector3 newDir = (hitTile.transform.position - originTile.transform.position).normalized;
+                Tile currentTile2 = hitTile;
+                for (int j = 0; j < skill.range - 1; j++)
+                {
+                    foreach (var neigbour in NeighborTiles(currentTile2, true, true))
+                    {
+                        if ((neigbour.transform.position - originTile.transform.position).normalized == newDir && !tempAttackablesTilesList.Contains(neigbour))
+                        {
+                            tempAttackablesOuterTilesList.Add(neigbour);
+                            currentTile2 = neigbour;
+                        }
+                    }
+                }
+                
+            }
+
+        }
+        
+        tempAttackablesTilesList.AddRange(tempAttackablesOuterTilesList);
+        attackableTiles = tempAttackablesTilesList;
+        
+        return attackableTiles;
     }
 
     public List<Tile> GetAttackableTilesArea(Tile selectedCharacterCharacterTile, SkillContainer.Skills skill, Tile impactOriginTile, out List<Tile> effectedTilesList, out List<Tile> innerEffectedTilesList, out List<Tile> outerEffectedTilesList)

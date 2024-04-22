@@ -6,6 +6,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "AllSceneTypes", menuName = "ScriptableObjects/ScenesAndTypes/AllSceneTypes", order = 0)]
 public class AllSceneTypes : ScriptableObject
 {
+    [SerializeField] private EverythingUseful everythingUseful;
+    
+    
     [Tooltip("This will change according to scenes being seen")]
     public List<SceneType> remainingSceneTypes = new();
     public List<SceneType> defaultAllSceneTypes = new();
@@ -25,6 +28,8 @@ public class AllSceneTypes : ScriptableObject
     public void RemoveSceneType(SceneType sceneType)
     {
         remainingSceneTypes.Remove(sceneType);
+        everythingUseful.SaveLoadSystem.remainingSceneTypes = remainingSceneTypes;
+        everythingUseful.SaveLoadSystem.SaveRemainingSceneTypes();
     }
     
     // also dont forget to save and load remainingSceneTypes

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 792f2826cb647ab4a935a3f915fb122e, type: 3}
+  m_Name: ST_Event
+  m_EditorClassIdentifier: 
+  Scene:
+    m_SceneAsset: {fileID: 0}
+    m_SceneName: ST_Event
+  typeImage: {fileID: 21300000, guid: ea01d4cf1a1584b888fd8c1e1e82143d, type: 3}
+  bgColor: {r: 0.390566, g: 0.7548566, b: 1, a: 1}
+  typeName: 6
+  changeSpriteByType: 1
+  TypeSpriteChanger: {fileID: 11400000, guid: ef0fabc02a3c6c84790a9bdec38b6c5d, type: 2}

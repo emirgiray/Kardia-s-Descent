@@ -792,21 +792,42 @@ public class Interact : MonoBehaviour
                    // attackableTiles = selectedCharacter.pathfinder.GetAttackableTilesLine(selectedCharacter, selectedCharacter.characterTile, currentTile, selectedCharacter.SkillContainer.selectedSkill);
                     if (attackableTiles != null)
                     {
-                        foreach (Tile tile in attackableTiles)
+                        /*foreach (Tile tile in attackableTiles)
                         {
                             /*tile.HighlightAttackable();
 
                             if (tile == selectedCharacter.characterTile)
                             {
                                 tile.ClearHighlight();
-                            }*/
+                            }#1#
                             
                             tile.TileHighlightGO.SetActive(true);
                             tile.TileHighlightMeshRenderer.material.SetColor("_RimColor", everythingUseful.Interact.tileHighligthColors[1]);
+                        }*/
+                         
+                        foreach (Tile tile in attackableTiles)
+                        {
+                            tile.HighlightAttackable();
+
+                            if (tile == selectedCharacter.characterTile)
+                            {
+                                tile.ClearHighlight();
+                            }
                         }
+                        //highlight effected tiles if they are in attack range
+                        if (attackableTiles.Contains(currentTile))
+                        {
+                            foreach (Tile tile in selectedCharacter.SkillContainer.effectedTiles)
+                            {
+                                tile.TileHighlightGO.SetActive(true);
+                                tile.TileHighlightMeshRenderer.material.SetColor("_RimColor", everythingUseful.Interact.tileHighligthColors[1]);
+                            }
+                        }
+
+                        
                     }
                 }
-                
+               
                 break;
             
             case SkillsData.SkillTargetType.Cone:

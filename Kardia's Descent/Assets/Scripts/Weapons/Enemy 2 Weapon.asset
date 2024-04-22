@@ -23,7 +23,7 @@ MonoBehaviour:
   weaponGripLocation: {fileID: 0}
   weaponBarrelFireLocation: {fileID: 0}
   SkillsDataList:
-  - {fileID: 11400000, guid: 96dcc95d58b7862409b235e1185c6cb7, type: 2}
+  - {fileID: 11400000, guid: 5bcb17ca1ba1ad14a869db2c57fe8a63, type: 2}
   damage: {x: 3, y: 5}
   accuracy: 80
   range: 5

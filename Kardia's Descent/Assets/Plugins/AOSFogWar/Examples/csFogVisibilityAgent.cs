@@ -18,7 +18,9 @@
 using UnityEngine;                  // Monobehaviour
 using System.Collections.Generic;   // List
 using System.Linq;
-using UnityEngine.Events; // ToList
+using TMPro;
+using UnityEngine.Events;
+using UnityEngine.UI; // ToList
 
 
 
@@ -45,6 +47,8 @@ namespace FischlWorks_FogWar
 
         private List<MeshRenderer> meshRenderers = null;
         private List<SkinnedMeshRenderer> skinnedMeshRenderers = null;
+        private List<Image> Images = null;
+        private List<TextMeshProUGUI> texts = null;
 
         public UnityEvent<bool> OnVisibilityChanged = new UnityEvent<bool>();
 
@@ -64,6 +68,8 @@ namespace FischlWorks_FogWar
 
             meshRenderers = GetComponentsInChildren<MeshRenderer>().ToList();
             skinnedMeshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>().ToList();
+            Images = GetComponentsInChildren<Image>().ToList();
+            texts = GetComponentsInChildren<TextMeshProUGUI>().ToList();
         }
 
 
@@ -86,6 +92,17 @@ namespace FischlWorks_FogWar
             {
                 renderer.enabled = visibility;
             }
+            
+            foreach (Image image in Images)
+            {
+                image.enabled = visibility;
+            }
+            
+            foreach (TextMeshProUGUI text in texts)
+            {
+                text.enabled = visibility;
+            }
+            
             OnVisibilityChanged.Invoke(visibility);
         }
 

@@ -15,9 +15,9 @@ public class SceneChanger : MonoBehaviour
     [SerializeField] private EverythingUseful everythingUseful;
     
     public List<SceneType> possibleNextScenes = new();
-    
     public AllSceneTypes allSceneTypes;
-
+    public List<Door> EndDoorsInScene = new();
+    
     public SceneField firstLevel;
     public SceneField mainMenuLevel;
     public SceneField currentScene;
@@ -56,6 +56,34 @@ public class SceneChanger : MonoBehaviour
             });
         }
     }
+    
+    public void DecideRandomScenes()
+    {
+        for (int i = 0; i < EndDoorsInScene.Count; i++)
+        {
+            int randomScene = Random.Range(0, allSceneTypes.remainingSceneTypes.Count);
+            if (possibleNextScenes.Contains(allSceneTypes.remainingSceneTypes[randomScene]))
+            {
+                i--;
+                continue;
+            }
+
+            if (EndDoorsInScene[i].CheckIfAvailable())
+            {
+                SceneType temp = allSceneTypes.remainingSceneTypes[randomScene];
+                possibleNextScenes.Add(temp);
+            
+                EndDoorsInScene[i].SetSceneType(temp);
+                Debug.Log($"Not Forced scene type for {EndDoorsInScene[i].name}");
+            }
+            else
+            {
+                Debug.Log($"Forced scene already exists for {EndDoorsInScene[i].name}");
+            
+            }
+        }
+    }
+    
     [Button, GUIColor(1f, 0.1f, 0.1f)]
     public void ClearOfferedScenes()
     {

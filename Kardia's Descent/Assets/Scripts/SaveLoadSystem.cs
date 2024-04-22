@@ -39,16 +39,11 @@ public class SaveLoadSystem : MonoBehaviour
     public LevelManager LevelManager;
     public SceneChanger SceneChanger;
     public MainPrefabScript MainPrefabScript;
-    /*public void Awake()
-    {
-        GameManager = everythingUseful.GameManager;
-        LevelManager = everythingUseful.LevelManager;
-        SceneChanger = everythingUseful.SceneChanger;
-        MainPrefabScript = everythingUseful.MainPrefabScript;
+    
+    public List<SceneType> remainingSceneTypes = new();
 
-        //InitAwake();
-    }*/
-
+    
+    
     public void InitAwake()
     {
         if (loadOnAwake)
@@ -91,12 +86,18 @@ public class SaveLoadSystem : MonoBehaviour
         saveData.totalHeartsCollected = GameManager.totalHeartsCollected;
 
         saveData.lastScene = SceneChanger.currentScene.SceneName;
-        saveData.remainingSceneTypes.Clear();
+        /*saveData.remainingSceneTypes.Clear();
         foreach (var types in allSceneTypes.remainingSceneTypes)
         {
             saveData.remainingSceneTypes.Add(types.Scene.SceneName);
-        }
+        }*/
         
+        saveData.remainingSceneTypes.Clear();
+        foreach (var types in remainingSceneTypes)
+        {
+            saveData.remainingSceneTypes.Add(types.Scene.SceneName);
+        }
+
     }
     
     [Button, GUIColor(1f, 0.1f, 1f)]
@@ -184,6 +185,21 @@ public class SaveLoadSystem : MonoBehaviour
         GameManager.startTime = DateTime.Parse(saveData.startTime); 
 
         
+    }
+
+    public void SetValuesFirstTime()
+    {
+        remainingSceneTypes = allSceneTypes.defaultAllSceneTypes;
+    }
+
+    public void SaveRemainingSceneTypes()
+    {
+        saveData.remainingSceneTypes.Clear();
+        foreach (var types in remainingSceneTypes)
+        {
+            saveData.remainingSceneTypes.Add(types.Scene.SceneName);
+        }
+        SaveGame();
     }
 
     #region File Stuff

@@ -17,7 +17,8 @@ public class ShieldCharge : SkillsData
         Path path = new Path();
         path.tiles = new List<Tile>();
       
-        path.tiles.AddRange(ActivaterCharacter.pathfinder.attackableTiles); 
+        // path.tiles.AddRange(ActivaterCharacter.pathfinder.attackableTiles); 
+        path.tiles.AddRange(ActivaterCharacter.SkillContainer.effectedTiles); 
       
         ActivaterCharacter.canMove = true;
 

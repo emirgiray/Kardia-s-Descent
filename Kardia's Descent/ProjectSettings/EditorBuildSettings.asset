@@ -12,30 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/New Scenes/Start Level.unity
     guid: 7875635a8e211f445b03d5e1b8778078
   - enabled: 1
-    path: Assets/Scenes/RoguelikeSceneChanger/Level 1_BACKUP_Prefabs.unity
-    guid: 4b241cffbdda5134c8b0d145c6ab18c7
-  - enabled: 1
-    path: Assets/Scenes/Jury 1/Jury 1 Main Scene.unity
-    guid: f4f3ce5c69ac3914bb392e8c230d91d5
-  - enabled: 1
-    path: Assets/Scenes/Jury 1/ST_Basic.unity
-    guid: ba986e8c8220ee2499bd96657401bdeb
-  - enabled: 1
-    path: Assets/Scenes/Jury 1/ST_Boss.unity
-    guid: 98a9d36ac9f20c84a80ea59fe8233309
-  - enabled: 1
-    path: Assets/Scenes/Jury 1/ST_Elite.unity
-    guid: 207a8b09ec71c864c9570d0005f65d8d
-  - enabled: 1
-    path: Assets/Scenes/Jury 1/ST_Shop.unity
-    guid: 97fd09f4cb4684f4eaf8a5d97c30139e
-  - enabled: 1
-    path: Assets/Scenes/Jury 1/ST_Event.unity
-    guid: 15b943fb38c097b4c9f0bbd97532dabe
-  - enabled: 1
-    path: Assets/Scenes/Jury 1/ST_Heal.unity
-    guid: f47c23d06911ed14e80bf58d6f5f6b45
+    path: Assets/Scenes/New Scenes/Companion Level 1.unity
+    guid: 76563a461ce0d604b9dc622eb6c07795
   - enabled: 1
     path: Assets/Scenes/RoguelikeSceneChanger/New Char Test.unity
     guid: 631af858b46f29946a324cac9917e4c4
+  - enabled: 1
+    path: Assets/Scenes/New Scenes/Level 2.unity
+    guid: 4bfa4e0bd5c3f814782007a997ed5648
   m_configObjects: {}

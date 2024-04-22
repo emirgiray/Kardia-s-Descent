@@ -34,3 +34,6 @@ MonoBehaviour:
   - typeName: 6
     sprite: {fileID: 21300000, guid: ea01d4cf1a1584b888fd8c1e1e82143d, type: 3}
     bgColor: {r: 0.390566, g: 0.7548566, b: 1, a: 1}
+  - typeName: 7
+    sprite: {fileID: 21300000, guid: e0e57e0e10e8b42448eb6f153c290853, type: 3}
+    bgColor: {r: 0.39811313, g: 1, b: 0.43118194, a: 1}

@@ -4,5 +4,5 @@ using UnityEngine;
 public class CharacterMoveData : ScriptableObject
 {
     //public int MaxMove = 8;
-    public float MoveTime = 0.5f;
+    public float MoveTime = 1;
 }
