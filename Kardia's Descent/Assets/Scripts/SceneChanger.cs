@@ -2,8 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 #if UNITY_EDITOR
@@ -21,6 +23,13 @@ public class SceneChanger : MonoBehaviour
     public SceneField firstLevel;
     public SceneField mainMenuLevel;
     public SceneField currentScene;
+
+    [BoxGroup("Loading Screen")] [SerializeField]
+     private GameObject laodingScreen;
+    [BoxGroup("Loading Screen")] [SerializeField]
+    private Image loadingBar;
+    [BoxGroup("Loading Screen")] [SerializeField]
+    private TextMeshProUGUI loadingText;
 
     public bool isOnMainMenu => SceneManager.GetActiveScene().name == mainMenuLevel.SceneName;
 
@@ -74,11 +83,9 @@ public class SceneChanger : MonoBehaviour
                 possibleNextScenes.Add(temp);
             
                 EndDoorsInScene[i].SetSceneType(temp);
-                Debug.Log($"Not Forced scene type for {EndDoorsInScene[i].name}");
             }
             else
             {
-                Debug.Log($"Forced scene already exists for {EndDoorsInScene[i].name}");
             
             }
         }
@@ -108,7 +115,50 @@ public class SceneChanger : MonoBehaviour
         everythingUseful.SaveLoadSystem.saveData.lastScene = Value;
         everythingUseful.GameManager.ResetToDefault();
         currentScene = Value;
-        SceneManager.LoadSceneAsync(Value,LoadSceneMode.Single);
+        // SceneManager.LoadSceneAsync(Value,LoadSceneMode.Single);
+        
+        StartCoroutine(LoadSceneAsync(Value));
+        StartCoroutine(LoadingTextAnim());
+        
+    }
+    AsyncOperation asyncLoad;
+    private IEnumerator LoadSceneAsync(string value)
+    {
+        loadingBar.fillAmount = 0;
+        laodingScreen.SetActive(true); 
+        asyncLoad = SceneManager.LoadSceneAsync(value);
+        asyncLoad.allowSceneActivation = false;
+        while (!asyncLoad.isDone)
+        {
+            float progress = Mathf.Clamp01(asyncLoad.progress / 0.9f);
+            loadingBar.fillAmount = progress;
+            if (progress >= 1)
+            {
+                loadingBar.fillAmount = 1;
+                asyncLoad.allowSceneActivation = true;
+            }
+            yield return null;
+        }
+        
+        StopCoroutine(LoadingTextAnim());
+        laodingScreen.SetActive(false);
+        loadingBar.fillAmount = 0;
+        
+    }
+
+    private IEnumerator LoadingTextAnim()
+    {
+        while (!asyncLoad.isDone)
+        {
+            loadingText.text = "Loading";
+            yield return new WaitForSecondsRealtime(0.1f);
+            loadingText.text = "Loading.";
+            yield return new WaitForSecondsRealtime(0.1f);
+            loadingText.text = "Loading..";
+            yield return new WaitForSecondsRealtime(0.1f);
+            loadingText.text = "Loading...";
+            yield return new WaitForSecondsRealtime(0.1f);
+        }
     }
     
     public void ApplicationQuit()
@@ -126,7 +176,9 @@ public class SceneChanger : MonoBehaviour
         int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
         if (SceneManager.sceneCountInBuildSettings > nextSceneIndex)
         {
-            SceneManager.LoadScene(nextSceneIndex);
+            // SceneManager.LoadScene(nextSceneIndex);
+            string sceneName = SceneManager.GetSceneByBuildIndex(nextSceneIndex).name;
+            ChangeScene(sceneName);
         }
     }
     
@@ -135,11 +187,14 @@ public class SceneChanger : MonoBehaviour
         everythingUseful.MainPrefabScript.ClearPrevious();
         int CurrentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(CurrentSceneIndex);
+        //ChangeScene(GetCurrentScene());
     }
     
     public void LoadSceneWithIndex(int indexScene)
     {
-        SceneManager.LoadScene(indexScene);
+        // SceneManager.LoadScene(indexScene);
+        string sceneName = SceneManager.GetSceneByBuildIndex(indexScene).name;
+        ChangeScene(sceneName);
     }
 
     public void LoadMainMenu()

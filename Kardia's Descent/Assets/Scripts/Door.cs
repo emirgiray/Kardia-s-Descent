@@ -26,7 +26,6 @@ public class Door : MonoBehaviour
         if (SceneType != null)
         {
             SetSceneType(SceneType);
-            Debug.Log($"FOrced scene type for {gameObject.name}");
         }
     }
 
