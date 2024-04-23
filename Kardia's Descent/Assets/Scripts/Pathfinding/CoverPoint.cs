@@ -18,6 +18,13 @@ public class CoverPoint : MonoBehaviour
     [SerializeField] private List<Tile> coveringTiles = new List<Tile>();
     [SerializeField] private GameObject HitTextGameObject;
     [SerializeField] private SGT_Health health;
+
+    [SerializeField] private bool randomizeAppereance = false;
+    [ShowIf("randomizeAppereance")]
+    [SerializeField] private GameObject randomParent;
+    [ShowIf("randomizeAppereance")]
+    [SerializeField] private List<GameObject> randomAppereancesList = new List<GameObject>();
+    
     
     void Start()
     {
@@ -46,6 +53,24 @@ public class CoverPoint : MonoBehaviour
             }
         }
 
+        List<GameObject> children = new();
+        if (randomizeAppereance)
+        {
+            Destroy(randomParent);
+            
+            /*for (int i = 0; i < randomParent.transform.childCount; i++)
+            {
+                children.Add(randomParent.transform.GetChild(i).gameObject);
+            }
+            
+            children.ForEach(x => Destroy(x));*/
+            
+            int randomIndex = Random.Range(0, randomAppereancesList.Count);
+            GameObject randomAppereance = Instantiate(randomAppereancesList[randomIndex], this.transform);
+        }
+        
+        
+        
         
     }
 

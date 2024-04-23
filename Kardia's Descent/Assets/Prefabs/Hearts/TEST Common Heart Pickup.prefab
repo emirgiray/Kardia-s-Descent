@@ -102,9 +102,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e4b39a3be2a6be4599ce56686b6558e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  everythingUseful: {fileID: 11400000, guid: 0adf6649dfa6c2b48877232f4002ec52, type: 2}
   objectTile: {fileID: 0}
   findTileAtStart: 1
   yOffset: 1.29
+  VFX: {fileID: 0}
   InteractableType: 1
   heart: {fileID: 11400000, guid: 510561519988a8e418f7e6adce942750, type: 2}
   heartRenderer: {fileID: 174202144937184304}

@@ -86,17 +86,17 @@ public class SaveLoadSystem : MonoBehaviour
         saveData.totalHeartsCollected = GameManager.totalHeartsCollected;
 
         saveData.lastScene = SceneChanger.currentScene.SceneName;
-        /*saveData.remainingSceneTypes.Clear();
+        saveData.remainingSceneTypes.Clear();
         foreach (var types in allSceneTypes.remainingSceneTypes)
         {
             saveData.remainingSceneTypes.Add(types.Scene.SceneName);
-        }*/
+        }
         
-        saveData.remainingSceneTypes.Clear();
+        /*saveData.remainingSceneTypes.Clear();
         foreach (var types in remainingSceneTypes)
         {
             saveData.remainingSceneTypes.Add(types.Scene.SceneName);
-        }
+        }*/
 
     }
     

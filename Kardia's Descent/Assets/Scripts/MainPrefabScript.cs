@@ -22,7 +22,8 @@ public class MainPrefabScript : MonoBehaviour
     public TurnSystem TurnSystem;
     public List<GameObject> SelectedPlayers = new();
     public List<GameObject> InventoryUISlots = new();
-
+    public GameObject playerPreviewParent;
+    
     public Transform PartyRoundCardsSlot;
     public GameObject PartyRoundCardPrefab;
     
@@ -96,7 +97,7 @@ public class MainPrefabScript : MonoBehaviour
         }
         
         PlayerSlots.RemoveAt(0); //remove the parent transform
-        GameObject playerPreviewParent = GameObject.Find("Player Preview");
+         playerPreviewParent = GameObject.Find("Player Preview");
 
         for (int i = 0; i < SelectedPlayers.Count; i++)
         {

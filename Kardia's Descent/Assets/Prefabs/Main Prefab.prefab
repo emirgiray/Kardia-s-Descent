@@ -10354,8 +10354,8 @@ MonoBehaviour:
   allSceneTypes: {fileID: 11400000, guid: 9718d308dff3b6e4490a8e268f7aa6d5, type: 2}
   EndDoorsInScene: []
   firstLevel:
-    m_SceneAsset: {fileID: 102900000, guid: 7875635a8e211f445b03d5e1b8778078, type: 3}
-    m_SceneName: Start Level
+    m_SceneAsset: {fileID: 102900000, guid: 76563a461ce0d604b9dc622eb6c07795, type: 3}
+    m_SceneName: Companion Level 1
   mainMenuLevel:
     m_SceneAsset: {fileID: 102900000, guid: f7cfe8530a8bef74b9d5601fc822c0f3, type: 3}
     m_SceneName: Main Menu 2

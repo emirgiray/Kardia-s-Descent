@@ -56,9 +56,9 @@ MonoBehaviour:
   fogLerpSpeed: 2.5
   fogPlaneTextureLerpTarget: {fileID: 0}
   fogPlaneTextureLerpBuffer: {fileID: 0}
-  LevelDataToLoad: {fileID: 4900000, guid: b369bd091c3a02c4b9f9568c55a931a2, type: 3}
+  LevelDataToLoad: {fileID: 0}
   saveDataOnScan: 1
-  levelNameToSave: Level 1
+  levelNameToSave: 
   levelDimensionX: 100
   levelDimensionY: 120
   unitScale: 1
@@ -116,6 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   everythingUseful: {fileID: 11400000, guid: 0adf6649dfa6c2b48877232f4002ec52, type: 2}
+  EndDoorsInScene: []
   AwakeEvent:
     m_PersistentCalls:
       m_Calls: []

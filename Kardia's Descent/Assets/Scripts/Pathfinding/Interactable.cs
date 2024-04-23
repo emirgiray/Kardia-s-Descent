@@ -111,6 +111,14 @@ public class Interactable : MonoBehaviour
                 objectTile.ResetOcupying();
                 Destroy(gameObject);
                 player.FinalizePosition(objectTile, true);
+                
+                GameObject tempPreview = Instantiate(player.PlayerPreview, everythingUseful.MainPrefabScript.playerPreviewParent.transform);
+                tempPreview.transform.localPosition = new Vector3(everythingUseful.MainPrefabScript.SelectedPlayers.Count -1 * 10, 0, 0);
+                //previews.Add(tempPreview);
+            
+                GameObject tempPartyRoundCard = Instantiate(everythingUseful.MainPrefabScript.PartyRoundCardPrefab, everythingUseful.MainPrefabScript.PartyRoundCardsSlot);
+                tempPartyRoundCard.GetComponent<CharacterRoundCard>().Init(player, everythingUseful.TurnSystem.RoundInfo.GetComponent<RoundInfo>());
+                //partyRoundCards.Add(tempPartyRoundCard);
                 break;
             case CharacterClass.Chest:
                 throw new ArgumentOutOfRangeException();
