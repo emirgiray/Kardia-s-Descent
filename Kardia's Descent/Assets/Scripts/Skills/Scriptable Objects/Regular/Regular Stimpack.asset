@@ -18,7 +18,7 @@ MonoBehaviour:
   skillDescription: Use a stim that heals 50 hp.
   skillID: 11
   skillDamage: 0
-  skillRange: 1
+  skillRange: 0
   skillCooldown: 4
   actionPointUse: 0
   skillEffectDuration: 1

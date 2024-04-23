@@ -505,17 +505,15 @@ public class Pathfinder : MonoBehaviour
         
         effectedTilesList = tiles;
         
-        // calculate the cleave effected tiles around the impact tile
-        // this finds a relative forward direction from the selected character to the impact tile
-        // then it finds the tiles on the left or right of the forward direction
+        // 4 directional line calculation
         List<Tile> tempAttackablesTilesList = new List<Tile>();
         List<Tile> tempAttackablesOuterTilesList = new List<Tile>();
         Vector3 direction = Vector3.forward * (originTile.GetComponent<MeshFilter>().sharedMesh.bounds.extents.x * PathfinderVariables.Instance.HEXAGONAL_OFFSET);
         float rayLength = 4f;
         float rayHeightOffset = 1f;
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 6; i++)
         {
-            direction = Quaternion.Euler(0f, 120, 0f) * direction;
+            direction = Quaternion.Euler(0f, 60, 0f) * direction;
             Vector3 aboveTilePos = (originTile.transform.position + direction).With(y: originTile.transform.position.y + rayHeightOffset);
             if (Physics.Raycast(aboveTilePos, Vector3.down, out RaycastHit hit2, rayLength, PathfinderVariables.Instance.tileMask))
             {

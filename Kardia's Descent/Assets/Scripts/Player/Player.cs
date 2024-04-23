@@ -106,6 +106,7 @@ public class Player : Character
     public void UnlockPlayer()
     {
         isUnlocked = true;
+        playerPrefab.GetComponent<Player>().isUnlocked = true;
         animator.enabled = true;
     }
 

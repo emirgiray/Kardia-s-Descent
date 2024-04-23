@@ -18,7 +18,7 @@ MonoBehaviour:
   skillDescription: Get an extra 5 AP for this turn. Lose it if not used.
   skillID: 10
   skillDamage: 0
-  skillRange: 1
+  skillRange: 0
   skillCooldown: 4
   actionPointUse: 0
   skillEffectDuration: 1
@@ -30,6 +30,8 @@ MonoBehaviour:
   impactRange: 2
   innerImpactRadius: 1
   outerImpactDamageDebuff: 0.5
+  cleaveTimes: 1
+  cleaveStartLeft: 1
   animatorOverrideController: {fileID: 0}
   skillStartVFX: {fileID: 0}
   skillImpactVFX: {fileID: 0}

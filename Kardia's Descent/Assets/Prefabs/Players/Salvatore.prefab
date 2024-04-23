@@ -175,7 +175,7 @@ PrefabInstance:
     - target: {fileID: 3045574018136022521, guid: 04563854e99a65a4c8a042dc7f750368,
         type: 3}
       propertyPath: m_Name
-      value: Salvatore Variant
+      value: Salvatore
       objectReference: {fileID: 0}
     - target: {fileID: 3045574018136022521, guid: 04563854e99a65a4c8a042dc7f750368,
         type: 3}
@@ -1000,6 +1000,13 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+  onCharacter: 1
+  DefaultOutlineMaskMaterial: {fileID: 0}
+  DefaultOutlineFillMaterial: {fileID: 0}
+  CharacterOutlineMaskMaterial: {fileID: 2100000, guid: 106f3ff43a17d4967a2b64c7a92e49ec,
+    type: 2}
+  CharacterOutlineFillMaterial: {fileID: 2100000, guid: 7e6ab07ac3e396b479cc1dd78a5a4e79,
+    type: 2}
 --- !u!4 &4432983759214351892 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5048294059854030272, guid: 8f4a0ceba62af4145b67e40edcc51274,

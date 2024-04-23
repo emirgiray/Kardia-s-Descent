@@ -754,6 +754,12 @@ public class Interact : MonoBehaviour
                         tile.ClearHighlight();
                     }
                 }
+
+                if (selectedSkill.range == 0)
+                {
+                    selectedCharacter.characterTile.HighlightAttackable();
+                }
+                
                 break;
             
             case SkillsData.SkillTargetType.AreaAroundTarget:
