@@ -227,6 +227,8 @@ public class SaveLoadSystem : MonoBehaviour
 
     public void SetValuesFirstTime()
     {
+        GenerateFileLocation();
+        
         remainingSceneTypes = allSceneTypes.defaultAllSceneTypes;
 
         metaSaveData.UnlockableCharacterDatas.Clear();

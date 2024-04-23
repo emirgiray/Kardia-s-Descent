@@ -22,5 +22,6 @@ MonoBehaviour:
   TurnSystem: {fileID: 0}
   UIManager: {fileID: 0}
   CameraSystem: {fileID: 0}
+  AllPlayers: {fileID: 11400000, guid: cc6fd88f6d85f664483d2dda6793e81c, type: 2}
   SpawnTextGO: {fileID: 8192422749196242801, guid: 18d9936a0ae5987499fb19403aaacbd1,
     type: 3}
