@@ -14,7 +14,8 @@ using System.IO;                    // Directory
 using System.Linq;                  // Enumerable
 using System.Collections.Generic;   // List
 using UnityEngine;                  // Monobehaviour
-using UnityEditor;                  // Handles
+using UnityEditor;
+using UnityEngine.SceneManagement; // Handles
 
 
 
@@ -363,8 +364,10 @@ namespace FischlWorks_FogWar
             // This is also for faster development iteration purposes
             if (levelNameToSave == String.Empty)
             {
-                levelNameToSave = "Default";
+                // levelNameToSave = "Default";
+                levelNameToSave = SceneManager.GetActiveScene().name;
             }
+            
         }
 
 
