@@ -281,7 +281,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outlineMode: 0
   outlineColor: {r: 1, g: 0, b: 0, a: 1}
-  outlineWidth: 10
+  outlineWidth: 3.58
   precomputeOutline: 1
   bakeKeys:
   - {fileID: 2534964839176971238, guid: 948a519f03ae84f45b675ac716135b39, type: 3}
@@ -775,7 +775,6 @@ MonoBehaviour:
     - {x: -0.8792639, y: 0.22646749, z: 0.41905543}
     - {x: -0.88123065, y: 0.4209199, z: 0.21507885}
     - {x: -0.8094811, y: 0.587146, z: 0}
-  outlineFillMaterial: {fileID: 0}
 --- !u!4 &5234526172403202310 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 679020621837447764, guid: 4d6ec1792faae4a49a978c5dddd24cb3,

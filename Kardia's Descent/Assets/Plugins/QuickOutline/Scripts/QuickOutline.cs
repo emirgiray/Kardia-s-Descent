@@ -76,7 +76,7 @@ public class QuickOutline : MonoBehaviour {
 
   private Renderer[] renderers;
   private Material outlineMaskMaterial;
-  public Material outlineFillMaterial;
+  private Material outlineFillMaterial;
 
   private bool needsUpdate;
   

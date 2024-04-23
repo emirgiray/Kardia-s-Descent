@@ -104,6 +104,9 @@ public class Interact : MonoBehaviour
        
        {3, new Color(0.000f, 3.334f, 6.996f, 0.7176471f) }, //Blue -- Cover
        {4, new Color(12.99604f, 6.903436f, 0f, 0.7176471f) },//Yellow -- Interactable
+       
+       {5, new Color(0.3f, 6f, 0.3f, 0.1f) },//Green -- Movable, Decreased Alpha
+       {6, new Color(0.000f, 3.334f, 6.996f, 0.1f) }, //Blue -- Cover, Decreased Alpha
        //old
        /*{0, new Color(1, 1, 1, 0.7176471f) }, //white -- Movable
        {1, new Color(12.99604f, 1.903436f, 0f, 0.7176471f) },//Orange -- Attackable
@@ -808,12 +811,15 @@ public class Interact : MonoBehaviour
                         foreach (Tile tile in attackableTiles)
                         {
                             tile.HighlightAttackable();
-
+                            
                             if (tile == selectedCharacter.characterTile)
                             {
                                 tile.ClearHighlight();
                             }
                         }
+                        
+                        selectedCharacter.characterTile.HighlightAttackable();
+                        
                         //highlight effected tiles if they are in attack range
                         if (attackableTiles.Contains(currentTile))
                         {

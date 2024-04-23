@@ -62,7 +62,7 @@ Shader "Custom/Outline Fill" {
         UNITY_SETUP_INSTANCE_ID(input);
         UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(output);
 
-        float3 normal = any(input.smoothNormal) ? input.smoothNormal : input.normal;
+        float3 normal = /*any(input.smoothNormal) ? input.smoothNormal :*/ input.normal;
         float3 viewPosition = UnityObjectToViewPos(input.vertex);
         float3 viewNormal = normalize(mul((float3x3)UNITY_MATRIX_IT_MV, normal));
 

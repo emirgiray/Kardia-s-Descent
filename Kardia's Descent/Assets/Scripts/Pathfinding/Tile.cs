@@ -127,54 +127,47 @@ public class Tile : MonoBehaviour
 
     public void HighlightMoveable()
     {
-        if (TileHighlightGO != null)
-        {
-            TileHighlightGO.SetActive(true);
-            // TileHighlightMeshRenderer.material.color = Interact.Instance.tileHighligthColors[0];
+        TileHighlightGO.SetActive(true);
+        // TileHighlightMeshRenderer.material.color = Interact.Instance.tileHighligthColors[0];
 
-            if (isCoveredByCoverPoint)
-            {
-                TileHighlightMeshRenderer.material.SetColor("_RimColor", everythingUseful.Interact.tileHighligthColors[3]);
-                // TileHighlightMeshRenderer.material.SetColor("_RimColor", everythingUseful.Interact.tileHighligthNormalColors[5]);
-                quickOutline.enabled = true;
-                // quickOutline.outlineFillMaterial.SetFloat( "ZTest", (float)UnityEngine.Rendering.CompareFunction.Less );
+        if (isCoveredByCoverPoint)
+        {
+            // default
+            //TileHighlightMeshRenderer.material.SetColor("_RimColor", everythingUseful.Interact.tileHighligthColors[3]); 
                 
                 
-                quickOutline.OutlineColor = everythingUseful.Interact.tileHighligthNormalColors[3];
-            }
-            else
-            {
-                // TileHighlightMeshRenderer.material.SetColor("_RimColor", everythingUseful.Interact.tileHighligthColors[0]);
-                TileHighlightMeshRenderer.material.SetColor("_RimColor", everythingUseful.Interact.tileHighligthNormalColors[5]);
-                // quickOutline.outlineFillMaterial.SetFloat("ZTest", 2);
-                quickOutline.enabled = true;
-                quickOutline.OutlineColor = everythingUseful.Interact.tileHighligthNormalColors[0];
-            }
-            
-            
+            // quick outline
+            //TileHighlightMeshRenderer.material.SetColor("_RimColor", everythingUseful.Interact.tileHighligthNormalColors[5]); //disable the color
+            quickOutline.enabled = true;
+            quickOutline.OutlineColor = everythingUseful.Interact.tileHighligthNormalColors[3];
+             
+            TileHighlightMeshRenderer.material.SetColor("_RimColor", everythingUseful.Interact.tileHighligthColors[6]); // less alpha
         }
         else
         {
-            SetColor(new Color(0.3f, 0.8f, 0.3f, 1));
+            // default
+            //TileHighlightMeshRenderer.material.SetColor("_RimColor", everythingUseful.Interact.tileHighligthColors[0]); 
+                 
+            // quick outline
+            //TileHighlightMeshRenderer.material.SetColor("_RimColor", everythingUseful.Interact.tileHighligthNormalColors[5]); //disable the color
+            quickOutline.enabled = true;
+            quickOutline.OutlineColor = everythingUseful.Interact.tileHighligthNormalColors[0];
+             
+            TileHighlightMeshRenderer.material.SetColor("_RimColor", everythingUseful.Interact.tileHighligthColors[5]); // less alpha
         }
-        
     }
 
     public void HighlightAttackable()
     {
-        if (TileHighlightGO != null)
-        {
-            TileHighlightGO.SetActive(true);
-            //TileHighlightMeshRenderer.material.SetColor("_RimColor", everythingUseful.Interact.tileHighligthColors[1]);
-            TileHighlightMeshRenderer.material.SetColor("_RimColor", everythingUseful.Interact.tileHighligthNormalColors[5]);
-            quickOutline.enabled = true;
-            quickOutline.OutlineColor = everythingUseful.Interact.tileHighligthNormalColors[1];
-        }
-        else
-        {
-            SetColor(new Color(1, 0.5f, 0.1f, 1));
-        }
+        TileHighlightGO.SetActive(true);
         
+        // default
+        //TileHighlightMeshRenderer.material.SetColor("_RimColor", everythingUseful.Interact.tileHighligthColors[1]);
+        
+        // quick outline
+        TileHighlightMeshRenderer.material.SetColor("_RimColor", everythingUseful.Interact.tileHighligthNormalColors[5]);
+        quickOutline.enabled = true;
+        quickOutline.OutlineColor = everythingUseful.Interact.tileHighligthNormalColors[1];
     }
     public void ClearHighlight()
     {
