@@ -112,7 +112,7 @@ public class SceneChanger : MonoBehaviour
     
     public void ChangeScene(string Value)
     {
-        everythingUseful.SaveLoadSystem.saveData.lastScene = Value;
+        everythingUseful.SaveLoadSystem.inGameSaveData.lastScene = Value;
         everythingUseful.GameManager.ResetToDefault();
         currentScene = Value;
         // SceneManager.LoadSceneAsync(Value,LoadSceneMode.Single);

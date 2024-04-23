@@ -21,7 +21,7 @@ public class SaveLoadSystem : MonoBehaviour
     public AllPlayers allPlayers;
     public AllHeartDatas allHeartDatas;
     public AllSceneTypes allSceneTypes;
-    public SaveData saveData;
+    public InGameSaveData inGameSaveData;
     
     // players
     // health 
@@ -65,7 +65,7 @@ public class SaveLoadSystem : MonoBehaviour
             if (playerIndex == -1) continue;
 
             playerScript.AssignSkillValues();
-            saveData.playerDatas.Add(new PLayerData
+            inGameSaveData.playerDatas.Add(new PLayerData
             {
                 playerID = playerIndex,
                 health = playerScript.health._Health,
@@ -79,23 +79,23 @@ public class SaveLoadSystem : MonoBehaviour
             });
         }
 
-        saveData.startTime = GameManager.startTime.ToString();
-        saveData.totalDamageDealt = GameManager.totalDamageDealt;
-        saveData.totalDamageTaken = GameManager.totalDamageTaken;
-        saveData.totalKills = GameManager.totalKills;
-        saveData.totalHeartsCollected = GameManager.totalHeartsCollected;
+        inGameSaveData.startTime = GameManager.startTime.ToString();
+        inGameSaveData.totalDamageDealt = GameManager.totalDamageDealt;
+        inGameSaveData.totalDamageTaken = GameManager.totalDamageTaken;
+        inGameSaveData.totalKills = GameManager.totalKills;
+        inGameSaveData.totalHeartsCollected = GameManager.totalHeartsCollected;
 
-        saveData.lastScene = SceneChanger.currentScene.SceneName;
-        saveData.remainingSceneTypes.Clear();
+        inGameSaveData.lastScene = SceneChanger.currentScene.SceneName;
+        inGameSaveData.remainingSceneTypes.Clear();
         foreach (var types in allSceneTypes.remainingSceneTypes)
         {
-            saveData.remainingSceneTypes.Add(types.Scene.SceneName);
+            inGameSaveData.remainingSceneTypes.Add(types.Scene.SceneName);
         }
         
-        /*saveData.remainingSceneTypes.Clear();
+        /*inGameSaveData.remainingSceneTypes.Clear();
         foreach (var types in remainingSceneTypes)
         {
-            saveData.remainingSceneTypes.Add(types.Scene.SceneName);
+            inGameSaveData.remainingSceneTypes.Add(types.Scene.SceneName);
         }*/
 
     }
@@ -103,8 +103,8 @@ public class SaveLoadSystem : MonoBehaviour
     [Button, GUIColor(1f, 0.1f, 1f)]
     public void SaveGame()
     {
-        // clear the savedata list
-        saveData.playerDatas.Clear();
+        // clear the inGameSaveData list
+        inGameSaveData.playerDatas.Clear();
         
         GetValues();
         
@@ -113,7 +113,7 @@ public class SaveLoadSystem : MonoBehaviour
             System.IO.Directory.CreateDirectory(saveFilePath);
         }
     
-        string json = JsonUtility.ToJson(saveData, true);
+        string json = JsonUtility.ToJson(inGameSaveData, true);
 
         if (encryptData)  json = Encrypt(json);
 
@@ -129,7 +129,7 @@ public class SaveLoadSystem : MonoBehaviour
 
             if (encryptData) json = Decrypt(json);
             
-            JsonUtility.FromJsonOverwrite(json, saveData);
+            JsonUtility.FromJsonOverwrite(json, inGameSaveData);
             
             //AssignValues();
         }
@@ -139,50 +139,50 @@ public class SaveLoadSystem : MonoBehaviour
     {
       //  Debug.Log($"expression");
         MainPrefabScript.SelectedPlayers.Clear(); // clear the list if it has values
-        for (int i = 0; i < saveData.playerDatas.Count; i++) // first tell the mainprefabscript to spawn the players
+        for (int i = 0; i < inGameSaveData.playerDatas.Count; i++) // first tell the mainprefabscript to spawn the players
         { 
-            MainPrefabScript.SelectedPlayers.Add(allPlayers.allPlayers[saveData.playerDatas[i].playerID]);
+            MainPrefabScript.SelectedPlayers.Add(allPlayers.allPlayers[inGameSaveData.playerDatas[i].playerID]);
         }
         
 
-        GameManager.totalDamageDealt = saveData.totalDamageDealt;
-        GameManager.totalDamageTaken = saveData.totalDamageTaken;
-        GameManager.totalKills = saveData.totalKills;
-        GameManager.totalHeartsCollected = saveData.totalHeartsCollected;
+        GameManager.totalDamageDealt = inGameSaveData.totalDamageDealt;
+        GameManager.totalDamageTaken = inGameSaveData.totalDamageTaken;
+        GameManager.totalKills = inGameSaveData.totalKills;
+        GameManager.totalHeartsCollected = inGameSaveData.totalHeartsCollected;
         
         
         MainPrefabScript.InitializeLevel();
         LevelManager.InitializeCharacters();
         
-        for (int i = 0; i < saveData.playerDatas.Count; i++) // then assign the values to the players
+        for (int i = 0; i < inGameSaveData.playerDatas.Count; i++) // then assign the values to the players
         {
             Player player = MainPrefabScript.spawnedPlayerScripts[i];
             
-            player.characterStats.Strength = saveData.playerDatas[i].Strength;
-            player.characterStats.Dexterity = saveData.playerDatas[i].Dexterity;
-            player.characterStats.Constitution = saveData.playerDatas[i].Constitution;
-            player.characterStats.Aiming = saveData.playerDatas[i].Aiming;
-            player.isUnlocked = saveData.playerDatas[i].isUnlocked;
+            player.characterStats.Strength = inGameSaveData.playerDatas[i].Strength;
+            player.characterStats.Dexterity = inGameSaveData.playerDatas[i].Dexterity;
+            player.characterStats.Constitution = inGameSaveData.playerDatas[i].Constitution;
+            player.characterStats.Aiming = inGameSaveData.playerDatas[i].Aiming;
+            player.isUnlocked = inGameSaveData.playerDatas[i].isUnlocked;
             //player.AssignSkillValues(); // this is already done on character awake
             
-            player.health.Max = saveData.playerDatas[i].maxHealth;
-            player.health._Health = saveData.playerDatas[i].health;
+            player.health.Max = inGameSaveData.playerDatas[i].maxHealth;
+            player.health._Health = inGameSaveData.playerDatas[i].health;
 
-            if (saveData.playerDatas[i].heartID != -1)
+            if (inGameSaveData.playerDatas[i].heartID != -1)
             {
-                player.heartContainer.heartData = allHeartDatas.allHearts[saveData.playerDatas[i].heartID];
+                player.heartContainer.heartData = allHeartDatas.allHearts[inGameSaveData.playerDatas[i].heartID];
                 player.heartContainer.hearthStatsApplied = true;
             }
         }
         
         allSceneTypes.remainingSceneTypes.Clear();
-        foreach (var type in saveData.remainingSceneTypes)
+        foreach (var type in inGameSaveData.remainingSceneTypes)
         {
             allSceneTypes.remainingSceneTypes.Add(allSceneTypes.defaultAllSceneTypes.Find(x => x.Scene.SceneName.Equals(type)));
         }
         
-        // GameManager.startTime = DateTime.ParseExact(saveData.startTime, "dd/MM/yyyy HH:mm:ss", null); //todo check if this works
-        GameManager.startTime = DateTime.Parse(saveData.startTime); 
+        // GameManager.startTime = DateTime.ParseExact(inGameSaveData.startTime, "dd/MM/yyyy HH:mm:ss", null); //todo check if this works
+        GameManager.startTime = DateTime.Parse(inGameSaveData.startTime); 
 
         
     }
@@ -194,10 +194,10 @@ public class SaveLoadSystem : MonoBehaviour
 
     public void SaveRemainingSceneTypes()
     {
-        saveData.remainingSceneTypes.Clear();
+        inGameSaveData.remainingSceneTypes.Clear();
         foreach (var types in remainingSceneTypes)
         {
-            saveData.remainingSceneTypes.Add(types.Scene.SceneName);
+            inGameSaveData.remainingSceneTypes.Add(types.Scene.SceneName);
         }
         SaveGame();
     }
@@ -271,7 +271,7 @@ public class SaveLoadSystem : MonoBehaviour
 
 // This save data is for an individual run, not for the entire game
 [Serializable]
-public class SaveData
+public class InGameSaveData
 {
     public List<PLayerData> playerDatas = new();
     public string startTime;

@@ -219,7 +219,7 @@ public class MainMenuController : MonoBehaviour
     public void Continue()
     {
         everythingUseful.SaveLoadSystem.LoadGame();
-        everythingUseful.SceneChanger.ChangeScene(everythingUseful.SaveLoadSystem.saveData.lastScene);
+        everythingUseful.SceneChanger.ChangeScene(everythingUseful.SaveLoadSystem.inGameSaveData.lastScene);
     }
     
     public void SelectedCharacterChanged()

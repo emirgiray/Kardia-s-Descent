@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
         
         everythingUseful.SaveLoadSystem.SaveGame();
         everythingUseful.MainPrefabScript.MainCamera.enabled = true;
-        everythingUseful.SaveLoadSystem.saveData.lastScene = everythingUseful.SceneChanger.firstLevel;
+        everythingUseful.SaveLoadSystem.inGameSaveData.lastScene = everythingUseful.SceneChanger.firstLevel;
         everythingUseful.SceneChanger.LoadFirstLevel();
     }
 
