@@ -109,7 +109,6 @@ public class Interactable : MonoBehaviour
                 everythingUseful.LevelManager.PlayerUnlocked(player.transform);
                 objectTile.Occupied = false;
                 objectTile.ResetOcupying();
-                Destroy(gameObject);
                 player.FinalizePosition(objectTile, true);
                 
                 GameObject tempPreview = Instantiate(player.PlayerPreview, everythingUseful.MainPrefabScript.playerPreviewParent.transform);
@@ -119,6 +118,28 @@ public class Interactable : MonoBehaviour
                 GameObject tempPartyRoundCard = Instantiate(everythingUseful.MainPrefabScript.PartyRoundCardPrefab, everythingUseful.MainPrefabScript.PartyRoundCardsSlot);
                 tempPartyRoundCard.GetComponent<CharacterRoundCard>().Init(player, everythingUseful.TurnSystem.RoundInfo.GetComponent<RoundInfo>());
                 //partyRoundCards.Add(tempPartyRoundCard);
+                
+                
+                UnlockabledCharacterData unlockabledCharacterData = new UnlockabledCharacterData()
+                {
+                    playerID = player.playerID,
+                    isUnlocked = true
+                };
+                everythingUseful.AllPlayers.allPlayers[player.playerID].isUnlocked = true;
+
+                everythingUseful.SaveLoadSystem.metaSaveData.UnlockableCharacterDatas.Clear();
+                for (int i = 0; i < everythingUseful.SaveLoadSystem.allPlayers.allPlayers.Count; i++)
+                {
+                    everythingUseful.SaveLoadSystem.metaSaveData.UnlockableCharacterDatas.Add(new UnlockabledCharacterData()
+                    {
+                        playerID = everythingUseful.SaveLoadSystem.allPlayers.allPlayers[i].playerID,
+                        isUnlocked = everythingUseful.SaveLoadSystem.allPlayers.allPlayers[i].isUnlocked
+                    });
+                }
+        
+                everythingUseful.SaveLoadSystem.MetaSave();
+               
+                Destroy(gameObject);
                 break;
             case CharacterClass.Chest:
                 throw new ArgumentOutOfRangeException();

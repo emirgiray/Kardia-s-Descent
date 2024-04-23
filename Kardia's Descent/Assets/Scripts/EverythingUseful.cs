@@ -29,8 +29,10 @@ public class EverythingUseful : ScriptableObject
     public UIManager UIManager;
     [FoldoutGroup("Assigners")]
     public CameraSystem CameraSystem;
-    
+    [FoldoutGroup("Assigners")]
+    public AllPlayers AllPlayers;
     public GameObject SpawnTextGO;
+    
 
     [Tooltip("Used for damage, heal, miss")]
     public void SpawnText(string value, Color color, Transform RandomSpawnLocation, float yOffset, float animDelay, SGT_Health health)

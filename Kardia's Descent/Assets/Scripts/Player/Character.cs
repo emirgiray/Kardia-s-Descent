@@ -198,7 +198,12 @@ public class Character : MonoBehaviour
             return;
         }
 
-        Debug.Log("Unable to find a start position");
+        if (!everythingUseful.SceneChanger.isOnMainMenu)
+        {
+            Debug.Log("Unable to find a start position");
+        }
+
+        
     }
 
     private IEnumerator moveCoroutine;

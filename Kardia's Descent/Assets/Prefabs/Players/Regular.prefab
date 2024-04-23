@@ -152,6 +152,11 @@ PrefabInstance:
       objectReference: {fileID: 3190162014522777536}
     - target: {fileID: 7510704565162782655, guid: 04563854e99a65a4c8a042dc7f750368,
         type: 3}
+      propertyPath: playerID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7510704565162782655, guid: 04563854e99a65a4c8a042dc7f750368,
+        type: 3}
       propertyPath: isUnlocked
       value: 1
       objectReference: {fileID: 0}
@@ -522,7 +527,6 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
-  outlineFillMaterial: {fileID: 0}
 --- !u!4 &6874142716013884590 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8417641893481620857, guid: fc3b4b439da10084da5c884b8212ff11,

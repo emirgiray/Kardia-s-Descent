@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,5 +6,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "AllPlayers", menuName = "ScriptableObjects/AllPlayers", order = 0)]
 public class AllPlayers : ScriptableObject
 {
-    public List<GameObject> allPlayers = new();
+    public List<Players> allPlayers = new();
+}
+
+[Serializable]
+public class Players
+{
+    public GameObject playerPrefab;
+    public int playerID;
+    public bool isUnlocked = false;
 }

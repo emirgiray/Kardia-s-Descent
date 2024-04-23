@@ -18,7 +18,7 @@ public class Player : Character
     [ShowIf("characterClass", CharacterClass.Bruiser)]
     [SerializeField] private bool canBruiserDoubleAttack = true;
     public bool isUnlocked = false;
-    
+    public int playerID;
     public delegate void QuestDelegate();
     public static event QuestDelegate JackTheRipperQuestCompleted;
     private void OnEnable()
@@ -52,7 +52,7 @@ public class Player : Character
         {
             StartCoroutine(StartDelay());
         }
-
+        playerID = everythingUseful.AllPlayers.allPlayers.FindIndex(p => p.playerPrefab.name.Equals(this.name));
     }
 
     private IEnumerator StartDelay()

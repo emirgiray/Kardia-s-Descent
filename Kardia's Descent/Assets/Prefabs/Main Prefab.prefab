@@ -10380,12 +10380,13 @@ MonoBehaviour:
   everythingUseful: {fileID: 11400000, guid: 0adf6649dfa6c2b48877232f4002ec52, type: 2}
   loadOnAwake: 0
   saveFileName: saveFile
+  metaSaveFileName: metaSaveFile
   encryptData: 0
   allPlayers: {fileID: 11400000, guid: cc6fd88f6d85f664483d2dda6793e81c, type: 2}
   allHeartDatas: {fileID: 11400000, guid: 3205190d312943148bab0c147b621110, type: 2}
   allSceneTypes: {fileID: 11400000, guid: 9718d308dff3b6e4490a8e268f7aa6d5, type: 2}
   inGameSaveData:
-    playerDatas: []
+    inGamePLayerDatas: []
     startTime: 
     totalKills: 0
     totalDamageDealt: 0
@@ -10393,8 +10394,11 @@ MonoBehaviour:
     totalHeartsCollected: 0
     lastScene: 
     remainingSceneTypes: []
+  metaSaveData:
+    UnlockableCharacterDatas: []
   saveFilePath: C:/Users/emiry/AppData/LocalLow/DefaultCompany/Kardia's Descent/Saves/
   saveFileFullPath: C:/Users/emiry/AppData/LocalLow/DefaultCompany/Kardia's Descent/Saves/saveFile.json
+  metaSaveFileFullPath: C:/Users/emiry/AppData/LocalLow/DefaultCompany/Kardia's Descent/Saves/metaSaveFile.json
   GameManager: {fileID: 6222046011016691636}
   LevelManager: {fileID: 1476355996276291527}
   SceneChanger: {fileID: 4304799865440428433}

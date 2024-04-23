@@ -80,7 +80,7 @@ public class InventoryUI : MonoBehaviour
     {
         // actionText.text = value.ToString();
         actionText.text = $"{value} / {player.maxActionPoints}";
-        Debug.Log($"actionText.text: {actionText.text} value: {value} player.maxActionPoints: {player.maxActionPoints}");
+        // Debug.Log($"actionText.text: {actionText.text} value: {value} player.maxActionPoints: {player.maxActionPoints}");
         APBar01.DOFillAmount((float)value / player.maxActionPoints, 2);
         
         for (int i = 0; i < actionPointsPips.Count; i++)

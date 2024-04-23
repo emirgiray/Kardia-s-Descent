@@ -127,15 +127,15 @@ public class MainMenuController : MonoBehaviour
 
         foreach (var player in allPlayers.allPlayers)
         {
-            Player playerScript = player.GetComponent<Player>();
+            Player playerScript = player.playerPrefab.GetComponent<Player>();
             
             var temp = Instantiate(characterButtonPrefab, selectionLayoutTransform);
             MainMenuCharacterButton charButton = temp.GetComponent<MainMenuCharacterButton>();
             allButtons.Add(charButton);
             charButton.characterPrefab = playerScript.playerPrefab;
-            charButton.characterName = player.name;
-            charButton.isUnlocked = playerScript.isUnlocked;
+            charButton.characterName = player.playerPrefab.name;
             charButton.characterImage = playerScript.characterSprite;
+            charButton.isUnlocked = /*playerScript.isUnlocked*/ everythingUseful.AllPlayers.allPlayers[player.playerID].isUnlocked;
 
         }
         

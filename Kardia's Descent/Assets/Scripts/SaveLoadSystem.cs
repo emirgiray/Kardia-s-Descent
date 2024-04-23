@@ -16,12 +16,14 @@ public class SaveLoadSystem : MonoBehaviour
     public bool loadOnAwake;
    
     public string saveFileName = "saveFile";
+    public string metaSaveFileName = "metaSaveFile";
     public bool encryptData;
     
     public AllPlayers allPlayers;
     public AllHeartDatas allHeartDatas;
     public AllSceneTypes allSceneTypes;
     public InGameSaveData inGameSaveData;
+    public MetaSaveData metaSaveData;
     
     // players
     // health 
@@ -34,7 +36,9 @@ public class SaveLoadSystem : MonoBehaviour
     public string saveFilePath;
     [ReadOnly] [Multiline(2)]
     public string saveFileFullPath;
-
+    [ReadOnly] [Multiline(2)]
+    public string metaSaveFileFullPath;
+    
     public GameManager GameManager;
     public LevelManager LevelManager;
     public SceneChanger SceneChanger;
@@ -53,19 +57,21 @@ public class SaveLoadSystem : MonoBehaviour
 
         AssignValues();
         SaveGame();
+        
+        MetaLoad();
     }
     
     private void GetValues()
     {
         foreach (var player in MainPrefabScript.SelectedPlayers)
         {
-            int playerIndex = allPlayers.allPlayers.FindIndex(p => p.name.Equals(player.name/* + " Variant"*/));
+            int playerIndex = allPlayers.allPlayers.FindIndex(p => p.playerPrefab.name.Equals(player.name/* + " Variant"*/));
             Player playerScript = player.GetComponent<Player>();
           //  Debug.Log($"Player name: {player.name} Player index: {playerIndex}");
             if (playerIndex == -1) continue;
 
             playerScript.AssignSkillValues();
-            inGameSaveData.playerDatas.Add(new PLayerData
+            inGameSaveData.inGamePLayerDatas.Add(new InGamePLayerData()
             {
                 playerID = playerIndex,
                 health = playerScript.health._Health,
@@ -104,7 +110,7 @@ public class SaveLoadSystem : MonoBehaviour
     public void SaveGame()
     {
         // clear the inGameSaveData list
-        inGameSaveData.playerDatas.Clear();
+        inGameSaveData.inGamePLayerDatas.Clear();
         
         GetValues();
         
@@ -139,9 +145,9 @@ public class SaveLoadSystem : MonoBehaviour
     {
       //  Debug.Log($"expression");
         MainPrefabScript.SelectedPlayers.Clear(); // clear the list if it has values
-        for (int i = 0; i < inGameSaveData.playerDatas.Count; i++) // first tell the mainprefabscript to spawn the players
+        for (int i = 0; i < inGameSaveData.inGamePLayerDatas.Count; i++) // first tell the mainprefabscript to spawn the players
         { 
-            MainPrefabScript.SelectedPlayers.Add(allPlayers.allPlayers[inGameSaveData.playerDatas[i].playerID]);
+            MainPrefabScript.SelectedPlayers.Add(allPlayers.allPlayers[inGameSaveData.inGamePLayerDatas[i].playerID].playerPrefab);
         }
         
 
@@ -154,23 +160,23 @@ public class SaveLoadSystem : MonoBehaviour
         MainPrefabScript.InitializeLevel();
         LevelManager.InitializeCharacters();
         
-        for (int i = 0; i < inGameSaveData.playerDatas.Count; i++) // then assign the values to the players
+        for (int i = 0; i < inGameSaveData.inGamePLayerDatas.Count; i++) // then assign the values to the players
         {
             Player player = MainPrefabScript.spawnedPlayerScripts[i];
             
-            player.characterStats.Strength = inGameSaveData.playerDatas[i].Strength;
-            player.characterStats.Dexterity = inGameSaveData.playerDatas[i].Dexterity;
-            player.characterStats.Constitution = inGameSaveData.playerDatas[i].Constitution;
-            player.characterStats.Aiming = inGameSaveData.playerDatas[i].Aiming;
-            player.isUnlocked = inGameSaveData.playerDatas[i].isUnlocked;
+            player.characterStats.Strength = inGameSaveData.inGamePLayerDatas[i].Strength;
+            player.characterStats.Dexterity = inGameSaveData.inGamePLayerDatas[i].Dexterity;
+            player.characterStats.Constitution = inGameSaveData.inGamePLayerDatas[i].Constitution;
+            player.characterStats.Aiming = inGameSaveData.inGamePLayerDatas[i].Aiming;
+            player.isUnlocked = inGameSaveData.inGamePLayerDatas[i].isUnlocked;
             //player.AssignSkillValues(); // this is already done on character awake
             
-            player.health.Max = inGameSaveData.playerDatas[i].maxHealth;
-            player.health._Health = inGameSaveData.playerDatas[i].health;
+            player.health.Max = inGameSaveData.inGamePLayerDatas[i].maxHealth;
+            player.health._Health = inGameSaveData.inGamePLayerDatas[i].health;
 
-            if (inGameSaveData.playerDatas[i].heartID != -1)
+            if (inGameSaveData.inGamePLayerDatas[i].heartID != -1)
             {
-                player.heartContainer.heartData = allHeartDatas.allHearts[inGameSaveData.playerDatas[i].heartID];
+                player.heartContainer.heartData = allHeartDatas.allHearts[inGameSaveData.inGamePLayerDatas[i].heartID];
                 player.heartContainer.hearthStatsApplied = true;
             }
         }
@@ -187,9 +193,53 @@ public class SaveLoadSystem : MonoBehaviour
         
     }
 
+    public void MetaSave()
+    {
+        if (!System.IO.Directory.Exists(saveFilePath))
+        {
+            System.IO.Directory.CreateDirectory(saveFilePath);
+        }
+    
+        string json = JsonUtility.ToJson(metaSaveData, true);
+
+        if (encryptData)  json = Encrypt(json);
+
+        System.IO.File.WriteAllText(metaSaveFileFullPath, json);
+    }
+
+    public void MetaLoad()
+    {
+        if (System.IO.File.Exists(metaSaveFileFullPath))
+        {
+            string json = System.IO.File.ReadAllText(metaSaveFileFullPath);
+
+            if (encryptData) json = Decrypt(json);
+            
+            JsonUtility.FromJsonOverwrite(json, metaSaveData);
+            
+        }
+        
+        for (int i = 0; i < metaSaveData.UnlockableCharacterDatas.Count; i++)
+        {
+            allPlayers.allPlayers[metaSaveData.UnlockableCharacterDatas[i].playerID].isUnlocked = metaSaveData.UnlockableCharacterDatas[i].isUnlocked;
+        }
+    }
+
     public void SetValuesFirstTime()
     {
         remainingSceneTypes = allSceneTypes.defaultAllSceneTypes;
+
+        metaSaveData.UnlockableCharacterDatas.Clear();
+        for (int i = 0; i < allPlayers.allPlayers.Count; i++)
+        {
+            metaSaveData.UnlockableCharacterDatas.Add(new UnlockabledCharacterData()
+            {
+                playerID = allPlayers.allPlayers[i].playerID,
+                isUnlocked = allPlayers.allPlayers[i].isUnlocked
+            });
+        }
+        
+        MetaSave();
     }
 
     public void SaveRemainingSceneTypes()
@@ -237,6 +287,7 @@ public class SaveLoadSystem : MonoBehaviour
     {
         saveFilePath = Application.persistentDataPath + "/Saves/";
         saveFileFullPath = saveFilePath + saveFileName + saveFileExtension;
+        metaSaveFileFullPath = saveFilePath + metaSaveFileName + saveFileExtension;
     }
     
     [Button, GUIColor(1f, 1f, 1f)]
@@ -256,12 +307,12 @@ public class SaveLoadSystem : MonoBehaviour
 
     #endregion
 
-    [Button, GUIColor(1f, 1f, 1f)]
+    /*[Button, GUIColor(1f, 1f, 1f)]
     public void LevelManagerAndMainPrefabInit()
     {
         MainPrefabScript.InitializeLevel();
         LevelManager.InitializeCharacters();
-    }
+    }*/
 
     public bool GetDoesSaveExist()
     {
@@ -273,7 +324,7 @@ public class SaveLoadSystem : MonoBehaviour
 [Serializable]
 public class InGameSaveData
 {
-    public List<PLayerData> playerDatas = new();
+    public List<InGamePLayerData> inGamePLayerDatas = new();
     public string startTime;
     public int totalKills;
     public int totalDamageDealt;
@@ -287,7 +338,7 @@ public class InGameSaveData
 }
 
 [Serializable]
-public class PLayerData
+public class InGamePLayerData
 {
     public int playerID;
     public int health;
@@ -302,4 +353,17 @@ public class PLayerData
     public int heartID;
     
     
+}
+
+[Serializable]
+public class MetaSaveData
+{
+    public List<UnlockabledCharacterData> UnlockableCharacterDatas = new();
+}
+
+[Serializable]
+public class UnlockabledCharacterData
+{
+    public int playerID;
+    public bool isUnlocked;
 }
