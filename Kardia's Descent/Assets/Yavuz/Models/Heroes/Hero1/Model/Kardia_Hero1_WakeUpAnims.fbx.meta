@@ -33,9 +33,9 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armature|_T
-      takeName: Armature|_T
-      internalID: 8830831176881541936
+      name: hero1_rig|_T
+      takeName: hero1_rig|_T
+      internalID: -6287158668710485130
       firstFrame: 0
       lastFrame: 0
       wrapMode: 0
@@ -62,9 +62,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|attack1
-      takeName: Armature|attack1
-      internalID: -7051846838243121864
+      name: hero1_rig|attack1
+      takeName: hero1_rig|attack1
+      internalID: 5165798704303647849
       firstFrame: 0
       lastFrame: 160
       wrapMode: 0
@@ -91,9 +91,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|attack2
-      takeName: Armature|attack2
-      internalID: 6530208104204547914
+      name: hero1_rig|attack2
+      takeName: hero1_rig|attack2
+      internalID: -1344131860881166987
       firstFrame: 0
       lastFrame: 66
       wrapMode: 0
@@ -120,9 +120,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|death
-      takeName: Armature|death
-      internalID: 5866576275671282845
+      name: hero1_rig|death
+      takeName: hero1_rig|death
+      internalID: -1821909057709782898
       firstFrame: 0
       lastFrame: 275
       wrapMode: 0
@@ -149,9 +149,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|idle
-      takeName: Armature|idle
-      internalID: -1978303741906493279
+      name: hero1_rig|idle
+      takeName: hero1_rig|idle
+      internalID: 8141631314843244850
       firstFrame: 0
       lastFrame: 241
       wrapMode: 0
@@ -178,9 +178,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|jump
-      takeName: Armature|jump
-      internalID: 7238280004761517075
+      name: hero1_rig|jump
+      takeName: hero1_rig|jump
+      internalID: -168921146565649264
       firstFrame: 0
       lastFrame: 190
       wrapMode: 0
@@ -207,9 +207,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|Sleep
-      takeName: Armature|Sleep
-      internalID: 5754330143168782828
+      name: hero1_rig|Sleep
+      takeName: hero1_rig|Sleep
+      internalID: 3885960568351031141
       firstFrame: 0
       lastFrame: 1
       wrapMode: 0
@@ -236,9 +236,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|WakeUp
-      takeName: Armature|WakeUp
-      internalID: 7933569904715140662
+      name: hero1_rig|WakeUp
+      takeName: hero1_rig|WakeUp
+      internalID: 2916079532475996788
       firstFrame: 0
       lastFrame: 39
       wrapMode: 0
@@ -265,9 +265,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|walk
-      takeName: Armature|walk
-      internalID: -4799524434163024911
+      name: hero1_rig|walk
+      takeName: hero1_rig|walk
+      internalID: 6865910316425396975
       firstFrame: 0
       lastFrame: 85
       wrapMode: 0
