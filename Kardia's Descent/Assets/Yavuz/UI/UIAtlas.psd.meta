@@ -214,6 +214,69 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: UIAtlas_0
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 3108
+        width: 698
+        height: 943
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 543551517fc1d8a49a5f890bf8186445
+      internalID: -1706808604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIAtlas_1
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 1971
+        width: 698
+        height: 943
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3628b324eac15da479c049748b5ffac9
+      internalID: 1248505690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIAtlas_2
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 834
+        width: 698
+        height: 943
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d682bff813b85074998d6048e9621e6f
+      internalID: -1850758726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -225,6 +288,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      UIAtlas_0: -1706808604
       UIAtlas_1: 1248505690
       UIAtlas_10: -98534810
       UIAtlas_11: 1148769747
