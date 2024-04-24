@@ -1054,6 +1054,111 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: SideP_h3
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 3020
+        width: 450
+        height: 450
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 970d82b0eae717748a8e1a71fea57730
+      internalID: -547422700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SideP_h1
+      rect:
+        serializedVersion: 2
+        x: 1033
+        y: 3018
+        width: 450
+        height: 450
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58da1467b5513a14e9b1786082949414
+      internalID: -517535628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SideP_h
+      rect:
+        serializedVersion: 2
+        x: 1574
+        y: 3022
+        width: 450
+        height: 450
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 997ef92bd84c6144397962ee237de3a8
+      internalID: -195766835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SideP_empty
+      rect:
+        serializedVersion: 2
+        x: 2156
+        y: 3012
+        width: 450
+        height: 450
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90d21104a7625fb43ba4f94dc7d7dc39
+      internalID: 455914956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kardia_UIAtlas_11
+      rect:
+        serializedVersion: 2
+        x: 1041
+        y: 2185
+        width: 114
+        height: 723
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78e963fb8bc5f4945bbcaa8fce7dff94
+      internalID: -1626259482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -1067,6 +1172,7 @@ TextureImporter:
     nameFileIdTable:
       AP_Indc: 1573853127
       Kardia_UIAtlas_0: -1537189811
+      Kardia_UIAtlas_11: -1626259482
       Kardia_UIAtlas_12: -484282679
       Kardia_UIAtlas_13: 1144294078
       Kardia_UIAtlas_14: 1188120822
@@ -1097,6 +1203,10 @@ TextureImporter:
       P3_S2: 434477216
       P3_S3: 374684540
       P3_S4: -1155649192
+      SideP_empty: 455914956
+      SideP_h: -195766835
+      SideP_h1: -517535628
+      SideP_h3: -547422700
       TopHex_Borders: 274480220
       TopHex_Enemy1: -2145818744
       TopHex_Enemy2: -845788115
