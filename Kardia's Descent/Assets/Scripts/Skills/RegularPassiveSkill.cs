@@ -25,10 +25,10 @@ public class RegularPassiveSkill : SkillsData
         //Debug.Log($"Wait finished");
         
         if (skillAudioEvent != null) skillAudioEvent.Play(ActivaterCharacter.transform);
-        if (skillStartVFX != null) skillStartVFX.SpawnVFX(ActivaterCharacter.Hand);
 
         while (fireCount < 3)
         {
+            if (skillStartVFX != null) skillStartVFX.SpawnVFX(ActivaterCharacter.Hand);
             if (base.TryHit(Skill, ActivaterCharacter, selectedTile, OnComplete))
             {
                 base.DoDamage(Skill, ActivaterCharacter, selectedTile, 1, OnComplete); 

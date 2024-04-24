@@ -25,6 +25,7 @@ public class MainPrefabScript : MonoBehaviour
     public List<GameObject> InventoryUISlots = new();
     public GameObject playerPreviewParent;
     
+    public GameObject PartyRoundCardsParent;
     public Transform PartyRoundCardsSlot;
     public GameObject PartyRoundCardPrefab;
     
@@ -115,8 +116,9 @@ public class MainPrefabScript : MonoBehaviour
             previews.Add(tempPreview);
             
             GameObject tempPartyRoundCard = Instantiate(PartyRoundCardPrefab, PartyRoundCardsSlot);
-            tempPartyRoundCard.GetComponent<Image>().sprite = spawnedPlayerScripts[i].characterSprite;
-           // tempPartyRoundCard.GetComponent<CharacterRoundCard>().Init(spawnedPlayerScripts[i], TurnSystem.RoundInfo.GetComponent<RoundInfo>());
+            tempPartyRoundCard.GetComponent<CharacterRoundCard>().Init(spawnedPlayerScripts[i], TurnSystem.RoundInfo.GetComponent<RoundInfo>(), true);
+           //tempPartyRoundCard.GetComponent<CharacterRoundCard>().Init(spawnedPlayerScripts[i], TurnSystem.RoundInfo.GetComponent<RoundInfo>());
+           PartyRoundCardsParent.SetActive(true);
             partyRoundCards.Add(tempPartyRoundCard);
         }
         

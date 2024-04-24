@@ -18,13 +18,15 @@ public class CharacterRoundCard : MonoBehaviour
     [SerializeField] private Image Bar01_2;
     [SerializeField] private Image Bar02_2;
 
-    public void Init(Character characterIn, RoundInfo roundInfoIn)
+    public void Init(Character characterIn, RoundInfo roundInfoIn, bool forPartyCard = false)
     {
         character = characterIn;
+        image.sprite = character.characterSprite;
+        if (forPartyCard) return;
+        
         roundInfo = roundInfoIn;
         nameText.text = characterIn.name;
-        image.sprite = character.characterSprite;
-
+        
         if (character.health.Bar01_2 == null)
         {
             character.health.Bar01_2 = Bar01_2;

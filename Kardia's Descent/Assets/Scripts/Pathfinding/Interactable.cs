@@ -5,6 +5,7 @@ using Sirenix.OdinInspector;
 using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class Interactable : MonoBehaviour
 {
@@ -122,7 +123,9 @@ public class Interactable : MonoBehaviour
                 //previews.Add(tempPreview);
             
                 GameObject tempPartyRoundCard = Instantiate(everythingUseful.MainPrefabScript.PartyRoundCardPrefab, everythingUseful.MainPrefabScript.PartyRoundCardsSlot);
-                tempPartyRoundCard.GetComponent<CharacterRoundCard>().Init(player, everythingUseful.TurnSystem.RoundInfo.GetComponent<RoundInfo>());
+                //tempPartyRoundCard.GetComponent<CharacterRoundCard>().Init(player, everythingUseful.TurnSystem.RoundInfo.GetComponent<RoundInfo>());
+                tempPartyRoundCard.GetComponent<CharacterRoundCard>().Init(player, everythingUseful.TurnSystem.RoundInfo.GetComponent<RoundInfo>(), true);
+                tempPartyRoundCard.GetComponent<Image>().sprite = player.characterSprite;
                 //partyRoundCards.Add(tempPartyRoundCard);
                 
                 

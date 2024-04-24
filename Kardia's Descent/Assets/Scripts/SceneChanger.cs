@@ -206,6 +206,7 @@ public class SceneChanger : MonoBehaviour
     public void LoadMainMenu()
     {
         everythingUseful.MainPrefabScript.ClearPrevious();
+        everythingUseful.MainPrefabScript.PartyRoundCardsParent.SetActive(false);
         //everythingUseful.MainPrefabScript.SelectedPlayers.Clear();
         ChangeScene(mainMenuLevel);
     }

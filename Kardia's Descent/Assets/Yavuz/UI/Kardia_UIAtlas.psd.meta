@@ -1055,7 +1055,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SideP_h3
+      name: PartyBG_h3
       rect:
         serializedVersion: 2
         x: 501
@@ -1063,7 +1063,7 @@ TextureImporter:
         width: 450
         height: 450
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1076,7 +1076,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SideP_h1
+      name: PartyBG_h1
       rect:
         serializedVersion: 2
         x: 1033
@@ -1084,7 +1084,7 @@ TextureImporter:
         width: 450
         height: 450
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1097,7 +1097,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SideP_h
+      name: PartyBG_h
       rect:
         serializedVersion: 2
         x: 1574
@@ -1105,7 +1105,7 @@ TextureImporter:
         width: 450
         height: 450
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1118,7 +1118,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SideP_empty
+      name: PartyBG_empty
       rect:
         serializedVersion: 2
         x: 2156
@@ -1126,7 +1126,7 @@ TextureImporter:
         width: 450
         height: 450
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1139,7 +1139,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kardia_UIAtlas_11
+      name: PartyBG
       rect:
         serializedVersion: 2
         x: 1041
@@ -1147,7 +1147,7 @@ TextureImporter:
         width: 114
         height: 723
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1172,7 +1172,6 @@ TextureImporter:
     nameFileIdTable:
       AP_Indc: 1573853127
       Kardia_UIAtlas_0: -1537189811
-      Kardia_UIAtlas_11: -1626259482
       Kardia_UIAtlas_12: -484282679
       Kardia_UIAtlas_13: 1144294078
       Kardia_UIAtlas_14: 1188120822
@@ -1203,10 +1202,11 @@ TextureImporter:
       P3_S2: 434477216
       P3_S3: 374684540
       P3_S4: -1155649192
-      SideP_empty: 455914956
-      SideP_h: -195766835
-      SideP_h1: -517535628
-      SideP_h3: -547422700
+      PartyBG: -1626259482
+      PartyBG_empty: 455914956
+      PartyBG_h: -195766835
+      PartyBG_h1: -517535628
+      PartyBG_h3: -547422700
       TopHex_Borders: 274480220
       TopHex_Enemy1: -2145818744
       TopHex_Enemy2: -845788115
