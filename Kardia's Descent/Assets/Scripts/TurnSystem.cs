@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using SGT_Tools.Audio;
 using Sirenix.OdinInspector;
 using Sirenix.Utilities;
 using TMPro;
@@ -33,6 +34,10 @@ public class TurnSystem : MonoBehaviour
     [SerializeField] public GameObject RoundInfoArrows;
     [SerializeField] public RoundInfo RoundInfoArrowsScript;
     [SerializeField] private GameObject CharacterCardPrefab;
+
+    [SerializeField] private SimpleAudioEvent combatMusic;
+    [SerializeField] private SimpleAudioEvent nonCombatMusic;
+    
     
     public Action FriendlyTurn;
     public Action FriendlySelected;
@@ -62,7 +67,17 @@ public class TurnSystem : MonoBehaviour
     [FoldoutGroup("Events")] public UnityEvent<Transform> OnPlayerAddTransform;
     [FoldoutGroup("Events")] public UnityEvent<Enemy> OnEnemyDeath;
     [FoldoutGroup("Events")] public UnityEvent<Enemy> OnEnemyAdd;
-    
+
+    public void InitAwake()
+    {
+        if (!everythingUseful.SceneChanger.isOnMainMenu) 
+        {
+            combatMusic.StopAudioSource();
+            nonCombatMusic.StopAudioSource();
+        
+            nonCombatMusic.Play(everythingUseful.Interact.mainCam.transform.parent);
+        }
+    }
 
     private void Start()
     {

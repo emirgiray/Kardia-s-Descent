@@ -40,7 +40,7 @@ public class RegularPassiveSkill : SkillsData
             
             fireCount++;
 
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.33f);
         }
         
         yield return new WaitUntil(() => ActivaterCharacter.animator.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("idle"));

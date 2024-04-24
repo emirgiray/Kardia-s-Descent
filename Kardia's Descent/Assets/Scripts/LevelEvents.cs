@@ -20,7 +20,7 @@ public class LevelEvents : MonoBehaviour
         /*if(everythingUseful.SaveLoadSystem.loadOnAwake)*/ if(!everythingUseful.SceneChanger.isOnMainMenu) everythingUseful.SaveLoadSystem.InitAwake();
         MainPrefabScript.Instance.InitAwake();
         EverythingUsefulAssigner.Instance.InitAwake();
-
+        everythingUseful.TurnSystem.InitAwake();
        
         
     }

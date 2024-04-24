@@ -20,7 +20,7 @@ MonoBehaviour:
   skillDamage: 0
   skillRange: 0
   skillCooldown: 4
-  actionPointUse: 0
+  actionPointUse: 3
   skillEffectDuration: 1
   skillBuffDebuffAmount: 50
   permaBuff: 0

@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Regular Passive Override Controller
+  m_Controller: {fileID: 9100000, guid: abe3327d0f8ffd34b945174ecb19a2b2, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: -3576926933002285359, guid: fc3b4b439da10084da5c884b8212ff11,
+      type: 3}
+    m_OverrideClip: {fileID: -2177792002379371154, guid: 2d192e630bc0b7a4c86e079545950bee,
+      type: 3}
