@@ -96,7 +96,7 @@ public class SceneChanger : MonoBehaviour
     [Button, GUIColor(1f, 0.1f, 0.1f)]
     public void ClearOfferedScenes()
     {
-        everythingUseful.UIManager.ClearSceneTypeButtons();
+       // everythingUseful.UIManager.ClearSceneTypeButtons();
         possibleNextScenes.Clear();
     }
 
@@ -118,7 +118,7 @@ public class SceneChanger : MonoBehaviour
         everythingUseful.GameManager.ResetToDefault();
         currentScene = Value;
         // SceneManager.LoadSceneAsync(Value,LoadSceneMode.Single);
-        
+        ClearOfferedScenes();
         SceneIsChangingEvent?.Invoke();
         
         StartCoroutine(LoadSceneAsync(Value));
@@ -188,6 +188,7 @@ public class SceneChanger : MonoBehaviour
     
     public void ReloadSameScene()
     {
+        ClearOfferedScenes();
         everythingUseful.MainPrefabScript.ClearPrevious();
         int CurrentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneIsChangingEvent?.Invoke();
