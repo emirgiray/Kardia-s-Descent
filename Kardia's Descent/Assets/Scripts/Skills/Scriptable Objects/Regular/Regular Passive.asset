@@ -33,12 +33,12 @@ MonoBehaviour:
   cleaveTimes: 1
   cleaveStartLeft: 1
   animatorOverrideController: {fileID: 0}
-  skillStartVFX: {fileID: 11400000, guid: 9d7befec332a1954ba5ca9c5f95215c5, type: 2}
+  skillStartVFX: {fileID: 11400000, guid: 93884155d90051048a66ee4d0c67a96d, type: 2}
   skillImpactVFX: {fileID: 0}
   skillHitVFX:
   - {fileID: 11400000, guid: 2d7ba90a2d4cad44ea904346e7ce5f75, type: 2}
   skillMissVFX: {fileID: 11400000, guid: f95dd6b5fb3dc4f4c9158365d41b4807, type: 2}
-  skillAudioEvent: {fileID: 11400000, guid: 270f97129d40c8348826c266d928e7a8, type: 2}
+  skillAudioEvent: {fileID: 11400000, guid: 39cfc4a9ea87cdb4fa12b11d4c4d24cc, type: 2}
   skillType: 0
   passiveOrActive: 0
   skillClass: 0

@@ -188,12 +188,12 @@ public class SceneChanger : MonoBehaviour
     
     public void ReloadSameScene()
     {
-        ClearOfferedScenes();
         everythingUseful.MainPrefabScript.ClearPrevious();
         int CurrentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneIsChangingEvent?.Invoke();
-        SceneManager.LoadScene(CurrentSceneIndex);
-        //ChangeScene(GetCurrentScene());
+        //ClearOfferedScenes();
+        //SceneManager.LoadScene(CurrentSceneIndex);
+        ChangeScene(GetCurrentScene());
     }
     
     public void LoadSceneWithIndex(int indexScene)
