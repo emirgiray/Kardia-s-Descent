@@ -16,6 +16,8 @@ MonoBehaviour:
   remainingSceneTypes:
   - {fileID: 11400000, guid: 8e9a730be01609f4cae43473b877c8c2, type: 2}
   - {fileID: 11400000, guid: 87deb5575bf475c4c8eb29980061a36a, type: 2}
+  - {fileID: 11400000, guid: 77c6eb3a5aad39f48a80349e796d0890, type: 2}
   defaultAllSceneTypes:
   - {fileID: 11400000, guid: 8e9a730be01609f4cae43473b877c8c2, type: 2}
   - {fileID: 11400000, guid: 87deb5575bf475c4c8eb29980061a36a, type: 2}
+  - {fileID: 11400000, guid: 77c6eb3a5aad39f48a80349e796d0890, type: 2}
