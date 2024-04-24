@@ -299,90 +299,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kardia_UIAtlas_P3_S1
-      rect:
-        serializedVersion: 2
-        x: 460
-        y: 3164
-        width: 165
-        height: 166
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fa18c1db8fbbb234f9dffc3e062e95fa
-      internalID: -571955808
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Kardia_UIAtlas_P3_S3
-      rect:
-        serializedVersion: 2
-        x: 658
-        y: 3164
-        width: 168
-        height: 166
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 96f448ba17ac88e4b9ecb313ff3551ec
-      internalID: -110413828
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Kardia_UIAtlas_P3_S2
-      rect:
-        serializedVersion: 2
-        x: 457
-        y: 2972
-        width: 167
-        height: 166
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 98c1fae46d4675846b862c679bd2fc44
-      internalID: -1431885180
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Kardia_UIAtlas_P3_S4
-      rect:
-        serializedVersion: 2
-        x: 661
-        y: 2973
-        width: 165
-        height: 166
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5f9beb4df2eb26c49b521b44d4441d1e
-      internalID: 861851198
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Kardia_UIAtlas_E2
       rect:
         serializedVersion: 2
@@ -420,90 +336,6 @@ TextureImporter:
       bones: []
       spriteID: 971e36743e58d5e4c97f321ba5d23978
       internalID: 923261104
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: P3_S1
-      rect:
-        serializedVersion: 2
-        x: 899
-        y: 3029
-        width: 222
-        height: 244
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f3fa96137af7aea47b5a9de4e6f06d04
-      internalID: 6691833
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: P3_S2
-      rect:
-        serializedVersion: 2
-        x: 1170
-        y: 3029
-        width: 241
-        height: 244
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 58772050e6369da4d95e94b06ce0e87c
-      internalID: 434477216
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: P3_S3
-      rect:
-        serializedVersion: 2
-        x: 1451
-        y: 3029
-        width: 261
-        height: 244
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e471545dc8caa2f4a85390cc425f4709
-      internalID: 374684540
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: P3_S4
-      rect:
-        serializedVersion: 2
-        x: 1764
-        y: 3029
-        width: 219
-        height: 244
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5645aa8127496364fa89db890e3bec4c
-      internalID: -1155649192
       vertices: []
       indices: 
       edges: []
@@ -693,90 +525,6 @@ TextureImporter:
       bones: []
       spriteID: 3e60ef0dce0da73479f56676dd2e47cb
       internalID: -2021078203
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: P1_S2
-      rect:
-        serializedVersion: 2
-        x: 931
-        y: 2497
-        width: 397
-        height: 405
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2b55697d6c7af054484d331b59aeecf0
-      internalID: -524270995
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: P1_S1
-      rect:
-        serializedVersion: 2
-        x: 1395
-        y: 2497
-        width: 349
-        height: 413
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 08fe17b5ae4c53d4eb0c8fb8d66313a1
-      internalID: -2000082879
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: P1_S4
-      rect:
-        serializedVersion: 2
-        x: 1819
-        y: 2506
-        width: 377
-        height: 405
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1de188910e9b08c4e86805de356c7f7a
-      internalID: 1681298488
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: P1_S3
-      rect:
-        serializedVersion: 2
-        x: 2289
-        y: 2505
-        width: 352
-        height: 406
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8274df578fd43cb4d9845e4b3a9a2c71
-      internalID: 1896535530
       vertices: []
       indices: 
       edges: []
@@ -1075,6 +823,237 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Kardia_UIAtlas_0
+      rect:
+        serializedVersion: 2
+        x: 907
+        y: 4240
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04d1f479685910144bdb2754f39af7b0
+      internalID: -1537189811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TopHex_Hero4
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 2166
+        width: 600
+        height: 625
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d15e2d488d04e2d46add864564151138
+      internalID: 2037170692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: h4_s1
+      rect:
+        serializedVersion: 2
+        x: 2244
+        y: 1717
+        width: 429
+        height: 490
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3afa633a95d30f4fb01282fb7440066
+      internalID: -1636339133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: h4_s2
+      rect:
+        serializedVersion: 2
+        x: 2744
+        y: 1717
+        width: 422
+        height: 490
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 576fb706f0881af4284689ade811011c
+      internalID: 78700058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: h4_s3
+      rect:
+        serializedVersion: 2
+        x: 3268
+        y: 1717
+        width: 421
+        height: 490
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1897c49f17df3d547981ea9b027aada2
+      internalID: -926933825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: h4_s4
+      rect:
+        serializedVersion: 2
+        x: 3761
+        y: 1717
+        width: 427
+        height: 490
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83b1ffecec02cef41955b0734cfce10c
+      internalID: 819807239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kardia_UIAtlas_12
+      rect:
+        serializedVersion: 2
+        x: 4185
+        y: 1907
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6ffa6a35e0af7943a87a6c74e822ad1
+      internalID: -484282679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kardia_UIAtlas_13
+      rect:
+        serializedVersion: 2
+        x: 4191
+        y: 1906
+        width: 8
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f55d7ad5001776d4fbd89df56d2f7786
+      internalID: 1144294078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kardia_UIAtlas_14
+      rect:
+        serializedVersion: 2
+        x: 4185
+        y: 1869
+        width: 22
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4db4eef6f4b07e478eecec71b7ff7e7
+      internalID: 1188120822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kardia_UIAtlas_15
+      rect:
+        serializedVersion: 2
+        x: 4185
+        y: 1806
+        width: 13
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb490d32ef7a2d240a92858ab1727641
+      internalID: 1509419218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TopHex_Enemy3
+      rect:
+        serializedVersion: 2
+        x: 1203
+        y: 968
+        width: 597
+        height: 600
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da2e9b710949a9543ae10bf580d383fe
+      internalID: -1957219354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -1087,13 +1066,16 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       AP_Indc: 1573853127
-      Kardia_UIAtlas_1: 2037170692
+      Kardia_UIAtlas_0: -1537189811
+      Kardia_UIAtlas_12: -484282679
+      Kardia_UIAtlas_13: 1144294078
+      Kardia_UIAtlas_14: 1188120822
+      Kardia_UIAtlas_15: 1509419218
       Kardia_UIAtlas_2: 816221303
       Kardia_UIAtlas_3: 858309278
       Kardia_UIAtlas_4: 749771949
       Kardia_UIAtlas_5: -1282025756
       Kardia_UIAtlas_6: 1815163699
-      Kardia_UIAtlas_7: -1871624062
       Kardia_UIAtlas_8: 432443997
       Kardia_UIAtlas_E1: 276419777
       Kardia_UIAtlas_E2: -671121250
@@ -1118,9 +1100,11 @@ TextureImporter:
       TopHex_Borders: 274480220
       TopHex_Enemy1: -2145818744
       TopHex_Enemy2: -845788115
+      TopHex_Enemy3: -1957219354
       TopHex_HP: 632324815
       TopHex_Hero1: 1037746094
       TopHex_Hero3: -1616148948
+      TopHex_Hero4: 2037170692
       h1_s1: -1738812705
       h1_s2: 1971214589
       h1_s3: 1897925181
@@ -1129,6 +1113,10 @@ TextureImporter:
       h3_s2: 322038598
       h3_s3: -959594703
       h3_s4: 1385725176
+      h4_s1: -1871624062
+      h4_s2: 78700058
+      h4_s3: -926933825
+      h4_s4: 819807239
       heart_0: 1158375599
       heart_1: 2005359547
       heart_2: -92832186

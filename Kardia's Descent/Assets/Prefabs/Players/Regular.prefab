@@ -196,7 +196,7 @@ PrefabInstance:
         type: 3}
       propertyPath: characterSprite
       value: 
-      objectReference: {fileID: 274480220, guid: f050367bbcaea674495c2d5e36fc140b,
+      objectReference: {fileID: 2037170692, guid: f050367bbcaea674495c2d5e36fc140b,
         type: 3}
     - target: {fileID: 7510704565162782655, guid: 04563854e99a65a4c8a042dc7f750368,
         type: 3}

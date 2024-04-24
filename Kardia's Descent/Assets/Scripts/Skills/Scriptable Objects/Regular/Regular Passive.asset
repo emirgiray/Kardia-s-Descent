@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Regular Passive
   m_EditorClassIdentifier: 
   everythingUseful: {fileID: 11400000, guid: 0adf6649dfa6c2b48877232f4002ec52, type: 2}
-  skillSprite: {fileID: 21300034, guid: 7ab74e659e1f0a34d9cfec21c478fc12, type: 3}
+  skillSprite: {fileID: 819807239, guid: f050367bbcaea674495c2d5e36fc140b, type: 3}
   skillName: Burst Fire
   skillDescription: Shoot 3 bullets with 80% of the normal accuracy.
   skillID: 12

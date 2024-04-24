@@ -7653,7 +7653,7 @@ PrefabInstance:
     - target: {fileID: 1764541655754650399, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
         type: 3}
       propertyPath: m_Name
-      value: Berserker (2)
+      value: Berserker
       objectReference: {fileID: 0}
     - target: {fileID: 1764541655754650399, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
         type: 3}
@@ -19280,6 +19280,12 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 579763441791824922, guid: f2891199ad7459148abfc14b3a406b37,
+        type: 3}
+      propertyPath: everythingUseful
+      value: 
+      objectReference: {fileID: 11400000, guid: 0adf6649dfa6c2b48877232f4002ec52,
+        type: 2}
     - target: {fileID: 3192985337203590846, guid: f2891199ad7459148abfc14b3a406b37,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -56112,7 +56118,7 @@ PrefabInstance:
     - target: {fileID: 1764541655754650399, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
         type: 3}
       propertyPath: m_Name
-      value: Berserker (1)
+      value: Berserker
       objectReference: {fileID: 0}
     - target: {fileID: 1764541655754650399, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
         type: 3}

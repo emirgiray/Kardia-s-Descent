@@ -31,6 +31,7 @@ public class StateAI : ScriptableObject
     
     public void DoActionsOnce(StateController controller)
     {
+        if (actionsOnce == null) return;
         for (int i = 0; i < actionsOnce.Length; i++)
         {
             actionsOnce[i].Act(controller);
