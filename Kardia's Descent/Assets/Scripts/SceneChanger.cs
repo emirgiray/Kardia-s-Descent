@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
@@ -31,6 +32,7 @@ public class SceneChanger : MonoBehaviour
     [BoxGroup("Loading Screen")] [SerializeField]
     private TextMeshProUGUI loadingText;
 
+    public UnityEvent SceneIsChangingEvent;
     public bool isOnMainMenu => SceneManager.GetActiveScene().name == mainMenuLevel.SceneName;
 
     private void Awake()
@@ -117,6 +119,8 @@ public class SceneChanger : MonoBehaviour
         currentScene = Value;
         // SceneManager.LoadSceneAsync(Value,LoadSceneMode.Single);
         
+        SceneIsChangingEvent?.Invoke();
+        
         StartCoroutine(LoadSceneAsync(Value));
         StartCoroutine(LoadingTextAnim());
         
@@ -126,7 +130,7 @@ public class SceneChanger : MonoBehaviour
     {
         loadingBar.fillAmount = 0;
         laodingScreen.SetActive(true); 
-        asyncLoad = SceneManager.LoadSceneAsync(value);
+        asyncLoad = SceneManager.LoadSceneAsync(value, LoadSceneMode.Single); 
         asyncLoad.allowSceneActivation = false;
         while (!asyncLoad.isDone)
         {
@@ -186,6 +190,7 @@ public class SceneChanger : MonoBehaviour
     {
         everythingUseful.MainPrefabScript.ClearPrevious();
         int CurrentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneIsChangingEvent?.Invoke();
         SceneManager.LoadScene(CurrentSceneIndex);
         //ChangeScene(GetCurrentScene());
     }

@@ -47,6 +47,10 @@ public class TurnSystem : MonoBehaviour
     public Action OnEnemyCheckStunTurnEvent;
     public Action<int> TurnChange;
     public Action<int> RoundChange;
+    
+    public UnityEvent CombatStartedEvent;
+    public UnityEvent CombatEndedEvent;
+    
     [FoldoutGroup("Events")] public UnityEvent OnTurnChange;
     [FoldoutGroup("Events")] public UnityEvent<TextMeshProUGUI> OnTurnChangeUpdateText;
     [FoldoutGroup("Events")] public UnityEvent OnRoundChange;
@@ -159,6 +163,7 @@ public class TurnSystem : MonoBehaviour
         RoundChange?.Invoke(round);
         OnRoundChange.Invoke();
         DecideWhosTurn();
+        CombatStartedEvent.Invoke();
     }
 
     [Button, GUIColor(1f, 1f, 1f)]
@@ -168,6 +173,7 @@ public class TurnSystem : MonoBehaviour
         round = 0;
         OnCombatEndAction?.Invoke();
         DecideWhosTurn();
+        CombatEndedEvent.Invoke();
     }
     
     public void DecideEnemyTurnOrder()//this will work according to enemy initiative //todo this is reversed!!!!

@@ -21294,12 +21294,12 @@ PrefabInstance:
     - target: {fileID: 3822293013884056296, guid: e6bf89a06050d0b4c93837d1905c78b0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.12
+      value: 51
       objectReference: {fileID: 0}
     - target: {fileID: 3822293013884056296, guid: e6bf89a06050d0b4c93837d1905c78b0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10.23
+      value: -10.3
       objectReference: {fileID: 0}
     - target: {fileID: 7191763609334904033, guid: e6bf89a06050d0b4c93837d1905c78b0,
         type: 3}
@@ -41434,6 +41434,11 @@ PrefabInstance:
       propertyPath: Rules.Array.data[6].GameObject
       value: 
       objectReference: {fileID: 655431904}
+    - target: {fileID: 2553172505986963620, guid: 2cb7460ecb066dd42baf1795827245c7,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 4997726300799112625, guid: 2cb7460ecb066dd42baf1795827245c7,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -61816,12 +61821,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 8980570601068670817, guid: a4ca6bc64677a0d4ca26d133dbaf148d,
-        type: 3}
-      propertyPath: SceneType
-      value: 
-      objectReference: {fileID: 11400000, guid: 8e9a730be01609f4cae43473b877c8c2,
-        type: 2}
     - target: {fileID: 8980570601068670817, guid: a4ca6bc64677a0d4ca26d133dbaf148d,
         type: 3}
       propertyPath: isEndDoor

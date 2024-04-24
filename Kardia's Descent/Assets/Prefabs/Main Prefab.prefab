@@ -10365,6 +10365,33 @@ MonoBehaviour:
   laodingScreen: {fileID: 6539385529626814886}
   loadingBar: {fileID: 2002457305793912155}
   loadingText: {fileID: 8725952050619747869}
+  SceneIsChangingEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: c0a74ca95827dcd49bcc0be281486ee4, type: 2}
+        m_TargetAssemblyTypeName: SGT_Tools.Audio.SimpleAudioEvent, SGT_Audio
+        m_MethodName: StopAudioSource
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 593052c8b56b03044bdf128637a3c0ff, type: 2}
+        m_TargetAssemblyTypeName: SGT_Tools.Audio.SimpleAudioEvent, SGT_Audio
+        m_MethodName: StopAudioSource
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &9165005917305822135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11271,7 +11298,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f3c2170891cd6f0439adfbb637320d92, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 0.04
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -12322,6 +12349,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4927100161396484832}
   - component: {fileID: 4377341019600772746}
+  - component: {fileID: 198646930491476385}
   m_Layer: 0
   m_Name: Turn Manager
   m_TagString: Untagged
@@ -12373,6 +12401,60 @@ MonoBehaviour:
   RoundInfoArrowsScript: {fileID: 4838370760301202297}
   CharacterCardPrefab: {fileID: 4817859511953182997, guid: 163875383e3051c4295f7a099d7c47b5,
     type: 3}
+  CombatStartedEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 593052c8b56b03044bdf128637a3c0ff, type: 2}
+        m_TargetAssemblyTypeName: SGT_Tools.Audio.SimpleAudioEvent, SGT_Audio
+        m_MethodName: StopAudioSource
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: c0a74ca95827dcd49bcc0be281486ee4, type: 2}
+        m_TargetAssemblyTypeName: SGT_Tools.Audio.SimpleAudioEvent, SGT_Audio
+        m_MethodName: Play
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 9119959526346741709}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  CombatEndedEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: c0a74ca95827dcd49bcc0be281486ee4, type: 2}
+        m_TargetAssemblyTypeName: SGT_Tools.Audio.SimpleAudioEvent, SGT_Audio
+        m_MethodName: StopAudioSource
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 593052c8b56b03044bdf128637a3c0ff, type: 2}
+        m_TargetAssemblyTypeName: SGT_Tools.Audio.SimpleAudioEvent, SGT_Audio
+        m_MethodName: Play
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 9119959526346741709}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnTurnChange:
     m_PersistentCalls:
       m_Calls: []
@@ -12406,6 +12488,57 @@ MonoBehaviour:
   OnEnemyAdd:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &198646930491476385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7284192964117524682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e0888b317fe5b241a84a651a0210440, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartEvents:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: c0a74ca95827dcd49bcc0be281486ee4, type: 2}
+        m_TargetAssemblyTypeName: SGT_Tools.Audio.SimpleAudioEvent, SGT_Audio
+        m_MethodName: StopAudioSource
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 593052c8b56b03044bdf128637a3c0ff, type: 2}
+        m_TargetAssemblyTypeName: SGT_Tools.Audio.SimpleAudioEvent, SGT_Audio
+        m_MethodName: StopAudioSource
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 593052c8b56b03044bdf128637a3c0ff, type: 2}
+        m_TargetAssemblyTypeName: SGT_Tools.Audio.SimpleAudioEvent, SGT_Audio
+        m_MethodName: Play
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 9119959526346741709}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7329925906580979640
 GameObject:
   m_ObjectHideFlags: 0
