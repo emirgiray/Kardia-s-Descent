@@ -197,6 +197,11 @@ public class SkillContainer : MonoBehaviour
                 Debug.Log("Not enough AP");
                 return;
             }
+
+            if (selectSkill.skillData.passiveOrActive == SkillsData.PassiveOrActive.Passive)
+            {
+                return;
+            }
             
             if (skillSelected == false) //if no skill is selected select that sakill
             {

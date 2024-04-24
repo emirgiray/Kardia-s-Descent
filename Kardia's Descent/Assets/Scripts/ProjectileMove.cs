@@ -12,7 +12,7 @@ public class ProjectileMove : MonoBehaviour
     private float halfTimer;
     public ParabolaController parabolaController;
     
-    public void SetAndStartParabola(Transform TargetTransform)
+    public void SetAndStartParabolaYOffset(Transform TargetTransform)
     {
         Transform lastChild = parabolaController.ParabolaRoot.transform.GetChild(parabolaController.ParabolaRoot.transform.childCount - 1); 
         Transform middleChild = parabolaController.ParabolaRoot.transform.GetChild(parabolaController.ParabolaRoot.transform.childCount - 2); 
@@ -20,6 +20,18 @@ public class ProjectileMove : MonoBehaviour
         lastChild.position = TargetTransform.position;
         middleChild.position = (lastChild.position + parabolaController.ParabolaRoot.transform.GetChild(0).position) / 2;
         middleChild.position = new Vector3(middleChild.position.x, middleChild.position.y + 1, middleChild.position.z);
+        // parabolaController.RefreshTransforms(Speed);
+        parabolaController.FollowParabola();
+    }
+    
+    public void SetAndStartParabolaStraight(Vector3 target)
+    {
+        Transform lastChild = parabolaController.ParabolaRoot.transform.GetChild(parabolaController.ParabolaRoot.transform.childCount - 1); 
+        Transform middleChild = parabolaController.ParabolaRoot.transform.GetChild(parabolaController.ParabolaRoot.transform.childCount - 2); 
+        
+        lastChild.position = target;
+        middleChild.position = (lastChild.position + parabolaController.ParabolaRoot.transform.GetChild(0).position) / 2;
+        middleChild.position = new Vector3(middleChild.position.x, middleChild.position.y, middleChild.position.z);
         // parabolaController.RefreshTransforms(Speed);
         parabolaController.FollowParabola();
     }

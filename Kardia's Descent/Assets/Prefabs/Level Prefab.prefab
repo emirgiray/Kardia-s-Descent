@@ -123,6 +123,8 @@ MonoBehaviour:
   StartEvent:
     m_PersistentCalls:
       m_Calls: []
+  audioManagerCenter: {fileID: 11400000, guid: 4e6cb3a3a333b3246859816701a12be1, type: 2}
+  AudioManager: {fileID: 0}
 --- !u!1 &2179156600778399121
 GameObject:
   m_ObjectHideFlags: 0

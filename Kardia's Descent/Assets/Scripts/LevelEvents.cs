@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using SGT_Tools.Audio;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
@@ -12,6 +13,8 @@ public class LevelEvents : MonoBehaviour
     public UnityEvent AwakeEvent;
     [FoldoutGroup("Events")]
     public UnityEvent StartEvent;
+    
+    public SGT_AudioManagerCenter audioManagerCenter;
     
     private void Awake()
     {
@@ -28,7 +31,7 @@ public class LevelEvents : MonoBehaviour
     private void Start()
     {
         StartEvent.Invoke();
-        
+        audioManagerCenter.AudioManager = everythingUseful.AudioManager;
         FindEndDoors();
     }
     

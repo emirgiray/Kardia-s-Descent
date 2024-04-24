@@ -7,6 +7,7 @@ using DG.Tweening.Core;
 using FischlWorks_FogWar;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 //remember to make this script execute first but after turn system
 public class MainPrefabScript : MonoBehaviour
@@ -114,7 +115,8 @@ public class MainPrefabScript : MonoBehaviour
             previews.Add(tempPreview);
             
             GameObject tempPartyRoundCard = Instantiate(PartyRoundCardPrefab, PartyRoundCardsSlot);
-            tempPartyRoundCard.GetComponent<CharacterRoundCard>().Init(spawnedPlayerScripts[i], TurnSystem.RoundInfo.GetComponent<RoundInfo>());
+            tempPartyRoundCard.GetComponent<Image>().sprite = spawnedPlayerScripts[i].characterSprite;
+           // tempPartyRoundCard.GetComponent<CharacterRoundCard>().Init(spawnedPlayerScripts[i], TurnSystem.RoundInfo.GetComponent<RoundInfo>());
             partyRoundCards.Add(tempPartyRoundCard);
         }
         

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using CodeMonkey.CameraSystem;
+using SGT_Tools.Audio;
 using UnityEngine;
 
 public class EverythingUsefulAssigner : MonoBehaviour
@@ -18,7 +19,7 @@ public class EverythingUsefulAssigner : MonoBehaviour
     public TurnSystem TurnSystem;
     public UIManager UIManager;
     public CameraSystem CameraSystem;
-    
+    public SGT_AudioSFXManager AudioManager;
     private void Awake()
     {
         if (Instance == null)
@@ -42,6 +43,7 @@ public class EverythingUsefulAssigner : MonoBehaviour
         EverythingUseful.TurnSystem = TurnSystem;
         EverythingUseful.UIManager = UIManager;
         EverythingUseful.CameraSystem = CameraSystem;
+        EverythingUseful.AudioManager = AudioManager;
     }
 
     public void InitAwake()
@@ -56,5 +58,8 @@ public class EverythingUsefulAssigner : MonoBehaviour
         EverythingUseful.TurnSystem = TurnSystem;
         EverythingUseful.UIManager = UIManager;
         EverythingUseful.CameraSystem = CameraSystem;
+        EverythingUseful.AudioManager = AudioManager;
     }
 }
+
+

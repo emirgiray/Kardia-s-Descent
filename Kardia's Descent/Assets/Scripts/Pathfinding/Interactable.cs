@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -37,7 +38,7 @@ public class Interactable : MonoBehaviour
     
     [ShowIf("InteractableType", CharacterClass.Player)]
     [SerializeField] private Player player;
-    
+
     
     public UnityEvent OnInteractEvent;
     
@@ -80,6 +81,8 @@ public class Interactable : MonoBehaviour
                 break;
             case CharacterClass.Player:
                 
+                player.animator.enabled = true;
+                player.animator.SetTrigger("Sleep");
                 break;
             case CharacterClass.Chest:
                 
@@ -104,12 +107,15 @@ public class Interactable : MonoBehaviour
                 objectTile.ResetOcupying();
                 Destroy(gameObject);
                 break;
+            
             case CharacterClass.Player:
                 player.UnlockPlayer();
                 everythingUseful.LevelManager.PlayerUnlocked(player.transform);
                 objectTile.Occupied = false;
                 objectTile.ResetOcupying();
-                player.FinalizePosition(objectTile, true);
+                
+                player.UnlockTile = objectTile; 
+                //player.FinalizePosition(objectTile, true);
                 
                 GameObject tempPreview = Instantiate(player.PlayerPreview, everythingUseful.MainPrefabScript.playerPreviewParent.transform);
                 tempPreview.transform.localPosition = new Vector3(everythingUseful.MainPrefabScript.SelectedPlayers.Count -1 * 10, 0, 0);
@@ -136,8 +142,10 @@ public class Interactable : MonoBehaviour
                         isUnlocked = everythingUseful.SaveLoadSystem.allPlayers.allPlayers[i].isUnlocked
                     });
                 }
-        
+                player.animator.SetTrigger("WakeUp");
                 everythingUseful.SaveLoadSystem.MetaSave();
+                everythingUseful.Interact.TrySelectPlayer(player);
+                everythingUseful.Interact.CharacterSelectedAction?.Invoke(player.characterTile, 1f);
                
                 Destroy(gameObject);
                 break;

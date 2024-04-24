@@ -19,6 +19,7 @@ public class Player : Character
     [SerializeField] private bool canBruiserDoubleAttack = true;
     public bool isUnlocked = false;
     public int playerID;
+    public Tile UnlockTile;
     public delegate void QuestDelegate();
     public static event QuestDelegate JackTheRipperQuestCompleted;
     private void OnEnable()
@@ -46,12 +47,17 @@ public class Player : Character
         }
     }
 
+    public void FinalizeUnlockPosition(/*Tile tile*/)
+    {
+        base.FinalizePosition(UnlockTile, true);
+    }
+
     private void Start()
     {
-        if (isUnlocked == false)
+        /*if (isUnlocked == false)
         {
             StartCoroutine(StartDelay());
-        }
+        }*/
         playerID = everythingUseful.AllPlayers.allPlayers.FindIndex(p => p.playerPrefab.name.Equals(this.name));
     }
 

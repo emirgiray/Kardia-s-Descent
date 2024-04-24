@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 385911f86e495df4782f7d08e67e041d, type: 3}
   m_Name: SGT_Audio Manager Center
   m_EditorClassIdentifier: 
+  AudioManager: {fileID: 0}

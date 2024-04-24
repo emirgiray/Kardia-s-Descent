@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using CodeMonkey.CameraSystem;
+using SGT_Tools.Audio;
 using SGT_Tools.Bridge;
 using Sirenix.OdinInspector;
 using TMPro;
@@ -31,6 +32,8 @@ public class EverythingUseful : ScriptableObject
     public CameraSystem CameraSystem;
     [FoldoutGroup("Assigners")]
     public AllPlayers AllPlayers;
+    [FoldoutGroup("Assigners")]
+    public SGT_AudioSFXManager AudioManager;
     public GameObject SpawnTextGO;
     
 

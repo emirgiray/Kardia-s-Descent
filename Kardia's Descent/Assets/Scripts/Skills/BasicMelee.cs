@@ -8,8 +8,40 @@ public class BasicMelee : SkillsData
 {
     public override void ActivateSkill(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, Action OnComplete = null) //skill logic goes here
     {
-        ActivaterCharacter.Interact.GetComponent<MonoBehaviour>()
-            .StartCoroutine(WaitUntilEnum(Skill, ActivaterCharacter, selectedTile, OnComplete));
+        if (skillStartVFX == null)
+        {
+            ActivaterCharacter.Interact.GetComponent<MonoBehaviour>()
+                .StartCoroutine(WaitUntilEnum(Skill, ActivaterCharacter, selectedTile, OnComplete));
+        }
+        else //if there is a start vfx
+        {
+            ActivaterCharacter.Interact.GetComponent<MonoBehaviour>()
+                .StartCoroutine(SkillStartVFXDelay(Skill, ActivaterCharacter, selectedTile, OnComplete));
+        }
+        
+        /*ActivaterCharacter.Interact.GetComponent<MonoBehaviour>()
+            .StartCoroutine(WaitUntilEnum(Skill, ActivaterCharacter, selectedTile, OnComplete));*/
+    }
+    
+    private IEnumerator SkillStartVFXDelay(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, Action OnComplete = null)
+    {
+        if (skillStartVFX != null)
+        {
+            // spawn the vfx
+            yield return new WaitForSeconds(0.5f);
+            GameObject temp = skillStartVFX.SpawnVFXWithReturn(ActivaterCharacter.Hand);
+            temp.TryGetComponent(out ProjectileMove projectileMove);
+            yield return new WaitForSeconds(0.1f);
+            
+            // activate the parabola and on its end activate the skill
+            projectileMove.parabolaController.OnParabolaEnd.AddListener(() =>
+            {
+                ActivaterCharacter.SkillContainer.SetImpact(true);
+                ActivaterCharacter.Interact.GetComponent<MonoBehaviour>()
+                    .StartCoroutine(WaitUntilEnum(Skill, ActivaterCharacter, selectedTile, OnComplete));
+            });
+            projectileMove.SetAndStartParabolaStraight(selectedTile.transform.position + new Vector3(0, 2, 0));
+        }
     }
 
     public IEnumerator WaitUntilEnum(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, Action OnComplete = null)

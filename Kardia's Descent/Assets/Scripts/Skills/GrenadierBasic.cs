@@ -39,7 +39,7 @@ public class GrenadierBasic : SkillsData
                 ActivaterCharacter.Interact.GetComponent<MonoBehaviour>()
                     .StartCoroutine(WaitUntilEnum(Skill, ActivaterCharacter, selectedTile, OnComplete));
             });
-            projectileMove.SetAndStartParabola(selectedTile.transform);
+            projectileMove.SetAndStartParabolaYOffset(selectedTile.transform);
         }
     }
 

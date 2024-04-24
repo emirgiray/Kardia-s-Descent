@@ -12851,6 +12851,7 @@ MonoBehaviour:
   TurnSystem: {fileID: 4377341019600772746}
   UIManager: {fileID: 8315470284690167364}
   CameraSystem: {fileID: 1685987198067103943}
+  AudioManager: {fileID: 1506241736058883504}
 --- !u!1 &7760350633488948628
 GameObject:
   m_ObjectHideFlags: 0
