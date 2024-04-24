@@ -17,7 +17,7 @@ MonoBehaviour:
   skillName: Burst Fire
   skillDescription: Shoot 3 bullets with 80% of the normal accuracy.
   skillID: 12
-  skillDamage: 200
+  skillDamage: 15
   skillRange: 4
   skillCooldown: 0
   actionPointUse: 2
