@@ -284,6 +284,15 @@ public class SaveLoadSystem : MonoBehaviour
         }
     }
     
+    [Button, GUIColor(1f, 0.1f, 0.5f)]
+    public void DeleteMetaSaveFile()
+    {
+        if (File.Exists(metaSaveFileFullPath))
+        {
+            File.Delete(metaSaveFileFullPath);
+        }
+    }
+    
     [Button, GUIColor(1f, 1f, 1f)]
     public void GenerateFileLocation()
     {

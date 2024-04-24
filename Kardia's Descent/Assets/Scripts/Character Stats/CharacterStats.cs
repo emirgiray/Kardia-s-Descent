@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "CharacterStats", menuName = "ScriptableObjects/Character Stats", order = 0)]
@@ -50,6 +51,7 @@ public class CharacterStats : ScriptableObject
         Aiming -= value;
     }
 
+    [Button, GUIColor(1f, 1f, 1f)]
     public void ResetValues()
     {
         Strength = DefaultStrength;
