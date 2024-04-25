@@ -29,7 +29,7 @@ public class Character : MonoBehaviour
     [BoxGroup("Character Info")]
     public Pathfinder pathfinder;
     [BoxGroup("Character Info")]
-    public CharacterMoveData movedata;
+    public float movedata = 1;
     [BoxGroup("Character Info")]
     public Tile characterTile;
     [BoxGroup("Character Info")] [SerializeField]
@@ -295,7 +295,7 @@ public class Character : MonoBehaviour
                 //Move towards the next step in the path until we are closer than MIN_DIST
                 Vector3 nextTilePosition = path.tiles[currentStep].transform.position;
 
-                float movementTime = animationTime / (movedata.MoveTime + path.tiles[currentStep].terrainCost * TERRAIN_PENALTY);
+                float movementTime = animationTime / (movedata + path.tiles[currentStep].terrainCost * TERRAIN_PENALTY);
                 /*if(!path.tiles[currentStep].Occupied) */
 
                 if (moveAndRotateTween != null && moveAndRotateTween.IsActive())
@@ -479,8 +479,7 @@ public class Character : MonoBehaviour
 
                 //if (!doOnce) //bu niye var aq
                 {
-                    remainingActionPoints -= temporaryActionPointsToDecrease;
-                    temporaryActionPointsToDecrease = 0;
+                    
                     AddActionPoints();
                     OnActionPointsChangeEvent?.Invoke(remainingActionPoints, "+");
                 }
@@ -544,7 +543,12 @@ public class Character : MonoBehaviour
             if(SkillContainer.skillSelected) SkillContainer.DeselectSkill(SkillContainer.selectedSkill);
             pathfinder.ClearIllustratedPath();
         }
-        
+        remainingActionPoints -= temporaryActionPointsToDecrease;
+        if (remainingActionPoints < 0)
+        {
+            remainingActionPoints = 0;
+        }
+        temporaryActionPointsToDecrease = 0;
         canMove = false;
         canAttack = false;
         characterState = CharacterState.WaitingNextRound;

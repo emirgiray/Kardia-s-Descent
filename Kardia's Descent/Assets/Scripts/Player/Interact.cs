@@ -216,7 +216,7 @@ public class Interact : MonoBehaviour
             }*/
         }
     }
-    
+    bool isSpedUp = false;
     public void CheckCharacterInputs()
     {
         if (characterSelected) //eselect character //todo skill selectedi variable olarak tut
@@ -265,7 +265,30 @@ public class Interact : MonoBehaviour
             {
                 if (selectedCharacter.inventory.GetSpawnedInventoryUIScript().GetSkipButton().interactable && selectedCharacter.inventory.GetSpawnedInventoryUIScript().GetSkipButton().gameObject.activeSelf)
                 {
-                    selectedCharacter.inventory.GetSpawnedInventoryUIScript().GetSkipButton().onClick.Invoke();
+                    if (selectedCharacter.characterState != Character.CharacterState.Moving )
+                    {
+                        selectedCharacter.inventory.GetSpawnedInventoryUIScript().GetSkipButton().onClick.Invoke();
+                    }
+                    else
+                    {
+                        if (isSpedUp == false)
+                        {
+                            selectedCharacter.movedata /= 5;
+                            isSpedUp = true;
+                            StartCoroutine(WaitForMoveEnd());
+                        }
+                        
+                    }
+                    
+                }
+                else
+                {
+                    if (isSpedUp == false)
+                    {
+                        selectedCharacter.movedata /= 5;
+                        isSpedUp = true;
+                        StartCoroutine(WaitForMoveEnd());
+                    }
                 }
             }
         }
@@ -293,6 +316,13 @@ public class Interact : MonoBehaviour
                 GameManager.PauseGame(isPaused);
             }
         }
+    }
+
+    private IEnumerator WaitForMoveEnd()
+    {
+        yield return new WaitUntil(() => selectedCharacter.characterState != Character.CharacterState.Moving);
+        selectedCharacter.movedata *= 5;
+        isSpedUp = false;
     }
 
     #endregion

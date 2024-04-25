@@ -274,7 +274,7 @@ public class TurnSystem : MonoBehaviour
             /*enemiesInCombat.RemoveRange(enemiesInCombat.IndexOf(deadEnemy), 1);
             allEntitiesInCombat.RemoveRange(allEntitiesInCombat.IndexOf(deadEnemy), 1);*/
 
-            if (turnState == TurnState.Enemy)
+            if (turnState == TurnState.Enemy && enemiesInCombat.Count >= 1)
             {
                 EnemiesToRemoveNextRound.Add(deadEnemy);
                 EntitiesToRemoveNextRound.Add(deadEnemy);

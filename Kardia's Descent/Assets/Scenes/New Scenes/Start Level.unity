@@ -31212,7 +31212,7 @@ PrefabInstance:
     - target: {fileID: 1764541655754650399, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
         type: 3}
       propertyPath: m_Name
-      value: Berserker (3)
+      value: Berserker
       objectReference: {fileID: 0}
     - target: {fileID: 1764541655754650399, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
         type: 3}
@@ -41772,32 +41772,32 @@ PrefabInstance:
     - target: {fileID: 7632850872189376766, guid: 2cb7460ecb066dd42baf1795827245c7,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.20780629
+      value: 0.20780626
       objectReference: {fileID: 0}
     - target: {fileID: 7632850872189376766, guid: 2cb7460ecb066dd42baf1795827245c7,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0000015199184
+      value: -0.0000015497208
       objectReference: {fileID: 0}
     - target: {fileID: 7632850872189376766, guid: 2cb7460ecb066dd42baf1795827245c7,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.00000032782555
+      value: 0.00000033527613
       objectReference: {fileID: 0}
     - target: {fileID: 8716017361354939248, guid: 2cb7460ecb066dd42baf1795827245c7,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.20780629
+      value: 0.20780626
       objectReference: {fileID: 0}
     - target: {fileID: 8716017361354939248, guid: 2cb7460ecb066dd42baf1795827245c7,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0000015199184
+      value: -0.0000015497208
       objectReference: {fileID: 0}
     - target: {fileID: 8716017361354939248, guid: 2cb7460ecb066dd42baf1795827245c7,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.00000032782555
+      value: 0.00000033527613
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -62542,7 +62542,7 @@ PrefabInstance:
     - target: {fileID: 1764541655754650399, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
         type: 3}
       propertyPath: m_Name
-      value: Berserker (1)
+      value: Berserker
       objectReference: {fileID: 0}
     - target: {fileID: 1764541655754650399, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
         type: 3}
@@ -81062,7 +81062,7 @@ PrefabInstance:
     - target: {fileID: 1764541655754650399, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
         type: 3}
       propertyPath: m_Name
-      value: Berserker (2)
+      value: Berserker
       objectReference: {fileID: 0}
     - target: {fileID: 1764541655754650399, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
         type: 3}

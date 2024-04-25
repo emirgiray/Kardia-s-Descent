@@ -6070,12 +6070,12 @@ PrefabInstance:
     - target: {fileID: 1764541655754650399, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
         type: 3}
       propertyPath: m_Name
-      value: Berserker (2)
+      value: Berserker
       objectReference: {fileID: 0}
     - target: {fileID: 1764541655754650399, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2302755081605039103, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
         type: 3}
@@ -32182,12 +32182,12 @@ PrefabInstance:
     - target: {fileID: 1764541655754650399, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
         type: 3}
       propertyPath: m_Name
-      value: Berserker (1)
+      value: Berserker
       objectReference: {fileID: 0}
     - target: {fileID: 1764541655754650399, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2302755081605039103, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
         type: 3}
@@ -37049,12 +37049,12 @@ PrefabInstance:
     - target: {fileID: 3822293013884056296, guid: e6bf89a06050d0b4c93837d1905c78b0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 50.64
+      value: 38.6
       objectReference: {fileID: 0}
     - target: {fileID: 3822293013884056296, guid: e6bf89a06050d0b4c93837d1905c78b0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.88
+      value: 9.21
       objectReference: {fileID: 0}
     - target: {fileID: 3822293013884056296, guid: e6bf89a06050d0b4c93837d1905c78b0,
         type: 3}

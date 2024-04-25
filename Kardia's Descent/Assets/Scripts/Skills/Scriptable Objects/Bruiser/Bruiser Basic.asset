@@ -17,18 +17,25 @@ MonoBehaviour:
   skillName: Basic
   skillDescription: Basic attack.
   skillID: 5
-  skillDamage: 10
+  skillDamage: 15
   skillRange: 1
   skillCooldown: 0
-  actionPointUse: 2
+  actionPointUse: 3
   skillEffectDuration: 0
   skillBuffDebuffAmount: 0
   permaBuff: 1
   accuracy: 75
   coverAccuracyDebuff: 0
+  coverDamageMultipliar: 0.1
+  impactRange: 2
+  innerImpactRadius: 1
+  outerImpactDamageDebuff: 0.5
+  cleaveTimes: 1
+  cleaveStartLeft: 1
   animatorOverrideController: {fileID: 22100000, guid: 21d0ca836db6d7d489d8e8d19f188d7c,
     type: 2}
   skillStartVFX: {fileID: 0}
+  skillImpactVFX: {fileID: 0}
   skillHitVFX:
   - {fileID: 11400000, guid: 2d7ba90a2d4cad44ea904346e7ce5f75, type: 2}
   skillMissVFX: {fileID: 11400000, guid: f95dd6b5fb3dc4f4c9158365d41b4807, type: 2}

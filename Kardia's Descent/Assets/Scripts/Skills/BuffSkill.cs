@@ -122,7 +122,8 @@ public class BuffSkill : SkillsData
 
     public void Heal(Character character, int amount)
     {
-        character.health.HealthAi += amount;
+        //character.health.HealthAi += amount;
+        character.health.HealthDecrease(-amount);
         character.OnHealthChangeEvent?.Invoke();
     }
     

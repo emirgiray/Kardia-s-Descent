@@ -43,7 +43,7 @@ public class ShieldCharge : SkillsData
             
             
         }
-        ActivaterCharacter.movedata.MoveTime /= 1.5f;
+        ActivaterCharacter.movedata /= 1.5f;
         path.tiles.RemoveRange(last , path.tiles.Count - last);
         float defaultAnimSpeed = ActivaterCharacter.animator.speed;
         ActivaterCharacter.animator.speed = defaultAnimSpeed * 1.25f;
@@ -78,7 +78,7 @@ public class ShieldCharge : SkillsData
         {
             base.OnMiss(Skill, ActivaterCharacter, selectedTile, OnComplete);
         }
-        ActivaterCharacter.movedata.MoveTime *= 1.5f;
+        ActivaterCharacter.movedata *= 1.5f;
         ActivaterCharacter.animator.speed = defaultAnimSpeed;
             OnComplete?.Invoke();
     }
