@@ -31,10 +31,12 @@ public class MainPrefabScript : MonoBehaviour
     
     private List<Transform> PlayerSlots = new();
     public List<GameObject> spawnedPlayers = new();
-    /*[HideInInspector]*/
+    [HideInInspector]
     public List<Player> spawnedPlayerScripts = new();
-    private List<GameObject> previews = new();
-    private List<GameObject> partyRoundCards = new();
+    [HideInInspector]
+    public List<GameObject> previews = new();
+    [HideInInspector]
+    public List<GameObject> partyRoundCards = new();
     private List<GameObject> inventoryUIs = new();
     private csFogWar fogWar;
     public void Awake()
@@ -81,7 +83,7 @@ public class MainPrefabScript : MonoBehaviour
     }
     public void InitializeLevel()
     {
-        ClearPrevious();
+        //ClearPrevious();
         // todo load selected players from save system, also load health values hearts etc (or add players to dont destroy on load)
         fogWar = FindObjectOfType<csFogWar>();
         PlayerSlots = GameObject.Find("Player Slots").GetComponentsInChildren<Transform>().ToList();
@@ -128,11 +130,39 @@ public class MainPrefabScript : MonoBehaviour
 
     public void ClearPrevious()
     {
+        foreach (var player in spawnedPlayerScripts)
+        {
+            player.inCombat = false;
+            player.canAttack = true;
+            player.ResetActionPoints();
+            player.SkillContainer.ForceResetSkillCooldowns();
+            player.characterState = Character.CharacterState.Idle;
+        }
+
+        foreach (var var in everythingUseful.TurnSystem.enemiesInCombat)
+        {
+            Destroy(var);
+        }
+        everythingUseful.TurnSystem.enemiesInCombat.Clear();
+        foreach (var var in everythingUseful.TurnSystem.playersInCombat)
+        {
+            Destroy(var);
+        }
+        everythingUseful.TurnSystem.playersInCombat.Clear();
+        foreach (var var in everythingUseful.TurnSystem.allEntitiesInCombat)
+        {
+            Destroy(var);
+        }
+        everythingUseful.TurnSystem.allEntitiesInCombat.Clear();
+        
+        everythingUseful.TurnSystem.turnState = TurnSystem.TurnState.FreeRoamTurn;
+        
         foreach (var entity in everythingUseful.LevelManager.allEntities)
         {
             if (entity != null) everythingUseful.TurnSystem.RemoveCard(entity);
         }
         everythingUseful.UIManager.turnAndRoundGO.SetActive(false);
+        
         foreach (var playerS in spawnedPlayerScripts)
         {
             Destroy(playerS.inventory.SpawnedInventoryUI);
@@ -150,12 +180,15 @@ public class MainPrefabScript : MonoBehaviour
             Destroy(preview);
         }
         previews.Clear();
+        
         foreach (var card in partyRoundCards)
         {
             Destroy(card);
         }
         partyRoundCards.Clear();
-
+        
+        everythingUseful.Interact.ClearHighlightAttackableTiles();
+        everythingUseful.Interact.ClearHighlightReachableTiles();
         
         everythingUseful.TurnSystem.RoundInfoArrowsScript.TurnOffAllArrows();
         

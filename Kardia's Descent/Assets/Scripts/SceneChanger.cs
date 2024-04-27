@@ -114,6 +114,7 @@ public class SceneChanger : MonoBehaviour
     
     public void ChangeScene(string Value)
     {
+        everythingUseful.MainPrefabScript.ClearPrevious();
         everythingUseful.SaveLoadSystem.inGameSaveData.lastScene = Value;
         everythingUseful.GameManager.ResetToDefault();
         currentScene = Value;
@@ -188,7 +189,7 @@ public class SceneChanger : MonoBehaviour
     
     public void ReloadSameScene()
     {
-        everythingUseful.MainPrefabScript.ClearPrevious();
+        //everythingUseful.MainPrefabScript.ClearPrevious();
         int CurrentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneIsChangingEvent?.Invoke();
         //ClearOfferedScenes();
@@ -205,7 +206,7 @@ public class SceneChanger : MonoBehaviour
 
     public void LoadMainMenu()
     {
-        everythingUseful.MainPrefabScript.ClearPrevious();
+        //everythingUseful.MainPrefabScript.ClearPrevious();
         everythingUseful.MainPrefabScript.PartyRoundCardsParent.SetActive(false);
         //everythingUseful.MainPrefabScript.SelectedPlayers.Clear();
         ChangeScene(mainMenuLevel);

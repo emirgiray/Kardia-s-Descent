@@ -29,8 +29,6 @@ public class Character : MonoBehaviour
     [BoxGroup("Character Info")]
     public Pathfinder pathfinder;
     [BoxGroup("Character Info")]
-    public float movedata = 1;
-    [BoxGroup("Character Info")]
     public Tile characterTile;
     [BoxGroup("Character Info")] [SerializeField]
     private GameObject characterCard;
@@ -55,6 +53,10 @@ public class Character : MonoBehaviour
     private float detectingThreshold = 0.45f;
     [BoxGroup("Stats")] [Tooltip("Kinda like a stealth value, in how many tiles away the enemy can detect this character")]
     public int detectionTile = 4;
+    [BoxGroup("Stats")]
+    public float moveSpeed = 1;
+    [BoxGroup("Stats")] /*[HideInInspector]*/
+    public bool canSpeedUp = true;
     
     [BoxGroup("Variables")] [SerializeField] 
     public float YOffset = 0;
@@ -279,6 +281,7 @@ public class Character : MonoBehaviour
 
         while (currentStep <= pathLength )
         {
+            
             if ((remainingActionPoints > 0 || !spendActionPoints || TurnSystem.turnState == TurnSystem.TurnState.FreeRoamTurn))
             {
                 if (!inCombat &&  path.tiles[currentStep].Occupied )
@@ -291,11 +294,12 @@ public class Character : MonoBehaviour
                 }
                 
                 yield return null;
+                canSpeedUp = false;
                 Moving = true;
                 //Move towards the next step in the path until we are closer than MIN_DIST
                 Vector3 nextTilePosition = path.tiles[currentStep].transform.position;
 
-                float movementTime = animationTime / (movedata + path.tiles[currentStep].terrainCost * TERRAIN_PENALTY);
+                float movementTime = animationTime / (moveSpeed + path.tiles[currentStep].terrainCost * TERRAIN_PENALTY);
                 /*if(!path.tiles[currentStep].Occupied) */
 
                 if (moveAndRotateTween != null && moveAndRotateTween.IsActive())
@@ -330,7 +334,7 @@ public class Character : MonoBehaviour
                         characterTile.occupyingEnemy = this.GetComponent<Enemy>();
                         characterTile.occupiedByEnemy = true;
                     }
-                    
+                    canSpeedUp = true;
                     Moving = false;
                     if (this is Enemy && !inCombat)
                     {
@@ -372,7 +376,26 @@ public class Character : MonoBehaviour
         FinalizePosition(currentTile, false);
         OnComplete?.Invoke();
     }
-    
+    public bool isSpedUp = false;
+    public void QueueSpeedUp()
+    {
+        StartCoroutine(QueueSpeedUpEnum());
+       // isSpedUp = true; // if i remove this multiple speed ups can be queued which can be good(?)
+    }
+    private IEnumerator QueueSpeedUpEnum()
+    {
+        yield return new WaitUntil(() => canSpeedUp);
+        moveSpeed /= 5;
+        animator.speed *= 5;
+        StartCoroutine(WaitForMoveEnd());
+    }
+    private IEnumerator WaitForMoveEnd()
+    {
+        yield return new WaitUntil(() => characterState != Character.CharacterState.Moving);
+        moveSpeed *= 5;
+        animator.speed /= 5;
+        isSpedUp = false;
+    }
     public void FinalizePosition(Tile tile, bool findTileAtStart)
     {
         transform.position = tile.transform.position + new Vector3(0, YOffset, 0);
@@ -708,7 +731,7 @@ public class Character : MonoBehaviour
     }
     
         
-    private void ResetActionPoints()
+    public void ResetActionPoints()
     {
         remainingActionPoints = actionPoints;
         OnActionPointsChangeEvent?.Invoke(remainingActionPoints, "+");

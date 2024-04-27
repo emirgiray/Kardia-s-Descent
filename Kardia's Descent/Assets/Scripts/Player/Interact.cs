@@ -216,7 +216,7 @@ public class Interact : MonoBehaviour
             }*/
         }
     }
-    bool isSpedUp = false;
+    
     public void CheckCharacterInputs()
     {
         if (characterSelected) //eselect character //todo skill selectedi variable olarak tut
@@ -265,29 +265,13 @@ public class Interact : MonoBehaviour
             {
                 if (selectedCharacter.inventory.GetSpawnedInventoryUIScript().GetSkipButton().interactable && selectedCharacter.inventory.GetSpawnedInventoryUIScript().GetSkipButton().gameObject.activeSelf)
                 {
-                    if (selectedCharacter.characterState != Character.CharacterState.Moving )
-                    {
-                        selectedCharacter.inventory.GetSpawnedInventoryUIScript().GetSkipButton().onClick.Invoke();
-                    }
-                    else
-                    {
-                        if (isSpedUp == false)
-                        {
-                            selectedCharacter.movedata /= 5;
-                            isSpedUp = true;
-                            StartCoroutine(WaitForMoveEnd());
-                        }
-                        
-                    }
-                    
+                    selectedCharacter.inventory.GetSpawnedInventoryUIScript().GetSkipButton().onClick.Invoke();
                 }
                 else
                 {
-                    if (isSpedUp == false)
+                    if (selectedCharacter.characterState == Character.CharacterState.Moving  && selectedCharacter.isSpedUp == false)
                     {
-                        selectedCharacter.movedata /= 5;
-                        isSpedUp = true;
-                        StartCoroutine(WaitForMoveEnd());
+                        selectedCharacter.QueueSpeedUp();
                     }
                 }
             }
@@ -318,12 +302,7 @@ public class Interact : MonoBehaviour
         }
     }
 
-    private IEnumerator WaitForMoveEnd()
-    {
-        yield return new WaitUntil(() => selectedCharacter.characterState != Character.CharacterState.Moving);
-        selectedCharacter.movedata *= 5;
-        isSpedUp = false;
-    }
+   
 
     #endregion
 
@@ -735,9 +714,12 @@ public class Interact : MonoBehaviour
     
     public void ClearHighlightReachableTiles()
     {
-        foreach (Tile tile in reachableTiles)
+        if (reachableTiles != null)
         {
-            tile.ClearHighlight();
+            foreach (Tile tile in reachableTiles)
+            {
+                if (tile != null) tile.ClearHighlight();
+            }
         }
     }
     public void HighlightReachableTiles()
@@ -908,9 +890,12 @@ public class Interact : MonoBehaviour
     }
     public void ClearHighlightAttackableTiles()
     {
-        foreach (Tile tile in attackableTiles)
+        if (attackableTiles != null)
         {
-            tile.ClearHighlight();
+            foreach (Tile tile in attackableTiles)
+            {
+                if (tile != null) tile.ClearHighlight();
+            }
         }
         
         if (effectedTiles != null)

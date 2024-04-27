@@ -41,7 +41,27 @@ public class Interactable : MonoBehaviour
 
     
     public UnityEvent OnInteractEvent;
-    
+
+    private void Awake()
+    {
+       
+        switch (InteractableType)
+        {
+            case CharacterClass.None:
+                break;
+            case CharacterClass.Heart:
+                break;
+            case CharacterClass.Player:
+                player.inventory.InventoryUISlot = everythingUseful.MainPrefabScript.InventoryUISlots[everythingUseful.MainPrefabScript.SelectedPlayers.Count];
+                break;
+            case CharacterClass.Chest:
+                
+                break;
+
+                
+        }
+    }
+
     void Start()
     {
         if (findTileAtStart)
@@ -83,6 +103,11 @@ public class Interactable : MonoBehaviour
                 
                 player.animator.enabled = true;
                 player.animator.SetTrigger("Sleep");
+
+              
+                
+                
+                
                 break;
             case CharacterClass.Chest:
                 
@@ -119,13 +144,13 @@ public class Interactable : MonoBehaviour
                 
                 GameObject tempPreview = Instantiate(player.PlayerPreview, everythingUseful.MainPrefabScript.playerPreviewParent.transform);
                 tempPreview.transform.localPosition = new Vector3(everythingUseful.MainPrefabScript.SelectedPlayers.Count -1 * 10, 0, 0);
-                //previews.Add(tempPreview);
+                everythingUseful.MainPrefabScript.previews.Add(tempPreview);
             
                 GameObject tempPartyRoundCard = Instantiate(everythingUseful.MainPrefabScript.PartyRoundCardPrefab, everythingUseful.MainPrefabScript.PartyRoundCardsSlot);
                 //tempPartyRoundCard.GetComponent<CharacterRoundCard>().Init(player, everythingUseful.TurnSystem.RoundInfo.GetComponent<RoundInfo>());
                 tempPartyRoundCard.GetComponent<CharacterRoundCard>().Init(player, everythingUseful.TurnSystem.RoundInfo.GetComponent<RoundInfo>(), true);
                 tempPartyRoundCard.GetComponent<Image>().sprite = player.characterSprite;
-                //partyRoundCards.Add(tempPartyRoundCard);
+                everythingUseful.MainPrefabScript.partyRoundCards.Add(tempPartyRoundCard);
                 
                 
                 UnlockabledCharacterData unlockabledCharacterData = new UnlockabledCharacterData()
