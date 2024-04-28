@@ -291,6 +291,11 @@ public class SaveLoadSystem : MonoBehaviour
         {
             File.Delete(metaSaveFileFullPath);
         }
+
+        for (int i = 1; i < allPlayers.allPlayers.Count; i++)
+        {
+            allPlayers.allPlayers[i].isUnlocked = false;
+        }
     }
     
     [Button, GUIColor(1f, 1f, 1f)]
@@ -309,10 +314,16 @@ public class SaveLoadSystem : MonoBehaviour
             string newPath = saveFileFullPath.Replace(@"/", @"\");   // explorer doesn't like front slashes
             Process.Start("explorer.exe", "/select," + newPath);
         }
+        else if (File.Exists(metaSaveFileFullPath))
+        {
+            string newPath = metaSaveFileFullPath.Replace(@"/", @"\");   // explorer doesn't like front slashes
+            Process.Start("explorer.exe", "/select," + newPath);
+        }
         else
         {
             Debug.Log("File does not exist: " + saveFileFullPath);
         }
+       
     }
     
 

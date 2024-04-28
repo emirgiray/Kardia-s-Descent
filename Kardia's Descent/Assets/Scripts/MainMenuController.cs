@@ -135,7 +135,7 @@ public class MainMenuController : MonoBehaviour
             charButton.characterPrefab = playerScript.playerPrefab;
             charButton.characterName = player.playerPrefab.name;
             charButton.characterImage = playerScript.characterSprite;
-            charButton.isUnlocked = /*playerScript.isUnlocked*/ everythingUseful.AllPlayers.allPlayers[player.playerID].isUnlocked;
+            charButton.isUnlocked = /*playerScript.isUnlocked*/ /*everythingUseful.AllPlayers.allPlayers[player.playerID].isUnlocked*/ everythingUseful.SaveLoadSystem.metaSaveData.UnlockableCharacterDatas[player.playerID].isUnlocked;
 
         }
         

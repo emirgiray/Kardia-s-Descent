@@ -17,7 +17,7 @@ MonoBehaviour:
   skillName: Burst Fire
   skillDescription: This unit's basic attack is replaced by its passive.
   skillID: 13
-  skillDamage: 15
+  skillDamage: 200
   skillRange: 4
   skillCooldown: 0
   actionPointUse: 0
