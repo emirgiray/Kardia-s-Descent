@@ -69,7 +69,7 @@ public class SpringBoneEditor : Editor
         var currentPos = t.transform.TransformPoint(t.springEnd);
         var size = HandleUtility.GetHandleSize(currentPos) * 0.2f;
         EditorGUI.BeginChangeCheck();
-        var fmh_72_59_638411485271242681 = Quaternion.identity; var movedPos = Handles.FreeMoveHandle(currentPos, size, Vector3.one * 0.5f, Handles.SphereHandleCap);
+        var movedPos = Handles.FreeMoveHandle(currentPos, Quaternion.identity, size, Vector3.one * 0.5f, Handles.SphereHandleCap);
         if (EditorGUI.EndChangeCheck())
         {
             so.FindProperty("springEnd").vector3Value =

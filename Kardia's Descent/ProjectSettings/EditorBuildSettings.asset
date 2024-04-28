@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/New Scenes/Companion Level 1.unity
     guid: 76563a461ce0d604b9dc622eb6c07795
   - enabled: 1
-    path: Assets/Scenes/RoguelikeSceneChanger/New Char Test.unity
+    path: Assets/Scenes/Giray Test/New Char Test.unity
     guid: 631af858b46f29946a324cac9917e4c4
   - enabled: 1
     path: Assets/Scenes/New Scenes/Level 2.unity

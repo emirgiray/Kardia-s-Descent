@@ -40,7 +40,7 @@ class OToonCustomLitShader : StandardBaseShaderGUI
     private const string k_KeyPrefix = "OToon:Material:UI_State:";
     private string m_HeaderStateKey = null;
 
-    private UniversalRendererData m_forwardRendererData;
+    private ForwardRendererData m_forwardRendererData;
     private SerializedObject m_forwardRendererSerilizedData;
     private Dictionary<string, SavedBool> m_foldOutStates;
 
@@ -211,7 +211,7 @@ class OToonCustomLitShader : StandardBaseShaderGUI
         if (m_OutlineOptionFoldout.value)
         {
             materialEditor.DrawStandard(m_OutlineModeProp);
-            m_forwardRendererData = EditorGUIHelper.GetDefaultRenderer() as UniversalRendererData;
+            m_forwardRendererData = EditorGUIHelper.GetDefaultRenderer() as ForwardRendererData;
             OutlineObjectFeature outlineFeature = null;
 
             if (m_forwardRendererData == null)
@@ -234,7 +234,7 @@ class OToonCustomLitShader : StandardBaseShaderGUI
             {
                 var hint = "";
                 EditorGUI.BeginDisabledGroup(true);
-                m_forwardRendererData = EditorGUILayout.ObjectField("", m_forwardRendererData, typeof(UniversalRendererData), true) as UniversalRendererData;
+                m_forwardRendererData = EditorGUILayout.ObjectField("", m_forwardRendererData, typeof(ForwardRendererData), true) as ForwardRendererData;
                 EditorGUI.EndDisabledGroup();
                 if (m_forwardRendererSerilizedData == null)
                     m_forwardRendererSerilizedData = new SerializedObject(m_forwardRendererData);
