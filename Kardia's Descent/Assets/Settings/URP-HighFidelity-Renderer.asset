@@ -59,8 +59,8 @@ MonoBehaviour:
   m_Name: Custom Pass
   m_EditorClassIdentifier: 
   m_Active: 1
+  depthNormalsMaterial: {fileID: 0}
   mask:
-    serializedVersion: 2
     m_Bits: 1
   Event: 250
 --- !u!114 &-1878332245247344467
@@ -116,7 +116,7 @@ MonoBehaviour:
     hdrDebugViewPS: {fileID: 4800000, guid: 573620ae32aec764abd4d728906d2587, type: 3}
   m_RendererFeatures:
   - {fileID: -1878332245247344467}
-  - {fileID: -4458282630087582630}
+  - {fileID: 0}
   - {fileID: 5648098782541478872}
   - {fileID: -6819045171187840446}
   m_RendererFeatureMap: adc0de57c6d2eee55adc55a591ff20c2d87bb3f5ea13624e428a01b08be25da1
