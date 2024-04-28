@@ -11,7 +11,7 @@ using UnityEngine.Rendering;
 public class URPSetupHelper : EditorWindow
 {
     public RenderPipelineAsset defaultRenderPipelineAsset;
-    private ForwardRendererData m_forwardRendererData;
+    private UniversalRendererData m_forwardRendererData;
     private static GUIStyle errorStyle;
     private static GUIStyle correctStyle;
     private static ListRequest ListRequest;
@@ -91,7 +91,7 @@ public class URPSetupHelper : EditorWindow
                 }
             }
             m_pipelineAssetInstalled = GraphicsSettings.defaultRenderPipeline != null;
-            m_forwardRendererData = EditorGUIHelper.GetDefaultRenderer() as ForwardRendererData;
+            m_forwardRendererData = EditorGUIHelper.GetDefaultRenderer() as UniversalRendererData;
 
             EditorGUILayout.BeginHorizontal();
             {
@@ -140,7 +140,7 @@ public class URPSetupHelper : EditorWindow
                 }
             }
             //GraphicsSettings.defaultRenderPipeline
-            m_forwardRendererData = EditorGUILayout.ObjectField("", m_forwardRendererData, typeof(ForwardRendererData), true) as ForwardRendererData;
+            m_forwardRendererData = EditorGUILayout.ObjectField("", m_forwardRendererData, typeof(UniversalRendererData), true) as UniversalRendererData;
             EditorGUI.EndDisabledGroup();
             EditorGUILayout.EndVertical();
 

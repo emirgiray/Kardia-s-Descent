@@ -14,7 +14,7 @@ namespace OToon
         private static Color SubDisabledColor = new Color(128f / 255f, 128f / 255f, 130f / 255f, 1);
 
         public static GUILayoutOption[] shortButtonStyle = new GUILayoutOption[] { GUILayout.Width(130) };
-        public static void AutoSetUpRendererFeatureButton<T>(this SerializedObject target, string buttonText, ForwardRendererData data, ScriptableRendererFeature feature) where T : ScriptableObject
+        public static void AutoSetUpRendererFeatureButton<T>(this SerializedObject target, string buttonText, UniversalRendererData data, ScriptableRendererFeature feature) where T : ScriptableObject
         {
             if (GUILayout.Button(buttonText, shortButtonStyle))
             {
@@ -79,7 +79,7 @@ namespace OToon
             }
         }
 
-        public static void ToggleRendererFeature(ForwardRendererData data, ScriptableRendererFeature feature)
+        public static void ToggleRendererFeature(UniversalRendererData data, ScriptableRendererFeature feature)
         {
 
             if (feature.isActive)

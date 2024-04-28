@@ -47,7 +47,7 @@ public class OToonShaderGraph : StandardBaseShaderGUI
     private const string k_KeyPrefix = "OToon:Material:UI_State:";
     private string m_HeaderStateKey = null;
 
-    private ForwardRendererData m_forwardRendererData;
+    private UniversalRendererData m_forwardRendererData;
     private SerializedObject m_forwardRendererSerilizedData;
     private Dictionary<string, SavedBool> m_foldOutStates;
     private PatternSampleSpace m_patternSampleSpace;
