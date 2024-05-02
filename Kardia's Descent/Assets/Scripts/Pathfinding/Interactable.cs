@@ -18,7 +18,7 @@ public class Interactable : MonoBehaviour
     
     public enum CharacterClass
     {
-        None, Heart, Player, Chest
+        None, Heart, Player, Chest, PlayerRest
     }
 
     public CharacterClass InteractableType;
@@ -41,6 +41,13 @@ public class Interactable : MonoBehaviour
 
     
     public UnityEvent OnInteractEvent;
+    public void Init(VFXSpawner vfx, float yOffset, CharacterClass interactableTime, Player player)
+    {
+        VFX = vfx;
+        this.yOffset = yOffset;
+        InteractableType = interactableTime;
+        this.player = player;
+    }
 
     private void Awake()
     {
@@ -61,6 +68,7 @@ public class Interactable : MonoBehaviour
                 
         }
     }
+
 
     void Start()
     {

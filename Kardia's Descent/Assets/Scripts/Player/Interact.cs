@@ -14,6 +14,7 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(AudioSource))]
 public class Interact : MonoBehaviour
 {
+    public bool stopAllLogic = false;
     [SerializeField] private EverythingUseful everythingUseful;
     public Action SkillHighlighted;
     public Action SkillSelected;
@@ -39,6 +40,8 @@ public class Interact : MonoBehaviour
     public Character selectedCharacter;
     [BoxGroup("Objects")][SerializeField] 
     private Character lastSelectedCharacter;
+    [BoxGroup("Objects")][SerializeField] 
+    public Transform cameraTransform;
     // [BoxGroup("Objects")][SerializeField] private Character selectedEnemy;
     
     [BoxGroup("UI")]
@@ -58,6 +61,8 @@ public class Interact : MonoBehaviour
     [SerializeField]LayerMask UILayerMask;
     public Action<Tile> CurrentTileChangedAction;
     public Action<Tile, float> CharacterSelectedAction;
+    public Action<Transform, float> MoveCameraAction;
+    public Action< float, float> ZoomCameraAction;
     //Debug purposes only
     [SerializeField]
     bool debug;
@@ -134,6 +139,7 @@ public class Interact : MonoBehaviour
        {1, new Color(0.525716f, 0.9921569f, 0.5176471f, 1) },//Green -- Buff
    };
 
+   
     private void OnEnable()
     {
         SkillSelected += Clear;
@@ -172,6 +178,8 @@ public class Interact : MonoBehaviour
 
     private void Update()
     {
+        if (stopAllLogic) return;
+       
         //Clear();
         MouseUpdate();
         CheckMouseOverUI();
@@ -1100,6 +1108,21 @@ public class Interact : MonoBehaviour
         TooltipSystem.Hide();
         lastSelectedCharacter = null;
         reachableTiles.Clear();
+    }
+
+    public void StopAllLogic()
+    {
+        stopAllLogic = true;
+        
+        ResetToDefault();
+        InspectTileGO.SetActive(false);
+    }
+    
+    public void ContinueAllLogic()
+    {
+        stopAllLogic = false;
+        
+        InspectTileGO.SetActive(true); 
     }
     /*public void UpdateFreeRoamTargetPosition()
     {

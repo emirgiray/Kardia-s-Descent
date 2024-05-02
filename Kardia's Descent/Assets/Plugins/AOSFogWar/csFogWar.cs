@@ -784,6 +784,11 @@ namespace FischlWorks_FogWar
             fogRevealers.Add(new FogRevealer(revealerTransform, 20, true));
         }
 
+        public void RemoveAllFogRevelearRevelear()
+        {
+            fogRevealers.Clear();
+        }
+
 
 #if UNITY_EDITOR
         private void OnDrawGizmos()

@@ -85,5 +85,11 @@ public class EverythingUseful : ScriptableObject
         //spawnText.SetDestroyTime(destroyTime);
         spawnText.SetAnimDelay(animDelay);
     }
+
+
+    public void SwitchGameUI()
+    {
+        UIManager.SwitchGameUI();
+    }
     
 }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour
@@ -48,14 +49,31 @@ public class MainMenuController : MonoBehaviour
     
     [BoxGroup("Buttons")] [SerializeField]
     private Button startButton;
+    [BoxGroup("Buttons")] [SerializeField] [HideIf("onMainMenu")]
+    private Button ExitButton;
     /*[BoxGroup("Buttons")] [SerializeField]
     public Button selectButton;*/
     [BoxGroup("Buttons")] [SerializeField]
     private Button newGameButton;
     [BoxGroup("Buttons")] [SerializeField]
     public Button continueButton;
+
+    [SerializeField] private bool onMainMenu => everythingUseful.SceneChanger.isOnMainMenu;
+    [HideIf("onMainMenu")]
+    [SerializeField] private Transform cameraTargetTransform ;
+    private Transform cameraStartTransform ;
+    
+    [FoldoutGroup("Events")]
+    public UnityEvent SelectionStartedEvent;
+    [FoldoutGroup("Events")]
+    public UnityEvent SelectionEndedEvent;
     
     private Quaternion spawnFirstTransform;
+    
+    private Vector3 lastMousePosition;
+    private float rotationSpeed = 0f;
+    [SerializeField] private float rotateMultiplier = 0.5f;
+    [SerializeField] private float smoothnessDuration = 1f; // Duration over which to smooth the rotation
     private void Awake()
     {
         if (Instance == null)
@@ -65,12 +83,6 @@ public class MainMenuController : MonoBehaviour
 
         spawnFirstTransform = characterGOSpawnTransform.rotation;
     }
-
-    private Vector3 lastMousePosition;
-    private float rotationSpeed = 0f;
-    [SerializeField] private float rotateMultiplier = 0.5f;
-    [SerializeField] private float smoothnessDuration = 1f; // Duration over which to smooth the rotation
-
     private void Update()
     {
         RotateCharacterWithMouse();
@@ -120,10 +132,23 @@ public class MainMenuController : MonoBehaviour
         }
         StartSelection();
     }
-    
+
+    [Button, GUIColor(1f, 1f, 1f)]
     public void StartSelection()
     {
+        SelectionStartedEvent.Invoke();
         characterSelectionUI.SetActive(true);
+        startButton.interactable = false;
+        if (!onMainMenu)
+        {
+            everythingUseful.Interact.StopAllLogic();
+            cameraStartTransform = everythingUseful.Interact.cameraTransform;
+            everythingUseful.Interact.MoveCameraAction?.Invoke(cameraTargetTransform, 1f);
+            everythingUseful.Interact.ZoomCameraAction?.Invoke( -10f, 1);
+            
+            everythingUseful.MainPrefabScript.ClearPlayers();
+        }
+        
 
         foreach (var player in allPlayers.allPlayers)
         {
@@ -194,6 +219,55 @@ public class MainMenuController : MonoBehaviour
         {
             startButton.interactable = false;
         }
+    }
+
+    public void ExitButtonPressed()
+    {
+        
+        SelectionStartedEvent.Invoke();
+        characterSelectionUI.SetActive(false);
+        if (!onMainMenu)
+        {
+            //everythingUseful.Interact.MoveCameraAction?.Invoke(cameraStartTransform, 1f);
+        }
+        
+        everythingUseful.MainPrefabScript.SelectedPlayers = everythingUseful.GameManager.SelectedPlayers;
+        
+
+        foreach (var player in everythingUseful.GameManager.SelectedPlayers)
+        {
+            everythingUseful.LevelManager.AddPlayerToGame(player.GetComponent<Player>());
+        }
+        
+        if (spawnedCharacter) Destroy(spawnedCharacter);
+        
+        everythingUseful.MainPrefabScript.InitializeLevel(/*charTiles*/ );
+        everythingUseful.Interact.ContinueAllLogic();
+        ClearPrevious();
+    }
+
+    public void ClearPrevious()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            selectedLayoutTransform.transform.GetChild(i).GetComponent<Image>().sprite = defaultUnselectedSprite;
+            selectedLayoutTransform.transform.GetChild(i).GetChild(0).gameObject.SetActive(false);
+        }
+     
+        foreach (var button in allButtons)
+        {
+            Destroy(button.gameObject);
+           
+        }
+        allButtons.Clear();
+        
+        selectedList.Clear();
+    }
+
+    private IEnumerator ClearPreviousEnum()
+    {
+        yield return new WaitForEndOfFrame();
+        
     }
 
     public void StartButtonPressed()

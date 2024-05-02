@@ -57,7 +57,9 @@ public class UIManager : MonoBehaviour
     [BoxGroup("Possible Next Scenes")] [SerializeField]
     private GameObject possibleNextScenesBG;
 
-
+    [SerializeField] private List<GameObject> GameUIToCLose = new();
+    bool gameUIOpen = true;
+    
     
     /*
     private void Awake()
@@ -89,6 +91,15 @@ public class UIManager : MonoBehaviour
         UpdateRound(everythingUseful.TurnSystem.round);
     }
 
+    public void SwitchGameUI()
+    {
+        gameUIOpen = !gameUIOpen;
+        foreach (var ui in GameUIToCLose)
+        {
+            ui.SetActive(gameUIOpen);
+        }
+    }
+    
     private void UpdateTurn(int turn)
     {
         turnText.text = turn.ToString();

@@ -83,8 +83,6 @@ public class MainPrefabScript : MonoBehaviour
     }
     public void InitializeLevel()
     {
-        //ClearPrevious();
-        // todo load selected players from save system, also load health values hearts etc (or add players to dont destroy on load)
         fogWar = FindObjectOfType<csFogWar>();
         PlayerSlots = GameObject.Find("Player Slots").GetComponentsInChildren<Transform>().ToList();
         List<Transform> slotsToRemove = new();
@@ -101,31 +99,70 @@ public class MainPrefabScript : MonoBehaviour
         }
         
         PlayerSlots.RemoveAt(0); //remove the parent transform
-         playerPreviewParent = GameObject.Find("Player Preview");
+        playerPreviewParent = GameObject.Find("Player Preview");
 
         for (int i = 0; i < SelectedPlayers.Count; i++)
         {
-            GameObject temp = Instantiate(SelectedPlayers[i], PlayerSlots[i].position, PlayerSlots[i].rotation/*, CharacterSlots[i]*/);
-            // temp.name = temp.name.Replace(" Variant(Clone)", "");
-            temp.name = temp.name.Replace("(Clone)", "");
-            spawnedPlayers.Add(temp);
-            spawnedPlayerScripts.Add(temp.GetComponent<Player>());
-            spawnedPlayerScripts[i].inventory.InventoryUISlot = InventoryUISlots[i];
-            fogWar.AddFogRevealerRevelear(temp.transform);
-            
-            GameObject tempPreview = Instantiate(spawnedPlayerScripts[i].PlayerPreview, playerPreviewParent.transform);
-            tempPreview.transform.localPosition = new Vector3(i * 10, 0, 0);
-            previews.Add(tempPreview);
-            
-            GameObject tempPartyRoundCard = Instantiate(PartyRoundCardPrefab, PartyRoundCardsSlot);
-            tempPartyRoundCard.GetComponent<CharacterRoundCard>().Init(spawnedPlayerScripts[i], TurnSystem.RoundInfo.GetComponent<RoundInfo>(), true);
-           //tempPartyRoundCard.GetComponent<CharacterRoundCard>().Init(spawnedPlayerScripts[i], TurnSystem.RoundInfo.GetComponent<RoundInfo>());
-           PartyRoundCardsParent.SetActive(true);
-            partyRoundCards.Add(tempPartyRoundCard);
+            GameObject player = Instantiate(SelectedPlayers[i], PlayerSlots[i].position, PlayerSlots[i].rotation);
+            player.name = player.name.Replace("(Clone)", "");
+            spawnedPlayers.Add(player);
+
+            Player playerScript = player.GetComponent<Player>();
+            playerScript.inventory.InventoryUISlot = InventoryUISlots[i];
+            spawnedPlayerScripts.Add(playerScript);
+
+            fogWar.AddFogRevealerRevelear(player.transform);
+
+            GameObject preview = Instantiate(playerScript.PlayerPreview, playerPreviewParent.transform);
+            preview.transform.localPosition = new Vector3(i * 10, 0, 0);
+            previews.Add(preview);
+
+            GameObject partyRoundCard = Instantiate(PartyRoundCardPrefab, PartyRoundCardsSlot);
+            partyRoundCard.GetComponent<CharacterRoundCard>().Init(playerScript, TurnSystem.RoundInfo.GetComponent<RoundInfo>(), true);
+            partyRoundCards.Add(partyRoundCard);
         }
-        
-        // Interact.CharacterSelectedAction?.Invoke(spawnedPlayerScripts[0].characterTile, 0.001f);
+    
+        PartyRoundCardsParent.SetActive(true);
         everythingUseful.CameraSystem.OnCharacterSelected(spawnedPlayerScripts[0].characterTile, 0.001f);
+    }
+
+    public void ClearPlayers()
+    {
+        foreach (var player in spawnedPlayerScripts)
+        {
+            player.characterTile.ResetOcupying();
+            player.characterTile.Occupied = false;
+            player.characterTile.occupiedByPlayer = false;
+            
+        }
+        spawnedPlayerScripts.Clear();
+        SelectedPlayers.Clear();
+        foreach (var player in spawnedPlayers)
+        {
+            Destroy(player);
+        }
+        spawnedPlayers.Clear();
+        
+        foreach (var preview in previews)
+        {
+            Destroy(preview);
+        }
+        previews.Clear();
+        
+        foreach (var card in partyRoundCards)
+        {
+            Destroy(card);
+        }
+        partyRoundCards.Clear();
+        
+        foreach (var player in everythingUseful.LevelManager.allEntities)
+        {
+            if (player != null) everythingUseful.TurnSystem.RemoveCard(player);
+        }
+        everythingUseful.LevelManager.allEntities.Clear();
+        
+        fogWar.RemoveAllFogRevelearRevelear();
+        
     }
 
     public void ClearPrevious()
