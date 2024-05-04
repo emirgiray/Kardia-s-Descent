@@ -145,7 +145,16 @@ namespace CodeMonkey.CameraSystem {
             followOffset = cinemachineVirtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset;
         }
 
-        private void Update() {
+        private void Update() 
+        {
+            
+            HandleCameraRotation();
+
+            //HandleCameraZoom_FieldOfView();
+            // HandleCameraZoom_MoveForward();
+            HandleCameraZoom_LowerY();
+            if (everythingUseful.Interact.stopAllLogic) return;
+           
             HandleCameraMovement();
 
             if (useEdgeScrolling) {
@@ -156,11 +165,7 @@ namespace CodeMonkey.CameraSystem {
                 HandleCameraMovementDragPan();
             }
 
-            HandleCameraRotation();
-
-            //HandleCameraZoom_FieldOfView();
-           // HandleCameraZoom_MoveForward();
-            HandleCameraZoom_LowerY();
+           
         }
 
         private void HandleCameraMovement() {

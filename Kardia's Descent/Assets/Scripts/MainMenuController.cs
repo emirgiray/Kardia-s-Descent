@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
@@ -63,17 +64,39 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] private Transform cameraTargetTransform ;
     private Transform cameraStartTransform ;
     
-    [FoldoutGroup("Events")]
-    public UnityEvent SelectionStartedEvent;
-    [FoldoutGroup("Events")]
-    public UnityEvent SelectionEndedEvent;
-    
     private Quaternion spawnFirstTransform;
     
     private Vector3 lastMousePosition;
     private float rotationSpeed = 0f;
-    [SerializeField] private float rotateMultiplier = 0.5f;
-    [SerializeField] private float smoothnessDuration = 1f; // Duration over which to smooth the rotation
+    [BoxGroup("Rotate")] [SerializeField] 
+    private bool rotateCharacter = true;
+    [BoxGroup("Rotate")] [SerializeField] 
+    private float rotateMultiplier = 0.5f;
+    [BoxGroup("Rotate")] [SerializeField] 
+    private float smoothnessDuration = 1f; // Duration over which to smooth the rotation
+    
+    [BoxGroup("Table")] [SerializeField] [HideIf("onMainMenu")]
+    private GameObject table;
+    [BoxGroup("Table")] [SerializeField] [HideIf("onMainMenu")]
+    private Transform tableStartTransform;
+    [BoxGroup("Table")] [SerializeField] [HideIf("onMainMenu")]
+    private Transform tableEndTransform;
+    [BoxGroup("Table")] [SerializeField] [HideIf("onMainMenu")]
+    private float tableMoveFrontDuration = 1f;
+    [BoxGroup("Table")] [SerializeField] [HideIf("onMainMenu")]
+    private float tableMoveBackDuration = 1f;
+    [BoxGroup("Table")] [SerializeField] [HideIf("onMainMenu")]
+    private Ease tableEase = Ease.InOutSine;
+    bool goingBack = false;
+    [BoxGroup("Table")] [SerializeField] [HideIf("onMainMenu")]
+    public UnityEvent TableMovedFrontEvent;
+    [BoxGroup("Table")] [SerializeField] [HideIf("onMainMenu")]
+    public UnityEvent TableMovedBackEvent;
+    
+    [FoldoutGroup("Events")]
+    public UnityEvent SelectionStartedEvent;
+    [FoldoutGroup("Events")]
+    public UnityEvent SelectionEndedEvent;
     private void Awake()
     {
         if (Instance == null)
@@ -90,6 +113,7 @@ public class MainMenuController : MonoBehaviour
 
     private void RotateCharacterWithMouse()
     {
+        if (!rotateCharacter) return;
         if (Input.GetMouseButton(0))
         {
             Vector3 delta = Input.mousePosition - lastMousePosition;
@@ -139,12 +163,20 @@ public class MainMenuController : MonoBehaviour
         SelectionStartedEvent.Invoke();
         characterSelectionUI.SetActive(true);
         startButton.interactable = false;
+        
+        List<string> previousSelectedCharNames = new();
         if (!onMainMenu)
         {
             everythingUseful.Interact.StopAllLogic();
             cameraStartTransform = everythingUseful.Interact.cameraTransform;
             everythingUseful.Interact.MoveCameraAction?.Invoke(cameraTargetTransform, 1f);
             everythingUseful.Interact.ZoomCameraAction?.Invoke( -10f, 1);
+
+            previousSelectedCharNames.Clear();
+            foreach (var player in everythingUseful.MainPrefabScript.SelectedPlayers)
+            {
+                previousSelectedCharNames.Add(player.name);
+            }
             
             everythingUseful.MainPrefabScript.ClearPlayers();
         }
@@ -171,16 +203,101 @@ public class MainMenuController : MonoBehaviour
         firstButton.selectedImage.SetActive(true);
         selectedChar = firstButton;
         // selectButton.onClick.AddListener(() =>  selectionLayoutTransform.GetChild(0).GetComponent<MainMenuCharacterButton>().EquipCharacter());
-        
+
+        if (!onMainMenu)
+        {
+            table.transform.position = tableStartTransform.position;
+            //table.transform.rotation = tableStartTransform.rotation;
+            table.SetActive(true);
+
+            foreach (var playerName in previousSelectedCharNames)
+            {
+                foreach (var button in allButtons)
+                {
+                    if (button.characterPrefab.name == playerName)
+                    {
+                        button.EquipCharacter();
+                    }
+                }
+            }
+        }
     }
+    
+    Tween tableTween;
 
     public void SpawnPlayerPreview(MainMenuCharacterButton button)
     {
+        if (!onMainMenu && tableTween != null && tableTween.active)
+        {
+            tableTween.Pause();
+
+            if (goingBack)
+            {
+                tableTween = table.transform.DOMove(tableEndTransform.position, tableMoveFrontDuration).SetEase(tableEase);
+                goingBack = false;
+                TableMovedFrontEvent.Invoke();
+            }
+            else
+            {
+                tableTween = table.transform.DOMove(tableStartTransform.position, tableMoveBackDuration).SetEase(tableEase);
+                goingBack = true;
+                TableMovedBackEvent.Invoke();
+            }
+            
+           
+        }
         if (spawnedCharacter != null && spawnedCharacter.name == button.characterPrefab.name + "(Clone)") return;
-        if (spawnedCharacter) Destroy(spawnedCharacter);
-        characterGOSpawnTransform.rotation = spawnFirstTransform;
-        spawnedCharacter = Instantiate(button.characterPrefab, characterGOSpawnTransform.position, characterGOSpawnTransform.rotation, characterGOSpawnTransform);
         
+        if (spawnedCharacter)
+        {
+            if (onMainMenu)
+            {
+                Destroy(spawnedCharacter);
+            }
+            else
+            {
+                goingBack = true;
+                tableTween = table.transform.DOMove(tableStartTransform.position, tableMoveBackDuration).SetEase(tableEase).OnComplete(
+                    () =>
+                    {
+                        goingBack = false;
+                        Destroy(spawnedCharacter);
+                        tableTween = table.transform.DOMove(tableEndTransform.position, tableMoveFrontDuration).SetEase(tableEase);
+                        spawnedCharacter = Instantiate(button.characterPrefab, characterGOSpawnTransform.position, characterGOSpawnTransform.rotation, characterGOSpawnTransform);
+                        
+                        SpawnedCharacterMiscFunc();
+                        spawnedCharacter.GetComponent<Player>().animator.SetTrigger("Sleep");
+                    });
+            }
+           
+        }
+        else // first time
+        {
+            if (!onMainMenu)
+            {
+                goingBack = false;
+                tableTween = table.transform.DOMove(tableEndTransform.position, tableMoveFrontDuration).SetEase(tableEase);
+                spawnedCharacter = Instantiate(button.characterPrefab, characterGOSpawnTransform.position, characterGOSpawnTransform.rotation, characterGOSpawnTransform);
+                
+                SpawnedCharacterMiscFunc();
+                spawnedCharacter.GetComponent<Player>().animator.SetTrigger("Sleep");
+                
+            }
+        }
+        characterGOSpawnTransform.rotation = spawnFirstTransform;
+        
+        if (onMainMenu)
+        {
+            spawnedCharacter = Instantiate(button.characterPrefab, characterGOSpawnTransform.position, characterGOSpawnTransform.rotation, characterGOSpawnTransform);
+            
+            SpawnedCharacterMiscFunc();
+        }
+       
+        
+    }
+
+    public void SpawnedCharacterMiscFunc()
+    {
         Inventory inventory = spawnedCharacter.GetComponent<Inventory>();
         
         for (int i = 0; i < inventory.testWeaponData.SkillsDataList.Count; i++)

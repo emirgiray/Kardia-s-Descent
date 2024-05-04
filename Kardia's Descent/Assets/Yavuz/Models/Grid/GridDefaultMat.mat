@@ -16,6 +16,7 @@ Material:
   - _MK_DETAIL_BLEND_MIX
   - _MK_ENVIRONMENT_REFLECTIONS_AMBIENT
   - _MK_RECEIVE_SHADOWS
+  - _MK_RIM_DEFAULT
   - _MK_SURFACE_TYPE_TRANSPARENT
   - _MK_WRAPPED_DIFFUSE
   m_InvalidKeywords:
@@ -316,7 +317,7 @@ Material:
     - _Initialized: 0
     - _InputTab: 1
     - _Iridescence: 0
-    - _IridescenceSize: 1
+    - _IridescenceSize: 1.74
     - _IridescenceSmoothness: 0.5
     - _IridescenceThresholdOffset: 0
     - _Light: 0
@@ -350,12 +351,12 @@ Material:
     - _ReceiveShadows: 1
     - _RenderFace: 2
     - _RenderPriority: 0
-    - _Rim: 0
+    - _Rim: 1
     - _RimEnabled: 1
     - _RimLightAlign: -1
     - _RimLightSmoothness: 0.273
     - _RimPower: 1
-    - _RimSize: 1
+    - _RimSize: 3
     - _RimSmoothness: 0.5
     - _RimThresholdOffset: 0.25
     - _Roughness: 0.5
@@ -389,7 +390,7 @@ Material:
     - _StencilWriteMask: 255
     - _StencilZFail: 0
     - _StepViaRampTexture: 0
-    - _StylizeTab: 0
+    - _StylizeTab: 1
     - _Surface: 1
     - _ThresholdMapScale: 1
     - _ToonBlending: 1
@@ -404,9 +405,9 @@ Material:
     - _ZTest: 4
     - _ZWrite: 0
     m_Colors:
-    - _AlbedoColor: {r: 1, g: 0.48113203, b: 0.48113203, a: 0.1254902}
+    - _AlbedoColor: {r: 1, g: 1, b: 1, a: 0.011764706}
     - _BaseColor: {r: 0, g: 0, b: 0, a: 0.08627451}
-    - _Color: {r: 1, g: 0.48113203, b: 0.48113203, a: 0.1254902}
+    - _Color: {r: 1, g: 1, b: 1, a: 0.011764706}
     - _DetailColor: {r: 1, g: 1, b: 1, a: 1}
     - _DissolveBorderColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
@@ -417,12 +418,12 @@ Material:
     - _HairSpecColor: {r: 0, g: 0, b: 0, a: 1}
     - _HalfToneColor: {r: 0, g: 0, b: 0, a: 1}
     - _HatchingColor: {r: 0, g: 0, b: 0, a: 1}
-    - _IridescenceColor: {r: 1, g: 1, b: 1, a: 0.5}
+    - _IridescenceColor: {r: 1, g: 0, b: 0, a: 0.5}
     - _LightTransmissionColor: {r: 1, g: 0.65, b: 0, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _OutlineDistancFade: {r: -25, g: 50, b: 0, a: 0}
     - _RimBrightColor: {r: 1, g: 1, b: 1, a: 1}
-    - _RimColor: {r: 1, g: 1, b: 1, a: 0.7176471}
+    - _RimColor: {r: 1, g: 0, b: 0, a: 0.7176471}
     - _RimDarkColor: {r: 0, g: 0, b: 0, a: 1}
     - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}

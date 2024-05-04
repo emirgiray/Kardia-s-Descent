@@ -91,5 +91,10 @@ public class EverythingUseful : ScriptableObject
     {
         UIManager.SwitchGameUI();
     }
+
+    public void AddRevelaer(GameObject gameObject)
+    {
+        MainPrefabScript.fogWar.AddFogRevealerRevelear(gameObject.transform);
+    }
     
 }

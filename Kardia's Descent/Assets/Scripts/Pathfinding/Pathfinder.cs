@@ -255,14 +255,22 @@ public class Pathfinder : MonoBehaviour
 
             foreach (Tile tile in frontier)
             {
-                foreach (Tile neighbor in NeighborTiles(tile))
+                foreach (Tile neighbor in NeighborTiles(tile, true))
                 {
                     if (neighbor.Occupied == false && !tiles.Contains(neighbor))
                     {
                         newFrontier.Add(neighbor);
                         tiles.Add(neighbor);
                     }
+                    else if (neighbor.Occupied == true && !tiles.Contains(neighbor) && neighbor.occupiedByInteractable)
+                    {
+                        newFrontier.Add(neighbor);
+                        tiles.Add(neighbor);
+                    }
+                    
                 }
+                
+               
             }
 
             frontier = newFrontier;

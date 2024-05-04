@@ -143,6 +143,13 @@ public class Tile : MonoBehaviour
              
             TileHighlightMeshRenderer.material.SetColor("_RimColor", everythingUseful.Interact.tileHighligthColors[6]); // less alpha
         }
+        else if (occupiedByInteractable)
+        {
+            quickOutline.enabled = true;
+            quickOutline.OutlineColor = everythingUseful.Interact.tileHighligthNormalColors[0];
+             
+            TileHighlightMeshRenderer.material.SetColor("_RimColor", everythingUseful.Interact.tileHighligthColors[4]); 
+        }
         else
         {
             // default

@@ -38,7 +38,7 @@ public class MainPrefabScript : MonoBehaviour
     [HideInInspector]
     public List<GameObject> partyRoundCards = new();
     private List<GameObject> inventoryUIs = new();
-    private csFogWar fogWar;
+    public csFogWar fogWar;
     public void Awake()
     {
         

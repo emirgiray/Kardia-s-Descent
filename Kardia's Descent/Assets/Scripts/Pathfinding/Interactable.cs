@@ -41,13 +41,7 @@ public class Interactable : MonoBehaviour
 
     
     public UnityEvent OnInteractEvent;
-    public void Init(VFXSpawner vfx, float yOffset, CharacterClass interactableTime, Player player)
-    {
-        VFX = vfx;
-        this.yOffset = yOffset;
-        InteractableType = interactableTime;
-        this.player = player;
-    }
+  
 
     private void Awake()
     {
