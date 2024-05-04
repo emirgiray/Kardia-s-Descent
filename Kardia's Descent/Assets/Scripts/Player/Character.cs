@@ -200,10 +200,10 @@ public class Character : MonoBehaviour
             return;
         }
 
-        if (!everythingUseful.SceneChanger.isOnMainMenu)
+        /*if (!everythingUseful.SceneChanger.isOnMainMenu)
         {
             Debug.Log("Unable to find a start position");
-        }
+        }*/
 
         
     }

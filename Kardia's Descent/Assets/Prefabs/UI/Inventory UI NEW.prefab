@@ -4496,6 +4496,7 @@ MonoBehaviour:
   - {fileID: 8572070504191413644}
   heartButton: {fileID: 6101979769157209805}
   heartIcon: {fileID: 491757788595631575}
+  emptyHeartIcon: {fileID: 1158375599, guid: f050367bbcaea674495c2d5e36fc140b, type: 3}
   actionText: {fileID: 3396090628833194330}
   APBar01: {fileID: 6389531510431658005}
   actionPointsPips:

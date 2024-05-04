@@ -530,7 +530,7 @@ public class Interact : MonoBehaviour
                     selectedCharacter.canMove = false;
                     selectedCharacter.Rotate(tile.transform.position, 0.75f, () =>
                     {
-                        tile.occupyingInteractable.OnInteract(selectedCharacter);
+                        tile.occupyingInteractable.OnInteract(selectedCharacter.GetComponent<Player>());
                         selectedCharacter.canMove = true;
                     });
                 });

@@ -45,27 +45,7 @@ public class HeartContainer : MonoBehaviour
             EquipHeart(heartDataIn);
         }
 
-        float extraYOffset = 0;
-        
-        if (heartDataIn.BonusStrength > 0)
-        {
-            character.everythingUseful.SpawnText($"Strength +{heartDataIn.BonusStrength}" ,Color.green ,character.Head, 2, 3, true );
-            extraYOffset += 0.75f;
-        }
-        if (heartDataIn.BonusDexterity > 0)
-        {
-            character.everythingUseful.SpawnText($"Dexterity +{heartDataIn.BonusDexterity}" ,Color.green ,character.Head, 2 +extraYOffset,3, true );
-            extraYOffset += 0.75f;
-        }
-        if (heartDataIn.BonusConstitution > 0)
-        {
-            character.everythingUseful.SpawnText($"Constitution +{heartDataIn.BonusConstitution}" ,Color.green ,character.Head, 2 + extraYOffset,3, true );
-            extraYOffset += 0.75f;
-        }
-        if (heartDataIn.BonusAiming > 0)
-        {
-            character.everythingUseful.SpawnText($"Aiming +{heartDataIn.BonusAiming}" , Color.green, character.Head, 2 + extraYOffset,3, true);
-        }
+       
         
     }
     
@@ -89,11 +69,34 @@ public class HeartContainer : MonoBehaviour
             character.AssignSkillValues();
             hearthStatsApplied = true;
         }
+        
+        float extraYOffset = 0;
+        
+        if (heartDataIn.BonusStrength > 0)
+        {
+            character.everythingUseful.SpawnText($"Strength +{heartDataIn.BonusStrength}" ,Color.green ,character.Head, 2, 3, true );
+            extraYOffset += 0.75f;
+        }
+        if (heartDataIn.BonusDexterity > 0)
+        {
+            character.everythingUseful.SpawnText($"Dexterity +{heartDataIn.BonusDexterity}" ,Color.green ,character.Head, 2 +extraYOffset,3, true );
+            extraYOffset += 0.75f;
+        }
+        if (heartDataIn.BonusConstitution > 0)
+        {
+            character.everythingUseful.SpawnText($"Constitution +{heartDataIn.BonusConstitution}" ,Color.green ,character.Head, 2 + extraYOffset,3, true );
+            extraYOffset += 0.75f;
+        }
+        if (heartDataIn.BonusAiming > 0)
+        {
+            character.everythingUseful.SpawnText($"Aiming +{heartDataIn.BonusAiming}" , Color.green, character.Head, 2 + extraYOffset,3, true);
+        }
         SetTooltipInfo();
     }
     
-    public void UnequipHeart()
+    public void UnequipHeart(HeartData heartDataIn)
     {
+        character.inventoryUI.SetHeartIconEmpty();
         if (heartData.heartRarity != HeartData.HeartRarity.Legendary)
         {
             character.characterStats.RemoveStrength(heartData.BonusStrength);
@@ -103,10 +106,33 @@ public class HeartContainer : MonoBehaviour
             
             character.AssignSkillValues();
         }
-        character.inventoryUI.SetHeartIcon(null);
+        
+        float extraYOffset = 0;
+        
+        if (heartDataIn.BonusStrength > 0)
+        {
+            character.everythingUseful.SpawnText($"Strength -{heartDataIn.BonusStrength}" ,Color.red ,character.Head, 2, 3, false );
+            extraYOffset += 0.75f;
+        }
+        if (heartDataIn.BonusDexterity > 0)
+        {
+            character.everythingUseful.SpawnText($"Dexterity -{heartDataIn.BonusDexterity}" ,Color.red ,character.Head, 2 +extraYOffset,3, false );
+            extraYOffset += 0.75f;
+        }
+        if (heartDataIn.BonusConstitution > 0)
+        {
+            character.everythingUseful.SpawnText($"Constitution -{heartDataIn.BonusConstitution}" ,Color.red ,character.Head, 2 + extraYOffset,3, false );
+            extraYOffset += 0.75f;
+        }
+        if (heartDataIn.BonusAiming > 0)
+        {
+            character.everythingUseful.SpawnText($"Aiming -{heartDataIn.BonusAiming}" , Color.red, character.Head, 2 + extraYOffset,3, false);
+        }
+        
         isEquipped = false;
         isPowerUnlocked = false;
         heartData = null;
+        SetTooltipInfo();
     }
 
     public void SetTooltipInfo()

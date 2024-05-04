@@ -18,7 +18,7 @@ public class Interactable : MonoBehaviour
     
     public enum CharacterClass
     {
-        None, Heart, Player, Chest, PlayerRest
+        None, Heart, Player, Chest, PlayerRest, HealStation
     }
 
     public CharacterClass InteractableType;
@@ -40,7 +40,7 @@ public class Interactable : MonoBehaviour
     [SerializeField] private Player player;
 
     
-    public UnityEvent OnInteractEvent;
+    public UnityEvent<Player> OnInteractEvent;
   
 
     private void Awake()
@@ -120,9 +120,9 @@ public class Interactable : MonoBehaviour
         
     }
 
-    public void OnInteract(Character character)
+    public void OnInteract(Player character)
     {
-        OnInteractEvent.Invoke();
+        OnInteractEvent.Invoke(character);
         if (VFX != null) VFX.SpawnVFX(gameObject.transform);
         switch (InteractableType)
         {

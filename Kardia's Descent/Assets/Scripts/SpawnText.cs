@@ -28,6 +28,7 @@ public class SpawnText : MonoBehaviour
         foreach (var anim in delayAnims)
         {
             anim.delay = time;
+            anim.RecreateTween();
         }
 
         foreach (var anim in anims)

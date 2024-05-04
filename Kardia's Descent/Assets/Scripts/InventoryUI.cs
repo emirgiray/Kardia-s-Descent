@@ -21,6 +21,7 @@ public class InventoryUI : MonoBehaviour
 
     [BoxGroup("Heart")] [SerializeField] private SkillButton heartButton;
     [BoxGroup("Heart")] [SerializeField] private Image heartIcon;
+    [BoxGroup("Heart")] [SerializeField] private Sprite emptyHeartIcon;
     
     [BoxGroup("Points")] [SerializeField] private TextMeshProUGUI actionText;
     [BoxGroup("Points")] [SerializeField] private Image APBar01;
@@ -215,6 +216,12 @@ public class InventoryUI : MonoBehaviour
     {
         HeartEquippedEvent?.Invoke();
         heartIcon.sprite = heartIconIn;
+    }
+    
+    public void SetHeartIconEmpty()
+    {
+        HeartEquippedEvent?.Invoke();
+        heartIcon.sprite = emptyHeartIcon;
     }
 
     [Button, GUIColor(1f, 1f, 1f)]
