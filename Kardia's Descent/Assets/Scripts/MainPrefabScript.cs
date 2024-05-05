@@ -5,6 +5,7 @@ using System.Linq;
 using DG.Tweening;
 using DG.Tweening.Core;
 using FischlWorks_FogWar;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -39,6 +40,32 @@ public class MainPrefabScript : MonoBehaviour
     public List<GameObject> partyRoundCards = new();
     private List<GameObject> inventoryUIs = new();
     public csFogWar fogWar;
+
+
+    /*[Button, GUIColor(1f, 1f, 1f), PropertyOrder(-1)]
+    public void CheckDotween()
+    {
+        Debug.Log($"dotween: {DOTween.Init()}");
+        DOTween.Clear();
+        DOTween.Init();
+        
+    }
+*/
+    private void OnApplicationQuit()
+    {
+        DOTween.Clear();
+        DOTween.KillAll();
+        Destroy(DOTween.instance);
+        Destroy(GameObject.Find("[DOTween]"));
+    }
+
+
+
+    /*private void Update()
+    {
+        Destroy(GameObject.Find("[DOTween]"));
+    }*/
+
     public void Awake()
     {
         

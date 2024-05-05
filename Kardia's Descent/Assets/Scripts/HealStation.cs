@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -9,6 +10,8 @@ using UnityEngine.UI;
 //todo download hot reload :)
 public class HealStation : MonoBehaviour
 {
+    [SerializeField] private EverythingUseful everythingUseful;
+    
     [SerializeField] private float healAmount = 100;
     private float healMultipliar = 1;
 
@@ -19,7 +22,8 @@ public class HealStation : MonoBehaviour
     [SerializeField] private VFXSpawner healVFX;
     
     [SerializeField] private GameObject healUI;
-    [SerializeField] private GameObject playerHearts;
+    [SerializeField] private GameObject LeftPanel;
+    [SerializeField] private GameObject RightPanel;
     [SerializeField] private GameObject playerHeartsLayoutGroup;
     [SerializeField] private Image selectedHeartImage;
     
@@ -36,6 +40,9 @@ public class HealStation : MonoBehaviour
     [SerializeField] private Player player;
     [SerializeField] private HeartData selectedHeartData;
 
+    private Transform cameraStartTransform;
+    [SerializeField] private Transform cameraTargetTransform;
+    
     private Dictionary<int, Color> textColors = new Dictionary<int, Color>()
     {
         {0, new Color(1,1,1)},
@@ -43,23 +50,46 @@ public class HealStation : MonoBehaviour
         {2, new Color(1f, 1,0) }, 
        
     };
+
+    private void OnEnable()
+    {
+        
+    }
     
+    Vector3 leftPanelStartPos = new Vector3(-1500, 0, 0);
+    Vector3 rightPanelStartPos = new Vector3(1500, 0, 0); 
+    Vector3 rightPanelEndPos = new Vector3(960, 0, 0); 
+    Vector3 leftPanelEndPos = new Vector3(-960, 0, 0); 
+
     public void StartSelection(Player playerIn)
     {
+        everythingUseful.Interact.StopAllLogic();
+        cameraStartTransform = everythingUseful.Interact.cameraTransform;
+        everythingUseful.Interact.MoveCameraAction?.Invoke(cameraTargetTransform, 1f);
+        everythingUseful.Interact.ZoomCameraAction?.Invoke( -10f, 1);
+        
         this.player = playerIn;
         healUI.SetActive(true);
+        
+        LeftPanel.transform.localPosition = leftPanelStartPos;
+        RightPanel.transform.localPosition = rightPanelStartPos;
+        LeftPanel.transform.DOLocalMove(leftPanelEndPos, 0.5f).From(leftPanelStartPos).SetEase(Ease.InOutQuad);
+        RightPanel.transform.DOLocalMove(rightPanelEndPos, 0.5f).From(rightPanelStartPos).SetEase(Ease.InOutQuad);
+        
         healButton.interactable = false;
+        healAmountText.gameObject.SetActive(false);
+        healMultiplierText.gameObject.SetActive(false);
+        healTotalText.gameObject.SetActive(false);
         
         for (int i = 0; i < player.inventory.heartsInInventory.Count; i++)
         {
             HeartButtons[i].GetComponent<Image>().sprite = player.inventory.heartsInInventory[i].HeartSprite;
-            HeartButtons[i].GetComponent<Button>().interactable = true;
+            //HeartButtons[i].GetComponent<Button>().interactable = true;
             var i1 = i;
             HeartButtons[i].GetComponent<Button>().onClick.AddListener(() => SelectHeart(player.inventory.heartsInInventory[i1]));
         }
         
     }
-    
     
     
     Color textColor = Color.white;
@@ -68,6 +98,7 @@ public class HealStation : MonoBehaviour
     {
         selectedHeartData = heartData;
         healButton.interactable = true;
+        
         
         switch (heartData.heartRarity)
         {
@@ -121,8 +152,16 @@ public class HealStation : MonoBehaviour
 
     public void EndSelection()
     {
-        ResetToDefault();
-        healUI.SetActive(false);
+        everythingUseful.Interact.ContinueAllLogic();
+        everythingUseful.Interact.MoveCameraAction?.Invoke(cameraStartTransform, 1f);
+        
+        LeftPanel.transform.DOLocalMove(leftPanelStartPos, 0.35f).From(leftPanelEndPos).SetEase(Ease.InOutQuad);
+        RightPanel.transform.DOLocalMove(rightPanelStartPos, 0.35f).From(rightPanelEndPos).SetEase(Ease.InOutQuad).OnComplete(() =>
+        {
+            ResetToDefault();
+            
+            healUI.SetActive(false);
+        });
     }
 
     public void ResetToDefault()
@@ -135,7 +174,7 @@ public class HealStation : MonoBehaviour
         foreach (var button in HeartButtons)
         {
             button.GetComponent<Image>().sprite = emptyHeartSprite;
-            button.GetComponent<Button>().interactable = false;
+            //button.GetComponent<Button>().interactable = false;
             button.GetComponent<Button>().onClick.RemoveAllListeners();
         }
         

@@ -67,35 +67,41 @@ public class HeartContainer : MonoBehaviour
             character.characterStats.AddAiming(heartDataIn.BonusAiming);
             
             character.AssignSkillValues();
+            
+            
+            float extraYOffset = 0;
+        
+            if (heartDataIn.BonusStrength > 0)
+            {
+                character.everythingUseful.SpawnText($"Strength +{heartDataIn.BonusStrength}" ,Color.green ,character.Head, 2, 3, true );
+                extraYOffset += 0.75f;
+            }
+            if (heartDataIn.BonusDexterity > 0)
+            {
+                character.everythingUseful.SpawnText($"Dexterity +{heartDataIn.BonusDexterity}" ,Color.green ,character.Head, 2 +extraYOffset,3, true );
+                extraYOffset += 0.75f;
+            }
+            if (heartDataIn.BonusConstitution > 0)
+            {
+                character.everythingUseful.SpawnText($"Constitution +{heartDataIn.BonusConstitution}" ,Color.green ,character.Head, 2 + extraYOffset,3, true );
+                extraYOffset += 0.75f;
+            }
+            if (heartDataIn.BonusAiming > 0)
+            {
+                character.everythingUseful.SpawnText($"Aiming +{heartDataIn.BonusAiming}" , Color.green, character.Head, 2 + extraYOffset,3, true);
+            }
+            
             hearthStatsApplied = true;
         }
         
-        float extraYOffset = 0;
         
-        if (heartDataIn.BonusStrength > 0)
-        {
-            character.everythingUseful.SpawnText($"Strength +{heartDataIn.BonusStrength}" ,Color.green ,character.Head, 2, 3, true );
-            extraYOffset += 0.75f;
-        }
-        if (heartDataIn.BonusDexterity > 0)
-        {
-            character.everythingUseful.SpawnText($"Dexterity +{heartDataIn.BonusDexterity}" ,Color.green ,character.Head, 2 +extraYOffset,3, true );
-            extraYOffset += 0.75f;
-        }
-        if (heartDataIn.BonusConstitution > 0)
-        {
-            character.everythingUseful.SpawnText($"Constitution +{heartDataIn.BonusConstitution}" ,Color.green ,character.Head, 2 + extraYOffset,3, true );
-            extraYOffset += 0.75f;
-        }
-        if (heartDataIn.BonusAiming > 0)
-        {
-            character.everythingUseful.SpawnText($"Aiming +{heartDataIn.BonusAiming}" , Color.green, character.Head, 2 + extraYOffset,3, true);
-        }
         SetTooltipInfo();
     }
     
     public void UnequipHeart(HeartData heartDataIn)
     {
+        isEquipped = false;
+        hearthStatsApplied = false;
         character.inventoryUI.SetHeartIconEmpty();
         if (heartData.heartRarity != HeartData.HeartRarity.Legendary)
         {
@@ -105,6 +111,7 @@ public class HeartContainer : MonoBehaviour
             character.characterStats.RemoveAiming(heartData.BonusAiming);
             
             character.AssignSkillValues();
+            
         }
         
         float extraYOffset = 0;

@@ -2,8 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Pathfinding;
-using Pathfinding.Examples;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using TMPro;
@@ -53,7 +51,6 @@ public class Interact : MonoBehaviour
     public LayerMask freeRoamMask;
     [BoxGroup("Free Roam")][SerializeField]
     //public Transform freeRoamTarget;
-    IAstarAI[] ais;
     
     List<Tile> reachableTiles = new List<Tile>();
     [SerializeField]List<Tile> attackableTiles = new List<Tile>();
@@ -173,7 +170,6 @@ public class Interact : MonoBehaviour
     {
         inspectTileMeshRenderer = InspectTileGO.GetComponentInChildren<MeshRenderer>();
         
-        ais = FindObjectsOfType<MonoBehaviour>().OfType<IAstarAI>().ToArray();
     }
 
     private void Update()

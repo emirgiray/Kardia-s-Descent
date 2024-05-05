@@ -20,7 +20,7 @@ namespace CodeMonkey.MonoBehaviours {
      * */
     public class ComponentActions : MonoBehaviour {
 
-        public Action OnDestroyFunc;
+        /*public Action OnDestroyFunc;
         public Action OnEnableFunc;
         public Action OnDisableFunc;
         public Action OnUpdate;
@@ -49,7 +49,7 @@ namespace CodeMonkey.MonoBehaviours {
             componentFuncs.OnEnableFunc = OnEnableFunc;
             componentFuncs.OnDisableFunc = OnDisableFunc;
             componentFuncs.OnUpdate = OnUpdate;
-        }
+        }*/
     }
 
 }

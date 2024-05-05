@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
@@ -63,7 +64,7 @@ public class SaveLoadSystem : MonoBehaviour
     
     private void GetValues()
     {
-        foreach (var player in MainPrefabScript.SelectedPlayers)
+        foreach (var player in MainPrefabScript.spawnedPlayers)
         {
             int playerIndex = allPlayers.allPlayers.FindIndex(p => p.playerPrefab.name.Equals(player.name/* + " Variant"*/));
             Player playerScript = player.GetComponent<Player>();
@@ -71,6 +72,7 @@ public class SaveLoadSystem : MonoBehaviour
             if (playerIndex == -1) continue;
 
             playerScript.AssignSkillValues();
+            
             inGameSaveData.inGamePLayerDatas.Add(new InGamePLayerData()
             {
                 playerID = playerIndex,
@@ -81,7 +83,9 @@ public class SaveLoadSystem : MonoBehaviour
                 Dexterity = playerScript.characterStats.Dexterity,
                 Constitution = playerScript.characterStats.Constitution,
                 Aiming = playerScript.characterStats.Aiming,
-                heartID = playerScript.heartContainer.heartData?.heartIndex ?? -1
+                equippedeartID = playerScript.heartContainer.heartData?.heartIndex ?? -1,
+                
+                heartsInInventory = playerScript.inventory.heartsInInventory.Select(x => x.heartIndex).ToList()
             });
         }
 
@@ -174,10 +178,16 @@ public class SaveLoadSystem : MonoBehaviour
             player.health.Max = inGameSaveData.inGamePLayerDatas[i].maxHealth;
             player.health._Health = inGameSaveData.inGamePLayerDatas[i].health;
 
-            if (inGameSaveData.inGamePLayerDatas[i].heartID != -1)
+            if (inGameSaveData.inGamePLayerDatas[i].equippedeartID != -1)
             {
-                player.heartContainer.heartData = allHeartDatas.allHearts[inGameSaveData.inGamePLayerDatas[i].heartID];
+                player.heartContainer.heartData = allHeartDatas.allHearts[inGameSaveData.inGamePLayerDatas[i].equippedeartID];
                 player.heartContainer.hearthStatsApplied = true;
+            }
+            
+            player.inventory.heartsInInventory.Clear();
+            foreach (var heartIndex in inGameSaveData.inGamePLayerDatas[i].heartsInInventory)
+            {
+                player.inventory.heartsInInventory.Add(allHeartDatas.allHearts[heartIndex]);
             }
         }
         
@@ -372,8 +382,8 @@ public class InGamePLayerData
     public int Constitution;
     public int Aiming;
     // public List<Item> items;
-    public int heartID;
-    
+    public int equippedeartID;
+    public List<int> heartsInInventory = new();
     
 }
 
