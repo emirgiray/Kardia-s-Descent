@@ -130,7 +130,7 @@ public class GameManager : MonoBehaviour
     private void OnApplicationQuit()
     {
         PauseRendererEffectReset.SetFloat("_Dissolve", 1);
-        //DOTween.KillAll();
+        DOTween.KillAll();
     }
 
     public void SetPauseRendererEffect(float value)

@@ -51,13 +51,13 @@ public class MainPrefabScript : MonoBehaviour
         
     }
 */
-    /*private void OnApplicationQuit()
+    private void OnApplicationQuit()
     {
         DOTween.Clear();
         DOTween.KillAll();
         Destroy(DOTween.instance);
         Destroy(GameObject.Find("[DOTween]"));
-    }*/
+    }
 
 
 

@@ -1380,6 +1380,7 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+  outlineFillMaterial: {fileID: 0}
 --- !u!114 &4467768982618460247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1550,6 +1551,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 0adf6649dfa6c2b48877232f4002ec52,
         type: 2}
+    - target: {fileID: 1086629163380962625, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
+        type: 3}
+      propertyPath: _Health
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1086629163380962625, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
+        type: 3}
+      propertyPath: Dead.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1086629163380962625, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
         type: 3}
       propertyPath: TakeDamage.m_PersistentCalls.m_Calls.Array.size
