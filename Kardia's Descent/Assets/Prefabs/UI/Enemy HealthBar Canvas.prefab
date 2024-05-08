@@ -88,13 +88,14 @@ GameObject:
   - component: {fileID: 7902527277031576670}
   - component: {fileID: 6228343904156385799}
   - component: {fileID: 3806466585562770714}
+  - component: {fileID: 4421980046983191259}
   m_Layer: 5
   m_Name: Enemy HealthBar Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7008288973743981631
 RectTransform:
   m_ObjectHideFlags: 0
@@ -191,7 +192,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56d62aca62755ba42b6d82c01f31715c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  everythingUseful: {fileID: 0}
   cameraTransform: {fileID: 0}
+--- !u!114 &4421980046983191259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1426809487291341555}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db05f0f72a45b90439fd69c955b4eeae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DestroyTime: 0
+  DestroyTotaly: 1
+  BeforeDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  Destroyed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6045500626690317780
 GameObject:
   m_ObjectHideFlags: 0

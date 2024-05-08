@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class RoundInfo : MonoBehaviour
@@ -7,6 +9,8 @@ public class RoundInfo : MonoBehaviour
     [SerializeField] private EverythingUseful everythingUseful;
     
     [SerializeField] private List<GameObject> objects = new List<GameObject>();
+    [SerializeField] private DOTweenAnimation doTweenAnimation;
+    
     
     public void Rearrange(GameObject obj)
     {
@@ -70,6 +74,15 @@ public class RoundInfo : MonoBehaviour
     }
     
     bool firstTime = true;
+
+    private void Start()
+    {
+        if (doTweenAnimation != null)
+        {
+            doTweenAnimation.DOPause();
+        }
+    }
+
     public void AddArrow()
     {
         if (firstTime)
@@ -82,6 +95,11 @@ public class RoundInfo : MonoBehaviour
         var firstElement = objects[0];
         objects.RemoveAt(0);
         objects.Add(firstElement);
+
+       // if (!doTweenAnimation.isActive)
+        {
+            doTweenAnimation.DOPlay();
+        }
     }
 
     public void RemoveArrow()
@@ -90,6 +108,20 @@ public class RoundInfo : MonoBehaviour
         var lastElement = objects[objects.Count-1];
         objects.RemoveAt(objects.Count-1);
         objects.Insert(0, lastElement);
+
+        int disabledCount = 0;
+        for (int i = 0; i < objects.Count; i++)
+        {
+            if (!objects[i].activeSelf)
+            {
+                disabledCount++;
+            }
+        }
+        
+        if (disabledCount == objects.Count)
+        {
+            TurnOffAllArrows();
+        }
     }
 
     public void TurnOffAllArrows()
@@ -100,5 +132,7 @@ public class RoundInfo : MonoBehaviour
         }
         
         firstTime = true;
+
+        doTweenAnimation.DOPause();
     }
 }

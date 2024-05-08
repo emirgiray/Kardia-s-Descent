@@ -26,10 +26,13 @@ public class HealStation : MonoBehaviour
     [SerializeField] private GameObject RightPanel;
     [SerializeField] private GameObject playerHeartsLayoutGroup;
     [SerializeField] private Image selectedHeartImage;
+    [SerializeField] private Image healMultipliarEffect;
+    
     
     [SerializeField] private TextMeshProUGUI healAmountText;
     [SerializeField] private TextMeshProUGUI healMultiplierText;
     [SerializeField] private TextMeshProUGUI healTotalText;
+    [SerializeField] private TextMeshProUGUI HealStationInfoText;
     
     [SerializeField] private Button healButton;
     [SerializeField] private Button cancelButton;
@@ -51,18 +54,22 @@ public class HealStation : MonoBehaviour
        
     };
 
-    private void OnEnable()
-    {
-        
-    }
-    
+
     Vector3 leftPanelStartPos = new Vector3(-1500, 0, 0);
     Vector3 rightPanelStartPos = new Vector3(1500, 0, 0); 
     Vector3 rightPanelEndPos = new Vector3(960, 0, 0); 
     Vector3 leftPanelEndPos = new Vector3(-960, 0, 0); 
+    
+    private Vector3 healMultiplierTextStartScale;
+    private Vector3 selectedHeartImageStartScale;
+    private Vector3 healMultipliarEffectStartScale;
 
     public void StartSelection(Player playerIn)
     {
+        healMultiplierTextStartScale = healMultiplierText.transform.localScale;
+        selectedHeartImageStartScale = selectedHeartImage.transform.localScale;
+        healMultipliarEffectStartScale = healMultipliarEffect.transform.localScale;
+        
         everythingUseful.Interact.StopAllLogic();
         cameraStartTransform = everythingUseful.Interact.cameraTransform;
         everythingUseful.Interact.MoveCameraAction?.Invoke(cameraTargetTransform, 1f);
@@ -75,11 +82,12 @@ public class HealStation : MonoBehaviour
         RightPanel.transform.localPosition = rightPanelStartPos;
         LeftPanel.transform.DOLocalMove(leftPanelEndPos, 0.5f).From(leftPanelStartPos).SetEase(Ease.InOutQuad);
         RightPanel.transform.DOLocalMove(rightPanelEndPos, 0.5f).From(rightPanelStartPos).SetEase(Ease.InOutQuad);
-        
-        healButton.interactable = false;
         healAmountText.gameObject.SetActive(false);
         healMultiplierText.gameObject.SetActive(false);
         healTotalText.gameObject.SetActive(false);
+        healMultipliarEffect.gameObject.SetActive(false);
+        
+        HealStationInfoText.gameObject.SetActive(true);
         
         for (int i = 0; i < player.inventory.heartsInInventory.Count; i++)
         {
@@ -94,6 +102,14 @@ public class HealStation : MonoBehaviour
     
     Color textColor = Color.white;
     float textSize = 1;
+    float textPunchScale = 0.1f;
+    
+    Tween textPunchScaleTween;
+    Tween heartPunchScaleTween;
+    
+    Tween multipliarEffectPunchScaleTween;
+    Tween multipliarEffectColorTween;
+    Tween multipliarEffectRotateTween;
     private void SelectHeart(HeartData heartData)
     {
         selectedHeartData = heartData;
@@ -106,20 +122,38 @@ public class HealStation : MonoBehaviour
                 healMultipliar = CommonMultiplier;
                 textColor = textColors[0];
                 textSize = 100;
+                textPunchScale = 0.1f;
                 break;
             case HeartData.HeartRarity.Rare:
                 healMultipliar = RareMultiplier;
                 textColor = textColors[1];
                 textSize = 120f;
+                textPunchScale = 0.3f;
                 break;
             case HeartData.HeartRarity.Legendary:
                 healMultipliar = Legendary;
                 textColor = textColors[2];
                 textSize = 150f;
+                textPunchScale = 0.5f;
                 break;
         }
+        if (textPunchScaleTween != null) textPunchScaleTween.Kill();
+        healMultiplierText.transform.localScale = healMultiplierTextStartScale;
+        textPunchScaleTween = healMultiplierText.transform.DOPunchScale(Vector3.one * textPunchScale, 0.5f, 1, 1).SetLoops(-1, LoopType.Restart).SetRelative();
+        
+        if (multipliarEffectPunchScaleTween != null) multipliarEffectPunchScaleTween.Kill();
+        if (multipliarEffectColorTween != null) multipliarEffectColorTween.Kill();
+        if (multipliarEffectRotateTween != null) multipliarEffectRotateTween.Kill();
+        healMultipliarEffect.transform.localScale = healMultipliarEffectStartScale;
+        //multipliarEffectColorTween = healMultipliarEffect.DOColor(textColor, 1f).SetLoops(-1, LoopType.Yoyo);
+        healMultipliarEffect.color = textColor;
+        multipliarEffectPunchScaleTween = healMultipliarEffect.transform.DOPunchScale(Vector3.one * textPunchScale, 0.5f, 1, 1).SetLoops(-1, LoopType.Restart).SetRelative();
+        multipliarEffectRotateTween = healMultipliarEffect.transform.DORotate(new Vector3(0, 0, 360), 1f, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Restart);
+        
+        if (heartPunchScaleTween != null) heartPunchScaleTween.Kill();
+        selectedHeartImage.transform.localScale = selectedHeartImageStartScale;
         selectedHeartImage.sprite = heartData.HeartSprite;
-        selectedHeartImage.transform.DOPunchScale(Vector3.one * 0.1f, 0.5f, 1, 1);
+        heartPunchScaleTween = selectedHeartImage.transform.DOPunchScale(Vector3.one * 0.1f, 0.5f, 1, 1).SetRelative();
         
         healAmountText.text = $"{healAmount} x";
         healMultiplierText.text = healMultipliar.ToString();
@@ -130,6 +164,8 @@ public class HealStation : MonoBehaviour
         healAmountText.gameObject.SetActive(true);
         healMultiplierText.gameObject.SetActive(true);
         healTotalText.gameObject.SetActive(true);
+        healMultipliarEffect.gameObject.SetActive(true);
+        HealStationInfoText.gameObject.SetActive(false);
         
         healButton.onClick.RemoveAllListeners();
         healButton.onClick.AddListener(() => HealPlayer());
@@ -166,11 +202,14 @@ public class HealStation : MonoBehaviour
 
     public void ResetToDefault()
     {
+        healMultiplierText.transform.localScale = healMultiplierTextStartScale;
         selectedHeartImage.sprite = emptyHeartSprite;
         healButton.interactable = false;
         healAmountText.gameObject.SetActive(false);
         healMultiplierText.gameObject.SetActive(false);
         healTotalText.gameObject.SetActive(false);
+        
+        HealStationInfoText.gameObject.SetActive(true);
         foreach (var button in HeartButtons)
         {
             button.GetComponent<Image>().sprite = emptyHeartSprite;
