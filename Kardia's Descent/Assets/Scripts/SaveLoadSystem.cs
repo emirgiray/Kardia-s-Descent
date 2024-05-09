@@ -78,7 +78,9 @@ public class SaveLoadSystem : MonoBehaviour
                 playerID = playerIndex,
                 health = playerScript.health._Health,
                 maxHealth = playerScript.health.Max,
-                isUnlocked = playerScript.isUnlocked,
+                // isUnlocked = playerScript.isUnlocked,
+                 isUnlocked = true,
+                
                 Strength = playerScript.characterStats.Strength,
                 Dexterity = playerScript.characterStats.Dexterity,
                 Constitution = playerScript.characterStats.Constitution,
@@ -113,6 +115,7 @@ public class SaveLoadSystem : MonoBehaviour
     [Button, GUIColor(1f, 0.1f, 1f)]
     public void SaveGame()
     {
+        
         // clear the inGameSaveData list
         inGameSaveData.inGamePLayerDatas.Clear();
         
@@ -172,7 +175,8 @@ public class SaveLoadSystem : MonoBehaviour
             player.characterStats.Dexterity = inGameSaveData.inGamePLayerDatas[i].Dexterity;
             player.characterStats.Constitution = inGameSaveData.inGamePLayerDatas[i].Constitution;
             player.characterStats.Aiming = inGameSaveData.inGamePLayerDatas[i].Aiming;
-            player.isUnlocked = inGameSaveData.inGamePLayerDatas[i].isUnlocked;
+            // player.isUnlocked = inGameSaveData.inGamePLayerDatas[i].isUnlocked;
+            player.isUnlocked = true;
             //player.AssignSkillValues(); // this is already done on character awake
             
             player.health.Max = inGameSaveData.inGamePLayerDatas[i].maxHealth;

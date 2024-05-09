@@ -137,7 +137,8 @@ public class MainPrefabScript : MonoBehaviour
             Player playerScript = player.GetComponent<Player>();
             playerScript.inventory.InventoryUISlot = InventoryUISlots[i];
             spawnedPlayerScripts.Add(playerScript);
-
+            playerScript.FindTileAtStart();
+            
             fogWar.AddFogRevealerRevelear(player.transform);
 
             GameObject preview = Instantiate(playerScript.PlayerPreview, playerPreviewParent.transform);

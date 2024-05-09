@@ -57,7 +57,9 @@ public class Character : MonoBehaviour
     public float moveSpeed = 1;
     [BoxGroup("Stats")] /*[HideInInspector]*/
     public bool canSpeedUp = true;
-    
+
+    [BoxGroup("Variables")] [SerializeField]
+    public bool findTileAtAwake = true;
     [BoxGroup("Variables")] [SerializeField] 
     public float YOffset = 0;
     [BoxGroup("Variables")] [SerializeField] 
@@ -151,7 +153,7 @@ public class Character : MonoBehaviour
         // ResetMovePoints();
         AssignSkillValues();
         ResetActionPoints();
-        FindTileAtStart();
+        if (findTileAtAwake) FindTileAtStart();
         AwakeEvent?.Invoke();
     }
 
@@ -186,7 +188,7 @@ public class Character : MonoBehaviour
     /// <summary>
     /// If no starting tile has been manually assigned, we find one beneath us
     /// </summary>
-    void FindTileAtStart()
+    public void FindTileAtStart()
     {
         if (characterTile != null)
         { 

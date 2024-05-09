@@ -299,7 +299,7 @@ public class MainMenuController : MonoBehaviour
     public void SpawnedCharacterMiscFunc()
     {
         Inventory inventory = spawnedCharacter.GetComponent<Inventory>();
-        
+        spawnedCharacter.GetComponent<Player>().findTileAtAwake = false;
         for (int i = 0; i < inventory.testWeaponData.SkillsDataList.Count; i++)
         {
             skillLayoutTransform.GetChild(i).GetComponent<SkillButton>().InitForMenuButton(inventory.testWeaponData.SkillsDataList[i]);

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MKToonConfiguration
   m_EditorClassIdentifier: 
   _renderPipeline: 1
-  showInstallerOnReload: 1
+  showInstallerOnReload: 0
   disablePerObjectOutlinesWarning: 0
   _titleImage: {fileID: 2800000, guid: 9d278674ef7e65f47ac4deae7aea6c95, type: 3}
   _readMe: {fileID: 102900000, guid: 13ebf3083b485cd4992f26eef6b4c903, type: 3}
@@ -72,17 +72,17 @@ MonoBehaviour:
   - rid: 9
   - rid: 10
   _globalShaderFeaturesTemp:
-  - rid: 3276456239400747030
-  - rid: 3276456239400747031
-  - rid: 3276456239400747032
-  - rid: 3276456239400747033
-  - rid: 3276456239400747034
-  - rid: 3276456239400747035
-  - rid: 3276456239400747036
-  - rid: 3276456239400747037
-  - rid: 3276456239400747038
-  - rid: 3276456239400747039
-  - rid: 3276456239400747040
+  - rid: 7017763913596141568
+  - rid: 7017763913596141569
+  - rid: 7017763913596141570
+  - rid: 7017763913596141571
+  - rid: 7017763913596141572
+  - rid: 7017763913596141573
+  - rid: 7017763913596141574
+  - rid: 7017763913596141575
+  - rid: 7017763913596141576
+  - rid: 7017763913596141577
+  - rid: 7017763913596141578
   references:
     version: 2
     RefIds:
@@ -212,7 +212,7 @@ MonoBehaviour:
         _name: Linear Light Attenuation
         _tooltip: Changes the light attenuation for non-directional lights more linear
           (Approximately like builtin renderpipeline).
-    - rid: 3276456239400747030
+    - rid: 7017763913596141568
       type: {class: GlobalShaderFeature, ns: MK.Toon.Editor, asm: MK.Toon.Editor}
       data:
         _mode: 0
@@ -225,7 +225,7 @@ MonoBehaviour:
         _name: Albedo Map Intensity
         _tooltip: Enables an albedo intensity to control the intensity of the albedo
           map into the rendering. 0 = black, 1 = full albedo
-    - rid: 3276456239400747031
+    - rid: 7017763913596141569
       type: {class: GlobalShaderFeature, ns: MK.Toon.Editor, asm: MK.Toon.Editor}
       data:
         _mode: 0
@@ -235,7 +235,7 @@ MonoBehaviour:
         _compileDirectives: []
         _name: Multiply vertex color with albedo
         _tooltip: Multiplies vertex color into the albedo Color.
-    - rid: 3276456239400747032
+    - rid: 7017763913596141570
       type: {class: GlobalShaderFeature, ns: MK.Toon.Editor, asm: MK.Toon.Editor}
       data:
         _mode: 0
@@ -251,7 +251,7 @@ MonoBehaviour:
         - MK_TOON_OUTLINE_FADING_INVERSE_EXPONENTIAL
         _name: Outline Distance Fading
         _tooltip: Enable outline distance based fading.
-    - rid: 3276456239400747033
+    - rid: 7017763913596141571
       type: {class: GlobalShaderFeature, ns: MK.Toon.Editor, asm: MK.Toon.Editor}
       data:
         _mode: 0
@@ -261,7 +261,7 @@ MonoBehaviour:
         _compileDirectives: []
         _name: Force Point Filtering
         _tooltip: Forces point filtering on textures.
-    - rid: 3276456239400747034
+    - rid: 7017763913596141572
       type: {class: GlobalShaderFeature, ns: MK.Toon.Editor, asm: MK.Toon.Editor}
       data:
         _mode: 0
@@ -271,7 +271,7 @@ MonoBehaviour:
         _compileDirectives: []
         _name: Dissolve Projection Screen Space
         _tooltip: Forces dissolve projection into screen space.
-    - rid: 3276456239400747035
+    - rid: 7017763913596141573
       type: {class: GlobalShaderFeature, ns: MK.Toon.Editor, asm: MK.Toon.Editor}
       data:
         _mode: 1
@@ -281,7 +281,7 @@ MonoBehaviour:
         _compileDirectives: []
         _name: Enable Local Antialiasing
         _tooltip: Enables local antialiasing except for mobile devices.
-    - rid: 3276456239400747036
+    - rid: 7017763913596141574
       type: {class: GlobalShaderFeature, ns: MK.Toon.Editor, asm: MK.Toon.Editor}
       data:
         _mode: 0
@@ -292,7 +292,7 @@ MonoBehaviour:
         _name: Stylize System Shadows
         _tooltip: Stylizes the system shadows like the lighting. Be careful with
           the thresholds!
-    - rid: 3276456239400747037
+    - rid: 7017763913596141575
       type: {class: GlobalShaderFeature, ns: MK.Toon.Editor, asm: MK.Toon.Editor}
       data:
         _mode: 0
@@ -303,7 +303,7 @@ MonoBehaviour:
         _name: Legacy Noise
         _tooltip: Enables the legacy noise calculation for animation and outline
           noise.
-    - rid: 3276456239400747038
+    - rid: 7017763913596141576
       type: {class: GlobalShaderFeature, ns: MK.Toon.Editor, asm: MK.Toon.Editor}
       data:
         _mode: 0
@@ -314,7 +314,7 @@ MonoBehaviour:
         _name: Legacy Screen Scaling
         _tooltip: Enables legacy screen spaced scaling for artistic textures and
           outlines in clip space.
-    - rid: 3276456239400747039
+    - rid: 7017763913596141577
       type: {class: GlobalShaderFeature, ns: MK.Toon.Editor, asm: MK.Toon.Editor}
       data:
         _mode: 0
@@ -327,7 +327,7 @@ MonoBehaviour:
           clip space. \n\n This should only be enabled if your XR Render Mode is
           set to \"Multi Pass\". \n\n This is required because there is no workaround
           to detect the \"Multi Pass\" rendering mode, when using XR."
-    - rid: 3276456239400747040
+    - rid: 7017763913596141578
       type: {class: GlobalShaderFeature, ns: MK.Toon.Editor, asm: MK.Toon.Editor}
       data:
         _mode: 0

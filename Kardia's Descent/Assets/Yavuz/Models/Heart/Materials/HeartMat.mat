@@ -237,7 +237,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AdvancedTab: 1
+    - _AdvancedTab: 0
     - _AlbedoMapIntensity: 1
     - _AlphaClip: 0
     - _AlphaClipping: 0
@@ -346,7 +346,7 @@ Material:
     - _OutlineMode: 0
     - _OutlineNoise: 0
     - _OutlineSize: 50
-    - _OutlineTab: 1
+    - _OutlineTab: 0
     - _OutlineWidth: 8.17
     - _OverrideShadowColor: 0
     - _Parallax: 0.005
@@ -393,7 +393,7 @@ Material:
     - _StencilWriteMask: 255
     - _StencilZFail: 0
     - _StepViaRampTexture: 0
-    - _StylizeTab: 1
+    - _StylizeTab: 0
     - _Surface: 0
     - _ThresholdMapScale: 1
     - _ToonBlending: 1

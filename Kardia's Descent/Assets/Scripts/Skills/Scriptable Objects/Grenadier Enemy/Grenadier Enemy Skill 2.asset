@@ -18,7 +18,7 @@ MonoBehaviour:
   skillDescription: Area dmg from the skyinner, 2 hex radius 100% damage, outer 2 
     hex radius 50% damage.
   skillID: 15
-  skillDamage: 30
+  skillDamage: 75
   skillRange: 1
   skillCooldown: 0
   actionPointUse: 0

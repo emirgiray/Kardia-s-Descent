@@ -57,8 +57,10 @@ public class GameManager : MonoBehaviour
         foreach (var player in SelectedPlayers)
         {
             everythingUseful.LevelManager.AddPlayerToGame(player.GetComponent<Player>());
+            everythingUseful.MainPrefabScript.spawnedPlayers.Add(player);
         }
         
+
         everythingUseful.SaveLoadSystem.SaveGame();
         everythingUseful.MainPrefabScript.MainCamera.enabled = true;
         everythingUseful.SaveLoadSystem.inGameSaveData.lastScene = everythingUseful.SceneChanger.firstLevel;

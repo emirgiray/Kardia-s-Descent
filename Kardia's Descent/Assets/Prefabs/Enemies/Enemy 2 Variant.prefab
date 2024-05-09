@@ -1704,7 +1704,12 @@ PrefabInstance:
     - target: {fileID: 4807473279575106974, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
         type: 3}
       propertyPath: damageModifier
-      value: 1.5
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4807473279575106974, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
+        type: 3}
+      propertyPath: healthThreshold
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4807473279575106974, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
         type: 3}
@@ -1717,6 +1722,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 22100000, guid: b645302d6c622f340bc74119fd7ab4a4,
         type: 2}
+    - target: {fileID: 5649455234823889604, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7739255302806780372, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
         type: 3}
       propertyPath: m_Color.b

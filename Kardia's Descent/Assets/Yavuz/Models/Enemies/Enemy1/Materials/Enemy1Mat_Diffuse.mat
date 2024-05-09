@@ -394,7 +394,7 @@ Material:
     - _StencilWriteMask: 255
     - _StencilZFail: 0
     - _StepViaRampTexture: 0
-    - _StylizeTab: 1
+    - _StylizeTab: 0
     - _Surface: 0
     - _ThresholdMapScale: 1
     - _ToonBlending: 0.551
