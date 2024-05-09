@@ -696,7 +696,7 @@ MonoBehaviour:
   isRelative: 1
   isFrom: 1
   isIndependentUpdate: 0
-  autoKill: 0
+  autoKill: 1
   autoGenerate: 1
   isActive: 1
   isValid: 1
@@ -958,7 +958,7 @@ MonoBehaviour:
   isRelative: 0
   isFrom: 1
   isIndependentUpdate: 1
-  autoKill: 0
+  autoKill: 1
   autoGenerate: 1
   isActive: 1
   isValid: 1
@@ -1656,7 +1656,7 @@ MonoBehaviour:
   isRelative: 1
   isFrom: 1
   isIndependentUpdate: 0
-  autoKill: 0
+  autoKill: 1
   autoGenerate: 1
   isActive: 1
   isValid: 1
@@ -1992,7 +1992,7 @@ MonoBehaviour:
   isRelative: 1
   isFrom: 1
   isIndependentUpdate: 0
-  autoKill: 0
+  autoKill: 1
   autoGenerate: 1
   isActive: 1
   isValid: 1
@@ -2422,7 +2422,7 @@ MonoBehaviour:
   isRelative: 1
   isFrom: 0
   isIndependentUpdate: 1
-  autoKill: 0
+  autoKill: 1
   autoGenerate: 1
   isActive: 1
   isValid: 1
@@ -3018,7 +3018,7 @@ MonoBehaviour:
   isRelative: 0
   isFrom: 1
   isIndependentUpdate: 1
-  autoKill: 0
+  autoKill: 1
   autoGenerate: 1
   isActive: 1
   isValid: 1
@@ -3073,7 +3073,7 @@ Transform:
   m_GameObject: {fileID: 2336478616791830259}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.44197556, z: -0, w: 0.8970271}
-  m_LocalPosition: {x: -36.18, y: 1.0250001, z: 39.06}
+  m_LocalPosition: {x: -36.05, y: 1.0250001, z: 37.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3253,7 +3253,7 @@ MonoBehaviour:
   isRelative: 1
   isFrom: 0
   isIndependentUpdate: 1
-  autoKill: 0
+  autoKill: 1
   autoGenerate: 1
   isActive: 1
   isValid: 1
@@ -3644,6 +3644,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   everythingUseful: {fileID: 11400000, guid: 0adf6649dfa6c2b48877232f4002ec52, type: 2}
   objects: []
+  doTweenAnimation: {fileID: 0}
 --- !u!1 &2439410792422498521
 GameObject:
   m_ObjectHideFlags: 0
@@ -3784,7 +3785,7 @@ MonoBehaviour:
   isRelative: 1
   isFrom: 0
   isIndependentUpdate: 0
-  autoKill: 0
+  autoKill: 1
   autoGenerate: 1
   isActive: 1
   isValid: 1
@@ -4650,6 +4651,12 @@ MonoBehaviour:
   sceneTypesPrefab: {fileID: 8397405935737101742, guid: e669db7b3da351b43aab9cd5c0d66c36,
     type: 3}
   possibleNextScenesBG: {fileID: 7441072413695352180}
+  GameUIToCLose:
+  - {fileID: 5438585350185207602}
+  - {fileID: 2429524321233830747}
+  - {fileID: 3541597024136520374}
+  - {fileID: 3295341642865181630}
+  - {fileID: 201151647071575814}
 --- !u!1 &2540498801143161665
 GameObject:
   m_ObjectHideFlags: 0
@@ -4956,7 +4963,7 @@ MonoBehaviour:
   isRelative: 1
   isFrom: 0
   isIndependentUpdate: 1
-  autoKill: 0
+  autoKill: 1
   autoGenerate: 1
   isActive: 1
   isValid: 1
@@ -7181,7 +7188,7 @@ MonoBehaviour:
   isRelative: 1
   isFrom: 0
   isIndependentUpdate: 1
-  autoKill: 0
+  autoKill: 1
   autoGenerate: 1
   isActive: 1
   isValid: 1
@@ -8121,7 +8128,7 @@ MonoBehaviour:
   isRelative: 1
   isFrom: 0
   isIndependentUpdate: 1
-  autoKill: 0
+  autoKill: 1
   autoGenerate: 1
   isActive: 1
   isValid: 1
@@ -8545,7 +8552,7 @@ MonoBehaviour:
   isRelative: 1
   isFrom: 1
   isIndependentUpdate: 0
-  autoKill: 0
+  autoKill: 1
   autoGenerate: 1
   isActive: 1
   isValid: 1
@@ -8809,7 +8816,7 @@ MonoBehaviour:
   isRelative: 0
   isFrom: 1
   isIndependentUpdate: 1
-  autoKill: 0
+  autoKill: 1
   autoGenerate: 1
   isActive: 1
   isValid: 1
@@ -9091,7 +9098,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5385177522270337225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.20780626, y: -0.0000015497208, z: 0.00000033527613, w: 0.97817004}
+  m_LocalRotation: {x: 0.20780629, y: -0.0000015199184, z: 0.00000032782555, w: 0.97817004}
   m_LocalPosition: {x: -0.5507841, y: 7.52, z: -12.69327}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9240,6 +9247,7 @@ MonoBehaviour:
   - {fileID: 6045621313735367158}
   - {fileID: 4626105399863194656}
   - {fileID: 8460803103348855466}
+  doTweenAnimation: {fileID: 2239503604504705672}
 --- !u!114 &2239503604504705672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9846,7 +9854,7 @@ MonoBehaviour:
   isRelative: 0
   isFrom: 1
   isIndependentUpdate: 0
-  autoKill: 0
+  autoKill: 1
   autoGenerate: 1
   isActive: 1
   isValid: 1
@@ -10483,7 +10491,7 @@ MonoBehaviour:
   isRelative: 0
   isFrom: 1
   isIndependentUpdate: 0
-  autoKill: 0
+  autoKill: 1
   autoGenerate: 1
   isActive: 1
   isValid: 1
@@ -10684,7 +10692,7 @@ MonoBehaviour:
   isRelative: 1
   isFrom: 0
   isIndependentUpdate: 1
-  autoKill: 0
+  autoKill: 1
   autoGenerate: 1
   isActive: 1
   isValid: 1
@@ -11069,7 +11077,7 @@ MonoBehaviour:
     m_SceneName: Start Level
   mainMenuLevel:
     m_SceneAsset: {fileID: 102900000, guid: f7cfe8530a8bef74b9d5601fc822c0f3, type: 3}
-    m_SceneName: Main Menu 2
+    m_SceneName: Main Menu
   currentScene:
     m_SceneAsset: {fileID: 0}
     m_SceneName: 
@@ -11514,7 +11522,7 @@ MonoBehaviour:
   isRelative: 1
   isFrom: 0
   isIndependentUpdate: 1
-  autoKill: 0
+  autoKill: 1
   autoGenerate: 1
   isActive: 1
   isValid: 1
@@ -11814,7 +11822,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6578396956140879713}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.20780626, y: -0.0000015497208, z: 0.00000033527613, w: 0.97817004}
+  m_LocalRotation: {x: 0.20780629, y: -0.0000015199184, z: 0.00000032782555, w: 0.97817004}
   m_LocalPosition: {x: -0.5507841, y: 7.52, z: -12.69327}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -11970,6 +11978,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cae9cde96cce9354ea7bbc922d827ee3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stopAllLogic: 0
   everythingUseful: {fileID: 11400000, guid: 0adf6649dfa6c2b48877232f4002ec52, type: 2}
   InspectTileGO: {fileID: 8784705004452843393}
   InspectTileCoverIconGO: {fileID: 5698048274555494151}
@@ -11987,6 +11996,7 @@ MonoBehaviour:
   freeRoamMask:
     serializedVersion: 2
     m_Bits: 11
+  reachableTiles: []
   attackableTiles: []
   interactMask:
     serializedVersion: 2
@@ -13142,7 +13152,7 @@ MonoBehaviour:
   isRelative: 1
   isFrom: 0
   isIndependentUpdate: 1
-  autoKill: 0
+  autoKill: 1
   autoGenerate: 1
   isActive: 1
   isValid: 1
@@ -13528,6 +13538,7 @@ MonoBehaviour:
   spawnedPlayerScripts: []
   previews: []
   partyRoundCards: []
+  fogWar: {fileID: 0}
 --- !u!114 &472881729164264370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14210,7 +14221,7 @@ MonoBehaviour:
   isRelative: 0
   isFrom: 1
   isIndependentUpdate: 1
-  autoKill: 0
+  autoKill: 1
   autoGenerate: 1
   isActive: 1
   isValid: 1
@@ -14472,7 +14483,7 @@ MonoBehaviour:
   isRelative: 0
   isFrom: 1
   isIndependentUpdate: 1
-  autoKill: 0
+  autoKill: 1
   autoGenerate: 1
   isActive: 1
   isValid: 1
@@ -14959,7 +14970,7 @@ MonoBehaviour:
   isRelative: 0
   isFrom: 0
   isIndependentUpdate: 0
-  autoKill: 0
+  autoKill: 1
   autoGenerate: 1
   isActive: 1
   isValid: 1
@@ -15499,7 +15510,7 @@ MonoBehaviour:
   isRelative: 1
   isFrom: 0
   isIndependentUpdate: 1
-  autoKill: 0
+  autoKill: 1
   autoGenerate: 1
   isActive: 1
   isValid: 1
@@ -15867,7 +15878,7 @@ MonoBehaviour:
   isRelative: 1
   isFrom: 0
   isIndependentUpdate: 1
-  autoKill: 0
+  autoKill: 1
   autoGenerate: 1
   isActive: 1
   isValid: 1

@@ -961,24 +961,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  TakeDamage:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8148688877583324293}
-        m_TargetAssemblyTypeName: Character, Assembly-CSharp
-        m_MethodName: OnCharacterRecieveDamageFunc
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 0
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
+      - m_Target: {fileID: 933249061865821215}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -988,6 +973,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  TakeDamage:
+    m_PersistentCalls:
+      m_Calls:
       - m_Target: {fileID: 11400000, guid: 98b1a83a636c9c04a81d156801ef8267, type: 2}
         m_TargetAssemblyTypeName: SGT_Tools.Audio.SimpleAudioEvent, SGT_Audio
         m_MethodName: Play
@@ -1005,19 +993,7 @@ MonoBehaviour:
       m_Calls: []
   TakeDamageWithString:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
-        m_MethodName: set_text
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   HealthDecreaseValue:
     m_PersistentCalls:
       m_Calls: []
@@ -1036,30 +1012,6 @@ MonoBehaviour:
   MissEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
-        m_MethodName: set_text
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 11400000, guid: 671989f9215157f41973655f4211fc24, type: 2}
         m_TargetAssemblyTypeName: SGT_Tools.Audio.SimpleAudioEvent, SGT_Audio
         m_MethodName: Play
@@ -1110,7 +1062,6 @@ MonoBehaviour:
   inventory: {fileID: 0}
   inventoryUI: {fileID: 0}
   pathfinder: {fileID: 8866224488703451883}
-  movedata: {fileID: 11400000, guid: dd6f1c9025f1ba945b2082ff9cda2f56, type: 2}
   characterTile: {fileID: 0}
   characterCard: {fileID: 0}
   animator: {fileID: 4920150254343422204}
@@ -1123,6 +1074,8 @@ MonoBehaviour:
   health: {fileID: 1086629163380962625}
   detectingThreshold: 0.45
   detectionTile: 4
+  moveSpeed: 1
+  canSpeedUp: 1
   YOffset: 0
   canMove: 1
   canAttack: 1
@@ -1131,6 +1084,7 @@ MonoBehaviour:
   isStunned: 0
   remainingStunTurns: 0
   isDead: 0
+  diedOnSelfTurn: 0
   canRotate: 1
   dropItemsOnDeath: 0
   itemsToDrop: []
@@ -1183,6 +1137,7 @@ MonoBehaviour:
   Interact: {fileID: 0}
   CameraSystem: {fileID: 0}
   LevelManager: {fileID: 0}
+  isSpedUp: 0
   stateController: {fileID: 0}
   turnOrder: 0
   decideState: 0
@@ -1491,11 +1446,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealthBar Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 1426809487291341555, guid: ac3393e7e0bd79f4eb348e5d544d370f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7008288973743981631, guid: ac3393e7e0bd79f4eb348e5d544d370f,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1601,6 +1551,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac3393e7e0bd79f4eb348e5d544d370f, type: 3}
+--- !u!114 &933249061865821215 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4421980046983191259, guid: ac3393e7e0bd79f4eb348e5d544d370f,
+    type: 3}
+  m_PrefabInstance: {fileID: 3579682752430526148}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2477153329434498103}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db05f0f72a45b90439fd69c955b4eeae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2477153329434498103 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1426809487291341555, guid: ac3393e7e0bd79f4eb348e5d544d370f,
@@ -1824,7 +1786,6 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
-  outlineFillMaterial: {fileID: 0}
 --- !u!114 &5741564287569938330
 MonoBehaviour:
   m_ObjectHideFlags: 0
