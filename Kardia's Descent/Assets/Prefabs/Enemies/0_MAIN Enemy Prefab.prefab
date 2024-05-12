@@ -1076,6 +1076,7 @@ MonoBehaviour:
   detectionTile: 4
   moveSpeed: 1
   canSpeedUp: 1
+  findTileAtAwake: 1
   YOffset: 0
   canMove: 1
   canAttack: 1
@@ -1433,6 +1434,7 @@ MonoBehaviour:
   illustratePath: 0
   illustrator: {fileID: 0}
   attackableTiles: []
+  character: {fileID: 8148688877583324293}
 --- !u!1001 &3579682752430526148
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -474,7 +474,13 @@ public class Interact : MonoBehaviour
                         {
                             if (attackableTiles.Contains(currentTile))
                             {
-                                selectedCharacter.SkillContainer.UseSkill(selectedCharacter.SkillContainer.selectedSkill, currentTile);
+                                int cachedDamageDebuff = selectedCharacter.SkillContainer.CalculateCoverDamageDebuff(selectedCharacter.characterTile, currentTile, selectedCharacter.SkillContainer.selectedSkill);
+                                selectedCharacter.SkillContainer.selectedSkill.damage -= cachedDamageDebuff;
+                                selectedCharacter.SkillContainer.UseSkill(selectedCharacter.SkillContainer.selectedSkill, currentTile, null,
+                                    () =>
+                                    {
+                                        selectedCharacter.SkillContainer.lastSelectedSkill.damage += cachedDamageDebuff;
+                                    });
                                 lastAttackedTile = currentTile;
                             
                             }
@@ -934,7 +940,7 @@ public class Interact : MonoBehaviour
         if (characterSelected && selectedCharacter.characterState == Character.CharacterState.Attacking)//todo add or FreeRoam
         {
             selectedCharacter.SkillContainer.ResetCoverAccruacyDebuff();
-            selectedCharacter.SkillContainer.ResetCoverdamageDebuff();
+            //selectedCharacter.SkillContainer.ResetCoverdamageDebuff();
             if (isMouseOverUI == false)
             {
                 selectedCharacter.Rotate(selectedCharacter.characterTile != currentTile ? currentTile.transform.position : lastTile.transform.position);
@@ -949,7 +955,7 @@ public class Interact : MonoBehaviour
                     if (selectedCharacter.SkillContainer.selectedSkill.skillData.skillType == SkillsData.SkillType.Ranged)
                     {
                         // selectedCharacter.SkillContainer.ApplyCoverAccuracyDebuff();
-                        selectedCharacter.SkillContainer.ApplyCoverDamageDebuff();
+                        //newTile.occupyingEnemy.blockedDamage = selectedCharacter.SkillContainer.ApplyCoverDamageDebuff();
                     }
                     
                     EnableDisableHitChanceUI(true);
@@ -960,7 +966,7 @@ public class Interact : MonoBehaviour
                     if (selectedCharacter.SkillContainer.selectedSkill.skillData.skillType == SkillsData.SkillType.Ranged)
                     {
                         // selectedCharacter.SkillContainer.ResetCoverAccruacyDebuff();
-                        selectedCharacter.SkillContainer.ResetCoverdamageDebuff();
+                        //selectedCharacter.SkillContainer.ResetCoverdamageDebuff();
                     }
                     
                     EnableDisableHitChanceUI(true);
@@ -972,7 +978,8 @@ public class Interact : MonoBehaviour
                 if (selectedCharacter.SkillContainer.selectedSkill.skillData.skillType == SkillsData.SkillType.Ranged)
                 {
                     // selectedCharacter.SkillContainer.ResetCoverAccruacyDebuff();
-                    selectedCharacter.SkillContainer.ResetCoverdamageDebuff();
+                    //selectedCharacter.SkillContainer.ResetCoverdamageDebuff();
+                    //if(lastTile.occupyingEnemy != null) lastTile.occupyingEnemy.blockedDamage = 0;
                 }
                 
                 EnableDisableHitChanceUI(false);

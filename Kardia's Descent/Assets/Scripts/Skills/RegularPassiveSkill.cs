@@ -28,7 +28,8 @@ public class RegularPassiveSkill : SkillsData
 
         while (fireCount < 3)
         {
-            if (skillStartVFX != null) skillStartVFX.SpawnVFX(ActivaterCharacter.Hand);
+            Vector3 dir = selectedTile.transform.position - ActivaterCharacter.transform.position;
+            if (skillStartVFX != null) skillStartVFX.SpawnVFX(ActivaterCharacter.Hand, dir);
             if (base.TryHit(Skill, ActivaterCharacter, selectedTile, OnComplete))
             {
                 base.DoDamage(Skill, ActivaterCharacter, selectedTile, 1, OnComplete); 

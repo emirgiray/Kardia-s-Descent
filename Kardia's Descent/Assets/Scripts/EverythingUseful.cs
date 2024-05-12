@@ -37,7 +37,7 @@ public class EverythingUseful : ScriptableObject
     public GameObject SpawnTextGO;
     
 
-    [Tooltip("Used for damage, heal, miss")]
+    [Tooltip("Used for heal")]
     public void SpawnText(string value, Color color, Transform RandomSpawnLocation, float yOffset, float animDelay, SGT_Health health)
     {
         Vector3 PosAroundHead = SGT_Math.GetPositionAroundObject(RandomSpawnLocation, 0.5f);
@@ -54,6 +54,43 @@ public class EverythingUseful : ScriptableObject
             spawnText.text.text = value;
         }
         spawnText.text.color = color;
+        
+        //spawnText.SetDestroyTime(destroyTime);
+        spawnText.SetAnimDelay(animDelay);
+    }
+
+    [Tooltip("Used for damage and miss")]
+    public void SpawnText(string takenDamage, string blockedDamage, Color takenColor, Color blockedColor,  Transform RandomSpawnLocation, float yOffset, float animDelay, SGT_Health health)
+    {
+        Vector3 PosAroundHead = SGT_Math.GetPositionAroundObject(RandomSpawnLocation, 1.5f);
+        Vector3 randomPosAroundHead = new Vector3(PosAroundHead.x, PosAroundHead.y + yOffset, PosAroundHead.z);
+        
+        GameObject spawnedHitText = Instantiate(SpawnTextGO, randomPosAroundHead, Quaternion.identity);
+        var spawnText = spawnedHitText.GetComponent<SpawnText>();
+        if (takenDamage != "MISS" && int.Parse(takenDamage) >= health.Max)
+        {
+            spawnText.text.text = health.Max.ToString();
+            spawnText.text.color = takenColor;
+        }
+        else if (takenDamage == "MISS")
+        {
+            spawnText.text.text = takenDamage;
+            spawnText.text.color = Color.white;
+        }
+        else
+        {
+            //Debug.Log($"blockedDamage: {blockedDamage}");
+            if (blockedDamage == "0")
+            {
+                spawnText.text.text = $"<color=#{ColorUtility.ToHtmlStringRGB(takenColor)}>{takenDamage}</color>";
+            }
+            else
+            {
+                spawnText.text.text = $"<color=#{ColorUtility.ToHtmlStringRGB(takenColor)}>{takenDamage}</color> <size=60%><color=#{ColorUtility.ToHtmlStringRGB(blockedColor)}>(-{blockedDamage})</color></size>  <sprite=0>";                
+            }
+           
+        }
+        
         
         //spawnText.SetDestroyTime(destroyTime);
         spawnText.SetAnimDelay(animDelay);

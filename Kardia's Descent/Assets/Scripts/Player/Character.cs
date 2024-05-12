@@ -110,6 +110,7 @@ public class Character : MonoBehaviour
     public CharacterState characterState;
 
     public GameObject HitTextGameObject;
+    public int blockedDamage = 0;
     
     public  Action<int> OnActionPointsChange;
     public Action OnTurnStart;
@@ -213,6 +214,8 @@ public class Character : MonoBehaviour
     private IEnumerator moveCoroutine;
     public void StartMove(Path _path, bool rotate = true, Action OnComplete = null, bool spendActionPoints = true)
     {
+        if (_path == null) return;
+        
         if (canMove)
         {
             MoveStart.Invoke();
@@ -860,9 +863,9 @@ public class Character : MonoBehaviour
         Instantiate(itemsToDrop[randomIndex], dropPos, Quaternion.identity);
     }
     
-    public void OnCharacterRecieveDamageFunc(int value)
+    public void OnCharacterRecieveDamageFunc(int damageValue)
     {
-        everythingUseful.SpawnText(value.ToString(), Color.red, Head, 2, 1f, health);
+        everythingUseful.SpawnText(damageValue.ToString(), blockedDamage.ToString(), Color.red,Color.white , Head, 3, 1f, health);
         
         animator.SetTrigger("Hit");
         OnCharacterRecieveDamageAction?.Invoke();

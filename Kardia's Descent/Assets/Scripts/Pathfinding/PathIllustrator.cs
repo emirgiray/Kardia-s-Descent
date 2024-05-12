@@ -19,14 +19,19 @@ public class PathIllustrator : MonoBehaviour
         if (canIllustratePath)
         {
             Character character = everythingUseful.Interact.selectedCharacter;
-            
-            line.positionCount = path.tiles.Count;
 
-            for (int i = 0; i < path.tiles.Count; i++)
+            if (path != null && path.tiles.Count > 0)
             {
-                Transform tileTransform = path.tiles[i].transform;
-                line.SetPosition(i, tileTransform.position.With(y: tileTransform.position.y + LineHeightOffset));
+                line.positionCount = path.tiles.Count;
+                
+                for (int i = 0; i < path.tiles.Count; i++)
+                {
+                    Transform tileTransform = path.tiles[i].transform;
+                    line.SetPosition(i, tileTransform.position.With(y: tileTransform.position.y + LineHeightOffset));
+                }
             }
+
+            
 
             /*var gradient = new Gradient();
             var colors = new GradientColorKey[path.tiles.Count];

@@ -236,7 +236,6 @@ MonoBehaviour:
   inventory: {fileID: 5475755088311690444}
   inventoryUI: {fileID: 0}
   pathfinder: {fileID: 29732848317274237}
-  movedata: {fileID: 11400000, guid: dd6f1c9025f1ba945b2082ff9cda2f56, type: 2}
   characterTile: {fileID: 0}
   characterCard: {fileID: 0}
   animator: {fileID: 8171963017244894837}
@@ -249,13 +248,18 @@ MonoBehaviour:
   health: {fileID: 5225323832543321503}
   detectingThreshold: 0.45
   detectionTile: 4
+  moveSpeed: 1
+  canSpeedUp: 1
+  findTileAtAwake: 1
   YOffset: 0
   canMove: 1
   canAttack: 1
+  isInAttackTileSelection: 0
   inCombat: 0
   isStunned: 0
   remainingStunTurns: 0
   isDead: 0
+  diedOnSelfTurn: 0
   canRotate: 1
   dropItemsOnDeath: 0
   itemsToDrop: []
@@ -308,12 +312,15 @@ MonoBehaviour:
   Interact: {fileID: 0}
   CameraSystem: {fileID: 0}
   LevelManager: {fileID: 0}
+  isSpedUp: 0
   playerPortrait: {fileID: 8400000, guid: 8d4fd00542bae0b43957e359329b47a2, type: 2}
   PlayerPreview: {fileID: 0}
   playerPrefab: {fileID: 0}
   killsInTurn: 0
   canBruiserDoubleAttack: 1
   isUnlocked: 0
+  playerID: 0
+  UnlockTile: {fileID: 0}
 --- !u!114 &6566286917398397367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,6 +369,9 @@ MonoBehaviour:
   skillButtons: []
   damageBeforeCoverDebuff: 0
   accuracyBeforeCoverDebuff: 0
+  effectedTiles: []
+  innerEffectedTiles: []
+  outerEffectedTiles: []
 --- !u!114 &6326383597764647500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -443,6 +453,7 @@ MonoBehaviour:
   illustratePath: 1
   illustrator: {fileID: 3607636336836369656}
   attackableTiles: []
+  character: {fileID: 7510704565162782655}
 --- !u!120 &1727434434356038212
 LineRenderer:
   serializedVersion: 2

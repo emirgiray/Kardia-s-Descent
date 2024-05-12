@@ -14,7 +14,7 @@ public class SkillContainer : MonoBehaviour
     [SerializeField] public List<Skills> skillsList = new List<Skills>();
     //[SerializeField] public SkillsData selectedSOSkill;
     [SerializeField] public Skills selectedSkill;
-    [SerializeField] private Skills lastSelectedSkill;
+    [SerializeField] public Skills lastSelectedSkill;
     [SerializeField] public bool skillSelected = false;
    // [SerializeField] private bool skillCanbeUsed = true;
     [SerializeField] public Character Character;
@@ -380,7 +380,7 @@ bool impact = false;
         {
             DeselectSkill(selectedSkill, enemy);
             ResetCoverAccruacyDebuff();
-            ResetCoverdamageDebuff();
+            //ResetCoverdamageDebuff();
 
             OnComplete?.Invoke();
             
@@ -433,8 +433,10 @@ bool impact = false;
     {
         if (Character.pathfinder.CheckCoverPoint(attacker, defender, true) && selectSkill.skillData.skillType == SkillsData.SkillType.Ranged)
         {
+            defender.occupyingCharacter.blockedDamage = selectSkill.damage / 2;
             return selectSkill.damage / 2;
         }
+        defender.occupyingCharacter.blockedDamage = 0;
         return 0;
     }
     
@@ -445,10 +447,12 @@ bool impact = false;
         selectedSkill.accuracy -= selectedSkill.coverAccuracyDebuff;
     }
 
-    public void ApplyCoverDamageDebuff()
+    public int ApplyCoverDamageDebuff()
     {
         damageBeforeCoverDebuff = selectedSkill.damage;
         selectedSkill.damage /= 2;
+        
+        return selectedSkill.damage / 2;
         //Debug.Log($"damge before cover debuff: {damageBeforeCoverDebuff}, damage after cover debuff: {selectedSkill.damage}");
     }
     

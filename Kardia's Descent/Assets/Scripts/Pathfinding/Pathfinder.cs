@@ -12,7 +12,9 @@ public class Pathfinder : MonoBehaviour
     [ShowIf("illustratePath")]
     public PathIllustrator illustrator;
     public List<Tile> attackableTiles = new List<Tile>();
-
+    [SerializeField] private Character character;
+    
+    
     /// <summary>
     /// Main pathfinding function, marks tiles as being in frontier, while keeping a copy of the frontier
     /// in "currentFrontier" for later clearing
@@ -118,16 +120,26 @@ public class Pathfinder : MonoBehaviour
                     {
                         if (ignoreOccupied)
                         {
-                            if (hitTile.occupyingCoverPoint == null)
+                            if (character is Player)
                             {
-                                tiles.Add(hitTile);
+                                if (!hitTile.OccupiedByCoverPoint)
+                                {
+                                    tiles.Add(hitTile);
+                                }
                             }
-
+                            else
+                            {
+                                if (!hitTile.OccupiedByCoverPoint && !hitTile.occupiedByInteractable)
+                                {
+                                    tiles.Add(hitTile);
+                                }
+                            }
+                            
                             if (forAttackTiles)
                             {
                                 tiles.Add(hitTile);
                             }
-                            Debug.DrawRay(aboveTilePos, Vector3.down * rayLength, Color.red, 10);
+                            
                             if (forCoverTile)
                             {
                                 
@@ -844,11 +856,12 @@ public class Pathfinder : MonoBehaviour
        }
        else
        {
+          // Debug.DrawRay(defendingPos, (attackingPos - defendingPos).normalized * PathfinderVariables.Instance.coverPointRayLenght,  Color.red, 10);
            if (Physics.SphereCast(defendingPos, sphereRaidus, (attackingPos - defendingPos).normalized, out RaycastHit hit, PathfinderVariables.Instance.coverPointRayLenght, PathfinderVariables.Instance.coverPointMask))
            {
                return true;
            }
-
+            
            if (defending.occupiedByPlayer && defending.isCoveredByCoverPoint)
            {
                if (Physics.SphereCast(defendingPos, sphereRaidus, (attackingPos - defendingPos).normalized, out RaycastHit hit2, PathfinderVariables.Instance.coverPointRayLenght, PathfinderVariables.Instance.tankCoverPointMask))
