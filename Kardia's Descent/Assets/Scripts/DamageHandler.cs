@@ -19,18 +19,37 @@ public class DamageHandler : MonoBehaviour
     [PropertyOrder(2)]
     public UnityEvent TakeDamageEvent;*/
     
-    public void TakeDamage(int value, Character attacker)
+    public void TakeDamage(int baseValue, float damageMultipliar, Character attacker)
     {
-        sgtHealth.HealthDecrease(value);
-        character.OnCharacterRecieveDamageFunc(value);
+        int totalDamage = Mathf.RoundToInt(baseValue * damageMultipliar);
+        int extraDamage = totalDamage - baseValue;
+        
+        if (extraDamage > 0)
+        {
+            // this means the damage was increased
+        }
+        else if (extraDamage < 0)
+        {
+            // this means the damage was decreased
+            
+        }
+        else
+        {
+            // this means the damage was not increased or decreased
+        }
+        
+        character.everythingUseful.SpawnText(totalDamage, extraDamage, Color.red,Color.white ,character.Head, 3, 2f, character.health);
+        
+        sgtHealth.HealthDecrease(totalDamage);
+        character.OnCharacterRecieveDamageFunc(totalDamage);
         
         if (attacker is Player)
         {
-            character.everythingUseful.GameManager.totalDamageDealt += value;
+            character.everythingUseful.GameManager.totalDamageDealt += totalDamage;
         }
         if (attacker is Enemy)
         {
-            character.everythingUseful.GameManager.totalDamageTaken += value;
+            character.everythingUseful.GameManager.totalDamageTaken += totalDamage;
         }
         
         if (sgtHealth.isDead)

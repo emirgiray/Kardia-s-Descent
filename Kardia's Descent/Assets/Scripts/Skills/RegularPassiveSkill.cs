@@ -32,7 +32,7 @@ public class RegularPassiveSkill : SkillsData
             if (skillStartVFX != null) skillStartVFX.SpawnVFX(ActivaterCharacter.Hand, dir);
             if (base.TryHit(Skill, ActivaterCharacter, selectedTile, OnComplete))
             {
-                base.DoDamage(Skill, ActivaterCharacter, selectedTile, 1, OnComplete); 
+                base.DoDamage(Skill, ActivaterCharacter, selectedTile, ActivaterCharacter.SkillContainer.coverDamageMultiplier * ActivaterCharacter.SkillContainer.otherDamageMultiplier, OnComplete); 
             }
             else
             {

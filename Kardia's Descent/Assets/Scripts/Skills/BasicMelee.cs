@@ -60,7 +60,7 @@ public class BasicMelee : SkillsData
             {
                 if (base.TryHit(Skill, ActivaterCharacter, tile, OnComplete))
                 {
-                    base.DoDamage(Skill, ActivaterCharacter, tile, 1, OnComplete);
+                    base.DoDamage(Skill, ActivaterCharacter, tile, ActivaterCharacter.SkillContainer.coverDamageMultiplier * ActivaterCharacter.SkillContainer.otherDamageMultiplier, OnComplete);
                     switch (skillEffect)
                     {
                         case SkillEffect.None:
@@ -80,7 +80,7 @@ public class BasicMelee : SkillsData
         {
             if (base.TryHit(Skill, ActivaterCharacter, selectedTile, OnComplete))
             {
-                base.DoDamage(Skill, ActivaterCharacter, selectedTile, 1, OnComplete); 
+                base.DoDamage(Skill, ActivaterCharacter, selectedTile, ActivaterCharacter.SkillContainer.coverDamageMultiplier * ActivaterCharacter.SkillContainer.otherDamageMultiplier, OnComplete); 
             
                 switch(skillEffect)
                 {

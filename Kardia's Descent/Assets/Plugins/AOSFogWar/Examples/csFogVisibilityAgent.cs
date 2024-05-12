@@ -67,6 +67,16 @@ namespace FischlWorks_FogWar
             }
 
             meshRenderers = GetComponentsInChildren<MeshRenderer>().ToList();
+
+            foreach (var renderer in meshRenderers.ToList())
+            {
+                if (renderer.gameObject.name.Contains("Waypoint") == true)
+                {
+                    meshRenderers.Remove(renderer);
+                }
+                
+            }
+            
             skinnedMeshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>().ToList();
             Images = GetComponentsInChildren<Image>().ToList();
             texts = GetComponentsInChildren<TextMeshProUGUI>().ToList();

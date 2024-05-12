@@ -29,6 +29,8 @@ public class SkillContainer : MonoBehaviour
     [HideInInspector] public List<Tile> innerEffectedTiles;
     [HideInInspector] public List<Tile> outerEffectedTiles;
     private static LTDescr delay;
+    public float coverDamageMultiplier = 1;
+    public float otherDamageMultiplier = 1;
     // public Action skillNotReadyAction;
     //public Action skillReadyAction;
 
@@ -68,16 +70,6 @@ public class SkillContainer : MonoBehaviour
 
     private void Start()
     {
-        
-        /*PopulateSkillsList();
-        for (int i = 0; i < skillButtons.Count; i++)
-        {
-            int i1 = i;
-            skillButtons[i].InitButton(skillsDataSOList[i], skillsList[i] , ()=> TrySelectSkill(skillsList[i1]), this);
-            
-            skillsList[i].skillButton = skillButtons[i];
-        }*/
-
         StartCoroutine(Delay());
     }
 
@@ -393,6 +385,8 @@ bool impact = false;
                 enemy.AttackEnd(selectedSkill);
             }
                 
+            coverDamageMultiplier = 1;
+            otherDamageMultiplier = 1;
         });
         
         
@@ -429,14 +423,15 @@ bool impact = false;
         return 0;
     }
 
+    
     public int CalculateCoverDamageDebuff(Tile attacker, Tile defender, Skills selectSkill)
     {
         if (Character.pathfinder.CheckCoverPoint(attacker, defender, true) && selectSkill.skillData.skillType == SkillsData.SkillType.Ranged)
         {
-            defender.occupyingCharacter.blockedDamage = selectSkill.damage / 2;
+            coverDamageMultiplier = 0.5f;
             return selectSkill.damage / 2;
         }
-        defender.occupyingCharacter.blockedDamage = 0;
+        coverDamageMultiplier = 1;
         return 0;
     }
     

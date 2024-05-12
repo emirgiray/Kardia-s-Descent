@@ -110,7 +110,6 @@ public class Character : MonoBehaviour
     public CharacterState characterState;
 
     public GameObject HitTextGameObject;
-    public int blockedDamage = 0;
     
     public  Action<int> OnActionPointsChange;
     public Action OnTurnStart;
@@ -865,7 +864,7 @@ public class Character : MonoBehaviour
     
     public void OnCharacterRecieveDamageFunc(int damageValue)
     {
-        everythingUseful.SpawnText(damageValue.ToString(), blockedDamage.ToString(), Color.red,Color.white , Head, 3, 1f, health);
+        //everythingUseful.SpawnText(damageValue.ToString(), blockedDamage.ToString(), Color.red,Color.white , Head, 3, 1f, health);
         
         animator.SetTrigger("Hit");
         OnCharacterRecieveDamageAction?.Invoke();
@@ -937,6 +936,11 @@ public class Character : MonoBehaviour
     public GameObject GetCharacterCard()
     {
         return characterCard;
+    }
+
+    public void HiglightOutline(bool value)
+    {
+        outline.enabled = value;
     }
 
 }

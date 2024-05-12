@@ -139,7 +139,6 @@ public class TurnSystem : MonoBehaviour
         OnTurnChange.Invoke();
         if (turnState == TurnState.Friendly)
         {
-            Debug.Log($"turn {turn} playersInCombat.Count {playersInCombat.Count}");
             if (turn > playersInCombat.Count)
             {
                 NextRound();
@@ -150,7 +149,6 @@ public class TurnSystem : MonoBehaviour
             everythingUseful.TurnSystem.currentEnemyTurnOrder++;
             if (turn > enemiesInCombat.Count)
             {
-                Debug.Log($"turn {turn} enemiesInCombat.Count {enemiesInCombat.Count}");
                 NextRound();
                 //TurnSystem.Instance.currentEnemyTurnOrder = 0;
             }

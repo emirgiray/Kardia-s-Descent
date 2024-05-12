@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-[ExecuteInEditMode]
+/*[ExecuteInEditMode]*/
 public class Tooltip : MonoBehaviour
 {
 
@@ -22,23 +22,27 @@ public class Tooltip : MonoBehaviour
     [SerializeField] private Ease fadeInEase;
     [SerializeField] private Ease fadeOutEase;
     
-
+    Image image;
     private void OnEnable()
     {
-        gameObject.GetComponent<Image>().DOFade(0.9f, fadeTime).SetEase(fadeInEase);
+        if(image != null) image = GetComponent<Image>();
+        image.DOFade(0.8f, fadeTime).SetEase(fadeInEase);
         headerText.DOFade(1, fadeTime).SetEase(fadeInEase);
         contentText.DOFade(1, fadeTime).SetEase(fadeInEase);
     }
 
+    /*
     private void OnDisable()
     {
         gameObject.GetComponent<Image>().DOFade(0, fadeTime).SetEase(fadeOutEase);
         headerText.DOFade(0, fadeTime).SetEase(fadeOutEase);
         contentText.DOFade(0, fadeTime).SetEase(fadeOutEase);
     }
+    */
 
     private void Awake()
     {
+        
         rectTransform = GetComponent<RectTransform>();
     }
 
@@ -62,7 +66,7 @@ public class Tooltip : MonoBehaviour
         // layoutElement.enabled = (headerLength > characterWrapLimit || contentLength > characterWrapLimit) ? true : false;
     }
     
-    private void Update()
+    /*private void Update()
     {
         /*if (Application.isEditor)
         {
@@ -78,18 +82,25 @@ public class Tooltip : MonoBehaviour
         float pivotY = position.y / Screen.height;
         
         rectTransform.pivot = new Vector2(pivotX, pivotY - 0.5f);
-        transform.position = position;*/
-    }
+        transform.position = position;#1#
+    }*/
 
-    public void SetPosition(Vector3 pos)
+    public void SetPosition(Vector3 pos, bool isUI)
     {
         layoutElement.enabled = true;
         Vector2 position = Input.mousePosition;
         
         float pivotX = position.x / Screen.width;
         float pivotY = position.y / Screen.height;
-        
-        rectTransform.pivot = new Vector2(pivotX, pivotY - 0.5f);
+
+        if (isUI)
+        {
+            rectTransform.pivot = new Vector2(pivotX, pivotY - 0.5f);
+        }
+        else
+        {
+            rectTransform.pivot = new Vector2(pivotX *= -0.5f, pivotY - 0.5f);
+        }
         transform.position = position;
     }
 

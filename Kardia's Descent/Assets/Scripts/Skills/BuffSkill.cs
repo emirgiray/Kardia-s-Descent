@@ -21,7 +21,7 @@ public class BuffSkill : SkillsData
                 ChangeAP(ActivaterCharacter, isBuff, Skill.skillBuffDebuffAmount, permaBuff);
                 foreach (var fx in skillHitVFX)
                 {
-                    fx.SpawnVFX(ActivaterCharacter.characterTile.transform);
+                    fx.SpawnVFX(ActivaterCharacter.characterTile.transform, ActivaterCharacter.transform);
                     if (skillAudioEvent != null) skillAudioEvent.Play(ActivaterCharacter.transform);
                 }
             }
@@ -35,7 +35,7 @@ public class BuffSkill : SkillsData
                         ChangeAP(tile.occupyingPlayer, isBuff, Skill.skillBuffDebuffAmount, permaBuff);
                         foreach (var fx in skillHitVFX)
                         {
-                            fx.SpawnVFX(tile.occupyingPlayer.transform);
+                            fx.SpawnVFX(tile.occupyingPlayer.transform, tile.occupyingPlayer.transform);
                             if (skillAudioEvent != null) skillAudioEvent.Play(ActivaterCharacter.transform);
                         }
                     }
@@ -58,7 +58,7 @@ public class BuffSkill : SkillsData
                     Heal(ActivaterCharacter, Skill.skillBuffDebuffAmount);
                     foreach (var fx in skillHitVFX)
                     {
-                        fx.SpawnVFX(ActivaterCharacter.characterTile.transform);
+                        fx.SpawnVFX(ActivaterCharacter.characterTile.transform, ActivaterCharacter.transform);
                         if (skillAudioEvent != null) skillAudioEvent.Play(ActivaterCharacter.transform);
                     }
                 }

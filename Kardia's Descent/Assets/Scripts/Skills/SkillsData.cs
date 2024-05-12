@@ -125,70 +125,14 @@ public class SkillsData : ScriptableObject
         int random = UnityEngine.Random.Range(1, 101);
         if (random <= Skill.accuracy || Skill.accuracy == 100 || Skill.accuracy > 100) //hit
         {
-            // Debug.Log($"HIT: {random} < {Skill.accuracy}");
-            //OnHit(Skill, ActivaterCharacter, selectedTile, OnComplete);
             return true;
         }
         else
         {
-            // Debug.Log($"MISSED: {random} > {Skill.accuracy}");
-            //OnMiss(Skill, ActivaterCharacter, selectedTile, OnComplete);
             return false;
         }
     }
-
-    /*
-    public virtual void OnHit(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile,  Action OnComplete = null)
-    {
-        if (ActivaterCharacter is Player)
-        {
-            if (selectedTile.occupiedByEnemy)
-            {
-                foreach (var fx in skillHitVFX)
-                {
-                    fx.SpawnVFX(selectedTile.occupyingEnemy.transform);
-                }
-                
-                selectedTile.occupyingEnemy.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
-                //selectedTile.occupyingEnemy.Stun(true, skillEffectDuration);
-            }
-
-            if (selectedTile.OccupiedByCoverPoint)
-            {
-                foreach (var fx in skillHitVFX)
-                {
-                    fx.SpawnVFX(selectedTile.occupyingCoverPoint.transform);
-                }
-                
-                selectedTile.occupyingCoverPoint.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
-            }
-        }
-
-        if (ActivaterCharacter is Enemy)
-        {
-            if (selectedTile.occupiedByPlayer)
-            {
-                foreach (var fx in skillHitVFX)
-                {
-                    fx.SpawnVFX(selectedTile.occupyingPlayer.transform);
-                }
-                
-                selectedTile.occupyingPlayer.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
-                //selectedTile.occupyingPlayer.Stun(true, skillEffectDuration);
-            }
-
-            if (selectedTile.OccupiedByCoverPoint)
-            {
-                foreach (var fx in skillHitVFX)
-                {
-                    fx.SpawnVFX(selectedTile.occupyingCoverPoint.transform);
-                }
-                
-                selectedTile.occupyingCoverPoint.GetComponent<SGT_Health>().HealthDecrease(Skill.damage);
-            }
-        }
-    }
-    */
+    
     
     public void OnMiss(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile,  Action OnComplete = null)
     {
@@ -214,7 +158,6 @@ public class SkillsData : ScriptableObject
             skillMissVFX.SpawnVFX(selectedTile.transform);
         }
         
-        //Debug.Log($"on hit 2");
     }
 
     public virtual void DoSomething(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile,  Action OnComplete = null)
@@ -232,7 +175,7 @@ public class SkillsData : ScriptableObject
             {
                 fx.SpawnVFX(selectedTile.occupyingEnemy.transform);
             }
-            selectedTile.occupyingEnemy.GetComponent<DamageHandler>().TakeDamage((int)(Skill.damage * damageMultipliar), ActivaterCharacter);
+            selectedTile.occupyingEnemy.GetComponent<DamageHandler>().TakeDamage(Skill.damage, damageMultipliar, ActivaterCharacter);
         }
         
         if (ActivaterCharacter is Enemy && selectedTile.occupiedByPlayer)
@@ -242,7 +185,7 @@ public class SkillsData : ScriptableObject
                 fx.SpawnVFX(selectedTile.occupyingPlayer.transform);
             }
 
-            selectedTile.occupyingPlayer.GetComponent<DamageHandler>().TakeDamage((int)(Skill.damage * damageMultipliar), ActivaterCharacter);
+            selectedTile.occupyingPlayer.GetComponent<DamageHandler>().TakeDamage(Skill.damage, damageMultipliar, ActivaterCharacter);
         }
         
         if (selectedTile.OccupiedByCoverPoint)
@@ -252,7 +195,18 @@ public class SkillsData : ScriptableObject
                 fx.SpawnVFX(selectedTile.occupyingCoverPoint.transform);
             }
 
-            if (selectedTile.occupyingCoverPoint.GetComponent<SGT_Health>() != null) selectedTile.occupyingCoverPoint.GetComponent<SGT_Health>().HealthDecrease((int)(Skill.damage * coverDamageMultipliar * damageMultipliar));
+            if (selectedTile.occupyingCoverPoint.GetComponent<SGT_Health>() != null)
+            {
+                int damage = (int)(Skill.damage * coverDamageMultipliar * damageMultipliar);
+
+                if (damage == 0)
+                {
+                    damage = 1;
+                }
+                
+                selectedTile.occupyingCoverPoint.GetComponent<SGT_Health>().HealthDecrease(damage);
+                selectedTile.occupyingCoverPoint.SpawnText(Skill.damage, coverDamageMultipliar * damageMultipliar);
+            }
         }
     }
     public void DoStun(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile,  Action OnComplete = null)

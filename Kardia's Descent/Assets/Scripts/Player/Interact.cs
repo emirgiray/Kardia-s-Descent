@@ -474,12 +474,12 @@ public class Interact : MonoBehaviour
                         {
                             if (attackableTiles.Contains(currentTile))
                             {
-                                int cachedDamageDebuff = selectedCharacter.SkillContainer.CalculateCoverDamageDebuff(selectedCharacter.characterTile, currentTile, selectedCharacter.SkillContainer.selectedSkill);
-                                selectedCharacter.SkillContainer.selectedSkill.damage -= cachedDamageDebuff;
+                               /*int cachedDamageDebuff =*/ selectedCharacter.SkillContainer.CalculateCoverDamageDebuff(selectedCharacter.characterTile, currentTile, selectedCharacter.SkillContainer.selectedSkill);
+                               /* selectedCharacter.SkillContainer.selectedSkill.damage -= cachedDamageDebuff;*/
                                 selectedCharacter.SkillContainer.UseSkill(selectedCharacter.SkillContainer.selectedSkill, currentTile, null,
                                     () =>
                                     {
-                                        selectedCharacter.SkillContainer.lastSelectedSkill.damage += cachedDamageDebuff;
+                                       // selectedCharacter.SkillContainer.lastSelectedSkill.damage += cachedDamageDebuff;
                                     });
                                 lastAttackedTile = currentTile;
                             

@@ -12,9 +12,9 @@ public class UseAttackSkillAction : ActionAI
         /*controller.skillContainer.selectedSkill.accuracy -= controller.skillContainer.CalculateCoverAccuracyDebuff(
             controller.decidedMoveTile, controller.targetPlayerTile, controller.skillContainer.selectedSkill);//reduce accuracy if target player in cover*/
         
-        int cachedDamageDebuff =controller.skillContainer.CalculateCoverDamageDebuff(
+        /*int cachedDamageDebuff =*/controller.skillContainer.CalculateCoverDamageDebuff(
             controller.decidedMoveTile, controller.targetPlayerTile, controller.skillContainer.selectedSkill);//reduce damage if target player in cover
-        controller.skillContainer.selectedSkill.damage -= cachedDamageDebuff;
+        //controller.skillContainer.selectedSkill.damage -= cachedDamageDebuff;
 
         Action OnCompleteAddedAction;
         controller.pathfinder.GetAttackableTiles(controller.enemy, controller.skillContainer.selectedSkill, controller.enemy.characterTile, controller.targetPlayerTile, out OnCompleteAddedAction);
@@ -30,7 +30,7 @@ public class UseAttackSkillAction : ActionAI
             {
                 controller.forcedSkillToUse.skillData = null;
             }
-            controller.lastUsedSkill.damage += cachedDamageDebuff;
+            //controller.lastUsedSkill.damage += cachedDamageDebuff;
             controller.forcedTargetPlayerTile = null;
         });
     }

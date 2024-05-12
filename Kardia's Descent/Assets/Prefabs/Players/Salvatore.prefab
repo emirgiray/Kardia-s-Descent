@@ -167,11 +167,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2808189248250398436, guid: 04563854e99a65a4c8a042dc7f750368,
-        type: 3}
-      propertyPath: anim
-      value: 
-      objectReference: {fileID: 1515562305685836531}
     - target: {fileID: 3045574018136022521, guid: 04563854e99a65a4c8a042dc7f750368,
         type: 3}
       propertyPath: m_Name
@@ -278,11 +273,6 @@ PrefabInstance:
       propertyPath: spawnedSkillButtonPrefabs.Array.size
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 5706041887416553655, guid: 04563854e99a65a4c8a042dc7f750368,
-        type: 3}
-      propertyPath: anim
-      value: 
-      objectReference: {fileID: 1515562305685836531}
     - target: {fileID: 6326383597764647500, guid: 04563854e99a65a4c8a042dc7f750368,
         type: 3}
       propertyPath: hand
@@ -303,11 +293,6 @@ PrefabInstance:
       propertyPath: health
       value: 
       objectReference: {fileID: 7963506671791240775}
-    - target: {fileID: 7510704565162782655, guid: 04563854e99a65a4c8a042dc7f750368,
-        type: 3}
-      propertyPath: outline
-      value: 
-      objectReference: {fileID: 1257547641767003973}
     - target: {fileID: 7510704565162782655, guid: 04563854e99a65a4c8a042dc7f750368,
         type: 3}
       propertyPath: animator
@@ -932,10 +917,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 8255650508046496280}
-    - targetCorrespondingSourceObject: {fileID: 5567843456906182522, guid: 8f4a0ceba62af4145b67e40edcc51274,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1257547641767003973}
   m_SourcePrefab: {fileID: 100100000, guid: 8f4a0ceba62af4145b67e40edcc51274, type: 3}
 --- !u!95 &1515562305685836531 stripped
 Animator:
@@ -982,31 +963,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
---- !u!114 &1257547641767003973
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3949322146768768174}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 0, g: 1, b: 0, a: 1}
-  outlineWidth: 2
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
-  onCharacter: 1
-  DefaultOutlineMaskMaterial: {fileID: 0}
-  DefaultOutlineFillMaterial: {fileID: 0}
-  CharacterOutlineMaskMaterial: {fileID: 2100000, guid: 106f3ff43a17d4967a2b64c7a92e49ec,
-    type: 2}
-  CharacterOutlineFillMaterial: {fileID: 2100000, guid: 7e6ab07ac3e396b479cc1dd78a5a4e79,
-    type: 2}
 --- !u!4 &4432983759214351892 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5048294059854030272, guid: 8f4a0ceba62af4145b67e40edcc51274,

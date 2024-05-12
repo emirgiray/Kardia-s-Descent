@@ -142,7 +142,7 @@ public class SkillButton : MonoBehaviour
         skillContainer = skillContainerIn;
     }
     
-    public void HighlightSkill()
+    private void HighlightSkill()
     {
         if (!skillData.everythingUseful.SceneChanger.isOnMainMenu)
         {

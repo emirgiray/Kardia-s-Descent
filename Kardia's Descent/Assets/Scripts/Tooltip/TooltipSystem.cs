@@ -21,11 +21,11 @@ public class TooltipSystem : MonoBehaviour
         }
     }
     
-    public static void Show(string content, string header, Vector3 pos)
+    public static void Show(string content, string header, Vector3 pos, bool isUI)
     {
         current.tooltip.SetText(content, header);
         current.tooltip.gameObject.SetActive(true);
-        current.tooltip.SetPosition(pos);
+        current.tooltip.SetPosition(pos, isUI);
     }
     
     public static void Hide()

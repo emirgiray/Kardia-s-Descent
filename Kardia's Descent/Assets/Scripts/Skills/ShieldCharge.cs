@@ -71,7 +71,7 @@ public class ShieldCharge : SkillsData
 
         if (base.TryHit(Skill, ActivaterCharacter, selectedTile, OnComplete))
         {
-            base.DoDamage(Skill, ActivaterCharacter, selectedTile, 1, OnComplete);
+            base.DoDamage(Skill, ActivaterCharacter, selectedTile, ActivaterCharacter.SkillContainer.coverDamageMultiplier * ActivaterCharacter.SkillContainer.otherDamageMultiplier, OnComplete);
             base.DoStun(Skill, ActivaterCharacter, selectedTile, OnComplete);
         }
         else

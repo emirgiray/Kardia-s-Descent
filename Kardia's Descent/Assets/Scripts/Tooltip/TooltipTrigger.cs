@@ -24,13 +24,13 @@ public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         {
             StopCoroutine(showTooltipCoroutine);
         }
-        showTooltipCoroutine = StartCoroutine(ShowTooltipAfterDelay());
+        showTooltipCoroutine = StartCoroutine(ShowTooltipAfterDelay(true));
     }
 
-    private IEnumerator ShowTooltipAfterDelay()
+    private IEnumerator ShowTooltipAfterDelay(bool isUI)
     {
         yield return new WaitForSeconds(delayTime);
-        TooltipSystem.Show(content, header, transform.position);
+        TooltipSystem.Show(content, header, transform.position, isUI);
     }
 
     private void OnMouseEnter()
@@ -40,7 +40,7 @@ public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         {
             StopCoroutine(showTooltipCoroutine);
         }
-        showTooltipCoroutine = StartCoroutine(ShowTooltipAfterDelay());
+        showTooltipCoroutine = StartCoroutine(ShowTooltipAfterDelay(false));
     }
 
     public void OnPointerExit(PointerEventData eventData)

@@ -37,7 +37,7 @@ public class EverythingUseful : ScriptableObject
     public GameObject SpawnTextGO;
     
 
-    [Tooltip("Used for heal")]
+    [Tooltip("Used for heal and miss")]
     public void SpawnText(string value, Color color, Transform RandomSpawnLocation, float yOffset, float animDelay, SGT_Health health)
     {
         Vector3 PosAroundHead = SGT_Math.GetPositionAroundObject(RandomSpawnLocation, 0.5f);
@@ -59,34 +59,33 @@ public class EverythingUseful : ScriptableObject
         spawnText.SetAnimDelay(animDelay);
     }
 
-    [Tooltip("Used for damage and miss")]
-    public void SpawnText(string takenDamage, string blockedDamage, Color takenColor, Color blockedColor,  Transform RandomSpawnLocation, float yOffset, float animDelay, SGT_Health health)
+    [Tooltip("Used for damage ")]
+    public void SpawnText(int takenDamage, int extraDamage, Color takenColor, Color extraColor,  Transform RandomSpawnLocation, float yOffset, float animDelay, SGT_Health health)
     {
         Vector3 PosAroundHead = SGT_Math.GetPositionAroundObject(RandomSpawnLocation, 1.5f);
         Vector3 randomPosAroundHead = new Vector3(PosAroundHead.x, PosAroundHead.y + yOffset, PosAroundHead.z);
         
         GameObject spawnedHitText = Instantiate(SpawnTextGO, randomPosAroundHead, Quaternion.identity);
         var spawnText = spawnedHitText.GetComponent<SpawnText>();
-        if (takenDamage != "MISS" && int.Parse(takenDamage) >= health.Max)
+        if (takenDamage >= health.Max)
         {
             spawnText.text.text = health.Max.ToString();
             spawnText.text.color = takenColor;
         }
-        else if (takenDamage == "MISS")
-        {
-            spawnText.text.text = takenDamage;
-            spawnText.text.color = Color.white;
-        }
         else
         {
             //Debug.Log($"blockedDamage: {blockedDamage}");
-            if (blockedDamage == "0")
+            if (extraDamage < 0)
             {
-                spawnText.text.text = $"<color=#{ColorUtility.ToHtmlStringRGB(takenColor)}>{takenDamage}</color>";
+                spawnText.text.text = $"<color=#{ColorUtility.ToHtmlStringRGB(takenColor)}>{takenDamage}</color> <size=60%><color=#{ColorUtility.ToHtmlStringRGB(extraColor)}>({extraDamage})</color></size>  <sprite=0>";                
+            }
+            else if (extraDamage > 0)
+            {
+                spawnText.text.text = $"<color=#{ColorUtility.ToHtmlStringRGB(takenColor)}>{takenDamage}</color> <size=60%><color=#{ColorUtility.ToHtmlStringRGB(takenColor)}>(+{extraDamage})</color></size>"; 
             }
             else
             {
-                spawnText.text.text = $"<color=#{ColorUtility.ToHtmlStringRGB(takenColor)}>{takenDamage}</color> <size=60%><color=#{ColorUtility.ToHtmlStringRGB(blockedColor)}>(-{blockedDamage})</color></size>  <sprite=0>";                
+                spawnText.text.text = $"<color=#{ColorUtility.ToHtmlStringRGB(takenColor)}>{takenDamage}</color>";
             }
            
         }

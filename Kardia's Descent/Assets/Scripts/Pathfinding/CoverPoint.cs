@@ -120,9 +120,26 @@ public class CoverPoint : MonoBehaviour
         }
         
     }
+    
+    /// <summary>
+    /// Used for spawning miss text on the cover point
+    /// </summary>
+    /// <param name="value"></param>
     public void SpawnText(string value)
     {
-        everythingUseful.SpawnText(value, value != "MISS" ? Color.red : Color.white, transform, 4,1f, health);
+        if (value == "MISS")
+        {
+            everythingUseful.SpawnText(value, value != "MISS" ? Color.red : Color.white, transform, 4,1f, health);
+        }
+    }
+
+    public void SpawnText(int baseValue, float damageMultipliar)
+    {
+        int totalDamage = Mathf.RoundToInt(baseValue * damageMultipliar);
+        int extraDamage = totalDamage - baseValue;
+        
+        everythingUseful.SpawnText(totalDamage, extraDamage, Color.red,Color.white ,transform, 4, 1f, health);
+
     }
 
     public void OnCoverDestroyed()

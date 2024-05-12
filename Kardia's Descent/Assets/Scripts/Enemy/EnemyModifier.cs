@@ -44,17 +44,19 @@ public class EnemyModifier : MonoBehaviour
                 
                 GetComponentInChildren<SkinnedMeshRenderer>().material.SetColor("_RimColor",  new Color(current.r, current.g, current.b, Mathf.Lerp(current.a, 0.5f, 0.5f)));
                 
-                spawnedVFx = vfxSpawner.SpawnVFXWithReturn(transform);
+                spawnedVFx = vfxSpawner.SpawnVFXWithReturn(transform, transform);
                 
-                for (int i = 0; i < skillContainer.skillsList.Count; i++)
+                skillContainer.otherDamageMultiplier = damageModifier;
+                
+                /*for (int i = 0; i < skillContainer.skillsList.Count; i++)
                 {
-                    /*if (skillContainer.skillsList[i].skillData.skillClass)*/
+                    /*if (skillContainer.skillsList[i].skillData.skillClass)#1#
                     {
                         float damage = skillContainer.skillsList[i].damage;
                         damage *= damageModifier;
                         skillContainer.skillsList[i].damage = Mathf.CeilToInt(damage);
                     }
-                }
+                }*/
                 
                 
             }

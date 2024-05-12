@@ -62,6 +62,9 @@ public class QuickOutline : MonoBehaviour {
   [SerializeField, Range(0f, 10f)]
   private float outlineWidth = 2f;
 
+  [SerializeField] private bool drawOnTop = false;
+  
+  
   [Header("Optional")]
 
   [SerializeField, Tooltip("Precompute enabled: Per-vertex calculations are performed in the editor and serialized with the object. "
@@ -96,6 +99,13 @@ public class QuickOutline : MonoBehaviour {
     // Retrieve or generate smooth normals
     LoadSmoothNormals();
 
+    if (drawOnTop)
+    {
+      outlineFillMaterial.renderQueue = 2450;
+      outlineMaskMaterial.renderQueue = 2450;
+    }
+  
+    
     // Apply material properties immediately
     needsUpdate = true;
   }

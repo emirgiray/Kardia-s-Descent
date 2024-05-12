@@ -1170,14 +1170,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 8564682593693525652}
-    - targetCorrespondingSourceObject: {fileID: 4933739244037394111, guid: a5edbbad0f6230543a42ee6c912cc294,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6276324707601945688}
-    - targetCorrespondingSourceObject: {fileID: 4933739244037394111, guid: a5edbbad0f6230543a42ee6c912cc294,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4467768982618460247}
     - targetCorrespondingSourceObject: {fileID: 3748514104431457527, guid: a5edbbad0f6230543a42ee6c912cc294,
         type: 3}
       insertIndex: -1
@@ -1362,54 +1354,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
---- !u!114 &6276324707601945688
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3929355120605339993}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 1, g: 0, b: 0, a: 1}
-  outlineWidth: 2
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
---- !u!114 &4467768982618460247
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3929355120605339993}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 985add12ee4836e40b7241671b1d892c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fogWar: {fileID: 0}
-  visibility: 0
-  additionalRadius: 0
-  OnVisibilityChanged:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1366402689247289405}
-        m_TargetAssemblyTypeName: StateController, Assembly-CSharp
-        m_MethodName: SetAIActive
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &4879745809518845882 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3550983782210842716, guid: a5edbbad0f6230543a42ee6c912cc294,
@@ -1544,12 +1488,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 395999345417790430, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
-        type: 3}
-      propertyPath: everythingUseful
-      value: 
-      objectReference: {fileID: 11400000, guid: 0adf6649dfa6c2b48877232f4002ec52,
-        type: 2}
     - target: {fileID: 1086629163380962625, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
         type: 3}
       propertyPath: TakeDamage.m_PersistentCalls.m_Calls.Array.size
@@ -1765,11 +1703,6 @@ PrefabInstance:
       objectReference: {fileID: 6237541222020082516}
     - target: {fileID: 8148688877583324293, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
         type: 3}
-      propertyPath: outline
-      value: 
-      objectReference: {fileID: 6276324707601945688}
-    - target: {fileID: 8148688877583324293, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
-        type: 3}
       propertyPath: animator
       value: 
       objectReference: {fileID: 1133070937865020706}
@@ -1881,18 +1814,6 @@ PrefabInstance:
       addedObject: {fileID: 3374191605679994961}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f1ae8bca5a16a14b9c4c32367ffc586, type: 3}
---- !u!114 &1366402689247289405 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7053993269744270337, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
-    type: 3}
-  m_PrefabInstance: {fileID: 8291867439157959740}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f599340377c6b845a7859ad7cd1899a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3577321532564896162 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4807473279575106974, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,

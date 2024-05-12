@@ -69,7 +69,7 @@ public class GrenadierBasic : SkillsData
                 
                 if (base.TryHit(Skill, ActivaterCharacter, tile, OnComplete))
                 {
-                    base.DoDamage(Skill, ActivaterCharacter, tile, multipliar, OnComplete);
+                    base.DoDamage(Skill, ActivaterCharacter, tile, multipliar * ActivaterCharacter.SkillContainer.coverDamageMultiplier * ActivaterCharacter.SkillContainer.otherDamageMultiplier, OnComplete);
 
                     switch (skillEffect)
                     {
