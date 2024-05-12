@@ -198,7 +198,7 @@ public class MainMenuController : MonoBehaviour
         
         MainMenuCharacterButton firstButton = selectionLayoutTransform.GetChild(0).GetComponent<MainMenuCharacterButton>();
         SpawnPlayerPreview(firstButton); //spawn first character
-        firstButton.equipButton.gameObject.SetActive(true);
+        if (onMainMenu) firstButton.equipButton.gameObject.SetActive(true);
         radarChart.SetStats(firstButton.characterPrefab.GetComponent<Player>().characterStats);
         firstButton.selectedImage.SetActive(true);
         selectedChar = firstButton;
@@ -296,7 +296,7 @@ public class MainMenuController : MonoBehaviour
         
     }
 
-    public void SpawnedCharacterMiscFunc()
+    private void SpawnedCharacterMiscFunc()
     {
         Inventory inventory = spawnedCharacter.GetComponent<Inventory>();
         spawnedCharacter.GetComponent<Player>().findTileAtAwake = false;
@@ -340,7 +340,7 @@ public class MainMenuController : MonoBehaviour
 
     public void ExitButtonPressed()
     {
-        
+        everythingUseful.Interact.ContinueAllLogic();
         SelectionStartedEvent.Invoke();
         characterSelectionUI.SetActive(false);
         if (!onMainMenu)
@@ -350,7 +350,7 @@ public class MainMenuController : MonoBehaviour
         
         everythingUseful.MainPrefabScript.SelectedPlayers = everythingUseful.GameManager.SelectedPlayers;
         
-
+        
         foreach (var player in everythingUseful.GameManager.SelectedPlayers)
         {
             everythingUseful.LevelManager.AddPlayerToGame(player.GetComponent<Player>());
@@ -359,7 +359,46 @@ public class MainMenuController : MonoBehaviour
         if (spawnedCharacter) Destroy(spawnedCharacter);
         
         everythingUseful.MainPrefabScript.InitializeLevel(/*charTiles*/ );
-        everythingUseful.Interact.ContinueAllLogic();
+        
+        for (int i = 0; i < everythingUseful.MainPrefabScript.spawnedPlayers.Count; i++) // then assign the values to the players
+        {
+            Player player = everythingUseful.MainPrefabScript.spawnedPlayerScripts[i];
+
+            foreach (var savedPlayer in everythingUseful.SaveLoadSystem.inGameSaveData.inGamePLayerDatas)
+            {
+                int playerIndex = allPlayers.allPlayers.FindIndex(p => p.playerPrefab.name.Equals(player.name));
+                if (playerIndex == savedPlayer.playerID)
+                {
+                    player.characterStats.Strength = savedPlayer.Strength;
+                    player.characterStats.Dexterity = savedPlayer.Dexterity;
+                    player.characterStats.Constitution = savedPlayer.Constitution;
+                    player.characterStats.Aiming = savedPlayer.Aiming;
+                    // player.isUnlocked = inGameSaveData.inGamePLayerDatas[i].isUnlocked;
+                    player.isUnlocked = true;
+                    
+                    player.health.Max =  savedPlayer.maxHealth;
+                    player.health._Health =  savedPlayer.health;
+                    
+                    if (savedPlayer.equippedeartID != -1)
+                    {
+                        player.heartContainer.heartData = everythingUseful.SaveLoadSystem.allHeartDatas.allHearts[savedPlayer.equippedeartID];
+                        player.heartContainer.hearthStatsApplied = true;
+                    }
+            
+                    player.inventory.heartsInInventory.Clear();
+                    foreach (var heartIndex in savedPlayer.heartsInInventory)
+                    {
+                        player.inventory.heartsInInventory.Add(everythingUseful.SaveLoadSystem.allHeartDatas.allHearts[heartIndex]);
+                    }
+                }
+                
+            }
+            
+        }
+        everythingUseful.LevelManager.InitializeCharacters();
+        //everythingUseful.SaveLoadSystem.SaveGame();
+        //everythingUseful.SaveLoadSystem.AssignValues();
+      
         ClearPrevious();
     }
 

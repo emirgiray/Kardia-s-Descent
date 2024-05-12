@@ -148,7 +148,7 @@ public class SaveLoadSystem : MonoBehaviour
         }
     }
 
-    private void AssignValues()
+    public void AssignValues()
     {
       //  Debug.Log($"expression");
         MainPrefabScript.SelectedPlayers.Clear(); // clear the list if it has values
