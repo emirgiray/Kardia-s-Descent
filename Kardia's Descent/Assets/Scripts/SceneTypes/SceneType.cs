@@ -18,7 +18,7 @@ public class SceneType : ScriptableObject
     [PreviewField(Height = 100, Alignment = ObjectFieldAlignment.Left)]
     public Sprite typeImage;
     public Color bgColor = Color.white;
-    [OnValueChanged("Set")]
+    [OnValueChanged("Set")] [EnumPaging]
     public TypeName typeName;
     public enum TypeName
     {

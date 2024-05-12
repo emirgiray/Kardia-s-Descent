@@ -204,9 +204,7 @@ PrefabInstance:
       propertyPath: MoveStart.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Transform, UnityEngine
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2067046752837608681, guid: 04563854e99a65a4c8a042dc7f750368, type: 3}
-    - {fileID: 3625488753374834585, guid: 04563854e99a65a4c8a042dc7f750368, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:

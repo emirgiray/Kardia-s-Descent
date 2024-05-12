@@ -1703,6 +1703,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4807473279575106974, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
         type: 3}
+      propertyPath: vfxSpawner
+      value: 
+      objectReference: {fileID: 11400000, guid: d786a5359e002cb4da3f2243d20a86d9,
+        type: 2}
+    - target: {fileID: 4807473279575106974, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
+        type: 3}
       propertyPath: damageModifier
       value: 3
       objectReference: {fileID: 0}
@@ -1873,11 +1879,7 @@ PrefabInstance:
         type: 3}
       insertIndex: 2
       addedObject: {fileID: 3374191605679994961}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7741204839853584163, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5274653247332197000}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f1ae8bca5a16a14b9c4c32367ffc586, type: 3}
 --- !u!114 &1366402689247289405 stripped
 MonoBehaviour:
@@ -1885,52 +1887,19 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 8291867439157959740}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1764541655754650399}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f599340377c6b845a7859ad7cd1899a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1764541655754650399 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7741204839853584163, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
-    type: 3}
-  m_PrefabInstance: {fileID: 8291867439157959740}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &5274653247332197000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1764541655754650399}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2e3c909e0ff9b349b348253352be184, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CustomEvents2:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: d786a5359e002cb4da3f2243d20a86d9, type: 2}
-        m_TargetAssemblyTypeName: VFXSpawner, Assembly-CSharp
-        m_MethodName: SpawnVFX
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 5919988543027285318}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &3577321532564896162 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4807473279575106974, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
     type: 3}
   m_PrefabInstance: {fileID: 8291867439157959740}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1764541655754650399}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 22f5a1a829ae5c04eba11d15dbf959a8, type: 3}
@@ -1948,7 +1917,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 8291867439157959740}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1764541655754650399}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c781da93507b7847bf67f8a566d0250, type: 3}

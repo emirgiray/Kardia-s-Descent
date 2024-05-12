@@ -113,6 +113,7 @@ public class UIManager : MonoBehaviour
     public void GameOver(bool win, int score, int damageDealt, int damageTaken, int kills, int heartsCollected, string playTime)
     {
         WinLoseScreenGO.SetActive(true);
+        WinLoseScreenGO.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = win ? "Victory" : "Defeat";
         // totalDamageDealtText.text = damageDealt.ToString();
         LerpUnscaled(totalDamageDealtText, damageDealt, 1);
         // totalDamageTakenText.text = damageTaken.ToString();
@@ -141,14 +142,6 @@ public class UIManager : MonoBehaviour
         }
         
         //totalTurnsText.text = TurnSystem.totalTurnsInGame.ToString();
-        if (win)
-        {
-            WinTextGO.SetActive(true);
-        }
-        else
-        {
-            LoseTextGO.SetActive(true);
-        }
     }
 
     private int current = 0;

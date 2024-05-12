@@ -15,7 +15,7 @@ public class Door : MonoBehaviour
     [SerializeField] private TextMeshProUGUI[] SceneTypeTexts;
     [OnValueChanged("EndDoorSwitch")]
     public bool isEndDoor = false;
-    [SerializeField] private GameObject EndDoor;
+    [SerializeField] public GameObject EndDoor;
 
     [Tooltip("Leave this empty if you want to use the random scene type from the scene changer, assign a scene type to force it for this door.")]
     [SerializeField] private SceneType SceneType;

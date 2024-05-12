@@ -117,7 +117,9 @@ public class GameManager : MonoBehaviour
 
     private void CalculateScore()
     {
-        score = (totalDamageDealt * 10) + (totalKills * 10) + (totalHeartsCollected * 20) - totalDamageTaken * (int)playTime.TotalSeconds / 10;
+        score = (totalDamageDealt * 10) + (totalKills * 100) + (totalHeartsCollected * 20) - totalDamageTaken * (int)playTime.TotalSeconds / 100;
+        if (score < 0) score = 0;
+       
     }
     
     public void PauseGame(bool value)

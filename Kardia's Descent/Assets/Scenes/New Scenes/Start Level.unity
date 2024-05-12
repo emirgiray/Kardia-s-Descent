@@ -2388,12 +2388,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8980570601068670817, guid: a4ca6bc64677a0d4ca26d133dbaf148d,
         type: 3}
-      propertyPath: SceneType
-      value: 
-      objectReference: {fileID: 11400000, guid: 8e9a730be01609f4cae43473b877c8c2,
-        type: 2}
-    - target: {fileID: 8980570601068670817, guid: a4ca6bc64677a0d4ca26d133dbaf148d,
-        type: 3}
       propertyPath: isEndDoor
       value: 1
       objectReference: {fileID: 0}
@@ -16743,41 +16737,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 6.52
       objectReference: {fileID: 0}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 462804249}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CustomEmitterFunc2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: CustomEvent2, SGT_Events
-      objectReference: {fileID: 0}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 3868912507759964959, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
         type: 3}
       propertyPath: waypointTile
@@ -16954,18 +16913,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 462804247}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &462804249 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5274653247332197000, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-    type: 3}
-  m_PrefabInstance: {fileID: 462804247}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2e3c909e0ff9b349b348253352be184, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &463743411
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31254,41 +31201,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 6.71
       objectReference: {fileID: 0}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 830704338}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CustomEmitterFunc2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: CustomEvent2, SGT_Events
-      objectReference: {fileID: 0}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 3868912507759964959, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
         type: 3}
       propertyPath: waypointTile
@@ -31465,18 +31377,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 830704336}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &830704338 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5274653247332197000, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-    type: 3}
-  m_PrefabInstance: {fileID: 830704336}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2e3c909e0ff9b349b348253352be184, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &833728314
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43711,41 +43611,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 6.71
       objectReference: {fileID: 0}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1208005884}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CustomEmitterFunc2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: CustomEvent2, SGT_Events
-      objectReference: {fileID: 0}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 3868912507759964959, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
         type: 3}
       propertyPath: waypointTile
@@ -43922,18 +43787,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1208005882}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1208005884 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5274653247332197000, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-    type: 3}
-  m_PrefabInstance: {fileID: 1208005882}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2e3c909e0ff9b349b348253352be184, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1208164628
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54012,7 +53865,7 @@ PrefabInstance:
         type: 3}
       propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1412955640}
+      objectReference: {fileID: 0}
     - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
         type: 3}
       propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -54209,18 +54062,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1412955638}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1412955640 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5274653247332197000, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-    type: 3}
-  m_PrefabInstance: {fileID: 1412955638}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2e3c909e0ff9b349b348253352be184, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1416127675
 GameObject:
   m_ObjectHideFlags: 0
@@ -62138,12 +61979,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8980570601068670817, guid: a4ca6bc64677a0d4ca26d133dbaf148d,
         type: 3}
-      propertyPath: SceneType
-      value: 
-      objectReference: {fileID: 11400000, guid: 87deb5575bf475c4c8eb29980061a36a,
-        type: 2}
-    - target: {fileID: 8980570601068670817, guid: a4ca6bc64677a0d4ca26d133dbaf148d,
-        type: 3}
       propertyPath: isEndDoor
       value: 1
       objectReference: {fileID: 0}
@@ -62584,41 +62419,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 6.71
       objectReference: {fileID: 0}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1676703511}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CustomEmitterFunc2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: CustomEvent2, SGT_Events
-      objectReference: {fileID: 0}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 3868912507759964959, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
         type: 3}
       propertyPath: waypointTile
@@ -62795,18 +62595,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1676703509}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1676703511 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5274653247332197000, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-    type: 3}
-  m_PrefabInstance: {fileID: 1676703509}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2e3c909e0ff9b349b348253352be184, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1679879376
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -72121,41 +71909,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 6.71
       objectReference: {fileID: 0}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1880910542}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CustomEmitterFunc2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: CustomEvent2, SGT_Events
-      objectReference: {fileID: 0}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 3868912507759964959, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
         type: 3}
       propertyPath: waypointTile
@@ -72332,18 +72085,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1880910540}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1880910542 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5274653247332197000, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-    type: 3}
-  m_PrefabInstance: {fileID: 1880910540}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2e3c909e0ff9b349b348253352be184, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1883916592
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -77556,41 +77297,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 6.52
       objectReference: {fileID: 0}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1995519813}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CustomEmitterFunc2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: CustomEvent2, SGT_Events
-      objectReference: {fileID: 0}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 3868912507759964959, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
         type: 3}
       propertyPath: waypointTile
@@ -77767,18 +77473,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1995519811}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1995519813 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5274653247332197000, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-    type: 3}
-  m_PrefabInstance: {fileID: 1995519811}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2e3c909e0ff9b349b348253352be184, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1996751270
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -81104,41 +80798,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 6.52
       objectReference: {fileID: 0}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2100342931}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CustomEmitterFunc2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: CustomEvent2, SGT_Events
-      objectReference: {fileID: 0}
-    - target: {fileID: 3577321532564896162, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-        type: 3}
-      propertyPath: onHealthThresholdReached.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 3868912507759964959, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
         type: 3}
       propertyPath: waypointTile
@@ -81315,18 +80974,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2100342929}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2100342931 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5274653247332197000, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
-    type: 3}
-  m_PrefabInstance: {fileID: 2100342929}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2e3c909e0ff9b349b348253352be184, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2100440144
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -70,12 +70,27 @@ public class SceneChanger : MonoBehaviour
     
     public void DecideRandomScenes()
     {
+        StartCoroutine(DecideRandomScenesDelay());
+    }
+
+    private IEnumerator DecideRandomScenesDelay()
+    {
+        if (allSceneTypes.remainingSceneTypes.Count == 0)
+        {
+            Debug.Log("Not enough scenes to offer");
+            DisableAvailableDoors();
+            yield break;
+        }
+        
+        int filledDoors = 0;
         for (int i = 0; i < EndDoorsInScene.Count; i++)
         {
             int randomScene = Random.Range(0, allSceneTypes.remainingSceneTypes.Count);
             if (possibleNextScenes.Contains(allSceneTypes.remainingSceneTypes[randomScene]))
             {
                 i--;
+                Debug.Log($"Scene already in list {allSceneTypes.remainingSceneTypes[randomScene].Scene.SceneName}");
+                yield return new WaitForSeconds(.1f);
                 continue;
             }
 
@@ -85,11 +100,33 @@ public class SceneChanger : MonoBehaviour
                 possibleNextScenes.Add(temp);
             
                 EndDoorsInScene[i].SetSceneType(temp);
+                filledDoors++;
             }
-            else
+
+            if (filledDoors == allSceneTypes.remainingSceneTypes.Count) // if there are more empty doors than scenes
             {
-            
+                Debug.Log("Not enough scenes to offer");
+
+                DisableAvailableDoors();
+                
+                yield break;
             }
+           
+            
+        }
+    }
+
+    public void DisableAvailableDoors()
+    {
+        foreach (var door in EndDoorsInScene)
+        {
+            if (door.CheckIfAvailable())
+            {
+                Destroy(door.GetComponent<Collider>());
+                door.EndDoor.gameObject.SetActive(false);
+                Destroy(door);
+            }
+                    
         }
     }
     

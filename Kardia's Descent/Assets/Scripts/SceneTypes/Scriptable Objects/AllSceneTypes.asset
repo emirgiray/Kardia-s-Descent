@@ -13,5 +13,11 @@ MonoBehaviour:
   m_Name: AllSceneTypes
   m_EditorClassIdentifier: 
   everythingUseful: {fileID: 11400000, guid: 0adf6649dfa6c2b48877232f4002ec52, type: 2}
-  remainingSceneTypes: []
-  defaultAllSceneTypes: []
+  remainingSceneTypes:
+  - {fileID: 11400000, guid: 87deb5575bf475c4c8eb29980061a36a, type: 2}
+  - {fileID: 11400000, guid: 8e9a730be01609f4cae43473b877c8c2, type: 2}
+  - {fileID: 11400000, guid: 6cf069adad6214b4794b736c795cf353, type: 2}
+  defaultAllSceneTypes:
+  - {fileID: 11400000, guid: 87deb5575bf475c4c8eb29980061a36a, type: 2}
+  - {fileID: 11400000, guid: 8e9a730be01609f4cae43473b877c8c2, type: 2}
+  - {fileID: 11400000, guid: 6cf069adad6214b4794b736c795cf353, type: 2}

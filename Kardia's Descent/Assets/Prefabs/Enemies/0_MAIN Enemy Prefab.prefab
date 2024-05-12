@@ -1102,6 +1102,7 @@ MonoBehaviour:
   characterState: 0
   HitTextGameObject: {fileID: 8192422749196242801, guid: 18d9936a0ae5987499fb19403aaacbd1,
     type: 3}
+  blockedDamage: 0
   AwakeEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -1448,6 +1449,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealthBar Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1426809487291341555, guid: ac3393e7e0bd79f4eb348e5d544d370f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7008288973743981631, guid: ac3393e7e0bd79f4eb348e5d544d370f,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1547,6 +1553,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8784419287715875793, guid: ac3393e7e0bd79f4eb348e5d544d370f,
+        type: 3}
+      propertyPath: m_FillAmount
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

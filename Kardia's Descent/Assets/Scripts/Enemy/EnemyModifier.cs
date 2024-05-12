@@ -14,6 +14,8 @@ public class EnemyModifier : MonoBehaviour
     [FoldoutGroup("When Health Gets To X")] [SerializeField] private int healthThreshold = 10;
     [FoldoutGroup("When Health Gets To X")] [SerializeField] private float damageModifier = 2;
     [FoldoutGroup("When Health Gets To X")] [SerializeField] private AnimatorOverrideController overrideController;
+    [FoldoutGroup("When Health Gets To X")] [SerializeField] private VFXSpawner vfxSpawner;
+    [FoldoutGroup("When Health Gets To X")] [SerializeField] private GameObject spawnedVFx;
     [FoldoutGroup("When Health Gets To X")] public UnityEvent onHealthThresholdReached;
     
     [FoldoutGroup("On Death")] [SerializeField] private Transform objectToBeMoved;
@@ -42,6 +44,7 @@ public class EnemyModifier : MonoBehaviour
                 
                 GetComponentInChildren<SkinnedMeshRenderer>().material.SetColor("_RimColor",  new Color(current.r, current.g, current.b, Mathf.Lerp(current.a, 0.5f, 0.5f)));
                 
+                spawnedVFx = vfxSpawner.SpawnVFXWithReturn(transform);
                 
                 for (int i = 0; i < skillContainer.skillsList.Count; i++)
                 {
@@ -56,6 +59,12 @@ public class EnemyModifier : MonoBehaviour
                 
             }
         }
+
+        if (health._Health <= 0 && spawnedVFx != null)
+        {
+            Destroy(spawnedVFx);
+        }
+       
 
     }
 
