@@ -265,7 +265,7 @@ public class SkillContainer : MonoBehaviour
             lastSelectedSkill = selectedSkill;
             selectedSkill.skillButton.SwitchSelectedOutline(true);
             Character.Interact.SkillSelected?.Invoke();
-            Character.Interact.selectedCharacter.GetComponent<Character>().AttackStart();
+            Character.AttackStart();
             Character.Interact.HighlightAttackableTiles(selectedSkill);
             
         }
@@ -293,7 +293,7 @@ public class SkillContainer : MonoBehaviour
             }
             Character.Interact.ClearHighlightAttackableTiles();
             Character.Interact.SkillDeselected?.Invoke();
-            Character.Interact.selectedCharacter.GetComponent<Character>().AttackCancel();
+            Character.AttackCancel();
             StopCoroutine(Character.Interact.HitChanceUIToMousePos());
 
             /*foreach (var skill in skillsList)
@@ -372,7 +372,7 @@ bool impact = false;
         //Debug.Log($"skill lenght: {overrides[3].Key.length}");
     }
 
-    public IEnumerator AttackCancelDelay(float attackAnimLength, Skills selectedSkill, Tile selectedTile, Enemy enemy = null, Action OnComplete = null)
+    private IEnumerator AttackCancelDelay(float attackAnimLength, Skills selectedSkill, Tile selectedTile, Enemy enemy = null, Action OnComplete = null)
     {
         // yield return new WaitForSecondsRealtime(attackAnimLength);
         
@@ -386,7 +386,7 @@ bool impact = false;
             
             if (Character is Player)
             {
-                Character.Interact.selectedCharacter.GetComponent<Character>().AttackEnd(selectedSkill);
+                Character.AttackEnd(selectedSkill);
             }
             else if (Character is Enemy)
             {

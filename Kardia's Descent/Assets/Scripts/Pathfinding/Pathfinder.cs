@@ -91,9 +91,8 @@ public class Pathfinder : MonoBehaviour
     /// <param name="forAIPathfinding">this is for AI pathfinding bc without adding this ai cant get the destination since its occupied</param>
     /// <param name="forAttackRange">this is for attack range bc without addng this character cant get the destination since its occupied</param>
     /// <returns></returns>
-    public List<Tile> NeighborTiles(Tile origin, bool ignoreOccupied = false, bool forAttackTiles = false)
+    public List<Tile> NeighborTiles(Tile origin, bool ignoreOccupied = false, bool forAttackTiles = false, bool forCoverTile = false)
     {
-        
         List<Tile> tiles = new List<Tile>();
         Vector3 direction = Vector3.forward * (origin.GetComponent<MeshFilter>().sharedMesh.bounds.extents.x * PathfinderVariables.Instance.HEXAGONAL_OFFSET);
         float rayLength = 4f;
@@ -128,6 +127,16 @@ public class Pathfinder : MonoBehaviour
                             {
                                 tiles.Add(hitTile);
                             }
+                            Debug.DrawRay(aboveTilePos, Vector3.down * rayLength, Color.red, 10);
+                            if (forCoverTile)
+                            {
+                                
+                                if (hitTile.OccupiedByCoverPoint)
+                                {
+                                    tiles.Add(hitTile);
+                                }
+                            }
+                            
 
                         }
                     }
@@ -226,28 +235,13 @@ public class Pathfinder : MonoBehaviour
     /// <param name="selectedCharacterMoveRange"></param>
     /// <param name="origin"></param>
     /// <returns></returns>
-    public List<Tile> GetReachableTiles(Tile selectedCharacterCharacterTile, int selectedCharacterMoveRange/*, Tile origin*/)
+    public List<Tile> GetReachableTiles(Tile selectedCharacterCharacterTile, int selectedCharacterMoveRange)
     {
-        
-        
-        /*List<Tile> tiles = NeighborTiles(selectedCharacterCharacterTile);
-       List<Tile> reachableTiles = new List<Tile>();
-       foreach (Tile tile in tiles)
-       {
-           Path path = FindPath(selectedCharacterCharacterTile, tile);
-           if (path != null && path.tiles.Length <= selectedCharacterMoveRange + 1)
-           {
-               reachableTiles.Add(tile);
-           }
-       }
-
-       return reachableTiles;*/
-        
         List<Tile> tiles = new List<Tile>();
         tiles.Add(selectedCharacterCharacterTile);
         List<Tile> frontier = new List<Tile>();
         frontier.Add(selectedCharacterCharacterTile);
-
+        
         int currentRange = 0;
         while (currentRange < selectedCharacterMoveRange )
         {
@@ -255,7 +249,7 @@ public class Pathfinder : MonoBehaviour
 
             foreach (Tile tile in frontier)
             {
-                foreach (Tile neighbor in NeighborTiles(tile, true))
+                foreach (Tile neighbor in NeighborTiles(tile, true, false, true))
                 {
                     if (neighbor.Occupied == false && !tiles.Contains(neighbor))
                     {
@@ -270,7 +264,6 @@ public class Pathfinder : MonoBehaviour
                     
                 }
                 
-               
             }
 
             frontier = newFrontier;
@@ -278,36 +271,49 @@ public class Pathfinder : MonoBehaviour
         }
 
         return tiles;
-        
-        /*const float HEXAGONAL_OFFSET = 1.75f;
+    }
+
+    public List<Tile> GetReachableTiles(Tile selectedCharacterCharacterTile, int selectedCharacterMoveRange, out List<Tile> reachableCoverTiles)
+    {
         List<Tile> tiles = new List<Tile>();
-        Vector3 direction = Vector3.forward * (origin.GetComponent<MeshFilter>().sharedMesh.bounds.extents.x * HEXAGONAL_OFFSET);
-        float rayLength = 4f;
-        float rayHeightOffset = 1f;
-
-        //Rotate a raycast in 60 degree steps and find all adjacent tiles
-        for (int i = 0; i < 6; i++)
+        tiles.Add(selectedCharacterCharacterTile);
+        List<Tile> frontier = new List<Tile>();
+        frontier.Add(selectedCharacterCharacterTile);
+        
+        List<Tile> coverTiles = new List<Tile>();
+        
+        int currentRange = 0;
+        while (currentRange < selectedCharacterMoveRange )
         {
-            direction = Quaternion.Euler(0f, 60f, 0f) * direction;
+            List<Tile> newFrontier = new List<Tile>();
 
-            Vector3 aboveTilePos = (origin.transform.position + direction).With(y: origin.transform.position.y + rayHeightOffset);
-
-            if (Physics.Raycast(aboveTilePos, Vector3.down, out RaycastHit hit, rayLength * selectedCharacterMoveRange, tileMask))
+            foreach (Tile tile in frontier)
             {
-                Tile hitTile = hit.transform.GetComponent<Tile>();
-                if (hitTile.Occupied == false)
-                    tiles.Add(hitTile);
+                foreach (Tile neighbor in NeighborTiles(tile, true, false, true))
+                {
+                    if (neighbor.Occupied == false && !tiles.Contains(neighbor))
+                    {
+                        newFrontier.Add(neighbor);
+                        tiles.Add(neighbor);
+                    }
+                    else if (neighbor.Occupied == true && !tiles.Contains(neighbor) && neighbor.occupiedByInteractable)
+                    {
+                        newFrontier.Add(neighbor);
+                        tiles.Add(neighbor);
+                    }
+                    else if (neighbor.Occupied == true && !tiles.Contains(neighbor) && neighbor.OccupiedByCoverPoint)
+                    {
+                        coverTiles.Add(neighbor);
+                    }
+                }
             }
 
-            Debug.DrawRay(aboveTilePos, Vector3.down * rayLength * selectedCharacterMoveRange, Color.blue);
+            frontier = newFrontier;
+            currentRange++;
         }
+        reachableCoverTiles = coverTiles;
 
-        //Additionally add connected tiles such as ladders
-        if (origin.connectedTile != null)
-            tiles.Add(origin.connectedTile);
-
-        return tiles;*/
-        
+        return tiles;
     }
 
      private List<Tile> effectedTiles;

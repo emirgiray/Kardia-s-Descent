@@ -70,6 +70,7 @@ public class Player : Character
     {
         if (canBruiserDoubleAttack && skill.skillData.name.Contains("Basic"))
         {
+            base.AttackStart();
             remainingActionPoints += skill.actionPointUse;
             skill.remainingSkillCooldown = skill.skillCooldown;
             canBruiserDoubleAttack = false;

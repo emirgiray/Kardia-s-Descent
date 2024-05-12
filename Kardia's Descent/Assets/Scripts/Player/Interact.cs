@@ -49,10 +49,12 @@ public class Interact : MonoBehaviour
     
     [BoxGroup("Free Roam")][SerializeField]
     public LayerMask freeRoamMask;
-    [BoxGroup("Free Roam")][SerializeField]
-    //public Transform freeRoamTarget;
     
+    [BoxGroup("Tiles")][SerializeField]
     List<Tile> reachableTiles = new List<Tile>();
+    [BoxGroup("Tiles")][SerializeField]
+    List<Tile> reachableCoverTiles = new List<Tile>();
+    
     [SerializeField]List<Tile> attackableTiles = new List<Tile>();
     [SerializeField]LayerMask interactMask;
     [SerializeField]LayerMask UILayerMask;
@@ -221,7 +223,7 @@ public class Interact : MonoBehaviour
         }
     }
     
-    public void CheckCharacterInputs()
+    private void CheckCharacterInputs()
     {
         if (characterSelected) //eselect character //todo skill selectedi variable olarak tut
         {
@@ -271,12 +273,13 @@ public class Interact : MonoBehaviour
                 {
                     selectedCharacter.inventory.GetSpawnedInventoryUIScript().GetSkipButton().onClick.Invoke();
                 }
-                else
+            }
+
+            if (Input.GetKeyDown(KeyCode.Mouse1))
+            {
+                if (selectedCharacter.characterState == Character.CharacterState.Moving  && selectedCharacter.isSpedUp == false)
                 {
-                    if (selectedCharacter.characterState == Character.CharacterState.Moving  && selectedCharacter.isSpedUp == false)
-                    {
-                        selectedCharacter.QueueSpeedUp();
-                    }
+                    selectedCharacter.QueueSpeedUp();
                 }
             }
         }
@@ -465,13 +468,12 @@ public class Interact : MonoBehaviour
                 //TODO do it in a better way; get the selected tile then do the logic there (range, accuracy damage)
                 case Character.CharacterState.Attacking:
                     
-                    if (selectedCharacter.canAttack)
+                    if (selectedCharacter.canAttack && selectedCharacter.isInAttackTileSelection)
                     {
                         if (Input.GetMouseButtonDown(0))
                         {
                             if (attackableTiles.Contains(currentTile))
                             {
-                               
                                 selectedCharacter.SkillContainer.UseSkill(selectedCharacter.SkillContainer.selectedSkill, currentTile);
                                 lastAttackedTile = currentTile;
                             
@@ -725,14 +727,21 @@ public class Interact : MonoBehaviour
                 if (tile != null) tile.ClearHighlight();
             }
         }
+        
+        if (reachableCoverTiles != null)
+        {
+            foreach (Tile tile in reachableCoverTiles)
+            {
+                if (tile != null) tile.ClearHighlight();
+            }
+        }
     }
     public void HighlightReachableTiles()
     {
         ClearHighlightReachableTiles();
         if (characterSelected)
         {
-            reachableTiles = selectedCharacter.pathfinder.GetReachableTiles(selectedCharacter.characterTile,
-                selectedCharacter.remainingActionPoints /*, selectedCharacter.characterTile*/);
+            reachableTiles = selectedCharacter.pathfinder.GetReachableTiles(selectedCharacter.characterTile, selectedCharacter.remainingActionPoints, out reachableCoverTiles);
             foreach (Tile tile in reachableTiles)
             {
                 tile.HighlightMoveable();
@@ -741,6 +750,12 @@ public class Interact : MonoBehaviour
                 {
                     tile.ClearHighlight();
                 }
+            }
+            
+         //   reachableCoverTiles = selectedCharacter.pathfinder.GetCoverTiles(selectedCharacter.characterTile, selectedCharacter.remainingActionPoints);
+            foreach (Tile tile in reachableCoverTiles)
+            {
+                tile.HighlightMoveable();
             }
             
             selectedCharacter.characterTile.HighlightMoveable();

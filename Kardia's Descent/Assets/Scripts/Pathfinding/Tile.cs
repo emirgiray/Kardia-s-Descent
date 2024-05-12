@@ -139,9 +139,9 @@ public class Tile : MonoBehaviour
             // quick outline
             //TileHighlightMeshRenderer.material.SetColor("_RimColor", everythingUseful.Interact.tileHighligthNormalColors[5]); //disable the color
             quickOutline.enabled = true;
-            quickOutline.OutlineColor = everythingUseful.Interact.tileHighligthNormalColors[3];
+            quickOutline.OutlineColor = everythingUseful.Interact.tileHighligthNormalColors[0];
              
-            TileHighlightMeshRenderer.material.SetColor("_RimColor", everythingUseful.Interact.tileHighligthColors[6]); // less alpha
+            TileHighlightMeshRenderer.material.SetColor("_RimColor", everythingUseful.Interact.tileHighligthColors[5]); // less alpha 
         }
         else if (occupiedByInteractable)
         {
@@ -149,6 +149,13 @@ public class Tile : MonoBehaviour
             quickOutline.OutlineColor = everythingUseful.Interact.tileHighligthNormalColors[0];
              
             TileHighlightMeshRenderer.material.SetColor("_RimColor", everythingUseful.Interact.tileHighligthColors[4]); 
+        }
+        else if (OccupiedByCoverPoint)
+        {
+            quickOutline.enabled = true;
+            quickOutline.OutlineColor = everythingUseful.Interact.tileHighligthNormalColors[3];
+             
+            TileHighlightMeshRenderer.material.SetColor("_RimColor", everythingUseful.Interact.tileHighligthColors[6]);
         }
         else
         {

@@ -86,8 +86,6 @@ public class InventoryUI : MonoBehaviour
         
         for (int i = 0; i < actionPointsPips.Count; i++)
         {
-            
-            
             if (type == "+")
             {
                 if (i < value)
@@ -104,6 +102,10 @@ public class InventoryUI : MonoBehaviour
                 }
                 
             }
+        }
+        if (player.remainingActionPoints < 0)
+        {
+            player.remainingActionPoints = 0;
         }
         
         /*if (type == "+")

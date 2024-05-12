@@ -558,7 +558,7 @@ public class Character : MonoBehaviour
     private static LTDescr delay;
     public void EndTurn()
     {
-        if(this is Player && TurnSystem.turnState == TurnSystem.TurnState.FreeRoamTurn)
+        if(this is Player && (TurnSystem.turnState == TurnSystem.TurnState.FreeRoamTurn || characterState == CharacterState.Moving))
         {
             return;
         }
