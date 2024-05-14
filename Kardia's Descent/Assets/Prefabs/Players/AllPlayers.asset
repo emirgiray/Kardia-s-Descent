@@ -25,3 +25,7 @@ MonoBehaviour:
       type: 3}
     playerID: 2
     isUnlocked: 1
+  - playerPrefab: {fileID: 5961660906517723381, guid: 5fd02fdbfb29a794f8ec1aa3146ba57d,
+      type: 3}
+    playerID: 3
+    isUnlocked: 1

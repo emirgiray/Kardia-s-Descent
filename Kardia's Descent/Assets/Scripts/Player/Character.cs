@@ -878,7 +878,7 @@ public class Character : MonoBehaviour
 
     public void OnCharacterHealed(int value)
     {
-        everythingUseful.SpawnText(value.ToString(),Color.green, Head,2 ,1f, health);
+        everythingUseful.SpawnText(value.ToString(),Color.green, Head,2 ,2, health);
     }
 
     GameObject stunVFX = null;

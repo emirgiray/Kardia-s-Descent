@@ -45,6 +45,7 @@ public class BuffSkill : SkillsData
             {
                 // Handle buffing AP to all
             }
+           
             // More if statements for other SkillTargets...
         }
 
@@ -60,6 +61,15 @@ public class BuffSkill : SkillsData
                     {
                         fx.SpawnVFX(ActivaterCharacter.characterTile.transform, ActivaterCharacter.transform);
                         if (skillAudioEvent != null) skillAudioEvent.Play(ActivaterCharacter.transform);
+                    }
+                }
+                else if (skillTarget == SkillTarget.Ally)
+                {
+                    Heal(selectedTile.occupyingPlayer, Skill.skillBuffDebuffAmount);
+                    foreach (var fx in skillHitVFX)
+                    {
+                        fx.SpawnVFX(selectedTile.occupyingPlayer.characterTile.transform, selectedTile.occupyingPlayer.transform);
+                        if (skillAudioEvent != null) skillAudioEvent.Play(selectedTile.occupyingPlayer.transform);
                     }
                 }
             }
@@ -122,9 +132,16 @@ public class BuffSkill : SkillsData
 
     public void Heal(Character character, int amount)
     {
+        if (amount > character.health.Max - character.health.HealthAi)
+        {
+            amount = character.health.Max - character.health.HealthAi;
+        }
+        
         //character.health.HealthAi += amount;
         character.health.HealthDecrease(-amount);
         character.OnHealthChangeEvent?.Invoke();
+        
+        character.OnCharacterHealed(amount);
     }
     
     
