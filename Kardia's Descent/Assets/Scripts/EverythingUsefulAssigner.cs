@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using CodeMonkey.CameraSystem;
 using SGT_Tools.Audio;
 using UnityEngine;
@@ -20,6 +21,7 @@ public class EverythingUsefulAssigner : MonoBehaviour
     public UIManager UIManager;
     public CameraSystem CameraSystem;
     public SGT_AudioSFXManager AudioManager;
+    public CinemachineVirtualCamera CinemachineVirtualCamera;
     private void Awake()
     {
         if (Instance == null)
@@ -44,6 +46,7 @@ public class EverythingUsefulAssigner : MonoBehaviour
         EverythingUseful.UIManager = UIManager;
         EverythingUseful.CameraSystem = CameraSystem;
         EverythingUseful.AudioManager = AudioManager;
+        EverythingUseful.CinemachineVirtualCamera = CinemachineVirtualCamera;
     }
 
     public void InitAwake()

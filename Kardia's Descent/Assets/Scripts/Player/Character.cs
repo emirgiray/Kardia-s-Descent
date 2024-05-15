@@ -138,7 +138,6 @@ public class Character : MonoBehaviour
    public Interact Interact;
    public CameraSystem CameraSystem;
    public LevelManager LevelManager;
-   [SerializeField] private CinemachineVirtualCamera virtualCamera;
    
    public void APTest(int a)
    {
@@ -777,19 +776,9 @@ public class Character : MonoBehaviour
         {
             Interact.EnableDisableHitChanceUI(false);
         }
-        CineMachineCut(false);
+        everythingUseful.CineMachineCutAttack(false);
         //animator.ResetTrigger("Attack");
         // animator.SetTrigger("AttackCancel");
-    }
-
-    public void CineMachineCut(bool value)
-    {
-        virtualCamera.gameObject.SetActive(value);
-
-        if (value)
-        {
-            virtualCamera.LookAt = transform;
-        }
     }
     public void Attack()
     {
@@ -803,7 +792,7 @@ public class Character : MonoBehaviour
         
         animator.ResetTrigger("AttackCancel");
         animator.SetTrigger("Attack");
-        CineMachineCut(true);
+        everythingUseful.CineMachineCutAttack(true);
     }
 
     public void AttackEnd(SkillContainer.Skills skill)

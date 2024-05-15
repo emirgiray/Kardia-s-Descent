@@ -61,7 +61,7 @@ public class MainMenuController : MonoBehaviour
 
     [SerializeField] private bool onMainMenu => everythingUseful.SceneChanger.isOnMainMenu;
     [HideIf("onMainMenu")]
-    [SerializeField] private Transform cameraTargetTransform ;
+    [SerializeField] private GameObject newCam ;
     private Transform cameraStartTransform ;
     
     private Quaternion spawnFirstTransform;
@@ -169,8 +169,9 @@ public class MainMenuController : MonoBehaviour
         {
             everythingUseful.Interact.StopAllLogic();
             cameraStartTransform = everythingUseful.Interact.cameraTransform;
-            everythingUseful.Interact.MoveCameraAction?.Invoke(cameraTargetTransform, 1f);
-            everythingUseful.Interact.ZoomCameraAction?.Invoke( -10f, 1);
+            everythingUseful.CineMachineCutRest(newCam, true);
+            /*everythingUseful.Interact.MoveCameraAction?.Invoke(cameraTargetTransform, 1f);
+            everythingUseful.Interact.ZoomCameraAction?.Invoke( -10f, 1);*/
 
             previousSelectedCharNames.Clear();
             foreach (var player in everythingUseful.MainPrefabScript.SelectedPlayers)
@@ -346,6 +347,7 @@ public class MainMenuController : MonoBehaviour
         if (!onMainMenu)
         {
             //everythingUseful.Interact.MoveCameraAction?.Invoke(cameraStartTransform, 1f);
+            everythingUseful.CineMachineCutRest(newCam, false);
         }
         
         everythingUseful.MainPrefabScript.SelectedPlayers = everythingUseful.GameManager.SelectedPlayers;

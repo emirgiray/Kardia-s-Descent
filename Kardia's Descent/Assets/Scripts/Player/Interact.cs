@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Cinemachine;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using TMPro;
@@ -40,6 +41,10 @@ public class Interact : MonoBehaviour
     private Character lastSelectedCharacter;
     [BoxGroup("Objects")][SerializeField] 
     public Transform cameraTransform;
+    [BoxGroup("Objects")][SerializeField] 
+    public CinemachineBrain cinemachineBrain;
+
+    
     // [BoxGroup("Objects")][SerializeField] private Character selectedEnemy;
     
     [BoxGroup("UI")]

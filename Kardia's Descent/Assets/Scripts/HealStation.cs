@@ -44,7 +44,7 @@ public class HealStation : MonoBehaviour
     [SerializeField] private HeartData selectedHeartData;
 
     private Transform cameraStartTransform;
-    [SerializeField] private Transform cameraTargetTransform;
+    [SerializeField] private GameObject newCam;
     
     private Dictionary<int, Color> textColors = new Dictionary<int, Color>()
     {
@@ -72,8 +72,9 @@ public class HealStation : MonoBehaviour
         
         everythingUseful.Interact.StopAllLogic();
         cameraStartTransform = everythingUseful.Interact.cameraTransform;
-        everythingUseful.Interact.MoveCameraAction?.Invoke(cameraTargetTransform, 1f);
-        everythingUseful.Interact.ZoomCameraAction?.Invoke( -10f, 1);
+        everythingUseful.CineMachineCutRest(newCam, true);
+        /*everythingUseful.Interact.MoveCameraAction?.Invoke(cameraTargetTransform, 1f);
+        everythingUseful.Interact.ZoomCameraAction?.Invoke( -10f, 1);*/
         
         this.player = playerIn;
         healUI.SetActive(true);
@@ -198,6 +199,8 @@ public class HealStation : MonoBehaviour
             
             healUI.SetActive(false);
         });
+        
+        everythingUseful.CineMachineCutRest(newCam, false);
     }
 
     public void ResetToDefault()

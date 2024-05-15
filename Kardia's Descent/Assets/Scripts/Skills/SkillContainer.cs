@@ -366,8 +366,6 @@ bool impact = false;
 
     private IEnumerator AttackCancelDelay(float attackAnimLength, Skills selectedSkill, Tile selectedTile, Enemy enemy = null, Action OnComplete = null)
     {
-        // yield return new WaitForSecondsRealtime(attackAnimLength);
-        
         selectedSkill.skillData.ActivateSkill(selectedSkill, Character, selectedTile,  () =>
         {
             DeselectSkill(selectedSkill, enemy);

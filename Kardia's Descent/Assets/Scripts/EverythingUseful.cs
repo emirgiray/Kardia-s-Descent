@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using CodeMonkey.CameraSystem;
 using SGT_Tools.Audio;
 using SGT_Tools.Bridge;
@@ -34,9 +35,41 @@ public class EverythingUseful : ScriptableObject
     public AllPlayers AllPlayers;
     [FoldoutGroup("Assigners")]
     public SGT_AudioSFXManager AudioManager;
+    [FoldoutGroup("Assigners")]
+    public CinemachineVirtualCamera CinemachineVirtualCamera;
     public GameObject SpawnTextGO;
     
 
+    public void CineMachineCutAttack(bool value)
+    {
+        CinemachineVirtualCamera.gameObject.SetActive(value);
+
+        if (value)
+        {
+            // virtualCamera.LookAt = transform;
+            Interact.cinemachineBrain.m_DefaultBlend.m_Time = 0.5f;
+        }
+        else
+        {
+            Interact.cinemachineBrain.m_DefaultBlend.m_Time = 1;
+        }
+    }
+    
+    public void CineMachineCutRest(GameObject newCam, bool value)
+    {
+        newCam.gameObject.SetActive(value);
+
+        if (value)
+        {
+            // virtualCamera.LookAt = transform;
+            Interact.cinemachineBrain.m_DefaultBlend.m_Time = 0.5f;
+        }
+        else
+        {
+            Interact.cinemachineBrain.m_DefaultBlend.m_Time = 1;
+        }
+    }
+    
     [Tooltip("Used for heal and miss")]
     public void SpawnText(string value, Color color, Transform RandomSpawnLocation, float yOffset, float animDelay, SGT_Health health)
     {
