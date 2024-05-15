@@ -36,6 +36,7 @@ public class ParabolaController : MonoBehaviour
     //draw
     protected ParabolaFly parabolaFly;
     
+    public bool parabolaEnded = false;
     public UnityEvent OnParabolaEnd = new UnityEvent();
 
     void OnDrawGizmos()
@@ -103,6 +104,7 @@ public class ParabolaController : MonoBehaviour
             animationTime = float.MaxValue;
             Animation = false;
             OnParabolaEnd.Invoke();
+            parabolaEnded = true;
             Destroy(gameObject);
         }
 

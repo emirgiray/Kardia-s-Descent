@@ -8,16 +8,16 @@ public class BasicMelee : SkillsData
 {
     public override void ActivateSkill(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, Action OnComplete = null) //skill logic goes here
     {
-        if (!useParabolla) 
+       // if (!useParabolla) 
         {
             ActivaterCharacter.Interact.GetComponent<MonoBehaviour>()
                 .StartCoroutine(WaitUntilEnum(Skill, ActivaterCharacter, selectedTile, OnComplete));
         }
-        else //use parabolla
+        /*else //use parabolla
         {
             ActivaterCharacter.Interact.GetComponent<MonoBehaviour>()
                 .StartCoroutine(SkillStartVFXDelay(Skill, ActivaterCharacter, selectedTile, OnComplete));
-        }
+        }*/
         
         /*ActivaterCharacter.Interact.GetComponent<MonoBehaviour>()
             .StartCoroutine(WaitUntilEnum(Skill, ActivaterCharacter, selectedTile, OnComplete));*/
@@ -31,7 +31,7 @@ public class BasicMelee : SkillsData
             yield return new WaitForSeconds(0.5f);
             GameObject temp = skillStartVFX.SpawnVFXWithReturn(ActivaterCharacter.Hand);
             temp.TryGetComponent(out ProjectileMove projectileMove);
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.0001f);
             // activate the parabola and on its end activate the skill
             projectileMove.parabolaController.OnParabolaEnd.AddListener(() =>
             {
@@ -52,6 +52,28 @@ public class BasicMelee : SkillsData
         //Debug.Log($"wait started    ");
         yield return new WaitUntil(() => ActivaterCharacter.SkillContainer.GetImpact() == true);
         //Debug.Log($"Wait finished");
+
+        if (useParabolla)
+        {
+            //yield return new WaitForSeconds(0.5f);
+            GameObject temp = skillStartVFX.SpawnVFXWithReturn(ActivaterCharacter.Hand);
+            temp.TryGetComponent(out ProjectileMove projectileMove);
+            yield return new WaitForSeconds(0.0001f);
+            // activate the parabola and on its end activate the skill
+            projectileMove.parabolaController.OnParabolaEnd.AddListener(() =>
+            {
+                //ActivaterCharacter.SkillContainer.SetImpact(true);
+                //ActivaterCharacter.Interact.GetComponent<MonoBehaviour>().StartCoroutine(WaitUntilEnum(Skill, ActivaterCharacter, selectedTile, OnComplete));
+                //projectileMove.parabolaController.Animation = true;
+                //projectileMove.gameObject.SetActive(false);
+                //Debug.Log($"Animation set to {projectileMove.parabolaController.Animation}, {temp.name}");
+                //Destroy(temp);
+            });
+           
+            projectileMove.SetAndStartParabolaStraight(selectedTile.transform.position + new Vector3(0, 2, 0));
+            
+            yield return new WaitUntil(() => projectileMove.parabolaController.parabolaEnded == true);
+        }
         
         if (skillAudioEvent != null) skillAudioEvent.Play(ActivaterCharacter.transform);
         if (skillStartVFX != null && !useParabolla) skillStartVFX.SpawnVFX(ActivaterCharacter.Hand);

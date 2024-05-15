@@ -9,6 +9,11 @@ public class BuffSkill : SkillsData
 {
     public override void ActivateSkill(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, Action OnComplete = null)
 {
+    if (selectedTile.occupyingCharacter == null)
+    {
+        OnComplete?.Invoke();
+        return;
+    }
     bool isBuff = base.skillEffect == SkillEffect.Buff; //if not buff, then it's debuff
 
     if (ActivaterCharacter is Player)

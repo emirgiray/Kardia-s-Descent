@@ -33,7 +33,8 @@ MonoBehaviour:
   cleaveTimes: 1
   cleaveStartLeft: 1
   animatorOverrideController: {fileID: 0}
-  skillStartVFX: {fileID: 11400000, guid: 9d7befec332a1954ba5ca9c5f95215c5, type: 2}
+  useParabolla: 1
+  skillStartVFX: {fileID: 11400000, guid: db3b1ddf3f880e74dae0c374bf36d860, type: 2}
   skillImpactVFX: {fileID: 0}
   skillHitVFX:
   - {fileID: 11400000, guid: 2d7ba90a2d4cad44ea904346e7ce5f75, type: 2}

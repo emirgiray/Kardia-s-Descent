@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using CodeMonkey.CameraSystem;
 using DG.Tweening;
 using FischlWorks_FogWar;
@@ -137,7 +138,8 @@ public class Character : MonoBehaviour
    public Interact Interact;
    public CameraSystem CameraSystem;
    public LevelManager LevelManager;
-
+   [SerializeField] private CinemachineVirtualCamera virtualCamera;
+   
    public void APTest(int a)
    {
       // Debug.Log($"ap test {remainingActionPoints}");
@@ -752,9 +754,11 @@ public class Character : MonoBehaviour
         
     }
 
-
+    
+    
     public void AttackStart()
     {
+       
         isInAttackTileSelection = true;
         canRotate = true;
         characterState = CharacterState.Attacking;
@@ -773,13 +777,23 @@ public class Character : MonoBehaviour
         {
             Interact.EnableDisableHitChanceUI(false);
         }
-        
+        CineMachineCut(false);
         //animator.ResetTrigger("Attack");
         // animator.SetTrigger("AttackCancel");
     }
 
+    public void CineMachineCut(bool value)
+    {
+        virtualCamera.gameObject.SetActive(value);
+
+        if (value)
+        {
+            virtualCamera.LookAt = transform;
+        }
+    }
     public void Attack()
     {
+        
         isInAttackTileSelection = false;
         canRotate = false;
         if (this is Player)
@@ -789,6 +803,7 @@ public class Character : MonoBehaviour
         
         animator.ResetTrigger("AttackCancel");
         animator.SetTrigger("Attack");
+        CineMachineCut(true);
     }
 
     public void AttackEnd(SkillContainer.Skills skill)
