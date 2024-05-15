@@ -33,6 +33,10 @@ public class Player : Character
             OnAttackEndAction += BruiserDoubleAttack;
             everythingUseful.TurnSystem.FriendlyTurn += ResetBruiserDoubleAttack;
         }
+        else if (characterClass == CharacterClass.Medic)
+        {
+            SkillUsedEvent.AddListener(HealEveryAP);
+        }
     }
     private void OnDisable()
     {
@@ -45,7 +49,26 @@ public class Player : Character
             OnAttackEndAction -= BruiserDoubleAttack;
             everythingUseful.TurnSystem.FriendlyTurn -= ResetBruiserDoubleAttack;
         }
+        else if (characterClass == CharacterClass.Medic)
+        {
+            SkillUsedEvent.RemoveListener(HealEveryAP);
+        }
     }
+
+    private void HealEveryAP()
+    {
+        //if (type == "-")
+        {
+            if (health.Max > health.HealthAi)
+            {
+                health.HealthDecrease(-5);
+                OnHealthChangeEvent?.Invoke();
+        
+                OnCharacterHealed(5);
+            }
+        }
+    }
+   
 
     public void FinalizeUnlockPosition(/*Tile tile*/)
     {

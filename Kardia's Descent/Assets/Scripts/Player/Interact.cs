@@ -826,9 +826,10 @@ public class Interact : MonoBehaviour
                 selectedCharacter.SkillContainer.outerEffectedTiles = outerEffectedTiles;*/
                 
                 //highlight effected tiles if they are in attack range
+                effectedTiles = selectedCharacter.SkillContainer.effectedTiles;
                 if (attackableTiles.Contains(currentTile))
                 {
-                    foreach (Tile tile in selectedCharacter.SkillContainer.effectedTiles)
+                    foreach (Tile tile in effectedTiles)
                     {
                         tile.TileHighlightGO.SetActive(true);
                         tile.TileHighlightMeshRenderer.material.SetColor("_RimColor", everythingUseful.Interact.tileHighligthColors[1]);
@@ -871,7 +872,8 @@ public class Interact : MonoBehaviour
                         //highlight effected tiles if they are in attack range
                         if (attackableTiles.Contains(currentTile))
                         {
-                            foreach (Tile tile in selectedCharacter.SkillContainer.effectedTiles)
+                            effectedTiles = selectedCharacter.SkillContainer.effectedTiles;
+                            foreach (Tile tile in effectedTiles)
                             {
                                 tile.TileHighlightGO.SetActive(true);
                                 tile.TileHighlightMeshRenderer.material.SetColor("_RimColor", everythingUseful.Interact.tileHighligthColors[1]);
@@ -906,7 +908,8 @@ public class Interact : MonoBehaviour
                 //highlight effected tiles if they are in attack range
                 if (attackableTiles.Contains(currentTile))
                 {
-                    foreach (Tile tile in selectedCharacter.SkillContainer.effectedTiles)
+                    effectedTiles = selectedCharacter.SkillContainer.effectedTiles;
+                    foreach (Tile tile in effectedTiles)
                     {
                         tile.TileHighlightGO.SetActive(true);
                         tile.TileHighlightMeshRenderer.material.SetColor("_RimColor", everythingUseful.Interact.tileHighligthColors[1]);

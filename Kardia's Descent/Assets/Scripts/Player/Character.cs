@@ -124,6 +124,7 @@ public class Character : MonoBehaviour
     [FoldoutGroup("Events")] public UnityEvent<int> OnMovePointsChangeEvent;
     [FoldoutGroup("Events")] public UnityEvent<int, string> OnActionPointsChangeEvent;
     [FoldoutGroup("Events")] public UnityEvent<int> OnActionPointsChangeEvent2;
+    [FoldoutGroup("Events")] public UnityEvent SkillUsedEvent;
     [FoldoutGroup("Events")] public UnityEvent OnHealthChangeEvent;
     [FoldoutGroup("Events")] public UnityEvent PlayerTurnStart;
     [FoldoutGroup("Events")] public UnityEvent MoveStart;
@@ -803,6 +804,7 @@ public class Character : MonoBehaviour
         remainingActionPoints -= skill.actionPointUse;//maybe add a - or + variable to skill use
         OnActionPointsChange?.Invoke(remainingActionPoints);
         OnActionPointsChangeEvent?.Invoke(remainingActionPoints, "-");
+        SkillUsedEvent?.Invoke();
         CheckIfEndTurn();
 
         if (!inCombat)
