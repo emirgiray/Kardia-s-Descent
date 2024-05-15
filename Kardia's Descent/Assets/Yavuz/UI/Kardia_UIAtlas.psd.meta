@@ -1159,6 +1159,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: PartyBG_h4
+      rect:
+        serializedVersion: 2
+        x: 2668
+        y: 3012
+        width: 450
+        height: 450
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47e054df724e9754eb4322e4b4b7c15d
+      internalID: -721146674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TopHex_Hero5
+      rect:
+        serializedVersion: 2
+        x: 1188
+        y: 431
+        width: 597
+        height: 600
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94dfc7db2c306a847935d13a714386df
+      internalID: -1622238981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -1207,6 +1249,7 @@ TextureImporter:
       PartyBG_h: -195766835
       PartyBG_h1: -517535628
       PartyBG_h3: -547422700
+      PartyBG_h4: -721146674
       TopHex_Borders: 274480220
       TopHex_Enemy1: -2145818744
       TopHex_Enemy2: -845788115
@@ -1215,6 +1258,7 @@ TextureImporter:
       TopHex_Hero1: 1037746094
       TopHex_Hero3: -1616148948
       TopHex_Hero4: 2037170692
+      TopHex_Hero5: -1622238981
       h1_s1: -1738812705
       h1_s2: 1971214589
       h1_s3: 1897925181

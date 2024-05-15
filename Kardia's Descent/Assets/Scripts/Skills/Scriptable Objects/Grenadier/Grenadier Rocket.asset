@@ -31,8 +31,11 @@ MonoBehaviour:
   impactRange: 2
   innerImpactRadius: 1
   outerImpactDamageDebuff: 0.5
+  cleaveTimes: 1
+  cleaveStartLeft: 1
   animatorOverrideController: {fileID: 0}
-  skillStartVFX: {fileID: 0}
+  useParabolla: 1
+  skillStartVFX: {fileID: 11400000, guid: bfa570d4a5a3dad429f9a4349f470f53, type: 2}
   skillImpactVFX: {fileID: 11400000, guid: 82b1ce061c0b58a49a0d700e6d19ec34, type: 2}
   skillHitVFX:
   - {fileID: 11400000, guid: 2d7ba90a2d4cad44ea904346e7ce5f75, type: 2}
@@ -47,3 +50,4 @@ MonoBehaviour:
   skillTargetType: 1
   skillEffect: 0
   buffDebuffType: 0
+  bombDelay: 0.5

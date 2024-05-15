@@ -211,6 +211,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5225323832543321503, guid: 04563854e99a65a4c8a042dc7f750368,
+        type: 3}
+      propertyPath: Max
+      value: 170
+      objectReference: {fileID: 0}
+    - target: {fileID: 5225323832543321503, guid: 04563854e99a65a4c8a042dc7f750368,
+        type: 3}
+      propertyPath: _Health
+      value: 170
+      objectReference: {fileID: 0}
     - target: {fileID: 5475755088311690444, guid: 04563854e99a65a4c8a042dc7f750368,
         type: 3}
       propertyPath: hand
@@ -254,6 +264,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7510704565162782655, guid: 04563854e99a65a4c8a042dc7f750368,
         type: 3}
+      propertyPath: actionPoints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7510704565162782655, guid: 04563854e99a65a4c8a042dc7f750368,
+        type: 3}
       propertyPath: playerPrefab
       value: 
       objectReference: {fileID: 5961660906517723381}
@@ -263,6 +278,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3493393127891647222, guid: 953ed1667fce04c428b4db31b7e54961,
         type: 3}
+    - target: {fileID: 7510704565162782655, guid: 04563854e99a65a4c8a042dc7f750368,
+        type: 3}
+      propertyPath: characterClass
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7510704565162782655, guid: 04563854e99a65a4c8a042dc7f750368,
         type: 3}
       propertyPath: characterStats
@@ -278,8 +298,23 @@ PrefabInstance:
         type: 3}
       propertyPath: characterSprite
       value: 
-      objectReference: {fileID: 274480220, guid: f050367bbcaea674495c2d5e36fc140b,
+      objectReference: {fileID: -1622238981, guid: f050367bbcaea674495c2d5e36fc140b,
         type: 3}
+    - target: {fileID: 7510704565162782655, guid: 04563854e99a65a4c8a042dc7f750368,
+        type: 3}
+      propertyPath: extraMeleeDamage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7510704565162782655, guid: 04563854e99a65a4c8a042dc7f750368,
+        type: 3}
+      propertyPath: extraRangedAccuracy
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7510704565162782655, guid: 04563854e99a65a4c8a042dc7f750368,
+        type: 3}
+      propertyPath: remainingActionPoints
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 2017882941990232910, guid: 04563854e99a65a4c8a042dc7f750368, type: 3}

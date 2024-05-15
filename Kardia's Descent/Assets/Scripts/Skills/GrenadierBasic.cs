@@ -10,7 +10,7 @@ public class GrenadierBasic : SkillsData
      public override void ActivateSkill(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, Action OnComplete = null) //skill logic goes here
     {
         
-        if (skillStartVFX == null)
+        if (!useParabolla)
         {
             ActivaterCharacter.Interact.GetComponent<MonoBehaviour>()
                 .StartCoroutine(WaitUntilEnum(Skill, ActivaterCharacter, selectedTile, OnComplete));
@@ -24,7 +24,7 @@ public class GrenadierBasic : SkillsData
 
     private IEnumerator SkillStartVFXDelay(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, Action OnComplete = null)
     {
-        if (skillStartVFX != null)
+        //if (skillStartVFX != null)
         {
             // spawn the vfx
             yield return new WaitForSeconds(bombDelay);
@@ -48,6 +48,7 @@ public class GrenadierBasic : SkillsData
         yield return new WaitUntil(() => ActivaterCharacter.SkillContainer.GetImpact() == true);
         
         if (skillAudioEvent != null) skillAudioEvent.Play(ActivaterCharacter.transform);
+        if (skillStartVFX != null && !useParabolla) skillStartVFX.SpawnVFX(ActivaterCharacter.Hand);
         
         List<Tile> effectedTiles = ActivaterCharacter.SkillContainer.effectedTiles;
         List<Tile> innerEffectedTiles = ActivaterCharacter.SkillContainer.innerEffectedTiles;

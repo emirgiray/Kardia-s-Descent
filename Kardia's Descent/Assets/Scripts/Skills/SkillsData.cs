@@ -39,6 +39,7 @@ public class SkillsData : ScriptableObject
     [BoxGroup("Cleave Damage")] [ShowIf("skillHitType", SkillHitType.Cleave)]
     public bool cleaveStartLeft = true;
     public AnimatorOverrideController animatorOverrideController;
+    public bool useParabolla = false;
     public VFXSpawner skillStartVFX;
     public VFXSpawner skillImpactVFX;
     public VFXSpawner[] skillHitVFX;

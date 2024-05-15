@@ -7,9 +7,9 @@ public class ProjectileMove : MonoBehaviour
 {
     // [SerializeField] private float Speed = 5;
     
-    [SerializeField] private float lifeTime = 1;
+    /*[SerializeField] private float lifeTime = 1;
     private float timer;    
-    private float halfTimer;
+    private float halfTimer;*/
     public ParabolaController parabolaController;
     
     public void SetAndStartParabolaYOffset(Transform TargetTransform)
@@ -36,11 +36,11 @@ public class ProjectileMove : MonoBehaviour
         parabolaController.FollowParabola();
     }
 
-    void Start()
+    /*void Start()
     {
         timer = lifeTime;
         halfTimer = lifeTime / 2;
-    }
+    }*/
     
     /*void Update()
     {
