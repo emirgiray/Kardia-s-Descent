@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 831856287403445056}
   - component: {fileID: 4015885127732946369}
   - component: {fileID: 8130938253161918867}
+  - component: {fileID: 6420321800334245133}
   m_Layer: 5
   m_Name: Exit Button
   m_TagString: Untagged
@@ -133,6 +134,28 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &6420321800334245133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409661367253011224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b1058adee70a2f46aaf9bd63d9b7594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  punchScale: 0.05
+  duration: 0.5
+  vibrato: 10
+  elasticity: 1
+  punchScaleD: 0.1
+  durationD: 0.5
+  vibratoD: 20
+  elasticityD: 1
+  hoverScale: {x: 2.6, y: 2.6, z: 2.6}
+  hoverDuration: 0.2
 --- !u!1 &792607183566731067
 GameObject:
   m_ObjectHideFlags: 0
@@ -875,6 +898,7 @@ GameObject:
   - component: {fileID: 8914877685113977749}
   - component: {fileID: 8251090133801704308}
   - component: {fileID: 677948992323377007}
+  - component: {fileID: 6197925293098526489}
   m_Layer: 5
   m_Name: Heart Slot (5)
   m_TagString: Untagged
@@ -1106,6 +1130,28 @@ MonoBehaviour:
   optionalScrambleMode: 0
   optionalShakeRandomnessMode: 0
   optionalString: 
+--- !u!114 &6197925293098526489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2366856622877757533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b1058adee70a2f46aaf9bd63d9b7594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  punchScale: 0.05
+  duration: 0.5
+  vibrato: 10
+  elasticity: 1
+  punchScaleD: 0.1
+  durationD: 0.5
+  vibratoD: 20
+  elasticityD: 1
+  hoverScale: {x: 1.2, y: 1.2, z: 1.2}
+  hoverDuration: 0.2
 --- !u!1 &2891694404313960278
 GameObject:
   m_ObjectHideFlags: 0
@@ -1120,6 +1166,7 @@ GameObject:
   - component: {fileID: 4447062683006452767}
   - component: {fileID: 1217865446491083980}
   - component: {fileID: 5692223133030591803}
+  - component: {fileID: 1444688819215808742}
   m_Layer: 5
   m_Name: Heart Slot (3)
   m_TagString: Untagged
@@ -1351,6 +1398,28 @@ MonoBehaviour:
   optionalScrambleMode: 0
   optionalShakeRandomnessMode: 0
   optionalString: 
+--- !u!114 &1444688819215808742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2891694404313960278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b1058adee70a2f46aaf9bd63d9b7594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  punchScale: 0.05
+  duration: 0.5
+  vibrato: 10
+  elasticity: 1
+  punchScaleD: 0.1
+  durationD: 0.5
+  vibratoD: 20
+  elasticityD: 1
+  hoverScale: {x: 1.2, y: 1.2, z: 1.2}
+  hoverDuration: 0.2
 --- !u!1 &3327027411505475326
 GameObject:
   m_ObjectHideFlags: 0
@@ -1365,6 +1434,7 @@ GameObject:
   - component: {fileID: 4883386228906258466}
   - component: {fileID: 4459609191880646486}
   - component: {fileID: 9124101697330663735}
+  - component: {fileID: 6278469320423609515}
   m_Layer: 5
   m_Name: Heart Slot
   m_TagString: Untagged
@@ -1596,6 +1666,28 @@ MonoBehaviour:
   optionalScrambleMode: 0
   optionalShakeRandomnessMode: 0
   optionalString: 
+--- !u!114 &6278469320423609515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3327027411505475326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b1058adee70a2f46aaf9bd63d9b7594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  punchScale: 0.05
+  duration: 0.5
+  vibrato: 10
+  elasticity: 1
+  punchScaleD: 0.1
+  durationD: 0.5
+  vibratoD: 20
+  elasticityD: 1
+  hoverScale: {x: 1.2, y: 1.2, z: 1.2}
+  hoverDuration: 0.2
 --- !u!1 &3507481486842649378
 GameObject:
   m_ObjectHideFlags: 0
@@ -2139,6 +2231,7 @@ GameObject:
   - component: {fileID: 4081746295674443309}
   - component: {fileID: 8706814474744469048}
   - component: {fileID: 5070281718642336964}
+  - component: {fileID: 7010830298863298547}
   m_Layer: 5
   m_Name: Heart Slot (6)
   m_TagString: Untagged
@@ -2370,6 +2463,28 @@ MonoBehaviour:
   optionalScrambleMode: 0
   optionalShakeRandomnessMode: 0
   optionalString: 
+--- !u!114 &7010830298863298547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4841252603061147197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b1058adee70a2f46aaf9bd63d9b7594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  punchScale: 0.05
+  duration: 0.5
+  vibrato: 10
+  elasticity: 1
+  punchScaleD: 0.1
+  durationD: 0.5
+  vibratoD: 20
+  elasticityD: 1
+  hoverScale: {x: 1.2, y: 1.2, z: 1.2}
+  hoverDuration: 0.2
 --- !u!1 &5124644077701573688
 GameObject:
   m_ObjectHideFlags: 0
@@ -2384,6 +2499,7 @@ GameObject:
   - component: {fileID: 7140266505852590344}
   - component: {fileID: 2672709244605505455}
   - component: {fileID: 7045786031436022521}
+  - component: {fileID: 4153138622456521251}
   m_Layer: 5
   m_Name: Heart Slot (4)
   m_TagString: Untagged
@@ -2615,6 +2731,28 @@ MonoBehaviour:
   optionalScrambleMode: 0
   optionalShakeRandomnessMode: 0
   optionalString: 
+--- !u!114 &4153138622456521251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5124644077701573688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b1058adee70a2f46aaf9bd63d9b7594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  punchScale: 0.05
+  duration: 0.5
+  vibrato: 10
+  elasticity: 1
+  punchScaleD: 0.1
+  durationD: 0.5
+  vibratoD: 20
+  elasticityD: 1
+  hoverScale: {x: 1.2, y: 1.2, z: 1.2}
+  hoverDuration: 0.2
 --- !u!1 &5823995985626681097
 GameObject:
   m_ObjectHideFlags: 0
@@ -2629,6 +2767,7 @@ GameObject:
   - component: {fileID: 3693653432263124463}
   - component: {fileID: 6219862965049325685}
   - component: {fileID: 3984690658229186897}
+  - component: {fileID: 5018566899077094531}
   m_Layer: 5
   m_Name: Heart Slot (7)
   m_TagString: Untagged
@@ -2860,6 +2999,28 @@ MonoBehaviour:
   optionalScrambleMode: 0
   optionalShakeRandomnessMode: 0
   optionalString: 
+--- !u!114 &5018566899077094531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5823995985626681097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b1058adee70a2f46aaf9bd63d9b7594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  punchScale: 0.05
+  duration: 0.5
+  vibrato: 10
+  elasticity: 1
+  punchScaleD: 0.1
+  durationD: 0.5
+  vibratoD: 20
+  elasticityD: 1
+  hoverScale: {x: 1.2, y: 1.2, z: 1.2}
+  hoverDuration: 0.2
 --- !u!1 &6024230129768451624
 GameObject:
   m_ObjectHideFlags: 0
@@ -2874,6 +3035,7 @@ GameObject:
   - component: {fileID: 8447068454246870384}
   - component: {fileID: 382336774488079980}
   - component: {fileID: 7985200018599960795}
+  - component: {fileID: 8448169210873748584}
   m_Layer: 5
   m_Name: Heart Slot (1)
   m_TagString: Untagged
@@ -3105,6 +3267,28 @@ MonoBehaviour:
   optionalScrambleMode: 0
   optionalShakeRandomnessMode: 0
   optionalString: 
+--- !u!114 &8448169210873748584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6024230129768451624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b1058adee70a2f46aaf9bd63d9b7594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  punchScale: 0.05
+  duration: 0.5
+  vibrato: 10
+  elasticity: 1
+  punchScaleD: 0.1
+  durationD: 0.5
+  vibratoD: 20
+  elasticityD: 1
+  hoverScale: {x: 1.2, y: 1.2, z: 1.2}
+  hoverDuration: 0.2
 --- !u!1 &6956502772468528445
 GameObject:
   m_ObjectHideFlags: 0
@@ -3791,6 +3975,7 @@ GameObject:
   - component: {fileID: 5994823620645428324}
   - component: {fileID: 6461743357135490956}
   - component: {fileID: 3099169594803690859}
+  - component: {fileID: 8052423219586921274}
   m_Layer: 5
   m_Name: Heal Button
   m_TagString: Untagged
@@ -3900,6 +4085,28 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8052423219586921274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8668119188999437918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b1058adee70a2f46aaf9bd63d9b7594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  punchScale: 0.05
+  duration: 0.5
+  vibrato: 10
+  elasticity: 1
+  punchScaleD: 0.1
+  durationD: 0.5
+  vibratoD: 20
+  elasticityD: 1
+  hoverScale: {x: 2.6, y: 2.6, z: 2.6}
+  hoverDuration: 0.2
 --- !u!1 &8957477237312876349
 GameObject:
   m_ObjectHideFlags: 0
@@ -3982,6 +4189,7 @@ GameObject:
   - component: {fileID: 8914243682329028033}
   - component: {fileID: 1722671037561653526}
   - component: {fileID: 3412613440938619408}
+  - component: {fileID: 5452550590561394893}
   m_Layer: 5
   m_Name: Heart Slot (2)
   m_TagString: Untagged
@@ -4213,6 +4421,28 @@ MonoBehaviour:
   optionalScrambleMode: 0
   optionalShakeRandomnessMode: 0
   optionalString: 
+--- !u!114 &5452550590561394893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9116544317180294179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b1058adee70a2f46aaf9bd63d9b7594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  punchScale: 0.05
+  duration: 0.5
+  vibrato: 10
+  elasticity: 1
+  punchScaleD: 0.1
+  durationD: 0.5
+  vibratoD: 20
+  elasticityD: 1
+  hoverScale: {x: 1.2, y: 1.2, z: 1.2}
+  hoverDuration: 0.2
 --- !u!1001 &1723089084116604638
 PrefabInstance:
   m_ObjectHideFlags: 0

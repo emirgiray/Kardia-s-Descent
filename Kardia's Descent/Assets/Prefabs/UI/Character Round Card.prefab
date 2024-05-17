@@ -1349,6 +1349,7 @@ GameObject:
   - component: {fileID: 1057892076576257924}
   - component: {fileID: 6379750533283457572}
   - component: {fileID: 3329287314501875043}
+  - component: {fileID: 5205783077723665807}
   m_Layer: 5
   m_Name: Character Round Card
   m_TagString: Untagged
@@ -1559,6 +1560,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &5205783077723665807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4817859511953182997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b1058adee70a2f46aaf9bd63d9b7594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  punchScale: 0.05
+  duration: 0.5
+  vibrato: 10
+  elasticity: 1
 --- !u!1 &5388474246741457450
 GameObject:
   m_ObjectHideFlags: 0

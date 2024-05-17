@@ -621,6 +621,7 @@ public class Interact : MonoBehaviour
         selectedCharacter.outline.enabled = true;
         
         lastSelectedCharacter = selectedCharacter;
+        
         if (selectedCharacter.characterState == Character.CharacterState.WaitingTurn || selectedCharacter.characterState == Character.CharacterState.Idle)
         {
             if (selectedCharacter.remainingActionPoints > 0)
@@ -629,7 +630,11 @@ public class Interact : MonoBehaviour
             }
             HighlightReachableTiles(); //highlight tiles within range
         }
-        selectedCharacter.GetComponent<Inventory>().ShowSkillsUI(true); //show skills ui
+        else
+        {
+            ClearHighlightReachableTiles();
+        }
+        selectedCharacter.inventory.ShowSkillsUI(true); //show skills ui
     }
 
     /*public void InspectEnemy()

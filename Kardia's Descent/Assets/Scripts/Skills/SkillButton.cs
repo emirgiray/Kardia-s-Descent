@@ -23,6 +23,7 @@ public class SkillButton : MonoBehaviour
     [SerializeField] public GameObject cooldownImage;
     [SerializeField] private SkillContainer skillContainer;
     [SerializeField] private TooltipTrigger tooltipTrigger;
+    public Transform skillKeymapParent;
     public GameObject rangedDebuffImage;
 
 

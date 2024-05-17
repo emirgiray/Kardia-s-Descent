@@ -43,7 +43,7 @@ public class EverythingUseful : ScriptableObject
     public void CineMachineCutAttack(bool value)
     {
         CinemachineVirtualCamera.gameObject.SetActive(value);
-
+        //Debug.Log($"CineMachineCutAttack: {value}, {CinemachineVirtualCamera.gameObject.activeInHierarchy}");
         if (value)
         {
             // virtualCamera.LookAt = transform;

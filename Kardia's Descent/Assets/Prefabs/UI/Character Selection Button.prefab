@@ -587,6 +587,7 @@ GameObject:
   - component: {fileID: 5379802149109030861}
   - component: {fileID: 3287917355637512034}
   - component: {fileID: 4329252615759155369}
+  - component: {fileID: 5711599206862533451}
   m_Layer: 5
   m_Name: Equip Button
   m_TagString: Untagged
@@ -720,6 +721,28 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &5711599206862533451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4442126618338362457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b1058adee70a2f46aaf9bd63d9b7594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  punchScale: 0.05
+  duration: 0.5
+  vibrato: 10
+  elasticity: 1
+  punchScaleD: 0.1
+  durationD: 0.5
+  vibratoD: 20
+  elasticityD: 1
+  hoverScale: {x: 1.1, y: 1.1, z: 1.1}
+  hoverDuration: 0.2
 --- !u!1 &4833392381569439002
 GameObject:
   m_ObjectHideFlags: 0
@@ -808,6 +831,7 @@ GameObject:
   - component: {fileID: 7586122067313667763}
   - component: {fileID: 200741644102318553}
   - component: {fileID: 7476748649466497845}
+  - component: {fileID: 7975978767723951613}
   m_Layer: 5
   m_Name: Character Selection Button
   m_TagString: Untagged
@@ -962,6 +986,28 @@ MonoBehaviour:
   button: {fileID: 200741644102318553}
   selfImage: {fileID: 7429893247269967195}
   lockImage: {fileID: 9133079707482497102}
+--- !u!114 &7975978767723951613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5225614294673800130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b1058adee70a2f46aaf9bd63d9b7594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  punchScale: 0.05
+  duration: 0.5
+  vibrato: 10
+  elasticity: 1
+  punchScaleD: 0.1
+  durationD: 0.5
+  vibratoD: 20
+  elasticityD: 1
+  hoverScale: {x: 1.1, y: 1.1, z: 1.1}
+  hoverDuration: 0.2
 --- !u!1 &5598189320644677090
 GameObject:
   m_ObjectHideFlags: 0

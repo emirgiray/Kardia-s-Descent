@@ -233,10 +233,13 @@ public class MainPrefabScript : MonoBehaviour
             Destroy(playerS.inventory.SpawnedInventoryUI);
         }
         spawnedPlayerScripts.Clear();
-        
-        foreach (var player in spawnedPlayers)
+
+        if (!everythingUseful.SceneChanger.isOnMainMenu)
         {
-            Destroy(player);
+            foreach (var player in spawnedPlayers)
+            {
+                Destroy(player);
+            }
         }
         spawnedPlayers.Clear();
         

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1626092848285105930}
   - component: {fileID: 2660747611909792348}
   - component: {fileID: 8888301244158782736}
+  - component: {fileID: 3086007892925007297}
   m_Layer: 5
   m_Name: Character Party Card
   m_TagString: Untagged
@@ -154,3 +155,19 @@ MonoBehaviour:
   roundInfo: {fileID: 0}
   Bar01_2: {fileID: 0}
   Bar02_2: {fileID: 0}
+--- !u!114 &3086007892925007297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701299708932119561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b1058adee70a2f46aaf9bd63d9b7594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  punchScale: 0.05
+  duration: 0.5
+  vibrato: 10
+  elasticity: 1

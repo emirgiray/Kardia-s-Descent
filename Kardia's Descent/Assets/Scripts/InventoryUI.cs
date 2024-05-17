@@ -54,8 +54,9 @@ public class InventoryUI : MonoBehaviour
         EnableDisableSkipTurnButton(false);
         player.CombatStartedAction += () =>  EnableDisableSkipTurnButton(true); //but this action works??
         player.CombatEndedAction += () =>  EnableDisableSkipTurnButton(false); 
-        
+        player.ActionPointsExhausted.AddListener(() => SkipTurnButtonAnim(true));
         skipTurnButton.onClick.AddListener(player.EndTurn);
+        skipTurnButton.onClick.AddListener(() => SkipTurnButtonAnim(false));
     }
 
     private void OnDisable()
@@ -168,6 +169,10 @@ public class InventoryUI : MonoBehaviour
         for (int i = 0; i < SkillButtons.Count; i++)
         {
            SkillKeymaps[i].SetActive(SkillButtons[i].skill.skillData.passiveOrActive == SkillsData.PassiveOrActive.Active);
+           SkillKeymaps[i].transform.parent = SkillButtons[i].skillKeymapParent;
+           SkillKeymaps[i].transform.localPosition = Vector3.zero;
+           /*SkillKeymaps[i].GetComponent<RectTransform>().anchoredPosition = SkillButtons[i].GetComponent<RectTransform>().anchoredPosition;
+           SkillKeymaps[i].GetComponent<RectTransform>().position = SkillButtons[i].GetComponent<RectTransform>().position; */
             /*if(i < 3)
             {
                 SkillKeymaps[i].SetActive(true);
@@ -202,6 +207,20 @@ public class InventoryUI : MonoBehaviour
                 }
             }
             
+        }
+    }
+
+    private Tween skipTurnButtonTween;
+    private void SkipTurnButtonAnim(bool value)
+    {
+        if (value)
+        {
+            skipTurnButtonTween?.Kill();
+            skipTurnButtonTween = skipTurnButton.transform.DOPunchScale(new Vector3(.05f, .05f, .05f), .5f, 10, 1).SetLoops(-1, LoopType.Restart);
+        }
+        else
+        {
+            skipTurnButtonTween?.Kill();
         }
     }
 

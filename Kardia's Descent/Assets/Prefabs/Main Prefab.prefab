@@ -5539,6 +5539,7 @@ GameObject:
   - component: {fileID: 3520704646419462639}
   - component: {fileID: 2354571464958893363}
   - component: {fileID: 7446746108852718692}
+  - component: {fileID: 4332750251519144495}
   m_Layer: 0
   m_Name: FPS Button
   m_TagString: Untagged
@@ -5729,6 +5730,28 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &4332750251519144495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3241164026265236819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b1058adee70a2f46aaf9bd63d9b7594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  punchScale: 0.05
+  duration: 0.5
+  vibrato: 10
+  elasticity: 1
+  punchScaleD: 0.1
+  durationD: 0.5
+  vibratoD: 20
+  elasticityD: 1
+  hoverScale: {x: 1.9, y: 1.9, z: 1.9}
+  hoverDuration: 0.2
 --- !u!1 &3271183264967312343
 GameObject:
   m_ObjectHideFlags: 0
@@ -7633,6 +7656,7 @@ GameObject:
   - component: {fileID: 7226473544003849534}
   - component: {fileID: 7992330736784090119}
   - component: {fileID: 1561032083711654814}
+  - component: {fileID: 7035886694731714758}
   m_Layer: 0
   m_Name: Continue Button
   m_TagString: Untagged
@@ -7823,6 +7847,28 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &7035886694731714758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4566801428043583020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b1058adee70a2f46aaf9bd63d9b7594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  punchScale: 0.05
+  duration: 0.5
+  vibrato: 10
+  elasticity: 1
+  punchScaleD: 0.1
+  durationD: 0.5
+  vibratoD: 20
+  elasticityD: 1
+  hoverScale: {x: 1.9, y: 1.9, z: 1.9}
+  hoverDuration: 0.2
 --- !u!1 &4683430181749839619
 GameObject:
   m_ObjectHideFlags: 0
@@ -8820,6 +8866,7 @@ GameObject:
   - component: {fileID: 1761809824696144203}
   - component: {fileID: 6074028941539542707}
   - component: {fileID: 450215175236481300}
+  - component: {fileID: 8059611144884171644}
   m_Layer: 0
   m_Name: Back To Menu Button
   m_TagString: Untagged
@@ -9034,6 +9081,28 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &8059611144884171644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5344195208476988122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b1058adee70a2f46aaf9bd63d9b7594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  punchScale: 0.05
+  duration: 0.5
+  vibrato: 10
+  elasticity: 1
+  punchScaleD: 0.1
+  durationD: 0.5
+  vibratoD: 20
+  elasticityD: 1
+  hoverScale: {x: 1.9, y: 1.9, z: 1.9}
+  hoverDuration: 0.2
 --- !u!1 &5385177522270337225
 GameObject:
   m_ObjectHideFlags: 0
@@ -9059,7 +9128,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5385177522270337225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.20780626, y: -0.0000015497208, z: 0.00000033527613, w: 0.97817004}
+  m_LocalRotation: {x: 0.20780629, y: -0.0000015199184, z: 0.00000032782555, w: 0.97817004}
   m_LocalPosition: {x: -0.5507841, y: 7.52, z: -12.69327}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -13780,6 +13849,7 @@ GameObject:
   - component: {fileID: 5224753422408517907}
   - component: {fileID: 1924229061506208030}
   - component: {fileID: 3871159835307993833}
+  - component: {fileID: 8535750670114816171}
   m_Layer: 0
   m_Name: Restrart Level Button
   m_TagString: Untagged
@@ -13982,6 +14052,28 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &8535750670114816171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7837793945041672597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b1058adee70a2f46aaf9bd63d9b7594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  punchScale: 0.05
+  duration: 0.5
+  vibrato: 10
+  elasticity: 1
+  punchScaleD: 0.1
+  durationD: 0.5
+  vibratoD: 20
+  elasticityD: 1
+  hoverScale: {x: 1.9, y: 1.9, z: 1.9}
+  hoverDuration: 0.2
 --- !u!1 &7924758811154953218
 GameObject:
   m_ObjectHideFlags: 0
@@ -15216,6 +15308,7 @@ GameObject:
   - component: {fileID: 869415200966851339}
   - component: {fileID: 7514846804923120537}
   - component: {fileID: 447358744556149190}
+  - component: {fileID: 1784276375048765846}
   m_Layer: 0
   m_Name: Exit Button
   m_TagString: Untagged
@@ -15406,6 +15499,28 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &1784276375048765846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8293998874173511935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b1058adee70a2f46aaf9bd63d9b7594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  punchScale: 0.05
+  duration: 0.5
+  vibrato: 10
+  elasticity: 1
+  punchScaleD: 0.1
+  durationD: 0.5
+  vibratoD: 20
+  elasticityD: 1
+  hoverScale: {x: 1.9, y: 1.9, z: 1.9}
+  hoverDuration: 0.2
 --- !u!1 &8328754833514933712
 GameObject:
   m_ObjectHideFlags: 0

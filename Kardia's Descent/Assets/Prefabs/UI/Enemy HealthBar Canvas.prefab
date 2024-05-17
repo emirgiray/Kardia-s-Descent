@@ -165,6 +165,7 @@ GameObject:
   - component: {fileID: 3806466585562770714}
   - component: {fileID: 4421980046983191259}
   - component: {fileID: 3798061144217871452}
+  - component: {fileID: 8951020787808376707}
   m_Layer: 5
   m_Name: Enemy HealthBar Canvas
   m_TagString: Untagged
@@ -320,6 +321,33 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1773428102 &8951020787808376707
+ParentConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1426809487291341555}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Weight: 1
+  m_TranslationAtRest: {x: 0, y: 4.5670004, z: -0.866}
+  m_RotationAtRest: {x: 0, y: 0, z: 0}
+  m_TranslationOffsets:
+  - {x: 0, y: 0.08981323, z: -1.1809945}
+  m_RotationOffsets:
+  - {x: -67.29146, y: 0, z: 0}
+  m_AffectTranslationX: 1
+  m_AffectTranslationY: 1
+  m_AffectTranslationZ: 1
+  m_AffectRotationX: 0
+  m_AffectRotationY: 0
+  m_AffectRotationZ: 0
+  m_Active: 1
+  m_IsLocked: 1
+  m_Sources:
+  - sourceTransform: {fileID: 0}
+    weight: 1
 --- !u!1 &2774322073124436365
 GameObject:
   m_ObjectHideFlags: 0

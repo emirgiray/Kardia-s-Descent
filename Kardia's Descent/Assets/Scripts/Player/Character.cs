@@ -600,6 +600,7 @@ public class Character : MonoBehaviour
             canMove = false;
             canAttack = false;
             characterState = CharacterState.WaitingNextRound;
+            ActionPointsExhausted?.Invoke();
             // EndTurn();
         }
     }

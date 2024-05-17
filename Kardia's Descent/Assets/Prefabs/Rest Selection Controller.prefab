@@ -1807,6 +1807,7 @@ GameObject:
   - component: {fileID: 9154627572348701808}
   - component: {fileID: 6573624432823972492}
   - component: {fileID: 8380632204297345699}
+  - component: {fileID: 2088343843984503053}
   m_Layer: 5
   m_Name: Button (2)
   m_TagString: Untagged
@@ -1916,6 +1917,28 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2088343843984503053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2987759651194929638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b1058adee70a2f46aaf9bd63d9b7594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  punchScale: 0.05
+  duration: 0.5
+  vibrato: 10
+  elasticity: 1
+  punchScaleD: 0.1
+  durationD: 0.5
+  vibratoD: 20
+  elasticityD: 1
+  hoverScale: {x: 1.5, y: 1.5, z: 1.5}
+  hoverDuration: 0.2
 --- !u!1 &3036538967209730270
 GameObject:
   m_ObjectHideFlags: 0
@@ -2501,6 +2524,7 @@ GameObject:
   - component: {fileID: 3710163977043976628}
   - component: {fileID: 6866520808667361033}
   - component: {fileID: 5901552708918454498}
+  - component: {fileID: 3247969822667507284}
   m_Layer: 5
   m_Name: Select Button
   m_TagString: Untagged
@@ -2718,6 +2742,28 @@ MonoBehaviour:
   optionalScrambleMode: 0
   optionalShakeRandomnessMode: 0
   optionalString: 
+--- !u!114 &3247969822667507284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4483450972361529139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b1058adee70a2f46aaf9bd63d9b7594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  punchScale: 0.05
+  duration: 0.5
+  vibrato: 10
+  elasticity: 1
+  punchScaleD: 0.1
+  durationD: 0.5
+  vibratoD: 20
+  elasticityD: 1
+  hoverScale: {x: 1.5, y: 1.5, z: 1.5}
+  hoverDuration: 0.2
 --- !u!1 &4664411847065587947
 GameObject:
   m_ObjectHideFlags: 0
@@ -3399,6 +3445,7 @@ GameObject:
   - component: {fileID: 6008125714156014167}
   - component: {fileID: 4522744243393362193}
   - component: {fileID: 2299098686358688202}
+  - component: {fileID: 1302582097845166418}
   m_Layer: 5
   m_Name: Exit Button
   m_TagString: Untagged
@@ -3640,6 +3687,28 @@ MonoBehaviour:
   optionalScrambleMode: 0
   optionalShakeRandomnessMode: 0
   optionalString: 
+--- !u!114 &1302582097845166418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7466000935677624150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b1058adee70a2f46aaf9bd63d9b7594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  punchScale: 0.05
+  duration: 0.5
+  vibrato: 10
+  elasticity: 1
+  punchScaleD: 0.1
+  durationD: 0.5
+  vibratoD: 20
+  elasticityD: 1
+  hoverScale: {x: 1.2, y: 1.2, z: 1.2}
+  hoverDuration: 0.2
 --- !u!1 &7491600455866041513
 GameObject:
   m_ObjectHideFlags: 0
@@ -3652,6 +3721,7 @@ GameObject:
   - component: {fileID: 2212322838073776405}
   - component: {fileID: 2624593853076649357}
   - component: {fileID: 2846682252022497337}
+  - component: {fileID: 3671243531294955677}
   m_Layer: 5
   m_Name: Button (1)
   m_TagString: Untagged
@@ -3761,6 +3831,28 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3671243531294955677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7491600455866041513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b1058adee70a2f46aaf9bd63d9b7594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  punchScale: 0.05
+  duration: 0.5
+  vibrato: 10
+  elasticity: 1
+  punchScaleD: 0.1
+  durationD: 0.5
+  vibratoD: 20
+  elasticityD: 1
+  hoverScale: {x: 1.5, y: 1.5, z: 1.5}
+  hoverDuration: 0.2
 --- !u!1 &7583991075584277620
 GameObject:
   m_ObjectHideFlags: 0
@@ -4085,6 +4177,7 @@ GameObject:
   - component: {fileID: 212010483247459461}
   - component: {fileID: 7112687351146441651}
   - component: {fileID: 1780705033641671132}
+  - component: {fileID: 8665695913846705824}
   m_Layer: 5
   m_Name: Button (3)
   m_TagString: Untagged
@@ -4194,6 +4287,28 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8665695913846705824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8116395850695614466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b1058adee70a2f46aaf9bd63d9b7594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  punchScale: 0.05
+  duration: 0.5
+  vibrato: 10
+  elasticity: 1
+  punchScaleD: 0.1
+  durationD: 0.5
+  vibratoD: 20
+  elasticityD: 1
+  hoverScale: {x: 1.5, y: 1.5, z: 1.5}
+  hoverDuration: 0.2
 --- !u!1 &8153318866644486562
 GameObject:
   m_ObjectHideFlags: 0
@@ -4404,6 +4519,7 @@ GameObject:
   - component: {fileID: 2429233669622692028}
   - component: {fileID: 2298057850178137668}
   - component: {fileID: 8860343156574340690}
+  - component: {fileID: 6261575475365071019}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -4513,6 +4629,28 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6261575475365071019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8538539558365559229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b1058adee70a2f46aaf9bd63d9b7594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  punchScale: 0.05
+  duration: 0.5
+  vibrato: 10
+  elasticity: 1
+  punchScaleD: 0.1
+  durationD: 0.5
+  vibratoD: 20
+  elasticityD: 1
+  hoverScale: {x: 1.5, y: 1.5, z: 1.5}
+  hoverDuration: 0.2
 --- !u!1 &8688638957826260806
 GameObject:
   m_ObjectHideFlags: 0
