@@ -8,17 +8,17 @@ public class RegularPassiveSkill : SkillsData
 {
     private int fireCount = 0;
     
-    public override void ActivateSkill(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, Action OnComplete = null) //skill logic goes here
+    public override void ActivateSkill(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, float multipliars, Action OnComplete = null) //skill logic goes here
     {
         fireCount = 0;
         
         MonoBehaviour mono = ActivaterCharacter.Interact.GetComponent<MonoBehaviour>();
             
-        mono.StartCoroutine(WaitUntilEnum(Skill, ActivaterCharacter, selectedTile, OnComplete));
+        mono.StartCoroutine(WaitUntilEnum(Skill, ActivaterCharacter, selectedTile, multipliars, OnComplete));
         
     }
     
-    public IEnumerator WaitUntilEnum(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, Action OnComplete = null)
+    public IEnumerator WaitUntilEnum(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, float multipliars, Action OnComplete = null)
     {
         //Debug.Log($"wait started    ");
         yield return new WaitUntil(() => ActivaterCharacter.SkillContainer.GetImpact() == true);
@@ -32,7 +32,7 @@ public class RegularPassiveSkill : SkillsData
             if (skillStartVFX != null) skillStartVFX.SpawnVFX(ActivaterCharacter.Hand, dir);
             if (base.TryHit(Skill, ActivaterCharacter, selectedTile, OnComplete))
             {
-                base.DoDamage(Skill, ActivaterCharacter, selectedTile, ActivaterCharacter.SkillContainer.coverDamageMultiplier * ActivaterCharacter.SkillContainer.otherDamageMultiplier, OnComplete); 
+                base.DoDamage(Skill, ActivaterCharacter, selectedTile, multipliars, OnComplete); 
             }
             else
             {

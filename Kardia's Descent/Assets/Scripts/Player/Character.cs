@@ -421,6 +421,8 @@ public class Character : MonoBehaviour
             tile.occupyingEnemy = this.GetComponent<Enemy>();
             tile.occupiedByEnemy = true;
         }
+
+        CheckCloseCharacters();
         
         if (!findTileAtStart)//dont do this if we are just finding the tile at the start
         {
@@ -450,6 +452,48 @@ public class Character : MonoBehaviour
             // CheckToStartCombat();
         }
     }
+    
+    private void CheckCloseCharacters()
+    {
+        int closeCharacters = 0;
+        if (this is Player)
+        {
+            foreach (var enemy in everythingUseful.LevelManager.enemies)
+            {
+                if (Vector3.Distance(characterTile.transform.position, enemy.transform.position) < 10 &&
+                    enemy.gameObject.activeInHierarchy && GetComponent<Player>().isUnlocked &&
+                    pathfinder.GetTilesInBetween(this, characterTile, enemy.characterTile, true).Count <= 0)
+                {
+                    SkillContainer.CharacterTooCloseForRanged(true);
+                    enemy.SkillContainer.CharacterTooCloseForRanged(true);
+                    closeCharacters++;
+                }
+                else
+                {
+                    if(closeCharacters == 0) SkillContainer.CharacterTooCloseForRanged(false);
+                }
+            }
+        }
+        else
+        {
+            foreach (var player in everythingUseful.LevelManager.players)
+            {
+                if (Vector3.Distance(characterTile.transform.position, player.transform.position) < 10 &&
+                    player.gameObject.activeInHierarchy &&
+                    pathfinder.GetTilesInBetween(this, characterTile, player.characterTile, true).Count <= 0)
+                {
+                    SkillContainer.CharacterTooCloseForRanged(true);
+                    player.SkillContainer.CharacterTooCloseForRanged(true);
+                    closeCharacters++;
+                }
+                else
+                {
+                    if(closeCharacters == 0) SkillContainer.CharacterTooCloseForRanged(false);
+                }
+            }
+        }
+    }
+
 
     float movementThreshold = 0.1f;
 
@@ -633,6 +677,7 @@ public class Character : MonoBehaviour
                     
                     if (lookAngle > detectingThreshold)
                     {
+                        // Debug.DrawLine(this.transform.position +yOffSet, playersInCombat[i].transform.position+ yOffSet, Color.red, 10);
                         if (!Physics.Linecast(this.transform.position +yOffSet, playersInCombat[i].transform.position+ yOffSet, detectionLayerMask))
                         {
                             if(!inCombat) StartCombat(playersInCombat[i]);
@@ -702,6 +747,9 @@ public class Character : MonoBehaviour
         }
         if (this is Enemy)
         {
+            moveSpeed = .7f;
+            animator.speed = 1.5f;
+            
             LevelManager.AddEnemyToCombat(GetComponent<Enemy>());
             GetComponent<StateController>().StartCombat();
             remainingActionPoints = 0; // enemies were having max ap on their first turn
@@ -875,6 +923,8 @@ public class Character : MonoBehaviour
         animator.SetTrigger("Hit");
         OnCharacterRecieveDamageAction?.Invoke();
         OnHealthChangeEvent?.Invoke();
+        
+        if (this is Enemy) GetComponent<Enemy>().HPBarDelay();
     }
 
     public void OnCharacterMiss()

@@ -6,12 +6,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "BasicMelee", menuName = "ScriptableObjects/Skills/BasicMelee", order = 0)]
 public class BasicMelee : SkillsData
 {
-    public override void ActivateSkill(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, Action OnComplete = null) //skill logic goes here
+    public override void ActivateSkill(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, float multipliars, Action OnComplete = null) //skill logic goes here
     {
        // if (!useParabolla) 
         {
             ActivaterCharacter.Interact.GetComponent<MonoBehaviour>()
-                .StartCoroutine(WaitUntilEnum(Skill, ActivaterCharacter, selectedTile, OnComplete));
+                .StartCoroutine(WaitUntilEnum(Skill, ActivaterCharacter, selectedTile, multipliars, OnComplete));
         }
         /*else //use parabolla
         {
@@ -23,7 +23,7 @@ public class BasicMelee : SkillsData
             .StartCoroutine(WaitUntilEnum(Skill, ActivaterCharacter, selectedTile, OnComplete));*/
     }
     
-    private IEnumerator SkillStartVFXDelay(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, Action OnComplete = null)
+    private IEnumerator SkillStartVFXDelay(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, float multipliars, Action OnComplete = null)
     {
         //if (skillStartVFX != null)
         {
@@ -36,7 +36,7 @@ public class BasicMelee : SkillsData
             projectileMove.parabolaController.OnParabolaEnd.AddListener(() =>
             {
                 ActivaterCharacter.SkillContainer.SetImpact(true);
-                ActivaterCharacter.Interact.GetComponent<MonoBehaviour>().StartCoroutine(WaitUntilEnum(Skill, ActivaterCharacter, selectedTile, OnComplete));
+                ActivaterCharacter.Interact.GetComponent<MonoBehaviour>().StartCoroutine(WaitUntilEnum(Skill, ActivaterCharacter, selectedTile, multipliars, OnComplete));
                 //projectileMove.parabolaController.Animation = true;
                 //projectileMove.gameObject.SetActive(false);
                 //Debug.Log($"Animation set to {projectileMove.parabolaController.Animation}, {temp.name}");
@@ -47,7 +47,7 @@ public class BasicMelee : SkillsData
         }
     }
 
-    public IEnumerator WaitUntilEnum(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, Action OnComplete = null)
+    private IEnumerator WaitUntilEnum(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, float multipliars ,Action OnComplete = null)
     {
         //Debug.Log($"wait started    ");
         yield return new WaitUntil(() => ActivaterCharacter.SkillContainer.GetImpact() == true);
@@ -85,6 +85,7 @@ public class BasicMelee : SkillsData
             {
                 if (base.TryHit(Skill, ActivaterCharacter, tile, OnComplete))
                 {
+                    //Debug.Log($"multipliars {ActivaterCharacter.SkillContainer.coverDamageMultiplier} {ActivaterCharacter.SkillContainer.otherDamageMultiplier}");
                     base.DoDamage(Skill, ActivaterCharacter, tile, ActivaterCharacter.SkillContainer.coverDamageMultiplier * ActivaterCharacter.SkillContainer.otherDamageMultiplier, OnComplete);
                     switch (skillEffect)
                     {

@@ -7,22 +7,22 @@ using UnityEngine;
 public class GrenadierBasic : SkillsData
 {
     [SerializeField] private float bombDelay = 0.5f;
-     public override void ActivateSkill(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, Action OnComplete = null) //skill logic goes here
+     public override void ActivateSkill(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, float multipliars, Action OnComplete = null) //skill logic goes here
     {
         
         if (!useParabolla)
         {
             ActivaterCharacter.Interact.GetComponent<MonoBehaviour>()
-                .StartCoroutine(WaitUntilEnum(Skill, ActivaterCharacter, selectedTile, OnComplete));
+                .StartCoroutine(WaitUntilEnum(Skill, ActivaterCharacter, selectedTile, multipliars, OnComplete));
         }
         else //if there is a start vfx
         {
             ActivaterCharacter.Interact.GetComponent<MonoBehaviour>()
-                .StartCoroutine(SkillStartVFXDelay(Skill, ActivaterCharacter, selectedTile, OnComplete));
+                .StartCoroutine(SkillStartVFXDelay(Skill, ActivaterCharacter, selectedTile, multipliars, OnComplete));
         }
     }
 
-    private IEnumerator SkillStartVFXDelay(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, Action OnComplete = null)
+    private IEnumerator SkillStartVFXDelay(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, float multipliars, Action OnComplete = null)
     {
         //if (skillStartVFX != null)
         {
@@ -37,13 +37,13 @@ public class GrenadierBasic : SkillsData
             {
                 ActivaterCharacter.SkillContainer.SetImpact(true);
                 ActivaterCharacter.Interact.GetComponent<MonoBehaviour>()
-                    .StartCoroutine(WaitUntilEnum(Skill, ActivaterCharacter, selectedTile, OnComplete));
+                    .StartCoroutine(WaitUntilEnum(Skill, ActivaterCharacter, selectedTile, multipliars, OnComplete));
             });
             projectileMove.SetAndStartParabolaYOffset(selectedTile.transform);
         }
     }
 
-    private IEnumerator WaitUntilEnum(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, Action OnComplete = null)
+    private IEnumerator WaitUntilEnum(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, float multipliars, Action OnComplete = null)
     {
         yield return new WaitUntil(() => ActivaterCharacter.SkillContainer.GetImpact() == true);
         
@@ -70,7 +70,7 @@ public class GrenadierBasic : SkillsData
                 
                 if (base.TryHit(Skill, ActivaterCharacter, tile, OnComplete))
                 {
-                    base.DoDamage(Skill, ActivaterCharacter, tile, multipliar * ActivaterCharacter.SkillContainer.coverDamageMultiplier * ActivaterCharacter.SkillContainer.otherDamageMultiplier, OnComplete);
+                    base.DoDamage(Skill, ActivaterCharacter, tile, multipliar * multipliars, OnComplete);
 
                     switch (skillEffect)
                     {

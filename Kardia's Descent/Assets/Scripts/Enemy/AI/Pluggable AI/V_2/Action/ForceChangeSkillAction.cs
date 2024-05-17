@@ -22,7 +22,7 @@ public class ForceChangeSkillAction : ActionAI
                 unusedSkills.Add(skill);
             }
         }
-        
+        if (controller.skillContainer.skillsList.Count == 1) return;
         controller.forcedSkillToUse = unusedSkills[Random.Range(0, unusedSkills.Count)];
         
     }

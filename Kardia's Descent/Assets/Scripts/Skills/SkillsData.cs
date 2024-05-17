@@ -114,7 +114,7 @@ public class SkillsData : ScriptableObject
    // [PropertySpace(SpaceAfter = 500)]
     
 
-    public virtual void ActivateSkill(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile,  Action OnComplete = null)
+    public virtual void ActivateSkill(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, float multipliars,  Action OnComplete = null)
     {
         
     }

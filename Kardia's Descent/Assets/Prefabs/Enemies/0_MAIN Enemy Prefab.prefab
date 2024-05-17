@@ -1074,8 +1074,8 @@ MonoBehaviour:
   temporaryActionPointsToDecrease: 0
   initiative: 0
   health: {fileID: 1086629163380962625}
-  detectingThreshold: 0.45
-  detectionTile: 4
+  detectingThreshold: 0.4
+  detectionTile: 5
   moveSpeed: 1
   canSpeedUp: 1
   findTileAtAwake: 1
@@ -1116,6 +1116,9 @@ MonoBehaviour:
   OnActionPointsChangeEvent2:
     m_PersistentCalls:
       m_Calls: []
+  SkillUsedEvent:
+    m_PersistentCalls:
+      m_Calls: []
   OnHealthChangeEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -1142,6 +1145,7 @@ MonoBehaviour:
   LevelManager: {fileID: 0}
   isSpedUp: 0
   stateController: {fileID: 0}
+  hpBar: {fileID: 2477153329434498103}
   turnOrder: 0
   decideState: 0
 --- !u!114 &7053993269744270337
@@ -1189,6 +1193,7 @@ MonoBehaviour:
     skillReadyToUse: 1
     skillButton: {fileID: 0}
     animatorOverrideController: {fileID: 0}
+    SkillDamageMultipliar: 1
   lastUsedSkill:
     skillData: {fileID: 0}
     damage: 0
@@ -1203,6 +1208,7 @@ MonoBehaviour:
     skillReadyToUse: 1
     skillButton: {fileID: 0}
     animatorOverrideController: {fileID: 0}
+    SkillDamageMultipliar: 1
   forcedSkillToUse:
     skillData: {fileID: 0}
     damage: 0
@@ -1217,6 +1223,7 @@ MonoBehaviour:
     skillReadyToUse: 1
     skillButton: {fileID: 0}
     animatorOverrideController: {fileID: 0}
+    SkillDamageMultipliar: 1
   players: []
   enemies: []
   movableTiles: []
@@ -1258,6 +1265,7 @@ MonoBehaviour:
     skillReadyToUse: 1
     skillButton: {fileID: 0}
     animatorOverrideController: {fileID: 0}
+    SkillDamageMultipliar: 1
   lastSelectedSkill:
     skillData: {fileID: 0}
     damage: 0
@@ -1272,6 +1280,7 @@ MonoBehaviour:
     skillReadyToUse: 1
     skillButton: {fileID: 0}
     animatorOverrideController: {fileID: 0}
+    SkillDamageMultipliar: 1
   skillSelected: 0
   Character: {fileID: 8148688877583324293}
   Inventory: {fileID: 7653652841104238580}
@@ -1283,6 +1292,7 @@ MonoBehaviour:
   outerEffectedTiles: []
   coverDamageMultiplier: 1
   otherDamageMultiplier: 1
+  characterTooClose: 0
 --- !u!114 &4144644680711025957
 MonoBehaviour:
   m_ObjectHideFlags: 0

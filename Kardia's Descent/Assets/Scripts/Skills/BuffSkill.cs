@@ -7,7 +7,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "BuffSkill", menuName = "ScriptableObjects/Skills/BuffSkill", order = 3)]
 public class BuffSkill : SkillsData
 {
-    public override void ActivateSkill(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, Action OnComplete = null)
+    public override void ActivateSkill(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, float multipliars, Action OnComplete = null)
 {
     if (selectedTile.occupyingCharacter == null)
     {

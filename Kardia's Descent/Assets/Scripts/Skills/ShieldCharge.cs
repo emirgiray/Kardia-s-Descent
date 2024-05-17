@@ -10,7 +10,7 @@ public class ShieldCharge : SkillsData
 {
     //[SerializeField] private int stunDuration = 1 ;
     
-    public override void ActivateSkill(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, Action OnComplete = null)
+    public override void ActivateSkill(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, float multipliars, Action OnComplete = null)
     {
         // ActivaterCharacter.animator.ResetTrigger("Attack");
 
@@ -52,7 +52,7 @@ public class ShieldCharge : SkillsData
             ActivaterCharacter.Rotate(enemyTile.transform.position);
             
             everythingUseful.Interact.GetComponent<MonoBehaviour>()
-                .StartCoroutine(WaitUntilEnum(Skill, ActivaterCharacter, enemyTile, defaultAnimSpeed, OnComplete));
+                .StartCoroutine(WaitUntilEnum(Skill, ActivaterCharacter, enemyTile, multipliars, defaultAnimSpeed, OnComplete));
             //base.TryHit(Skill, ActivaterCharacter, selectedTile, parent, OnComplete = null);
                 
         }, false);
@@ -60,7 +60,7 @@ public class ShieldCharge : SkillsData
     
     
     
-    private IEnumerator WaitUntilEnum(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, float defaultAnimSpeed, Action OnComplete = null)
+    private IEnumerator WaitUntilEnum(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, float multipliars, float defaultAnimSpeed, Action OnComplete = null)
     {
         //Debug.Log($"wait started    ");
         yield return new WaitUntil(() => ActivaterCharacter.Moving == false);
@@ -71,7 +71,7 @@ public class ShieldCharge : SkillsData
 
         if (base.TryHit(Skill, ActivaterCharacter, selectedTile, OnComplete))
         {
-            base.DoDamage(Skill, ActivaterCharacter, selectedTile, ActivaterCharacter.SkillContainer.coverDamageMultiplier * ActivaterCharacter.SkillContainer.otherDamageMultiplier, OnComplete);
+            base.DoDamage(Skill, ActivaterCharacter, selectedTile, multipliars, OnComplete);
             base.DoStun(Skill, ActivaterCharacter, selectedTile, OnComplete);
         }
         else

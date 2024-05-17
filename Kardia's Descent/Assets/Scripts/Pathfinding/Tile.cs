@@ -183,6 +183,12 @@ public class Tile : MonoBehaviour
         quickOutline.enabled = true;
         quickOutline.OutlineColor = everythingUseful.Interact.tileHighligthNormalColors[1];
     }
+
+    public void Hig()
+    {
+        
+    }
+    
     public void ClearHighlight()
     {
         if (TileHighlightGO != null)

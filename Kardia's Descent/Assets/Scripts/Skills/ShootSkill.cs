@@ -7,7 +7,7 @@ using UnityEngine;
 public class ShootSkill : SkillsData
 {
     public GameObject Bullet;
-    public override void ActivateSkill(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, Action OnComplete = null)//skill logic goes here
+    public override void ActivateSkill(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, float multipliars, Action OnComplete = null)//skill logic goes here
     {
         //base.ActivateSkill();
       //  WeaponContainer weaponContainer = GetComponentInChildren<WeaponContainer>();

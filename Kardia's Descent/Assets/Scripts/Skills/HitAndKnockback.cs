@@ -6,14 +6,14 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "HitAndKnocback", menuName = "ScriptableObjects/Skills/HitAndKnocback", order = 0)]
 public class HitAndKnocback : SkillsData
 {
-    public override void ActivateSkill(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, Action OnComplete = null) //skill logic goes here
+    public override void ActivateSkill(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, float multipliars, Action OnComplete = null) //skill logic goes here
     {
         ActivaterCharacter.Interact.GetComponent<MonoBehaviour>()
-            .StartCoroutine(WaitUntilEnum(Skill, ActivaterCharacter, selectedTile, OnComplete));
+            .StartCoroutine(WaitUntilEnum(Skill, ActivaterCharacter, selectedTile, multipliars, OnComplete));
           
     }
 
-    public IEnumerator WaitUntilEnum(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, Action OnComplete = null)
+    public IEnumerator WaitUntilEnum(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile, float multipliars, Action OnComplete = null)
     {
         yield return new WaitUntil(() => ActivaterCharacter.SkillContainer.GetImpact() == true);
         
@@ -22,7 +22,7 @@ public class HitAndKnocback : SkillsData
         
         if (base.TryHit(Skill, ActivaterCharacter, selectedTile, OnComplete))
         {
-            base.DoDamage(Skill, ActivaterCharacter, selectedTile, ActivaterCharacter.SkillContainer.coverDamageMultiplier * ActivaterCharacter.SkillContainer.otherDamageMultiplier, OnComplete); 
+            base.DoDamage(Skill, ActivaterCharacter, selectedTile, multipliars, OnComplete); 
             base.DoKnockBack(Skill, ActivaterCharacter, selectedTile, OnComplete);
         }
         else

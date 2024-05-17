@@ -126,11 +126,11 @@ public class Interact : MonoBehaviour
     
     public Dictionary<int, Color> tileHighligthNormalColors = new Dictionary<int, Color>()
     {
-        {0, new Color(0.3f * 1.2f, 1f * 1.2f, 0.3f * 1.2f, 0.7176471f) },//Green -- Movable
-        {1, new Color(1f * 1.5f, 0.3f * 1.5f, 0f, 0.7176471f) },//Orange -- Attackable
+        {0, new Color(0.3f * 1.2f, 1f * 1.2f, 0.3f * 1.2f, 0.1f) },//Green -- Movable
+        {1, new Color(1f * 1.5f, 0.3f * 1.5f, 0f, 0.1f) },//Orange -- Attackable
        
-        {3, new Color(0.000f, 0.6f * 1.5f, 1f * 1.5f, 0.7176471f) }, //Blue -- Cover
-        {4, new Color(1f, 1f, 0f, 0.7176471f) },//Yellow -- Interactable
+        {3, new Color(0.000f, 0.6f * 1.5f, 1f * 1.5f, 0.1f) }, //Blue -- Cover
+        {4, new Color(1f, 1f, 0f, 0.1f) },//Yellow -- Interactable
         {5, new Color(1f, 1f, 1f, 0.0f) },//White -- Empty
         
         
@@ -999,6 +999,7 @@ public class Interact : MonoBehaviour
         if (newTile.occupiedByEnemy)
         {
             newTile.occupyingEnemy.outline.enabled = true;
+            newTile.occupyingEnemy.HPBarDelay();
             lastCharacterUnderMouse = newTile.occupyingEnemy;
         }
         else

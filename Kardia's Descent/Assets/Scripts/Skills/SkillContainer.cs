@@ -31,6 +31,8 @@ public class SkillContainer : MonoBehaviour
     private static LTDescr delay;
     public float coverDamageMultiplier = 1;
     public float otherDamageMultiplier = 1;
+    public float rangedCloseDamageMultiplier = 1;
+    public bool characterTooClose = false;
     // public Action skillNotReadyAction;
     //public Action skillReadyAction;
 
@@ -366,7 +368,23 @@ bool impact = false;
 
     private IEnumerator AttackCancelDelay(float attackAnimLength, Skills selectedSkill, Tile selectedTile, Enemy enemy = null, Action OnComplete = null)
     {
-        selectedSkill.skillData.ActivateSkill(selectedSkill, Character, selectedTile,  () =>
+        if (Character is Player)
+        {
+            if (selectedSkill.skillData.skillType == SkillsData.SkillType.Ranged && characterTooClose)
+            {
+                rangedCloseDamageMultiplier = 0.5f;
+            }
+        }
+        else
+        {
+            if (Character.characterClass == Character.CharacterClass.Ranged && characterTooClose)
+            {
+                rangedCloseDamageMultiplier = 0.5f;
+            }
+        }
+        float multipliars = coverDamageMultiplier * otherDamageMultiplier * rangedCloseDamageMultiplier * selectedSkill.SkillDamageMultipliar;
+        //Debug.Log($"multipliars: {multipliars}, coverDamageMultiplier: {coverDamageMultiplier}, otherDamageMultiplier: {otherDamageMultiplier}, rangedCloseDamageMultiplier: {rangedCloseDamageMultiplier}, selectedSkill.SkillDamageMultipliar: {selectedSkill.SkillDamageMultipliar}");
+        selectedSkill.skillData.ActivateSkill(selectedSkill, Character, selectedTile,multipliars,  () =>
         {
             DeselectSkill(selectedSkill, enemy);
             ResetCoverAccruacyDebuff();
@@ -385,11 +403,63 @@ bool impact = false;
                 
             coverDamageMultiplier = 1;
             otherDamageMultiplier = 1;
+            //rangedCloseDamageMultiplier = 1;
+            selectedSkill.SkillDamageMultipliar = 1;
+            //characterTooClose = false;
         });
         
         
         
         yield return null;
+    }
+
+    public void CharacterTooCloseForRanged(bool value)
+    {
+         //otherDamageMultiplier = value ? 0.5f : 1;
+
+         //if (value)
+         /*{
+             foreach (var skill in skillsList)
+             {
+                 if (skill.skillData.skillType == SkillsData.SkillType.Ranged)
+                 {
+                     skill.SkillDamageMultipliar = value ? 0.5f : 1;
+
+                     foreach (var button in skillButtons)
+                     {
+                         if (button.skillData.name == skill.skillData.name)
+                         {
+                             button.SkillDebuffImage
+                         }
+                     }
+                 }
+             }
+         }*/
+
+         if (characterTooClose == value)
+         {
+             return;
+         }
+         
+         foreach (var button in skillButtons)
+         {
+             if (button.skillData.skillType == SkillsData.SkillType.Ranged && button.skillData.skillDamage > 0)
+             {
+                 button.rangedDebuffImage.SetActive(value);
+
+                 if (value)
+                 {
+                     button.AddToContent("Too close for ranged attack, damage halved");
+                 }
+                 else
+                 {
+                     button.RemoveLastLine();
+                 }
+             }
+         }
+
+         characterTooClose = value;
+         
     }
 
     public void SetImpact(bool value)
@@ -527,7 +597,7 @@ bool impact = false;
         public bool skillReadyToUse = true;
         public SkillButton skillButton;
         public AnimatorOverrideController animatorOverrideController;
-
+        public float SkillDamageMultipliar = 1;
     }
 
     

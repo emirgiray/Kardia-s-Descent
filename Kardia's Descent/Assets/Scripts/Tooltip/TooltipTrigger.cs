@@ -74,6 +74,44 @@ public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         content += contentIn;
     }
 
+    public void RemoveLine(int line)
+    {
+        string[] lines = content.Split('\n');
+        if (line < 0 || line >= lines.Length)
+        {
+            return;
+        }
+        string newContent = "";
+        for (int i = 0; i < lines.Length; i++)
+        {
+            if (i != line)
+            {
+                newContent += lines[i];
+                if (i != lines.Length - 1)
+                {
+                    newContent += "\n";
+                }
+            }
+        }
+        content = newContent;
+        
+    }
+
+    public void RemoveLastLine()
+    {
+        string[] lines = content.Split('\n');
+        string newContent = "";
+        for (int i = 0; i < lines.Length - 1; i++)
+        {
+            newContent += lines[i];
+            if (i != lines.Length - 2)
+            {
+                newContent += "\n";
+            }
+        }
+        content = newContent;
+    }
+
     public void SetHeader(string headerIn)
     {
         header = headerIn;

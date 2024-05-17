@@ -23,7 +23,8 @@ public class SkillButton : MonoBehaviour
     [SerializeField] public GameObject cooldownImage;
     [SerializeField] private SkillContainer skillContainer;
     [SerializeField] private TooltipTrigger tooltipTrigger;
-    
+    public GameObject rangedDebuffImage;
+
 
     public void InitButton(SkillsData skillDataIn, SkillContainer.Skills skillIn , UnityAction useSkill, SkillContainer skillContainerIn)
     {
@@ -126,7 +127,17 @@ public class SkillButton : MonoBehaviour
     {
         tooltipTrigger.AddToContent(text);
     }
+
+    public void RemoveLine(int line)
+    {
+        tooltipTrigger.RemoveLine(line);
+    }
     
+    public void RemoveLastLine()
+    {
+        tooltipTrigger.RemoveLastLine();
+    }
+
     public void SwitchSelectedOutline(bool value)
     {
         SkillSelectedOutline.SetActive(value);

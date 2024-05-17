@@ -54,6 +54,11 @@ public class Pathfinder : MonoBehaviour
             }
             else //does this work???
             {
+                /*Debug.Log($"1 {destination.Occupied}");
+                Debug.Log($"2 {currentTile.transform.position}");
+                Debug.Log($"3 {destination.transform.position}");
+                Debug.Log($"4 {origin.GetComponent<MeshFilter>().sharedMesh.bounds.extents.x }");
+                Debug.Log($"5 {PathfinderVariables.Instance.HEXAGONAL_OFFSET }");*/
                 if (destination.Occupied && Vector3.Distance(currentTile.transform.position, destination.transform.position) <= (origin.GetComponent<MeshFilter>().sharedMesh.bounds.extents.x * PathfinderVariables.Instance.HEXAGONAL_OFFSET))
                 {
                     return PathBetween(activator, currentTile, origin, forAIPathfinding);
