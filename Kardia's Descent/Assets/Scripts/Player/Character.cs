@@ -216,6 +216,12 @@ public class Character : MonoBehaviour
     public void StartMove(Path _path, bool rotate = true, Action OnComplete = null, bool spendActionPoints = true)
     {
         if (_path == null) return;
+
+        if (CheckOpportunityAttack(_path))
+        {
+            OnComplete?.Invoke();
+            return;
+        }
         
         if (canMove)
         {
@@ -455,7 +461,16 @@ public class Character : MonoBehaviour
     
     private void CheckCloseCharacters()
     {
-        int closeCharacters = 0;
+        foreach (var player in everythingUseful.LevelManager.players)
+        {
+            player.closeCharacters.Clear();
+        }
+        foreach (var enemy in everythingUseful.LevelManager.enemies)
+        {
+            enemy.closeCharacters.Clear();
+        }
+        
+        int closeCharactersNum = 0;
         if (this is Player)
         {
             foreach (var enemy in everythingUseful.LevelManager.enemies)
@@ -466,11 +481,13 @@ public class Character : MonoBehaviour
                 {
                     SkillContainer.CharacterTooCloseForRanged(true);
                     enemy.SkillContainer.CharacterTooCloseForRanged(true);
-                    closeCharacters++;
+                    closeCharactersNum++;
+                    enemy.closeCharacters.Add(this);
+                    closeCharacters.Add(enemy);
                 }
                 else
                 {
-                    if(closeCharacters == 0) SkillContainer.CharacterTooCloseForRanged(false);
+                    if(closeCharactersNum == 0) SkillContainer.CharacterTooCloseForRanged(false);
                 }
             }
         }
@@ -484,16 +501,70 @@ public class Character : MonoBehaviour
                 {
                     SkillContainer.CharacterTooCloseForRanged(true);
                     player.SkillContainer.CharacterTooCloseForRanged(true);
-                    closeCharacters++;
+                    closeCharactersNum++;
+                    player.closeCharacters.Add(this);
+                    closeCharacters.Add(player);
                 }
                 else
                 {
-                    if(closeCharacters == 0) SkillContainer.CharacterTooCloseForRanged(false);
+                    if(closeCharactersNum == 0) SkillContainer.CharacterTooCloseForRanged(false);
                 }
             }
         }
     }
+    
+    private bool CheckOpportunityAttack(Path _path)
+    {
+        if (opportunityAttackRecieved) return false;
+        if (closeCharacters.Count == 0) return false;
+        
+        foreach (var closeCharacter in closeCharacters)
+        {
+            if (this is Player)
+            {
+                Rotate(_path.tiles[0].transform.position);
+                closeCharacter.Rotate(characterTile.transform.position, 0.75f, () =>
+                {
+                    Action oncompleted;
+                    closeCharacter.pathfinder.GetAttackableTiles(closeCharacter, closeCharacter.SkillContainer.skillsList[0], closeCharacter.characterTile, characterTile, out oncompleted);
+                    closeCharacter.SkillContainer.UseSkill(closeCharacter.SkillContainer.skillsList[0], characterTile, closeCharacter.GetComponent<Enemy>(),
+                        () =>
+                        {
+                            this.opportunityAttackRecieved = true;
+                            everythingUseful.Interact.HighlightReachableTiles();
+                            closeCharacter.remainingActionPoints += closeCharacter.SkillContainer.skillsList[0].actionPointUse;
+                        });
+                    
+                });
+                return true;
+            }
+            
+            if (this is Enemy)
+            {
+                Rotate(_path.tiles[0].transform.position);
+                closeCharacter.Rotate(characterTile.transform.position, 0.75f, () =>
+                {
+                    Action oncompleted;
+                    closeCharacter.pathfinder.GetAttackableTiles(closeCharacter, closeCharacter.SkillContainer.skillsList[0], closeCharacter.characterTile, characterTile, out oncompleted);
+                    closeCharacter.SkillContainer.UseSkill(closeCharacter.SkillContainer.skillsList[0], characterTile, null,
+                        () =>
+                        {
+                            this.opportunityAttackRecieved = true;
+                            closeCharacter.remainingActionPoints += closeCharacter.SkillContainer.skillsList[0].actionPointUse;
+                        });
 
+                });
+                
+                return true;
+            }
+            
+        }
+        
+        return false;
+    }
+    
+    public bool opportunityAttackRecieved = false;
+    public List<Character> closeCharacters = new();
 
     float movementThreshold = 0.1f;
 
@@ -626,7 +697,8 @@ public class Character : MonoBehaviour
         canMove = false;
         canAttack = false;
         characterState = CharacterState.WaitingNextRound;
-
+        opportunityAttackRecieved = false;
+        
         if (characterCard != null) characterCard.GetComponent<CustomEvent2>().CustomEmitterFunc2();
 
         if (this is Enemy)
@@ -979,7 +1051,8 @@ public class Character : MonoBehaviour
     }
 
     #endregion
-    
+
+  
     public void SetAnimations(AnimatorOverrideController overrideController)
     {
         animator.runtimeAnimatorController = overrideController;

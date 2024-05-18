@@ -35,7 +35,7 @@ MonoBehaviour:
   animatorOverrideController: {fileID: 0}
   useParabolla: 1
   skillStartVFX: {fileID: 11400000, guid: db3b1ddf3f880e74dae0c374bf36d860, type: 2}
-  skillImpactVFX: {fileID: 0}
+  skillImpactVFX: {fileID: 11400000, guid: 5b1f32336aafd574c8a0f2811e12f846, type: 2}
   skillHitVFX:
   - {fileID: 11400000, guid: 2d7ba90a2d4cad44ea904346e7ce5f75, type: 2}
   skillMissVFX: {fileID: 11400000, guid: f95dd6b5fb3dc4f4c9158365d41b4807, type: 2}

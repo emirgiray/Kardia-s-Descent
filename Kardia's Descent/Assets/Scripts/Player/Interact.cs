@@ -277,6 +277,7 @@ public class Interact : MonoBehaviour
                 if (selectedCharacter.inventory.GetSpawnedInventoryUIScript().GetSkipButton().interactable && selectedCharacter.inventory.GetSpawnedInventoryUIScript().GetSkipButton().gameObject.activeSelf)
                 {
                     selectedCharacter.inventory.GetSpawnedInventoryUIScript().GetSkipButton().onClick.Invoke();
+                    selectedCharacter.inventoryUI.SkipTurnButtonAnim(false);
                 }
             }
 

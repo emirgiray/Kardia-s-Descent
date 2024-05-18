@@ -55,6 +55,7 @@ public class InventoryUI : MonoBehaviour
         player.CombatStartedAction += () =>  EnableDisableSkipTurnButton(true); //but this action works??
         player.CombatEndedAction += () =>  EnableDisableSkipTurnButton(false); 
         player.ActionPointsExhausted.AddListener(() => SkipTurnButtonAnim(true));
+        player.PlayerTurnStart.AddListener(() => SkipTurnButtonAnim(false));
         skipTurnButton.onClick.AddListener(player.EndTurn);
         skipTurnButton.onClick.AddListener(() => SkipTurnButtonAnim(false));
     }
@@ -211,7 +212,7 @@ public class InventoryUI : MonoBehaviour
     }
 
     private Tween skipTurnButtonTween;
-    private void SkipTurnButtonAnim(bool value)
+    public void SkipTurnButtonAnim(bool value)
     {
         if (value)
         {

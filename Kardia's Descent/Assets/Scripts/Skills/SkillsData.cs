@@ -174,7 +174,7 @@ public class SkillsData : ScriptableObject
         {
             foreach (var fx in skillHitVFX)
             {
-                fx.SpawnVFX(selectedTile.occupyingEnemy.transform);
+                fx.SpawnVFX(selectedTile.occupyingEnemy.Head);
             }
             selectedTile.occupyingEnemy.GetComponent<DamageHandler>().TakeDamage(Skill.damage, damageMultipliar, ActivaterCharacter);
         }
@@ -183,7 +183,7 @@ public class SkillsData : ScriptableObject
         {
             foreach (var fx in skillHitVFX)
             {
-                fx.SpawnVFX(selectedTile.occupyingPlayer.transform);
+                fx.SpawnVFX(selectedTile.occupyingPlayer.Head);
             }
 
             selectedTile.occupyingPlayer.GetComponent<DamageHandler>().TakeDamage(Skill.damage, damageMultipliar, ActivaterCharacter);

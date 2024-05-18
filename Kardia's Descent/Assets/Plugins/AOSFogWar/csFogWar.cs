@@ -514,7 +514,7 @@ namespace FischlWorks_FogWar
 
         private void ScanLevel()
         {
-            Debug.LogFormat("There is no level data file assigned, scanning level...");
+            //Debug.LogFormat("There is no level data file assigned, scanning level...");
 
             // These operations have no real computational meaning, but it will bring consistency to the data
             levelData.levelDimensionX = levelDimensionX;
@@ -551,7 +551,7 @@ namespace FischlWorks_FogWar
                 }
             }
 
-            Debug.LogFormat("Successfully scanned level with a scale of {0} x {1}", levelDimensionX, levelDimensionY);
+           // Debug.LogFormat("Successfully scanned level with a scale of {0} x {1}", levelDimensionX, levelDimensionY);
         }
 
 
@@ -571,14 +571,14 @@ namespace FischlWorks_FogWar
 
             if (File.Exists(fullPath) == true)
             {
-                Debug.LogFormat("level scan data already exists, overwriting...");
+              //  Debug.LogFormat("level scan data already exists, overwriting...");
             }
 
             string levelJson = JsonUtility.ToJson(levelData);
 
             File.WriteAllText(fullPath, levelJson);
 
-            Debug.LogFormat("Successfully saved level scan data at \"{0}\"", fullPath);
+//            Debug.LogFormat("Successfully saved level scan data at \"{0}\"", fullPath);
         }
 #endif
 

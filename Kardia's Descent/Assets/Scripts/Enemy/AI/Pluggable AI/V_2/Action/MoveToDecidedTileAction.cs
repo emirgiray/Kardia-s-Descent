@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,7 +27,25 @@ public class MoveToDecidedTileAction : ActionAI
                 }
                 else
                 {
-                    controller.enemy.StartMove(FindPathToTargetPlayer(controller), true, () => controller.canExitState = true);
+                    Action onComplete = () =>
+                    {
+                        controller.canExitState = true;
+                    };
+                    
+                    if (controller.enemy.closeCharacters.Count > 0)
+                    {
+                        controller.enemy.StartMove(FindPathToTargetPlayer(controller), true, () =>
+                        {
+                            controller.enemy.GetComponent<MonoBehaviour>().StartCoroutine(WaitForGetAtttacked(controller, onComplete));
+                            
+                        });
+                    }
+                    else
+                    {
+                        controller.enemy.StartMove(FindPathToTargetPlayer(controller), true, onComplete);
+                    }
+                    
+                   
                 }
                 
                  
@@ -34,6 +53,12 @@ public class MoveToDecidedTileAction : ActionAI
 
             }
         }
+    }
+
+    private IEnumerator WaitForGetAtttacked(StateController controller, Action onComplete)
+    {
+        yield return new WaitUntil(() => controller.enemy.opportunityAttackRecieved == true);
+        controller.enemy.StartMove(FindPathToTargetPlayer(controller), true, onComplete); //this is for the second move after being attacked
     }
 
     /*private void OnDisable()

@@ -15,5 +15,6 @@ MonoBehaviour:
   VFXPrefab: {fileID: 100004, guid: f95ff734540a0d749be6571b6cb5b37f, type: 3}
   VFXDuration: 3
   spawnPosition: {fileID: 0}
-  spawnOffset: {x: 0, y: 3, z: 0}
+  spawnOffset: {x: 0, y: 2, z: 0}
   scale: {x: 1, y: 1, z: 1}
+  rotationOffset: {x: 0, y: 0, z: 0}
