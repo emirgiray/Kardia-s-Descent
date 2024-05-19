@@ -242,8 +242,11 @@ public class TurnSystem : MonoBehaviour
         }
         else
         {
-            playersInCombat.RemoveRange(playersInCombat.IndexOf(deadPlayer), 1);
-            allEntitiesInCombat.RemoveRange(allEntitiesInCombat.IndexOf(deadPlayer), 1);
+            if (playersInCombat.Contains(deadPlayer))
+            {
+                playersInCombat.Remove(deadPlayer);
+                allEntitiesInCombat.Remove(deadPlayer);
+            }
         }
         
        
@@ -255,8 +258,8 @@ public class TurnSystem : MonoBehaviour
     [Button,GUIColor(1,1,1)][FoldoutGroup("DEBUG")]
     public void PlayerExitedCombat(Player deadPlayer)
     {
-        playersInCombat.RemoveRange(playersInCombat.IndexOf(deadPlayer), 1);
-        allEntitiesInCombat.RemoveRange(allEntitiesInCombat.IndexOf(deadPlayer), 1);
+        playersInCombat.Remove(deadPlayer);
+        allEntitiesInCombat.Remove(deadPlayer);
         RemoveCard(deadPlayer);
     }
 
@@ -279,8 +282,8 @@ public class TurnSystem : MonoBehaviour
             }
             else
             {
-                enemiesInCombat.RemoveRange(enemiesInCombat.IndexOf(deadEnemy), 1);
-                allEntitiesInCombat.RemoveRange(allEntitiesInCombat.IndexOf(deadEnemy), 1);
+                enemiesInCombat.Remove(deadEnemy);
+                allEntitiesInCombat.Remove(deadEnemy);
             }
             
             OnEnemyDeath.Invoke(deadEnemy);

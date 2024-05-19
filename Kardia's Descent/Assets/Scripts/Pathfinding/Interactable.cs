@@ -24,7 +24,7 @@ public class Interactable : MonoBehaviour
     public CharacterClass InteractableType;
 
     [ShowIf("InteractableType", CharacterClass.Heart)]
-    [SerializeField] private HeartData heart;
+    [SerializeField] public HeartData heart;
     [ShowIf("InteractableType", CharacterClass.Heart)]
     [SerializeField] private MeshRenderer heartRenderer;
     [ShowIf("InteractableType", CharacterClass.Heart)]

@@ -83,6 +83,10 @@ public class Character : MonoBehaviour
     public bool canRotate = true;
     [BoxGroup("Functions")] [SerializeField] 
     private bool dropItemsOnDeath = false;
+    [BoxGroup("Functions")] [SerializeField] [Sirenix.OdinInspector.ShowIf("dropItemsOnDeath")]
+    private HeartDropTable heartDropTable;
+    [BoxGroup("Functions")] [SerializeField] [Sirenix.OdinInspector.ShowIf("dropItemsOnDeath")]
+    private float dropChance = 25;
     [BoxGroup("Functions")] [Sirenix.OdinInspector.ShowIf("dropItemsOnDeath")] [SerializeField] 
     private List<GameObject> itemsToDrop = new List<GameObject>();
     
@@ -948,10 +952,19 @@ public class Character : MonoBehaviour
             characterTile.occupiedByPlayer = false;
             characterTile.occupyingPlayer = null;
             TurnSystem.PlayerDied(GetComponent<Player>());
+            
+            if (dropItemsOnDeath && heartContainer.isEquipped)
+            {
+                DropEquippedHeart();
+            }
+            
         }
         if (this is Enemy)
         {
             characterTile.occupiedByEnemy = false;
+            characterTile.Occupied = false;
+            characterTile.occupyingCharacter = null;
+            characterTile.occupyingGO = null;
             characterTile.occupyingEnemy = null;
             GetComponent<StateController>().aiActive = false;
             TurnSystem.EnemyDied(GetComponent<Enemy>());
@@ -960,33 +973,60 @@ public class Character : MonoBehaviour
             {
                 Destroy(var);
             }
+            
+            Destroy(GetComponent<TooltipTrigger>());
+            
+            if (dropItemsOnDeath)
+            {
+                if (itemsToDrop.Count > 0)
+                {
+                    DropRandomItemFromList();
+                }
+                else
+                {
+                    DropRandomItemFromTable();
+                    
+                }
+            }
         }
         characterTile.occupyingGO = null;
         characterTile.Occupied = false;
 
-        if (dropItemsOnDeath)
-        {
-            // DropAllItemsOnDeath();
-            DropRandomItemOnDeath();
-        }
+        
         //characterTile = null;
         
     }
 
-    private void DropAllItemsOnDeath()
+    private void DropRandomItemFromList()
     {
         Vector3 dropPos = transform.position + new Vector3(0, 1, 0);
-        foreach (var item in itemsToDrop)
-        {
-            Instantiate(item, dropPos, Quaternion.identity);
-        }
-    }
-
-    private void DropRandomItemOnDeath()
-    {
-        Vector3 dropPos = transform.position + new Vector3(0, 1, 0);
+       
         int randomIndex = UnityEngine.Random.Range(0, itemsToDrop.Count);
         Instantiate(itemsToDrop[randomIndex], dropPos, Quaternion.identity);
+    }
+
+    private void DropRandomItemFromTable()
+    {
+        var dropCalculatedChance = UnityEngine.Random.Range(0, 100);
+
+        if (dropCalculatedChance > dropChance)
+        {
+            // Debug.Log($"No drop for {name}");
+            return;
+        }
+        Vector3 dropPos = transform.position + new Vector3(0, 1, 0);
+        heartDropTable.SpawnRandomHeart(dropPos);
+        
+       
+        /*int randomIndex = UnityEngine.Random.Range(0, itemsToDrop.Count);
+        Instantiate(itemsToDrop[randomIndex], dropPos, Quaternion.identity);*/
+    }
+
+    private void DropEquippedHeart()
+    {
+        Vector3 dropPos = transform.position + new Vector3(0, 1, 0);
+        heartDropTable.SpawnSelectedHeart(dropPos, heartContainer.heartData);
+        
     }
     
     public void OnCharacterRecieveDamageFunc(int damageValue)

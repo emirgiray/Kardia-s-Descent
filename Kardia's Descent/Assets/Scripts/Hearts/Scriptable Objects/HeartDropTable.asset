@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 673567d88abf62746bb4bb2a8d8b06b4, type: 3}
+  m_Name: HeartDropTable
+  m_EditorClassIdentifier: 
+  allHeartDatas: {fileID: 11400000, guid: 3205190d312943148bab0c147b621110, type: 2}
+  interactablePrefab: {fileID: 3827778003454135017, guid: 441f6c87c4f5489488399e61dac2cab5,
+    type: 3}
+  HeartRarityAndDatas:
+  - heartRarity: 0
+    hearts:
+    - {fileID: 11400000, guid: 510561519988a8e418f7e6adce942750, type: 2}
+    - {fileID: 11400000, guid: 30d55485423f9bf4c89c095b0ac2ed9b, type: 2}
+    - {fileID: 11400000, guid: 47acc68a527993244af8fedb43bdd5cb, type: 2}
+  - heartRarity: 1
+    hearts:
+    - {fileID: 11400000, guid: 5a955748a41875949baf31d3e88331be, type: 2}
+    - {fileID: 11400000, guid: 579a919bab0faae47997502bb04c0b55, type: 2}
+    - {fileID: 11400000, guid: 3078301a206968f4591dabfdd2274ed1, type: 2}
+  - heartRarity: 2
+    hearts:
+    - {fileID: 11400000, guid: ca68ea8ea61e2de4981c34cdfb624944, type: 2}
+  HeartRarityAndChances:
+  - heartRarity: 0
+    chance: 80
+  - heartRarity: 1
+    chance: 15
+  - heartRarity: 2
+    chance: 5

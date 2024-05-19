@@ -261,7 +261,9 @@ MonoBehaviour:
   isDead: 0
   diedOnSelfTurn: 0
   canRotate: 1
-  dropItemsOnDeath: 0
+  dropItemsOnDeath: 1
+  heartDropTable: {fileID: 11400000, guid: 09f90b2616a5b6c4c962d2402e18c30e, type: 2}
+  dropChance: 100
   itemsToDrop: []
   Head: {fileID: 3811572432631322745}
   Hand: {fileID: 4568728419604377504}
@@ -286,6 +288,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnActionPointsChangeEvent2:
+    m_PersistentCalls:
+      m_Calls: []
+  SkillUsedEvent:
     m_PersistentCalls:
       m_Calls: []
   OnHealthChangeEvent:
@@ -313,6 +318,8 @@ MonoBehaviour:
   CameraSystem: {fileID: 0}
   LevelManager: {fileID: 0}
   isSpedUp: 0
+  opportunityAttackRecieved: 0
+  closeCharacters: []
   playerPortrait: {fileID: 8400000, guid: 8d4fd00542bae0b43957e359329b47a2, type: 2}
   PlayerPreview: {fileID: 0}
   playerPrefab: {fileID: 0}
@@ -349,6 +356,7 @@ MonoBehaviour:
     skillReadyToUse: 1
     skillButton: {fileID: 0}
     animatorOverrideController: {fileID: 0}
+    SkillDamageMultipliar: 1
   lastSelectedSkill:
     skillData: {fileID: 0}
     damage: 0
@@ -363,6 +371,7 @@ MonoBehaviour:
     skillReadyToUse: 1
     skillButton: {fileID: 0}
     animatorOverrideController: {fileID: 0}
+    SkillDamageMultipliar: 1
   skillSelected: 0
   Character: {fileID: 7510704565162782655}
   Inventory: {fileID: 5475755088311690444}
@@ -374,6 +383,8 @@ MonoBehaviour:
   outerEffectedTiles: []
   coverDamageMultiplier: 1
   otherDamageMultiplier: 1
+  rangedCloseDamageMultiplier: 1
+  characterTooClose: 0
 --- !u!114 &6326383597764647500
 MonoBehaviour:
   m_ObjectHideFlags: 0

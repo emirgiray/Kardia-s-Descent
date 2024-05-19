@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dc7798f6e3258c46bad0f03f4ebd409, type: 3}
+  m_Name: Rare Heart 1
+  m_EditorClassIdentifier: 
+  HeartSprite: {fileID: -92832186, guid: f050367bbcaea674495c2d5e36fc140b, type: 3}
+  heartName: Common Heart
+  heartIndex: 4
+  heartDescription: Gives extra HP.
+  heartRarity: 1
+  BonusStrength: 1
+  BonusDexterity: 0
+  BonusConstitution: 5
+  BonusAiming: 1
+  unlockCondition: 
+  isPowerUnlocked: 0

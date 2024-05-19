@@ -137,7 +137,7 @@ public class LevelManager : MonoBehaviour
         }
         
         playersGO.Remove(player.gameObject);
-
+        
         if (players.Count == 0 || unlockedPlayers.Count == 0)
         {
             GameManager.GameOver(false);

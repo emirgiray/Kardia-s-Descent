@@ -15,3 +15,8 @@ MonoBehaviour:
   allHearts:
   - {fileID: 11400000, guid: ca68ea8ea61e2de4981c34cdfb624944, type: 2}
   - {fileID: 11400000, guid: 510561519988a8e418f7e6adce942750, type: 2}
+  - {fileID: 11400000, guid: 30d55485423f9bf4c89c095b0ac2ed9b, type: 2}
+  - {fileID: 11400000, guid: 47acc68a527993244af8fedb43bdd5cb, type: 2}
+  - {fileID: 11400000, guid: 5a955748a41875949baf31d3e88331be, type: 2}
+  - {fileID: 11400000, guid: 579a919bab0faae47997502bb04c0b55, type: 2}
+  - {fileID: 11400000, guid: 3078301a206968f4591dabfdd2274ed1, type: 2}

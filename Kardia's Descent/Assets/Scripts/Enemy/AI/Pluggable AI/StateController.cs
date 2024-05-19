@@ -215,12 +215,12 @@ public class StateController : MonoBehaviour
 
     public void PlayerDied(Player deadPlayer)
     {
-        players.RemoveRange(players.IndexOf(deadPlayer), 1);
+        players.Remove(deadPlayer);
     }
     
     public void EnemyDied(Enemy deadEnemy)
     {
-        enemies.RemoveRange(enemies.IndexOf(deadEnemy), 1);
+        enemies.Remove(deadEnemy);
     }
     
     public void PlayerAdded(Player newPlayer)
