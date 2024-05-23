@@ -92,11 +92,29 @@ public class MainMenuController : MonoBehaviour
     public UnityEvent TableMovedFrontEvent;
     [BoxGroup("Table")] [SerializeField] [HideIf("onMainMenu")]
     public UnityEvent TableMovedBackEvent;
+
+    [BoxGroup("Hearts")] [SerializeField] [HideIf("onMainMenu")]
+    private GameObject heartBG;
+    [BoxGroup("Hearts")] [SerializeField] [HideIf("onMainMenu")]
+    private ScrollRect heartScrollRect;
+    [BoxGroup("Hearts")] [SerializeField] [HideIf("onMainMenu")]
+    private Transform heartLayoutTransform;
+    [BoxGroup("Hearts")] [SerializeField] [HideIf("onMainMenu")]
+    private SkillButton equippedHeartButton;
+    [BoxGroup("Hearts")] [SerializeField] [HideIf("onMainMenu")]
+    private GameObject heartButtonPrefab;
+    [BoxGroup("Hearts")] [SerializeField] [HideIf("onMainMenu")]
+    private Sprite emptyHeartImage;
+    [BoxGroup("Hearts")] [SerializeField] [HideIf("onMainMenu")]
+    private List<PlayerAndHeart> playersAndHearts = new();
+    private List<GameObject> spawnedHeartButtons = new();
     
     [FoldoutGroup("Events")]
     public UnityEvent SelectionStartedEvent;
     [FoldoutGroup("Events")]
     public UnityEvent SelectionEndedEvent;
+    [FoldoutGroup("Events")] [HideIf("onMainMenu")]
+    public UnityEvent HeartsSpawnedEvent;
     private void Awake()
     {
         if (Instance == null)
@@ -156,14 +174,14 @@ public class MainMenuController : MonoBehaviour
         }
         StartSelection();
     }
-
+    private float heartBgStartX;
     [Button, GUIColor(1f, 1f, 1f)]
     public void StartSelection()
     {
         SelectionStartedEvent.Invoke();
         characterSelectionUI.SetActive(true);
         startButton.interactable = false;
-        
+        GameObject firstChar = everythingUseful.MainPrefabScript.SelectedPlayers[0];
         List<string> previousSelectedCharNames = new();
         if (!onMainMenu)
         {
@@ -198,15 +216,28 @@ public class MainMenuController : MonoBehaviour
         }
         
         MainMenuCharacterButton firstButton = selectionLayoutTransform.GetChild(0).GetComponent<MainMenuCharacterButton>();
+        if (onMainMenu)
+        {
+            firstButton.equipButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            for (int i = 0; i < selectionLayoutTransform.childCount; i++)
+            {
+                if (selectionLayoutTransform.GetChild(i).GetComponent<MainMenuCharacterButton>().characterPrefab.name == firstChar.name)
+                {
+                    firstButton = selectionLayoutTransform.GetChild(i).GetComponent<MainMenuCharacterButton>();
+                    break;
+                }
+            }
+        }
         SpawnPlayerPreview(firstButton); //spawn first character
-        if (onMainMenu) firstButton.equipButton.gameObject.SetActive(true);
         radarChart.SetStats(firstButton.characterPrefab.GetComponent<Player>().characterStats);
         firstButton.selectedImage.SetActive(true);
         selectedChar = firstButton;
-        // selectButton.onClick.AddListener(() =>  selectionLayoutTransform.GetChild(0).GetComponent<MainMenuCharacterButton>().EquipCharacter());
-
         if (!onMainMenu)
         {
+            heartBgStartX = heartBG.transform.localPosition.x;
             table.transform.position = tableStartTransform.position;
             //table.transform.rotation = tableStartTransform.rotation;
             table.SetActive(true);
@@ -221,8 +252,14 @@ public class MainMenuController : MonoBehaviour
                     }
                 }
             }
+            
+
+            SetHeartButtons();
+            
         }
     }
+
+  
     
     Tween tableTween;
 
@@ -380,6 +417,14 @@ public class MainMenuController : MonoBehaviour
                     
                     player.health.Max =  savedPlayer.maxHealth;
                     player.health._Health =  savedPlayer.health;
+
+                    if (!onMainMenu)
+                    {
+                        if (playersAndHearts.Exists(p => p.playerID == playerIndex))
+                        {
+                            savedPlayer.equippedeartID = playersAndHearts.Find(p => p.playerID == playerIndex).heartID;
+                        }
+                    }
                     
                     if (savedPlayer.equippedeartID != -1)
                     {
@@ -404,7 +449,7 @@ public class MainMenuController : MonoBehaviour
         ClearPrevious();
     }
 
-    public void ClearPrevious()
+    private void ClearPrevious()
     {
         for (int i = 0; i < 4; i++)
         {
@@ -418,6 +463,12 @@ public class MainMenuController : MonoBehaviour
            
         }
         allButtons.Clear();
+
+        foreach (var heartButton in spawnedHeartButtons)
+        {
+            Destroy(heartButton);
+        }
+        spawnedHeartButtons.Clear();
         
         selectedList.Clear();
     }
@@ -461,5 +512,93 @@ public class MainMenuController : MonoBehaviour
             button.equipButton.gameObject.SetActive(button == selectedChar && !button.equipped);
             button.selectedImage.SetActive(button == selectedChar);
         }
+        
+        SetHeartButtons();
     }
+
+    bool heartsActivated = false;
+    private void SetHeartButtons()
+    {
+        foreach (var heartButton in spawnedHeartButtons)
+        {
+            Destroy(heartButton);
+        }
+        spawnedHeartButtons.Clear();
+        
+       
+        var player = selectedChar.characterPrefab;
+        foreach (var savedPlayer in everythingUseful.SaveLoadSystem.inGameSaveData.inGamePLayerDatas)
+        {
+            int playerIndex = allPlayers.allPlayers.FindIndex(p => p.playerPrefab.name.Equals(player.name));
+            if (playerIndex == savedPlayer.playerID)
+            {
+                
+                if (savedPlayer.equippedeartID != -1)
+                {
+                    equippedHeartButton.InitForMenuButtonHeart(everythingUseful.SaveLoadSystem.allHeartDatas.allHearts[savedPlayer.equippedeartID]);
+                    if (!heartsActivated)
+                    {
+                        heartBG.transform.DOLocalMoveX(-436, .25f ).SetEase(Ease.InOutQuad).SetRelative();
+                        heartsActivated = true;
+                    }
+
+                }
+                else
+                {
+                    equippedHeartButton.InitForMenuButtonHeart(null);
+                    equippedHeartButton.SkillImage.sprite = emptyHeartImage;
+                }
+                    
+                foreach (var heartIndex in savedPlayer.heartsInInventory)
+                {
+                    var heart = everythingUseful.SaveLoadSystem.allHeartDatas.allHearts[heartIndex];
+                    GameObject temp = Instantiate(heartButtonPrefab, heartLayoutTransform);
+                    temp.transform.localScale = Vector3.one;
+                    spawnedHeartButtons.Add(temp);
+                        
+                    var skillButton = temp.GetComponent<SkillButton>();
+                    skillButton.InitForMenuButtonHeart(heart);
+                    skillButton.button.onClick.AddListener(() => EquipHeart(heart, playerIndex, heartIndex));
+                        
+                    var uiButton = temp.GetComponent<GenericUIButton>();
+                    uiButton.SetHoverScale(Vector3.one, new Vector3(1.1f, 1.1f, 1.1f));
+                }
+                break;
+            }
+            else
+            {
+                if (heartsActivated)
+                {
+                    heartBG.transform.DOLocalMoveX(436, .5f ).SetEase(Ease.InOutQuad).SetRelative();
+                    heartsActivated = false;
+                }
+                equippedHeartButton.InitForMenuButtonHeart(null);
+                equippedHeartButton.SkillImage.sprite = emptyHeartImage;
+            }
+        }
+        
+    }
+    Tween punchTween;
+    private void EquipHeart(HeartData heartData, int PlayerID , int heartIndex)
+    {
+        equippedHeartButton.InitForMenuButtonHeart(heartData);
+        punchTween?.Rewind();
+        punchTween?.Kill();
+        punchTween = equippedHeartButton.transform.DOPunchScale(Vector3.one * 0.2f, 0.5f, 10, 1);
+        if (playersAndHearts.Exists(p => p.playerID == PlayerID))
+        {
+            playersAndHearts.Find(p => p.playerID == PlayerID).heartID = heartIndex;
+        }
+        else
+        {
+            playersAndHearts.Add(new PlayerAndHeart() {playerID = PlayerID, heartID = heartIndex});
+        }
+        
+    }
+}
+[Serializable]
+public class PlayerAndHeart
+{
+    public int playerID;
+    public int heartID = -1;
 }

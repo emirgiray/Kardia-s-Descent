@@ -107,4 +107,11 @@ public class GenericUIButton : MonoBehaviour, IPointerClickHandler, IPointerEnte
     {
         OnUnHover();
     }
+
+    public void SetHoverScale(Vector3 originalScale, Vector3 newScale)
+    {
+        this.originalScale = originalScale;
+        hoverScale = newScale;
+        
+    }
 }

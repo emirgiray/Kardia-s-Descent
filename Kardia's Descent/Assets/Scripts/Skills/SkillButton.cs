@@ -15,9 +15,9 @@ public class SkillButton : MonoBehaviour
 {
     [SerializeField] public SkillsData skillData;
     [SerializeField] public SkillContainer.Skills skill;
-    [SerializeField] private Image SkillImage;
+    [SerializeField] public Image SkillImage;
     [SerializeField] private GameObject SkillSelectedOutline;
-    [SerializeField] private Button button;
+    [SerializeField] public Button button;
     [SerializeField] public TextMeshProUGUI cooldownText;
     [SerializeField] public TextMeshProUGUI apCostText;
     [SerializeField] public GameObject cooldownImage;
@@ -114,6 +114,33 @@ public class SkillButton : MonoBehaviour
         }
     }
 
+    public void InitForMenuButtonHeart(HeartData heartData)
+    {
+        if (heartData != null)
+        {
+            SkillImage.sprite = heartData.HeartSprite;
+        
+            tooltipTrigger.SetHeader(heartData.heartName);
+            tooltipTrigger.SetContent(heartData.heartDescription);
+            
+            if (heartData.heartRarity != HeartData.HeartRarity.Legendary)
+            {
+                tooltipTrigger.AddToContent("");
+                tooltipTrigger.AddToContent($"Extra Strength: {heartData.BonusStrength}");
+                tooltipTrigger.AddToContent($"Extra Dexterity: {heartData.BonusDexterity}");
+                tooltipTrigger.AddToContent($"Extra Constitution: {heartData.BonusConstitution}");
+                tooltipTrigger.AddToContent($"Extra Aiming: {heartData.BonusAiming}");
+            }
+            
+        }
+        else
+        {
+            SkillImage.sprite = null;
+            tooltipTrigger.SetHeader("Heart Slot");
+            tooltipTrigger.SetContent("Empty");
+        }
+    }
+   
     public void SetHeader(string text)
     {
         tooltipTrigger.SetHeader(text);
