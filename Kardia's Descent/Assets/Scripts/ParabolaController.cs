@@ -148,7 +148,15 @@ public class ParabolaController : MonoBehaviour
     /// </summary>
     public void RefreshTransforms(float speed)
     {
-        parabolaFly.RefreshTransforms(speed);
+        if (parabolaFly != null)
+        {
+            parabolaFly.RefreshTransforms(speed);
+        }
+        else
+        {
+            parabolaFly = new ParabolaFly(ParabolaRoot.transform);
+            parabolaFly.RefreshTransforms(speed);
+        }
     }
 
 

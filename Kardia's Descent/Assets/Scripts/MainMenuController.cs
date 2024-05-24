@@ -182,7 +182,6 @@ public class MainMenuController : MonoBehaviour
         SelectionStartedEvent.Invoke();
         characterSelectionUI.SetActive(true);
         startButton.interactable = false;
-        GameObject firstChar = null;
         List<string> previousSelectedCharNames = new();
         if (!onMainMenu)
         {
@@ -223,7 +222,7 @@ public class MainMenuController : MonoBehaviour
         }
         else
         {
-            firstChar = everythingUseful.MainPrefabScript.SelectedPlayers[0];
+            var firstChar = everythingUseful.MainPrefabScript.SelectedPlayers[0];
             for (int i = 0; i < selectionLayoutTransform.childCount; i++)
             {
                 if (selectionLayoutTransform.GetChild(i).GetComponent<MainMenuCharacterButton>().characterPrefab.name == firstChar.name)

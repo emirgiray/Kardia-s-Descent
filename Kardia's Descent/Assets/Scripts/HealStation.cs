@@ -28,7 +28,6 @@ public class HealStation : MonoBehaviour
     [SerializeField] private Image selectedHeartImage;
     [SerializeField] private Image healMultipliarEffect;
     
-    
     [SerializeField] private TextMeshProUGUI healAmountText;
     [SerializeField] private TextMeshProUGUI healMultiplierText;
     [SerializeField] private TextMeshProUGUI healTotalText;
@@ -45,6 +44,11 @@ public class HealStation : MonoBehaviour
 
     private Transform cameraStartTransform;
     [SerializeField] private GameObject newCam;
+    [SerializeField] private GameObject healCam;
+
+    [SerializeField] private GameObject potionPrefab;
+    [SerializeField] private Transform potionSpawnTransform;
+    
     
     private Dictionary<int, Color> textColors = new Dictionary<int, Color>()
     {
@@ -172,19 +176,42 @@ public class HealStation : MonoBehaviour
         healButton.onClick.AddListener(() => HealPlayer());
     }
 
+    [SerializeField] private GameObject spawnedPot;
+    [SerializeField] private ProjectileMove projectileMove;
+    
     private void HealPlayer()
     {
-        player.inventory.heartsInInventory.Remove(selectedHeartData);
-        if (player.heartContainer.heartData == selectedHeartData)
-        {
-            player.heartContainer.UnequipHeart(selectedHeartData);
-        }
+        everythingUseful.CineMachineCutRest(healCam, true);
+        everythingUseful.CineMachineCutRest(newCam, false);
         
-        int healthToGive = (int)(healAmount * healMultipliar);
-        player.health.HealthDecrease(-healthToGive);
-        player.OnHealthChangeEvent?.Invoke();
-        healVFX.SpawnVFX(player.transform);
-        EndSelection();
+        StartCoroutine(HealPlayerDelay());
+    }
+
+    private IEnumerator HealPlayerDelay()
+    {
+        yield return new WaitForSeconds(1);
+        
+        spawnedPot = Instantiate(potionPrefab, potionSpawnTransform.position, Quaternion.identity);
+        spawnedPot.TryGetComponent(out ProjectileMove projectileMove);
+        this.projectileMove = projectileMove;
+        // activate the parabola and on its end activate the skill
+        projectileMove.parabolaController.OnParabolaEnd.AddListener(() =>
+        {
+            player.inventory.heartsInInventory.Remove(selectedHeartData);
+            if (player.heartContainer.heartData == selectedHeartData)
+            {
+                player.heartContainer.UnequipHeart(selectedHeartData);
+            }
+        
+            int healthToGive = (int)(healAmount * healMultipliar);
+            player.health.HealthDecrease(-healthToGive);
+            player.OnHealthChangeEvent?.Invoke();
+            healVFX.SpawnVFX(player.transform);
+            EndSelection();
+        });
+        //projectileMove.parabolaController.Animation = true;
+        var newTarget = player.transform.position + Vector3.up * 2;
+        projectileMove.SetAndStartParabolaYOffset(player.Head);
     }
 
     public void EndSelection()
@@ -200,6 +227,7 @@ public class HealStation : MonoBehaviour
             healUI.SetActive(false);
         });
         
+        everythingUseful.CineMachineCutRest(healCam, false); 
         everythingUseful.CineMachineCutRest(newCam, false);
     }
 
