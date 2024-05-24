@@ -178,10 +178,11 @@ public class MainMenuController : MonoBehaviour
     [Button, GUIColor(1f, 1f, 1f)]
     public void StartSelection()
     {
+        
         SelectionStartedEvent.Invoke();
         characterSelectionUI.SetActive(true);
         startButton.interactable = false;
-        GameObject firstChar = everythingUseful.MainPrefabScript.SelectedPlayers[0];
+        GameObject firstChar = null;
         List<string> previousSelectedCharNames = new();
         if (!onMainMenu)
         {
@@ -200,7 +201,7 @@ public class MainMenuController : MonoBehaviour
             everythingUseful.MainPrefabScript.ClearPlayers();
         }
         
-
+        //Debug.Log($"allPlayers.allPlayers.Count: {allPlayers.allPlayers.Count}");
         foreach (var player in allPlayers.allPlayers)
         {
             Player playerScript = player.playerPrefab.GetComponent<Player>();
@@ -212,7 +213,7 @@ public class MainMenuController : MonoBehaviour
             charButton.characterName = player.playerPrefab.name;
             charButton.characterImage = playerScript.characterSprite;
             charButton.isUnlocked = /*playerScript.isUnlocked*/ /*everythingUseful.AllPlayers.allPlayers[player.playerID].isUnlocked*/ everythingUseful.SaveLoadSystem.metaSaveData.UnlockableCharacterDatas[player.playerID].isUnlocked;
-
+          
         }
         
         MainMenuCharacterButton firstButton = selectionLayoutTransform.GetChild(0).GetComponent<MainMenuCharacterButton>();
@@ -222,6 +223,7 @@ public class MainMenuController : MonoBehaviour
         }
         else
         {
+            firstChar = everythingUseful.MainPrefabScript.SelectedPlayers[0];
             for (int i = 0; i < selectionLayoutTransform.childCount; i++)
             {
                 if (selectionLayoutTransform.GetChild(i).GetComponent<MainMenuCharacterButton>().characterPrefab.name == firstChar.name)

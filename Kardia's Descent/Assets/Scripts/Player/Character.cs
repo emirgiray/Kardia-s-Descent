@@ -521,7 +521,7 @@ public class Character : MonoBehaviour
     {
         if (opportunityAttackRecieved) return false;
         if (closeCharacters.Count == 0) return false;
-        
+        //Debug.Log($"expression");
         foreach (var closeCharacter in closeCharacters)
         {
             if (this is Player)
@@ -540,6 +540,7 @@ public class Character : MonoBehaviour
                         });
                     
                 });
+                //Debug.Log($"true");
                 return true;
             }
             
@@ -558,12 +559,12 @@ public class Character : MonoBehaviour
                         });
 
                 });
-                
+                //Debug.Log($"true");
                 return true;
             }
             
         }
-        
+        //Debug.Log($"false");
         return false;
     }
     

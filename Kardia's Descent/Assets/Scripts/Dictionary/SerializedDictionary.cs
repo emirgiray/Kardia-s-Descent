@@ -6,6 +6,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SerializedDictionary", menuName = "ScriptableObjects/SerializedDictionary", order = 0)]
 public class SerializedDictionary : SerializedScriptableObject
 {
-    [ColorUsage( true,  true)]
+    //[ColorUsage( true,  true)]
     public Dictionary<int, Color> IntColorMap;
 }

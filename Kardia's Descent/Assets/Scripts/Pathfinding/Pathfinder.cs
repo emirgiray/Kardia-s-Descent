@@ -489,7 +489,7 @@ public class Pathfinder : MonoBehaviour
         return tiles;
     }
       
-    public List<Tile> GetAttackableTilesLine(Character activatorCharacter, Tile originTile, Tile targetTile, SkillContainer.Skills skill, out List<Tile> effectedTilesList)
+    private List<Tile> GetAttackableTilesLine(Character activatorCharacter, Tile originTile, Tile targetTile, SkillContainer.Skills skill, out List<Tile> effectedTilesList)
     {
         // Path path = FindPath(originTile.occupyingCharacter, originTile, targetTile);
         Vector3 dir = (targetTile.transform.position - originTile.transform.position).normalized;
@@ -575,7 +575,7 @@ public class Pathfinder : MonoBehaviour
         return attackableTiles;
     }
 
-    public List<Tile> GetAttackableTilesArea(Tile selectedCharacterCharacterTile, SkillContainer.Skills skill, Tile impactOriginTile, out List<Tile> effectedTilesList, out List<Tile> innerEffectedTilesList, out List<Tile> outerEffectedTilesList)
+    private List<Tile> GetAttackableTilesArea(Tile selectedCharacterCharacterTile, SkillContainer.Skills skill, Tile impactOriginTile, out List<Tile> effectedTilesList, out List<Tile> innerEffectedTilesList, out List<Tile> outerEffectedTilesList)
     {
         List<Tile> attackableTiles = new List<Tile>();
         attackableTiles.Add(selectedCharacterCharacterTile);
@@ -661,7 +661,7 @@ public class Pathfinder : MonoBehaviour
     }
 
 
-    public List<Tile> GetAttackableTilesCleave(Tile selectedCharacterCharacterTile, SkillContainer.Skills skill, Tile targetTile, bool startFromLeft, int cleaveTimes, out List<Tile> effectedTilesList)
+    private List<Tile> GetAttackableTilesCleave(Tile selectedCharacterCharacterTile, SkillContainer.Skills skill, Tile targetTile, bool startFromLeft, int cleaveTimes, out List<Tile> effectedTilesList)
     {
         List<Tile> attackableTiles = new List<Tile>();
         attackableTiles.Add(selectedCharacterCharacterTile);
@@ -679,15 +679,14 @@ public class Pathfinder : MonoBehaviour
                 {
                     if (skill.skillData.skillType == SkillsData.SkillType.Ranged)
                     {
-                        if ( /*neighbor.Occupied == false && */!attackableTiles.Contains(neighbor))
+                        if (!attackableTiles.Contains(neighbor))
                         {
                             newFrontier.Add(neighbor);
                             attackableTiles.Add(neighbor);
                             //also add verticle tiles with raycasting up
                             //Debug.DrawRay(neighbor.transform.position, Vector3.up * tileVerticalityLenght, Color.yellow);
                             if (Physics.Raycast(neighbor.transform.position, Vector3.up, out RaycastHit hit,
-                                    PathfinderVariables.Instance.tileVerticalityLenght,
-                                    PathfinderVariables.Instance.tileMask))
+                                    PathfinderVariables.Instance.tileVerticalityLenght, PathfinderVariables.Instance.tileMask))
                             {
                                 newFrontier.Add(hit.transform.GetComponent<Tile>());
                                 attackableTiles.Add(hit.transform.GetComponent<Tile>());
@@ -753,7 +752,7 @@ public class Pathfinder : MonoBehaviour
         return attackableTiles;
     }
 
-    public List<Tile> GetNeighbouringTiles(Tile origin, int range, bool includeOrigin)
+    private List<Tile> GetNeighbouringTiles(Tile origin, int range, bool includeOrigin)
     {
         List<Tile> tiles = new List<Tile>();
         List<Tile> frontier = new List<Tile>();
