@@ -21,8 +21,6 @@ public class Tile : MonoBehaviour
     [BoxGroup("Tile")] 
     public Character occupyingCharacter;
     [BoxGroup("Tile")] 
-    public GameObject occupyingGO;
-    [BoxGroup("Tile")] 
     public MeshRenderer meshRenderer;
     [BoxGroup("Tile")] 
     public GameObject TileHighlightGO;
@@ -232,11 +230,14 @@ public class Tile : MonoBehaviour
     {
         occupyingCharacter = null;
         occupyingPlayer = null;
+        occupiedByPlayer = false;   
         occupyingEnemy = null;
+        occupiedByEnemy = false;
         occupyingInteractable = null;
-        occupyingCoverPoint = null;
-        occupyingGO = null;
         occupiedByInteractable = false;
+        occupyingCoverPoint = null;
+        OccupiedByCoverPoint = false;
+        Occupied = false;
     }
 
     /*public void SwitchShieldIcon(bool value)

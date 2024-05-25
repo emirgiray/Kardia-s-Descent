@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -48,7 +49,8 @@ public class HealStation : MonoBehaviour
 
     [SerializeField] private GameObject potionPrefab;
     [SerializeField] private Transform potionSpawnTransform;
-    
+    [SerializeField] private List<GameObject> steamVFX = new();
+    [SerializeField] private GameObject machineToRumble;
     
     private Dictionary<int, Color> textColors = new Dictionary<int, Color>()
     {
@@ -176,8 +178,8 @@ public class HealStation : MonoBehaviour
         healButton.onClick.AddListener(() => HealPlayer());
     }
 
-    [SerializeField] private GameObject spawnedPot;
-    [SerializeField] private ProjectileMove projectileMove;
+   
+    
     
     private void HealPlayer()
     {
@@ -185,15 +187,50 @@ public class HealStation : MonoBehaviour
         everythingUseful.CineMachineCutRest(newCam, false);
         
         StartCoroutine(HealPlayerDelay());
+
+        foreach (var vfx in steamVFX)
+        {
+            vfx.SetActive(true);
+        }
+
+        machineToRumble.transform.DOShakeScale(shakeScaleDuration, shakeScaleStrength, shakeScaleVibrato, shakehScaleRandomness).SetEase(shakeScaleEase);
+        machineToRumble.transform.DOShakeRotation(shakeRotationDuration, shakeRotationStrength, shakeRotationVibrato, shakeRotationRandomness).SetEase(shakeRotationEase);
+
+    }
+
+    [SerializeField] [FoldoutGroup("TEST")] private float shakeScaleDuration = 3;
+    [SerializeField] [FoldoutGroup("TEST")] private float shakeScaleStrength = 3;
+    [SerializeField] [FoldoutGroup("TEST")] private int shakeScaleVibrato = 10;
+    [SerializeField] [FoldoutGroup("TEST")] private float shakehScaleRandomness = 90;
+    [SerializeField] [FoldoutGroup("TEST")] private Ease shakeScaleEase = Ease.InOutQuad;
+
+    [SerializeField] [FoldoutGroup("TEST")] private float shakeRotationDuration = 3;
+    [SerializeField] [FoldoutGroup("TEST")] private float shakeRotationStrength = 3;
+    [SerializeField] [FoldoutGroup("TEST")] private int shakeRotationVibrato = 10;
+    [SerializeField] [FoldoutGroup("TEST")] private float shakeRotationRandomness = 90;
+    [SerializeField] [FoldoutGroup("TEST")] private Ease shakeRotationEase = Ease.InOutQuad;
+    
+    
+    [Button, GUIColor(1f, 1f, 1f), PropertyOrder(-1)] [FoldoutGroup("TEST")]
+    public void TestAnims()
+    {
+        StartCoroutine(HealPlayerDelay());
+
+        foreach (var vfx in steamVFX)
+        {
+            vfx.SetActive(true);
+        }
+        
+        machineToRumble.transform.DOShakeScale(shakeScaleDuration, shakeScaleStrength, shakeScaleVibrato, shakehScaleRandomness).SetEase(shakeScaleEase);
+        machineToRumble.transform.DOShakeRotation(shakeRotationDuration, shakeRotationStrength, shakeRotationVibrato, shakeRotationRandomness).SetEase(shakeRotationEase);
     }
 
     private IEnumerator HealPlayerDelay()
     {
         yield return new WaitForSeconds(1);
         
-        spawnedPot = Instantiate(potionPrefab, potionSpawnTransform.position, Quaternion.identity);
+        var spawnedPot = Instantiate(potionPrefab, potionSpawnTransform.position, Quaternion.identity);
         spawnedPot.TryGetComponent(out ProjectileMove projectileMove);
-        this.projectileMove = projectileMove;
         // activate the parabola and on its end activate the skill
         projectileMove.parabolaController.OnParabolaEnd.AddListener(() =>
         {
@@ -212,6 +249,13 @@ public class HealStation : MonoBehaviour
         //projectileMove.parabolaController.Animation = true;
         var newTarget = player.transform.position + Vector3.up * 2;
         projectileMove.SetAndStartParabolaYOffset(player.Head);
+        
+        
+        yield return new WaitForSeconds(1);
+        foreach (var vfx in steamVFX)
+        {
+            vfx.SetActive(false);
+        }
     }
 
     public void EndSelection()

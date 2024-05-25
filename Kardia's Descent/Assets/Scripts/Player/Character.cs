@@ -81,6 +81,7 @@ public class Character : MonoBehaviour
     public bool diedOnSelfTurn = false;
     [BoxGroup("Variables")] [SerializeField] 
     public bool canRotate = true;
+    
     [BoxGroup("Functions")] [SerializeField] 
     private bool dropItemsOnDeath = false;
     [BoxGroup("Functions")] [SerializeField] [Sirenix.OdinInspector.ShowIf("dropItemsOnDeath")]
@@ -89,6 +90,12 @@ public class Character : MonoBehaviour
     private float dropChance = 25;
     [BoxGroup("Functions")] [Sirenix.OdinInspector.ShowIf("dropItemsOnDeath")] [SerializeField] 
     private List<GameObject> itemsToDrop = new List<GameObject>();
+    [BoxGroup("Functions")]
+    public bool biggerThanOneTile = false;
+    [BoxGroup("Functions")] [Sirenix.OdinInspector.ShowIf("biggerThanOneTile")]
+    public int characterTileSize = 1;
+    [BoxGroup("Functions")] [Sirenix.OdinInspector.ShowIf("biggerThanOneTile")]
+    public List<Tile> allCharacterTiles = new ();
     
     [BoxGroup("Transforms")] [SerializeField] 
     public Transform Head;
@@ -196,18 +203,43 @@ public class Character : MonoBehaviour
     /// </summary>
     public void FindTileAtStart()
     {
-        if (characterTile != null)
+        /*if (characterTile != null)
         { 
             FinalizePosition(characterTile, true);
             return;
-        }
+        }*/
 
+       
         if (Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, 50f, GroundLayerMask))
         {
-            FinalizePosition(hit.transform.GetComponent<Tile>(), true);
-            return;
-        }
+            var charTile = hit.transform.GetComponent<Tile>();
 
+            if (biggerThanOneTile)
+            {
+                allCharacterTiles = pathfinder.GetNeighbouringTiles(charTile, characterTileSize, true);
+                foreach (var tile in allCharacterTiles)
+                {
+                    tile.Occupied = true;
+                    tile.occupyingCharacter = this;
+                    if (this is Player)
+                    {
+                        tile.occupiedByPlayer = true;
+                        tile.occupyingPlayer = this.GetComponent<Player>();
+                    }
+                    else if (this is Enemy)
+                    {
+                        tile.occupiedByEnemy = true;
+                        tile.occupyingEnemy = this.GetComponent<Enemy>();
+                        
+                    }
+                }
+               
+            }
+            FinalizePosition(charTile, true);
+         
+        }
+        
+  
         /*if (!everythingUseful.SceneChanger.isOnMainMenu)
         {
             Debug.Log("Unable to find a start position");
@@ -339,7 +371,6 @@ public class Character : MonoBehaviour
                     characterTile = path.tiles[currentStep];
                     characterTile.Occupied = true;
                     characterTile.occupyingCharacter = this;
-                    characterTile.occupyingGO = this.gameObject;
                     if (this is Player)
                     {
                         characterTile.occupyingPlayer = this.GetComponent<Player>();
@@ -420,7 +451,6 @@ public class Character : MonoBehaviour
         tile.Occupied = true;
         
         tile.occupyingCharacter = this;
-        tile.occupyingGO = this.gameObject;
         if (this is Player)
         {
             tile.occupyingPlayer = this.GetComponent<Player>();
@@ -965,7 +995,6 @@ public class Character : MonoBehaviour
             characterTile.occupiedByEnemy = false;
             characterTile.Occupied = false;
             characterTile.occupyingCharacter = null;
-            characterTile.occupyingGO = null;
             characterTile.occupyingEnemy = null;
             GetComponent<StateController>().aiActive = false;
             TurnSystem.EnemyDied(GetComponent<Enemy>());
@@ -990,12 +1019,26 @@ public class Character : MonoBehaviour
                 }
             }
         }
-        characterTile.occupyingGO = null;
         characterTile.Occupied = false;
+       // characterTile.ResetOcupying();
 
-        
+       foreach (var tile in allCharacterTiles)
+       {
+           tile.ResetOcupying();
+           tile.Occupied = false;
+
+           if (this is Player)
+           {
+               tile.occupiedByPlayer = false;
+           }
+           else if (this is Enemy)
+           {
+               tile.occupiedByEnemy = false;
+           }
+       }
+       allCharacterTiles.Clear();
         //characterTile = null;
-        
+
     }
 
     private void DropRandomItemFromList()

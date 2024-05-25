@@ -752,7 +752,7 @@ public class Pathfinder : MonoBehaviour
         return attackableTiles;
     }
 
-    private List<Tile> GetNeighbouringTiles(Tile origin, int range, bool includeOrigin)
+    public List<Tile> GetNeighbouringTiles(Tile origin, int range, bool includeOrigin)
     {
         List<Tile> tiles = new List<Tile>();
         List<Tile> frontier = new List<Tile>();

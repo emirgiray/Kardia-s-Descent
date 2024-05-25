@@ -222,7 +222,6 @@ public class Interactable : MonoBehaviour
         tile.Occupied = true;
         tile.occupiedByInteractable = true;
         tile.occupyingInteractable = this;
-        tile.occupyingGO = gameObject;
         
     }
 }
