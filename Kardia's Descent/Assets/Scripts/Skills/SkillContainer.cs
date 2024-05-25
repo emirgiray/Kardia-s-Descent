@@ -334,6 +334,7 @@ bool impact = false;
         {
             selectedSkill.remainingSkillCooldown = 0;
             selectedSkill.skillReadyToUse = false;
+            //Debug.Log($"skillReadyToUse: {selectedSkill.skillReadyToUse}");
             // skillNotReadyAction?.Invoke();
             if (Character is Player)
             {

@@ -68,6 +68,20 @@ public class RoundInfo : MonoBehaviour
         }
     }
 
+    public void ForceObjectIndex(GameObject obj, int index)
+    {
+        if (index > objects.Count)
+        {
+            obj.transform.SetAsLastSibling();
+        }
+        else
+        {
+            obj.transform.SetSiblingIndex(index);
+        }
+        
+    }
+   
+
     public void RemoveObject(GameObject obj)
     {
         objects.Remove(obj);

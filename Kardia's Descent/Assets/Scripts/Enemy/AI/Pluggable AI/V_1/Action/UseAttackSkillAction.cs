@@ -9,8 +9,6 @@ public class UseAttackSkillAction : ActionAI
     public override void Act(StateController controller)
     {
         controller.canExitState = false;
-        /*controller.skillContainer.selectedSkill.accuracy -= controller.skillContainer.CalculateCoverAccuracyDebuff(
-            controller.decidedMoveTile, controller.targetPlayerTile, controller.skillContainer.selectedSkill);//reduce accuracy if target player in cover*/
         
         /*int cachedDamageDebuff =*/controller.skillContainer.CalculateCoverDamageDebuff(
             controller.decidedMoveTile, controller.targetPlayerTile, controller.skillContainer.selectedSkill);//reduce damage if target player in cover
@@ -24,6 +22,8 @@ public class UseAttackSkillAction : ActionAI
         {
             controller.canExitState = true;
             if (OnCompleteAddedAction != null) OnCompleteAddedAction();
+
+            //Debug.Log($"forced skill to use: {controller.forcedSkillToUse.skillData?.skillName}");
             
             //if forced skill is the same as selected skill, then reset forced skill
             if (controller.forcedSkillToUse == controller.lastUsedSkill)

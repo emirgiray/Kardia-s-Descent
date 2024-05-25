@@ -13,7 +13,7 @@ public class EndTurnAction : ActionAI
     
     public IEnumerator TurnSkipDelay(StateController controller)
     {
-        yield return new WaitForSecondsRealtime(1.5f);
+        yield return new WaitForSeconds(1.5f);
         controller.EndTurn();
         
     }

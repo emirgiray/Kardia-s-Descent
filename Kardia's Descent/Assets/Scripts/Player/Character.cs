@@ -812,13 +812,13 @@ public class Character : MonoBehaviour
     #region Combat
 
     [Button, GUIColor(1f, 1f, 1f)]
-    public void StartCombat(Character combatStarter)
+    public void StartCombat(Character combatStarter = null)
     {
         //FinalizePosition(characterTile, false);
         // StopCoroutine(moveCoroutine);
         StartCoroutine(WaitForMoveToEnd(true));
         CombatStartedAction?.Invoke();
-        Rotate(combatStarter.transform.position);
+        if (combatStarter) Rotate(combatStarter.transform.position);
         if (this is Player)
         {
             LevelManager.AddPlayerToCombat(GetComponent<Player>());

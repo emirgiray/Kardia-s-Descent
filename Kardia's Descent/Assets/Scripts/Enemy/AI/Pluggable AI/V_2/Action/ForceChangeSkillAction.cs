@@ -17,12 +17,12 @@ public class ForceChangeSkillAction : ActionAI
         
         foreach (var skill in controller.skillContainer.skillsList)
         {
-            if (skill != controller.lastUsedSkill)
+            if (skill != controller.lastUsedSkill && skill.skillReadyToUse && controller.enemy.remainingActionPoints >= skill.actionPointUse && skill.skillData.skillClass != SkillsData.SkillClass.Summon)
             {
                 unusedSkills.Add(skill);
             }
         }
-        if (controller.skillContainer.skillsList.Count == 1) return;
+        if (controller.skillContainer.skillsList.Count == 1 || unusedSkills.Count == 0) return;
         controller.forcedSkillToUse = unusedSkills[Random.Range(0, unusedSkills.Count)];
         
     }

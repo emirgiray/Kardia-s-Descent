@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91dd342f79d40dd49b4eb64d48a09d70, type: 3}
+  m_Name: 22.1_50_50DecisionState_Boss Summon
+  m_EditorClassIdentifier: 
+  actions: []
+  actionsOnce: []
+  transitions:
+  - decision: {fileID: 11400000, guid: 5ec7cabc6b566f848bfaf0cbdc3796e1, type: 2}
+    trueState: {fileID: 11400000, guid: 1698189319beeea4c8ac347f28bfafbf, type: 2}
+    falseState: {fileID: 11400000, guid: 138469e5ba2503e49a7dd25fa1aa55fd, type: 2}
+  sceneGizmoColor: {r: 1, g: 0.8169314, b: 0.5226415, a: 1}

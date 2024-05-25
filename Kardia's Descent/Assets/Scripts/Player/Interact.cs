@@ -226,6 +226,24 @@ public class Interact : MonoBehaviour
                 player.remainingActionPoints = 99999;
             }*/
         }
+        
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            foreach (var player in everythingUseful.MainPrefabScript.spawnedPlayerScripts)
+            {
+                player.health.Max = 9999999;
+                player.health.HealthAi = 9999999;
+            }
+        }
+        
+        if (Input.GetKey(KeyCode.F))
+        {
+            Time.timeScale = 2;
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
     }
     
     private void CheckCharacterInputs()

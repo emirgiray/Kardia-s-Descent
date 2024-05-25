@@ -74,6 +74,7 @@ public class CheckCoverMoveSkillDecsision : DecisionAI
                             if ( tileScore > prevTileScore)
                             {
                                 controller.decidedAttackSkill = skill;
+                                //Debug.Log($"decidedAttackSkill = {skill.skillData.name}");
                                 controller.decidedMoveTile = tile;
                                 controller.targetPlayerTile = controller.forcedTargetPlayerTile == null ? attackTile : controller.forcedTargetPlayerTile; //if forced target is set, use it, otherwise use the attack tile
                                 // Debug.Log($"BIGGER THAN PREVIOUS, tile: {tile}, curent score: {tileScore}, prev score: {prevTileScore} skill: {skill.skillData}, tiles checked: {tilesChecked} / {/*controller.GetReachableTiles().Count*/ reachableTiles.Count}");

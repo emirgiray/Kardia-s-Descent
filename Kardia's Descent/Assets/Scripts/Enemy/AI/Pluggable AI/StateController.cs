@@ -73,7 +73,7 @@ public class StateController : MonoBehaviour
 
     private void Awake()
     {
-        FindWaypointsFromParent();
+        if (waypointsParent != null) FindWaypointsFromParent();
         enemy = GetComponent<Enemy>();
         
         skillContainer = GetComponent<SkillContainer>();
@@ -158,6 +158,22 @@ public class StateController : MonoBehaviour
     public void StartCombat()
     {
         ResetToDefaultCombatState();
+        
+        players.Clear();
+        enemies.Clear();
+        foreach (var var in turnSystem.playersInCombat)
+        {
+            players.Add(var);
+            
+        }
+        
+        foreach (var var in turnSystem.enemiesInCombat)
+        {
+            enemies.Add(var);
+            
+        }
+        /*players = turnSystem.playersInCombat;
+        enemies = turnSystem.enemiesInCombat;*/
     }
 
     private void TryActivateAI()

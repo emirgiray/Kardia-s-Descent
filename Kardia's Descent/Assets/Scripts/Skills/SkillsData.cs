@@ -62,7 +62,7 @@ public class SkillsData : ScriptableObject
     [EnumPaging]
     public enum SkillClass
     {
-        /*Pistol, Rifle, Shotgun, Sniper, SMG, LMG, Axe, Sword, Dagger,*/ Active, Passive, Buff
+        /*Pistol, Rifle, Shotgun, Sniper, SMG, LMG, Axe, Sword, Dagger,*/ Active, Passive, Buff, Summon
     }
     public SkillClass skillClass;
     [EnumPaging]

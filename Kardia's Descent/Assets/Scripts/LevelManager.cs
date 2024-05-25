@@ -63,7 +63,7 @@ public class LevelManager : MonoBehaviour
     }
     
     #region Add/Remove Players/Enemies
-
+/*
     /// <summary>
     /// Can be called anytime, only adds players that are active in the scene and not already in combat
     /// </summary>
@@ -74,10 +74,10 @@ public class LevelManager : MonoBehaviour
             if (player.gameObject.activeInHierarchy && TurnSystem.playersInCombat.Contains(player) == false )
             {
                 TurnSystem.AddPlayer(player);
-                
+
             }
         }
-    }
+    }*/
     
     public void AddPlayerToCombat(Player player)
     {
@@ -85,6 +85,8 @@ public class LevelManager : MonoBehaviour
         {
             TurnSystem.AddPlayer(player);                
         }
+
+      //  Debug.Log($"expression");
     }
 
     public void AddEnemiesToCombat()

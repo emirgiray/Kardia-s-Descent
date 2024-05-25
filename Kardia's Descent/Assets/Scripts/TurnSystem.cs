@@ -22,7 +22,6 @@ public class TurnSystem : MonoBehaviour
     public int totalTurnsInScene = 1;
     public int totalTurnsInGame = 1;
     public int currentEnemyTurnOrder = 0;
-    
     public enum TurnState
     {
         FreeRoamTurn, Friendly, Enemy
@@ -307,11 +306,20 @@ public class TurnSystem : MonoBehaviour
             }
         }
     }
-    
+
+    /*private void Update()
+    {
+        Debug.Log($"playersInCombat.Count: {playersInCombat.Count}");
+    }*/
+
     [Button,GUIColor(0,0,1)][FoldoutGroup("DEBUG")]
     public void AddPlayer(Player newPlayer)
     {
-       playersInCombat.Add(newPlayer);//todo might need to change this to addrange
+        if (!playersInCombat.Contains(newPlayer))
+        {
+            playersInCombat.Add(newPlayer);//todo might need to change this to addrange
+        } 
+       // Debug.Log($"playersInCombat.Count: {playersInCombat.Count}");
        allEntitiesInCombat.Add(newPlayer);
        AddCard(newPlayer);
        OnPlayerAdd.Invoke(newPlayer);
