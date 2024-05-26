@@ -70,7 +70,15 @@ public class EverythingUseful : ScriptableObject
         }
     }
     
-    [Tooltip("Used for heal and miss")]
+    /// <summary>
+    /// Used for heal and miss
+    /// </summary>
+    /// <param name="value"></param>
+    /// <param name="color"></param>
+    /// <param name="RandomSpawnLocation"></param>
+    /// <param name="yOffset"></param>
+    /// <param name="animDelay"></param>
+    /// <param name="health"></param>
     public void SpawnText(string value, Color color, Transform RandomSpawnLocation, float yOffset, float animDelay, SGT_Health health)
     {
         Vector3 PosAroundHead = SGT_Math.GetPositionAroundObject(RandomSpawnLocation, 0.5f);
@@ -92,7 +100,17 @@ public class EverythingUseful : ScriptableObject
         spawnText.SetAnimDelay(animDelay);
     }
 
-    [Tooltip("Used for damage ")]
+    /// <summary>
+    /// Used for damage 
+    /// </summary>
+    /// <param name="takenDamage"></param>
+    /// <param name="extraDamage"></param>
+    /// <param name="takenColor"></param>
+    /// <param name="extraColor"></param>
+    /// <param name="RandomSpawnLocation"></param>
+    /// <param name="yOffset"></param>
+    /// <param name="animDelay"></param>
+    /// <param name="health"></param>
     public void SpawnText(int takenDamage, int extraDamage, Color takenColor, Color extraColor,  Transform RandomSpawnLocation, float yOffset, float animDelay, SGT_Health health)
     {
         Vector3 PosAroundHead = SGT_Math.GetPositionAroundObject(RandomSpawnLocation, 1.5f);
@@ -128,7 +146,15 @@ public class EverythingUseful : ScriptableObject
         spawnText.SetAnimDelay(animDelay);
     }
 
-    [Tooltip("Used for stat increases, decreases, buffs, debuffs, etc.")]
+    /// <summary>
+    /// Used for stat increases, decreases, buffs, debuffs, etc.
+    /// </summary>
+    /// <param name="value"></param>
+    /// <param name="color"></param>
+    /// <param name="staticSpawnLocation"></param>
+    /// <param name="yOffset"></param>
+    /// <param name="animDelay"></param>
+    /// <param name="isBuff"></param>
     public void SpawnText(string value, Color color, Transform staticSpawnLocation, float yOffset, float animDelay, bool isBuff)
     {
         /*Vector3 PosAroundHead = SGT_Math.GetPositionAroundObject(RandomSpawnLocation, 0.5f);
@@ -154,7 +180,29 @@ public class EverythingUseful : ScriptableObject
         //spawnText.SetDestroyTime(destroyTime);
         spawnText.SetAnimDelay(animDelay);
     }
-
+   /// <summary>
+   /// Used for normal string values
+   /// </summary>
+   /// <param name="value"></param>
+   /// <param name="color"></param>
+   /// <param name="staticSpawnLocation"></param>
+   /// <param name="yOffset"></param>
+   /// <param name="animDelay"></param>
+    public void SpawnText(string value, Color color, Transform RandomSpawnLocation, float yOffset, float animDelay, float textScale)
+    {
+        
+        Vector3 PosAroundHead = SGT_Math.GetPositionAroundObject(RandomSpawnLocation, 1.5f);
+        Vector3 randomPosAroundHead = new Vector3(PosAroundHead.x, PosAroundHead.y + yOffset, PosAroundHead.z);
+        GameObject spawnedHitText = Instantiate(SpawnTextGO, randomPosAroundHead, Quaternion.identity);
+        var spawnText = spawnedHitText.GetComponent<SpawnText>();
+        spawnText.text.text = value;
+        spawnText.text.color = color;
+        spawnText.text.transform.localScale = new Vector3(textScale, textScale, textScale);
+        
+        
+        //spawnText.SetDestroyTime(destroyTime);
+        spawnText.SetAnimDelay(animDelay);
+    }
 
     public void SwitchGameUI()
     {

@@ -25,6 +25,7 @@ MonoBehaviour:
   SkillsDataList:
   - {fileID: 11400000, guid: 3bc387b80505c9c43af1f243444cbbe1, type: 2}
   - {fileID: 11400000, guid: 89883b41074dec54f8f824b931dde308, type: 2}
+  - {fileID: 11400000, guid: 3b2d030233f671a4682dbdbf76e27307, type: 2}
   damage: {x: 3, y: 5}
   accuracy: 80
   range: 5

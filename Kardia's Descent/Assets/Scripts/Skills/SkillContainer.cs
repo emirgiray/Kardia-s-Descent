@@ -25,7 +25,7 @@ public class SkillContainer : MonoBehaviour
     [HideInInspector] public int accuracyBeforeCoverDebuff;
     
     // these are for the area skill effected tiles (bombadier)
-    [HideInInspector] public List<Tile> effectedTiles;
+     public List<Tile> effectedTiles;
     [HideInInspector] public List<Tile> innerEffectedTiles;
     [HideInInspector] public List<Tile> outerEffectedTiles;
     private static LTDescr delay;

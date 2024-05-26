@@ -295,6 +295,12 @@ public class Character : MonoBehaviour
 
     public void StartKnockbackMove(Path _path, bool rotate = true, Action OnComplete = null, bool spendActionPoints = true)
     {
+        if (allCharacterTiles.Count > 1) //dont do knockback if its a big character
+        {
+            everythingUseful.SpawnText("Ressisted Move", Color.yellow, Head, 3f,  3f, 2);
+            return;
+        }
+        
         characterState = CharacterState.Moving;
         Moving = true;
         characterTile.Occupied = false;

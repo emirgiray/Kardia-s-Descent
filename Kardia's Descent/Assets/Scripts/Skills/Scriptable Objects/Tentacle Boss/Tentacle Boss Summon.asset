@@ -34,8 +34,8 @@ MonoBehaviour:
   cleaveStartLeft: 1
   animatorOverrideController: {fileID: 0}
   useParabolla: 0
-  skillStartVFX: {fileID: 0}
-  skillImpactVFX: {fileID: 0}
+  skillStartVFX: {fileID: 11400000, guid: a0291672821f2814a86536fd233b81df, type: 2}
+  skillImpactVFX: {fileID: 11400000, guid: 9aba4f9ff3d228e4baa1f252b0f8a302, type: 2}
   skillHitVFX: []
   skillMissVFX: {fileID: 0}
   skillAudioEvent: {fileID: 0}

@@ -113,6 +113,7 @@ public class QuickOutline : MonoBehaviour {
   void OnEnable() {
     foreach (var renderer in renderers) {
 
+      if (renderer is ParticleSystemRenderer) continue;
       // Append outline shaders
       var materials = renderer.sharedMaterials.ToList();
 
@@ -151,6 +152,7 @@ public class QuickOutline : MonoBehaviour {
   void OnDisable() {
     foreach (var renderer in renderers) {
 
+      if (renderer is ParticleSystemRenderer) continue;
       // Remove outline shaders
       var materials = renderer.sharedMaterials.ToList();
 
