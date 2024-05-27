@@ -394,7 +394,8 @@ public class Pathfinder : MonoBehaviour
                 break;
             
             case SkillsData.SkillTargetType.Cone:
-                throw new NotImplementedException();
+                attackableTiles = GetAttackableTilesCone(character, characterTile, targetTile, selectedSkill, out effectedTiles);
+                character.SkillContainer.effectedTiles = effectedTiles;
                 return attackableTiles;
                 break;
             
@@ -505,12 +506,12 @@ public class Pathfinder : MonoBehaviour
             {
                 if ((neigbour.transform.position - originTile.transform.position).normalized == dir && !path.tiles.Contains(neigbour))
                 {
-                    if (activatorCharacter is Player && !neigbour.occupiedByPlayer)
+                    if (activatorCharacter is Player && (!neigbour.occupiedByPlayer || neigbour.occupyingPlayer == activatorCharacter))
                     {
                         path.tiles.Add(neigbour);
                         currentTile = neigbour;
                     }
-                    if (activatorCharacter is Enemy && !neigbour.occupiedByEnemy)
+                    if (activatorCharacter is Enemy && (!neigbour.occupiedByEnemy || neigbour.occupyingEnemy == activatorCharacter))
                     {
                         path.tiles.Add(neigbour);
                         currentTile = neigbour;
@@ -573,7 +574,233 @@ public class Pathfinder : MonoBehaviour
         attackableTiles = tempAttackablesTilesList;
         
         return attackableTiles;
+    } 
+    
+    private List<Tile> GetAttackableTilesCone(Character activatorCharacter, Tile originTile, Tile targetTile, SkillContainer.Skills skill, out List<Tile> effectedTilesList)
+    {
+        /*List<Tile> attackableTiles = new List<Tile>();
+        attackableTiles.Add(originTile);
+        List<Tile> frontier = new List<Tile>();
+        frontier.Add(originTile);
+
+        int currentRange = 0;
+        while (currentRange < skill.range)
+        {
+            List<Tile> newFrontier = new List<Tile>();
+
+            foreach (Tile tile in frontier)
+            {
+                foreach (Tile neighbor in NeighborTiles(tile, true, true))
+                {
+                    if (skill.skillData.skillType == SkillsData.SkillType.Ranged)
+                    {
+                        if (!attackableTiles.Contains(neighbor))
+                        {
+                            newFrontier.Add(neighbor);
+                            attackableTiles.Add(neighbor);
+                            //also add verticle tiles with raycasting up
+                            //Debug.DrawRay(neighbor.transform.position, Vector3.up * tileVerticalityLenght, Color.yellow);
+                            if (Physics.Raycast(neighbor.transform.position, Vector3.up, out RaycastHit hit,
+                                    PathfinderVariables.Instance.tileVerticalityLenght, PathfinderVariables.Instance.tileMask))
+                            {
+                                newFrontier.Add(hit.transform.GetComponent<Tile>());
+                                attackableTiles.Add(hit.transform.GetComponent<Tile>());
+                            }
+                        }
+                    }
+                }
+            }
+
+            frontier = newFrontier;
+            currentRange++;
+        }
+
+        //remove the ones directly below
+        List<Tile> tilesToRemove = new List<Tile>();
+
+        foreach (var tile in attackableTiles)
+        {
+            if (Physics.Raycast(tile.transform.position, Vector3.down, out RaycastHit hit,
+                    PathfinderVariables.Instance.tileVerticalityLenght + 1, PathfinderVariables.Instance.tileMask))
+            {
+                /*Debug.Log($"tile: {selectedCharacterCharacterTile.name} = {selectedCharacterCharacterTile.transform.position.y}" +
+                          $"tile: {hit.transform.GetComponent<Tile>().name} =  {hit.transform.GetComponent<Tile>().transform.position.y}");#1#
+                if (originTile.transform.position.y !=
+                    hit.transform.GetComponent<Tile>().transform.position.y)
+                {
+                    tilesToRemove.Add(hit.transform.GetComponent<Tile>());
+                }
+
+            }
+        }
+
+        foreach (var tile in tilesToRemove)
+        {
+            attackableTiles.Remove(tile);
+        }*/
+        
+        
+        // Path path = FindPath(originTile.occupyingCharacter, originTile, targetTile);
+        Vector3 dir = (targetTile.transform.position - originTile.transform.position).normalized;
+        // Debug.Log($"dir: {dir}");
+        Path path = new Path();
+        path.tiles = new List<Tile>();
+        path.tiles.Add(originTile);
+        //path.tiles.Add(originTile);
+        Tile currentTile = originTile;
+        for (int i = 0; i < skill.range; i++)
+        {
+            foreach (var neigbour in NeighborTiles(currentTile, true))
+            {
+                if ((neigbour.transform.position - originTile.transform.position).normalized == dir && !path.tiles.Contains(neigbour))
+                {
+                    if (activatorCharacter is Player && (!neigbour.occupiedByPlayer || neigbour.occupyingPlayer == activatorCharacter))
+                    {
+                        path.tiles.Add(neigbour);
+                        currentTile = neigbour;
+                    }
+                    if (activatorCharacter is Enemy && (!neigbour.occupiedByEnemy || neigbour.occupyingEnemy == activatorCharacter))
+                    {
+                        path.tiles.Add(neigbour);
+                        currentTile = neigbour;
+                    }
+                }
+            }
+        }
+        
+        
+        List<Tile> tiles = new List<Tile>();
+        tiles = path.tiles;
+        //remove if not in the same direction
+        
+        
+        if (tiles.Count == 1 && tiles[0] == targetTile && !NeighborTiles(originTile, true, true).Contains(targetTile))
+        {
+            tiles.Remove(tiles[0]);
+        }
+        
+        effectedTilesList = tiles;
+//        Debug.Log($"effectedTilesList: {effectedTilesList.Count}");
+        // calculate the cleave effected tiles around the impact tile
+        // this finds a relative forward direction from the selected character to the impact tile
+        // then it finds the tiles on the left or right of the forward direction
+        
+        float rayLength = 4f;
+        float rayHeightOffset = 1f;
+        Vector3 forwardDir = (targetTile.transform.position - originTile.transform.position).normalized;
+        List<Tile> tempEffectedTilesList = new List<Tile>();
+        List<Tile> tilesToCleave =effectedTilesList;
+        tilesToCleave.Remove(originTile);
+
+        /*if (activatorCharacter.allCharacterTiles.Count > 1)
+        {
+            foreach (var tile in activatorCharacter.allCharacterTiles)
+            {
+                if (tilesToCleave.Contains(tile))
+                {
+                    tilesToCleave.Remove(tile);
+                }
+                
+            }
+            
+        }*/
+      
+       // Debug.Log($"tilesToCleave   {tilesToCleave.Count}");
+        // var range = activatorCharacter.biggerThanOneTile ? skill.range - activatorCharacter.characterTileSize : skill.range;
+        var range = tilesToCleave.Count;
+        for (int j = 0; j < range; j++) // triangle but goes to the left
+        {
+            if (tilesToCleave.Count == 0 ) break;
+            
+            List<Tile> tempEffectedTilesList2 = new List<Tile>();
+            for (int i = 0; i < j; i++)
+            {
+              //  Debug.Log($"j: {j} i: {i}");
+                Vector3 direction2 = forwardDir * (targetTile.GetComponent<MeshFilter>().sharedMesh.bounds.extents.x * PathfinderVariables.Instance.HEXAGONAL_OFFSET);
+                var angle = i == 0 ? 240 : 240;
+                direction2 =  Quaternion.Euler(0f, angle, 0f) * direction2;
+                var targetPos = i == 0 ? tilesToCleave[j].transform.position : tempEffectedTilesList2[tempEffectedTilesList2.Count - 1].transform.position;
+                var aboveTilePos = (targetPos + direction2).With(y: targetPos.y + rayHeightOffset);
+            
+                if (Physics.Raycast(aboveTilePos, Vector3.down, out RaycastHit hit2, rayLength, PathfinderVariables.Instance.tileMask))
+                {
+                    Tile hitTile = hit2.transform.GetComponent<Tile>();
+                    tempEffectedTilesList.Add(hitTile);
+                    tempEffectedTilesList2.Add(hitTile);
+                }
+            }
+        }
+        
+        /*for (int j = 0; j < skill.range; j++) // weird but forward
+        {
+            if (tilesToCleave.Count == 0 ) break;
+            List<Tile> tempEffectedTilesList2 = new List<Tile>();
+            for (int i = 0; i < j; i++)
+            {
+                if (j == 1 ) continue;
+                Vector3 direction2 = forwardDir * (targetTile.GetComponent<MeshFilter>().sharedMesh.bounds.extents.x * PathfinderVariables.Instance.HEXAGONAL_OFFSET);
+                var angle = i % 2 == 0 ? 240 : -240;
+                direction2 =  Quaternion.Euler(0f, angle, 0f) * direction2;
+                var targetPos = i == 0 ? tilesToCleave[j].transform.position : tilesToCleave[j].transform.position;
+                var aboveTilePos = (targetPos + direction2).With(y: targetPos.y + rayHeightOffset);
+            
+                if (Physics.Raycast(aboveTilePos, Vector3.down, out RaycastHit hit2, rayLength, PathfinderVariables.Instance.tileMask))
+                {
+                    Tile hitTile = hit2.transform.GetComponent<Tile>();
+                    tempEffectedTilesList.Add(hitTile);
+                    tempEffectedTilesList2.Add(hitTile);
+                }
+            }
+        }*/
+
+        foreach (var tile in tempEffectedTilesList)
+        {
+            if (effectedTilesList.Contains(tile))continue;
+                
+            effectedTilesList.Add(tile);
+        }
+        
+        // 4 directional line calculation
+        List<Tile> tempAttackablesTilesList = new List<Tile>();
+        List<Tile> tempAttackablesOuterTilesList = new List<Tile>();
+        Vector3 direction = Vector3.forward * (originTile.GetComponent<MeshFilter>().sharedMesh.bounds.extents.x * PathfinderVariables.Instance.HEXAGONAL_OFFSET);
+      
+        for (int i = 0; i < 6; i++)
+        {
+            direction = Quaternion.Euler(0f, 60, 0f) * direction;
+            Vector3 aboveTilePos = (originTile.transform.position + direction).With(y: originTile.transform.position.y + rayHeightOffset);
+            if (Physics.Raycast(aboveTilePos, Vector3.down, out RaycastHit hit2, rayLength, PathfinderVariables.Instance.tileMask))
+            {
+                Tile hitTile = hit2.transform.GetComponent<Tile>();
+                tempAttackablesTilesList.Add(hitTile);
+                
+                Vector3 newDir = (hitTile.transform.position - originTile.transform.position).normalized;
+                Tile currentTile2 = hitTile;
+                for (int j = 0; j < skill.range - 1; j++)
+                {
+                    foreach (var neigbour in NeighborTiles(currentTile2, true, true))
+                    {
+                        if ((neigbour.transform.position - originTile.transform.position).normalized == newDir && !tempAttackablesTilesList.Contains(neigbour))
+                        {
+                            tempAttackablesOuterTilesList.Add(neigbour);
+                            currentTile2 = neigbour;
+                        }
+                    }
+                }
+                
+            }
+
+        }
+        
+        
+        
+        tempAttackablesTilesList.AddRange(tempAttackablesOuterTilesList);
+        attackableTiles = tempAttackablesTilesList;
+        
+        return attackableTiles;
     }
+    
+    
 
     private List<Tile> GetAttackableTilesArea(Tile selectedCharacterCharacterTile, SkillContainer.Skills skill, Tile impactOriginTile, out List<Tile> effectedTilesList, out List<Tile> innerEffectedTilesList, out List<Tile> outerEffectedTilesList)
     {

@@ -911,7 +911,39 @@ public class Interact : MonoBehaviour
                 break;
             
             case SkillsData.SkillTargetType.Cone:
-                throw new NotImplementedException();
+
+
+                if (currentTile != null && currentTile.selectable)
+                {
+                    if (attackableTiles != null)
+                    {
+                        foreach (Tile tile in attackableTiles)
+                        {
+                            tile.HighlightAttackable();
+
+                            if (tile == selectedCharacter.characterTile)
+                            {
+                                tile.ClearHighlight();
+                            }
+                        }
+
+                        selectedCharacter.characterTile.HighlightAttackable();
+
+                        //highlight effected tiles if they are in attack range
+                        if (attackableTiles.Contains(currentTile))
+                        {
+                            effectedTiles = selectedCharacter.SkillContainer.effectedTiles;
+                            foreach (Tile tile in effectedTiles)
+                            {
+                                tile.TileHighlightGO.SetActive(true);
+                                tile.TileHighlightMeshRenderer.material.SetColor("_RimColor", everythingUseful.Interact.tileHighligthColors[1]);
+                            }
+                        }
+                    }
+                }
+               
+                
+                
                 break;
             
             case SkillsData.SkillTargetType.Cleave:
