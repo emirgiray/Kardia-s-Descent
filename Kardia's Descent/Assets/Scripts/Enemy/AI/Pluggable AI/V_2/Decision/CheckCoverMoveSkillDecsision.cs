@@ -29,7 +29,7 @@ public class CheckCoverMoveSkillDecsision : DecisionAI
             reaminingActionPointsAfterMove -= controller.pathfinder.GetTilesInBetween(controller.enemy, controller.enemy.characterTile, tile).Count + 1;//this is the cost of moving to the tile
             tilesChecked++;
 
-            if (controller.forcedSkillToUse.skillData == null) // default choosing state, there is no forced skill
+            if (controller.skillForced == false) // default choosing state, there is no forced skill
             {
                 foreach (var skill in controller.skillContainer.skillsList)
                 {

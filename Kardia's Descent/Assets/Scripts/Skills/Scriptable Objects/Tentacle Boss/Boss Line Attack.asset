@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0c799363aeac914a9fcdf9862c93670, type: 3}
+  m_Name: Boss Line Attack
+  m_EditorClassIdentifier: 
+  everythingUseful: {fileID: 11400000, guid: 0adf6649dfa6c2b48877232f4002ec52, type: 2}
+  skillSprite: {fileID: 21300000, guid: 51c315b1590e342f38373d56ef5123ea, type: 3}
+  skillName: Boss Line Attack
+  skillDescription: asdasd
+  skillID: 20
+  skillDamage: 20
+  skillRange: 3
+  skillCooldown: 0
+  actionPointUse: 0
+  skillEffectDuration: 1
+  skillBuffDebuffAmount: 1
+  permaBuff: 1
+  accuracy: 50
+  coverAccuracyDebuff: 20
+  coverDamageMultipliar: 0.1
+  impactRange: 2
+  innerImpactRadius: 1
+  outerImpactDamageDebuff: 0.5
+  cleaveTimes: 1
+  cleaveStartLeft: 1
+  animatorOverrideController: {fileID: 22100000, guid: 41d7ae17203be8e44a5c21be176b5b15,
+    type: 2}
+  useParabolla: 0
+  skillStartVFX: {fileID: 0}
+  skillImpactVFX: {fileID: 0}
+  skillHitVFX:
+  - {fileID: 11400000, guid: 2d7ba90a2d4cad44ea904346e7ce5f75, type: 2}
+  skillMissVFX: {fileID: 11400000, guid: f95dd6b5fb3dc4f4c9158365d41b4807, type: 2}
+  skillAudioEvent: {fileID: 0}
+  skillType: 1
+  passiveOrActive: 0
+  skillClass: 0
+  damageType: 0
+  skillTarget: 0
+  skillHitType: 0
+  skillTargetType: 2
+  skillEffect: 0
+  buffDebuffType: 0

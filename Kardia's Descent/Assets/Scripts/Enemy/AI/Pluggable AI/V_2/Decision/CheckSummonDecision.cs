@@ -18,6 +18,8 @@ public class CheckSummonDecision : DecisionAI
         foreach (var skill in controller.skillContainer.skillsList)
         {
             //Debug.Log($"{skill.skillData.name} ready: {skill.skillReadyToUse} , remaining cooldown: {skill.remainingSkillCooldown} , cooldown: {skill.skillCooldown}");
+            //  Debug.Log($"{skill.skillData.skillClass == SkillsData.SkillClass.Summon}");
+            //Debug.Log($"skill: {skill.damage}");
             if (skill.skillData.skillClass == SkillsData.SkillClass.Summon && skill.skillReadyToUse  && controller.enemy.remainingActionPoints >= skill.actionPointUse)
             {
                 

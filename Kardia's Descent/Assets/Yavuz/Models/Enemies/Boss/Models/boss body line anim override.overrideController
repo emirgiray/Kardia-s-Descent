@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: boss body line anim override
+  m_Controller: {fileID: 9100000, guid: e4b50861a681ca445b6f20f995528a85, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: -8212585176973980532, guid: 190a9e3decc8b10448d19633cf9e565a,
+      type: 3}
+    m_OverrideClip: {fileID: -4757670083774083703, guid: 190a9e3decc8b10448d19633cf9e565a,
+      type: 3}
+  - m_OriginalClip: {fileID: -4757670083774083703, guid: 190a9e3decc8b10448d19633cf9e565a,
+      type: 3}
+    m_OverrideClip: {fileID: -4757670083774083703, guid: 190a9e3decc8b10448d19633cf9e565a,
+      type: 3}

@@ -20,9 +20,10 @@ public class CheckPlayerAndSkillDecision : DecisionAI
         bool result = false;
         int tileScore = 0;
         int prevTileScore = 0;
-
+        bool doOnce = true;
         
-        if (controller.forcedSkillToUse.skillData == null) // default choosing state, there is no forced skill
+        
+        if (controller.skillForced == false) // default choosing state, there is no forced skill
         {
             foreach (var skill in controller.skillContainer.skillsList)
             {
@@ -33,6 +34,15 @@ public class CheckPlayerAndSkillDecision : DecisionAI
         {
             result = CheckForCurrentTile(controller, controller.enemy.characterTile, controller.forcedSkillToUse);
         }
+
+        if (controller.skillForced = true && result == false && doOnce) // if forced skill is set but skill is found try once more
+        {
+            foreach (var skill in controller.skillContainer.skillsList)
+            {
+                result = CheckForCurrentTile(controller, controller.enemy.characterTile, skill);
+            }
+        }
+       
 
         //Debug.Log($"Result: {result}");
         return result;
@@ -46,7 +56,8 @@ public class CheckPlayerAndSkillDecision : DecisionAI
             int tileScore = 0;
             int prevTileScore = 0;
             Action oncompleted;
-            
+
+           
             var attackTiles = controller.pathfinder.GetAttackableTiles(controller.enemy, skill, tile, tile, out oncompleted);
             
             foreach (var attackTile in attackTiles) // target tile is not set yet but its not important until UseSkillAction

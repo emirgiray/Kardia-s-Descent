@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7218acd798eec4940936a4c347b9d67b, type: 3}
   m_Name: Regular Stats
   m_EditorClassIdentifier: 
-  Strength: 0
+  Strength: 1
   Dexterity: 6
-  Constitution: -3
-  Aiming: 5
+  Constitution: 2
+  Aiming: 6
   DefaultStrength: 1
   DefaultDexterity: 6
   DefaultConstitution: 2

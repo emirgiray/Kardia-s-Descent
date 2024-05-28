@@ -30,6 +30,7 @@ public class StateController : MonoBehaviour
     public Tile forcedTargetPlayerTile;
     public SkillContainer.Skills decidedAttackSkill;
     public SkillContainer.Skills lastUsedSkill;
+    public bool skillForced = false;
     public SkillContainer.Skills forcedSkillToUse;
     
     public List<Player> players = new List<Player>();

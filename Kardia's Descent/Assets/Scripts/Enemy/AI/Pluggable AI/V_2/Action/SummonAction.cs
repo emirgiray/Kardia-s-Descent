@@ -59,7 +59,8 @@ public class SummonAction : ActionAI
                     //if forced skill is the same as selected skill, then reset forced skill
                     if (controller.forcedSkillToUse == controller.lastUsedSkill)
                     {
-                        controller.forcedSkillToUse.skillData = null;
+                        // controller.forcedSkillToUse.skillData = null;
+                        controller.skillForced = false;
                     }
                     //controller.lastUsedSkill.damage += cachedDamageDebuff;
                     controller.forcedTargetPlayerTile = null;
