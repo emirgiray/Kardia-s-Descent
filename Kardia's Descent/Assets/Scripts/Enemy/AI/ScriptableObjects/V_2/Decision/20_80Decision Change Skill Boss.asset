@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46cc36c8764598b4db31fc3024b9b975, type: 3}
   m_Name: 20_80Decision Change Skill Boss
   m_EditorClassIdentifier: 
-  trueChance: 20
+  trueChance: 50

@@ -135,6 +135,7 @@ public class Character : MonoBehaviour
     [FoldoutGroup("Events")] public UnityEvent<int> OnMovePointsChangeEvent;
     [FoldoutGroup("Events")] public UnityEvent<int, string> OnActionPointsChangeEvent;
     [FoldoutGroup("Events")] public UnityEvent<int> OnActionPointsChangeEvent2;
+    [FoldoutGroup("Events")] public UnityEvent SkillUseStartEvent;
     [FoldoutGroup("Events")] public UnityEvent SkillUsedEvent;
     [FoldoutGroup("Events")] public UnityEvent OnHealthChangeEvent;
     [FoldoutGroup("Events")] public UnityEvent PlayerTurnStart;
@@ -142,6 +143,7 @@ public class Character : MonoBehaviour
     [FoldoutGroup("Events")] public UnityEvent MoveEnd;
     [FoldoutGroup("Events")] public UnityEvent MovePointsExhausted;
     [FoldoutGroup("Events")] public UnityEvent ActionPointsExhausted;
+    [FoldoutGroup("Events")] public UnityEvent CombatStartedEvent;
 
    public int extraMeleeDamage = 0;
    public int extraRangedAccuracy = 0;
@@ -395,9 +397,10 @@ public class Character : MonoBehaviour
                     }
                     if (this is Player && !inCombat)
                     {
-                        foreach (var enemy in TurnSystem.enemiesInCombat)
+                        
+                        foreach (var enemy in /*TurnSystem.enemiesInCombat*/ LevelManager.enemies)
                         {
-                            if (enemy.inCombat)
+                            //if (enemy.inCombat)
                             {
                                 enemy.CheckToStartCombat();
                             }
@@ -776,13 +779,29 @@ public class Character : MonoBehaviour
         Vector3 yOffSet = new Vector3(0, PathfinderVariables.Instance.characterYOffset, 0);
         if (this is Enemy)
         {
-            var playersInCombat = LevelManager.players;
+            // Debug.Log($"LevelManager.players.Count = {everythingUseful.LevelManager.players.Count}");
+            var playersInCombat = everythingUseful.LevelManager.players;
             for (int i = 0; i < playersInCombat.Count; i++)
             {
-                if (Vector3.Distance(characterTile.transform.position, playersInCombat[i].transform.position) < 10 && playersInCombat[i].gameObject.activeInHierarchy && playersInCombat[i].isUnlocked &&
-                    pathfinder.GetTilesInBetween(this, characterTile, playersInCombat[i].characterTile, true).Count <= playersInCombat[i].detectionTile
-                    && playersInCombat[i].GetUnlocked())
+              //  bool oldCheck = Vector3.Distance(characterTile.transform.position, playersInCombat[i].transform.position) < 10 && playersInCombat[i].gameObject.activeInHierarchy && playersInCombat[i].isUnlocked && pathfinder.GetTilesInBetween(this, characterTile, playersInCombat[i].characterTile, true).Count <= playersInCombat[i].detectionTile && playersInCombat[i].GetUnlocked();
+                if (characterTile == null) continue;
+                bool distanceCheck = Vector3.Distance(characterTile.transform.position, playersInCombat[i].transform.position) < 10;
+                bool playerCheck = playersInCombat[i].gameObject.activeInHierarchy && playersInCombat[i].isUnlocked && playersInCombat[i].GetUnlocked();
+                bool tilesCheck = pathfinder.GetTilesInBetween(this, characterTile, playersInCombat[i].characterTile, true).Count <= playersInCombat[i].detectionTile;
+                
+                if (distanceCheck && tilesCheck && playerCheck)
                 {
+                    if (pathfinder.GetTilesInBetween(this, characterTile, playersInCombat[i].characterTile, true).Count <= playersInCombat[i].detectionTile / 2)
+                    {
+                        if(!inCombat) StartCombat(playersInCombat[i]);
+                        if(!playersInCombat[i].inCombat) playersInCombat[i].StartCombat(this);
+                        
+                        if (TurnSystem.turnState == TurnSystem.TurnState.FreeRoamTurn)
+                        {
+                            TurnSystem.CombatStarted();
+                        }
+                    }
+                    
                     Ray ray = new Ray(this.transform.position, this.transform.forward);
                     Vector3 dir1 = ray.direction;
                     Vector3 dir2 = playersInCombat[i].transform.position - ray.origin;
@@ -854,6 +873,7 @@ public class Character : MonoBehaviour
         // StopCoroutine(moveCoroutine);
         StartCoroutine(WaitForMoveToEnd(true));
         CombatStartedAction?.Invoke();
+        CombatStartedEvent?.Invoke();
         if (combatStarter) Rotate(combatStarter.transform.position);
         if (this is Player)
         {
@@ -945,7 +965,7 @@ public class Character : MonoBehaviour
     }
     public void Attack()
     {
-        
+        SkillUseStartEvent?.Invoke();
         isInAttackTileSelection = false;
         canRotate = false;
         if (this is Player)

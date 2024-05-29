@@ -35,7 +35,7 @@ public class CheckPlayerAndSkillDecision : DecisionAI
             result = CheckForCurrentTile(controller, controller.enemy.characterTile, controller.forcedSkillToUse);
         }
 
-        if (controller.skillForced = true && result == false && doOnce) // if forced skill is set but skill is found try once more
+        if (controller.skillForced == true && result == false && doOnce) // if forced skill is set but skill is found try once more
         {
             foreach (var skill in controller.skillContainer.skillsList)
             {
