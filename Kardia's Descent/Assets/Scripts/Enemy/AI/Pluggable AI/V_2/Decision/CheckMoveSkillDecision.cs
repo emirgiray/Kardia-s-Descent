@@ -10,13 +10,13 @@ public class CheckMoveSkillDecision : DecisionAI
     {
         return CheckMoveSkill(controller);
     }
-
+    int prevTileScore = 0;
     private bool CheckMoveSkill(StateController controller)
     {
         int tilesChecked = 0;
         bool result = false;
         int tileScore = 0;
-        int prevTileScore = 0;
+        prevTileScore = 0;
         int tilesWithoutCover = 0;
         int tilesWithNoActionPointLeftAfterMove = 0;
 
@@ -42,7 +42,8 @@ public class CheckMoveSkillDecision : DecisionAI
             
         }
         
-        
+        prevTileScore = 0;
+
         //Debug.Log($"RETURNED AT THE END, move : {result},  tiles checked: {tilesChecked} / {/*controller.GetReachableTiles().Count*/ reachableTiles.Count}");
         return result;
     }
@@ -58,15 +59,25 @@ public class CheckMoveSkillDecision : DecisionAI
                 if (attackTile.occupiedByPlayer && !attackTile.occupyingPlayer.isDead && attackTile.occupyingPlayer.inCombat)
                 {
                     //Debug.Log($"enemy is in cover");
-                    tileScore = 50 + skill.damage - controller.skillContainer.CalculateCoverDamageDebuff(tile, attackTile, skill) /*- controller.skillContainer.CalculateCoverAccuracyDebuff(tile, attackTile, skill)*/
-                        + controller.pathfinder.GetTilesInBetween(controller.enemy, tile, attackTile, true).Count * 10;
+                    /*tileScore = 50 + skill.damage - controller.skillContainer.CalculateCoverDamageDebuff(tile, attackTile, skill) /*- controller.skillContainer.CalculateCoverAccuracyDebuff(tile, attackTile, skill)#1#
+                        + controller.pathfinder.GetTilesInBetween(controller.enemy, tile, attackTile, true).Count * 10;*/
                     /*
                     Debug.Log($"remaining ap after move: {reaminingActionPointsAfterMove}");
                     Debug.Log(
                         $"tile: {tile}, curent score: {tileScore}, prev score: {prevTileScore} skill: {skill.skillData}");
                         */
+                    
+                    if (skill.skillData.skillType == SkillsData.SkillType.Melee || controller.enemy.characterClass == Character.CharacterClass.Melee)
+                    {
+                        tileScore = 50 + skill.damage;
+                    }
+                    else
+                    {
+                        // Debug.Log($"enemy is in cover");
+                        tileScore = 50 + skill.damage - controller.skillContainer.CalculateCoverDamageDebuff(tile, attackTile, skill) /*- controller.skillContainer.CalculateCoverAccuracyDebuff(tile, attackTile, skill)*/;
+                    }
 
-                    if ( tileScore > prevTileScore)
+                    if ( tileScore > this.prevTileScore)
                     {
                         controller.decidedAttackSkill = skill;
                         controller.decidedMoveTile = tile;
@@ -74,7 +85,7 @@ public class CheckMoveSkillDecision : DecisionAI
                         // Debug.Log($"BIGGER THAN PREVIOUS, tile: {tile}, curent score: {tileScore}, prev score: {prevTileScore} skill: {skill.skillData}, tiles checked: {tilesChecked} / {/*controller.GetReachableTiles().Count*/ reachableTiles.Count}");
                         result = true; //this means move found 
                         
-                        prevTileScore = tileScore;
+                        this.prevTileScore = tileScore;
                     }
                     
                     if (tilesChecked >= reachableTiles.Count)

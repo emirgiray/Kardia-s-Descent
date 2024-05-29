@@ -106,9 +106,21 @@ public class CheckPlayerAndSkillDecision : DecisionAI
                     continue;
                 }
 
+                // this part is for cone and line skills bc they should be calculated by effected tiles
                 var attackTiles2 = controller.pathfinder.GetAttackableTiles(controller.enemy, skill, tile, attackTile, out oncompleted);
                 var effectTiles = controller.skillContainer.effectedTiles;
                // Debug.Log($"effectTiles: {effectTiles.Count}");
+               
+               int playersInEffectTiles = 0;
+
+               foreach (var effectTile in effectTiles)
+               {
+                   if (effectTile.occupiedByPlayer && !effectTile.occupyingPlayer.isDead && effectTile.occupyingPlayer.inCombat)
+                   {
+                       playersInEffectTiles++;
+                   }
+               }
+               
                 foreach (var effectTile in effectTiles)
                 {
                     //effectTile.HighlightAttackable();
@@ -116,6 +128,7 @@ public class CheckPlayerAndSkillDecision : DecisionAI
                     {
                         tileScore = 50 + skill.damage;
                         
+                        tileScore += playersInEffectTiles * 10; //todo not tested !!!!
                         
                         //Debug.Log($"tile: {effectTile}, curent score: {tileScore}, prev score: {prevTileScore} ");
                         if (tileScore > prevTileScore)

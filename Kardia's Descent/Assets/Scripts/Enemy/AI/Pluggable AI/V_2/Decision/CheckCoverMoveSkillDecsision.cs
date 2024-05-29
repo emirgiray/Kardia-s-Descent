@@ -11,13 +11,13 @@ public class CheckCoverMoveSkillDecsision : DecisionAI
     {
         return CheckCoverMoveSkill(controller);
     }
-
+    int prevTileScore = 0;
     private bool CheckCoverMoveSkill(StateController controller)
     {
         int tilesChecked = 0;
         bool result = false;
         int tileScore = 0;
-        int prevTileScore = 0;
+        prevTileScore = 0;
         int tilesWithoutCover = 0;
         int tilesWithNoActionPointLeftAfterMove = 0;
 
@@ -61,7 +61,7 @@ public class CheckCoverMoveSkillDecsision : DecisionAI
                     {
                         if (controller.pathfinder.CheckCoverPoint(attackTile, tile, true )) //todo is this reverse?
                         {
-                            if (skill.skillData.skillType == SkillsData.SkillType.Melee)
+                            if (skill.skillData.skillType == SkillsData.SkillType.Melee || controller.enemy.characterClass == Character.CharacterClass.Melee)
                             {
                                 tileScore = 50 + skill.damage;
                             }
@@ -71,7 +71,7 @@ public class CheckCoverMoveSkillDecsision : DecisionAI
                                 tileScore = 50 + skill.damage - controller.skillContainer.CalculateCoverDamageDebuff(tile, attackTile, skill) /*- controller.skillContainer.CalculateCoverAccuracyDebuff(tile, attackTile, skill)*/;
                             }
                             //Debug.Log($"tile: {tile}, curent score: {tileScore}, prev score: {prevTileScore} skill: {skill.skillData}, tiles checked: {tilesChecked} / {/*controller.GetReachableTiles().Count*/ reachableTiles.Count}");
-                            if ( tileScore > prevTileScore)
+                            if ( tileScore > this.prevTileScore)
                             {
                                 controller.decidedAttackSkill = skill;
                                 //Debug.Log($"decidedAttackSkill = {skill.skillData.name}");
@@ -79,7 +79,7 @@ public class CheckCoverMoveSkillDecsision : DecisionAI
                                 controller.targetPlayerTile = controller.forcedTargetPlayerTile == null ? attackTile : controller.forcedTargetPlayerTile; //if forced target is set, use it, otherwise use the attack tile
                                 // Debug.Log($"BIGGER THAN PREVIOUS, tile: {tile}, curent score: {tileScore}, prev score: {prevTileScore} skill: {skill.skillData}, tiles checked: {tilesChecked} / {/*controller.GetReachableTiles().Count*/ reachableTiles.Count}");
                                 result = true; //this means cover found 
-                                prevTileScore = tileScore;
+                                this.prevTileScore = tileScore;
                             }
                             
                             if (tilesChecked >= reachableTiles.Count)
