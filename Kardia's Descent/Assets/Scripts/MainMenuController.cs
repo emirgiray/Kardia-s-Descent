@@ -388,23 +388,93 @@ public class MainMenuController : MonoBehaviour
         if (!onMainMenu)
         {
             //everythingUseful.Interact.MoveCameraAction?.Invoke(cameraStartTransform, 1f);
-            everythingUseful.CineMachineCutRest(newCam, false);
+            StartCoroutine(CharacterSpawnDelay());
+        }
+        else
+        {
+            Destroy(spawnedCharacter);
+             everythingUseful.MainPrefabScript.SelectedPlayers = everythingUseful.GameManager.SelectedPlayers;
+             
+            foreach (var player in everythingUseful.GameManager.SelectedPlayers)
+            {
+                everythingUseful.LevelManager.AddPlayerToGame(player.GetComponent<Player>());
+            }
+            
+            everythingUseful.MainPrefabScript.InitializeLevel(PlayerSlots);
+            
+            for (int i = 0; i < everythingUseful.MainPrefabScript.spawnedPlayers.Count; i++) // then assign the values to the players
+            {
+                Player player = everythingUseful.MainPrefabScript.spawnedPlayerScripts[i];
+
+                foreach (var savedPlayer in everythingUseful.SaveLoadSystem.inGameSaveData.inGamePLayerDatas)
+                {
+                    int playerIndex = allPlayers.allPlayers.FindIndex(p => p.playerPrefab.name.Equals(player.name));
+                    if (playerIndex == savedPlayer.playerID)
+                    {
+                        player.characterStats.Strength = savedPlayer.Strength;
+                        player.characterStats.Dexterity = savedPlayer.Dexterity;
+                        player.characterStats.Constitution = savedPlayer.Constitution;
+                        player.characterStats.Aiming = savedPlayer.Aiming;
+                        // player.isUnlocked = inGameSaveData.inGamePLayerDatas[i].isUnlocked;
+                        player.isUnlocked = true;
+                        
+                        player.health.Max =  savedPlayer.maxHealth;
+                        player.health._Health =  savedPlayer.health;
+                        
+                        if (savedPlayer.equippedeartID != -1)
+                        {
+                            player.heartContainer.heartData = everythingUseful.SaveLoadSystem.allHeartDatas.allHearts[savedPlayer.equippedeartID];
+                            player.heartContainer.hearthStatsApplied = true;
+                        }
+                
+                        player.inventory.heartsInInventory.Clear();
+                        foreach (var heartIndex in savedPlayer.heartsInInventory)
+                        {
+                            player.inventory.heartsInInventory.Add(everythingUseful.SaveLoadSystem.allHeartDatas.allHearts[heartIndex]);
+                        }
+                    }
+                    
+                }
+                
+            }
+            everythingUseful.LevelManager.InitializeCharacters();
+            //everythingUseful.SaveLoadSystem.SaveGame();
+            //everythingUseful.SaveLoadSystem.AssignValues();
+          
+            ClearPrevious();
         }
         
+       
+    }
+
+    private IEnumerator CharacterSpawnDelay()
+    {
         everythingUseful.MainPrefabScript.SelectedPlayers = everythingUseful.GameManager.SelectedPlayers;
-        
         
         foreach (var player in everythingUseful.GameManager.SelectedPlayers)
         {
             everythingUseful.LevelManager.AddPlayerToGame(player.GetComponent<Player>());
         }
-
+        
         if (spawnedCharacter)
         {
             spawnedCharacter.GetComponentInChildren<Animator>().SetTrigger("WakeUp");
-            //Destroy(spawnedCharacter);
         }
         
+        var animator = spawnedCharacter.GetComponentInChildren<Animator>();
+        var animLength = 0f;
+        for (int i = 0; i < animator.runtimeAnimatorController.animationClips.Length;  i++)
+        {
+            if (animator.runtimeAnimatorController.animationClips[i].name.Contains("WakeUp"))
+            {
+                animLength = animator.runtimeAnimatorController.animationClips[i].length;
+            }
+           
+        }
+
+        yield return new WaitForSeconds(animLength);
+        
+        everythingUseful.CineMachineCutRest(newCam, false);
         everythingUseful.MainPrefabScript.InitializeLevel(PlayerSlots);
         
         for (int i = 0; i < everythingUseful.MainPrefabScript.spawnedPlayers.Count; i++) // then assign the values to the players
