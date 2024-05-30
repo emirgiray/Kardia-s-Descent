@@ -76,6 +76,8 @@ public class MainMenuController : MonoBehaviour
     private float smoothnessDuration = 1f; // Duration over which to smooth the rotation
     
     [BoxGroup("Table")] [SerializeField] [HideIf("onMainMenu")]
+    private List<Transform> PlayerSlots = new(); 
+    [BoxGroup("Table")] [SerializeField] [HideIf("onMainMenu")]
     private GameObject table;
     [BoxGroup("Table")] [SerializeField] [HideIf("onMainMenu")]
     private Transform tableStartTransform;
@@ -178,7 +180,8 @@ public class MainMenuController : MonoBehaviour
     [Button, GUIColor(1f, 1f, 1f)]
     public void StartSelection()
     {
-        
+        if (spawnedCharacter) Destroy(spawnedCharacter);
+        var firstChar = everythingUseful.MainPrefabScript.SelectedPlayers[0];
         SelectionStartedEvent.Invoke();
         characterSelectionUI.SetActive(true);
         startButton.interactable = false;
@@ -222,7 +225,7 @@ public class MainMenuController : MonoBehaviour
         }
         else
         {
-            var firstChar = everythingUseful.MainPrefabScript.SelectedPlayers[0];
+            
             for (int i = 0; i < selectionLayoutTransform.childCount; i++)
             {
                 if (selectionLayoutTransform.GetChild(i).GetComponent<MainMenuCharacterButton>().characterPrefab.name == firstChar.name)
@@ -395,10 +398,14 @@ public class MainMenuController : MonoBehaviour
         {
             everythingUseful.LevelManager.AddPlayerToGame(player.GetComponent<Player>());
         }
+
+        if (spawnedCharacter)
+        {
+            spawnedCharacter.GetComponentInChildren<Animator>().SetTrigger("WakeUp");
+            //Destroy(spawnedCharacter);
+        }
         
-        if (spawnedCharacter) Destroy(spawnedCharacter);
-        
-        everythingUseful.MainPrefabScript.InitializeLevel(/*charTiles*/ );
+        everythingUseful.MainPrefabScript.InitializeLevel(PlayerSlots);
         
         for (int i = 0; i < everythingUseful.MainPrefabScript.spawnedPlayers.Count; i++) // then assign the values to the players
         {
@@ -448,7 +455,12 @@ public class MainMenuController : MonoBehaviour
         //everythingUseful.SaveLoadSystem.AssignValues();
       
         ClearPrevious();
+        if (spawnedCharacter)
+        {
+            Destroy(spawnedCharacter);
+        }
     }
+    
 
     private void ClearPrevious()
     {

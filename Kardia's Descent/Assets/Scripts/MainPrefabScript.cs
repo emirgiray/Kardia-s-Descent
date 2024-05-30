@@ -108,24 +108,34 @@ public class MainPrefabScript : MonoBehaviour
         }*/
 
     }
-    public void InitializeLevel()
+    public void InitializeLevel(List<Transform> PlayerSlotsIn = null)
     {
-        fogWar = FindObjectOfType<csFogWar>();
-        PlayerSlots = GameObject.Find("Player Slots").GetComponentsInChildren<Transform>().ToList();
-        List<Transform> slotsToRemove = new();
-        foreach (var slot in PlayerSlots)
+        if (PlayerSlotsIn == null)
         {
-            if (!slot.name.Contains("Player Slot"))
+            PlayerSlots = GameObject.Find("Player Slots").GetComponentsInChildren<Transform>().ToList();
+            List<Transform> slotsToRemove = new();
+            foreach (var slot in PlayerSlots)
             {
-                slotsToRemove.Add(slot);
+                if (!slot.name.Contains("Player Slot"))
+                {
+                    slotsToRemove.Add(slot);
+                }
             }
+            foreach (var remove in slotsToRemove)
+            {
+                PlayerSlots.Remove(remove);
+            }
+        
+            PlayerSlots.RemoveAt(0); //remove the parent transform
         }
-        foreach (var remove in slotsToRemove)
+        else
         {
-            PlayerSlots.Remove(remove);
+            PlayerSlots = PlayerSlotsIn;
         }
         
-        PlayerSlots.RemoveAt(0); //remove the parent transform
+        
+        
+        fogWar = FindObjectOfType<csFogWar>();
         playerPreviewParent = GameObject.Find("Player Preview");
 
         for (int i = 0; i < SelectedPlayers.Count; i++)
