@@ -24,27 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/New Scenes/Boss Level 1.unity
     guid: e493c77cbf8897d41aac6e5c3c86880d
   - enabled: 1
-    path: Assets/Scenes/Giray Test/Scene Types/SC 1.unity
-    guid: ba9adf6aa1734f24ebbbe9d1ff5888c3
+    path: Assets/Scenes/New Scenes/Boss Level 2.unity
+    guid: 900dedcc9cea323408a0cf1f1ddf39b6
   - enabled: 1
-    path: Assets/Scenes/Giray Test/Scene Types/SC 2.unity
-    guid: 9644deefd8a6f6a489746e3543e99e6b
-  - enabled: 1
-    path: Assets/Scenes/Giray Test/Scene Types/SC 3.unity
-    guid: 90592fd6e2891ca448a1dc0da8508ea6
-  - enabled: 1
-    path: Assets/Scenes/Giray Test/Scene Types/SC 4.unity
-    guid: 5b873d171313c554fb7c647d4c28e796
-  - enabled: 1
-    path: Assets/Scenes/Giray Test/Scene Types/SC 5.unity
-    guid: 175347736417cee4dbda00220a39e4a2
-  - enabled: 1
-    path: Assets/Scenes/Giray Test/Scene Types/SC 6.unity
-    guid: 1d196e39c8ea29c40be25bbf32badfad
-  - enabled: 1
-    path: Assets/Scenes/Giray Test/Scene Types/SC 7.unity
-    guid: 16dda86ed93356a4dadf4d588beec088
-  - enabled: 1
-    path: Assets/Scenes/Giray Test/Scene Types/SC 8.unity
-    guid: 20653da83f9a58f45872669e12a09422
+    path: Assets/Scenes/New Scenes/Rest Level.unity
+    guid: 1971c2344373abc4fa71bf372ad38eee
   m_configObjects: {}

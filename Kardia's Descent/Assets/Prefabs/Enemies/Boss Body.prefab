@@ -63,15 +63,75 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2477153329434498103, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4807473279575106974, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
         type: 3}
       propertyPath: objectToBeMoved
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5590655455677536583, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
+        type: 3}
+      propertyPath: m_Active
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590655455677536583, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
+        type: 3}
+      propertyPath: m_TranslationAtRest.y
+      value: 5.431
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590655455677536583, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
+        type: 3}
+      propertyPath: m_TranslationAtRest.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590655455677536583, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
+        type: 3}
+      propertyPath: m_RotationOffsets.Array.data[0].x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590655455677536583, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
+        type: 3}
+      propertyPath: m_TranslationOffsets.Array.data[0].y
+      value: 2.1357641
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590655455677536583, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
+        type: 3}
+      propertyPath: m_TranslationOffsets.Array.data[0].z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590655455677536583, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
+        type: 3}
+      propertyPath: m_Sources.Array.data[0].sourceTransform
+      value: 
+      objectReference: {fileID: 2670847252317404599}
     - target: {fileID: 5649455234823889604, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
         type: 3}
       propertyPath: m_Name
       value: Spawn Points
+      objectReference: {fileID: 0}
+    - target: {fileID: 5832134922881125115, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.016189808
+      objectReference: {fileID: 0}
+    - target: {fileID: 5832134922881125115, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.016189808
+      objectReference: {fileID: 0}
+    - target: {fileID: 5832134922881125115, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.016189808
+      objectReference: {fileID: 0}
+    - target: {fileID: 5832134922881125115, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 5.431
       objectReference: {fileID: 0}
     - target: {fileID: 7053993269744270337, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
         type: 3}

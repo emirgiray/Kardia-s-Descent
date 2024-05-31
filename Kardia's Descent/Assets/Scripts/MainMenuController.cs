@@ -80,6 +80,10 @@ public class MainMenuController : MonoBehaviour
     [BoxGroup("Table")] [SerializeField] [HideIf("onMainMenu")]
     private GameObject table;
     [BoxGroup("Table")] [SerializeField] [HideIf("onMainMenu")]
+    private Animator doorAnimator;
+    [BoxGroup("Table")] [SerializeField] [HideIf("onMainMenu")]
+    private Material conveyorMaterial;
+    [BoxGroup("Table")] [SerializeField] [HideIf("onMainMenu")]
     private Transform tableStartTransform;
     [BoxGroup("Table")] [SerializeField] [HideIf("onMainMenu")]
     private Transform tableEndTransform;
@@ -117,8 +121,10 @@ public class MainMenuController : MonoBehaviour
     public UnityEvent SelectionEndedEvent;
     [FoldoutGroup("Events")] [HideIf("onMainMenu")]
     public UnityEvent HeartsSpawnedEvent;
+    
     private void Awake()
     {
+        if(conveyorMaterial != null) conveyorMaterial.SetFloat("_Scrool_Speed", 0f);
         if (Instance == null)
             Instance = this;
         else
@@ -181,7 +187,6 @@ public class MainMenuController : MonoBehaviour
     public void StartSelection()
     {
         if (spawnedCharacter) Destroy(spawnedCharacter);
-        var firstChar = everythingUseful.MainPrefabScript.SelectedPlayers[0];
         SelectionStartedEvent.Invoke();
         characterSelectionUI.SetActive(true);
         startButton.interactable = false;
@@ -225,7 +230,8 @@ public class MainMenuController : MonoBehaviour
         }
         else
         {
-            
+            var firstChar = everythingUseful.MainPrefabScript.SelectedPlayers[0];
+
             for (int i = 0; i < selectionLayoutTransform.childCount; i++)
             {
                 if (selectionLayoutTransform.GetChild(i).GetComponent<MainMenuCharacterButton>().characterPrefab.name == firstChar.name)
@@ -278,12 +284,14 @@ public class MainMenuController : MonoBehaviour
                 tableTween = table.transform.DOMove(tableEndTransform.position, tableMoveFrontDuration).SetEase(tableEase);
                 goingBack = false;
                 TableMovedFrontEvent.Invoke();
+                doorAnimator.SetTrigger("Open");
             }
             else
             {
                 tableTween = table.transform.DOMove(tableStartTransform.position, tableMoveBackDuration).SetEase(tableEase);
                 goingBack = true;
                 TableMovedBackEvent.Invoke();
+                doorAnimator.SetTrigger("Open");
             }
             
            
@@ -298,13 +306,20 @@ public class MainMenuController : MonoBehaviour
             }
             else
             {
+                doorAnimator.SetTrigger("Open");
+                conveyorMaterial.SetFloat("_Scrool_Speed", -0.1f);
                 goingBack = true;
                 tableTween = table.transform.DOMove(tableStartTransform.position, tableMoveBackDuration).SetEase(tableEase).OnComplete(
                     () =>
                     {
+                        conveyorMaterial.SetFloat("_Scrool_Speed", 0.1f);
                         goingBack = false;
                         Destroy(spawnedCharacter);
-                        tableTween = table.transform.DOMove(tableEndTransform.position, tableMoveFrontDuration).SetEase(tableEase);
+                        tableTween = table.transform.DOMove(tableEndTransform.position, tableMoveFrontDuration).SetEase(tableEase).OnComplete(()=>
+                        {
+                            doorAnimator.SetTrigger("Close");
+                            conveyorMaterial.SetFloat("_Scrool_Speed", 0);
+                        });
                         spawnedCharacter = Instantiate(button.characterPrefab, characterGOSpawnTransform.position, characterGOSpawnTransform.rotation, characterGOSpawnTransform);
                         
                         SpawnedCharacterMiscFunc();
@@ -318,12 +333,17 @@ public class MainMenuController : MonoBehaviour
             if (!onMainMenu)
             {
                 goingBack = false;
-                tableTween = table.transform.DOMove(tableEndTransform.position, tableMoveFrontDuration).SetEase(tableEase);
+                tableTween = table.transform.DOMove(tableEndTransform.position, tableMoveFrontDuration).SetEase(tableEase).OnComplete(()=>
+                {
+                    doorAnimator.SetTrigger("Close");
+                    conveyorMaterial.SetFloat("_Scrool_Speed", 0f);
+                });
                 spawnedCharacter = Instantiate(button.characterPrefab, characterGOSpawnTransform.position, characterGOSpawnTransform.rotation, characterGOSpawnTransform);
                 
                 SpawnedCharacterMiscFunc();
                 spawnedCharacter.GetComponent<Player>().animator.SetTrigger("Sleep");
-                
+                doorAnimator.SetTrigger("Open");
+                conveyorMaterial.SetFloat("_Scrool_Speed", 0.1f);
             }
         }
         characterGOSpawnTransform.rotation = spawnFirstTransform;
@@ -388,6 +408,7 @@ public class MainMenuController : MonoBehaviour
         if (!onMainMenu)
         {
             //everythingUseful.Interact.MoveCameraAction?.Invoke(cameraStartTransform, 1f);
+            conveyorMaterial.SetFloat("_Scrool_Speed", 0.1f);
             StartCoroutine(CharacterSpawnDelay());
         }
         else

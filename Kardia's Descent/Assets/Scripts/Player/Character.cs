@@ -787,7 +787,7 @@ public class Character : MonoBehaviour
                 if (characterTile == null) continue;
                 bool distanceCheck = Vector3.Distance(characterTile.transform.position, playersInCombat[i].transform.position) < 10;
                 bool playerCheck = playersInCombat[i].gameObject.activeInHierarchy && playersInCombat[i].isUnlocked && playersInCombat[i].GetUnlocked();
-                bool tilesCheck = pathfinder.GetTilesInBetween(this, characterTile, playersInCombat[i].characterTile, true).Count <= playersInCombat[i].detectionTile;
+                bool tilesCheck = pathfinder.GetTilesInBetween(this, characterTile, playersInCombat[i].characterTile, true).Count <= playersInCombat[i].detectionTile && this.detectionTile > 0;
                 
                 if (distanceCheck && tilesCheck && playerCheck)
                 {

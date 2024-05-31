@@ -40,11 +40,15 @@ public class Waypoints : MonoBehaviour
             FinalizePosition(hit.transform.GetComponent<Tile>());
             return;
         }
+        else
+        {
+          //  Debug.Log("No tile found for waypoint: " + gameObject.name + " at position: " + transform.position + "");
+        }
         
-        Debug.Log("No tile found for waypoint: " + gameObject.name + " at position: " + transform.position + "");
+       
     }
 
-    public void FinalizePosition(Tile tile)
+    private void FinalizePosition(Tile tile)
     {
         transform.position = tile.transform.position + new Vector3(0,yOffset,0);
         waypointTile = tile;

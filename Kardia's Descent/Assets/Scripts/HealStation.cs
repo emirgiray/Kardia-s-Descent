@@ -50,7 +50,8 @@ public class HealStation : MonoBehaviour
     [SerializeField] private GameObject potionPrefab;
     [SerializeField] private Transform potionSpawnTransform;
     [SerializeField] private List<GameObject> steamVFX = new();
-    [SerializeField] private GameObject machineToRumble;
+
+    [SerializeField] private  List<GameObject> machinesToRumble = new();
     
     private Dictionary<int, Color> textColors = new Dictionary<int, Color>()
     {
@@ -193,8 +194,12 @@ public class HealStation : MonoBehaviour
             vfx.SetActive(true);
         }
 
-        machineToRumble.transform.DOShakeScale(shakeScaleDuration, shakeScaleStrength, shakeScaleVibrato, shakehScaleRandomness).SetEase(shakeScaleEase);
-        machineToRumble.transform.DOShakeRotation(shakeRotationDuration, shakeRotationStrength, shakeRotationVibrato, shakeRotationRandomness).SetEase(shakeRotationEase);
+        foreach (var machineToRumble in machinesToRumble)
+        {
+            machineToRumble.transform.DOShakeScale(shakeScaleDuration, shakeScaleStrength, shakeScaleVibrato, shakehScaleRandomness).SetEase(shakeScaleEase);
+            machineToRumble.transform.DOShakeRotation(shakeRotationDuration, shakeRotationStrength, shakeRotationVibrato, shakeRotationRandomness).SetEase(shakeRotationEase);
+        }
+        
 
     }
 
@@ -221,8 +226,11 @@ public class HealStation : MonoBehaviour
             vfx.SetActive(true);
         }
         
-        machineToRumble.transform.DOShakeScale(shakeScaleDuration, shakeScaleStrength, shakeScaleVibrato, shakehScaleRandomness).SetEase(shakeScaleEase);
-        machineToRumble.transform.DOShakeRotation(shakeRotationDuration, shakeRotationStrength, shakeRotationVibrato, shakeRotationRandomness).SetEase(shakeRotationEase);
+        foreach (var machineToRumble in machinesToRumble)
+        {
+            machineToRumble.transform.DOShakeScale(shakeScaleDuration, shakeScaleStrength, shakeScaleVibrato, shakehScaleRandomness).SetEase(shakeScaleEase);
+            machineToRumble.transform.DOShakeRotation(shakeRotationDuration, shakeRotationStrength, shakeRotationVibrato, shakeRotationRandomness).SetEase(shakeRotationEase);
+        }
     }
 
     private IEnumerator HealPlayerDelay()
