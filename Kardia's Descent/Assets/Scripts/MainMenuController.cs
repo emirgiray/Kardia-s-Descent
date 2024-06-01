@@ -183,6 +183,7 @@ public class MainMenuController : MonoBehaviour
         StartSelection();
     }
     private float heartBgStartX;
+    GameObject firstChar;
     [Button, GUIColor(1f, 1f, 1f)]
     public void StartSelection()
     {
@@ -191,8 +192,10 @@ public class MainMenuController : MonoBehaviour
         characterSelectionUI.SetActive(true);
         startButton.interactable = false;
         List<string> previousSelectedCharNames = new();
+        
         if (!onMainMenu)
         {
+            firstChar = everythingUseful.MainPrefabScript.SelectedPlayers[0];
             everythingUseful.Interact.StopAllLogic();
             cameraStartTransform = everythingUseful.Interact.cameraTransform;
             everythingUseful.CineMachineCutRest(newCam, true);
@@ -230,7 +233,6 @@ public class MainMenuController : MonoBehaviour
         }
         else
         {
-            var firstChar = everythingUseful.MainPrefabScript.SelectedPlayers[0];
 
             for (int i = 0; i < selectionLayoutTransform.childCount; i++)
             {
