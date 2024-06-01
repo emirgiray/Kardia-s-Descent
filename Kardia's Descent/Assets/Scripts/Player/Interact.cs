@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Cinemachine;
+using DG.Tweening;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using TMPro;
@@ -238,16 +239,15 @@ public class Interact : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F))
         {
-            if (!fastForward)
+            gameSpeed++;
+            
+            if (gameSpeed > maxGameSpeed)
             {
-                Time.timeScale = 2;
-                fastForward = true;
+                gameSpeed = 1;
+                
             }
-            else
-            {
-                Time.timeScale = 1;
-                fastForward = false;
-            }
+            
+            DOTween.To(()=> Time.timeScale, x=> Time.timeScale = x, gameSpeed, 0.5f);
         }
         
         /*if (Input.GetKey(KeyCode.F))
@@ -259,7 +259,8 @@ public class Interact : MonoBehaviour
             Time.timeScale = 1;
         }*/
     }
-
+    int maxGameSpeed = 2;
+    int gameSpeed = 1;
     private bool fastForward = false;
     private void CheckCharacterInputs()
     {

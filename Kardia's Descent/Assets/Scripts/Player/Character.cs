@@ -888,6 +888,32 @@ public class Character : MonoBehaviour
             GetComponent<StateController>().StartCombat();
             remainingActionPoints = 0; // enemies were having max ap on their first turn
         }
+        
+      
+    }
+
+    public void StartCombat()
+    {
+        //FinalizePosition(characterTile, false);
+        // StopCoroutine(moveCoroutine);
+        StartCoroutine(WaitForMoveToEnd(true));
+        CombatStartedAction?.Invoke();
+        CombatStartedEvent?.Invoke();
+        if (this is Player)
+        {
+            LevelManager.AddPlayerToCombat(GetComponent<Player>());
+        }
+
+        if (this is Enemy)
+        {
+            moveSpeed = .7f;
+            animator.speed = 1.5f;
+
+            LevelManager.AddEnemyToCombat(GetComponent<Enemy>());
+            GetComponent<StateController>().StartCombat();
+            remainingActionPoints = 0; // enemies were having max ap on their first turn
+        }
+
     }
 
     private IEnumerator WaitForMoveToEnd(bool startCombat)
