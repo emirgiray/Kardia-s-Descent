@@ -235,17 +235,32 @@ public class Interact : MonoBehaviour
                 player.health.HealthAi = 9999999;
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            if (!fastForward)
+            {
+                Time.timeScale = 2;
+                fastForward = true;
+            }
+            else
+            {
+                Time.timeScale = 1;
+                fastForward = false;
+            }
+        }
         
-        if (Input.GetKey(KeyCode.F))
+        /*if (Input.GetKey(KeyCode.F))
         {
             Time.timeScale = 2;
         }
         else
         {
             Time.timeScale = 1;
-        }
+        }*/
     }
-    
+
+    private bool fastForward = false;
     private void CheckCharacterInputs()
     {
         if (characterSelected) //eselect character //todo skill selectedi variable olarak tut
