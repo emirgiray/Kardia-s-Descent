@@ -48,5 +48,5 @@ MonoBehaviour:
   skillTargetType: 0
   skillEffect: 0
   buffDebuffType: 0
-  summonPrefab: {fileID: 1764541655754650399, guid: 98d75bd882dc2e84eb8b8ec7e26ce673,
+  summonPrefab: {fileID: 9000660276869076505, guid: c2c79e360de5a174f903c4186e8951ab,
     type: 3}

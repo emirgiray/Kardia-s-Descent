@@ -36,6 +36,8 @@ public class Summon : SkillsData
             //stateController.currentState = stateController.defaultCombatStartState; // inf loop
             
             spawnedCharacter.StartCombat();
+            
+            ActivaterCharacter.GetComponent<Enemy>().killOnDeath.Add(spawnedCharacter);
            // everythingUseful.TurnSystem.RoundInfoScript.ForceObjectIndex(spawnedCharacter.GetCharacterCard(), 9999999);
         }
         

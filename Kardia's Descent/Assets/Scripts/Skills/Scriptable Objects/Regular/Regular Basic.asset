@@ -17,7 +17,7 @@ MonoBehaviour:
   skillName: Basic
   skillDescription: Basic attack.
   skillID: 9
-  skillDamage: 15
+  skillDamage: 20
   skillRange: 4
   skillCooldown: 0
   actionPointUse: 0
@@ -33,6 +33,7 @@ MonoBehaviour:
   cleaveTimes: 1
   cleaveStartLeft: 1
   animatorOverrideController: {fileID: 0}
+  useParabolla: 0
   skillStartVFX: {fileID: 11400000, guid: 9d7befec332a1954ba5ca9c5f95215c5, type: 2}
   skillImpactVFX: {fileID: 0}
   skillHitVFX:
