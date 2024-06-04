@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ConveyorBeltMat
+  m_Name: ConveyorBeltMat Rest Level
   m_Shader: {fileID: -6465566751694194690, guid: 419dd571b3bec7d4eb5e44f5456949ed,
     type: 3}
   m_Parent: {fileID: 0}
@@ -130,7 +130,7 @@ Material:
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Roughness_Strength: 1
-    - _Scrool_Speed: 0.1
+    - _Scrool_Speed: 0
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1

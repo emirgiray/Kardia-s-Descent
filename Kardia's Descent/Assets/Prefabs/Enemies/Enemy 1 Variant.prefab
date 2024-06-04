@@ -200,6 +200,11 @@ PrefabInstance:
       propertyPath: m_Sources.Array.data[0].sourceTransform
       value: 
       objectReference: {fileID: 7472259387148525281}
+    - target: {fileID: 5789014126072821151, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
+        type: 3}
+      propertyPath: content
+      value: Mini boss.
+      objectReference: {fileID: 0}
     - target: {fileID: 5832134922881125115, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
         type: 3}
       propertyPath: m_LocalPosition.z
