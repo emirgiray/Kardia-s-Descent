@@ -38,8 +38,14 @@ public class EverythingUseful : ScriptableObject
     [FoldoutGroup("Assigners")]
     public CinemachineVirtualCamera CinemachineVirtualCamera;
     public GameObject SpawnTextGO;
-    
 
+
+    public void GameOver(bool win)
+    {
+        GameManager.GameOver(win);
+    }
+
+    
     public void CineMachineCutAttack(bool value)
     {
         CinemachineVirtualCamera.gameObject.SetActive(value);

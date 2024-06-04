@@ -147,15 +147,30 @@ public class SaveLoadSystem : MonoBehaviour
             //AssignValues();
         }
     }
+    
+    bool firstTime = true;
 
     public void AssignValues()
     {
       //  Debug.Log($"expression");
-        MainPrefabScript.SelectedPlayers.Clear(); // clear the list if it has values
-        for (int i = 0; i < inGameSaveData.inGamePLayerDatas.Count; i++) // first tell the mainprefabscript to spawn the players
-        { 
-            MainPrefabScript.SelectedPlayers.Add(allPlayers.allPlayers[inGameSaveData.inGamePLayerDatas[i].playerID].playerPrefab);
-        }
+      
+         var previousPlayers = MainPrefabScript.spawnedPlayers;
+
+         if (firstTime)
+         {
+             MainPrefabScript.SelectedPlayers.Clear(); // clear the list if it has values
+             for (int i = 0; i < inGameSaveData.inGamePLayerDatas.Count; i++) // first tell the mainprefabscript to spawn the players
+             { 
+                 MainPrefabScript.SelectedPlayers.Add(allPlayers.allPlayers[inGameSaveData.inGamePLayerDatas[i].playerID].playerPrefab);
+             }
+             firstTime = false;
+         }
+         else
+         {
+             
+         }
+         
+        
         
 
         GameManager.totalDamageDealt = inGameSaveData.totalDamageDealt;

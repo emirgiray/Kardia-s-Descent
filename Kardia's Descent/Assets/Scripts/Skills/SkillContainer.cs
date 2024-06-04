@@ -373,14 +373,14 @@ bool impact = false;
         {
             if (selectedSkill.skillData.skillType == SkillsData.SkillType.Ranged && characterTooClose)
             {
-                rangedCloseDamageMultiplier = 0.5f;
+                rangedCloseDamageMultiplier = 0.75f;
             }
         }
         else
         {
             if (Character.characterClass == Character.CharacterClass.Ranged && characterTooClose)
             {
-                rangedCloseDamageMultiplier = 0.5f;
+                rangedCloseDamageMultiplier = 0.75f;
             }
         }
         float multipliars = coverDamageMultiplier * otherDamageMultiplier * rangedCloseDamageMultiplier * selectedSkill.SkillDamageMultipliar;

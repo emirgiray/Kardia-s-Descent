@@ -150,7 +150,9 @@ public class LevelManager : MonoBehaviour
     {
         csFogWar fogWar = FindObjectOfType<csFogWar>();
         fogWar.AddFogRevealerRevelear(playerTransform);
-        MainPrefabScript.Instance.SelectedPlayers.Add(playerTransform.gameObject);
+        int id = playerTransform.GetComponent<Player>().playerID;
+        GameObject prefab = everythingUseful.AllPlayers.allPlayers[id].playerPrefab;
+        MainPrefabScript.Instance.SelectedPlayers.Add(prefab);
     }
 
     #endregion
