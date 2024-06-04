@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -244,6 +245,7 @@ public class MainMenuController : MonoBehaviour
             }
         }
         SpawnPlayerPreview(firstButton); //spawn first character
+        spawnedCharacter.GetComponentInChildren<Animator>().SetTrigger("Sleep");
         radarChart.SetStats(firstButton.characterPrefab.GetComponent<Player>().characterStats);
         firstButton.selectedImage.SetActive(true);
         selectedChar = firstButton;
@@ -267,7 +269,7 @@ public class MainMenuController : MonoBehaviour
             
 
             SetHeartButtons();
-            
+            spawnedCharacter.GetComponentInChildren<Animator>().SetTrigger("Sleep");
         }
     }
 
@@ -325,7 +327,7 @@ public class MainMenuController : MonoBehaviour
                         spawnedCharacter = Instantiate(button.characterPrefab, characterGOSpawnTransform.position, characterGOSpawnTransform.rotation, characterGOSpawnTransform);
                         
                         SpawnedCharacterMiscFunc();
-                        spawnedCharacter.GetComponent<Player>().animator.SetTrigger("Sleep");
+                        spawnedCharacter.GetComponentInChildren<Animator>().SetTrigger("Sleep");
                     });
             }
            
@@ -343,7 +345,7 @@ public class MainMenuController : MonoBehaviour
                 spawnedCharacter = Instantiate(button.characterPrefab, characterGOSpawnTransform.position, characterGOSpawnTransform.rotation, characterGOSpawnTransform);
                 
                 SpawnedCharacterMiscFunc();
-                spawnedCharacter.GetComponent<Player>().animator.SetTrigger("Sleep");
+                spawnedCharacter.GetComponentInChildren<Animator>().SetTrigger("Sleep");
                 doorAnimator.SetTrigger("Open");
                 conveyorMaterial.SetFloat("_Scrool_Speed", 0.1f);
             }
@@ -486,9 +488,11 @@ public class MainMenuController : MonoBehaviour
         
         var animator = spawnedCharacter.GetComponentInChildren<Animator>();
         var animLength = 0f;
+        string animName = "WakeUp";
+        string animName2 = "GetUp";
         for (int i = 0; i < animator.runtimeAnimatorController.animationClips.Length;  i++)
         {
-            if (animator.runtimeAnimatorController.animationClips[i].name.Contains("WakeUp"))
+            if (animator.runtimeAnimatorController.animationClips[i].name.Contains(animName) || animator.runtimeAnimatorController.animationClips[i].name.Contains(animName2))
             {
                 animLength = animator.runtimeAnimatorController.animationClips[i].length;
             }
@@ -496,9 +500,23 @@ public class MainMenuController : MonoBehaviour
         }
 
         yield return new WaitForSeconds(animLength);
+
+       
+        foreach (var player in  everythingUseful.MainPrefabScript.SelectedPlayers.ToList())
+        {
+            if (player.name + "(Clone)" == spawnedCharacter.name)
+            {
+                // reshape the list so the spawned character  is the first element
+                
+                everythingUseful.MainPrefabScript.SelectedPlayers.Remove(player);
+                everythingUseful.MainPrefabScript.SelectedPlayers.Insert(0, player);
+            }
+        }
         
         everythingUseful.CineMachineCutRest(newCam, false);
         everythingUseful.MainPrefabScript.InitializeLevel(PlayerSlots);
+        
+    
         
         for (int i = 0; i < everythingUseful.MainPrefabScript.spawnedPlayers.Count; i++) // then assign the values to the players
         {

@@ -471,10 +471,11 @@ public class Character : MonoBehaviour
             tile.occupiedByEnemy = true;
         }
 
-        CheckCloseCharacters();
+      
         
         if (!findTileAtStart)//dont do this if we are just finding the tile at the start
         {
+            CheckCloseCharacters();
             if (characterState != CharacterState.WaitingNextRound)//this is for the character to not end turn after moving bc maybe it has action points left
             {
                 characterState = CharacterState.WaitingTurn;
@@ -563,8 +564,9 @@ public class Character : MonoBehaviour
         //Debug.Log($"expression");
         foreach (var closeCharacter in closeCharacters)
         {
-            if (this is Player)
+            if (this is Player && !closeCharacter.isDead)
             {
+                
                 Rotate(_path.tiles[0].transform.position);
                 closeCharacter.Rotate(characterTile.transform.position, 0.75f, () =>
                 {
@@ -583,7 +585,7 @@ public class Character : MonoBehaviour
                 return true;
             }
             
-            if (this is Enemy)
+            if (this is Enemy && !closeCharacter.isDead)
             {
                 Rotate(_path.tiles[0].transform.position);
                 closeCharacter.Rotate(characterTile.transform.position, 0.75f, () =>
@@ -780,14 +782,16 @@ public class Character : MonoBehaviour
         if (this is Enemy)
         {
             // Debug.Log($"LevelManager.players.Count = {everythingUseful.LevelManager.players.Count}");
-            var playersInCombat = everythingUseful.LevelManager.players;
+             var playersInCombat = everythingUseful.LevelManager.players;
+            //var playersInCombat = everythingUseful.MainPrefabScript.spawnedPlayerScripts;
             for (int i = 0; i < playersInCombat.Count; i++)
             {
               //  bool oldCheck = Vector3.Distance(characterTile.transform.position, playersInCombat[i].transform.position) < 10 && playersInCombat[i].gameObject.activeInHierarchy && playersInCombat[i].isUnlocked && pathfinder.GetTilesInBetween(this, characterTile, playersInCombat[i].characterTile, true).Count <= playersInCombat[i].detectionTile && playersInCombat[i].GetUnlocked();
                 if (characterTile == null) continue;
+               // Debug.Log($"checking for combat with {playersInCombat[i].name} by {name}");
                 bool distanceCheck = Vector3.Distance(characterTile.transform.position, playersInCombat[i].transform.position) < 10;
-                bool playerCheck = playersInCombat[i].gameObject.activeInHierarchy && playersInCombat[i].isUnlocked && playersInCombat[i].GetUnlocked();
-                bool tilesCheck = pathfinder.GetTilesInBetween(this, characterTile, playersInCombat[i].characterTile, true).Count <= playersInCombat[i].detectionTile && this.detectionTile > 0;
+                bool playerCheck = playersInCombat[i].gameObject.activeInHierarchy && playersInCombat[i].isUnlocked && playersInCombat[i].GetUnlocked() && GetComponent<StateController>().aiActive;
+                bool tilesCheck = playerCheck && (pathfinder.GetTilesInBetween(this, characterTile, playersInCombat[i].characterTile, true).Count <= playersInCombat[i].detectionTile && this.detectionTile > 0);
                 
                 if (distanceCheck && tilesCheck && playerCheck)
                 {

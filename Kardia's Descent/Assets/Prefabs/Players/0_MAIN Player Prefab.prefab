@@ -265,6 +265,9 @@ MonoBehaviour:
   heartDropTable: {fileID: 11400000, guid: 09f90b2616a5b6c4c962d2402e18c30e, type: 2}
   dropChance: 100
   itemsToDrop: []
+  biggerThanOneTile: 0
+  characterTileSize: 1
+  allCharacterTiles: []
   Head: {fileID: 3811572432631322745}
   Hand: {fileID: 4568728419604377504}
   characterClass: 0
@@ -290,6 +293,9 @@ MonoBehaviour:
   OnActionPointsChangeEvent2:
     m_PersistentCalls:
       m_Calls: []
+  SkillUseStartEvent:
+    m_PersistentCalls:
+      m_Calls: []
   SkillUsedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -309,6 +315,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   ActionPointsExhausted:
+    m_PersistentCalls:
+      m_Calls: []
+  CombatStartedEvent:
     m_PersistentCalls:
       m_Calls: []
   extraMeleeDamage: 0
@@ -1260,6 +1269,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1776660968872656196}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a33e02c5e9843b14899803d47dda757b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 840367779339598452}
   m_SourcePrefab: {fileID: 100100000, guid: a33e02c5e9843b14899803d47dda757b, type: 3}
 --- !u!4 &1678476469108849140 stripped
 Transform:
@@ -1320,6 +1333,33 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+--- !u!114 &840367779339598452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017882941990232910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 644e174c4b8c42d45afb8a2fc8e460ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CustomEvents3:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7510704565162782655}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: FinalizeUnlockPosition
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!4 &3811572432631322745 stripped
 Transform:

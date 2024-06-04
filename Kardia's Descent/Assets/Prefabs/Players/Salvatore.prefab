@@ -790,6 +790,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 8255650508046496280}
+    - targetCorrespondingSourceObject: {fileID: 5567843456906182522, guid: 8f4a0ceba62af4145b67e40edcc51274,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4084663298850623746}
   m_SourcePrefab: {fileID: 100100000, guid: 8f4a0ceba62af4145b67e40edcc51274, type: 3}
 --- !u!95 &1515562305685836531 stripped
 Animator:
@@ -835,6 +839,33 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+--- !u!114 &4084663298850623746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3949322146768768174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 644e174c4b8c42d45afb8a2fc8e460ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CustomEvents3:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5637232902721750119}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: UnlockPlayer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!4 &4432983759214351892 stripped
 Transform:

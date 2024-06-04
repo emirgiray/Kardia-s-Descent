@@ -20,12 +20,12 @@ MonoBehaviour:
   - playerPrefab: {fileID: 4483623310039523423, guid: c48e683056dac934481de488aded34b3,
       type: 3}
     playerID: 1
-    isUnlocked: 1
+    isUnlocked: 0
   - playerPrefab: {fileID: 883855727420601889, guid: d398bbf6cce345f4ea47a677310a9a90,
       type: 3}
     playerID: 2
-    isUnlocked: 1
+    isUnlocked: 0
   - playerPrefab: {fileID: 5961660906517723381, guid: 5fd02fdbfb29a794f8ec1aa3146ba57d,
       type: 3}
     playerID: 3
-    isUnlocked: 1
+    isUnlocked: 0
