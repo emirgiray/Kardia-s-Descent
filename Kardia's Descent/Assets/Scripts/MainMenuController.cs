@@ -245,7 +245,6 @@ public class MainMenuController : MonoBehaviour
             }
         }
         SpawnPlayerPreview(firstButton); //spawn first character
-        spawnedCharacter.GetComponentInChildren<Animator>().SetTrigger("Sleep");
         radarChart.SetStats(firstButton.characterPrefab.GetComponent<Player>().characterStats);
         firstButton.selectedImage.SetActive(true);
         selectedChar = firstButton;
@@ -269,7 +268,7 @@ public class MainMenuController : MonoBehaviour
             
 
             SetHeartButtons();
-            spawnedCharacter.GetComponentInChildren<Animator>().SetTrigger("Sleep");
+            if (!onMainMenu)spawnedCharacter.GetComponentInChildren<Animator>().SetTrigger("Sleep");
         }
     }
 

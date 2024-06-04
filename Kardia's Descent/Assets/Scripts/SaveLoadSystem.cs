@@ -25,6 +25,9 @@ public class SaveLoadSystem : MonoBehaviour
     public AllSceneTypes allSceneTypes;
     public InGameSaveData inGameSaveData;
     public MetaSaveData metaSaveData;
+
+    [SerializeField] private InGameSaveData dummySaveData;
+    
     
     // players
     // health 
@@ -146,6 +149,14 @@ public class SaveLoadSystem : MonoBehaviour
             
             //AssignValues();
         }
+
+        if (inGameSaveData.inGamePLayerDatas.Count == 0) // if the save file is empty
+        {
+            
+            Debug.LogError("Save file is empty, loading dummy data");
+            inGameSaveData = dummySaveData;
+        }
+        
     }
     
     bool firstTime = true;

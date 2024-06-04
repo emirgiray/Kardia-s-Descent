@@ -20146,7 +20146,10 @@ MonoBehaviour:
   rotateCharacter: 1
   rotateMultiplier: 0.1
   smoothnessDuration: 1
+  PlayerSlots: []
   table: {fileID: 0}
+  doorAnimator: {fileID: 0}
+  conveyorMaterial: {fileID: 0}
   tableStartTransform: {fileID: 0}
   tableEndTransform: {fileID: 0}
   tableMoveFrontDuration: 1
@@ -20158,10 +20161,20 @@ MonoBehaviour:
   TableMovedBackEvent:
     m_PersistentCalls:
       m_Calls: []
+  heartBG: {fileID: 0}
+  heartScrollRect: {fileID: 0}
+  heartLayoutTransform: {fileID: 0}
+  equippedHeartButton: {fileID: 0}
+  heartButtonPrefab: {fileID: 0}
+  emptyHeartImage: {fileID: 0}
+  playersAndHearts: []
   SelectionStartedEvent:
     m_PersistentCalls:
       m_Calls: []
   SelectionEndedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  HeartsSpawnedEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1199471053
@@ -27982,32 +27995,32 @@ PrefabInstance:
     - target: {fileID: 7632850872189376766, guid: 2cb7460ecb066dd42baf1795827245c7,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.20780626
+      value: 0.20780629
       objectReference: {fileID: 0}
     - target: {fileID: 7632850872189376766, guid: 2cb7460ecb066dd42baf1795827245c7,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0000015497208
+      value: -0.0000015199184
       objectReference: {fileID: 0}
     - target: {fileID: 7632850872189376766, guid: 2cb7460ecb066dd42baf1795827245c7,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.00000033527613
+      value: 0.00000032782555
       objectReference: {fileID: 0}
     - target: {fileID: 8716017361354939248, guid: 2cb7460ecb066dd42baf1795827245c7,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.20780626
+      value: 0.20780629
       objectReference: {fileID: 0}
     - target: {fileID: 8716017361354939248, guid: 2cb7460ecb066dd42baf1795827245c7,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0000015497208
+      value: -0.0000015199184
       objectReference: {fileID: 0}
     - target: {fileID: 8716017361354939248, guid: 2cb7460ecb066dd42baf1795827245c7,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.00000033527613
+      value: 0.00000032782555
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

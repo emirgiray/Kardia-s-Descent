@@ -11475,6 +11475,31 @@ MonoBehaviour:
     remainingSceneTypes: []
   metaSaveData:
     UnlockableCharacterDatas: []
+  dummySaveData:
+    inGamePLayerDatas:
+    - playerID: 0
+      health: 120
+      maxHealth: 120
+      isUnlocked: 1
+      Strength: 1
+      Dexterity: 6
+      Constitution: 2
+      Aiming: 6
+      equippedeartID: -1
+      heartsInInventory: 
+    startTime: 04/06/2024 23:25:04
+    totalKills: 0
+    totalDamageDealt: 0
+    totalDamageTaken: 0
+    totalHeartsCollected: 0
+    lastScene: Start Level
+    remainingSceneTypes:
+    - Start Level
+    - Boss Level 1
+    - Boss Level 2
+    - Companion Level 1
+    - Rest Level
+    - Companion Level 2
   saveFilePath: C:/Users/emiry/AppData/LocalLow/DefaultCompany/Kardia's Descent/Saves/
   saveFileFullPath: C:/Users/emiry/AppData/LocalLow/DefaultCompany/Kardia's Descent/Saves/saveFile.json
   metaSaveFileFullPath: C:/Users/emiry/AppData/LocalLow/DefaultCompany/Kardia's Descent/Saves/metaSaveFile.json
