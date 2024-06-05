@@ -44,9 +44,13 @@ public class HeartContainer : MonoBehaviour
         {
             EquipHeart(heartDataIn);
         }
+        else
+        {
+            character.everythingUseful.SpawnText("Heart Collected", Color.green, character.Head, 2, 3, 1);
+        }
 
        
-        
+
     }
     
     public void EquipHeart(HeartData heartDataIn)

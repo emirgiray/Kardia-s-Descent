@@ -9530,7 +9530,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -312.3, y: 373}
+  m_AnchoredPosition: {x: -418, y: 373}
   m_SizeDelta: {x: 623.02, y: 131.81998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4210825654354627767
@@ -11410,6 +11410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   everythingUseful: {fileID: 11400000, guid: 0adf6649dfa6c2b48877232f4002ec52, type: 2}
+  allEnemyStats: {fileID: 11400000, guid: b78c6204057dadc45b5f07915d5a0e96, type: 2}
   possibleNextScenes: []
   allSceneTypes: {fileID: 11400000, guid: 9718d308dff3b6e4490a8e268f7aa6d5, type: 2}
   EndDoorsInScene: []

@@ -35,7 +35,7 @@ public class SkillContainer : MonoBehaviour
     public bool characterTooClose = false;
     // public Action skillNotReadyAction;
     //public Action skillReadyAction;
-
+    public bool lastAttackMissed = false;
     private void OnEnable()
     {
         if (Character is Player)

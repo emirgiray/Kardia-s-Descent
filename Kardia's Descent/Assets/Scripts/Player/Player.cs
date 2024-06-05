@@ -91,7 +91,7 @@ public class Player : Character
     }
     private void BruiserDoubleAttack(SkillContainer.Skills skill)
     {
-        if (canBruiserDoubleAttack && skill.skillData.name.Contains("Basic"))
+        if (!SkillContainer.lastAttackMissed && canBruiserDoubleAttack && skill.skillData.name.Contains("Basic"))
         {
             base.AttackStart();
             remainingActionPoints += skill.actionPointUse;

@@ -158,7 +158,7 @@ public class SkillsData : ScriptableObject
         {
             skillMissVFX.SpawnVFX(selectedTile.transform);
         }
-        
+        ActivaterCharacter.SkillContainer.lastAttackMissed = true;
     }
 
     public virtual void DoSomething(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile,  Action OnComplete = null)
@@ -209,6 +209,8 @@ public class SkillsData : ScriptableObject
                 selectedTile.occupyingCoverPoint.SpawnText(Skill.damage, coverDamageMultipliar * damageMultipliar);
             }
         }
+        
+        ActivaterCharacter.SkillContainer.lastAttackMissed = false;
     }
     public void DoStun(SkillContainer.Skills Skill, Character ActivaterCharacter, Tile selectedTile,  Action OnComplete = null)
     {
