@@ -24684,7 +24684,7 @@ PrefabInstance:
         type: 3}
       propertyPath: SceneType
       value: 
-      objectReference: {fileID: 11400000, guid: 7b69c6ad76224514abd1015b9bcb27d2,
+      objectReference: {fileID: 11400000, guid: 623f37a80073f4747a4fa78eed7376ed,
         type: 2}
     - target: {fileID: 8980570601068670817, guid: a4ca6bc64677a0d4ca26d133dbaf148d,
         type: 3}
@@ -29894,7 +29894,7 @@ PrefabInstance:
         type: 3}
       propertyPath: SceneType
       value: 
-      objectReference: {fileID: 11400000, guid: 623f37a80073f4747a4fa78eed7376ed,
+      objectReference: {fileID: 11400000, guid: 4d43f2ebc2814f842bd1cd49cbf06a85,
         type: 2}
     - target: {fileID: 8980570601068670817, guid: a4ca6bc64677a0d4ca26d133dbaf148d,
         type: 3}
