@@ -70,10 +70,10 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: hero3_rig|Sleep
-      takeName: hero3_rig|Sleep
-      internalID: 6553645890671912267
+      takeName: hero3_rig|GetUp
+      internalID: 7338760023123147455
       firstFrame: 0
-      lastFrame: 0
+      lastFrame: 1
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
