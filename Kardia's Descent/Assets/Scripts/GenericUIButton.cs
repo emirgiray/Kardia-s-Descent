@@ -47,7 +47,7 @@ public class GenericUIButton : MonoBehaviour, IPointerClickHandler, IPointerEnte
     }
 
     
-    private void OnClick()
+    public void OnClick()
     {
         //Debug.Log($"button.interactable: {button.interactable}");
         punchTween?.Rewind();

@@ -25,6 +25,7 @@ public class SkillButton : MonoBehaviour
     [SerializeField] private TooltipTrigger tooltipTrigger;
     public Transform skillKeymapParent;
     public GameObject rangedDebuffImage;
+    public GenericUIButton genericUIButton;
 
 
     public void InitButton(SkillsData skillDataIn, SkillContainer.Skills skillIn , UnityAction useSkill, SkillContainer skillContainerIn)

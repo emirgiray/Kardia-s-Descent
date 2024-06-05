@@ -188,7 +188,8 @@ public class SkillContainer : MonoBehaviour
         {
             if (Character.remainingActionPoints < selectSkill.actionPointUse)
             {
-                Debug.Log("Not enough AP");
+                Character.everythingUseful.SpawnText("Not Enough AP", Color.red, Character.Head, 2, 3, 1);
+                selectSkill.skillButton.genericUIButton.OnClick();
                 return;
             }
 
@@ -220,6 +221,11 @@ public class SkillContainer : MonoBehaviour
                     }
                 }
             }
+        }
+        else if (Character.characterState == Character.CharacterState.WaitingNextRound )
+        {
+            Character.everythingUseful.SpawnText("Not Enough AP", Color.red, Character.Head, 2, 3, 1);
+            selectSkill.skillButton.genericUIButton.OnClick();
         }
     }
 

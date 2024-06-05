@@ -1140,8 +1140,17 @@ public class Interact : MonoBehaviour
 
         if (value)
         {
-            StartCoroutine(HitChanceUIToMousePos()); 
-            HitChanceText.text = selectedCharacter.SkillContainer.selectedSkill.accuracy.ToString() + "%";
+            StartCoroutine(HitChanceUIToMousePos());
+            if (selectedCharacter.SkillContainer.characterTooClose)
+            {
+                var acc = selectedCharacter.SkillContainer.selectedSkill.accuracy - selectedCharacter.SkillContainer.selectedSkill.coverAccuracyDebuff;
+                HitChanceText.text = acc + "%";
+            }
+            else
+            {
+                HitChanceText.text = selectedCharacter.SkillContainer.selectedSkill.accuracy.ToString() + "%";
+            }
+            
         }
         else
         {

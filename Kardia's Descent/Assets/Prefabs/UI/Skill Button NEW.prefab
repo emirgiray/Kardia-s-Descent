@@ -1317,6 +1317,7 @@ MonoBehaviour:
   tooltipTrigger: {fileID: 7845399136261106049}
   skillKeymapParent: {fileID: 5295945441198080777}
   rangedDebuffImage: {fileID: 1328368979264804055}
+  genericUIButton: {fileID: 6152439032645591979}
 --- !u!114 &7634455813275086659
 MonoBehaviour:
   m_ObjectHideFlags: 0

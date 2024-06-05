@@ -13,7 +13,7 @@ using UnityEngine.UI;
 //remember to make this script execute first but after turn system
 public class MainPrefabScript : MonoBehaviour
 {
-    [SerializeField] private EverythingUseful everythingUseful;
+    [SerializeField] public EverythingUseful everythingUseful;
     public static MainPrefabScript Instance;
     public Camera MainCamera;
     public SaveLoadSystem SaveLoadSystem;
