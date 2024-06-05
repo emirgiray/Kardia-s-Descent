@@ -57,12 +57,24 @@ public class SkillButton : MonoBehaviour
                 if (skillDataIn.skillType == SkillsData.SkillType.Melee)
                 {
                     tooltipTrigger.AddToContent($"Damage: {skillDataIn.skillDamage + skillContainerIn.Character.extraMeleeDamage}");
+                    var accuracy = skillDataIn.accuracy;
+                    if (accuracy > 100)
+                    {
+                        accuracy = 100;
+                    }
+                    tooltipTrigger.AddToContent($"Accuracy: {accuracy}");
                 }
                 else if (skillDataIn.skillType == SkillsData.SkillType.Ranged)
                 {
                     tooltipTrigger.AddToContent($"Damage: {skillDataIn.skillDamage}");
+                    var accuracy = skillDataIn.accuracy + skillContainerIn.Character.extraRangedAccuracy;
+                    if (accuracy > 100)
+                    {
+                        accuracy = 100;
+                    }
+                    tooltipTrigger.AddToContent($"Accuracy: {accuracy}");
                 }
-                tooltipTrigger.AddToContent($"Accuracy: {skillDataIn.accuracy + skillContainerIn.Character.extraRangedAccuracy}");
+                
             }
             
             tooltipTrigger.AddToContent($"Range: {skillDataIn.skillRange}");

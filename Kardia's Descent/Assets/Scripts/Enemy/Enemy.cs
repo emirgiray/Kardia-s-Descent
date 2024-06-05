@@ -40,6 +40,7 @@ public class Enemy : Character
     public void HPBarDelay()
     {
         hpBar.SetActive(true);
+        hpBar.GetComponent<WaitAndRaiseEvent>().WaitAndRaise();
     }
 
     private void KillOnDeath(Character character)

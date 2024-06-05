@@ -414,7 +414,22 @@ bool impact = false;
             otherDamageMultiplier = 1;
             //rangedCloseDamageMultiplier = 1;
             selectedSkill.SkillDamageMultipliar = 1;
-            if(characterTooClose) selectedSkill.accuracy += selectedSkill.coverAccuracyDebuff;
+            if (Character is Player)
+            {
+                if (selectedSkill.skillData.skillType == SkillsData.SkillType.Ranged && characterTooClose)
+                {
+                    // rangedCloseDamageMultiplier = 0.75f;
+                    selectedSkill.accuracy += selectedSkill.coverAccuracyDebuff;
+                }
+            }
+            else
+            {
+                if (Character.characterClass == Character.CharacterClass.Ranged && characterTooClose)
+                {
+                    //rangedCloseDamageMultiplier = 0.75f;
+                    selectedSkill.accuracy += selectedSkill.coverAccuracyDebuff;
+                }
+            }
             //characterTooClose = false;
         });
         
@@ -453,7 +468,7 @@ bool impact = false;
          
          foreach (var button in skillButtons)
          {
-             if (button.skillData.skillType == SkillsData.SkillType.Ranged && button.skillData.skillDamage > 0)
+             if ((button.skillData.skillType == SkillsData.SkillType.Ranged || Character.characterClass == Character.CharacterClass.Ranged) && button.skillData.skillDamage > 0)
              {
                  button.rangedDebuffImage.SetActive(value);
 
@@ -465,10 +480,14 @@ bool impact = false;
                  {
                      button.RemoveLastLine();
                  }
+                 characterTooClose = value;
              }
          }
 
-         characterTooClose = value;
+         if (value == false)
+         {
+             characterTooClose = value;
+         }
          
     }
 

@@ -1141,14 +1141,18 @@ public class Interact : MonoBehaviour
         if (value)
         {
             StartCoroutine(HitChanceUIToMousePos());
-            if (selectedCharacter.SkillContainer.characterTooClose)
+            if (selectedCharacter.SkillContainer.characterTooClose && selectedCharacter.SkillContainer.selectedSkill.skillData.skillType == SkillsData.SkillType.Ranged)
             {
+               
                 var acc = selectedCharacter.SkillContainer.selectedSkill.accuracy - selectedCharacter.SkillContainer.selectedSkill.coverAccuracyDebuff;
+                if (acc > 100) acc = 100;
                 HitChanceText.text = acc + "%";
             }
             else
             {
-                HitChanceText.text = selectedCharacter.SkillContainer.selectedSkill.accuracy.ToString() + "%";
+                var acc = selectedCharacter.SkillContainer.selectedSkill.accuracy;
+                if (acc > 100) acc = 100;
+                HitChanceText.text = acc + "%";
             }
             
         }
