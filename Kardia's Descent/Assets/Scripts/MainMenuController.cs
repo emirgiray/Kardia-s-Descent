@@ -266,7 +266,37 @@ public class MainMenuController : MonoBehaviour
                 }
             }
             
+            List<int> allIndexes = new();
+        
+            foreach (var savedPlayer in everythingUseful.SaveLoadSystem.inGameSaveData.inGamePLayerDatas)
+            {
+                foreach (var heartID in savedPlayer.heartsInInventory)
+                {
+                    allIndexes.Add(heartID);
+                }
+            }
+            foreach (var savedPlayer in everythingUseful.SaveLoadSystem.inGameSaveData.inGamePLayerDatas)
+            {
+                foreach (var heartID in savedPlayer.heartsInInventory)
+                {
+                    allIndexes.Add(heartID);
+                }
 
+                //if (savedPlayer.equippedeartID != -1)
+                {
+                    if (playersAndHearts.Exists(p => p.playerID == savedPlayer.playerID))
+                    {
+                        playersAndHearts.Find(p => p.playerID == savedPlayer.playerID).heartID = savedPlayer.equippedeartID;
+                    }
+                    else
+                    {
+                        playersAndHearts.Add(new PlayerAndHeart() {playerID = savedPlayer.playerID, heartID = savedPlayer.equippedeartID});
+                    }
+                }
+            }
+            
+            
+            
             SetHeartButtons();
             if (!onMainMenu)spawnedCharacter.GetComponentInChildren<Animator>().SetTrigger("Sleep");
         }
@@ -695,7 +725,28 @@ public class MainMenuController : MonoBehaviour
             if (playerIndex == savedPlayer.playerID)
             {
                 
-                if (savedPlayer.equippedeartID != -1)
+               
+                if (playersAndHearts.Find(p => p.playerID == playerIndex).heartID != -1)
+                {
+                    equippedHeartButton.InitForMenuButtonHeart(everythingUseful.SaveLoadSystem.allHeartDatas.allHearts[playersAndHearts.Find(p => p.playerID == playerIndex).heartID]);
+                    if (!heartsActivated)
+                    {
+                        heartBG.transform.DOLocalMoveX(-436, .25f ).SetEase(Ease.InOutQuad).SetRelative();
+                        heartsActivated = true;
+                    }
+
+                }
+                else
+                {
+                    equippedHeartButton.InitForMenuButtonHeart(null);
+                    equippedHeartButton.SkillImage.sprite = emptyHeartImage;
+                    if (!heartsActivated)
+                    {
+                        heartBG.transform.DOLocalMoveX(-436, .25f ).SetEase(Ease.InOutQuad).SetRelative();
+                        heartsActivated = true;
+                    }
+                }
+                /*if (savedPlayer.equippedeartID != -1)
                 {
                     equippedHeartButton.InitForMenuButtonHeart(everythingUseful.SaveLoadSystem.allHeartDatas.allHearts[savedPlayer.equippedeartID]);
                     if (!heartsActivated)
@@ -714,7 +765,7 @@ public class MainMenuController : MonoBehaviour
                         heartBG.transform.DOLocalMoveX(-436, .25f ).SetEase(Ease.InOutQuad).SetRelative();
                         heartsActivated = true;
                     }
-                }
+                }*/
                     
                 /*foreach (var heartIndex in savedPlayer.heartsInInventory)
                 {
@@ -774,6 +825,15 @@ public class MainMenuController : MonoBehaviour
         else
         {
             playersAndHearts.Add(new PlayerAndHeart() {playerID = PlayerID, heartID = heartIndex});
+        }
+
+        foreach (var pnh in playersAndHearts)
+        {
+            if (pnh.playerID != PlayerID && pnh.heartID == heartIndex)
+            {
+                pnh.heartID = -1;
+            }
+            
         }
         
     }
