@@ -96,13 +96,30 @@ public class HealStation : MonoBehaviour
         healMultipliarEffect.gameObject.SetActive(false);
         
         HealStationInfoText.gameObject.SetActive(true);
+
+        List<HeartData> allPlayersHearts = new();
+        foreach (var player in everythingUseful.MainPrefabScript.spawnedPlayerScripts)
+        {
+            foreach (var heart in player.inventory.heartsInInventory)
+            {
+                allPlayersHearts.Add(heart);
+            }
+        }
         
-        for (int i = 0; i < player.inventory.heartsInInventory.Count; i++)
+        /*for (int i = 0; i < player.inventory.heartsInInventory.Count; i++)
         {
             HeartButtons[i].GetComponent<Image>().sprite = player.inventory.heartsInInventory[i].HeartSprite;
             //HeartButtons[i].GetComponent<Button>().interactable = true;
             var i1 = i;
             HeartButtons[i].GetComponent<Button>().onClick.AddListener(() => SelectHeart(player.inventory.heartsInInventory[i1]));
+        }*/
+        
+        for (int i = 0; i < allPlayersHearts.Count; i++)
+        {
+            HeartButtons[i].GetComponent<Image>().sprite = allPlayersHearts[i].HeartSprite;
+            //HeartButtons[i].GetComponent<Button>().interactable = true;
+            var i1 = i;
+            HeartButtons[i].GetComponent<Button>().onClick.AddListener(() => SelectHeart(allPlayersHearts[i1]));
         }
         
     }
@@ -242,10 +259,32 @@ public class HealStation : MonoBehaviour
         // activate the parabola and on its end activate the skill
         projectileMove.parabolaController.OnParabolaEnd.AddListener(() =>
         {
-            player.inventory.heartsInInventory.Remove(selectedHeartData);
+            /*player.inventory.heartsInInventory.Remove(selectedHeartData);
             if (player.heartContainer.heartData == selectedHeartData)
             {
                 player.heartContainer.UnequipHeart(selectedHeartData);
+            }*/
+
+            foreach (var player in everythingUseful.MainPrefabScript.spawnedPlayerScripts)
+            {
+                if (player.inventory.heartsInInventory.Contains(selectedHeartData))
+                {
+                    player.inventory.heartsInInventory.Remove(selectedHeartData);
+                    
+                }
+              
+                
+            }
+            
+            foreach (var player in everythingUseful.MainPrefabScript.spawnedPlayerScripts)
+            {
+                
+                if (player.heartContainer.heartData == selectedHeartData)
+                {
+                    player.heartContainer.UnequipHeart(selectedHeartData);
+                }
+              
+                
             }
         
             int healthToGive = (int)(healAmount * healMultipliar);

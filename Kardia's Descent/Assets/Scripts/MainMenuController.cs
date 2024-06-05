@@ -113,7 +113,7 @@ public class MainMenuController : MonoBehaviour
     [BoxGroup("Hearts")] [SerializeField] [HideIf("onMainMenu")]
     private Sprite emptyHeartImage;
     [BoxGroup("Hearts")] [SerializeField] [HideIf("onMainMenu")]
-    private List<PlayerAndHeart> playersAndHearts = new();
+    public List<PlayerAndHeart> playersAndHearts = new();
     private List<GameObject> spawnedHeartButtons = new();
     
     [FoldoutGroup("Events")]
@@ -832,6 +832,10 @@ public class MainMenuController : MonoBehaviour
             if (pnh.playerID != PlayerID && pnh.heartID == heartIndex)
             {
                 pnh.heartID = -1;
+                
+                /*everythingUseful.SaveLoadSystem.inGameSaveData.inGamePLayerDatas.Find(p => p.playerID == pnh.playerID).heartsInInventory.Remove(heartIndex);
+                everythingUseful.SaveLoadSystem.inGameSaveData.inGamePLayerDatas.Find(p => p.playerID == PlayerID).heartsInInventory.Add(heartIndex);*/
+                
             }
             
         }
