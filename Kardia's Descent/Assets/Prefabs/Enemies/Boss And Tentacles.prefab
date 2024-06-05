@@ -522,6 +522,41 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2781874504686662364}
     m_Modifications:
+    - target: {fileID: 764179297314619640, guid: b25ed9aedb9272947855d174bbbb0312,
+        type: 3}
+      propertyPath: Dead.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 764179297314619640, guid: b25ed9aedb9272947855d174bbbb0312,
+        type: 3}
+      propertyPath: Dead.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 764179297314619640, guid: b25ed9aedb9272947855d174bbbb0312,
+        type: 3}
+      propertyPath: Dead.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 3591598875515019587}
+    - target: {fileID: 764179297314619640, guid: b25ed9aedb9272947855d174bbbb0312,
+        type: 3}
+      propertyPath: Dead.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 764179297314619640, guid: b25ed9aedb9272947855d174bbbb0312,
+        type: 3}
+      propertyPath: Dead.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: set_enabled
+      objectReference: {fileID: 0}
+    - target: {fileID: 764179297314619640, guid: b25ed9aedb9272947855d174bbbb0312,
+        type: 3}
+      propertyPath: Dead.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: UnityEngine.Behaviour, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 764179297314619640, guid: b25ed9aedb9272947855d174bbbb0312,
+        type: 3}
+      propertyPath: Dead.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2644797998091396291, guid: b25ed9aedb9272947855d174bbbb0312,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -603,6 +638,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4139035413037842162}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3591598875515019587 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 623505430628409265, guid: b25ed9aedb9272947855d174bbbb0312,
+    type: 3}
+  m_PrefabInstance: {fileID: 4139035413037842162}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3740846158885731850 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 764179297314619640, guid: b25ed9aedb9272947855d174bbbb0312,
@@ -635,6 +682,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2781874504686662364}
     m_Modifications:
+    - target: {fileID: 764179297314619640, guid: 7207d4300dda5b74e96c3fa27ab929a9,
+        type: 3}
+      propertyPath: Max
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 764179297314619640, guid: 7207d4300dda5b74e96c3fa27ab929a9,
         type: 3}
       propertyPath: Dead.m_PersistentCalls.m_Calls.Array.size
@@ -1447,6 +1499,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2781874504686662364}
     m_Modifications:
+    - target: {fileID: 764179297314619640, guid: b25ed9aedb9272947855d174bbbb0312,
+        type: 3}
+      propertyPath: Max
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 2644797998091396291, guid: b25ed9aedb9272947855d174bbbb0312,
         type: 3}
       propertyPath: m_LocalPosition.x
