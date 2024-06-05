@@ -154,7 +154,13 @@ public class SceneChanger : MonoBehaviour
     
     public void ChangeScene(string Value)
     {
-        allEnemyStats.IncreaseStats(1);
+
+        if (!isOnMainMenu)
+        {
+            allEnemyStats.IncreaseStats(1);
+            everythingUseful.SaveLoadSystem.metaSaveData.difficulty ++;
+            everythingUseful.SaveLoadSystem.MetaSave();
+        }
         
         everythingUseful.MainPrefabScript.ClearPrevious();
         everythingUseful.SaveLoadSystem.inGameSaveData.lastScene = Value;

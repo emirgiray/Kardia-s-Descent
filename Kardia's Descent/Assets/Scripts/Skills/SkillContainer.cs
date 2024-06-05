@@ -366,7 +366,7 @@ bool impact = false;
             }
            
         }
-        
+        ApplyExtraStatValues();
         Character.Attack();
         StartCoroutine(AttackCancelDelay(attackAnimLength, selectedSkill, selectedTile, enemy, OnComplete));
         //Debug.Log($"anim length: {attackAnimLength}");
@@ -574,11 +574,11 @@ bool impact = false;
         {
             if (skill.skillData.skillType == SkillsData.SkillType.Ranged)
             {
-                skill.accuracy += Character.extraRangedAccuracy;
+                skill.accuracy = skill.skillData.accuracy + Character.extraRangedAccuracy;
             }
             else if (skill.skillData.skillType == SkillsData.SkillType.Melee)
             {
-                skill.damage += Character.extraMeleeDamage;
+                skill.damage = skill.skillData.skillDamage + Character.extraMeleeDamage;
             }
         }
         

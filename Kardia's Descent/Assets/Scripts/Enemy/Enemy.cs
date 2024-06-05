@@ -51,6 +51,11 @@ public class Enemy : Character
         }
     }
 
+    public void DecreaseMaxHP()
+    {
+        health.Max -= 50;
+        health._Health = health.HealthAi;
+    }
     
     /*private void Update()
     {

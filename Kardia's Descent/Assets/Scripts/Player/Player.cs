@@ -114,10 +114,11 @@ public class Player : Character
 
         if (heartContainer.heartData.heartIndex == 0) //jack the ripper
         {
-            if (killsInTurn >= 3)
+            if (killsInTurn >= 2)
             {
                 heartContainer.isPowerUnlocked = true;
                 JackTheRipperQuestCompleted?.Invoke();
+                heartContainer.heartData.isPowerUnlocked = true;
             }
         }
     }
@@ -126,6 +127,8 @@ public class Player : Character
     {
         killsInTurn++;
         totalKills++;
+        
+        CheckeHeartQuest();
     }
 
     private void ResetKillsInTurn()

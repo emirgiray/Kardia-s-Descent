@@ -46,6 +46,7 @@ public class DamageHandler : MonoBehaviour
         if (attacker is Player)
         {
             character.everythingUseful.GameManager.totalDamageDealt += totalDamage;
+            
         }
         if (attacker is Enemy)
         {
@@ -82,6 +83,7 @@ public class DamageHandler : MonoBehaviour
         {
             attacker.GetComponent<Player>().IncreaseKills();
             character.everythingUseful.GameManager.totalKills++;
+            attacker.OnKill();
         }
     }
 

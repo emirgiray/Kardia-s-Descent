@@ -1213,6 +1213,19 @@ public class Character : MonoBehaviour
         }
     }
 
+    public void OnKill()
+    {
+        if (this is Player && heartContainer.isPowerUnlocked)
+        {
+            if (heartContainer.heartData.heartIndex == 0) //jack the ripper
+            {
+                remainingActionPoints += 2;
+                OnActionPointsChangeEvent?.Invoke(remainingActionPoints, "+");
+                everythingUseful.SpawnText("+2 AP", Color.green, Head, 3, 1f, 2);
+            }
+        }
+    }
+
     #endregion
 
   
