@@ -46,9 +46,12 @@ public class GameManager : MonoBehaviour
     public UnityEvent GamePausedEvent;
     [FoldoutGroup("Events")]
     public UnityEvent GameUnpausedEvent;
+    [FoldoutGroup("Events")]
+    public UnityEvent RunStartedEvent;
     
     public void StartRun() // this fires once the player presses start
     {
+        RunStartedEvent?.Invoke();
         MainPrefabScript.Instance.SelectedPlayers = SelectedPlayers;
         startTime = DateTime.Now;
         everythingUseful.SaveLoadSystem.loadOnAwake = true;

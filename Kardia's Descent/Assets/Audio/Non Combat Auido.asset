@@ -15,9 +15,7 @@ MonoBehaviour:
   AudioManagerCenter: {fileID: 11400000, guid: 4e6cb3a3a333b3246859816701a12be1, type: 2}
   MixerGroup: {fileID: -6000434627063296039, guid: 0fea7b96089dff640a53cd560574e66e,
     type: 2}
-  clips:
-  - {fileID: 8300000, guid: 83d90b446c87ad042ab5bb0825ae6d35, type: 3}
-  - {fileID: 8300000, guid: 10a765b491e0d9045aa99cc660cfd60c, type: 3}
+  clips: []
   volume: {x: 0.9, y: 1}
   pitch: {x: 0.9, y: 1}
   _3DAudios: 0

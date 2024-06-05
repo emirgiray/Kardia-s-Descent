@@ -618,7 +618,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2244
-        y: 637
+        y: 641
         width: 428
         height: 499
       alignment: 0
@@ -1201,6 +1201,153 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: TopHex_Boss1
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 431
+        width: 602
+        height: 602
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fc4e46cd6994c944b7008e92f43324c
+      internalID: -117203213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TopHex_Boss2
+      rect:
+        serializedVersion: 2
+        x: 3116
+        y: 0
+        width: 597
+        height: 600
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5606ffa0dd363c947bc8c79d679fd03f
+      internalID: 347480393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TopHex_Boss3
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 0
+        width: 597
+        height: 600
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e9ec33eac526a44198d7724e2b03a92
+      internalID: -1279185759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: h5_s4
+      rect:
+        serializedVersion: 2
+        x: 2242
+        y: 2258
+        width: 434
+        height: 503
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b7e90e7f299b1e4199a6d66871295ac
+      internalID: -898291422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: h5_s3
+      rect:
+        serializedVersion: 2
+        x: 2734
+        y: 2258
+        width: 433
+        height: 503
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5112e32ae9ca46942927474703ee466e
+      internalID: -1573475283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: h5_s2
+      rect:
+        serializedVersion: 2
+        x: 3261
+        y: 2258
+        width: 433
+        height: 503
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6f7398f0eb28ee4daa8a71a7029e6a5
+      internalID: -1571773627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: h5_s1
+      rect:
+        serializedVersion: 2
+        x: 3748
+        y: 2258
+        width: 432
+        height: 503
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c810f88e8eea6a41a53295345719a9f
+      internalID: -1990496722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -1251,6 +1398,9 @@ TextureImporter:
       PartyBG_h3: -547422700
       PartyBG_h4: -721146674
       TopHex_Borders: 274480220
+      TopHex_Boss1: -117203213
+      TopHex_Boss2: 347480393
+      TopHex_Boss3: -1279185759
       TopHex_Enemy1: -2145818744
       TopHex_Enemy2: -845788115
       TopHex_Enemy3: -1957219354
@@ -1271,6 +1421,10 @@ TextureImporter:
       h4_s2: 78700058
       h4_s3: -926933825
       h4_s4: 819807239
+      h5_s1: -1990496722
+      h5_s2: -1571773627
+      h5_s3: -1573475283
+      h5_s4: -898291422
       heart_0: 1158375599
       heart_1: 2005359547
       heart_2: -92832186

@@ -624,6 +624,7 @@ public class MainMenuController : MonoBehaviour
 
     public void Continue()
     {
+        everythingUseful.GameManager.RunStartedEvent?.Invoke();
         everythingUseful.SaveLoadSystem.LoadGame();
         everythingUseful.SceneChanger.ChangeScene(everythingUseful.SaveLoadSystem.inGameSaveData.lastScene);
     }

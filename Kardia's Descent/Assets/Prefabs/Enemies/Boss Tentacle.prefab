@@ -1262,13 +1262,13 @@ PrefabInstance:
         type: 3}
       propertyPath: characterStats
       value: 
-      objectReference: {fileID: 11400000, guid: 92ac2d86e6fa3f240a0b3fedf507c3dd,
+      objectReference: {fileID: 11400000, guid: 0d8b8da8bde0a2949a3edf769d1cbb08,
         type: 2}
     - target: {fileID: 8148688877583324293, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
         type: 3}
       propertyPath: characterSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 0c49f043ba03541119c11cf29d66c1e7,
+      objectReference: {fileID: 347480393, guid: f050367bbcaea674495c2d5e36fc140b,
         type: 3}
     - target: {fileID: 8148688877583324293, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
         type: 3}

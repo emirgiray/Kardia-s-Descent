@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Medic Heal
   m_EditorClassIdentifier: 
   everythingUseful: {fileID: 11400000, guid: 0adf6649dfa6c2b48877232f4002ec52, type: 2}
-  skillSprite: {fileID: 21300032, guid: 7ab74e659e1f0a34d9cfec21c478fc12, type: 3}
+  skillSprite: {fileID: -1573475283, guid: f050367bbcaea674495c2d5e36fc140b, type: 3}
   skillName: Battlefield Patch Up
   skillDescription: Use 5 ap to fully recover health of an ally.
   skillID: 16
@@ -33,6 +33,7 @@ MonoBehaviour:
   cleaveTimes: 1
   cleaveStartLeft: 1
   animatorOverrideController: {fileID: 0}
+  useParabolla: 0
   skillStartVFX: {fileID: 0}
   skillImpactVFX: {fileID: 0}
   skillHitVFX:

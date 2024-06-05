@@ -71,10 +71,10 @@ public class TurnSystem : MonoBehaviour
     {
         if (!everythingUseful.SceneChanger.isOnMainMenu) 
         {
-            combatMusic.StopAudioSource();
-            nonCombatMusic.StopAudioSource();
+            //combatMusic.StopAudioSource();
+           // nonCombatMusic.StopAudioSource();
         
-            nonCombatMusic.Play(everythingUseful.Interact.mainCam.transform.parent);
+           // nonCombatMusic.Play(everythingUseful.Interact.mainCam.transform.parent);
         }
     }
 
