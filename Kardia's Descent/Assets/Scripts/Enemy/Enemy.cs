@@ -27,6 +27,14 @@ public class Enemy : Character
         everythingUseful.TurnSystem.OnEnemyCheckStunTurnEvent += CheckRemoveStun;
         
         base.OnCharacterDeath += KillOnDeath;
+
+        if (name.Contains("Boss"))
+        {
+            foreach (var enemy in killOnDeath)
+            {
+                enemy.health.Dead.AddListener(this.DecreaseMaxHP);
+            }
+        }
     }
 
     private void OnDisable()
@@ -53,7 +61,7 @@ public class Enemy : Character
 
     public void DecreaseMaxHP()
     {
-        health.Max -= 50;
+        health.Max -= 100;
         health._Health = health.HealthAi;
     }
     
