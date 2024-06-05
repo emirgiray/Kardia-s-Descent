@@ -52,7 +52,7 @@ Material:
     - _Dissolve_Amount: 0
     - _Dissolve_Scale: 90
     - _DrawOrder: 0
-    - _Fill_Amount: 4.9
+    - _Fill_Amount: 1.73
     - _Has_Normal: 1
     - _Metalllic: 0.6
     - _NormalScale: 1.12
