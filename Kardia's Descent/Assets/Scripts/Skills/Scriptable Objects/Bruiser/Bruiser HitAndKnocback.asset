@@ -17,18 +17,26 @@ MonoBehaviour:
   skillName: Bully
   skillDescription: Hit and push the opponent back 1 hex.
   skillID: 7
-  skillDamage: 0
+  skillDamage: -20
   skillRange: 1
   skillCooldown: 2
-  actionPointUse: 2
+  actionPointUse: 3
   skillEffectDuration: 1
   skillBuffDebuffAmount: 1
   permaBuff: 1
   accuracy: 75
   coverAccuracyDebuff: 0
+  coverDamageMultipliar: 0.1
+  impactRange: 2
+  innerImpactRadius: 1
+  outerImpactDamageDebuff: 0.5
+  cleaveTimes: 1
+  cleaveStartLeft: 1
   animatorOverrideController: {fileID: 22100000, guid: 43da974f8ebaab7419bd2a1abc3c3b14,
     type: 2}
+  useParabolla: 0
   skillStartVFX: {fileID: 0}
+  skillImpactVFX: {fileID: 0}
   skillHitVFX:
   - {fileID: 11400000, guid: 2d7ba90a2d4cad44ea904346e7ce5f75, type: 2}
   skillMissVFX: {fileID: 11400000, guid: f95dd6b5fb3dc4f4c9158365d41b4807, type: 2}

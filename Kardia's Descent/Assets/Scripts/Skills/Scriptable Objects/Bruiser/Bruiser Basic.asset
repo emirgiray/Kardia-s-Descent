@@ -24,7 +24,7 @@ MonoBehaviour:
   skillEffectDuration: 0
   skillBuffDebuffAmount: 0
   permaBuff: 1
-  accuracy: 75
+  accuracy: 70
   coverAccuracyDebuff: 0
   coverDamageMultipliar: 0.1
   impactRange: 2
@@ -34,6 +34,7 @@ MonoBehaviour:
   cleaveStartLeft: 1
   animatorOverrideController: {fileID: 22100000, guid: 21d0ca836db6d7d489d8e8d19f188d7c,
     type: 2}
+  useParabolla: 0
   skillStartVFX: {fileID: 0}
   skillImpactVFX: {fileID: 0}
   skillHitVFX:

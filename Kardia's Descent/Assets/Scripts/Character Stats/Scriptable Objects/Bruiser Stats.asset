@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Bruiser Stats
   m_EditorClassIdentifier: 
   Strength: 8
-  Dexterity: 6
+  Dexterity: 4
   Constitution: 6
   Aiming: 6
   DefaultStrength: 8
-  DefaultDexterity: 6
+  DefaultDexterity: 4
   DefaultConstitution: 6
   DefaultAiming: 6

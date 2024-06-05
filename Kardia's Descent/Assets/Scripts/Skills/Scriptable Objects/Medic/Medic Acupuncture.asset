@@ -19,12 +19,12 @@ MonoBehaviour:
   skillID: 15
   skillDamage: 5
   skillRange: 4
-  skillCooldown: 0
-  actionPointUse: 0
-  skillEffectDuration: 1
+  skillCooldown: 4
+  actionPointUse: 4
+  skillEffectDuration: 2
   skillBuffDebuffAmount: 0
   permaBuff: 1
-  accuracy: 75
+  accuracy: 60
   coverAccuracyDebuff: 0
   coverDamageMultipliar: 1
   impactRange: 2

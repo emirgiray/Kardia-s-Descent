@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Strength: 1
   Dexterity: 4
-  Constitution: 7
-  Aiming: 5
+  Constitution: 2
+  Aiming: 6
   DefaultStrength: 1
   DefaultDexterity: 4
-  DefaultConstitution: 7
-  DefaultAiming: 5
+  DefaultConstitution: 2
+  DefaultAiming: 6

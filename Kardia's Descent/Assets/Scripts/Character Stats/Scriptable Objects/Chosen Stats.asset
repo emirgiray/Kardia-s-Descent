@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Chosen Stats
   m_EditorClassIdentifier: 
   Strength: 0
-  Dexterity: 4
+  Dexterity: 6
   Constitution: 4
-  Aiming: 6
+  Aiming: 8
   DefaultStrength: 0
-  DefaultDexterity: 4
+  DefaultDexterity: 6
   DefaultConstitution: 4
-  DefaultAiming: 6
+  DefaultAiming: 8
