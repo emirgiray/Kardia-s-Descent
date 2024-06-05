@@ -798,6 +798,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss Body
       objectReference: {fileID: 0}
+    - target: {fileID: 7992140855804202093, guid: 7207d4300dda5b74e96c3fa27ab929a9,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7992140855804202093, guid: 7207d4300dda5b74e96c3fa27ab929a9,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.029988142
+      objectReference: {fileID: 0}
+    - target: {fileID: 7992140855804202093, guid: 7207d4300dda5b74e96c3fa27ab929a9,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8402422978687820092, guid: 7207d4300dda5b74e96c3fa27ab929a9,
         type: 3}
       propertyPath: CombatStartedEvent.m_PersistentCalls.m_Calls.Array.size
