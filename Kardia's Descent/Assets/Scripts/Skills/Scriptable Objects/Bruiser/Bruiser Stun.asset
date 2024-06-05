@@ -32,7 +32,7 @@ MonoBehaviour:
   outerImpactDamageDebuff: 0.5
   cleaveTimes: 1
   cleaveStartLeft: 1
-  animatorOverrideController: {fileID: 22100000, guid: 21d0ca836db6d7d489d8e8d19f188d7c,
+  animatorOverrideController: {fileID: 22100000, guid: 01d7239cdd05aa6429b062f338f4af72,
     type: 2}
   useParabolla: 0
   skillStartVFX: {fileID: 0}
