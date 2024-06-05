@@ -21,6 +21,7 @@ public class SaveLoadSystem : MonoBehaviour
     public bool encryptData;
     
     public AllPlayers allPlayers;
+    public AllEnemyStats allEnemyStats;
     public AllHeartDatas allHeartDatas;
     public AllSceneTypes allSceneTypes;
     public InGameSaveData inGameSaveData;
@@ -263,6 +264,9 @@ public class SaveLoadSystem : MonoBehaviour
         {
             allPlayers.allPlayers[metaSaveData.UnlockableCharacterDatas[i].playerID].isUnlocked = metaSaveData.UnlockableCharacterDatas[i].isUnlocked;
         }
+        allEnemyStats.ResetToDefault();
+        allEnemyStats.IncreaseStats(metaSaveData.difficulty);
+        
     }
 
     public void SetValuesFirstTime()
@@ -421,6 +425,7 @@ public class InGamePLayerData
 public class MetaSaveData
 {
     public List<UnlockabledCharacterData> UnlockableCharacterDatas = new();
+    public int difficulty = 0;
 }
 
 [Serializable]

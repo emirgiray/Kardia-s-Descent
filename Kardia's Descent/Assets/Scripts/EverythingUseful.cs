@@ -34,6 +34,8 @@ public class EverythingUseful : ScriptableObject
     [FoldoutGroup("Assigners")]
     public AllPlayers AllPlayers;
     [FoldoutGroup("Assigners")]
+    public AllEnemyStats AllEnemyStats; 
+    [FoldoutGroup("Assigners")]
     public SGT_AudioSFXManager AudioManager;
     [FoldoutGroup("Assigners")]
     public CinemachineVirtualCamera CinemachineVirtualCamera;

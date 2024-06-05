@@ -14,14 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   everythingUseful: {fileID: 11400000, guid: 0adf6649dfa6c2b48877232f4002ec52, type: 2}
   remainingSceneTypes:
-  - {fileID: 11400000, guid: ead2320d9fd1446439165f89779a626c, type: 2}
   - {fileID: 11400000, guid: 87deb5575bf475c4c8eb29980061a36a, type: 2}
-  - {fileID: 11400000, guid: 4d43f2ebc2814f842bd1cd49cbf06a85, type: 2}
   - {fileID: 11400000, guid: 8e9a730be01609f4cae43473b877c8c2, type: 2}
-  - {fileID: 11400000, guid: 7b69c6ad76224514abd1015b9bcb27d2, type: 2}
   - {fileID: 11400000, guid: 623f37a80073f4747a4fa78eed7376ed, type: 2}
   defaultAllSceneTypes:
-  - {fileID: 11400000, guid: ead2320d9fd1446439165f89779a626c, type: 2}
   - {fileID: 11400000, guid: 87deb5575bf475c4c8eb29980061a36a, type: 2}
   - {fileID: 11400000, guid: 4d43f2ebc2814f842bd1cd49cbf06a85, type: 2}
   - {fileID: 11400000, guid: 8e9a730be01609f4cae43473b877c8c2, type: 2}

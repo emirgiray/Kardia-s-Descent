@@ -425,6 +425,12 @@ public class MainMenuController : MonoBehaviour
             }
             
             everythingUseful.MainPrefabScript.InitializeLevel(PlayerSlots);
+
+            if (everythingUseful.MainPrefabScript.SelectedPlayers.Count == 1)
+            {
+                everythingUseful.SaveLoadSystem.metaSaveData.difficulty = 0;
+                everythingUseful.AllEnemyStats.ResetToDefault();
+            }
             
             for (int i = 0; i < everythingUseful.MainPrefabScript.spawnedPlayers.Count; i++) // then assign the values to the players
             {

@@ -40,7 +40,7 @@ public class SceneChanger : MonoBehaviour
     private void Awake()
     {
         currentScene = SceneManager.GetActiveScene().name;
-        allEnemyStats.ResetToDefault();
+       // allEnemyStats.ResetToDefault();
     }
 
     [Button, GUIColor(1f, 1f, 1f)]
@@ -154,7 +154,7 @@ public class SceneChanger : MonoBehaviour
     
     public void ChangeScene(string Value)
     {
-        allEnemyStats.IncreaseStats();
+        allEnemyStats.IncreaseStats(1);
         
         everythingUseful.MainPrefabScript.ClearPrevious();
         everythingUseful.SaveLoadSystem.inGameSaveData.lastScene = Value;

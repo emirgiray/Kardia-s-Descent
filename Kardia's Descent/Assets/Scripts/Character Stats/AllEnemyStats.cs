@@ -7,14 +7,14 @@ public class AllEnemyStats : ScriptableObject
 {
     public List<CharacterStats> allEnemyStats = new();
 
-    public void IncreaseStats()
+    public void IncreaseStats(int value)
     {
         foreach (var var in allEnemyStats)
         {
-            var.AddStrength(1);
-            var.AddDexterity(1);
-            var.AddConstitution(1);
-            var.AddAiming(1);
+            var.AddStrength(value);
+            var.AddDexterity(value);
+            var.AddConstitution(value);
+            var.AddAiming(value);
         }
     }
 

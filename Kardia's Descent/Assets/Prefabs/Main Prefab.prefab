@@ -11471,6 +11471,7 @@ MonoBehaviour:
   metaSaveFileName: metaSaveFile
   encryptData: 0
   allPlayers: {fileID: 11400000, guid: cc6fd88f6d85f664483d2dda6793e81c, type: 2}
+  allEnemyStats: {fileID: 11400000, guid: b78c6204057dadc45b5f07915d5a0e96, type: 2}
   allHeartDatas: {fileID: 11400000, guid: 3205190d312943148bab0c147b621110, type: 2}
   allSceneTypes: {fileID: 11400000, guid: 9718d308dff3b6e4490a8e268f7aa6d5, type: 2}
   inGameSaveData:
@@ -11484,6 +11485,7 @@ MonoBehaviour:
     remainingSceneTypes: []
   metaSaveData:
     UnlockableCharacterDatas: []
+    difficulty: 0
   dummySaveData:
     inGamePLayerDatas:
     - playerID: 0
