@@ -10,6 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1086629163380962625, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
         type: 3}
+      propertyPath: Max
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1086629163380962625, guid: 4f1ae8bca5a16a14b9c4c32367ffc586,
+        type: 3}
       propertyPath: Dead.m_PersistentCalls.m_Calls.Array.size
       value: 3
       objectReference: {fileID: 0}
