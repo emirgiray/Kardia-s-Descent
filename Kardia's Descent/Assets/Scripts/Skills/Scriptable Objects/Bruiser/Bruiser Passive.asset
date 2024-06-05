@@ -15,7 +15,7 @@ MonoBehaviour:
   everythingUseful: {fileID: 11400000, guid: 0adf6649dfa6c2b48877232f4002ec52, type: 2}
   skillSprite: {fileID: 1645680785, guid: f050367bbcaea674495c2d5e36fc140b, type: 3}
   skillName: Double Trouble
-  skillDescription: Passive, perform every basic attack twice.
+  skillDescription: Attack again after a successful attack.
   skillID: 8
   skillDamage: 0
   skillRange: 0
@@ -26,8 +26,16 @@ MonoBehaviour:
   permaBuff: 1
   accuracy: 0
   coverAccuracyDebuff: 0
+  coverDamageMultipliar: 0.1
+  impactRange: 2
+  innerImpactRadius: 1
+  outerImpactDamageDebuff: 0.5
+  cleaveTimes: 1
+  cleaveStartLeft: 1
   animatorOverrideController: {fileID: 0}
+  useParabolla: 0
   skillStartVFX: {fileID: 0}
+  skillImpactVFX: {fileID: 0}
   skillHitVFX: []
   skillMissVFX: {fileID: 0}
   skillAudioEvent: {fileID: 0}

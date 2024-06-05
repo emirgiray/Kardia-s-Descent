@@ -39,7 +39,7 @@ MonoBehaviour:
   skillHitVFX:
   - {fileID: 11400000, guid: 4fcc074eb6155394ca565f42d59efca3, type: 2}
   skillMissVFX: {fileID: 0}
-  skillAudioEvent: {fileID: 0}
+  skillAudioEvent: {fileID: 11400000, guid: e84f870b740c43246b3b5d090d4e1aaf, type: 2}
   skillType: 0
   passiveOrActive: 0
   skillClass: 2
