@@ -154,7 +154,7 @@ public class MainPrefabScript : MonoBehaviour
             GameObject preview = Instantiate(playerScript.PlayerPreview, playerPreviewParent.transform);
             preview.transform.localPosition = new Vector3(i * 10, 0, 0);
             previews.Add(preview);
-
+            playerScript.isUnlocked = everythingUseful.AllPlayers.allPlayers[playerScript.playerID].isUnlocked;
             GameObject partyRoundCard = Instantiate(PartyRoundCardPrefab, PartyRoundCardsSlot);
             partyRoundCard.GetComponent<CharacterRoundCard>().Init(playerScript, TurnSystem.RoundInfo.GetComponent<RoundInfo>(), true);
             partyRoundCards.Add(partyRoundCard);

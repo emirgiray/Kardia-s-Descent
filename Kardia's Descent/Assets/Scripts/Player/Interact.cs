@@ -1070,9 +1070,12 @@ public class Interact : MonoBehaviour
 
         if (newTile.occupiedByEnemy)
         {
-            newTile.occupyingEnemy.outline.enabled = true;
-            newTile.occupyingEnemy.HPBarDelay();
-            lastCharacterUnderMouse = newTile.occupyingEnemy;
+            if (!newTile.occupyingEnemy.isDead)
+            {
+                newTile.occupyingEnemy.outline.enabled = true;
+                newTile.occupyingEnemy.HPBarDelay();
+                lastCharacterUnderMouse = newTile.occupyingEnemy;
+            }
         }
         else
         {

@@ -803,6 +803,7 @@ public class Character : MonoBehaviour
                 
                 if (distanceCheck && tilesCheck && playerCheck)
                 {
+                    //Debug.Log($"{playersInCombat[i].name} {playersInCombat[i].isUnlocked}");
                     bool check = pathfinder.GetTilesInBetween(this, characterTile, playersInCombat[i].characterTile, true).Count <= playersInCombat[i].detectionTile / 2;
                     if (name.Contains("Boss"))
                     {

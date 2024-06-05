@@ -5,6 +5,7 @@ using DG.Tweening;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 //todo add anims
@@ -38,6 +39,8 @@ public class HealStation : MonoBehaviour
     [SerializeField] private Button cancelButton;
     
     [SerializeField] private List<GameObject> HeartButtons = new();
+    [SerializeField] private GameObject HeartButtonPrefab;
+    [SerializeField] private List<GameObject> SpawnedHeartButtons = new();
     [SerializeField] private Sprite emptyHeartSprite;
     
     [SerializeField] private Player player;
@@ -70,9 +73,12 @@ public class HealStation : MonoBehaviour
     private Vector3 healMultiplierTextStartScale;
     private Vector3 selectedHeartImageStartScale;
     private Vector3 healMultipliarEffectStartScale;
+    
+    public UnityEvent SelectionStartEvent;
 
     public void StartSelection(Player playerIn)
     {
+        SelectionStartEvent?.Invoke();
         healMultiplierTextStartScale = healMultiplierText.transform.localScale;
         selectedHeartImageStartScale = selectedHeartImage.transform.localScale;
         healMultipliarEffectStartScale = healMultipliarEffect.transform.localScale;
@@ -113,14 +119,23 @@ public class HealStation : MonoBehaviour
             var i1 = i;
             HeartButtons[i].GetComponent<Button>().onClick.AddListener(() => SelectHeart(player.inventory.heartsInInventory[i1]));
         }*/
+
+        foreach (var heart in allPlayersHearts)
+        {
+            var temp = Instantiate(HeartButtonPrefab, playerHeartsLayoutGroup.transform);
+            var skillbutton = temp.GetComponent<SkillButton>();
+            SpawnedHeartButtons.Add(temp);
+            skillbutton.InitForMenuButtonHeart(heart);
+            skillbutton.button.onClick.AddListener(() => SelectHeart(heart));
+        }
         
-        for (int i = 0; i < allPlayersHearts.Count; i++)
+        /*for (int i = 0; i < allPlayersHearts.Count; i++)
         {
             HeartButtons[i].GetComponent<Image>().sprite = allPlayersHearts[i].HeartSprite;
             //HeartButtons[i].GetComponent<Button>().interactable = true;
             var i1 = i;
             HeartButtons[i].GetComponent<Button>().onClick.AddListener(() => SelectHeart(allPlayersHearts[i1]));
-        }
+        }*/
         
     }
     
@@ -317,7 +332,8 @@ public class HealStation : MonoBehaviour
             
             healUI.SetActive(false);
         });
-        
+        SpawnedHeartButtons.ForEach(Destroy);
+        SpawnedHeartButtons.Clear();
         everythingUseful.CineMachineCutRest(healCam, false); 
         everythingUseful.CineMachineCutRest(newCam, false);
     }
