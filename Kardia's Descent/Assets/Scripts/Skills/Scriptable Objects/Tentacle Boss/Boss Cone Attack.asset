@@ -18,7 +18,7 @@ MonoBehaviour:
   skillDescription: asdasd
   skillID: 21
   skillDamage: 20
-  skillRange: 4
+  skillRange: 3
   skillCooldown: 0
   actionPointUse: 3
   skillEffectDuration: 1
