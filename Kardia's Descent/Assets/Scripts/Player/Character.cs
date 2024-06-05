@@ -789,13 +789,18 @@ public class Character : MonoBehaviour
               //  bool oldCheck = Vector3.Distance(characterTile.transform.position, playersInCombat[i].transform.position) < 10 && playersInCombat[i].gameObject.activeInHierarchy && playersInCombat[i].isUnlocked && pathfinder.GetTilesInBetween(this, characterTile, playersInCombat[i].characterTile, true).Count <= playersInCombat[i].detectionTile && playersInCombat[i].GetUnlocked();
                 if (characterTile == null) continue;
                // Debug.Log($"checking for combat with {playersInCombat[i].name} by {name}");
-                bool distanceCheck = Vector3.Distance(characterTile.transform.position, playersInCombat[i].transform.position) < 10;
+                bool distanceCheck = Vector3.Distance(characterTile.transform.position, playersInCombat[i].transform.position) < 20;
                 bool playerCheck = playersInCombat[i].gameObject.activeInHierarchy && playersInCombat[i].isUnlocked && playersInCombat[i].GetUnlocked() && GetComponent<StateController>().aiActive;
                 bool tilesCheck = playerCheck && (pathfinder.GetTilesInBetween(this, characterTile, playersInCombat[i].characterTile, true).Count <= playersInCombat[i].detectionTile && this.detectionTile > 0);
                 
                 if (distanceCheck && tilesCheck && playerCheck)
                 {
-                    if (pathfinder.GetTilesInBetween(this, characterTile, playersInCombat[i].characterTile, true).Count <= playersInCombat[i].detectionTile / 2)
+                    bool check = pathfinder.GetTilesInBetween(this, characterTile, playersInCombat[i].characterTile, true).Count <= playersInCombat[i].detectionTile / 2;
+                    if (name.Contains("Boss"))
+                    {
+                        check = pathfinder.GetTilesInBetween(this, characterTile, playersInCombat[i].characterTile, true).Count <= playersInCombat[i].detectionTile * 2;
+                    }
+                    if (check)
                     {
                         if(!inCombat) StartCombat(playersInCombat[i]);
                         if(!playersInCombat[i].inCombat) playersInCombat[i].StartCombat(this);
@@ -805,6 +810,7 @@ public class Character : MonoBehaviour
                             TurnSystem.CombatStarted();
                         }
                     }
+                    
                     
                     Ray ray = new Ray(this.transform.position, this.transform.forward);
                     Vector3 dir1 = ray.direction;
@@ -891,6 +897,10 @@ public class Character : MonoBehaviour
             LevelManager.AddEnemyToCombat(GetComponent<Enemy>());
             GetComponent<StateController>().StartCombat();
             remainingActionPoints = 0; // enemies were having max ap on their first turn
+            foreach (var enemy in GetComponent<Enemy>().killOnDeath)
+            {
+                enemy.StartCombat();
+            }
         }
         
       
