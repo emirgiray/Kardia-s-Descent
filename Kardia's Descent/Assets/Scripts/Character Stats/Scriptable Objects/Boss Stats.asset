@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Boss Stats
   m_EditorClassIdentifier: 
   Strength: 6
-  Dexterity: 4
+  Dexterity: 6
   Constitution: 90
   Aiming: 4
   DefaultStrength: 6
-  DefaultDexterity: 4
+  DefaultDexterity: 6
   DefaultConstitution: 90
   DefaultAiming: 4

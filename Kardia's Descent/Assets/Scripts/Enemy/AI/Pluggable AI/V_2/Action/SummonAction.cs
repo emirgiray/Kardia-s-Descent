@@ -34,6 +34,7 @@ public class SummonAction : ActionAI
         int decidedSpawnCount = UnityEngine.Random.Range(minSpawnCount, maxSpawnCount);
        // controller.enemy.remainingActionPoints += controller.skillContainer.selectedSkill.actionPointUse * decidedSpawnCount;
        int prevAPUse = controller.skillContainer.selectedSkill.actionPointUse;
+       var prevSkill = controller.skillContainer.selectedSkill;
        controller.skillContainer.selectedSkill.actionPointUse = 0;
         controller.lastUsedSkill = controller.decidedAttackSkill;
 
@@ -72,7 +73,7 @@ public class SummonAction : ActionAI
                     controller.forcedTargetPlayerTile = null;
                     
                     controller.enemy.everythingUseful.TurnSystem.DecideEnemyTurnOrder();
-                    controller.skillContainer.selectedSkill.actionPointUse = prevAPUse;
+                    prevSkill.actionPointUse = prevAPUse;
                 };
                 
                 /*controller.skillContainer.UseSkill(controller.skillContainer.selectedSkill, controller.targetPlayerTile, controller.enemy, ()=>

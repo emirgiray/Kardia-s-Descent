@@ -220,4 +220,26 @@ public class EverythingUseful : ScriptableObject
         MainPrefabScript.fogWar.AddFogRevealerRevelear(gameObject.transform);
     }
     
+    public void ForceStartCombat()
+    {
+        if (TurnSystem.turnState == TurnSystem.TurnState.FreeRoamTurn)
+        {
+            TurnSystem.CombatStarted();
+        }
+        foreach (var player in LevelManager.players)
+        {
+            player.StartCombat();
+        }
+
+        foreach (var enemy in LevelManager.enemies)
+        {
+            if (enemy.name.Contains("Boss"))
+            {
+                enemy.StartCombat();
+            }
+        }
+        
+       
+    }
+    
 }

@@ -789,7 +789,14 @@ public class Character : MonoBehaviour
               //  bool oldCheck = Vector3.Distance(characterTile.transform.position, playersInCombat[i].transform.position) < 10 && playersInCombat[i].gameObject.activeInHierarchy && playersInCombat[i].isUnlocked && pathfinder.GetTilesInBetween(this, characterTile, playersInCombat[i].characterTile, true).Count <= playersInCombat[i].detectionTile && playersInCombat[i].GetUnlocked();
                 if (characterTile == null) continue;
                // Debug.Log($"checking for combat with {playersInCombat[i].name} by {name}");
-                bool distanceCheck = Vector3.Distance(characterTile.transform.position, playersInCombat[i].transform.position) < 10;
+               var distanceToCheck = 10;
+               if (name.Contains("Boss"))
+               {
+                   distanceToCheck = 100;
+               }
+               
+                bool distanceCheck = Vector3.Distance(characterTile.transform.position, playersInCombat[i].transform.position) < distanceToCheck;
+                
                 bool playerCheck = playersInCombat[i].gameObject.activeInHierarchy && playersInCombat[i].isUnlocked && playersInCombat[i].GetUnlocked() && GetComponent<StateController>().aiActive;
                 if(!playerCheck || !distanceCheck) continue;
                 bool tilesCheck = playerCheck && (pathfinder.GetTilesInBetween(this, characterTile, playersInCombat[i].characterTile, true).Count <= playersInCombat[i].detectionTile && this.detectionTile > 0);
@@ -799,7 +806,7 @@ public class Character : MonoBehaviour
                     bool check = pathfinder.GetTilesInBetween(this, characterTile, playersInCombat[i].characterTile, true).Count <= playersInCombat[i].detectionTile / 2;
                     if (name.Contains("Boss"))
                     {
-                        check = pathfinder.GetTilesInBetween(this, characterTile, playersInCombat[i].characterTile, true).Count <= playersInCombat[i].detectionTile * 2;
+                        check = pathfinder.GetTilesInBetween(this, characterTile, playersInCombat[i].characterTile, true).Count <= playersInCombat[i].detectionTile * 10;
                     }
                     if (check)
                     {
@@ -927,6 +934,10 @@ public class Character : MonoBehaviour
             LevelManager.AddEnemyToCombat(GetComponent<Enemy>());
             GetComponent<StateController>().StartCombat();
             remainingActionPoints = 0; // enemies were having max ap on their first turn
+            foreach (var enemy in GetComponent<Enemy>().killOnDeath)
+            {
+                enemy.StartCombat();
+            }
         }
 
     }
