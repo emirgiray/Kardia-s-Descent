@@ -373,14 +373,16 @@ bool impact = false;
         {
             if (selectedSkill.skillData.skillType == SkillsData.SkillType.Ranged && characterTooClose)
             {
-                rangedCloseDamageMultiplier = 0.75f;
+               // rangedCloseDamageMultiplier = 0.75f;
+                selectedSkill.accuracy -= selectedSkill.coverAccuracyDebuff;
             }
         }
         else
         {
             if (Character.characterClass == Character.CharacterClass.Ranged && characterTooClose)
             {
-                rangedCloseDamageMultiplier = 0.75f;
+                //rangedCloseDamageMultiplier = 0.75f;
+                selectedSkill.accuracy -= selectedSkill.coverAccuracyDebuff;
             }
         }
         float multipliars = coverDamageMultiplier * otherDamageMultiplier * rangedCloseDamageMultiplier * selectedSkill.SkillDamageMultipliar;
@@ -406,6 +408,7 @@ bool impact = false;
             otherDamageMultiplier = 1;
             //rangedCloseDamageMultiplier = 1;
             selectedSkill.SkillDamageMultipliar = 1;
+            if(characterTooClose) selectedSkill.accuracy += selectedSkill.coverAccuracyDebuff;
             //characterTooClose = false;
         });
         
@@ -450,7 +453,7 @@ bool impact = false;
 
                  if (value)
                  {
-                     button.AddToContent("Too close for ranged attack, damage halved");
+                     button.AddToContent("Too close for ranged attack, accuracy reduced");
                  }
                  else
                  {
