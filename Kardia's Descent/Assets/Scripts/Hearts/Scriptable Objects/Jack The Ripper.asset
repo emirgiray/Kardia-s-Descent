@@ -15,11 +15,14 @@ MonoBehaviour:
   HeartSprite: {fileID: 1469048405, guid: f050367bbcaea674495c2d5e36fc140b, type: 3}
   heartName: Jack The Ripper
   heartIndex: 0
-  heartDescription: Gain 2 AP when you kill.
+  heartDescription: 'Gain 2 AP when you kill.
+
+    Unlock Requirement: Kill 2 enemies
+    in one turn.'
   heartRarity: 2
   BonusStrength: 0
   BonusDexterity: 0
   BonusConstitution: 0
   BonusAiming: 0
-  unlockCondition: 'Requirement: Kill 3 enemies in one turn.'
+  unlockCondition: 'Requirement: Kill 2 enemies in one turn.'
   isPowerUnlocked: 0

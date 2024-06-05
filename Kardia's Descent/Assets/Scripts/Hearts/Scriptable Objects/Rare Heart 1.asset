@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Rare Heart 1
   m_EditorClassIdentifier: 
   HeartSprite: {fileID: -92832186, guid: f050367bbcaea674495c2d5e36fc140b, type: 3}
-  heartName: Common Heart
+  heartName: Rare Heart
   heartIndex: 4
-  heartDescription: Gives extra HP.
+  heartDescription: Gives extra Strength And Constitution.
   heartRarity: 1
-  BonusStrength: 1
+  BonusStrength: 5
   BonusDexterity: 0
   BonusConstitution: 5
-  BonusAiming: 1
+  BonusAiming: 0
   unlockCondition: 
   isPowerUnlocked: 0

@@ -24682,6 +24682,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8980570601068670817, guid: a4ca6bc64677a0d4ca26d133dbaf148d,
         type: 3}
+      propertyPath: SceneType
+      value: 
+      objectReference: {fileID: 11400000, guid: 7b69c6ad76224514abd1015b9bcb27d2,
+        type: 2}
+    - target: {fileID: 8980570601068670817, guid: a4ca6bc64677a0d4ca26d133dbaf148d,
+        type: 3}
       propertyPath: isEndDoor
       value: 1
       objectReference: {fileID: 0}
@@ -29884,6 +29890,12 @@ PrefabInstance:
       propertyPath: TriggerStay.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8980570601068670817, guid: a4ca6bc64677a0d4ca26d133dbaf148d,
+        type: 3}
+      propertyPath: SceneType
+      value: 
+      objectReference: {fileID: 11400000, guid: 623f37a80073f4747a4fa78eed7376ed,
+        type: 2}
     - target: {fileID: 8980570601068670817, guid: a4ca6bc64677a0d4ca26d133dbaf148d,
         type: 3}
       propertyPath: isEndDoor

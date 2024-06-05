@@ -15,11 +15,11 @@ MonoBehaviour:
   HeartSprite: {fileID: 2005359547, guid: f050367bbcaea674495c2d5e36fc140b, type: 3}
   heartName: Common Heart
   heartIndex: 3
-  heartDescription: Gives extra HP.
+  heartDescription: Gives extra Dexterity.
   heartRarity: 0
-  BonusStrength: 1
-  BonusDexterity: 0
-  BonusConstitution: 5
-  BonusAiming: 1
+  BonusStrength: 0
+  BonusDexterity: 5
+  BonusConstitution: 0
+  BonusAiming: 0
   unlockCondition: 
   isPowerUnlocked: 0
