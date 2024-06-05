@@ -1068,7 +1068,8 @@ public class Character : MonoBehaviour
             {
                 DropEquippedHeart();
             }
-            
+            var player = everythingUseful.AllPlayers.allPlayers.Find(x => x.playerPrefab.name == GetComponent<Player>().playerPrefab.name).playerPrefab;
+            everythingUseful.MainPrefabScript.SelectedPlayers.Remove(player);
         }
         if (this is Enemy)
         {

@@ -196,6 +196,7 @@ public class SaveLoadSystem : MonoBehaviour
         
         for (int i = 0; i < inGameSaveData.inGamePLayerDatas.Count; i++) // then assign the values to the players
         {
+            if (i >= MainPrefabScript.spawnedPlayerScripts.Count) break;
             Player player = MainPrefabScript.spawnedPlayerScripts[i];
             
             player.characterStats.Strength = inGameSaveData.inGamePLayerDatas[i].Strength;
