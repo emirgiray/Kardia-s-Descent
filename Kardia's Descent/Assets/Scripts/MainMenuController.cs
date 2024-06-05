@@ -654,8 +654,40 @@ public class MainMenuController : MonoBehaviour
             Destroy(heartButton);
         }
         spawnedHeartButtons.Clear();
+
+        List<HeartData> allPlayerHearts = new();
+        List<int> allIndexes = new();
         
-       
+        foreach (var savedPlayer in everythingUseful.SaveLoadSystem.inGameSaveData.inGamePLayerDatas)
+        {
+            foreach (var heartID in savedPlayer.heartsInInventory)
+            {
+                allIndexes.Add(heartID);
+            }
+        }
+
+        foreach (var heart in everythingUseful.SaveLoadSystem.allHeartDatas.allHearts)
+        {
+            foreach (var heartID in allIndexes)
+            {
+                if (heart.heartIndex == heartID)
+                {
+                    allPlayerHearts.Add(heart);
+                }
+            }
+           
+        }
+
+        if (allPlayerHearts.Count > 0 && !heartsActivated)
+        {
+            heartBG.transform.DOLocalMoveX(-436, .25f ).SetEase(Ease.InOutQuad).SetRelative();
+            heartsActivated = true;
+        }
+        else
+        {
+            
+        }
+        
         var player = selectedChar.characterPrefab;
         foreach (var savedPlayer in everythingUseful.SaveLoadSystem.inGameSaveData.inGamePLayerDatas)
         {
@@ -677,9 +709,14 @@ public class MainMenuController : MonoBehaviour
                 {
                     equippedHeartButton.InitForMenuButtonHeart(null);
                     equippedHeartButton.SkillImage.sprite = emptyHeartImage;
+                    if (!heartsActivated)
+                    {
+                        heartBG.transform.DOLocalMoveX(-436, .25f ).SetEase(Ease.InOutQuad).SetRelative();
+                        heartsActivated = true;
+                    }
                 }
                     
-                foreach (var heartIndex in savedPlayer.heartsInInventory)
+                /*foreach (var heartIndex in savedPlayer.heartsInInventory)
                 {
                     var heart = everythingUseful.SaveLoadSystem.allHeartDatas.allHearts[heartIndex];
                     GameObject temp = Instantiate(heartButtonPrefab, heartLayoutTransform);
@@ -693,15 +730,30 @@ public class MainMenuController : MonoBehaviour
                     var uiButton = temp.GetComponent<GenericUIButton>();
                     uiButton.SetHoverScale(Vector3.one, new Vector3(1.1f, 1.1f, 1.1f));
                 }
+                break;*/
+
+                foreach (var heart in allPlayerHearts)
+                {
+                    GameObject temp = Instantiate(heartButtonPrefab, heartLayoutTransform);
+                    temp.transform.localScale = Vector3.one;
+                    spawnedHeartButtons.Add(temp);
+                        
+                    var skillButton = temp.GetComponent<SkillButton>();
+                    skillButton.InitForMenuButtonHeart(heart);
+                    skillButton.button.onClick.AddListener(() => EquipHeart(heart, playerIndex, heart.heartIndex));
+                        
+                    var uiButton = temp.GetComponent<GenericUIButton>();
+                    uiButton.SetHoverScale(Vector3.one, new Vector3(1.1f, 1.1f, 1.1f));
+                }
                 break;
             }
             else
             {
-                if (heartsActivated)
+                /*if (heartsActivated)
                 {
                     heartBG.transform.DOLocalMoveX(436, .5f ).SetEase(Ease.InOutQuad).SetRelative();
                     heartsActivated = false;
-                }
+                }*/
                 equippedHeartButton.InitForMenuButtonHeart(null);
                 equippedHeartButton.SkillImage.sprite = emptyHeartImage;
             }

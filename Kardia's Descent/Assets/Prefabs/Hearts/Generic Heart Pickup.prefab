@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 2978294236457639595}
   - component: {fileID: 5909851980895743227}
   - component: {fileID: 2093956143716547784}
+  - component: {fileID: 5937490223692746873}
   m_Layer: 0
   m_Name: Generic Heart Pickup
   m_TagString: Untagged
@@ -117,6 +118,27 @@ MonoBehaviour:
   - {fileID: 8430751240704606289, guid: 13c47736589a94945a713305e038b8b5, type: 3}
   player: {fileID: 0}
   OnInteractEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5937490223692746873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3827778003454135017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6741100710ecdd479f18449e01fef31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delayTime: 0.5
+  header: 
+  content: 
+  OnPointerEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPointerExitEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1001 &1561471766125416628

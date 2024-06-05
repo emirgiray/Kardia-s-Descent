@@ -98,7 +98,8 @@ public class Interactable : MonoBehaviour
                         Instantiate(rarityVFXs[2], heartVFX.transform.position, Quaternion.identity, heartVFX.transform);
                         break;
                 }
-
+                GetComponent<TooltipTrigger>().SetContent(heart.heartDescription);
+                GetComponent<TooltipTrigger>().SetHeader(heart.heartName);
                 
                 break;
             case CharacterClass.Player:
