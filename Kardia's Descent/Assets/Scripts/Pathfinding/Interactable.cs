@@ -106,10 +106,6 @@ public class Interactable : MonoBehaviour
                 
                 player.animator.enabled = true;
                 player.animator.SetTrigger("Sleep");
-                player.animator.SetTrigger("Sleep");
-                player.animator.SetTrigger("Sleep");
-                player.animator.SetTrigger("Sleep");
-                player.animator.SetTrigger("Sleep");
 
               
                 

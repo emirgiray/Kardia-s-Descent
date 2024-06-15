@@ -4,12 +4,26 @@ using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
 using Sirenix.OdinInspector;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour
-{
+{ 
+    [FoldoutGroup("Debug")] [SerializeField]
+    private bool debug = false;
+    [FoldoutGroup("Debug")] [SerializeField] [ShowIf("debug")]
+    private GameObject levelSelectionScreen;
+    [FoldoutGroup("Debug")] [SerializeField] [ShowIf("debug")]
+    private Button levelSelectionButton;
+    [FoldoutGroup("Debug")] [SerializeField] [ShowIf("debug")]
+    private Transform layoutTransform;
+    [FoldoutGroup("Debug")] [SerializeField] [ShowIf("debug")]
+    private GameObject levelButtonPrefab;
+
+    private List<GenericUIElement> spawnedLevelButtons = new();
+    
     [SerializeField] private EverythingUseful everythingUseful;
     public static MainMenuController Instance { get; private set; }
     
@@ -183,11 +197,75 @@ public class MainMenuController : MonoBehaviour
         }
         StartSelection();
     }
+  
+    bool debugLevelSelectionActive = false;
+    bool doOnce = true;
+    public void DebugLevelSelection()
+    {
+        if (debug)
+        {
+            debugLevelSelectionActive = !debugLevelSelectionActive;
+            
+            levelSelectionScreen.SetActive(debugLevelSelectionActive);
+            
+            levelSelectionButton.GetComponentInChildren<TextMeshProUGUI>().text = debugLevelSelectionActive ? "Close Level Selection" : "Open Level Selection";
+
+            if (doOnce)
+            {
+                foreach (var level in everythingUseful.SceneChanger.allSceneTypes.defaultAllSceneTypes)
+                {
+                    var temp = Instantiate(levelButtonPrefab, layoutTransform);
+                    var ui = temp.GetComponent<GenericUIElement>();
+                    ui.Texts[0].text = level.Scene.SceneName;
+                    ui.Images[0].sprite = level.typeImage;
+                    ui.Buttons[0].onClick.AddListener(() =>
+                    {
+                        AssignLevelSelect(ui, level);
+                    });
+                    spawnedLevelButtons.Add(ui);
+                }
+                
+                doOnce = false;
+            }
+            
+           
+        }
+        else
+        {
+            levelSelectionButton.gameObject.SetActive(false);
+        }
+    }
+
+    private void AssignLevelSelect(GenericUIElement ui, SceneType sceneType)
+    {
+        var thisButtonSelected = ui.Objects[0].activeSelf;
+        if (thisButtonSelected)
+        {
+            ui.Objects[0].SetActive(false);
+        }
+        else
+        {
+            ui.Objects[0].SetActive(true);
+            everythingUseful.SceneChanger.forcedNextScene = sceneType.Scene.SceneName;
+        }
+
+        foreach (var button in spawnedLevelButtons)
+        {
+            button.Objects[0].SetActive(button == ui);
+        }
+        
+    }
+    
     private float heartBgStartX;
     GameObject firstChar;
     [Button, GUIColor(1f, 1f, 1f)]
     public void StartSelection()
     {
+        if (levelSelectionScreen!=null)
+        {
+            levelSelectionScreen.SetActive(false);
+        }
+        
         if (spawnedCharacter) Destroy(spawnedCharacter);
         SelectionStartedEvent.Invoke();
         characterSelectionUI.SetActive(true);
@@ -223,7 +301,7 @@ public class MainMenuController : MonoBehaviour
             charButton.characterPrefab = playerScript.playerPrefab;
             charButton.characterName = player.playerPrefab.name;
             charButton.characterImage = playerScript.characterSprite;
-            charButton.isUnlocked = /*playerScript.isUnlocked*/ /*everythingUseful.AllPlayers.allPlayers[player.playerID].isUnlocked*/ everythingUseful.SaveLoadSystem.metaSaveData.UnlockableCharacterDatas[player.playerID].isUnlocked;
+            charButton.isUnlocked = debug ? true : everythingUseful.SaveLoadSystem.metaSaveData.UnlockableCharacterDatas[player.playerID].isUnlocked;
           
         }
         

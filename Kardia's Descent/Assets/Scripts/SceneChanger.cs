@@ -26,7 +26,8 @@ public class SceneChanger : MonoBehaviour
     public SceneField firstLevel;
     public SceneField mainMenuLevel;
     public SceneField currentScene;
-
+    public SceneField forcedNextScene;
+    
     [BoxGroup("Loading Screen")] [SerializeField]
      private GameObject laodingScreen;
     [BoxGroup("Loading Screen")] [SerializeField]
@@ -170,11 +171,15 @@ public class SceneChanger : MonoBehaviour
         ClearOfferedScenes();
         SceneIsChangingEvent?.Invoke();
         
-        StartCoroutine(LoadSceneAsync(Value));
+        var nextScene = forcedNextScene.SceneName != "" ? forcedNextScene.SceneName : Value;
+        
+        StartCoroutine(LoadSceneAsync(nextScene));
         StartCoroutine(LoadingTextAnim());
         
     }
     AsyncOperation asyncLoad;
+   
+
     private IEnumerator LoadSceneAsync(string value)
     {
         loadingBar.fillAmount = 0;
@@ -196,7 +201,7 @@ public class SceneChanger : MonoBehaviour
         StopCoroutine(LoadingTextAnim());
         laodingScreen.SetActive(false);
         loadingBar.fillAmount = 0;
-        
+        forcedNextScene.SceneName = "";
     }
 
     private IEnumerator LoadingTextAnim()
