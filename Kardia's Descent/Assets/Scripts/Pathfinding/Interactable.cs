@@ -54,6 +54,7 @@ public class Interactable : MonoBehaviour
                 break;
             case CharacterClass.Player:
                 player.inventory.InventoryUISlot = everythingUseful.MainPrefabScript.InventoryUISlots[everythingUseful.MainPrefabScript.SelectedPlayers.Count];
+                player.isUnlocked = false;
                 break;
             case CharacterClass.Chest:
                 
